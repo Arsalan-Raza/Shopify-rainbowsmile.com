@@ -1,0 +1,485 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --hro-coral: {{ section.settings.coral_color }};
+    --hro-curve: {{ section.settings.curve_color }};
+    --hro-rule:  rgba(255, 255, 255, 0.28);
+  }
+
+  .hero-{{ section.id }} * { box-sizing: border-box; }
+
+  .hero-{{ section.id }} {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: clamp(560px, 82vh, 900px);
+    display: flex;
+    align-items: center;
+    padding: clamp(60px, 8vw, 90px)
+             clamp(20px, 5vw, 72px)
+             clamp(90px, 11vw, 140px);
+  }
+
+  /* Background image */
+  .hero-{{ section.id }} .hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center right;
+    z-index: 0;
+  }
+
+  /* Scrim */
+  .hero-{{ section.id }} .hero__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(95deg, rgba(20,18,16,0.62) 0%, rgba(20,18,16,0.32) 42%, transparent 66%),
+      linear-gradient(to top, rgba(20,18,16,0.28), transparent 40%);
+  }
+
+  /* Inner */
+  .hero-{{ section.id }} .hero__inner {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+  }
+  .hero-{{ section.id }} .hero__content { max-width: 820px; }
+
+  /* ── Badge ──────────────────────────────────────────────────── */
+  .hero-{{ section.id }} .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 24px;
+    min-height: 40px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(3px);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.05vw, 14px);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: #ffffff;
+    white-space: nowrap;
+  }
+  .hero-{{ section.id }} .hero__badge-star { color: var(--hro-coral); font-size: 12px; line-height: 1; }
+
+  /* ── Title ──────────────────────────────────────────────────── */
+  .hero-{{ section.id }} .hero__title {
+    margin: clamp(20px, 3vw, 34px) 0 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(38px, 6.6vw, 96px);
+    line-height: 0.98;
+    letter-spacing: -2px;
+    color: #ffffff;
+    text-shadow: 0 3px 30px rgba(0, 0, 0, 0.28);
+  }
+  .hero-{{ section.id }} .hero__title-accent { color: var(--hro-coral); }
+
+  /* ── Subtitle ───────────────────────────────────────────────── */
+  .hero-{{ section.id }} .hero__sub {
+    margin: clamp(20px, 2.8vw, 32px) 0 0;
+    max-width: 560px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 700;
+    font-size: clamp(15px, 1.5vw, 20px);
+    line-height: 1.45;
+    color: #ffffff;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.3);
+  }
+
+  /* ── Buttons ────────────────────────────────────────────────── */
+  .hero-{{ section.id }} .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: clamp(26px, 3.6vw, 40px);
+  }
+  .hero-{{ section.id }} .hero__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 40px;
+    min-height: 62px;
+    border-radius: 999px;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(15px, 1.4vw, 18px);
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: background-color 0.18s ease, transform 0.18s ease;
+  }
+  .hero-{{ section.id }} .hero__btn--solid { background: #ffffff; color: var(--hro-coral); }
+  .hero-{{ section.id }} .hero__btn--solid:hover { transform: translateY(-2px); }
+  .hero-{{ section.id }} .hero__btn--outline {
+    background: transparent;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.55);
+  }
+  .hero-{{ section.id }} .hero__btn--outline:hover { background: rgba(255, 255, 255, 0.14); }
+  .hero-{{ section.id }} .hero__btn:focus-visible { outline: 3px solid rgba(255,255,255,0.7); outline-offset: 3px; }
+
+  /* ── Social proof ───────────────────────────────────────────── */
+  .hero-{{ section.id }} .hero__proof {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px 22px;
+    margin-top: clamp(30px, 4.4vw, 52px);
+    padding-top: clamp(22px, 3vw, 34px);
+    border-top: 1px solid var(--hro-rule);
+    max-width: 820px;
+  }
+
+  .hero-{{ section.id }} .hero__avatars { display: flex; }
+  .hero-{{ section.id }} .hero__avatars img,
+  .hero-{{ section.id }} .hero__avatars span {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 2px solid var(--hro-coral);
+    margin-left: -12px;
+    background: #cbb9a3;
+  }
+  .hero-{{ section.id }} .hero__avatars img:first-child,
+  .hero-{{ section.id }} .hero__avatars span:first-child { margin-left: 0; }
+
+  .hero-{{ section.id }} .hero__rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.3vw, 17px);
+    color: #ffffff;
+  }
+  .hero-{{ section.id }} .hero__stars { display: inline-flex; gap: 2px; color: #ffffff; line-height: 0; }
+  .hero-{{ section.id }} .hero__stars svg { width: 17px; height: 17px; fill: currentColor; display: block; }
+  .hero-{{ section.id }} .hero__score { font-weight: 700; }
+
+  /* ── Bottom curve ───────────────────────────────────────────── */
+  .hero-{{ section.id }} .hero__curve {
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 100%;
+    height: clamp(36px, 5vw, 64px);
+    z-index: 4;
+    pointer-events: none;
+  }
+  .hero-{{ section.id }} .hero__curve svg { width: 100%; height: 100%; display: block; }
+
+  /* ── Mobile ─────────────────────────────────────────────────── */
+  @media screen and (max-width: 720px) {
+    .hero-{{ section.id }} { min-height: 640px; }
+    .hero-{{ section.id }} .hero__bg { object-position: 70% center; }
+    .hero-{{ section.id }} .hero__scrim {
+      background: linear-gradient(180deg, rgba(20,18,16,0.55) 0%, rgba(20,18,16,0.35) 45%, rgba(20,18,16,0.55) 100%);
+    }
+    .hero-{{ section.id }} .hero__badge { letter-spacing: 1px; padding: 10px 16px; white-space: normal; }
+    .hero-{{ section.id }} .hero__title { letter-spacing: -1px; }
+    .hero-{{ section.id }} .hero__actions { flex-direction: column; align-items: stretch; }
+    .hero-{{ section.id }} .hero__btn { width: 100%; }
+    .hero-{{ section.id }} .hero__proof { gap: 12px; }
+    .hero-{{ section.id }} .hero__avatars img,
+    .hero-{{ section.id }} .hero__avatars span { width: 36px; height: 36px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-{{ section.id }} .hero__btn:hover { transform: none; }
+  }
+{%- endstyle -%}
+
+<div class="hero-{{ section.id }}">
+
+  {%- if section.settings.bg_image != blank -%}
+    {%- assign bg_alt = section.settings.bg_image.alt | default: '' | escape -%}
+    {{
+      section.settings.bg_image
+      | image_url: width: 2000
+      | image_tag:
+        class: 'hero__bg',
+        loading: 'eager',
+        fetchpriority: 'high',
+        alt: bg_alt,
+        widths: '750, 1100, 1500, 2000'
+    }}
+  {%- else -%}
+    <div class="hero__bg" style="background: linear-gradient(135deg,#2a2724,#4a3d30);"></div>
+  {%- endif -%}
+
+  <div class="hero__scrim" aria-hidden="true"></div>
+
+  <div class="hero__inner">
+    <div class="hero__content">
+
+      {%- if section.settings.badge_text != blank -%}
+        <span class="hero__badge">
+          <span class="hero__badge-star" aria-hidden="true">✦</span>
+          {{ section.settings.badge_text | escape }}
+        </span>
+      {%- endif -%}
+
+      {%- if section.settings.heading_accent != blank or section.settings.heading_rest != blank -%}
+        <h1 class="hero__title">
+          {%- if section.settings.heading_accent != blank -%}
+            <span class="hero__title-accent">{{ section.settings.heading_accent | escape }}</span>
+          {%- endif -%}
+          {{ section.settings.heading_rest | escape }}
+        </h1>
+      {%- endif -%}
+
+      {%- if section.settings.subtitle != blank -%}
+        <p class="hero__sub">{{ section.settings.subtitle | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.btn1_text != blank or section.settings.btn2_text != blank -%}
+        <div class="hero__actions">
+          {%- if section.settings.btn1_text != blank -%}
+            <a class="hero__btn hero__btn--solid" href="{{ section.settings.btn1_url | default: '#' }}">
+              {{ section.settings.btn1_text | escape }}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.btn2_text != blank -%}
+            <a class="hero__btn hero__btn--outline" href="{{ section.settings.btn2_url | default: '#' }}">
+              {{ section.settings.btn2_text | escape }}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.show_proof -%}
+        <div class="hero__proof">
+          <div class="hero__avatars" aria-hidden="true">
+            {%- for i in (1..4) -%}
+              {%- assign av_key = 'avatar_' | append: i -%}
+              {%- assign av_img = section.settings[av_key] -%}
+              {%- if av_img != blank -%}
+                {%- assign av_alt = av_img.alt | default: '' | escape -%}
+                {{
+                  av_img
+                  | image_url: width: 84
+                  | image_tag:
+                    loading: 'lazy',
+                    alt: av_alt,
+                    widths: '42, 84'
+                }}
+              {%- else -%}
+                <span></span>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          <p class="hero__rating">
+            <span class="hero__stars" role="img" aria-label="{{ section.settings.rating_score }} out of 5 stars">
+              {%- for i in (1..5) -%}
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8L10 14.9 4.7 17.6l1-5.8L1.5 7.7l5.9-.9z"/></svg>
+              {%- endfor -%}
+            </span>
+            <span class="hero__score">{{ section.settings.rating_score | escape }}</span>
+            · {{ section.settings.rating_text | escape }}
+          </p>
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+
+  {%- if section.settings.show_curve -%}
+    <div class="hero__curve" aria-hidden="true">
+      <svg viewBox="0 0 1440 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,56 L1440,56 L1440,48 Q720,-30 0,48 Z" fill="{{ section.settings.curve_color }}"/>
+      </svg>
+    </div>
+  {%- endif -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "Hero — Main",
+  "tag": "section",
+  "class": "hero-main-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "OG3™ Oxygen + Hydration Therapy"
+    },
+    {
+      "type": "text",
+      "id": "heading_accent",
+      "label": "Heading — accent (coral) part",
+      "default": "Your Mouth"
+    },
+    {
+      "type": "text",
+      "id": "heading_rest",
+      "label": "Heading — rest (white) part",
+      "default": " Was Born Alive. Let's Keep It That Way."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Rainbow Smile is Biome Food™ — a certified organic daily ritual that supports your mouth's living ecology."
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "btn1_text",
+      "label": "Primary button text",
+      "default": "Shop OG3™"
+    },
+    {
+      "type": "url",
+      "id": "btn1_url",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "btn2_text",
+      "label": "Secondary button text",
+      "default": "Download the Free Guide"
+    },
+    {
+      "type": "url",
+      "id": "btn2_url",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "header",
+      "content": "Social proof"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_proof",
+      "label": "Show social proof row",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_1",
+      "label": "Avatar 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_2",
+      "label": "Avatar 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_3",
+      "label": "Avatar 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_4",
+      "label": "Avatar 4"
+    },
+    {
+      "type": "text",
+      "id": "rating_score",
+      "label": "Rating score",
+      "default": "4.9"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating label",
+      "default": "Loved by 2,400+ biome hackers"
+    },
+    {
+      "type": "header",
+      "content": "Bottom curve"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_curve",
+      "label": "Show bottom curve",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "curve_color",
+      "label": "Curve color (match section below)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Badge font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading & button font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Subtitle & rating font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Accent color (heading + badge star + button text)",
+      "default": "#ef4a22"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero — Main"
+    }
+  ]
+}
+{% endschema %}

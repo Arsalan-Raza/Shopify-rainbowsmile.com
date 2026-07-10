@@ -1,0 +1,234 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --tb-navy:  {{ section.settings.navy_color }};
+    --tb-line:  {{ section.settings.line_color }};
+    --tb-bg:    {{ section.settings.bg_color }};
+    --tb-speed: {{ section.settings.speed }}s;
+
+    background: var(--tb-bg);
+    border-block: 1px solid var(--tb-line);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .tbar-{{ section.id }} * { box-sizing: border-box; }
+
+  .tbar-{{ section.id }} .tb__viewport {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+  }
+
+  .tbar-{{ section.id }} .tb__track {
+    display: flex;
+    width: max-content;
+    animation: tbarScroll-{{ section.id }} var(--tb-speed) linear infinite;
+  }
+  .tbar-{{ section.id }} .tb__viewport:hover .tb__track {
+    animation-play-state: paused;
+  }
+
+  @keyframes tbarScroll-{{ section.id }} {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .tbar-{{ section.id }} .tb__item {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: clamp(16px, 2vw, 22px) clamp(24px, 3vw, 42px);
+    border-left: 1px solid var(--tb-line);
+    white-space: nowrap;
+  }
+
+  .tbar-{{ section.id }} .tb__icon {
+    color: var(--tb-navy);
+    flex: none;
+    display: block;
+  }
+  .tbar-{{ section.id }} .tb__icon svg { width: 20px; height: 20px; display: block; }
+
+  .tbar-{{ section.id }} .tb__label {
+    font-family: var(--font-{{ section.settings.label_font }}-family);
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--tb-navy);
+    line-height: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tbar-{{ section.id }} .tb__track { animation: none; }
+    .tbar-{{ section.id }} .tb__viewport { overflow-x: auto; }
+  }
+
+  @media screen and (max-width: 640px) {
+    #shopify-section-{{ section.id }} { --tb-speed: {{ section.settings.speed | times: 0.7 | round }}s; }
+    .tbar-{{ section.id }} .tb__item { padding-inline: 20px; gap: 9px; }
+    .tbar-{{ section.id }} .tb__icon svg { width: 18px; height: 18px; }
+  }
+{%- endstyle -%}
+
+{%- capture tb_items -%}
+  {%- for block in section.blocks -%}
+    <span class="tb__item"{% if forloop.first == false or include_aria %} {{ block.shopify_attributes }}{% endif %}>
+      <span class="tb__icon" aria-hidden="true">
+        {%- case block.settings.icon -%}
+          {%- when 'vegan' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c0-7 5-12 11-12 0 6-4 11-11 12Z"/><path d="M4 20c2.5-4 5.5-6.5 9-8"/></svg>
+          {%- when 'cruelty_free' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9c-1.6-1.4-2-4-1.2-5.4C7.7 2.2 9.4 4.4 9.8 7"/><path d="M16 9c1.6-1.4 2-4 1.2-5.4C16.3 2.2 14.6 4.4 14.2 7"/><path d="M12 8a5.5 5.5 0 0 1 5.5 5.5c0 3.6-2.5 6.5-5.5 6.5s-5.5-2.9-5.5-6.5A5.5 5.5 0 0 1 12 8Z"/><circle cx="10.2" cy="14" r=".8" fill="currentColor" stroke="none"/><circle cx="13.8" cy="14" r=".8" fill="currentColor" stroke="none"/></svg>
+          {%- when 'regenerative' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 6.5 9.6 3l2.6 4.4"/><path d="M4.5 15 3 11.2l4.6-1.6"/><path d="M16.6 5.6 19 9.4l-4.4 1.8"/><path d="M20 15.5 17.4 20H12"/><path d="M8 20H5.5l1.2-4.5"/><path d="M12 20l2-2.6-3.4-1"/></svg>
+          {%- when 'biome_safe' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M8 11a4.2 4.2 0 0 0 8 0"/><circle cx="9" cy="8.4" r=".9" fill="currentColor" stroke="none"/><circle cx="15" cy="8.4" r=".9" fill="currentColor" stroke="none"/></svg>
+          {%- when 'fsc' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5.5 16h13L12 3Z"/><path d="M12 16v5"/></svg>
+          {%- when 'science' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h4"/><path d="M11 3v6.2L5.6 18a2 2 0 0 0 1.7 3h9.4a2 2 0 0 0 1.7-3L13 9.2V3"/><path d="M7.6 15h8.8"/></svg>
+          {%- when 'glass' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18l-9 11L3 9Z"/><path d="M6.5 4h11L21 9H3l3.5-5Z"/><path d="M3 9h18"/></svg>
+          {%- when 'organic' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c0-7 5-12 11-12 0 6-4 11-11 12Z"/><path d="M4 20c2.5-4 5.5-6.5 9-8"/></svg>
+          {%- when 'shield' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5 3.6 9.4 8 10.8C16.4 21.4 20 17 20 12V6L12 2Z"/><path d="m9 12 2 2 4-4"/></svg>
+          {%- when 'star' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6 6.6 1-4.8 4.6 1.1 6.5L12 17.1l-5.8 3 1.1-6.5L2.5 9l6.6-1z"/></svg>
+          {%- when 'recycle' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 19H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M17 5h2.5a2.5 2.5 0 0 1 0 5H18"/><path d="m9 3 3-3 3 3"/><path d="m9 21 3 3 3-3"/><path d="M7 5 5 9l4.5 1.5"/><path d="M17 19l2-4-4.5-1.5"/></svg>
+          {%- when 'heart' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-8-5.2-8-10.4A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 3.6C20 15.8 12 21 12 21Z"/></svg>
+          {%- else -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg>
+        {%- endcase -%}
+      </span>
+      <span class="tb__label">{{ block.settings.label | escape }}</span>
+    </span>
+  {%- endfor -%}
+{%- endcapture -%}
+
+<div class="tbar-{{ section.id }}" role="region" aria-label="{{ section.settings.aria_label | default: 'Product certifications' | escape }}">
+  <div class="tb__viewport">
+    <div class="tb__track">
+      {{- tb_items -}}
+      {{- tb_items -}}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trust Bar",
+  "tag": "section",
+  "class": "trust-bar-section",
+  "max_blocks": 16,
+  "settings": [
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "Accessibility label",
+      "default": "Product certifications"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Scroll speed (seconds per loop)",
+      "min": 16,
+      "max": 90,
+      "step": 2,
+      "default": 46,
+      "info": "Lower = faster. Increase if you add more items."
+    },
+    {
+      "type": "header",
+      "content": "Font"
+    },
+    {
+      "type": "select",
+      "id": "label_font",
+      "label": "Label font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Icon & label color",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Border & divider color",
+      "default": "#e9e9ec"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Trust Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "vegan",        "label": "Vegan (leaf)" },
+            { "value": "cruelty_free", "label": "Cruelty-Free (bunny)" },
+            { "value": "regenerative", "label": "Regenerative (arrows)" },
+            { "value": "biome_safe",   "label": "Biome Safe (smiley)" },
+            { "value": "fsc",          "label": "FSC (triangle/tree)" },
+            { "value": "science",      "label": "Science-Backed (flask)" },
+            { "value": "glass",        "label": "Violet Glass (gem)" },
+            { "value": "organic",      "label": "Organic (leaf 2)" },
+            { "value": "shield",       "label": "Shield + check" },
+            { "value": "star",         "label": "Star" },
+            { "value": "recycle",      "label": "Recycle" },
+            { "value": "heart",        "label": "Heart" }
+          ],
+          "default": "organic"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Certified Organic"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Bar",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "vegan",        "label": "100% Vegan" } },
+        { "type": "item", "settings": { "icon": "cruelty_free", "label": "Cruelty-Free" } },
+        { "type": "item", "settings": { "icon": "regenerative", "label": "Regenerative Sourced" } },
+        { "type": "item", "settings": { "icon": "biome_safe",   "label": "ubu™ Biome Safe" } },
+        { "type": "item", "settings": { "icon": "fsc",          "label": "FSC Certified" } },
+        { "type": "item", "settings": { "icon": "science",      "label": "Science-Backed" } },
+        { "type": "item", "settings": { "icon": "glass",        "label": "Miron Violet Glass" } },
+        { "type": "item", "settings": { "icon": "organic",      "label": "Certified Organic" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
