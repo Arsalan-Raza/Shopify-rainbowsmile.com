@@ -1,0 +1,578 @@
+{%- style -%}
+  /* ── Section wrapper ───────────────────────────────────────── */
+  #shopify-section-{{ section.id }} {
+    --hiw-navy:     {{ section.settings.bg_color }};
+    --hiw-gold:     {{ section.settings.gold_color }};
+    --hiw-body:     {{ section.settings.body_color }};
+    --hiw-meta:     {{ section.settings.eyebrow_color }};
+    --hiw-pill:     rgba(255,255,255,0.06);
+    --hiw-pill-bd:  rgba(255,255,255,0.16);
+    --hiw-speed:    {{ section.settings.marquee_speed }}s;
+
+    position: relative;
+    overflow: hidden;
+    background: var(--hiw-navy);
+    padding-block: clamp(44px, 6vw, 72px);
+  }
+
+  .hiw-{{ section.id }} * { box-sizing: border-box; }
+
+  /* ── Inner ─────────────────────────────────────────────────── */
+  .hiw-{{ section.id }} .hiw__inner {
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  /* ── Header ────────────────────────────────────────────────── */
+  .hiw-{{ section.id }} .hiw__head {
+    text-align: center;
+    margin-bottom: clamp(28px, 4vw, 44px);
+  }
+  .hiw-{{ section.id }} .hiw__eyebrow {
+    margin: 0 0 14px;
+    font-family: var({{ section.settings.eyebrow_font }});
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--hiw-meta);
+    line-height: 1;
+  }
+  .hiw-{{ section.id }} .hiw__title {
+    margin: 0;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 800;
+    font-size: clamp(32px, 4.2vw, 50px);
+    line-height: 1.04;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+  }
+  .hiw-{{ section.id }} .hiw__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var({{ section.settings.script_font }});
+    font-weight: 400;
+    font-size: clamp(30px, 3.8vw, 46px);
+    line-height: 1.08;
+    color: var(--hiw-gold);
+  }
+  .hiw-{{ section.id }} .hiw__sub {
+    margin: clamp(16px, 2.2vw, 22px) auto 0;
+    max-width: 620px;
+    font-family: var({{ section.settings.subtitle_font }});
+    font-weight: 400;
+    font-size: clamp(14px, 1.3vw, 16px);
+    line-height: 1.6;
+    color: var(--hiw-body);
+  }
+
+  /* ── Video ─────────────────────────────────────────────────── */
+  .hiw-{{ section.id }} .hiw__video-wrap {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: #1c1e3a;
+  }
+  .hiw-{{ section.id }} .hiw__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hiw-{{ section.id }} .hiw__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 0;
+    background: rgba(0,0,0,0.12);
+    cursor: pointer;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+  .hiw-{{ section.id }} .hiw__video-wrap.is-playing .hiw__overlay {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .hiw-{{ section.id }} .hiw__overlay:focus-visible {
+    outline: 3px solid rgba(255,255,255,0.7);
+    outline-offset: -6px;
+  }
+
+  /* UBU badge */
+  .hiw-{{ section.id }} .hiw__badge {
+    position: absolute;
+    left: clamp(6%, 12%, 18%);
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(120px, 17vw, 220px);
+    color: #ffffff;
+    pointer-events: none;
+  }
+  .hiw-{{ section.id }} .hiw__badge svg { width: 100%; height: auto; display: block; }
+  .hiw-{{ section.id }} .hiw__badge-word {
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 800;
+    font-size: 46px;
+    letter-spacing: -1px;
+    fill: #ffffff;
+  }
+  .hiw-{{ section.id }} .hiw__badge-arc {
+    font-family: var({{ section.settings.eyebrow_font }});
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    fill: #ffffff;
+  }
+
+  /* Play button */
+  .hiw-{{ section.id }} .hiw__play {
+    width: clamp(56px, 6vw, 76px);
+    height: clamp(56px, 6vw, 76px);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+    flex: none;
+  }
+  .hiw-{{ section.id }} .hiw__overlay:hover .hiw__play {
+    background: rgba(255,255,255,0.4);
+    transform: scale(1.06);
+  }
+  .hiw-{{ section.id }} .hiw__play svg { width: 40%; height: 40%; margin-left: 8%; fill: #ffffff; }
+
+  /* ── Marquee ───────────────────────────────────────────────── */
+  .hiw-{{ section.id }} .hiw__marquee {
+    margin-top: clamp(28px, 4vw, 48px);
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  }
+  .hiw-{{ section.id }} .hiw__track {
+    display: flex;
+    gap: 14px;
+    width: max-content;
+    animation: hiwScroll-{{ section.id }} var(--hiw-speed) linear infinite;
+  }
+  .hiw-{{ section.id }} .hiw__marquee:hover .hiw__track {
+    animation-play-state: paused;
+  }
+
+  @keyframes hiwScroll-{{ section.id }} {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .hiw-{{ section.id }} .hiw__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: var(--hiw-pill);
+    border: 1px solid var(--hiw-pill-bd);
+    font-family: var({{ section.settings.pill_font }});
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ffffff;
+    white-space: nowrap;
+    flex: none;
+  }
+  .hiw-{{ section.id }} .hiw__pill-star {
+    color: var(--hiw-gold);
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .hiw-{{ section.id }} .hiw__track { animation: none; }
+    .hiw-{{ section.id }} .hiw__marquee { overflow-x: auto; }
+  }
+
+  /* ── Mobile ────────────────────────────────────────────────── */
+  @media screen and (max-width: 640px) {
+    .hiw-{{ section.id }} .hiw__video-wrap { aspect-ratio: 4 / 3; }
+    .hiw-{{ section.id }} .hiw__badge { left: 6%; width: clamp(100px, 30vw, 150px); }
+    #shopify-section-{{ section.id }} { --hiw-speed: 30s; }
+  }
+{%- endstyle -%}
+
+<div class="hiw-{{ section.id }}">
+  <div class="hiw__inner">
+
+    {%- comment -%} ── Header ── {%- endcomment -%}
+    <header class="hiw__head">
+      {%- if section.settings.eyebrow_text != blank -%}
+        <p class="hiw__eyebrow">{{ section.settings.eyebrow_text | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading_text != blank or section.settings.script_text != blank -%}
+        <h2 class="hiw__title">
+          {{- section.settings.heading_text | escape -}}
+          {%- if section.settings.script_text != blank -%}
+            <span class="hiw__script">{{ section.settings.script_text | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.subtitle_text != blank -%}
+        <p class="hiw__sub">{{ section.settings.subtitle_text | escape }}</p>
+      {%- endif -%}
+    </header>
+
+    {%- comment -%} ── Video ── {%- endcomment -%}
+    <div class="hiw__video-wrap" id="hiw-wrap-{{ section.id }}">
+
+      {%- if section.settings.video != blank -%}
+        <video
+          class="hiw__video"
+          id="hiw-video-{{ section.id }}"
+          {%- if section.settings.poster != blank -%}
+            poster="{{ section.settings.poster | image_url: width: 1600 }}"
+          {%- endif -%}
+          preload="none"
+          playsinline>
+          {%- for source in section.settings.video.sources -%}
+            <source src="{{ source.url }}" type="{{ source.mime_type }}">
+          {%- endfor -%}
+        </video>
+      {%- elsif section.settings.video_url != blank -%}
+        <video
+          class="hiw__video"
+          id="hiw-video-{{ section.id }}"
+          {%- if section.settings.poster != blank -%}
+            poster="{{ section.settings.poster | image_url: width: 1600 }}"
+          {%- endif -%}
+          preload="none"
+          playsinline>
+          <source src="{{ section.settings.video_url }}" type="video/mp4">
+        </video>
+      {%- else -%}
+        {%- comment -%} Poster-only placeholder when no video is set {%- endcomment -%}
+        {%- if section.settings.poster != blank -%}
+          {{
+            section.settings.poster
+            | image_url: width: 1600
+            | image_tag:
+              class: 'hiw__video',
+              loading: 'lazy',
+              alt: section.settings.poster.alt | default: ''
+          }}
+        {%- else -%}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'hiw__video placeholder-svg' }}
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- comment -%} Play overlay (only shown if video is present) {%- endcomment -%}
+      {%- if section.settings.video != blank or section.settings.video_url != blank -%}
+        <button
+          class="hiw__overlay"
+          type="button"
+          id="hiw-play-{{ section.id }}"
+          aria-label="{{ section.settings.play_label | default: 'Play video' | escape }}">
+
+          {%- if section.settings.show_badge -%}
+            <span class="hiw__badge" aria-hidden="true">
+              <svg viewBox="0 0 220 150" role="img" aria-label="ubu — unique biome unlocked">
+                <defs>
+                  <path id="hiwArc-{{ section.id }}" d="M22,78 A92,92 0 0,0 198,78" fill="none"/>
+                </defs>
+                <text x="110" y="58" text-anchor="middle" class="hiw__badge-word">ubu</text>
+                <path d="M66,66 A46,34 0 0,0 154,66" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+                <text class="hiw__badge-arc">
+                  <textPath href="#hiwArc-{{ section.id }}" startOffset="50%" text-anchor="middle">unique biome unlocked</textPath>
+                </text>
+              </svg>
+            </span>
+          {%- endif -%}
+
+          <span class="hiw__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 3.5v17l15-8.5z"/></svg>
+          </span>
+        </button>
+      {%- endif -%}
+
+    </div>
+  </div>
+
+  {%- comment -%} ── Marquee ── {%- endcomment -%}
+  {%- if section.blocks.size > 0 -%}
+    {%- assign pill_blocks = section.blocks | where: 'type', 'pill' -%}
+    {%- if pill_blocks.size > 0 -%}
+      <div class="hiw__marquee" aria-label="{{ section.settings.marquee_label | default: 'Product attributes' | escape }}">
+        <div class="hiw__track">
+          {%- comment -%} Set A {%- endcomment -%}
+          {%- for block in pill_blocks -%}
+            <span class="hiw__pill" {{ block.shopify_attributes }}>
+              <span class="hiw__pill-star" aria-hidden="true">{{ section.settings.pill_star }}</span>
+              {{ block.settings.label | escape }}
+            </span>
+          {%- endfor -%}
+          {%- comment -%} Set B — duplicate for seamless loop {%- endcomment -%}
+          {%- for block in pill_blocks -%}
+            <span class="hiw__pill" aria-hidden="true">
+              <span class="hiw__pill-star" aria-hidden="true">{{ section.settings.pill_star }}</span>
+              {{ block.settings.label | escape }}
+            </span>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+</div>
+
+{%- if section.settings.video != blank or section.settings.video_url != blank -%}
+  <script>
+    (function () {
+      var wrap  = document.getElementById('hiw-wrap-{{ section.id }}');
+      var video = document.getElementById('hiw-video-{{ section.id }}');
+      var btn   = document.getElementById('hiw-play-{{ section.id }}');
+      if (!wrap || !video || !btn) return;
+
+      btn.addEventListener('click', function () {
+        wrap.classList.add('is-playing');
+        var p = video.play();
+        if (p && p.catch) p.catch(function () {});
+      });
+
+      video.addEventListener('ended', function () {
+        wrap.classList.remove('is-playing');
+      });
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "How It Works",
+  "tag": "section",
+  "class": "how-it-works-section",
+  "max_blocks": 16,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "How It Works"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading",
+      "default": "Biology Sending"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Script line"
+    },
+    {
+      "type": "text",
+      "id": "script_text",
+      "label": "Script line",
+      "default": "Love Signals."
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-accent-family"
+    },
+    {
+      "type": "header",
+      "content": "Subtitle"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle_text",
+      "label": "Subtitle",
+      "default": "Rainbow Smile isn\u2019t just a product. It\u2019s a movement awakening life\u2019s quiet intelligence in your mouth."
+    },
+    {
+      "type": "select",
+      "id": "subtitle_font",
+      "label": "Subtitle font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video (Shopify-hosted)",
+      "info": "Upload a video file. Takes priority over the URL field below."
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "Video URL (external)",
+      "info": "Direct .mp4 URL. Used only if no Shopify-hosted video is selected."
+    },
+    {
+      "type": "image_picker",
+      "id": "poster",
+      "label": "Video poster / thumbnail"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Show ubu badge on overlay",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "play_label",
+      "label": "Play button aria-label",
+      "default": "Play video"
+    },
+    {
+      "type": "header",
+      "content": "Marquee"
+    },
+    {
+      "type": "range",
+      "id": "marquee_speed",
+      "label": "Scroll speed",
+      "min": 10,
+      "max": 80,
+      "step": 2,
+      "unit": "s",
+      "default": 42,
+      "info": "Lower = faster."
+    },
+    {
+      "type": "text",
+      "id": "pill_star",
+      "label": "Pill separator character",
+      "default": "\u2736"
+    },
+    {
+      "type": "select",
+      "id": "pill_font",
+      "label": "Pill font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "text",
+      "id": "marquee_label",
+      "label": "Marquee aria-label",
+      "default": "Product attributes"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#2a2c50"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Gold (script, pill star)",
+      "default": "#f5b843"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text",
+      "default": "#b6b8cd"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow text",
+      "default": "#9497b4"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pill",
+      "name": "Marquee pill",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Organic"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works",
+      "blocks": [
+        { "type": "pill", "settings": { "label": "Vegan"          } },
+        { "type": "pill", "settings": { "label": "Plant-Based"    } },
+        { "type": "pill", "settings": { "label": "Sugar Free"     } },
+        { "type": "pill", "settings": { "label": "Organic"        } },
+        { "type": "pill", "settings": { "label": "Holistic"       } },
+        { "type": "pill", "settings": { "label": "Microbiome"     } },
+        { "type": "pill", "settings": { "label": "Oral-Wellness"  } },
+        { "type": "pill", "settings": { "label": "Science-Backed" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

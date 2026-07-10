@@ -1,0 +1,301 @@
+{%- style -%}
+  /* ── Section wrapper ───────────────────────────────────────── */
+  #shopify-section-{{ section.id }} {
+    --ib-ink:    {{ section.settings.ink_color }};
+    --ib-accent: {{ section.settings.accent_color }};
+    --ib-meta:   {{ section.settings.meta_color }};
+    --ib-line:   {{ section.settings.line_color }};
+
+    background: {{ section.settings.bg_color }};
+    padding-block: clamp(44px, 6vw, 76px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  .ib-{{ section.id }} * { box-sizing: border-box; }
+  .ib-{{ section.id }} { max-width: 1240px; margin-inline: auto; }
+
+  /* ── Header ────────────────────────────────────────────────── */
+  .ib-{{ section.id }} .ib__head {
+    text-align: center;
+    margin-bottom: clamp(32px, 4.5vw, 52px);
+  }
+  .ib-{{ section.id }} .ib__title {
+    margin: 0;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 800;
+    font-size: clamp(32px, 4.2vw, 50px);
+    line-height: 1.04;
+    letter-spacing: -0.5px;
+    color: var(--ib-ink);
+  }
+  .ib-{{ section.id }} .ib__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var({{ section.settings.script_font }});
+    font-weight: 400;
+    font-size: clamp(30px, 3.8vw, 46px);
+    line-height: 1.08;
+    color: var(--ib-accent);
+  }
+
+  /* ── Grid ──────────────────────────────────────────────────── */
+  .ib-{{ section.id }} .ib__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+  }
+  .ib-{{ section.id }} .ib__item {
+    padding: clamp(18px, 2vw, 26px) clamp(10px, 1.4vw, 18px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: 1px solid var(--ib-line);
+  }
+
+  /* ── Desktop: remove left border on first column of each row ── */
+  {%- assign cols = section.settings.columns_desktop -%}
+  .ib-{{ section.id }} .ib__item:nth-child({{ cols }}n + 1) { border-left: none; }
+
+  /* ── Icon ──────────────────────────────────────────────────── */
+  .ib-{{ section.id }} .ib__icon {
+    font-size: clamp(26px, 2.4vw, 30px);
+    line-height: 1;
+    margin-bottom: clamp(16px, 2vw, 22px);
+  }
+
+  /* ── Name ──────────────────────────────────────────────────── */
+  .ib-{{ section.id }} .ib__name {
+    margin: 0 0 10px;
+    font-family: var({{ section.settings.name_font }});
+    font-weight: 700;
+    font-size: clamp(13px, 1.2vw, 15px);
+    line-height: 1.25;
+    color: var(--ib-ink);
+  }
+
+  /* ── Meta ──────────────────────────────────────────────────── */
+  .ib-{{ section.id }} .ib__meta {
+    margin: 0;
+    font-family: var({{ section.settings.meta_font }});
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    line-height: 1.4;
+    color: var(--ib-meta);
+  }
+
+  /* ── 3 columns ─────────────────────────────────────────────── */
+  @media screen and (max-width: 899px) {
+    .ib-{{ section.id }} .ib__grid { grid-template-columns: repeat(3, 1fr); }
+    .ib-{{ section.id }} .ib__item:nth-child(n)      { border-left: 1px solid var(--ib-line); border-top: none; }
+    .ib-{{ section.id }} .ib__item:nth-child(3n + 1) { border-left: none; }
+    .ib-{{ section.id }} .ib__item:nth-child(n + 4)  { border-top: 1px solid var(--ib-line); }
+  }
+
+  /* ── 2 columns ─────────────────────────────────────────────── */
+  @media screen and (max-width: 560px) {
+    .ib-{{ section.id }} .ib__grid { grid-template-columns: repeat(2, 1fr); }
+    .ib-{{ section.id }} .ib__item:nth-child(n)      { border-left: 1px solid var(--ib-line); border-top: none; }
+    .ib-{{ section.id }} .ib__item:nth-child(2n + 1) { border-left: none; }
+    .ib-{{ section.id }} .ib__item:nth-child(n + 3)  { border-top: 1px solid var(--ib-line); }
+  }
+{%- endstyle -%}
+
+<div class="ib-{{ section.id }}">
+
+  {%- if section.settings.heading_text != blank or section.settings.script_text != blank -%}
+    <header class="ib__head">
+      <h2 class="ib__title">
+        {{- section.settings.heading_text | escape -}}
+        {%- if section.settings.script_text != blank -%}
+          <span class="ib__script">{{ section.settings.script_text | escape }}</span>
+        {%- endif -%}
+      </h2>
+    </header>
+  {%- endif -%}
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="ib__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'ingredient' -%}
+          <div class="ib__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != blank -%}
+              <span class="ib__icon" aria-hidden="true">{{ block.settings.icon }}</span>
+            {%- endif -%}
+            {%- if block.settings.name != blank -%}
+              <h3 class="ib__name">{{ block.settings.name | escape }}</h3>
+            {%- endif -%}
+            {%- if block.settings.meta != blank -%}
+              <p class="ib__meta">{{ block.settings.meta | escape }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "Ingredients Band",
+  "tag": "section",
+  "class": "ingredients-band-section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading",
+      "default": "Pure. Simple."
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Script line"
+    },
+    {
+      "type": "text",
+      "id": "script_text",
+      "label": "Script line",
+      "default": "Unflavored."
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-accent-family"
+    },
+    {
+      "type": "header",
+      "content": "Grid"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Columns (desktop)",
+      "options": [
+        { "value": "4", "label": "4" },
+        { "value": "5", "label": "5" },
+        { "value": "6", "label": "6" }
+      ],
+      "default": "6"
+    },
+    {
+      "type": "select",
+      "id": "name_font",
+      "label": "Ingredient name font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "select",
+      "id": "meta_font",
+      "label": "Meta / sub-label font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "ink_color",
+      "label": "Heading & name color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Script line color",
+      "default": "#f4502b"
+    },
+    {
+      "type": "color",
+      "id": "meta_color",
+      "label": "Meta label color",
+      "default": "#6b6b6b"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Divider line color",
+      "default": "#e7e7e7"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "🌿"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Ingredient name",
+          "default": "Ingredient Name"
+        },
+        {
+          "type": "text",
+          "id": "meta",
+          "label": "Sub-label",
+          "default": "Certified"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredients Band",
+      "blocks": [
+        { "type": "ingredient", "settings": { "icon": "🥥", "name": "Organic Coconut Glycerin", "meta": "Certified Base"          } },
+        { "type": "ingredient", "settings": { "icon": "🫧", "name": "Oxygen Nanobubbles",       "meta": "15x Bioavailable"        } },
+        { "type": "ingredient", "settings": { "icon": "💧", "name": "Structured Water",          "meta": "4th Phase"               } },
+        { "type": "ingredient", "settings": { "icon": "✦",  "name": "Biofield Frequencies",     "meta": "Nature's Resonance"      } },
+        { "type": "ingredient", "settings": { "icon": "🌾", "name": "Zero Additives",            "meta": "Nothing Else"            } },
+        { "type": "ingredient", "settings": { "icon": "💎", "name": "Miron Violet Glass",        "meta": "Biophotonic Protection"  } }
+      ]
+    }
+  ]
+}
+{% endschema %}
