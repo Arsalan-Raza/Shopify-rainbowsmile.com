@@ -1,0 +1,921 @@
+{%- paginate collection.products by section.settings.products_per_page -%}
+
+{%- comment -%} ── Determine active filter states ── {%- endcomment -%}
+{%- assign format_active = false -%}
+{%- assign flavor_active = false -%}
+{%- for block in section.blocks -%}
+  {%- if block.type == 'format_pill' and current_tags contains block.settings.tag -%}
+    {%- assign format_active = true -%}
+  {%- endif -%}
+  {%- if block.type == 'flavor_pill' and block.settings.collection.handle == collection.handle -%}
+    {%- assign flavor_active = true -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%} ── Base URL for sort (preserves active tag) ── {%- endcomment -%}
+{%- assign sort_base = collection.url -%}
+{%- if current_tags.size > 0 -%}
+  {%- assign sort_base = collection.url | append: '/' | append: current_tags | join: '+' -%}
+{%- endif -%}
+
+{%- comment -%} ── Current sort key ── {%- endcomment -%}
+{%- assign current_sort = collection.sort_by | default: collection.default_sort_by -%}
+
+{%- comment -%} ── Check block types ── {%- endcomment -%}
+{%- assign has_format_pills = false -%}
+{%- assign has_flavor_pills  = false -%}
+{%- for block in section.blocks -%}
+  {%- if block.type == 'format_pill' -%}{%- assign has_format_pills = true -%}{%- endif -%}
+  {%- if block.type == 'flavor_pill'  -%}{%- assign has_flavor_pills  = true -%}{%- endif -%}
+{%- endfor -%}
+
+{%- style -%}
+  /* ── Section wrapper ───────────────────────────────────────── */
+  #shopify-section-{{ section.id }} {
+    --pg-navy:    {{ section.settings.navy_color }};
+    --pg-coral:   {{ section.settings.coral_color }};
+    --pg-gold:    {{ section.settings.gold_color }};
+    --pg-cream:   {{ section.settings.bg_color }};
+    --pg-muted:   {{ section.settings.muted_color }};
+    --pg-desc:    {{ section.settings.desc_color }};
+    --pg-line:    {{ section.settings.line_color }};
+
+    background: var(--pg-cream);
+  }
+
+  .pgrid-{{ section.id }} * { box-sizing: border-box; }
+
+  /* ── Filter bar ────────────────────────────────────────────── */
+  .pgrid-{{ section.id }} .pgrid__bar {
+    background: #fff;
+    border-bottom: 1px solid var(--pg-line);
+    padding: 14px clamp(16px, 4vw, 40px);
+  }
+  .pgrid-{{ section.id }} .pgrid__bar-inner {
+    max-width: 1240px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 2vw, 22px);
+    flex-wrap: wrap;
+  }
+  .pgrid-{{ section.id }} .pgrid__group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .pgrid-{{ section.id }} .pgrid__group-label {
+    font-family: var({{ section.settings.mono_font }});
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--pg-muted);
+    margin-right: 4px;
+  }
+  .pgrid-{{ section.id }} .pgrid__divider {
+    width: 1px;
+    height: 24px;
+    background: var(--pg-line);
+    flex: none;
+  }
+  .pgrid-{{ section.id }} .pgrid__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    min-height: 36px;
+    border-radius: 999px;
+    border: 1px solid {{ section.settings.line_color }};
+    background: #fff;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--pg-navy);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+  .pgrid-{{ section.id }} .pgrid__pill:hover { border-color: var(--pg-navy); }
+  .pgrid-{{ section.id }} .pgrid__pill[aria-pressed="true"],
+  .pgrid-{{ section.id }} .pgrid__pill--active {
+    background: var(--pg-navy);
+    border-color: var(--pg-navy);
+    color: #fff;
+    font-weight: 700;
+  }
+  .pgrid-{{ section.id }} .pgrid__pill:focus-visible {
+    outline: 3px solid rgba(27,34,64,0.28);
+    outline-offset: 2px;
+  }
+  .pgrid-{{ section.id }} .pgrid__pill-icon { font-size: 13px; line-height: 1; }
+  .pgrid-{{ section.id }} .pgrid__showing {
+    margin-left: auto;
+    font-family: var({{ section.settings.mono_font }});
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--pg-muted);
+    white-space: nowrap;
+  }
+
+  /* ── Body ──────────────────────────────────────────────────── */
+  .pgrid-{{ section.id }} .pgrid__body {
+    max-width: 1240px;
+    margin-inline: auto;
+    padding: clamp(28px, 4vw, 48px) clamp(16px, 4vw, 40px) clamp(48px, 6vw, 72px);
+  }
+  .pgrid-{{ section.id }} .pgrid__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: clamp(20px, 3vw, 30px);
+  }
+  .pgrid-{{ section.id }} .pgrid__count {
+    font-family: var({{ section.settings.mono_font }});
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.6px;
+    color: var(--pg-muted);
+  }
+  .pgrid-{{ section.id }} .pgrid__sort {
+    appearance: none;
+    padding: 12px 38px 12px 18px;
+    min-height: 44px;
+    border: 1px solid {{ section.settings.line_color }};
+    border-radius: 999px;
+    background: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%231b2240' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--pg-navy);
+    cursor: pointer;
+  }
+  .pgrid-{{ section.id }} .pgrid__sort:focus-visible {
+    outline: 3px solid rgba(27,34,64,0.25);
+    outline-offset: 2px;
+  }
+
+  /* ── Grid ──────────────────────────────────────────────────── */
+  .pgrid-{{ section.id }} .pgrid__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+    gap: clamp(16px, 2vw, 26px);
+  }
+
+  /* ── Card ──────────────────────────────────────────────────── */
+  .pgrid-{{ section.id }} .pgrid__card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid var(--pg-line);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .pgrid-{{ section.id }} .pgrid__card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(60,44,30,0.10);
+  }
+
+  /* Media */
+  .pgrid-{{ section.id }} .pgrid__media {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(160deg, #eef0e2, #f7f4ea);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .pgrid-{{ section.id }} .pgrid__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .pgrid-{{ section.id }} .pgrid__media .placeholder-svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.35;
+  }
+  .pgrid-{{ section.id }} .pgrid__card-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: var(--pg-gold);
+    font-family: var({{ section.settings.mono_font }});
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--pg-navy);
+    white-space: nowrap;
+  }
+
+  /* Card content */
+  .pgrid-{{ section.id }} .pgrid__content {
+    padding: clamp(18px, 2vw, 24px);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .pgrid-{{ section.id }} .pgrid__meta {
+    margin: 0 0 10px;
+    font-family: var({{ section.settings.mono_font }});
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--pg-gold);
+  }
+  .pgrid-{{ section.id }} .pgrid__name {
+    margin: 0 0 10px;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 700;
+    font-size: clamp(18px, 1.8vw, 21px);
+    line-height: 1.2;
+    color: var(--pg-navy);
+  }
+  .pgrid-{{ section.id }} .pgrid__desc {
+    margin: 0 0 22px;
+    font-family: var({{ section.settings.body_font }});
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--pg-desc);
+  }
+
+  /* Actions */
+  .pgrid-{{ section.id }} .pgrid__actions {
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+  }
+  .pgrid-{{ section.id }} .pgrid__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 20px;
+    min-height: 48px;
+    border-radius: 999px;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: background-color 0.16s ease, color 0.16s ease;
+  }
+  .pgrid-{{ section.id }} .pgrid__btn--add {
+    flex: 1;
+    background: var(--pg-coral);
+    color: #fff;
+  }
+  .pgrid-{{ section.id }} .pgrid__btn--add:hover { background: #dc411b; }
+  .pgrid-{{ section.id }} .pgrid__btn--view {
+    flex: 0 0 auto;
+    padding-inline: 26px;
+    background: #fff;
+    color: var(--pg-navy);
+    border-color: var(--pg-navy);
+  }
+  .pgrid-{{ section.id }} .pgrid__btn--view:hover { background: var(--pg-navy); color: #fff; }
+  .pgrid-{{ section.id }} .pgrid__btn:focus-visible {
+    outline: 3px solid rgba(239,77,36,0.35);
+    outline-offset: 2px;
+  }
+
+  /* Add-to-cart form wrapper (stretch to fill) */
+  .pgrid-{{ section.id }} .pgrid__atc-form { flex: 1; display: flex; }
+  .pgrid-{{ section.id }} .pgrid__atc-form .pgrid__btn--add { width: 100%; }
+
+  /* Empty state */
+  .pgrid-{{ section.id }} .pgrid__empty {
+    padding: 60px 20px;
+    text-align: center;
+    font-family: var({{ section.settings.body_font }});
+    font-size: 16px;
+    color: var(--pg-desc);
+  }
+
+  /* ── Pagination ─────────────────────────────────────────────── */
+  .pgrid-{{ section.id }} .pgrid__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding-top: clamp(32px, 4vw, 48px);
+    flex-wrap: wrap;
+  }
+  .pgrid-{{ section.id }} .pgrid__pagination a,
+  .pgrid-{{ section.id }} .pgrid__pagination span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--pg-line);
+    font-family: var({{ section.settings.mono_font }});
+    font-size: 13px;
+    color: var(--pg-navy);
+    text-decoration: none;
+    transition: background-color 0.15s, border-color 0.15s;
+  }
+  .pgrid-{{ section.id }} .pgrid__pagination a:hover { border-color: var(--pg-navy); }
+  .pgrid-{{ section.id }} .pgrid__pagination .current {
+    background: var(--pg-navy);
+    border-color: var(--pg-navy);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  /* ── Responsive ─────────────────────────────────────────────── */
+  @media screen and (max-width: 989px) {
+    .pgrid-{{ section.id }} .pgrid__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media screen and (max-width: 767px) {
+    .pgrid-{{ section.id }} .pgrid__bar-inner {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .pgrid-{{ section.id }} .pgrid__bar-inner::-webkit-scrollbar { display: none; }
+    .pgrid-{{ section.id }} .pgrid__group { flex-wrap: nowrap; }
+    .pgrid-{{ section.id }} .pgrid__showing { display: none; }
+  }
+  @media screen and (max-width: 560px) {
+    .pgrid-{{ section.id }} .pgrid__grid { grid-template-columns: 1fr; }
+    .pgrid-{{ section.id }} .pgrid__actions { flex-direction: column; }
+    .pgrid-{{ section.id }} .pgrid__btn--view { padding-inline: 20px; }
+  }
+{%- endstyle -%}
+
+<div class="pgrid-{{ section.id }}">
+
+  {%- comment -%} ── FILTER BAR ── {%- endcomment -%}
+  {%- if has_format_pills or has_flavor_pills -%}
+    <div class="pgrid__bar">
+      <div class="pgrid__bar-inner">
+
+        {%- comment -%} Format group (tag-based) {%- endcomment -%}
+        {%- if has_format_pills -%}
+          <div class="pgrid__group">
+            {%- if section.settings.format_label != blank -%}
+              <span class="pgrid__group-label">{{ section.settings.format_label | escape }}</span>
+            {%- endif -%}
+
+            {%- comment -%} "All" pill — active when no format tag is applied {%- endcomment -%}
+            <a href="{{ collection.url }}"
+               class="pgrid__pill{%- unless format_active %} pgrid__pill--active{%- endunless -%}"
+               aria-pressed="{%- if format_active -%}false{%- else -%}true{%- endif -%}">
+              {{ section.settings.all_label | default: 'All' | escape }}
+            </a>
+
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'format_pill' -%}
+                {%- if current_tags contains block.settings.tag -%}
+                  {%- assign pill_active = true -%}
+                {%- else -%}
+                  {%- assign pill_active = false -%}
+                {%- endif -%}
+                <a href="{{ collection.url }}/{{ block.settings.tag }}"
+                   class="pgrid__pill{%- if pill_active %} pgrid__pill--active{%- endif -%}"
+                   aria-pressed="{{ pill_active }}"
+                   {{ block.shopify_attributes }}>
+                  {%- if block.settings.icon != blank -%}
+                    <span class="pgrid__pill-icon" aria-hidden="true">{{ block.settings.icon }}</span>
+                  {%- endif -%}
+                  {{ block.settings.label | escape }}
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {%- if has_format_pills and has_flavor_pills -%}
+          <span class="pgrid__divider" aria-hidden="true"></span>
+        {%- endif -%}
+
+        {%- comment -%} Flavor group (collection-based) {%- endcomment -%}
+        {%- if has_flavor_pills -%}
+          <div class="pgrid__group">
+            {%- if section.settings.flavor_label != blank -%}
+              <span class="pgrid__group-label">{{ section.settings.flavor_label | escape }}</span>
+            {%- endif -%}
+
+            {%- comment -%} "All" pill — active when current collection is not a flavor collection {%- endcomment -%}
+            {%- assign flavor_all_url = section.settings.all_products_url -%}
+            {%- if current_tags.size > 0 -%}
+              {%- assign flavor_all_url = section.settings.all_products_url | append: '/' | append: current_tags | join: '+' -%}
+            {%- endif -%}
+            <a href="{{ flavor_all_url }}"
+               class="pgrid__pill{%- unless flavor_active %} pgrid__pill--active{%- endunless -%}"
+               aria-pressed="{%- if flavor_active -%}false{%- else -%}true{%- endif -%}">
+              {{ section.settings.all_label | default: 'All' | escape }}
+            </a>
+
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'flavor_pill' and block.settings.collection != blank -%}
+                {%- if block.settings.collection.handle == collection.handle -%}
+                  {%- assign pill_active = true -%}
+                {%- else -%}
+                  {%- assign pill_active = false -%}
+                {%- endif -%}
+                {%- assign flavor_url = block.settings.collection.url -%}
+                {%- if current_tags.size > 0 -%}
+                  {%- assign flavor_url = block.settings.collection.url | append: '/' | append: current_tags | join: '+' -%}
+                {%- endif -%}
+                <a href="{{ flavor_url }}"
+                   class="pgrid__pill{%- if pill_active %} pgrid__pill--active{%- endif -%}"
+                   aria-pressed="{{ pill_active }}"
+                   {{ block.shopify_attributes }}>
+                  {%- if block.settings.icon != blank -%}
+                    <span class="pgrid__pill-icon" aria-hidden="true">{{ block.settings.icon }}</span>
+                  {%- endif -%}
+                  {{ block.settings.label | escape }}
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <span class="pgrid__showing">
+          {{- section.settings.showing_prefix | escape }} {{ paginate.items }} {{ section.settings.products_word | escape -}}
+        </span>
+
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} ── BODY ── {%- endcomment -%}
+  <div class="pgrid__body">
+
+    {%- comment -%} Toolbar {%- endcomment -%}
+    <div class="pgrid__toolbar">
+      <span class="pgrid__count">
+        {{ paginate.items }} {{ section.settings.products_word | escape }}
+      </span>
+
+      {%- if section.settings.show_sort -%}
+        <select class="pgrid__sort" aria-label="{{ section.settings.sort_label | escape }}"
+                onchange="location.href=this.value">
+          <option value="{{ sort_base }}?sort_by=manual"
+            {%- if current_sort == 'manual' or current_sort == '' %} selected{%- endif -%}>
+            {{ section.settings.sort_featured | escape }}
+          </option>
+          <option value="{{ sort_base }}?sort_by=best-selling"
+            {%- if current_sort == 'best-selling' %} selected{%- endif -%}>
+            {{ section.settings.sort_best | escape }}
+          </option>
+          <option value="{{ sort_base }}?sort_by=price-ascending"
+            {%- if current_sort == 'price-ascending' %} selected{%- endif -%}>
+            {{ section.settings.sort_price_asc | escape }}
+          </option>
+          <option value="{{ sort_base }}?sort_by=price-descending"
+            {%- if current_sort == 'price-descending' %} selected{%- endif -%}>
+            {{ section.settings.sort_price_desc | escape }}
+          </option>
+          <option value="{{ sort_base }}?sort_by=title-ascending"
+            {%- if current_sort == 'title-ascending' %} selected{%- endif -%}>
+            {{ section.settings.sort_az | escape }}
+          </option>
+          <option value="{{ sort_base }}?sort_by=title-descending"
+            {%- if current_sort == 'title-descending' %} selected{%- endif -%}>
+            {{ section.settings.sort_za | escape }}
+          </option>
+          <option value="{{ sort_base }}?sort_by=created-descending"
+            {%- if current_sort == 'created-descending' %} selected{%- endif -%}>
+            {{ section.settings.sort_newest | escape }}
+          </option>
+        </select>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Product grid {%- endcomment -%}
+    {%- if collection.products.size > 0 -%}
+      <div class="pgrid__grid">
+        {%- for product in collection.products -%}
+          <article class="pgrid__card">
+
+            {%- comment -%} Product image {%- endcomment -%}
+            <div class="pgrid__media">
+              {%- if product.featured_image != blank -%}
+                {{
+                  product.featured_image
+                  | image_url: width: 800
+                  | image_tag:
+                    class: 'pgrid__img',
+                    loading: 'lazy',
+                    widths: '400, 600, 800',
+                    alt: product.featured_image.alt | default: product.title | escape
+                }}
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+
+              {%- comment -%} Badge — shown when product has the configured tag {%- endcomment -%}
+              {%- if section.settings.badge_tag != blank and product.tags contains section.settings.badge_tag -%}
+                <span class="pgrid__card-badge">{{ section.settings.badge_text | escape }}</span>
+              {%- elsif section.settings.badge_tag == blank and section.settings.badge_text != blank -%}
+                <span class="pgrid__card-badge">{{ section.settings.badge_text | escape }}</span>
+              {%- endif -%}
+            </div>
+
+            {%- comment -%} Card content {%- endcomment -%}
+            <div class="pgrid__content">
+              {%- if product.type != blank -%}
+                <p class="pgrid__meta">{{ product.type | escape }}</p>
+              {%- endif -%}
+
+              <h3 class="pgrid__name">{{ product.title | escape }}</h3>
+
+              {%- if product.description != blank -%}
+                <p class="pgrid__desc">{{ product.description | strip_html | truncate: 110 }}</p>
+              {%- endif -%}
+
+              <div class="pgrid__actions">
+                {%- form 'product', product, class: 'pgrid__atc-form' -%}
+                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                  <button type="submit" name="add" class="pgrid__btn pgrid__btn--add"
+                    {%- unless product.available %} disabled aria-disabled="true"{%- endunless -%}>
+                    {%- if product.available -%}
+                      {{ section.settings.add_to_cart_label | escape }}
+                    {%- else -%}
+                      {{ section.settings.sold_out_label | escape }}
+                    {%- endif -%}
+                  </button>
+                {%- endform -%}
+
+                <a class="pgrid__btn pgrid__btn--view"
+                   href="{{ product.url | within: collection }}">
+                  {{ section.settings.view_label | escape }}
+                </a>
+              </div>
+            </div>
+
+          </article>
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} Pagination {%- endcomment -%}
+      {%- if paginate.pages > 1 -%}
+        <nav class="pgrid__pagination" aria-label="Pagination">
+          {%- if paginate.previous -%}
+            <a href="{{ paginate.previous.url }}">&larr;</a>
+          {%- endif -%}
+          {%- for part in paginate.parts -%}
+            {%- if part.is_link -%}
+              <a href="{{ part.url }}">{{ part.title }}</a>
+            {%- else -%}
+              {%- if part.title == paginate.current_page -%}
+                <span class="current">{{ part.title }}</span>
+              {%- else -%}
+                <span>{{ part.title }}</span>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+          {%- if paginate.next -%}
+            <a href="{{ paginate.next.url }}">&rarr;</a>
+          {%- endif -%}
+        </nav>
+      {%- endif -%}
+
+    {%- else -%}
+      <p class="pgrid__empty">{{ section.settings.empty_message | escape }}</p>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Shop Product Grid",
+  "tag": "section",
+  "class": "shop-product-grid-section",
+  "max_blocks": 20,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 4,
+      "max": 48,
+      "step": 4,
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns (desktop)",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Filter bar"
+    },
+    {
+      "type": "text",
+      "id": "format_label",
+      "label": "Format group label",
+      "default": "Format"
+    },
+    {
+      "type": "text",
+      "id": "flavor_label",
+      "label": "Flavor group label",
+      "default": "Flavor"
+    },
+    {
+      "type": "text",
+      "id": "all_label",
+      "label": "\"All\" pill label",
+      "default": "All"
+    },
+    {
+      "type": "url",
+      "id": "all_products_url",
+      "label": "\"All flavors\" URL",
+      "info": "Link for the Flavor → All pill. Point to your main shop collection (e.g. /collections/all)."
+    },
+    {
+      "type": "text",
+      "id": "showing_prefix",
+      "label": "Showing prefix text",
+      "default": "Showing"
+    },
+    {
+      "type": "text",
+      "id": "products_word",
+      "label": "Products word",
+      "default": "products"
+    },
+    {
+      "type": "header",
+      "content": "Sort"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sort",
+      "label": "Show sort dropdown",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "sort_label",
+      "label": "Sort dropdown aria-label",
+      "default": "Sort products"
+    },
+    {
+      "type": "text",
+      "id": "sort_featured",
+      "label": "Sort: Featured",
+      "default": "Sort: Featured"
+    },
+    {
+      "type": "text",
+      "id": "sort_best",
+      "label": "Sort: Best selling",
+      "default": "Sort: Best Selling"
+    },
+    {
+      "type": "text",
+      "id": "sort_price_asc",
+      "label": "Sort: Price low–high",
+      "default": "Sort: Price Low–High"
+    },
+    {
+      "type": "text",
+      "id": "sort_price_desc",
+      "label": "Sort: Price high–low",
+      "default": "Sort: Price High–Low"
+    },
+    {
+      "type": "text",
+      "id": "sort_az",
+      "label": "Sort: A–Z",
+      "default": "Sort: A–Z"
+    },
+    {
+      "type": "text",
+      "id": "sort_za",
+      "label": "Sort: Z–A",
+      "default": "Sort: Z–A"
+    },
+    {
+      "type": "text",
+      "id": "sort_newest",
+      "label": "Sort: Newest",
+      "default": "Sort: Newest"
+    },
+    {
+      "type": "header",
+      "content": "Product card"
+    },
+    {
+      "type": "text",
+      "id": "badge_tag",
+      "label": "Badge tag",
+      "info": "Show the badge on products with this tag. Leave blank to show badge on all products.",
+      "default": "subscribe-and-save"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Subscribe & Save"
+    },
+    {
+      "type": "text",
+      "id": "add_to_cart_label",
+      "label": "Add to cart label",
+      "default": "Add to Cart"
+    },
+    {
+      "type": "text",
+      "id": "sold_out_label",
+      "label": "Sold out label",
+      "default": "Sold Out"
+    },
+    {
+      "type": "text",
+      "id": "view_label",
+      "label": "View button label",
+      "default": "View"
+    },
+    {
+      "type": "text",
+      "id": "empty_message",
+      "label": "Empty collection message",
+      "default": "No products found in this collection."
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Mono font (labels, meta, counts)",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading font (product name, buttons)",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body font (description)",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#fdf8f2"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Navy (headings, buttons)",
+      "default": "#1b2240"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Coral (Add to Cart)",
+      "default": "#ef4d24"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Gold (meta, badge)",
+      "default": "#f5c04a"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Muted (counts, labels)",
+      "default": "#a9917c"
+    },
+    {
+      "type": "color",
+      "id": "desc_color",
+      "label": "Description text",
+      "default": "#8a7a6b"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Borders & dividers",
+      "default": "#e8e0d6"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "format_pill",
+      "name": "Format filter pill",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "🧴"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Pill label",
+          "default": "Pump"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Product tag",
+          "info": "Exact tag to filter by (e.g. pump). Must match tags on your products.",
+          "default": "pump"
+        }
+      ]
+    },
+    {
+      "type": "flavor_pill",
+      "name": "Flavor filter pill",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "🌿"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Pill label",
+          "default": "Minty Fusion"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection",
+          "info": "Select the collection that represents this flavor."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop Product Grid",
+      "blocks": [
+        { "type": "format_pill", "settings": { "icon": "🧴", "label": "Pump",   "tag": "pump"   } },
+        { "type": "format_pill", "settings": { "icon": "💨", "label": "Spray",  "tag": "spray"  } },
+        { "type": "flavor_pill", "settings": { "icon": "🌿", "label": "Minty Fusion"    } },
+        { "type": "flavor_pill", "settings": { "icon": "🤍", "label": "Pure Cleanse"   } },
+        { "type": "flavor_pill", "settings": { "icon": "🔥", "label": "Zesty Cinnamon" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -11,10 +11,68 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
         "color_scheme": "scheme-1"
+      }
+    },
+    "shop_page_header_Wj78BY": {
+      "type": "shop-page-header",
+      "blocks": {
+        "badge_kzz4fU": {
+          "type": "badge",
+          "settings": {
+            "icon": "🌿",
+            "label": "Certified Organic"
+          }
+        },
+        "badge_NRFxnH": {
+          "type": "badge",
+          "settings": {
+            "icon": "🚀",
+            "label": "Free Shipping $49+"
+          }
+        },
+        "badge_DNFAgQ": {
+          "type": "badge",
+          "settings": {
+            "icon": "💎",
+            "label": "Miron Violet Glass"
+          }
+        },
+        "badge_iCYBjT": {
+          "type": "badge",
+          "settings": {
+            "icon": "🔄",
+            "label": "90-Day Guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "badge_kzz4fU",
+        "badge_NRFxnH",
+        "badge_DNFAgQ",
+        "badge_iCYBjT"
+      ],
+      "name": "Shop Page Header",
+      "settings": {
+        "eyebrow_text": "OG3™ Biome Food™ · Holistic Oral Wellness",
+        "eyebrow_font": "--font-tag-family",
+        "heading_text": "Shop All",
+        "heading_font": "--font-heading-family",
+        "script_text": "OG3 Drops.",
+        "script_font": "--font-accent-family",
+        "show_tm": true,
+        "subtitle_text": "3 flavors · 2 formats · 6 ways to restore your living mouth",
+        "subtitle_font": "--font-heading-family",
+        "badge_font": "--font-tag-family",
+        "show_curve": true,
+        "curve_color": "#ffffff",
+        "bg_color": "#EF4F28",
+        "script_color": "#f7c85f",
+        "tm_color": "#23324a"
       }
     },
     "product-grid": {
@@ -22,6 +80,7 @@
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
+        "columns_mobile": "2",
         "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
@@ -32,7 +91,6 @@
         "enable_filtering": true,
         "filter_type": "horizontal",
         "enable_sorting": true,
-        "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -40,6 +98,7 @@
   },
   "order": [
     "banner",
+    "shop_page_header_Wj78BY",
     "product-grid"
   ]
 }

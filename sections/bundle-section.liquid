@@ -1,0 +1,489 @@
+{%- style -%}
+  /* ── Section wrapper ───────────────────────────────────────── */
+  #shopify-section-{{ section.id }} {
+    --bn-navy:  {{ section.settings.bg_color }};
+    --bn-gold:  {{ section.settings.gold_color }};
+    --bn-coral: {{ section.settings.coral_color }};
+    --bn-body:  {{ section.settings.body_text_color }};
+    --bn-label: {{ section.settings.label_color }};
+
+    background: var(--bn-navy);
+    padding-block: clamp(48px, 7vw, 88px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  .bn-{{ section.id }} * { box-sizing: border-box; }
+
+  /* ── Inner grid ────────────────────────────────────────────── */
+  .bn-{{ section.id }} .bn__inner {
+    max-width: 1240px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: clamp(36px, 5vw, 72px);
+  }
+
+  /* ── Left: content ─────────────────────────────────────────── */
+  .bn-{{ section.id }} .bn__content { max-width: 560px; }
+
+  .bn-{{ section.id }} .bn__eyebrow {
+    margin: 0 0 16px;
+    font-family: var({{ section.settings.eyebrow_font }});
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--bn-gold);
+    line-height: 1;
+  }
+
+  .bn-{{ section.id }} .bn__title {
+    margin: 0;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 800;
+    font-size: clamp(34px, 4.4vw, 52px);
+    line-height: 1.02;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+  }
+  .bn-{{ section.id }} .bn__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var({{ section.settings.script_font }});
+    font-weight: 400;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.08;
+    color: var(--bn-gold);
+  }
+
+  .bn-{{ section.id }} .bn__body {
+    margin: clamp(20px, 3vw, 28px) 0 0;
+    max-width: 520px;
+    font-family: var({{ section.settings.body_font }});
+    font-weight: 400;
+    font-size: clamp(14px, 1.3vw, 16px);
+    line-height: 1.65;
+    color: var(--bn-body);
+  }
+  .bn-{{ section.id }} .bn__body p { margin: 0; }
+
+  /* ── Inline stats ──────────────────────────────────────────── */
+  .bn-{{ section.id }} .bn__stats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: clamp(18px, 3vw, 34px);
+    margin-top: clamp(26px, 3.5vw, 36px);
+  }
+  .bn-{{ section.id }} .bn__stat {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .bn-{{ section.id }} .bn__stat-num {
+    font-family: var({{ section.settings.stat_num_font }});
+    font-weight: 800;
+    font-size: clamp(30px, 3.4vw, 42px);
+    line-height: 1;
+    letter-spacing: -0.5px;
+    color: var(--bn-gold);
+  }
+  .bn-{{ section.id }} .bn__stat-label {
+    font-family: var({{ section.settings.stat_label_font }});
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: var(--bn-label);
+  }
+
+  /* ── Actions ───────────────────────────────────────────────── */
+  .bn-{{ section.id }} .bn__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(14px, 2vw, 26px);
+    margin-top: clamp(28px, 4vw, 40px);
+  }
+  .bn-{{ section.id }} .bn__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 17px 32px;
+    min-height: 54px;
+    border-radius: 999px;
+    background: var(--bn-coral);
+    color: #fff;
+    font-family: var({{ section.settings.btn_font }});
+    font-weight: 700;
+    font-size: clamp(15px, 1.4vw, 16px);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.18s ease, transform 0.18s ease;
+  }
+  .bn-{{ section.id }} .bn__btn:hover { background: #dc411b; transform: translateY(-2px); }
+  .bn-{{ section.id }} .bn__btn:focus-visible {
+    outline: 3px solid rgba(239,77,36,0.45);
+    outline-offset: 3px;
+  }
+  .bn-{{ section.id }} .bn__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    font-family: var({{ section.settings.btn_font }});
+    font-weight: 700;
+    font-size: clamp(14px, 1.3vw, 15px);
+    color: #ffffff;
+    text-decoration: none;
+  }
+  .bn-{{ section.id }} .bn__link span { transition: transform 0.18s ease; }
+  .bn-{{ section.id }} .bn__link:hover span { transform: translateX(3px); }
+  .bn-{{ section.id }} .bn__link:focus-visible {
+    outline: 3px solid rgba(255,255,255,0.4);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* ── Right: image ──────────────────────────────────────────── */
+  .bn-{{ section.id }} .bn__media { display: flex; }
+  .bn-{{ section.id }} .bn__media img,
+  .bn-{{ section.id }} .bn__media .placeholder-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+  }
+  .bn-{{ section.id }} .bn__media .placeholder-svg {
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ── Mobile ────────────────────────────────────────────────── */
+  @media screen and (max-width: 899px) {
+    .bn-{{ section.id }} .bn__inner {
+      grid-template-columns: 1fr;
+      gap: clamp(32px, 6vw, 44px);
+    }
+    .bn-{{ section.id }} .bn__media { order: -1; }
+    .bn-{{ section.id }} .bn__media img { aspect-ratio: unset; }
+    .bn-{{ section.id }} .bn__content { max-width: 620px; }
+  }
+  @media screen and (max-width: 480px) {
+    .bn-{{ section.id }} .bn__stats { gap: 16px 24px; }
+    .bn-{{ section.id }} .bn__actions { flex-direction: column; align-items: stretch; }
+    .bn-{{ section.id }} .bn__btn { width: 100%; }
+    .bn-{{ section.id }} .bn__link { justify-content: center; }
+  }
+{%- endstyle -%}
+
+<div class="bn-{{ section.id }}">
+  <div class="bn__inner">
+
+    {%- comment -%} ── LEFT: content ── {%- endcomment -%}
+    <div class="bn__content">
+
+      {%- if section.settings.eyebrow_text != blank -%}
+        <p class="bn__eyebrow">{{ section.settings.eyebrow_text | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading_text != blank or section.settings.script_text != blank -%}
+        <h2 class="bn__title">
+          {{- section.settings.heading_text | escape -}}
+          {%- if section.settings.script_text != blank -%}
+            <span class="bn__script">{{ section.settings.script_text | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.body_text != blank -%}
+        <div class="bn__body">{{ section.settings.body_text }}</div>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="bn__stats">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'stat' -%}
+              <div class="bn__stat" {{ block.shopify_attributes }}>
+                <span class="bn__stat-num">{{ block.settings.number | escape }}</span>
+                <span class="bn__stat-label">{{ block.settings.label | escape }}</span>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      <div class="bn__actions">
+        {%- if section.settings.btn_label != blank -%}
+          <a class="bn__btn" href="{{ section.settings.btn_url }}">
+            {{ section.settings.btn_label | escape }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.link_label != blank -%}
+          <a class="bn__link" href="{{ section.settings.link_url }}">
+            {{ section.settings.link_label | escape }}
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        {%- endif -%}
+      </div>
+
+    </div>
+
+    {%- comment -%} ── RIGHT: image ── {%- endcomment -%}
+    <div class="bn__media">
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 1200
+          | image_tag:
+            loading: 'lazy',
+            widths: '600, 800, 1000, 1200',
+            alt: section.settings.image.alt | default: section.settings.heading_text | escape
+        }}
+      {%- else -%}
+        {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Bundle",
+  "tag": "section",
+  "class": "bundle-section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "Best Value"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading",
+      "default": "Can't decide?"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Script line"
+    },
+    {
+      "type": "text",
+      "id": "script_text",
+      "label": "Script line",
+      "default": "Try all three."
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-accent-family"
+    },
+    {
+      "type": "header",
+      "content": "Body"
+    },
+    {
+      "type": "richtext",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "<p>The 3-Flavor Bundle gives you one of each — Minty Fusion, Pure Cleanse, and Zesty Cinnamon — so you can find your ritual and subscribe to your favorite.</p>"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Stats"
+    },
+    {
+      "type": "select",
+      "id": "stat_num_font",
+      "label": "Stat number font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "select",
+      "id": "stat_label_font",
+      "label": "Stat label font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "header",
+      "content": "Primary button"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button label",
+      "default": "Add Bundle to Cart"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button URL",
+      "info": "Link to the bundle product page or a pre-filled cart URL."
+    },
+    {
+      "type": "header",
+      "content": "Secondary link"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "select",
+      "id": "btn_font",
+      "label": "Button / link font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Bundle image"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#262a4d"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Gold (eyebrow, script, stats)",
+      "default": "#f2b544"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Coral (primary button)",
+      "default": "#ef4d24"
+    },
+    {
+      "type": "color",
+      "id": "body_text_color",
+      "label": "Body text",
+      "default": "#b9bcd0"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Stat label text",
+      "default": "#cfd2e2"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number / value",
+          "default": "3"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Flavors"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bundle",
+      "blocks": [
+        { "type": "stat", "settings": { "number": "3",    "label": "Flavors"           } },
+        { "type": "stat", "settings": { "number": "11%",  "label": "Subscribe Saving"  } },
+        { "type": "stat", "settings": { "number": "$120", "label": "Bundle Price"       } }
+      ]
+    }
+  ]
+}
+{% endschema %}

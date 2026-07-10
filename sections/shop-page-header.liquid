@@ -59,8 +59,7 @@
   .ph-{{ section.id }} .ph__tm {
     font-family: var({{ section.settings.heading_font }});
     font-weight: 800;
-    font-size: 0.52em;
-    vertical-align: 0.28em;
+    font-size: 1em;
     color: var(--ph-navy);
     letter-spacing: 0;
   }
@@ -135,12 +134,11 @@
         {%- if section.settings.heading_text != blank -%}
           {{ section.settings.heading_text | escape }}
         {%- endif -%}
-        {%- if section.settings.script_text != blank -%}
+        {%- if section.settings.script_before != blank or section.settings.script_after != blank -%}
           <span class="ph__script">
-            {{ section.settings.script_text | escape -}}
-            {%- if section.settings.show_tm -%}
-              <span class="ph__tm">™</span>
-            {%- endif -%}
+            {{- section.settings.script_before | escape -}}
+            {%- if section.settings.show_tm -%}<span class="ph__tm">™</span>{%- endif -%}
+            {{- section.settings.script_after | escape -}}
           </span>
         {%- endif -%}
       </h1>
@@ -231,9 +229,23 @@
     },
     {
       "type": "text",
-      "id": "script_text",
-      "label": "Script line text",
-      "default": "OG3 Drops."
+      "id": "script_before",
+      "label": "Script text — before ™",
+      "default": "OG3",
+      "info": "This text appears before the ™ mark."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tm",
+      "label": "Show ™ mark",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "script_after",
+      "label": "Script text — after ™",
+      "default": " Drops.",
+      "info": "This text appears after the ™ mark."
     },
     {
       "type": "select",
@@ -245,12 +257,6 @@
         { "value": "--font-accent-family",  "label": "Alkaline Test" }
       ],
       "default": "--font-accent-family"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_tm",
-      "label": "Show ™ after script line",
-      "default": true
     },
     {
       "type": "header",

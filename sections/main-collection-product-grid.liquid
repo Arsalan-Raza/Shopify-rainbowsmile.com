@@ -34,6 +34,392 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  /* ═══════════════════════════════════════════════════════════
+     CUSTOM DESIGN OVERRIDES — scoped to this section only
+     ═══════════════════════════════════════════════════════════ */
+
+  #shopify-section-{{ section.id }} {
+    --pg-navy:   {{ section.settings.pg_navy }};
+    --pg-coral:  {{ section.settings.pg_coral }};
+    --pg-gold:   {{ section.settings.pg_gold }};
+    --pg-cream:  {{ section.settings.pg_bg }};
+    --pg-muted:  {{ section.settings.pg_muted }};
+    --pg-line:   {{ section.settings.pg_line }};
+    --pg-h-font: var({{ section.settings.pg_heading_font }});
+    --pg-b-font: var({{ section.settings.pg_body_font }});
+    --pg-m-font: var({{ section.settings.pg_mono_font }});
+  }
+
+  /* Section background */
+  #shopify-section-{{ section.id }} .gradient {
+    background: var(--pg-cream) !important;
+  }
+
+  /* ── Filter bar container ─────────────────────────────────── */
+  #shopify-section-{{ section.id }} .facets-container {
+    background: #ffffff;
+    border-bottom: 1px solid var(--pg-line);
+    padding: 14px clamp(16px, 4vw, 40px);
+    margin-bottom: 0;
+  }
+  #shopify-section-{{ section.id }} .facets__form,
+  #shopify-section-{{ section.id }} .facets__form-vertical {
+    max-width: 1240px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 2vw, 20px);
+    flex-wrap: wrap;
+    padding: 0;
+    border: none;
+    background: transparent;
+  }
+
+  /* ── Each filter <details> trigger → pill ────────────────── */
+  #shopify-section-{{ section.id }} .facets__summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    min-height: 36px;
+    border-radius: 999px;
+    border: 1px solid var(--pg-line);
+    background: #fff;
+    font-family: var(--pg-h-font);
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--pg-navy);
+    cursor: pointer;
+    transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+    list-style: none;
+    /* remove default <summary> marker */
+  }
+  #shopify-section-{{ section.id }} .facets__summary::-webkit-details-marker { display: none; }
+  #shopify-section-{{ section.id }} .facets__summary::marker { display: none; }
+  #shopify-section-{{ section.id }} .facets__summary:hover {
+    border-color: var(--pg-navy);
+  }
+  /* Open state */
+  #shopify-section-{{ section.id }} details[open] > .facets__summary {
+    background: var(--pg-navy);
+    border-color: var(--pg-navy);
+    color: #fff;
+    font-weight: 700;
+  }
+  /* Caret icon inside summary */
+  #shopify-section-{{ section.id }} .facets__summary .svg-wrapper svg {
+    width: 12px;
+    height: 12px;
+    stroke: currentColor;
+    fill: none;
+  }
+  /* Label text inside summary */
+  #shopify-section-{{ section.id }} .facets__summary-label {
+    font-family: var(--pg-h-font);
+    font-size: 14px;
+    font-weight: inherit;
+    color: inherit;
+  }
+  #shopify-section-{{ section.id }} .facets__selected {
+    font-family: var(--pg-m-font);
+    font-size: 12px;
+    color: inherit;
+    opacity: 0.8;
+  }
+  /* "Filter by" heading — hide, we use pills as the label */
+  #shopify-section-{{ section.id }} .facets__heading { display: none; }
+
+  /* ── Dropdown panel ──────────────────────────────────────── */
+  #shopify-section-{{ section.id }} .facets__display {
+    background: #fff;
+    border: 1px solid var(--pg-line);
+    border-radius: 16px;
+    box-shadow: 0 8px 28px rgba(27,34,64,0.10);
+    padding: 20px;
+    min-width: 220px;
+    z-index: 100;
+  }
+  #shopify-section-{{ section.id }} .facets__header {
+    border-bottom: 1px solid var(--pg-line);
+    padding-bottom: 12px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  #shopify-section-{{ section.id }} .facets__header .facets__selected {
+    font-family: var(--pg-m-font);
+    font-size: 12px;
+    color: var(--pg-muted);
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+  }
+  #shopify-section-{{ section.id }} .facets__reset {
+    font-family: var(--pg-m-font);
+    font-size: 12px;
+    color: var(--pg-coral);
+    text-decoration: none;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  /* Checkbox list items */
+  #shopify-section-{{ section.id }} .facets__item { padding: 0; }
+  #shopify-section-{{ section.id }} .facets__label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 4px;
+    border-bottom: 1px solid var(--pg-line);
+    cursor: pointer;
+    font-family: var(--pg-b-font);
+    font-size: 14px;
+    color: var(--pg-navy);
+    transition: color 0.12s;
+  }
+  #shopify-section-{{ section.id }} .facets__item:last-child .facets__label { border-bottom: none; }
+  #shopify-section-{{ section.id }} .facets__label:hover { color: var(--pg-coral); }
+  #shopify-section-{{ section.id }} .facets__label.active { font-weight: 700; }
+  #shopify-section-{{ section.id }} .facet-checkbox__text-label {
+    font-family: var(--pg-b-font);
+    font-size: 14px;
+  }
+  #shopify-section-{{ section.id }} .facet-checkbox__text { color: var(--pg-navy); }
+
+  /* ── Sort dropdown → pill style ──────────────────────────── */
+  #shopify-section-{{ section.id }} .facet-filters.sorting {
+    margin-left: auto;
+    border: none;
+    padding: 0;
+  }
+  #shopify-section-{{ section.id }} .facet-filters__field { position: relative; }
+  #shopify-section-{{ section.id }} .facet-filters__label { display: none; }
+  #shopify-section-{{ section.id }} .facet-filters__sort,
+  #shopify-section-{{ section.id }} .select__select.facet-filters__sort {
+    appearance: none;
+    padding: 8px 36px 8px 16px;
+    min-height: 36px;
+    border-radius: 999px;
+    border: 1px solid var(--pg-line);
+    background: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%231b2240' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    font-family: var(--pg-h-font);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--pg-navy);
+    cursor: pointer;
+  }
+  #shopify-section-{{ section.id }} .select .svg-wrapper { display: none; }
+
+  /* ── Product count ───────────────────────────────────────── */
+  #shopify-section-{{ section.id }} .product-count,
+  #shopify-section-{{ section.id }} .product-count-vertical {
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+  #shopify-section-{{ section.id }} .product-count__text,
+  #shopify-section-{{ section.id }} .product-count-vertical .product-count__text {
+    font-family: var(--pg-m-font);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--pg-muted);
+    margin: 0;
+  }
+
+  /* ── Active facet removal pills ──────────────────────────── */
+  #shopify-section-{{ section.id }} .active-facets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    padding: 10px clamp(16px, 4vw, 40px);
+    background: #fff;
+    border-bottom: 1px solid var(--pg-line);
+  }
+  #shopify-section-{{ section.id }} .active-facets__button {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    overflow: hidden;
+    text-decoration: none;
+  }
+  #shopify-section-{{ section.id }} .active-facets__button-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: var(--pg-navy);
+    color: #fff;
+    font-family: var(--pg-m-font);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border: none;
+  }
+  #shopify-section-{{ section.id }} .active-facets__button-inner .svg-wrapper svg {
+    width: 12px;
+    height: 12px;
+    stroke: #fff;
+    fill: none;
+  }
+  #shopify-section-{{ section.id }} .active-facets__button-remove,
+  #shopify-section-{{ section.id }} .active-facets__button-remove span {
+    font-family: var(--pg-m-font);
+    font-size: 12px;
+    color: var(--pg-coral);
+    text-decoration: underline;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  /* ── Product grid area ───────────────────────────────────── */
+  #shopify-section-{{ section.id }} .collection {
+    padding-inline: clamp(16px, 4vw, 40px);
+    padding-top: clamp(28px, 4vw, 40px);
+    max-width: 1240px;
+    margin-inline: auto;
+  }
+  #shopify-section-{{ section.id }} .product-grid {
+    gap: clamp(16px, 2vw, 26px);
+  }
+  #shopify-section-{{ section.id }} #product-grid.grid {
+    row-gap: clamp(16px, 2vw, 26px);
+    column-gap: clamp(16px, 2vw, 26px);
+  }
+
+  /* ── Card reskin ─────────────────────────────────────────── */
+  #shopify-section-{{ section.id }} .card-wrapper {
+    height: 100%;
+  }
+  #shopify-section-{{ section.id }} .card {
+    border-radius: 12px;
+    border: 1px solid var(--pg-line);
+    background: #fff;
+    overflow: hidden;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    height: 100%;
+  }
+  #shopify-section-{{ section.id }} .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(60,44,30,0.10);
+  }
+  #shopify-section-{{ section.id }} .card__media { border-radius: 0; }
+  #shopify-section-{{ section.id }} .card__inner { border-radius: 0; }
+  #shopify-section-{{ section.id }} .card__information {
+    padding: clamp(14px, 2vw, 20px);
+  }
+  #shopify-section-{{ section.id }} .card__heading,
+  #shopify-section-{{ section.id }} .card__heading a {
+    font-family: var(--pg-h-font);
+    font-weight: 700;
+    font-size: clamp(16px, 1.6vw, 19px);
+    color: var(--pg-navy);
+    text-decoration: none;
+  }
+  #shopify-section-{{ section.id }} .card__vendor,
+  #shopify-section-{{ section.id }} .card .caption-with-letter-spacing {
+    font-family: var(--pg-m-font);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--pg-gold);
+  }
+  #shopify-section-{{ section.id }} .price__container .price-item {
+    font-family: var(--pg-h-font);
+    font-weight: 700;
+    font-size: clamp(15px, 1.4vw, 17px);
+    color: var(--pg-navy);
+  }
+  #shopify-section-{{ section.id }} .price__container .price-item--sale {
+    color: var(--pg-coral);
+  }
+
+  /* Quick-add button */
+  #shopify-section-{{ section.id }} .quick-add__submit {
+    border-radius: 999px;
+    background: var(--pg-coral);
+    font-family: var(--pg-h-font);
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+  }
+  #shopify-section-{{ section.id }} .quick-add__submit:hover { background: #dc411b; }
+
+  /* ── Pagination ──────────────────────────────────────────── */
+  #shopify-section-{{ section.id }} .pagination__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: clamp(24px, 4vw, 40px) 0;
+  }
+  #shopify-section-{{ section.id }} .pagination__item a,
+  #shopify-section-{{ section.id }} .pagination__item span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--pg-line);
+    font-family: var(--pg-m-font);
+    font-size: 13px;
+    color: var(--pg-navy);
+    text-decoration: none;
+    transition: border-color 0.15s;
+    background: #fff;
+  }
+  #shopify-section-{{ section.id }} .pagination__item a:hover { border-color: var(--pg-navy); }
+  #shopify-section-{{ section.id }} .pagination__item--current span {
+    background: var(--pg-navy);
+    border-color: var(--pg-navy);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  /* ── Mobile: filter/sort drawer trigger ──────────────────── */
+  #shopify-section-{{ section.id }} .mobile-facets__open {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    min-height: 36px;
+    border-radius: 999px;
+    border: 1px solid var(--pg-line);
+    background: #fff;
+    font-family: var(--pg-h-font);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--pg-navy);
+  }
+  #shopify-section-{{ section.id }} .mobile-facets__open svg {
+    width: 16px; height: 16px;
+    stroke: var(--pg-navy); fill: none;
+  }
+
+  /* Mobile scrollable filter bar */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .facets-wrapper {
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 2px;
+    }
+    #shopify-section-{{ section.id }} .facets-wrapper::-webkit-scrollbar { display: none; }
+    #shopify-section-{{ section.id }} .active-facets { overflow-x: auto; flex-wrap: nowrap; }
+  }
 {%- endstyle -%}
 
 <collection-component
@@ -386,6 +772,79 @@
       "id": "enable_sorting",
       "default": true,
       "label": "t:sections.main-collection-product-grid.settings.enable_sorting.label"
+    },
+    {
+      "type": "header",
+      "content": "Custom design"
+    },
+    {
+      "type": "select",
+      "id": "pg_heading_font",
+      "label": "Heading font (card title, buttons)",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "select",
+      "id": "pg_body_font",
+      "label": "Body font (filter values)",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "select",
+      "id": "pg_mono_font",
+      "label": "Mono font (labels, counts, pills)",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "color",
+      "id": "pg_bg",
+      "label": "Background color",
+      "default": "#fdf8f2"
+    },
+    {
+      "type": "color",
+      "id": "pg_navy",
+      "label": "Navy (headings, active filters)",
+      "default": "#1b2240"
+    },
+    {
+      "type": "color",
+      "id": "pg_coral",
+      "label": "Coral (sale price, quick-add)",
+      "default": "#ef4d24"
+    },
+    {
+      "type": "color",
+      "id": "pg_gold",
+      "label": "Gold (vendor / meta)",
+      "default": "#f5c04a"
+    },
+    {
+      "type": "color",
+      "id": "pg_muted",
+      "label": "Muted (counts, labels)",
+      "default": "#a9917c"
+    },
+    {
+      "type": "color",
+      "id": "pg_line",
+      "label": "Borders",
+      "default": "#e8e0d6"
     },
     {
       "type": "header",
