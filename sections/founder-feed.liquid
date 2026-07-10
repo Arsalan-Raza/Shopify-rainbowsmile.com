@@ -1,0 +1,514 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --fd-navy:   {{ section.settings.navy_color }};
+    --fd-accent: {{ section.settings.accent_color }};
+    --fd-intro:  {{ section.settings.intro_color }};
+    --fd-body:   {{ section.settings.body_color }};
+    --fd-time:   {{ section.settings.time_color }};
+    --fd-count:  {{ section.settings.count_color }};
+    --fd-pill:   {{ section.settings.pill_color }};
+    --fd-card:   {{ section.settings.card_color }};
+    --fd-heart:  {{ section.settings.heart_color }};
+
+    background: {{ section.settings.bg_color }};
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  .fdfeed-{{ section.id }} * { box-sizing: border-box; }
+  .fdfeed-{{ section.id }} .fd__inner { max-width: 1180px; margin-inline: auto; }
+
+  /* ── Header ─────────────────────────────────────────────────── */
+  .fdfeed-{{ section.id }} .fd__head {
+    text-align: center;
+    margin-bottom: clamp(32px, 4.5vw, 54px);
+  }
+
+  .fdfeed-{{ section.id }} .fd__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+    font-family: var(--font-{{ section.settings.eyebrow_font }}-family);
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--fd-accent);
+    line-height: 1;
+  }
+  .fdfeed-{{ section.id }} .fd__eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+
+  .fdfeed-{{ section.id }} .fd__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(32px, 4.2vw, 50px);
+    line-height: 1.02;
+    letter-spacing: -0.5px;
+    color: var(--fd-navy);
+  }
+  .fdfeed-{{ section.id }} .fd__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: clamp(30px, 3.8vw, 46px);
+    line-height: 1.1;
+    color: var(--fd-accent);
+  }
+  .fdfeed-{{ section.id }} .fd__sub {
+    margin: clamp(12px, 1.8vw, 18px) auto 0;
+    max-width: 520px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.6;
+    color: var(--fd-intro);
+  }
+
+  /* ── Grid ───────────────────────────────────────────────────── */
+  .fdfeed-{{ section.id }} .fd__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+    gap: clamp(18px, 2.2vw, 26px);
+    align-items: stretch;
+  }
+
+  /* ── Card ───────────────────────────────────────────────────── */
+  .fdfeed-{{ section.id }} .fd__card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--fd-card);
+    box-shadow: 0 8px 22px rgba(60, 45, 30, 0.07);
+  }
+
+  /* Media */
+  .fdfeed-{{ section.id }} .fd__media {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    background: linear-gradient(160deg, #dfe9e3, #f2efe8);
+    overflow: hidden;
+  }
+  .fdfeed-{{ section.id }} .fd__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Author pill */
+  .fdfeed-{{ section.id }} .fd__author {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--fd-pill);
+    font-family: var(--font-{{ section.settings.meta_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: #fff;
+    white-space: nowrap;
+  }
+
+  /* Content */
+  .fdfeed-{{ section.id }} .fd__content {
+    padding: clamp(18px, 2vw, 24px);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .fdfeed-{{ section.id }} .fd__time {
+    margin: 0 0 14px;
+    font-family: var(--font-{{ section.settings.meta_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--fd-time);
+  }
+
+  .fdfeed-{{ section.id }} .fd__quote {
+    margin: 0 0 clamp(20px, 2.4vw, 26px);
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 15px);
+    line-height: 1.65;
+    color: var(--fd-body);
+  }
+
+  /* Engagement */
+  .fdfeed-{{ section.id }} .fd__engage {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: auto;
+  }
+  .fdfeed-{{ section.id }} .fd__stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--fd-count);
+    line-height: 1;
+  }
+  .fdfeed-{{ section.id }} .fd__stat svg { width: 15px; height: 15px; display: block; }
+  .fdfeed-{{ section.id }} .fd__stat--comment svg {
+    fill: none;
+    stroke: var(--fd-count);
+    stroke-width: 1.6px;
+  }
+  .fdfeed-{{ section.id }} .fd__stat--like svg { fill: var(--fd-heart); }
+
+  /* ── Responsive ─────────────────────────────────────────────── */
+  @media screen and (max-width: 899px) {
+    .fdfeed-{{ section.id }} .fd__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media screen and (max-width: 620px) {
+    .fdfeed-{{ section.id }} .fd__grid { grid-template-columns: 1fr; }
+    .fdfeed-{{ section.id }} .fd__media { aspect-ratio: 4 / 3; }
+  }
+{%- endstyle -%}
+
+<div class="fdfeed-{{ section.id }}">
+  <div class="fd__inner">
+
+    {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.subtitle != blank -%}
+      <header class="fd__head">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="fd__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank or section.settings.script_line != blank -%}
+          <h2 class="fd__title">
+            {{- section.settings.heading | escape -}}
+            {%- if section.settings.script_line != blank -%}
+              <span class="fd__script">{{ section.settings.script_line | escape }}</span>
+            {%- endif -%}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.subtitle != blank -%}
+          <p class="fd__sub">{{ section.settings.subtitle | escape }}</p>
+        {%- endif -%}
+      </header>
+    {%- endif -%}
+
+    <div class="fd__grid">
+      {%- for block in section.blocks -%}
+        <article class="fd__card" {{ block.shopify_attributes }}>
+
+          <div class="fd__media">
+            {%- if block.settings.image != blank -%}
+              {%- assign post_alt = block.settings.author | escape -%}
+              {{
+                block.settings.image
+                | image_url: width: 800
+                | image_tag:
+                  loading: 'lazy',
+                  alt: post_alt,
+                  widths: '400, 600, 800'
+              }}
+            {%- endif -%}
+            {%- if block.settings.author != blank -%}
+              <span class="fd__author">{{ block.settings.author | escape }}</span>
+            {%- endif -%}
+          </div>
+
+          <div class="fd__content">
+            {%- if block.settings.timestamp != blank -%}
+              <p class="fd__time">{{ block.settings.timestamp | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.quote != blank -%}
+              <p class="fd__quote">{{ block.settings.quote | escape }}</p>
+            {%- endif -%}
+            <div class="fd__engage">
+              {%- if block.settings.comment_count != blank -%}
+                <span class="fd__stat fd__stat--comment">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M21 12a8 8 0 0 1-8 8H5l-2 2V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8Z" stroke-linejoin="round"/>
+                  </svg>
+                  {{ block.settings.comment_count | escape }}
+                  <span class="visually-hidden">comments</span>
+                </span>
+              {%- endif -%}
+              {%- if block.settings.like_count != blank -%}
+                <span class="fd__stat fd__stat--like">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 21s-8-5.2-8-10.4A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 3.6C20 15.8 12 21 12 21Z"/>
+                  </svg>
+                  {{ block.settings.like_count | escape }}
+                  <span class="visually-hidden">likes</span>
+                </span>
+              {%- endif -%}
+            </div>
+          </div>
+
+        </article>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Founder Feed",
+  "tag": "section",
+  "class": "founder-feed-section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "From William & the Team"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The latest from the"
+    },
+    {
+      "type": "text",
+      "id": "script_line",
+      "label": "Script line",
+      "default": "founders."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Curated updates, research notes, and behind-the-scenes from the people building Rainbow Smile."
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns (desktop)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script line font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body / quote font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "meta_font",
+      "label": "Author pill / timestamp font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading color",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Eyebrow & script color",
+      "default": "#f4502b"
+    },
+    {
+      "type": "color",
+      "id": "intro_color",
+      "label": "Subtitle color",
+      "default": "#4b4f63"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card background",
+      "default": "#fdf9f3"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Quote text color",
+      "default": "#34384c"
+    },
+    {
+      "type": "color",
+      "id": "time_color",
+      "label": "Timestamp color",
+      "default": "#b3aa9c"
+    },
+    {
+      "type": "color",
+      "id": "count_color",
+      "label": "Engagement count color",
+      "default": "#8b8478"
+    },
+    {
+      "type": "color",
+      "id": "pill_color",
+      "label": "Author pill background",
+      "default": "#2b2b2b"
+    },
+    {
+      "type": "color",
+      "id": "heart_color",
+      "label": "Heart / like icon color",
+      "default": "#e5342b"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "post",
+      "name": "Post",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author name",
+          "default": "William R."
+        },
+        {
+          "type": "text",
+          "id": "timestamp",
+          "label": "Timestamp",
+          "default": "3 Days Ago"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote / post text",
+          "default": "Just got back from the lab — sharing the full breakdown in the Mouth forum this week."
+        },
+        {
+          "type": "text",
+          "id": "comment_count",
+          "label": "Comment count",
+          "default": "84"
+        },
+        {
+          "type": "text",
+          "id": "like_count",
+          "label": "Like count",
+          "default": "312"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Founder Feed",
+      "blocks": [
+        {
+          "type": "post",
+          "settings": {
+            "author": "William R.",
+            "timestamp": "3 Days Ago",
+            "quote": "Just got back from the lab — new oxygen retention data on the Minty Fusion batch. Sharing the full breakdown in the Mouth forum this week.",
+            "comment_count": "84",
+            "like_count": "312"
+          }
+        },
+        {
+          "type": "post",
+          "settings": {
+            "author": "Dr. Gupta",
+            "timestamp": "1 Week Ago",
+            "quote": "A reader asked why structured water matters more than 'regular' hydration. Wrote a plain-language explainer — link in the Gut category.",
+            "comment_count": "56",
+            "like_count": "198"
+          }
+        },
+        {
+          "type": "post",
+          "settings": {
+            "author": "Tracy T.",
+            "timestamp": "2 Weeks Ago",
+            "quote": "Update from Kenya — 400 more bottles distributed through Springboard Connectivity this month. Thank you to every subscriber making this possible.",
+            "comment_count": "102",
+            "like_count": "540"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

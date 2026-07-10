@@ -1,0 +1,177 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --st-navy: {{ section.settings.navy_color }};
+    --st-line: {{ section.settings.line_color }};
+
+    background: {{ section.settings.bg_color }};
+    padding-block: clamp(24px, 3vw, 40px);
+    padding-inline: clamp(16px, 4vw, 40px);
+  }
+
+  .stats-{{ section.id }} * { box-sizing: border-box; }
+
+  .stats-{{ section.id }} .stats__inner {
+    max-width: 1240px;
+    margin-inline: auto;
+    border-bottom: 1px solid var(--st-line);
+  }
+
+  .stats-{{ section.id }} .stats__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+  }
+
+  .stats-{{ section.id }} .stats__item {
+    padding: clamp(20px, 2.4vw, 30px) clamp(10px, 1.6vw, 20px);
+    text-align: center;
+    border-left: 1px solid var(--st-line);
+  }
+  .stats-{{ section.id }} .stats__item:nth-child({{ section.settings.columns }}n + 1) {
+    border-left: none;
+  }
+
+  .stats-{{ section.id }} .stats__num {
+    margin: 0 0 12px;
+    font-family: var(--font-{{ section.settings.num_font }}-family);
+    font-weight: 800;
+    font-size: clamp(28px, 3.2vw, 40px);
+    line-height: 1;
+    letter-spacing: -0.5px;
+    color: var(--st-navy);
+  }
+
+  .stats-{{ section.id }} .stats__label {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.label_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    line-height: 1.4;
+    color: var(--st-navy);
+  }
+
+  /* 2-column at ≤720px */
+  @media screen and (max-width: 720px) {
+    .stats-{{ section.id }} .stats__grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-{{ section.id }} .stats__item { border-left: 1px solid var(--st-line); border-top: none; }
+    .stats-{{ section.id }} .stats__item:nth-child(2n + 1) { border-left: none; }
+    .stats-{{ section.id }} .stats__item:nth-child(n + 3)  { border-top: 1px solid var(--st-line); }
+  }
+{%- endstyle -%}
+
+<div class="stats-{{ section.id }}">
+  <div class="stats__inner">
+    <div class="stats__grid">
+      {%- for block in section.blocks -%}
+        <div class="stats__item" {{ block.shopify_attributes }}>
+          {%- if block.settings.number != blank -%}
+            <p class="stats__num">{{ block.settings.number | escape }}</p>
+          {%- endif -%}
+          {%- if block.settings.label != blank -%}
+            <p class="stats__label">{{ block.settings.label | escape }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Community Stats",
+  "tag": "section",
+  "class": "community-stats-section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns (desktop)",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "num_font",
+      "label": "Number font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "label_font",
+      "label": "Label font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Number & label color",
+      "default": "#2b3054"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Divider color",
+      "default": "#e9e9ec"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "50K+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Members"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community Stats",
+      "blocks": [
+        { "type": "stat", "settings": { "number": "50K+",  "label": "Members" } },
+        { "type": "stat", "settings": { "number": "8",     "label": "Forum Categories" } },
+        { "type": "stat", "settings": { "number": "12+",   "label": "AMA Sessions Hosted" } },
+        { "type": "stat", "settings": { "number": "40+",   "label": "Countries Represented" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

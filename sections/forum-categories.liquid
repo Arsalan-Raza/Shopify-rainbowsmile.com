@@ -1,0 +1,646 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --fm-bg:     {{ section.settings.bg_color }};
+    --fm-navy:   {{ section.settings.navy_color }};
+    --fm-accent: {{ section.settings.accent_color }};
+    --fm-body:   {{ section.settings.body_color }};
+    --fm-intro:  {{ section.settings.intro_color }};
+    --fm-green:  {{ section.settings.green_color }};
+    --fm-posts:  {{ section.settings.posts_color }};
+    --fm-icon:   {{ section.settings.icon_color }};
+    --fm-card:   {{ section.settings.card_color }};
+    --fm-line:   {{ section.settings.line_color }};
+
+    background: var(--fm-bg);
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  .fmcat-{{ section.id }} * { box-sizing: border-box; }
+  .fmcat-{{ section.id }} .fm__inner { max-width: 1240px; margin-inline: auto; }
+
+  /* ── Header ─────────────────────────────────────────────────── */
+  .fmcat-{{ section.id }} .fm__head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 4vw, 60px);
+    align-items: end;
+    margin-bottom: clamp(30px, 4vw, 48px);
+  }
+
+  .fmcat-{{ section.id }} .fm__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+    font-family: var(--font-{{ section.settings.eyebrow_font }}-family);
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--fm-accent);
+    line-height: 1;
+  }
+  .fmcat-{{ section.id }} .fm__eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+
+  .fmcat-{{ section.id }} .fm__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(32px, 4.2vw, 50px);
+    line-height: 1.02;
+    letter-spacing: -0.5px;
+    color: var(--fm-navy);
+  }
+  .fmcat-{{ section.id }} .fm__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: clamp(30px, 3.8vw, 46px);
+    line-height: 1.1;
+    color: var(--fm-accent);
+  }
+
+  .fmcat-{{ section.id }} .fm__intro {
+    margin: 0;
+    max-width: 420px;
+    justify-self: end;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.6;
+    color: var(--fm-intro);
+  }
+
+  /* ── Grid ───────────────────────────────────────────────────── */
+  .fmcat-{{ section.id }} .fm__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+    gap: clamp(16px, 2vw, 24px);
+  }
+
+  /* ── Cards ──────────────────────────────────────────────────── */
+  .fmcat-{{ section.id }} .fm__card {
+    background: var(--fm-card);
+    border: 1px solid var(--fm-line);
+    border-radius: 12px;
+    padding: clamp(20px, 2.2vw, 26px);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  @media (hover: hover) {
+    .fmcat-{{ section.id }} .fm__card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(70, 55, 40, 0.09);
+    }
+  }
+  .fmcat-{{ section.id }} .fm__card:focus-visible {
+    outline: 3px solid rgba(244, 80, 43, 0.4);
+    outline-offset: 3px;
+  }
+
+  /* Icon */
+  .fmcat-{{ section.id }} .fm__icon {
+    color: var(--fm-icon);
+    margin-bottom: clamp(22px, 2.6vw, 30px);
+    display: block;
+  }
+  .fmcat-{{ section.id }} .fm__icon svg { width: 32px; height: 32px; display: block; }
+
+  /* Name */
+  .fmcat-{{ section.id }} .fm__name {
+    margin: 0 0 10px;
+    font-family: var(--font-{{ section.settings.name_font }}-family);
+    font-weight: 700;
+    font-size: clamp(15px, 1.5vw, 17px);
+    line-height: 1.2;
+    color: var(--fm-navy);
+  }
+
+  /* Desc */
+  .fmcat-{{ section.id }} .fm__desc {
+    margin: 0 0 clamp(20px, 2.4vw, 26px);
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(13px, 1.25vw, 14px);
+    line-height: 1.5;
+    color: var(--fm-body);
+  }
+
+  /* Footer */
+  .fmcat-{{ section.id }} .fm__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: auto;
+  }
+  .fmcat-{{ section.id }} .fm__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-{{ section.settings.meta_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--fm-navy);
+    white-space: nowrap;
+  }
+  .fmcat-{{ section.id }} .fm__status--today::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--fm-green);
+  }
+  .fmcat-{{ section.id }} .fm__posts {
+    font-family: var(--font-{{ section.settings.meta_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--fm-posts);
+    white-space: nowrap;
+  }
+
+  /* ── Responsive ─────────────────────────────────────────────── */
+  @media screen and (max-width: 979px) {
+    .fmcat-{{ section.id }} .fm__head { grid-template-columns: 1fr; align-items: start; }
+    .fmcat-{{ section.id }} .fm__intro { justify-self: start; max-width: 560px; }
+    .fmcat-{{ section.id }} .fm__grid  { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media screen and (max-width: 520px) {
+    .fmcat-{{ section.id }} .fm__grid { grid-template-columns: 1fr; }
+    .fmcat-{{ section.id }} .fm__foot { flex-wrap: wrap; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fmcat-{{ section.id }} .fm__card:hover { transform: none; }
+  }
+{%- endstyle -%}
+
+<div class="fmcat-{{ section.id }}">
+  <div class="fm__inner">
+
+    {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.script_line != blank or section.settings.intro != blank -%}
+      <header class="fm__head">
+        <div>
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="fm__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+          {%- endif -%}
+          {%- if section.settings.heading != blank or section.settings.script_line != blank -%}
+            <h2 class="fm__title">
+              {{- section.settings.heading | escape -}}
+              {%- if section.settings.script_line != blank -%}
+                <span class="fm__script">{{ section.settings.script_line | escape }}</span>
+              {%- endif -%}
+            </h2>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.intro != blank -%}
+          <p class="fm__intro">{{ section.settings.intro | escape }}</p>
+        {%- endif -%}
+      </header>
+    {%- endif -%}
+
+    <div class="fm__grid">
+      {%- for block in section.blocks -%}
+        <a
+          class="fm__card"
+          href="{{ block.settings.url | default: '#' }}"
+          {{ block.shopify_attributes }}
+        >
+          <span class="fm__icon" aria-hidden="true">
+            {%- case block.settings.icon -%}
+              {%- when 'mouth' -%}
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 15c3-4 7.5-5.5 12-5.5S25 11 28 15c-3 5-7.5 7.5-12 7.5S7 20 4 15Z"/>
+                  <path d="M4 15c4 1.6 8 2.2 12 2.2S24 16.6 28 15"/>
+                </svg>
+              {%- when 'gut' -%}
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 4v10"/>
+                  <path d="M12.5 8c-2.5 0-4 2-4.5 5-.6 3.4-.4 8 0 11 .3 2 3.5 2.4 4.4.3.8-1.9 1-5 1-8.3V9.5C13.4 8.6 13 8 12.5 8Z"/>
+                  <path d="M19.5 8c2.5 0 4 2 4.5 5 .6 3.4.4 8 0 11-.3 2-3.5 2.4-4.4.3-.8-1.9-1-5-1-8.3V9.5c0-.9.4-1.5.9-1.5Z"/>
+                </svg>
+              {%- when 'mind' -%}
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 6c-3.5-2.4-8 0-8 4 -2.4 1-2.8 4.6-.4 6 -1 2.8 1.6 5.6 4.6 5 1 1.8 3.6 1.8 4.6 0"/>
+                  <path d="M16 6c3.5-2.4 8 0 8 4 2.4 1 2.8 4.6.4 6 1 2.8-1.6 5.6-4.6 5-1 1.8-3.6 1.8-4.6 0"/>
+                  <path d="M16 6v15"/>
+                  <path d="M12 12h2M18 12h2M13 17h2M17 17h2"/>
+                </svg>
+              {%- when 'performance' -%}
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 3 7 18h7l-1 11 11-15h-7z"/>
+                </svg>
+              {%- when 'intimacy' -%}
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M26 6C15 6 6 12 6 22c0 2 .8 4 .8 4S18 27 24 19c3.4-4.5 2-13 2-13Z"/>
+                  <path d="M8 24C12 18 18 13 24 10"/>
+                </svg>
+              {%- when 'rituals' -%}
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8 16a8 8 0 0 1 16 0"/>
+                  <rect x="6" y="16" width="20" height="10" rx="2"/>
+                  <path d="M8 21c1.5-1.4 3-1.4 4.5 0s3 1.4 4.5 0 3-1.4 4.5 0 2 1.2 2.5 0"/>
+                </svg>
+              {%- when 'product_qs' -%}
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11.5 11a4.5 4.5 0 1 1 6.6 4c-1.6.9-2.3 1.9-2.3 3.5"/>
+                  <circle cx="15.8" cy="24.5" r="1.3" fill="currentColor" stroke="none"/>
+                </svg>
+              {%- when 'intros' -%}
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 26c-4 0-7-3-7-7l-1-7c-.2-1.6 2-2.2 2.6-.7L10 15"/>
+                  <path d="M10 15 8.4 8.2c-.4-1.6 1.9-2.4 2.5-.8l2 5.6"/>
+                  <path d="M12.9 13 11.6 7.4c-.4-1.6 1.9-2.3 2.4-.7l1.8 5.8"/>
+                  <path d="M15.8 12.5 15 8.6c-.3-1.5 1.9-2.1 2.4-.6l2.6 7.6c1-1.6 3-2.6 4.6-1.8 1 .5 1 1.6.3 2.6l-4 5.8c-1.2 1.8-3 3-5.4 3"/>
+                </svg>
+              {%- when 'star' -%}
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 4l3 8h8l-6.5 5 2.5 8L16 20l-7 5 2.5-8L5 12h8z"/>
+                </svg>
+              {%- when 'leaf' -%}
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M26 6C15 6 6 12 6 22c0 2 .8 4 .8 4S18 27 24 19c3.4-4.5 2-13 2-13Z"/>
+                  <path d="M6 26l10-10"/>
+                </svg>
+              {%- when 'chat' -%}
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H12l-6 4V8Z"/>
+                </svg>
+              {%- else -%}
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="16" cy="16" r="10"/>
+                  <path d="M16 12v5M16 21v1"/>
+                </svg>
+            {%- endcase -%}
+          </span>
+
+          <h3 class="fm__name">{{ block.settings.name | escape }}</h3>
+          <p class="fm__desc">{{ block.settings.description | escape }}</p>
+
+          <div class="fm__foot">
+            <span class="fm__status{% if block.settings.active_today %} fm__status--today{% endif %}">
+              {{ block.settings.status_text | escape }}
+            </span>
+            {%- if block.settings.post_count != blank -%}
+              <span class="fm__posts">{{ block.settings.post_count | escape }}</span>
+            {%- endif -%}
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Forum Categories",
+  "tag": "section",
+  "class": "forum-categories-section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Forum"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Find your"
+    },
+    {
+      "type": "text",
+      "id": "script_line",
+      "label": "Script line",
+      "default": "conversation."
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro paragraph",
+      "default": "Eight spaces for every part of the biome hacker journey — from your first question to deep dives on performance and rituals."
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns (desktop)",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script line font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body / intro font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "name_font",
+      "label": "Card name font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "meta_font",
+      "label": "Status / post count font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#fdf8f2"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading & card title color",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Eyebrow & script color",
+      "default": "#f4502b"
+    },
+    {
+      "type": "color",
+      "id": "intro_color",
+      "label": "Intro paragraph color",
+      "default": "#4b4f63"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Card description color",
+      "default": "#8b8478"
+    },
+    {
+      "type": "color",
+      "id": "green_color",
+      "label": "Active dot color",
+      "default": "#4caf50"
+    },
+    {
+      "type": "color",
+      "id": "posts_color",
+      "label": "Post count color",
+      "default": "#cbb99f"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#1c1c1c"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Card border color",
+      "default": "#efe8de"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Forum Category",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "mouth",       "label": "Mouth" },
+            { "value": "gut",         "label": "Gut" },
+            { "value": "mind",        "label": "Mind" },
+            { "value": "performance", "label": "Performance (bolt)" },
+            { "value": "intimacy",    "label": "Intimacy (leaf)" },
+            { "value": "rituals",     "label": "Rituals (bath)" },
+            { "value": "product_qs",  "label": "Product Q's (question mark)" },
+            { "value": "intros",      "label": "Intros (hand wave)" },
+            { "value": "star",        "label": "Star" },
+            { "value": "leaf",        "label": "Leaf" },
+            { "value": "chat",        "label": "Chat bubble" }
+          ],
+          "default": "chat"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Category name",
+          "default": "Forum Category"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "A space for community discussion and shared learning."
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "active_today",
+          "label": "Show \"active today\" green dot",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "status_text",
+          "label": "Status text",
+          "default": "Active today"
+        },
+        {
+          "type": "text",
+          "id": "post_count",
+          "label": "Post count",
+          "default": "1.2K Posts"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Forum Categories",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "icon": "mouth",
+            "name": "Mouth",
+            "description": "Oral microbiome basics, breath, gum health, the ritual itself.",
+            "active_today": true,
+            "status_text": "Active today",
+            "post_count": "1.2K Posts"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "icon": "gut",
+            "name": "Gut",
+            "description": "The oral-gut axis, digestion, and whole-body microbiome talk.",
+            "active_today": true,
+            "status_text": "Active today",
+            "post_count": "890 Posts"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "icon": "mind",
+            "name": "Mind",
+            "description": "Gut-brain connection, mood, clarity, and mental energy.",
+            "active_today": true,
+            "status_text": "Active today",
+            "post_count": "640 Posts"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "icon": "performance",
+            "name": "Performance",
+            "description": "Energy, athletic performance, and biome-driven vitality.",
+            "active_today": false,
+            "status_text": "Active this week",
+            "post_count": "410 Posts"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "icon": "intimacy",
+            "name": "Intimacy",
+            "description": "Confidence, closeness, and what a living mouth means for connection.",
+            "active_today": false,
+            "status_text": "Active this week",
+            "post_count": "355 Posts"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "icon": "rituals",
+            "name": "Rituals",
+            "description": "Morning routines, stacking habits, and making the 60 seconds stick.",
+            "active_today": true,
+            "status_text": "Active today",
+            "post_count": "980 Posts"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "icon": "product_qs",
+            "name": "Product Q's",
+            "description": "Pump vs spray, subscriptions, ingredients — ask the community.",
+            "active_today": true,
+            "status_text": "Active today",
+            "post_count": "1.5K Posts"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "icon": "intros",
+            "name": "Intros",
+            "description": "New here? Say hello and meet other biome hackers.",
+            "active_today": true,
+            "status_text": "Active today",
+            "post_count": "2.1K Posts"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
