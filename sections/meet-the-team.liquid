@@ -1,0 +1,462 @@
+{%- style -%}
+  /* ── Section wrapper ───────────────────────────────────────── */
+  #shopify-section-{{ section.id }} {
+    --tm-bg:     {{ section.settings.bg_color }};
+    --tm-navy:   {{ section.settings.heading_color }};
+    --tm-accent: {{ section.settings.accent_color }};
+    --tm-gold:   {{ section.settings.gold_color }};
+    --tm-offset: 12px;
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: var(--tm-bg);
+    padding-top:    {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+      padding-top:    {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  /* Background image layer */
+  #shopify-section-{{ section.id }}::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    {%- if section.settings.bg_image != blank -%}
+      background-image:    url("{{ section.settings.bg_image | image_url: width: 1800 }}");
+      background-size:     cover;
+      background-position: center;
+      background-repeat:   no-repeat;
+    {%- else -%}
+      background-image: none;
+    {%- endif -%}
+    opacity: {{ section.settings.bg_image_opacity | divided_by: 100.0 }};
+  }
+
+  /* ── Inner ─────────────────────────────────────────────────── */
+  .tm-{{ section.id }} * { box-sizing: border-box; }
+  .tm-{{ section.id }} .tm__inner { max-width: 1180px; margin-inline: auto; }
+
+  /* ── Header ────────────────────────────────────────────────── */
+  .tm-{{ section.id }} .tm__head {
+    text-align: center;
+    margin-bottom: clamp(40px, 6vw, 72px);
+  }
+
+  .tm-{{ section.id }} .tm__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 14px;
+    font-family: var({{ section.settings.eyebrow_font }});
+    font-weight: 700;
+    font-size: clamp(12px, 1.2vw, 13px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--tm-accent);
+    line-height: 1;
+  }
+  .tm-{{ section.id }} .tm__eyebrow::before {
+    content: "";
+    width: 26px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+
+  .tm-{{ section.id }} .tm__title {
+    margin: 0;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 700;
+    font-size: clamp(34px, 4.4vw, 50px);
+    line-height: 1.04;
+    letter-spacing: -0.5px;
+    color: var(--tm-navy);
+  }
+
+  .tm-{{ section.id }} .tm__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var({{ section.settings.script_font }});
+    font-weight: 400;
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.05;
+    color: var(--tm-accent);
+  }
+
+  /* ── Grid ──────────────────────────────────────────────────── */
+  .tm-{{ section.id }} .tm__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+    column-gap: clamp(24px, 3vw, 40px);
+    row-gap: clamp(32px, 5vw, 64px);
+  }
+
+  /* ── Card ──────────────────────────────────────────────────── */
+  .tm-{{ section.id }} .tm__card { margin: 0; }
+
+  .tm-{{ section.id }} .tm__photo {
+    margin-right: var(--tm-offset);
+    margin-bottom: var(--tm-offset);
+  }
+  .tm-{{ section.id }} .tm__photo img {
+    width: 100%;
+    height: 435px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    border-radius: 14px;
+    box-shadow: var(--tm-offset) var(--tm-offset) 0 0 var(--tm-gold);
+  }
+
+  .tm-{{ section.id }} .tm__info {
+    text-align: center;
+    margin-top: clamp(20px, 2.6vw, 26px);
+  }
+
+  .tm-{{ section.id }} .tm__name {
+    margin: 0 0 8px;
+    font-family: var({{ section.settings.name_font }});
+    font-weight: 700;
+    font-size: clamp(17px, 1.7vw, 20px);
+    line-height: 1.2;
+    color: var(--tm-navy);
+  }
+
+  .tm-{{ section.id }} .tm__role {
+    margin: 0;
+    font-family: var({{ section.settings.role_font }});
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    line-height: 1.4;
+    color: var(--tm-accent);
+  }
+
+  /* ── Responsive ────────────────────────────────────────────── */
+  @media screen and (max-width: 879px) {
+    #shopify-section-{{ section.id }} { --tm-offset: 9px; }
+    .tm-{{ section.id }} .tm__grid {
+      grid-template-columns: repeat({{ section.settings.columns_tablet }}, 1fr);
+    }
+  }
+  @media screen and (max-width: 479px) {
+    .tm-{{ section.id }} .tm__grid { grid-template-columns: 1fr; }
+  }
+{%- endstyle -%}
+
+<div class="tm-{{ section.id }}">
+  <div class="tm__inner">
+
+    {%- comment -%} ── Header ── {%- endcomment -%}
+    {%- if section.settings.eyebrow_text != blank
+        or section.settings.heading_text != blank
+        or section.settings.script_text != blank -%}
+      <header class="tm__head">
+        {%- if section.settings.eyebrow_text != blank -%}
+          <p class="tm__eyebrow">{{ section.settings.eyebrow_text | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading_text != blank or section.settings.script_text != blank -%}
+          <h2 class="tm__title">
+            {{ section.settings.heading_text | escape }}
+            {%- if section.settings.script_text != blank -%}
+              <span class="tm__script">{{ section.settings.script_text | escape }}</span>
+            {%- endif -%}
+          </h2>
+        {%- endif -%}
+      </header>
+    {%- endif -%}
+
+    {%- comment -%} ── Grid ── {%- endcomment -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="tm__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'member' -%}
+            <figure class="tm__card" {{ block.shopify_attributes }}>
+              <div class="tm__photo">
+                {%- if block.settings.image != blank -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 700
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '350, 500, 700',
+                      alt: block.settings.name | default: ''
+                  }}
+                {%- else -%}
+                  {{ 'person' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </div>
+              <figcaption class="tm__info">
+                {%- if block.settings.name != blank -%}
+                  <h3 class="tm__name">{{ block.settings.name | escape }}</h3>
+                {%- endif -%}
+                {%- if block.settings.role != blank -%}
+                  <p class="tm__role">{{ block.settings.role | escape }}</p>
+                {%- endif -%}
+              </figcaption>
+            </figure>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Meet the Team",
+  "tag": "section",
+  "class": "meet-the-team-section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#f4eee1"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image",
+      "info": "Optional. Overlaid on the background color."
+    },
+    {
+      "type": "range",
+      "id": "bg_image_opacity",
+      "label": "Background image opacity",
+      "min": 5,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "The People"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading text",
+      "default": "Meet Our"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Script line"
+    },
+    {
+      "type": "text",
+      "id": "script_text",
+      "label": "Script line text",
+      "default": "Team."
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-accent-family"
+    },
+    {
+      "type": "header",
+      "content": "Grid"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns — desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "label": "Columns — tablet",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Card typography"
+    },
+    {
+      "type": "select",
+      "id": "name_font",
+      "label": "Name font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "select",
+      "id": "role_font",
+      "label": "Role font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading & name color",
+      "default": "#1b2240"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color (eyebrow, script & role)",
+      "default": "#f4502b"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Photo offset shadow color",
+      "default": "#f3bd42"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "member",
+      "name": "Team member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Team Member"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role / title",
+          "default": "Role Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Meet the Team",
+      "blocks": [
+        {
+          "type": "member",
+          "settings": { "name": "Tracy Tallow", "role": "Co-Founder, Chief Operations Officer" }
+        },
+        {
+          "type": "member",
+          "settings": { "name": "William Lendal Robertson", "role": "Founder, Chief Executive Officer" }
+        },
+        {
+          "type": "member",
+          "settings": { "name": "Dr. Vanita K. Gupta, PhD, MBA", "role": "Chief Founding Science Officer" }
+        },
+        {
+          "type": "member",
+          "settings": { "name": "Marcos Genoud", "role": "Brand Design" }
+        },
+        {
+          "type": "member",
+          "settings": { "name": "Deji Wessey", "role": "Chief Financial Officer" }
+        },
+        {
+          "type": "member",
+          "settings": { "name": "Marigold Bloom", "role": "Chief Joy Officer" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

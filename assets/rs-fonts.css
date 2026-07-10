@@ -1,0 +1,207 @@
+/* =============================================================================
+   Rainbow Smile — Custom Font Declarations
+   All @font-face rules for brand typefaces.
+   Font variables are applied in layout/theme.liquid:
+     --font-heading-family  → D-DIN 700
+     --font-body-family     → D-DIN 400
+     --font-tag-family      → PP Neue Montreal Mono 500/700
+     --font-accent-family   → Alkaline Test 400
+   ============================================================================= */
+
+/* ── PP Neue Montreal Mono ─────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'PP Neue Montreal Mono';
+  src: url('PPNeueMontrealMono-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal Mono';
+  src: url('PPNeueMontrealMono-Book.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal Mono';
+  src: url('PPNeueMontrealMono-RegularItalic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal Mono';
+  src: url('PPNeueMontrealMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal Mono';
+  src: url('PPNeueMontrealMono-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal Mono';
+  src: url('PPNeueMontrealMono-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ── D-DIN ─────────────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'D-DIN';
+  src: url('D-DIN.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'D-DIN';
+  src: url('D-DIN-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'D-DIN';
+  src: url('D-DIN-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── D-DIN Condensed ───────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'D-DIN Condensed';
+  src: url('D-DINCondensed.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'D-DIN Condensed';
+  src: url('D-DINCondensed-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── D-DIN Exp ─────────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'D-DIN Exp';
+  src: url('D-DINExp.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'D-DIN Exp';
+  src: url('D-DINExp-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'D-DIN Exp';
+  src: url('D-DINExp-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Alkaline Test ─────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Alkaline Test';
+  src: url('AlkalineTest-Regular-BF676e1b6ca889c.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alkaline Test';
+  src: url('AlkalineTest-Medium-BF676e1b6c9ed61.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alkaline Test';
+  src: url('AlkalineTest-Demi-BF676e1b6c71ac3.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alkaline Test';
+  src: url('AlkalineTest-Bold-BF676e1b6c6a873.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alkaline Test';
+  src: url('AlkalineTest-Heavy-BF676e1b6c999cd.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Alkaline Caps Test ────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Alkaline Caps Test';
+  src: url('AlkalineCapsTest-Regular-BF676e1b6c69c27.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alkaline Caps Test';
+  src: url('AlkalineCapsTest-Medium-BF676e1b6c5d438.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alkaline Caps Test';
+  src: url('AlkalineCapsTest-Demi-BF676e1b6c25594.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alkaline Caps Test';
+  src: url('AlkalineCapsTest-Bold-BF676e1b6c29874.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alkaline Caps Test';
+  src: url('AlkalineCapsTest-Heavy-BF676e1b6c38124.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}

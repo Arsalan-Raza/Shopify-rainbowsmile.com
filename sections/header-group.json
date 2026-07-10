@@ -1,0 +1,57 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "text_highlight": "FREE DOWNLOAD:",
+        "highlight_color": "#fbbe53",
+        "text": "THE BIOME HACKER'S CODE — BY WILLIAM ROBERTSON",
+        "bullet_color": "#ef4f28",
+        "button_label": "GET FREE BOOK",
+        "button_link": "",
+        "button_bg_color": "#ef4f28",
+        "button_text_color": "#ffffff",
+        "ticker_speed": 25
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_position": "middle-left",
+        "mobile_logo_position": "left",
+        "menu": "main-menu",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "on-scroll-up",
+        "show_line_separator": true,
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "shop_button_label": "Shop Now →",
+        "shop_button_link": "",
+        "shop_button_bg_color": "#ef4f28",
+        "shop_button_text_color": "#ffffff",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "enable_customer_avatar": true,
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

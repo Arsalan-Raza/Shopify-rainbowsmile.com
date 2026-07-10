@@ -1,0 +1,402 @@
+{%- comment -%}
+  UBU — Photo Grid Slider
+  Swiper 11 carousel with variable-height staggered slides.
+  Swiper loaded from jsDelivr CDN — no build step required.
+{%- endcomment -%}
+
+{%- style -%}
+  /* ── Section padding ───────────────────────────────────────── */
+  #shopify-section-{{ section.id }} {
+    padding-top:    {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+      padding-top:    {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  /* ── Root / tokens ─────────────────────────────────────────── */
+  .ubu-pg-{{ section.id }} {
+    --pg-bg:      {{ section.settings.bg_color }};
+    --pg-logo-c:  {{ section.settings.logo_color }};
+    --pg-radius:  {{ section.settings.slide_radius }}px;
+    --pg-gap-mob: {{ section.settings.gap_mobile }}px;
+    --pg-gap-dsk: {{ section.settings.gap_desktop }}px;
+    --pg-w-mob:   {{ section.settings.slide_width_mobile }}vw;
+    --pg-w-dsk:   {{ section.settings.slide_width_desktop }}vw;
+
+    background: var(--pg-bg);
+    overflow: hidden;  /* clip peek edges */
+  }
+
+  .ubu-pg-{{ section.id }} * { box-sizing: border-box; }
+
+  /* ── Logo header ───────────────────────────────────────────── */
+  .ubu-pg-{{ section.id }} .ubu-pg__head {
+    text-align: center;
+    padding-inline: 1.5rem;
+    margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .ubu-pg-{{ section.id }} .ubu-pg__logo-img {
+    display: inline-block;
+    width: clamp(100px, 11vw, 140px);
+    height: auto;
+  }
+
+  /* SVG fallback (only shown when no logo image is uploaded) */
+  .ubu-pg-{{ section.id }} .ubu-pg__logo-svg {
+    display: inline-block;
+    width: clamp(108px, 12vw, 150px);
+    height: auto;
+    color: var(--pg-logo-c);
+  }
+  .ubu-pg-{{ section.id }} .ubu-pg__logo-word {
+    font-family: var(--font-heading-family);
+    font-weight: 700;
+    font-size: 46px;
+    letter-spacing: -1px;
+    fill: var(--pg-logo-c);
+  }
+  .ubu-pg-{{ section.id }} .ubu-pg__logo-arc {
+    font-family: var(--font-tag-family);
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    fill: var(--pg-logo-c);
+  }
+
+  /* ── Swiper shell ──────────────────────────────────────────── */
+  .ubu-pg-{{ section.id }} .ubu-pg__swiper {
+    width: 100%;
+    overflow: visible;
+  }
+
+  /* Top-align slides so images keep their natural heights (staggered look) */
+  .ubu-pg-{{ section.id }} .ubu-pg__swiper .swiper-wrapper {
+    align-items: flex-start;
+  }
+
+  /* ── Slides ────────────────────────────────────────────────── */
+  .ubu-pg-{{ section.id }} .ubu-pg__slide {
+    width: var(--pg-w-mob);
+    height: auto;
+  }
+
+  .ubu-pg-{{ section.id }} .ubu-pg__slide img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--pg-radius);
+    object-fit: cover;
+  }
+
+  /* ── Tablet ────────────────────────────────────────────────── */
+  @media screen and (min-width: 750px) {
+    .ubu-pg-{{ section.id }} .ubu-pg__slide {
+      width: var(--pg-w-dsk);
+    }
+  }
+
+  /* ── Reduced motion ────────────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .ubu-pg-{{ section.id }} .swiper-wrapper {
+      transition-duration: 0ms !important;
+    }
+  }
+{%- endstyle -%}
+
+{%- comment -%} Swiper CSS — load once per page via ID guard {%- endcomment -%}
+<link rel="stylesheet" id="swiper-css" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<div class="ubu-pg-{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
+
+  {%- comment -%} ── Logo ── {%- endcomment -%}
+  {%- if section.settings.logo != blank or section.settings.show_svg_logo -%}
+    <div class="ubu-pg__head">
+      {%- if section.settings.logo != blank -%}
+        {{
+          section.settings.logo
+          | image_url: width: 300
+          | image_tag:
+            class: 'ubu-pg__logo-img',
+            loading: 'lazy',
+            alt: section.settings.logo.alt | default: 'ubu'
+        }}
+      {%- else -%}
+        <svg class="ubu-pg__logo-svg" viewBox="0 0 220 150" role="img" aria-label="ubu — unique biome unlocked">
+          <defs>
+            <path id="ubuTagArc-{{ section.id }}" d="M22,78 A92,92 0 0,0 198,78" fill="none"/>
+          </defs>
+          <text x="110" y="58" text-anchor="middle" class="ubu-pg__logo-word">ubu</text>
+          <path d="M66,66 A46,34 0 0,0 154,66" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+          <text class="ubu-pg__logo-arc">
+            <textPath href="#ubuTagArc-{{ section.id }}" startOffset="50%" text-anchor="middle">unique biome unlocked</textPath>
+          </text>
+        </svg>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} ── Slider ── {%- endcomment -%}
+  {%- if section.blocks.size > 0 -%}
+    <div
+      class="ubu-pg__swiper swiper"
+      id="ubu-pg-swiper-{{ section.id }}"
+      data-gap-mob="{{ section.settings.gap_mobile }}"
+      data-gap-dsk="{{ section.settings.gap_desktop }}"
+      data-speed="{{ section.settings.speed }}"
+      data-autoplay="{{ section.settings.autoplay }}"
+      data-delay="{{ section.settings.autoplay_delay }}"
+    >
+      <div class="swiper-wrapper">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'slide' and block.settings.image != blank -%}
+            <div class="ubu-pg__slide swiper-slide" {{ block.shopify_attributes }}>
+              {{
+                block.settings.image
+                | image_url: width: 900
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '400, 600, 900',
+                  alt: block.settings.image.alt | default: ''
+              }}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+<script>
+  (function () {
+    function initUbuPg() {
+      var el = document.getElementById('ubu-pg-swiper-{{ section.id }}');
+      if (!el || !window.Swiper) return;
+
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var gapMob  = parseInt(el.dataset.gapMob,  10) || 14;
+      var gapDsk  = parseInt(el.dataset.gapDsk,  10) || 22;
+      var speed   = parseInt(el.dataset.speed,    10) || 700;
+      var autoplay= el.dataset.autoplay === 'true';
+      var delay   = parseInt(el.dataset.delay,    10) || 2600;
+
+      new Swiper(el, {
+        slidesPerView:  'auto',
+        spaceBetween:   gapMob,
+        loop:           true,
+        speed:          speed,
+        grabCursor:     true,
+        centeredSlides: true,
+        autoplay: (autoplay && !prefersReduced) ? {
+          delay:                delay,
+          disableOnInteraction: false,
+          pauseOnMouseEnter:    true
+        } : false,
+        breakpoints: {
+          750: {
+            centeredSlides: false,
+            spaceBetween:   gapDsk
+          }
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () {
+        /* Swiper script is deferred — wait a tick for it to execute */
+        setTimeout(initUbuPg, 0);
+      });
+    } else {
+      setTimeout(initUbuPg, 0);
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Photo Grid \u2014 UBU",
+  "tag": "section",
+  "class": "ubu-photo-grid-section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image",
+      "info": "Upload the UBU badge. Leave blank to use the built-in SVG fallback."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_svg_logo",
+      "label": "Show SVG fallback when no image is set",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "logo_color",
+      "label": "SVG logo color",
+      "default": "#1b2240"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Slider"
+    },
+    {
+      "type": "range",
+      "id": "slide_width_mobile",
+      "label": "Slide width — mobile (vw)",
+      "min": 50,
+      "max": 90,
+      "step": 5,
+      "unit": "vw",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "slide_width_desktop",
+      "label": "Slide width — desktop (vw)",
+      "min": 15,
+      "max": 45,
+      "step": 1,
+      "unit": "vw",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Gap — mobile",
+      "min": 6,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Gap — desktop",
+      "min": 6,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "slide_radius",
+      "label": "Slide corner radius",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Slide transition speed",
+      "min": 300,
+      "max": 1200,
+      "step": 100,
+      "unit": "ms",
+      "default": 700
+    },
+    {
+      "type": "header",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Enable autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "label": "Autoplay delay",
+      "min": 1000,
+      "max": 8000,
+      "step": 200,
+      "unit": "ms",
+      "default": 2600
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Photo Grid \u2014 UBU",
+      "blocks": [
+        { "type": "slide" },
+        { "type": "slide" },
+        { "type": "slide" },
+        { "type": "slide" },
+        { "type": "slide" }
+      ]
+    }
+  ]
+}
+{% endschema %}

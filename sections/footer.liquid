@@ -1,0 +1,626 @@
+{% comment %}theme-check-disable UndefinedObject{% endcomment %}
+{{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  /* ── Spacing ────────────────────────────────────────────────── */
+  .rs-footer {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .rs-footer {
+      margin-top: {{ section.settings.margin_top }}px;
+    }
+  }
+
+  /* ── Top section: brand + nav ───────────────────────────────── */
+  .rs-footer__top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5rem;
+    padding: 6rem 0 4.8rem;
+  }
+
+  .rs-footer__logo {
+    display: inline-block;
+    line-height: 0;
+    margin-bottom: 1.8rem;
+  }
+
+  .rs-footer__logo img {
+    width: {{ section.settings.footer_logo_width | default: settings.logo_width }}px;
+    height: auto;
+  }
+
+  .rs-footer__tagline {
+    font-size: 1.4rem;
+    color: rgba(var(--color-foreground), 0.6);
+    margin: 0 0 2.8rem;
+    line-height: 1.5;
+    font-wight: 400;
+  }
+
+  /* Social icons as square rounded buttons */
+  .rs-footer__social .list-social {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: flex-start;
+  }
+
+  .rs-footer__social .list-social__item .list-social__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.6rem;
+    height: 4.6rem;
+    background: rgba(var(--color-foreground), 0.1);
+    border-radius: 0.8rem;
+    color: var(--color-rs-peach);
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+
+  .rs-footer__social .list-social__item .list-social__link:hover {
+    background: rgba(var(--color-foreground), 0.2);
+  }
+
+  .rs-footer__social .list-social__item .icon {
+    width: 2rem;
+    height: 2rem;
+    fill: currentColor;
+  }
+
+  /* Nav columns */
+  .rs-footer__nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem 2rem;
+  }
+
+  .rs-footer__nav-heading {
+    font-family: var(--font-tag-family);
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: {{ section.settings.nav_heading_color }};
+    display: block;
+    margin: 0 0 1.6rem;
+  }
+
+  .rs-footer__nav-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .rs-footer__nav-col li + li {
+    margin-top: 1rem;
+  }
+
+  .rs-footer__nav-col a {
+    color: rgba(var(--color-foreground), 0.65);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    transition: color 0.2s ease;
+  }
+
+  .rs-footer__nav-col a:hover {
+    color: rgb(var(--color-foreground));
+  }
+
+  /* ── Divider ────────────────────────────────────────────────── */
+  .rs-footer__divider {
+    border: none;
+    border-top: 1px solid rgba(var(--color-foreground), 0%);
+    margin: 0;
+  }
+
+  /* ── Newsletter strip ───────────────────────────────────────── */
+  .rs-footer__newsletter {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    padding: 4.8rem 0;
+  }
+
+  .rs-footer__newsletter-heading {
+    font-family: var(--font-body-family);
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: rgb(var(
+    --color-foreground));
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .rs-footer__form-wrap {
+    display: flex;
+    align-items: center;
+    background: rgba(239, 79, 39, 0.2);
+    border-radius: 10rem;
+    padding: 12px 10px 10px 20px;
+    width: 100%;
+    border: 1px solid rgb(239 79 39 / 42%);
+    max-width: 52rem;
+  }
+
+  .rs-footer__email-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: rgba(var(--color-foreground), 0.6);
+    font-size: 1.4rem;
+    font-family: var(--font-body-family);
+    min-width: 0;
+    padding: 0;
+  }
+
+  .rs-footer__email-input::placeholder {
+    color: rgba(var(--color-foreground), 0.4);
+  }
+
+  .rs-footer__email-btn {
+    background: {{ section.settings.newsletter_btn_color }};
+    color: {{ section.settings.newsletter_btn_text_color }};
+    border: none;
+    border-radius: 10rem;
+    padding: 1rem 2.6rem;
+    font-family: var(--font-tag-family);
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .rs-footer__email-btn:hover {
+    opacity: 0.85;
+  }
+
+  .rs-footer__form-message {
+    margin-top: 1.2rem;
+    font-size: 1.3rem;
+    color: rgba(var(--color-foreground), 0.8);
+  }
+
+  .rs-footer__form-message--success {
+    color: #6fcf97;
+  }
+
+  /* ── Bottom bar ─────────────────────────────────────────────── */
+  .rs-footer__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+    padding: 2.4rem 0;
+    text-align: center;
+  }
+
+  .rs-footer__copyright {
+    color: rgba(var(--color-foreground), 0.5);
+    font-size: 1.3rem;
+    margin: 0;
+  }
+
+  .rs-footer__copyright a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .rs-footer__love {
+    font-family: var(--font-accent-family);
+    font-style: italic;
+    font-size: 2.2rem;
+    color: rgb(var(--color-foreground));
+    margin: 0;
+  }
+
+  .rs-footer__policies {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .rs-footer__policies a {
+    color: rgba(var(--color-foreground), 0.5);
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .rs-footer__policies a:hover {
+    color: rgb(var(--color-foreground));
+  }
+
+  /* ── Tablet ≥750px ──────────────────────────────────────────── */
+  @media screen and (min-width: 750px) {
+    .rs-footer__top {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+      align-items: start;
+      padding: 8rem 0 6rem;
+    }
+
+    .rs-footer__nav {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0 3rem;
+    }
+
+    .rs-footer__newsletter {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4rem;
+      padding: 0 0 6rem;
+    }
+
+    .rs-footer__newsletter-heading {
+      max-width: 45%;
+      flex-shrink: 0;
+    }
+
+    .rs-footer__form-wrap {
+      width: 48rem;
+      max-width: 100%;
+      flex-shrink: 0;
+    }
+
+    .rs-footer__bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+
+    .rs-footer__policies {
+      justify-content: flex-end;
+    }
+  }
+
+  /* ── Desktop ≥990px ─────────────────────────────────────────── */
+  @media screen and (min-width: 990px) {
+    .rs-footer__top {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 2fr);
+      padding: 8rem 0 6rem;
+    }
+
+    .rs-footer__nav {
+      gap: 0 4rem;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign has_social = false
+  if settings.social_facebook_link != blank or settings.social_instagram_link != blank or settings.social_youtube_link != blank or settings.social_tiktok_link != blank or settings.social_twitter_link != blank or settings.social_pinterest_link != blank or settings.social_snapchat_link != blank or settings.social_tumblr_link != blank or settings.social_vimeo_link != blank
+    assign has_social = true
+  endif
+
+  assign nav_blocks = section.blocks | where: 'type', 'link_list'
+-%}
+
+<footer class="rs-footer color-{{ section.settings.color_scheme }} gradient" role="contentinfo">
+  <div class="page-width">
+
+    {%- comment -%} ── TOP: Logo / Tagline / Social + Nav Columns ── {%- endcomment -%}
+    <div class="rs-footer__top">
+
+      {%- comment -%} Brand column {%- endcomment -%}
+      <div class="rs-footer__brand">
+        <a href="{{ routes.root_url }}" class="rs-footer__logo" aria-label="{{ shop.name }}">
+          {%- liquid
+            assign footer_logo = section.settings.footer_logo | default: settings.logo
+            assign footer_logo_width = section.settings.footer_logo_width | default: settings.logo_width
+          -%}
+          {%- if footer_logo != blank -%}
+            {%- assign logo_alt = footer_logo.alt | default: shop.name | escape -%}
+            {{ footer_logo | image_url: width: 500 | image_tag: loading: 'lazy', alt: logo_alt, width: footer_logo_width }}
+          {%- else -%}
+            <span class="h3">{{ shop.name }}</span>
+          {%- endif -%}
+        </a>
+
+        {%- if section.settings.tagline != blank -%}
+          <p class="rs-footer__tagline">{{ section.settings.tagline | escape }}</p>
+        {%- endif -%}
+
+        {%- if has_social -%}
+          <div class="rs-footer__social">
+            {%- render 'social-icons' -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Nav columns {%- endcomment -%}
+      {%- if nav_blocks.size > 0 -%}
+        <nav class="rs-footer__nav" aria-label="{{ 'sections.footer.navigation_aria_label' | t }}">
+          {%- for block in nav_blocks -%}
+            <div class="rs-footer__nav-col" {{ block.shopify_attributes }}>
+              {%- if block.settings.heading != blank -%}
+                <span class="rs-footer__nav-heading">{{- block.settings.heading -}}</span>
+              {%- endif -%}
+              {%- if block.settings.menu != blank -%}
+                <ul>
+                  {%- for link in block.settings.menu.links -%}
+                    <li>
+                      <a
+                        href="{{ link.url }}"
+                        {% if link.current %}aria-current="page"{% endif %}
+                      >
+                        {{ link.title | escape }}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </nav>
+      {%- endif -%}
+
+    </div>
+
+
+    {%- comment -%} ── NEWSLETTER ── {%- endcomment -%}
+    {%- if section.settings.newsletter_enable -%}
+      <div class="rs-footer__newsletter">
+        {%- if section.settings.newsletter_heading != blank -%}
+          <h2 class="rs-footer__newsletter-heading">
+            {{ section.settings.newsletter_heading }}
+          </h2>
+        {%- endif -%}
+
+        {%- form 'customer', id: 'ContactFooter', class: 'rs-footer__newsletter-form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="rs-footer__form-wrap">
+            <input
+              id="NewsletterForm--{{ section.id }}"
+              type="email"
+              name="contact[email]"
+              class="rs-footer__email-input"
+              value="{{ form.email }}"
+              aria-required="true"
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+              placeholder="{{ section.settings.newsletter_placeholder }}"
+              required
+              {% if form.errors %}
+                autofocus
+                aria-invalid="true"
+                aria-describedby="ContactFooter-error"
+              {% elsif form.posted_successfully? %}
+                aria-describedby="ContactFooter-success"
+              {% endif %}
+            >
+            <button
+              type="submit"
+              class="rs-footer__email-btn"
+              name="commit"
+              id="Subscribe"
+              aria-label="{{ 'newsletter.button_label' | t }}"
+            >
+              {{ section.settings.newsletter_btn_label | escape }}
+            </button>
+          </div>
+          {%- if form.errors -%}
+            <p class="rs-footer__form-message" id="ContactFooter-error">
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
+            </p>
+          {%- endif -%}
+          {%- if form.posted_successfully? -%}
+            <p
+              class="rs-footer__form-message rs-footer__form-message--success"
+              id="ContactFooter-success"
+              tabindex="-1"
+              autofocus
+            >
+              {{ 'newsletter.success' | t }}
+            </p>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+    {%- endif -%}
+
+    <hr class="rs-footer__divider">
+
+    {%- comment -%} ── BOTTOM BAR ── {%- endcomment -%}
+    <div class="rs-footer__bottom">
+      <p class="rs-footer__copyright">
+        &copy; {{ 'now' | date: '%Y' }}
+        {%- if section.settings.copyright_text != blank %}
+          {{ section.settings.copyright_text | escape }}
+        {%- else %}
+          {{ shop.name }}
+        {%- endif -%}
+      </p>
+
+      {%- if section.settings.love_tagline != blank -%}
+        <p class="rs-footer__love">{{ section.settings.love_tagline | escape }} ❤️</p>
+      {%- endif -%}
+
+      {%- if section.settings.show_policy and shop.policies.size > 0 -%}
+        <ul class="rs-footer__policies">
+          {%- for policy in shop.policies -%}
+            {%- if policy != blank -%}
+              <li><a href="{{ policy.url }}">{{ policy.title | escape }}</a></li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "link_list",
+      "name": "Navigation column",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Quick links",
+          "label": "Column heading"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "footer",
+          "label": "Menu"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-3"
+    },
+    {
+      "type": "header",
+      "content": "Brand"
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Footer logo",
+      "info": "Defaults to header logo if not set"
+    },
+    {
+      "type": "range",
+      "id": "footer_logo_width",
+      "min": 50,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "Footer logo width",
+      "default": 200
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Biome Food™ for Your Mouth's Living Ecology"
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "color",
+      "id": "nav_heading_color",
+      "label": "Column heading color",
+      "default": "#FBBE53"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter"
+    },
+    {
+      "type": "checkbox",
+      "id": "newsletter_enable",
+      "default": true,
+      "label": "Show newsletter signup"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "newsletter_heading",
+      "label": "Heading",
+      "default": "Join the Biome Hacker Brief'"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_placeholder",
+      "label": "Email placeholder",
+      "default": "Email@gmail.com"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_btn_label",
+      "label": "Button text",
+      "default": "Signup"
+    },
+    {
+      "type": "color",
+      "id": "newsletter_btn_color",
+      "label": "Button background",
+      "default": "#EF4F28"
+    },
+    {
+      "type": "color",
+      "id": "newsletter_btn_text_color",
+      "label": "Button text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Bottom bar"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright text",
+      "info": "Year is added automatically",
+      "default": "Rainbow Smile® · All Rights Reserved Worldwide"
+    },
+    {
+      "type": "text",
+      "id": "love_tagline",
+      "label": "Center tagline",
+      "default": "Love Serves All"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_policy",
+      "default": true,
+      "label": "Show policy links"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Space above footer",
+      "default": 0
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "link_list" },
+      { "type": "link_list" },
+      { "type": "link_list" }
+    ]
+  }
+}
+{% endschema %}

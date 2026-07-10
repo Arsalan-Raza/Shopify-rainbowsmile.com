@@ -1,0 +1,509 @@
+{%- style -%}
+  /* ── Section wrapper ───────────────────────────────────────── */
+  #shopify-section-{{ section.id }} {
+    --faq-bg:     {{ section.settings.bg_color }};
+    --faq-navy:   {{ section.settings.heading_color }};
+    --faq-body:   {{ section.settings.body_color }};
+    --faq-accent: {{ section.settings.accent_color }};
+    --faq-peach:  {{ section.settings.icon_bg_color }};
+    --faq-gold:   {{ section.settings.cta_color }};
+    --faq-line:   {{ section.settings.divider_color }};
+
+    background: var(--faq-bg);
+    padding-top:    {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-inline: clamp(20px, 5vw, 40px);
+  }
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+      padding-top:    {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  /* ── Inner ─────────────────────────────────────────────────── */
+  .faq-{{ section.id }} * { box-sizing: border-box; }
+
+  .faq-{{ section.id }} .faq__inner {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  /* ── Header ────────────────────────────────────────────────── */
+  .faq-{{ section.id }} .faq__head {
+    text-align: center;
+    margin-bottom: clamp(40px, 7vw, 72px);
+  }
+
+  .faq-{{ section.id }} .faq__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 14px;
+    font-family: var({{ section.settings.eyebrow_font }});
+    font-weight: 700;
+    font-size: clamp(12px, 1.2vw, 13px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--faq-accent);
+    line-height: 1;
+  }
+  .faq-{{ section.id }} .faq__eyebrow::before {
+    content: "";
+    width: 26px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+
+  .faq-{{ section.id }} .faq__title {
+    margin: 0;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 700;
+    font-size: clamp(34px, 5vw, 56px);
+    line-height: 1.04;
+    letter-spacing: -0.5px;
+    color: var(--faq-navy);
+  }
+
+  .faq-{{ section.id }} .faq__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var({{ section.settings.script_font }});
+    font-weight: 400;
+    font-size: clamp(32px, 4.4vw, 50px);
+    line-height: 1.05;
+    color: var(--faq-accent);
+  }
+
+  /* ── Accordion ─────────────────────────────────────────────── */
+  .faq-{{ section.id }} .faq__item {
+    border-bottom: 1px solid var(--faq-line);
+  }
+
+  .faq-{{ section.id }} .faq__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 0;
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq-{{ section.id }} .faq__summary::-webkit-details-marker { display: none; }
+  .faq-{{ section.id }} .faq__summary:focus-visible {
+    outline: 3px solid rgba(244,80,43,0.35);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  .faq-{{ section.id }} .faq__q {
+    font-family: var({{ section.settings.question_font }});
+    font-weight: 700;
+    font-size: clamp(16px, 1.6vw, 18px);
+    line-height: 1.3;
+    color: var(--faq-navy);
+  }
+
+  /* + / − icon */
+  .faq-{{ section.id }} .faq__icon {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--faq-peach);
+  }
+  .faq-{{ section.id }} .faq__icon::before,
+  .faq-{{ section.id }} .faq__icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: var(--faq-accent);
+    transform: translate(-50%, -50%);
+  }
+  .faq-{{ section.id }} .faq__icon::before { width: 13px; height: 2px; }
+  .faq-{{ section.id }} .faq__icon::after {
+    width: 2px;
+    height: 13px;
+    transition: transform 0.2s ease;
+  }
+  .faq-{{ section.id }} .faq__item[open] .faq__icon::after {
+    transform: translate(-50%, -50%) scaleY(0);
+  }
+
+  /* Answer */
+  .faq-{{ section.id }} .faq__answer {
+    padding: 0 0 24px;
+    max-width: 62ch;
+  }
+  .faq-{{ section.id }} .faq__answer p {
+    margin: 0;
+    font-family: var({{ section.settings.answer_font }});
+    font-weight: 400;
+    font-size: clamp(15px, 1.3vw, 16px);
+    line-height: 1.65;
+    color: var(--faq-body);
+  }
+  .faq-{{ section.id }} .faq__answer p + p {
+    margin-top: 14px;
+  }
+  .faq-{{ section.id }} .faq__item[open] .faq__answer {
+    animation: faqOpen-{{ section.id }} 0.25s ease;
+  }
+  @keyframes faqOpen-{{ section.id }} {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ── CTA ───────────────────────────────────────────────────── */
+  .faq-{{ section.id }} .faq__cta-wrap {
+    text-align: center;
+    margin-top: clamp(40px, 6vw, 64px);
+  }
+  .faq-{{ section.id }} .faq__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 18px 38px;
+    min-height: 56px;
+    border-radius: 999px;
+    background: var(--faq-gold);
+    color: var(--faq-navy);
+    font-family: var({{ section.settings.cta_font }});
+    font-weight: 700;
+    font-size: clamp(15px, 1.4vw, 16px);
+    text-decoration: none;
+    transition: background-color 0.18s ease;
+  }
+  .faq-{{ section.id }} .faq__cta span { transition: transform 0.18s ease; }
+  .faq-{{ section.id }} .faq__cta:hover { background: #ecb02f; }
+  .faq-{{ section.id }} .faq__cta:hover span { transform: translateX(3px); }
+  .faq-{{ section.id }} .faq__cta:focus-visible {
+    outline: 3px solid rgba(243,189,66,0.5);
+    outline-offset: 3px;
+  }
+
+  /* ── Mobile ────────────────────────────────────────────────── */
+  @media screen and (max-width: 480px) {
+    .faq-{{ section.id }} .faq__icon { width: 32px; height: 32px; }
+    .faq-{{ section.id }} .faq__cta { width: 100%; justify-content: center; }
+  }
+{%- endstyle -%}
+
+<div class="faq-{{ section.id }}">
+  <div class="faq__inner">
+
+    {%- comment -%} ── Header ── {%- endcomment -%}
+    {%- if section.settings.eyebrow_text != blank
+        or section.settings.heading_text != blank
+        or section.settings.script_text != blank -%}
+      <header class="faq__head">
+        {%- if section.settings.eyebrow_text != blank -%}
+          <p class="faq__eyebrow">{{ section.settings.eyebrow_text | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading_text != blank or section.settings.script_text != blank -%}
+          <h2 class="faq__title">
+            {{ section.settings.heading_text | escape }}
+            {%- if section.settings.script_text != blank -%}
+              <span class="faq__script">{{ section.settings.script_text | escape }}</span>
+            {%- endif -%}
+          </h2>
+        {%- endif -%}
+      </header>
+    {%- endif -%}
+
+    {%- comment -%} ── Accordion ── {%- endcomment -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="faq__list">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'faq_item' -%}
+            <details class="faq__item" {{ block.shopify_attributes }}>
+              <summary class="faq__summary">
+                <span class="faq__q">{{ block.settings.question | escape }}</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </summary>
+              {%- if block.settings.answer != blank -%}
+                <div class="faq__answer">{{ block.settings.answer }}</div>
+              {%- endif -%}
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ── CTA ── {%- endcomment -%}
+    {%- if section.settings.cta_label != blank -%}
+      <div class="faq__cta-wrap">
+        <a class="faq__cta" href="{{ section.settings.cta_url }}">
+          {{ section.settings.cta_label | escape }}
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ Accordion",
+  "tag": "section",
+  "class": "faq-accordion-section",
+  "max_blocks": 20,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "Need Help?"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading text",
+      "default": "Frequently Asked"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Script line"
+    },
+    {
+      "type": "text",
+      "id": "script_text",
+      "label": "Script line text",
+      "default": "Questions"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-accent-family"
+    },
+    {
+      "type": "header",
+      "content": "FAQ typography"
+    },
+    {
+      "type": "select",
+      "id": "question_font",
+      "label": "Question font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "select",
+      "id": "answer_font",
+      "label": "Answer font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "CTA button"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Still have more Questions"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "select",
+      "id": "cta_font",
+      "label": "Button font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading & question color",
+      "default": "#1b2240"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Answer text color",
+      "default": "#4a4e66"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color (eyebrow, script & icon)",
+      "default": "#f4502b"
+    },
+    {
+      "type": "color",
+      "id": "icon_bg_color",
+      "label": "Icon circle color",
+      "default": "#fce6da"
+    },
+    {
+      "type": "color",
+      "id": "cta_color",
+      "label": "CTA button color",
+      "default": "#f3bd42"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Row divider color",
+      "default": "#e6e6e6"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is your question?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Write your answer here.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Accordion",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is Biome Food\u2122?",
+            "answer": "<p>Biome Food\u2122 is our proprietary blend of prebiotic, microbiome-friendly nutrients that feed the beneficial bacteria in your mouth \u2014 helping your oral ecosystem stay balanced and thriving.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is OG3\u2122?",
+            "answer": "<p>OG3\u2122 is our oxygen-rich oral care formula, designed to support the oral-gut axis with bioavailable oxygen and plant-based, microbiome-friendly compounds.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I use the spray vs. the pump?",
+            "answer": "<p>Use the spray for quick, on-the-go freshness, and the pump for your daily measured ritual. Both deliver the same OG3\u2122 formula \u2014 choose whichever fits the moment.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What does sublingual mean?",
+            "answer": "<p>Sublingual means \u201cunder the tongue.\u201d Holding the formula there briefly lets the active compounds absorb directly through the tissue for faster delivery.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is it really safe to swallow?",
+            "answer": "<p>Yes. Every ingredient is food-grade and designed to be swallowed safely, carrying its benefits along your oral-gut axis.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

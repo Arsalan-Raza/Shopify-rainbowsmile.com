@@ -1,0 +1,66 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "shop-col": {
+          "type": "link_list",
+          "settings": {
+            "heading": "SHOP",
+            "menu": "footer"
+          }
+        },
+        "learn-col": {
+          "type": "link_list",
+          "settings": {
+            "heading": "LEARN",
+            "menu": "main-menu"
+          }
+        },
+        "community-col": {
+          "type": "link_list",
+          "settings": {
+            "heading": "COMMUNITY",
+            "menu": "footer-menu-copy"
+          }
+        }
+      },
+      "block_order": [
+        "shop-col",
+        "learn-col",
+        "community-col"
+      ],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "footer_logo": "shopify://shop_images/Frame_1.png",
+        "footer_logo_width": 200,
+        "tagline": "Biome Food™ for Your Mouth’s Living Ecology",
+        "nav_heading_color": "#fbbe53",
+        "newsletter_enable": true,
+        "newsletter_heading": "Join the Biome Hacker Brief'",
+        "newsletter_placeholder": "Email@gmail.com",
+        "newsletter_btn_label": "Signup",
+        "newsletter_btn_color": "#ef4f28",
+        "newsletter_btn_text_color": "#ffffff",
+        "copyright_text": "Rainbow Smile® · All Rights Reserved Worldwide",
+        "love_tagline": "Love Serves All",
+        "show_policy": true,
+        "margin_top": 0
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

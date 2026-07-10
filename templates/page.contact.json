@@ -1,0 +1,134 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "contact_hero_EdTEaj": {
+      "type": "contact-hero",
+      "name": "Contact Hero",
+      "settings": {
+        "bg_image": "shopify://shop_images/vrw.jpg",
+        "overlay_opacity": 80,
+        "min_height_mobile": 480,
+        "min_height_desktop": 660,
+        "eyebrow_text": "Rainbow Smile · Get in Touch",
+        "eyebrow_font": "--font-tag-family",
+        "heading_text": "Contact",
+        "heading_font": "--font-heading-family",
+        "script_text": "Us.",
+        "script_font": "--font-accent-family",
+        "show_logo": true,
+        "show_curve": true,
+        "curve_color": "#ffffff",
+        "script_color": "#f5c163",
+        "padding_top": 80
+      }
+    },
+    "rs_contact_zBwTjP": {
+      "type": "rs-contact",
+      "blocks": {
+        "quick_link_BQDfWy": {
+          "type": "quick_link",
+          "settings": {
+            "icon": "faq",
+            "title": "FAQs",
+            "description": "Common questions answered",
+            "url": ""
+          }
+        },
+        "quick_link_GbFMBG": {
+          "type": "quick_link",
+          "settings": {
+            "icon": "shop",
+            "title": "Shop",
+            "description": "Browse all OG3™ products",
+            "url": ""
+          }
+        },
+        "quick_link_nCGqFk": {
+          "type": "quick_link",
+          "settings": {
+            "icon": "returns",
+            "title": "Returns",
+            "description": "90-day satisfaction guarantee",
+            "url": ""
+          }
+        },
+        "quick_link_zpqHDY": {
+          "type": "quick_link",
+          "settings": {
+            "icon": "book",
+            "title": "Free Book",
+            "description": "Download the Biome Hacker’s Code",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "quick_link_BQDfWy",
+        "quick_link_GbFMBG",
+        "quick_link_nCGqFk",
+        "quick_link_zpqHDY"
+      ],
+      "name": "Contact — RS",
+      "settings": {
+        "bg_color": "#ffffff",
+        "form_title": "Send us a message",
+        "form_subtitle": "Fill in the form and we’ll get back to you within 24 hours.",
+        "label_name": "Name",
+        "placeholder_name": "Your full name",
+        "label_email": "E-mail",
+        "placeholder_email": "Your email address",
+        "label_message": "Message",
+        "placeholder_message": "How can we help you?",
+        "submit_label": "Send Message",
+        "success_msg": "Thank you! We’ll be in touch within 24 hours.",
+        "privacy_text": "By submitting this form you agree to our privacy policy.",
+        "info_title": "Get in touch",
+        "info_subtitle": "We’d love to hear from you — questions, feedback, or just to say hi.",
+        "badge_text": "Typically responds within 24 hours",
+        "email_label": "Email",
+        "email_address": "sales@rainbowsmile.com",
+        "email_desc": "For all orders, product questions, and general enquiries",
+        "address_label": "Address",
+        "address_line1": "California 93023",
+        "address_line2": "United States",
+        "tracking_card_label": "Order Tracking",
+        "tracking_label": "Track your order",
+        "tracking_url": "",
+        "tracking_desc": "Enter your order number to see real-time shipping status",
+        "quick_label": "Quick Help",
+        "heading_font": "--font-heading-family",
+        "body_font": "--font-heading-family",
+        "label_font": "--font-tag-family",
+        "btn_font": "--font-heading-family",
+        "navy_color": "#1b2240",
+        "coral_color": "#f4502b",
+        "gold_color": "#d9a23c",
+        "card_bg_color": "#faf6ee",
+        "card_border_color": "#efe7d8",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "main",
+    "contact_hero_EdTEaj",
+    "rs_contact_zBwTjP"
+  ]
+}

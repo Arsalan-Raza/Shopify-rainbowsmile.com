@@ -1,0 +1,308 @@
+{%- style -%}
+  /* ── Section wrapper ───────────────────────────────────────── */
+  #shopify-section-{{ section.id }} {
+    --hero-script: {{ section.settings.script_color }};
+    --hero-curve:  {{ section.settings.curve_color }};
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: clamp({{ section.settings.min_height_mobile }}px, 46vw, {{ section.settings.min_height_desktop }}px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top:    clamp(64px, 10vw, 120px);
+    padding-bottom: 0;
+    padding-inline: clamp(20px, 5vw, 40px);
+    text-align: center;
+  }
+
+  /* ── Background image ──────────────────────────────────────── */
+  .hero-{{ section.id }} * { box-sizing: border-box; }
+
+  .hero-{{ section.id }} .hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .hero-{{ section.id }} .hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: radial-gradient(
+      120% 90% at 50% 34%,
+      rgba(0,0,0,{{ section.settings.overlay_opacity | divided_by: 100.0 }}),
+      rgba(0,0,0,{{ section.settings.overlay_opacity | times: 0.36 | divided_by: 100.0 }}) 68%
+    );
+  }
+
+  /* ── Content ───────────────────────────────────────────────── */
+  .hero-{{ section.id }} .hero__inner {
+    position: relative;
+    z-index: 4;
+    max-width: 900px;
+  }
+
+  .hero-{{ section.id }} .hero__eyebrow {
+    margin: 0 0 18px;
+    font-family: var({{ section.settings.eyebrow_font }});
+    font-weight: 700;
+    font-size: clamp(12px, 1.3vw, 14px);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.88);
+    text-shadow: 0 2px 16px rgba(0,0,0,0.35);
+  }
+
+  .hero-{{ section.id }} .hero__title {
+    margin: 0;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 800;
+    font-size: clamp(40px, 6vw, 76px);
+    line-height: 1.0;
+    letter-spacing: -1px;
+    color: #ffffff;
+    text-shadow: 0 3px 24px rgba(0,0,0,0.4);
+  }
+
+  .hero-{{ section.id }} .hero__script {
+    display: block;
+    margin-top: 6px;
+    font-family: var({{ section.settings.script_font }});
+    font-weight: 400;
+    font-size: clamp(34px, 4.6vw, 56px);
+    line-height: 1.05;
+    color: var(--hero-script);
+    text-shadow: 0 3px 20px rgba(0,0,0,0.35);
+  }
+
+  /* ── Bottom curve ──────────────────────────────────────────── */
+  .hero-{{ section.id }} .hero__curve {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: clamp(48px, 7vw, 84px);
+    z-index: 3;
+  }
+  .hero-{{ section.id }} .hero__curve svg { width: 100%; height: 100%; display: block; }
+  .hero-{{ section.id }} .hero__curve svg path { fill: var(--hero-curve); }
+
+  /* ── Mobile ────────────────────────────────────────────────── */
+  @media screen and (max-width: 480px) {
+    .hero-{{ section.id }} .hero__eyebrow { letter-spacing: 1.6px; }
+  }
+{%- endstyle -%}
+
+<div class="hero-{{ section.id }}">
+
+  {%- comment -%} Background image {%- endcomment -%}
+  {%- if section.settings.bg_image != blank -%}
+    {{
+      section.settings.bg_image
+      | image_url: width: 1800
+      | image_tag:
+        class: 'hero__bg',
+        loading: 'eager',
+        fetchpriority: 'high',
+        widths: '750, 1100, 1440, 1800',
+        alt: section.settings.bg_image.alt | default: ''
+    }}
+  {%- else -%}
+    {{ 'lifestyle-1' | placeholder_svg_tag: 'hero__bg placeholder-svg' }}
+  {%- endif -%}
+
+  <div class="hero__overlay"></div>
+
+  {%- comment -%} Content {%- endcomment -%}
+  <div class="hero__inner">
+    {%- if section.settings.eyebrow_text != blank -%}
+      <p class="hero__eyebrow">{{ section.settings.eyebrow_text | escape }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.heading_text != blank or section.settings.script_text != blank -%}
+      <h1 class="hero__title">
+        {{ section.settings.heading_text | escape }}
+        {%- if section.settings.script_text != blank -%}
+          <span class="hero__script">{{ section.settings.script_text | escape }}</span>
+        {%- endif -%}
+      </h1>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} Bottom curve {%- endcomment -%}
+  {%- if section.settings.show_curve -%}
+    <div class="hero__curve" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path d="M0,80 L1440,80 L1440,62 Q720,-6 0,62 Z"/>
+      </svg>
+    </div>
+  {%- endif -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "Contact Hero",
+  "tag": "section",
+  "class": "contact-hero-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Dark overlay strength",
+      "min": 10,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Height"
+    },
+    {
+      "type": "range",
+      "id": "min_height_mobile",
+      "label": "Min height — mobile",
+      "min": 320,
+      "max": 600,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "min_height_desktop",
+      "label": "Min height — desktop",
+      "min": 480,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 660
+    },
+    {
+      "type": "header",
+      "content": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "Rainbow Smile \u00b7 Get in Touch"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading text",
+      "default": "Contact"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Script line"
+    },
+    {
+      "type": "text",
+      "id": "script_text",
+      "label": "Script line text",
+      "default": "Us."
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-accent-family"
+    },
+    {
+      "type": "header",
+      "content": "Bottom curve"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_curve",
+      "label": "Show bottom curve",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "curve_color",
+      "label": "Curve color",
+      "info": "Should match the background color of the section below.",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "script_color",
+      "label": "Script line color",
+      "default": "#f5c163"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Hero"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,280 @@
+{%- style -%}
+  .rs-topbar {
+    overflow: hidden;
+  }
+
+  .rs-topbar__static {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 3rem;
+    min-height: 4.4rem;
+  }
+
+  .rs-topbar__content {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+  }
+
+  .rs-topbar__bullet {
+    color: {{ section.settings.bullet_color }};
+    font-size: 1.4rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .rs-topbar__text {
+    font-family: var(--font-tag-family);
+    font-weight: 500;
+    font-size: 1.2rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .rs-topbar__btn {
+    display: inline-flex;
+    align-items: center;
+    background-color: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }} !important;
+    font-family: var(--font-tag-family);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.5rem 1.6rem;
+    border-radius: 10rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .rs-topbar__btn:hover {
+    opacity: 0.85;
+  }
+
+  /* ── Mobile ticker ──────────────────────────────────────────── */
+  .rs-topbar__ticker {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  @keyframes rs-marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .rs-topbar__ticker-track {
+    display: inline-flex;
+    align-items: center;
+    animation: rs-marquee {{ section.settings.ticker_speed }}s linear infinite;
+    will-change: transform;
+  }
+
+  .rs-topbar__ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.4rem;
+    padding: 1rem 2rem;
+    flex-shrink: 0;
+  }
+
+  .rs-topbar__ticker-btn {
+    display: inline-flex;
+    align-items: center;
+    background-color: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+    font-family: var(--font-tag-family);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.4rem;
+    border-radius: 10rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── Desktop / Tablet ───────────────────────────────────────── */
+  @media screen and (min-width: 750px) {
+    .rs-topbar__static {
+      display: flex;
+    }
+
+    .rs-topbar__ticker {
+      display: none;
+    }
+
+    .rs-topbar__text {
+      font-size: 1.3rem;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  if section.settings.button_label != blank
+    assign has_button = true
+  else
+    assign has_button = false
+  endif
+  assign button_url = section.settings.button_link | default: '#'
+-%}
+
+<div
+  class="rs-topbar color-{{ section.settings.color_scheme }} gradient"
+  role="region"
+  aria-label="{{ 'sections.header.announcement' | t }}"
+>
+
+  {%- comment -%} Accessible text for screen readers on all viewports {%- endcomment -%}
+  <p class="visually-hidden">
+    {{- section.settings.text_highlight | escape -}}
+    {%- if section.settings.text_highlight != blank and section.settings.text != blank %} {% endif -%}
+    {{- section.settings.text | strip_html | escape -}}
+    {%- if has_button %} — {{ section.settings.button_label | escape }}{% endif -%}
+  </p>
+
+  {%- comment -%} Desktop & tablet: static centered layout {%- endcomment -%}
+  <div class="rs-topbar__static" aria-hidden="true">
+    <div class="rs-topbar__content">
+      {%- if section.settings.text_highlight != blank or section.settings.text != blank -%}
+        <span class="rs-topbar__bullet">•</span>
+        <p class="rs-topbar__text">
+          {%- if section.settings.text_highlight != blank -%}
+            <span style="color: {{ section.settings.highlight_color }};">{{ section.settings.text_highlight | escape }}</span>
+            {%- if section.settings.text != blank %}&nbsp;{% endif -%}
+          {%- endif -%}
+          {{- section.settings.text -}}
+        </p>
+        <span class="rs-topbar__bullet">•</span>
+      {%- endif -%}
+      {%- if has_button -%}
+        <a href="{{ button_url }}" class="rs-topbar__btn">
+          {{- section.settings.button_label | escape }} &rarr;
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- comment -%}
+    Mobile: auto-scrolling ticker.
+    Content is repeated 4× so translateX(-50%) creates a seamless infinite loop.
+  {%- endcomment -%}
+  <div class="rs-topbar__ticker" aria-hidden="true">
+    <div class="rs-topbar__ticker-track">
+      {%- for i in (1..4) -%}
+        <div class="rs-topbar__ticker-item">
+          {%- if section.settings.text_highlight != blank or section.settings.text != blank -%}
+            <span class="rs-topbar__bullet">•</span>
+            <span class="rs-topbar__text">
+              {%- if section.settings.text_highlight != blank -%}
+                <span style="color: {{ section.settings.highlight_color }};">{{ section.settings.text_highlight | escape }}</span>
+                {%- if section.settings.text != blank %}&nbsp;{% endif -%}
+              {%- endif -%}
+              {{- section.settings.text | strip_html -}}
+            </span>
+          {%- endif -%}
+          {%- if has_button -%}
+            <span class="rs-topbar__bullet">•</span>
+            <span class="rs-topbar__ticker-btn">{{ section.settings.button_label | escape }} &rarr;</span>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "class": "announcement-bar-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-3"
+    },
+    {
+      "type": "text",
+      "id": "text_highlight",
+      "label": "Highlighted text",
+      "info": "Displayed in the accent color before the main text",
+      "default": "FREE DOWNLOAD:"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight text color",
+      "default": "#FBBE53"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "Announcement text",
+      "default": "THE BIOME HACKER'S CODE — BY WILLIAM ROBERTSON"
+    },
+    {
+      "type": "color",
+      "id": "bullet_color",
+      "label": "Bullet color",
+      "default": "#EF4F28"
+    },
+    {
+      "type": "header",
+      "content": "CTA Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button text",
+      "default": "GET FREE BOOK"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button background",
+      "default": "#EF4F28"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Mobile ticker"
+    },
+    {
+      "type": "range",
+      "id": "ticker_speed",
+      "min": 15,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "label": "Scroll speed",
+      "info": "Lower = faster",
+      "default": 25
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement bar"
+    }
+  ]
+}
+{% endschema %}

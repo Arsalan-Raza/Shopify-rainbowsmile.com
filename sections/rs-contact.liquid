@@ -1,0 +1,797 @@
+{%- style -%}
+  /* ── Section wrapper ───────────────────────────────────────── */
+  #shopify-section-{{ section.id }} {
+    --c-navy:    {{ section.settings.navy_color }};
+    --c-coral:   {{ section.settings.coral_color }};
+    --c-gold:    {{ section.settings.gold_color }};
+    --c-muted:   #8c90a6;
+    --c-label:   #6b7088;
+    --c-green:   #5e9b3e;
+    --c-green-bg:#e9f1d8;
+    --c-card-bg: {{ section.settings.card_bg_color }};
+    --c-card-bd: {{ section.settings.card_border_color }};
+    --c-input-bd:#dcdce3;
+
+    background: {{ section.settings.bg_color }};
+    padding-top:    {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+      padding-top:    {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  /* ── Inner grid ────────────────────────────────────────────── */
+  .rsc-{{ section.id }} * { box-sizing: border-box; }
+
+  .rsc-{{ section.id }} .rsc__inner {
+    max-width: 1180px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 5vw, 80px);
+    align-items: start;
+  }
+
+  /* ── Form column ───────────────────────────────────────────── */
+  @media screen and (min-width: 860px) {
+    .rsc-{{ section.id }} .rsc__form-col {
+      position: sticky;
+      top: clamp(20px, 4vw, 40px);
+      align-self: start;
+    }
+  }
+
+  .rsc-{{ section.id }} .rsc__title {
+    margin: 0 0 8px;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 700;
+    font-size: clamp(30px, 3.4vw, 40px);
+    line-height: 1.1;
+    color: var(--c-navy);
+  }
+  .rsc-{{ section.id }} .rsc__subtitle {
+    margin: 0 0 clamp(26px, 4vw, 36px);
+    font-family: var({{ section.settings.body_font }});
+    font-size: clamp(15px, 1.4vw, 16px);
+    color: var(--c-coral);
+  }
+
+  .rsc-{{ section.id }} .rsc__field { margin-bottom: 20px; }
+  .rsc-{{ section.id }} .rsc__label {
+    display: block;
+    margin-bottom: 8px;
+    font-family: var({{ section.settings.label_font }});
+    /* font-weight: 700; */
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--c-coral);
+  }
+  .rsc-{{ section.id }} .rsc__input,
+  .rsc-{{ section.id }} .rsc__textarea {
+    width: 100%;
+    border: 1px solid var(--c-input-bd);
+    border-radius: 12px;
+    padding: 16px 18px;
+    font-family: var({{ section.settings.body_font }});
+    font-size: clamp(15px, 1.4vw, 16px);
+    color: var(--c-navy);
+    background: #fff;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .rsc-{{ section.id }} .rsc__textarea { min-height: 132px; resize: vertical; }
+  .rsc-{{ section.id }} .rsc__input::placeholder,
+  .rsc-{{ section.id }} .rsc__textarea::placeholder { color: #9a9eb2; }
+  .rsc-{{ section.id }} .rsc__input:focus,
+  .rsc-{{ section.id }} .rsc__textarea:focus {
+    outline: none;
+    border-color: var(--c-coral);
+    box-shadow: 0 0 0 3px rgba(244,80,43,0.15);
+  }
+
+  .rsc-{{ section.id }} .rsc__submit {
+    width: 100%;
+    margin-top: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 18px 24px;
+    min-height: 58px;
+    border: none;
+    border-radius: 999px;
+    background: var(--c-coral);
+    color: #fff;
+    font-family: var({{ section.settings.btn_font }});
+    font-weight: 700;
+    font-size: clamp(15px, 1.4vw, 16px);
+    cursor: pointer;
+    transition: background-color 0.18s ease;
+  }
+  .rsc-{{ section.id }} .rsc__submit span { transition: transform 0.18s ease; }
+  .rsc-{{ section.id }} .rsc__submit:hover { background: #df431f; }
+  .rsc-{{ section.id }} .rsc__submit:hover span { transform: translateX(3px); }
+  .rsc-{{ section.id }} .rsc__submit:focus-visible {
+    outline: 3px solid rgba(244,80,43,0.4);
+    outline-offset: 2px;
+  }
+
+  .rsc-{{ section.id }} .rsc__success {
+    padding: 18px 22px;
+    border-radius: 12px;
+    background: #e9f1d8;
+    font-family: var({{ section.settings.body_font }});
+    font-size: clamp(15px, 1.4vw, 16px);
+    color: #5e9b3e;
+    margin-bottom: 20px;
+  }
+
+  .rsc-{{ section.id }} .rsc__privacy {
+    margin: 18px 0 0;
+    font-family: var({{ section.settings.label_font }});
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--c-coral);
+    opacity: 0.85;
+  }
+
+  /* ── Info column ───────────────────────────────────────────── */
+  .rsc-{{ section.id }} .rsc__info-title {
+    margin: 0 0 8px;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 700;
+    font-size: clamp(22px, 2.2vw, 26px);
+    line-height: 1.15;
+    color: var(--c-navy);
+  }
+  .rsc-{{ section.id }} .rsc__info-sub {
+    margin: 0 0 18px;
+    font-family: var({{ section.settings.body_font }});
+    font-size: clamp(15px, 1.4vw, 16px);
+    line-height: 1.55;
+    color: #4a4e66;
+  }
+
+  .rsc-{{ section.id }} .rsc__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: var(--c-green-bg);
+    font-family: var({{ section.settings.label_font }});
+    /* font-weight: 700; */
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--c-green);
+  }
+  .rsc-{{ section.id }} .rsc__badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #6cb33f;
+    flex: none;
+  }
+
+  /* Info cards */
+  .rsc-{{ section.id }} .rsc__cards {
+    margin-top: clamp(22px, 3vw, 28px);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .rsc-{{ section.id }} .rsc__card {
+    background: var(--c-card-bg);
+    border: 1px solid var(--c-card-bd);
+    border-radius: 16px;
+    padding: clamp(20px, 2.5vw, 28px);
+  }
+  .rsc-{{ section.id }} .rsc__card-icon { color: var(--c-navy); display: block; margin-bottom: 14px; }
+  .rsc-{{ section.id }} .rsc__card-icon svg { width: 24px; height: 24px; display: block; }
+  .rsc-{{ section.id }} .rsc__card-label {
+    margin: 0 0 6px;
+    font-family: var({{ section.settings.label_font }});
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--c-label);
+  }
+  .rsc-{{ section.id }} .rsc__card-value {
+    margin: 0 0 6px;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 700;
+    font-size: clamp(16px, 1.6vw, 18px);
+    color: var(--c-navy);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .rsc-{{ section.id }} a.rsc__card-value:hover { color: var(--c-coral); }
+  .rsc-{{ section.id }} .rsc__card-desc {
+    margin: 0;
+    font-family: var({{ section.settings.body_font }});
+    font-size: clamp(13px, 1.2vw, 14px);
+    line-height: 1.5;
+    color: var(--c-muted);
+  }
+
+  /* Quick help */
+  .rsc-{{ section.id }} .rsc__quick-label {
+    margin: clamp(26px, 3.5vw, 32px) 0 14px;
+    font-family: var({{ section.settings.label_font }});
+    /* font-weight: 700; */
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--c-gold);
+  }
+  .rsc-{{ section.id }} .rsc__quick {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .rsc-{{ section.id }} .rsc__quick-card {
+    background: var(--c-card-bg);
+    border: 1px solid var(--c-card-bd);
+    border-radius: 14px;
+    padding: clamp(16px, 2vw, 22px);
+    text-decoration: none;
+    display: block;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .rsc-{{ section.id }} .rsc__quick-card:hover {
+    border-color: var(--c-gold);
+    transform: translateY(-2px);
+  }
+  .rsc-{{ section.id }} .rsc__quick-icon { color: var(--c-gold); display: block; margin-bottom: 12px; }
+  .rsc-{{ section.id }} .rsc__quick-icon svg { width: 22px; height: 22px; display: block; }
+  .rsc-{{ section.id }} .rsc__quick-title {
+    margin: 0 0 5px;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 700;
+    font-size: clamp(15px, 1.4vw, 16px);
+    color: var(--c-navy);
+  }
+  .rsc-{{ section.id }} .rsc__quick-desc {
+    margin: 0;
+    font-family: var({{ section.settings.body_font }});
+    font-size: clamp(13px, 1.2vw, 14px);
+    line-height: 1.45;
+    color: var(--c-muted);
+  }
+
+  /* ── Mobile ────────────────────────────────────────────────── */
+  @media screen and (max-width: 859px) {
+    .rsc-{{ section.id }} .rsc__inner {
+      grid-template-columns: 1fr;
+      gap: clamp(40px, 8vw, 56px);
+    }
+  }
+  @media screen and (max-width: 420px) {
+    .rsc-{{ section.id }} .rsc__quick { grid-template-columns: 1fr; }
+  }
+{%- endstyle -%}
+
+<div class="rsc-{{ section.id }}">
+  <div class="rsc__inner">
+
+    {%- comment -%} ── LEFT: form ── {%- endcomment -%}
+    <div class="rsc__form-col">
+      {%- if section.settings.form_title != blank -%}
+        <h2 class="rsc__title">{{ section.settings.form_title | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.form_subtitle != blank -%}
+        <p class="rsc__subtitle">{{ section.settings.form_subtitle | escape }}</p>
+      {%- endif -%}
+
+      {%- form 'contact', id: section.id -%}
+        {%- if form.posted_successfully -%}
+          <p class="rsc__success">{{ section.settings.success_msg | escape }}</p>
+        {%- endif -%}
+
+        <div class="rsc__field">
+          <label class="rsc__label" for="rsc-name-{{ section.id }}">
+            {{ section.settings.label_name | escape }}
+          </label>
+          <input
+            class="rsc__input"
+            id="rsc-name-{{ section.id }}"
+            type="text"
+            name="contact[name]"
+            placeholder="{{ section.settings.placeholder_name | escape }}"
+            autocomplete="name"
+          >
+        </div>
+
+        <div class="rsc__field">
+          <label class="rsc__label" for="rsc-email-{{ section.id }}">
+            {{ section.settings.label_email | escape }}
+          </label>
+          <input
+            class="rsc__input"
+            id="rsc-email-{{ section.id }}"
+            type="email"
+            name="contact[email]"
+            placeholder="{{ section.settings.placeholder_email | escape }}"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <div class="rsc__field">
+          <label class="rsc__label" for="rsc-msg-{{ section.id }}">
+            {{ section.settings.label_message | escape }}
+          </label>
+          <textarea
+            class="rsc__textarea"
+            id="rsc-msg-{{ section.id }}"
+            name="contact[body]"
+            placeholder="{{ section.settings.placeholder_message | escape }}"
+          ></textarea>
+        </div>
+
+        <button class="rsc__submit" type="submit">
+          {{ section.settings.submit_label | escape }}
+          <span aria-hidden="true">&rarr;</span>
+        </button>
+      {%- endform -%}
+
+      {%- if section.settings.privacy_text != blank -%}
+        <p class="rsc__privacy">{{ section.settings.privacy_text | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} ── RIGHT: info rail ── {%- endcomment -%}
+    <div class="rsc__info-col">
+      {%- if section.settings.info_title != blank -%}
+        <h3 class="rsc__info-title">{{ section.settings.info_title | escape }}</h3>
+      {%- endif -%}
+      {%- if section.settings.info_subtitle != blank -%}
+        <p class="rsc__info-sub">{{ section.settings.info_subtitle | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.badge_text != blank -%}
+        <span class="rsc__badge">
+          <span class="rsc__badge-dot"></span>
+          {{ section.settings.badge_text | escape }}
+        </span>
+      {%- endif -%}
+
+      {%- comment -%} Info cards {%- endcomment -%}
+      <div class="rsc__cards">
+        {%- if section.settings.email_address != blank -%}
+          <div class="rsc__card">
+            <span class="rsc__card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            </span>
+            <p class="rsc__card-label">{{ section.settings.email_label | escape }}</p>
+            <a class="rsc__card-value" href="mailto:{{ section.settings.email_address | escape }}">{{ section.settings.email_address | escape }}</a>
+            {%- if section.settings.email_desc != blank -%}
+              <p class="rsc__card-desc">{{ section.settings.email_desc | escape }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.address_line1 != blank -%}
+          <div class="rsc__card">
+            <span class="rsc__card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            </span>
+            <p class="rsc__card-label">{{ section.settings.address_label | escape }}</p>
+            <p class="rsc__card-value">{{ section.settings.address_line1 | escape }}</p>
+            {%- if section.settings.address_line2 != blank -%}
+              <p class="rsc__card-desc">{{ section.settings.address_line2 | escape }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.tracking_label != blank -%}
+          <div class="rsc__card">
+            <span class="rsc__card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+            </span>
+            <p class="rsc__card-label">{{ section.settings.tracking_card_label | escape }}</p>
+            <a class="rsc__card-value" href="{{ section.settings.tracking_url }}">
+              {{ section.settings.tracking_label | escape }}
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+            {%- if section.settings.tracking_desc != blank -%}
+              <p class="rsc__card-desc">{{ section.settings.tracking_desc | escape }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Quick help blocks {%- endcomment -%}
+      {%- if section.blocks.size > 0 -%}
+        {%- if section.settings.quick_label != blank -%}
+          <p class="rsc__quick-label">{{ section.settings.quick_label | escape }}</p>
+        {%- endif -%}
+        <div class="rsc__quick">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'quick_link' -%}
+              <a class="rsc__quick-card" href="{{ block.settings.url }}" {{ block.shopify_attributes }}>
+                <span class="rsc__quick-icon">
+                  {%- case block.settings.icon -%}
+                    {%- when 'faq' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.2 9a2.8 2.8 0 1 1 4 2.6c-1 .5-1.4 1.1-1.4 2.1"/><circle cx="11.8" cy="17.4" r="1" fill="currentColor" stroke="none"/></svg>
+                    {%- when 'shop' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h2l2.4 12.3a1.5 1.5 0 0 0 1.5 1.2h9.1a1.5 1.5 0 0 0 1.5-1.2L21 7H5.2"/></svg>
+                    {%- when 'returns' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 2.6-6.3"/><path d="M3 4v4h4"/></svg>
+                    {%- when 'book' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a2 2 0 0 1 2-2h6v16H5a2 2 0 0 0-2 2V5Z"/><path d="M21 5a2 2 0 0 0-2-2h-6v16h6a2 2 0 0 1 2 2V5Z"/></svg>
+                    {%- when 'email' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                    {%- else -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>
+                  {%- endcase -%}
+                </span>
+                <p class="rsc__quick-title">{{ block.settings.title | escape }}</p>
+                <p class="rsc__quick-desc">{{ block.settings.description | escape }}</p>
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact \u2014 RS",
+  "tag": "section",
+  "class": "rs-contact-section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Form"
+    },
+    {
+      "type": "text",
+      "id": "form_title",
+      "label": "Form heading",
+      "default": "Send us a message"
+    },
+    {
+      "type": "text",
+      "id": "form_subtitle",
+      "label": "Form subheading",
+      "default": "Fill in the form and we\u2019ll get back to you within 24 hours."
+    },
+    {
+      "type": "text",
+      "id": "label_name",
+      "label": "Name field label",
+      "default": "Name"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_name",
+      "label": "Name placeholder",
+      "default": "Your full name"
+    },
+    {
+      "type": "text",
+      "id": "label_email",
+      "label": "Email field label",
+      "default": "E-mail"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_email",
+      "label": "Email placeholder",
+      "default": "Your email address"
+    },
+    {
+      "type": "text",
+      "id": "label_message",
+      "label": "Message field label",
+      "default": "Message"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_message",
+      "label": "Message placeholder",
+      "default": "How can we help you?"
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "Submit button label",
+      "default": "Send Message"
+    },
+    {
+      "type": "text",
+      "id": "success_msg",
+      "label": "Success message",
+      "default": "Thank you! We\u2019ll be in touch within 24 hours."
+    },
+    {
+      "type": "text",
+      "id": "privacy_text",
+      "label": "Privacy note",
+      "default": "By submitting this form you agree to our privacy policy."
+    },
+    {
+      "type": "header",
+      "content": "Info rail"
+    },
+    {
+      "type": "text",
+      "id": "info_title",
+      "label": "Info heading",
+      "default": "Get in touch"
+    },
+    {
+      "type": "text",
+      "id": "info_subtitle",
+      "label": "Info subheading",
+      "default": "We\u2019d love to hear from you \u2014 questions, feedback, or just to say hi."
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Response badge text",
+      "default": "Typically responds within 24 hours"
+    },
+    {
+      "type": "header",
+      "content": "Email card"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Card label",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "email_address",
+      "label": "Email address",
+      "default": "sales@rainbowsmile.com"
+    },
+    {
+      "type": "text",
+      "id": "email_desc",
+      "label": "Description",
+      "default": "For all orders, product questions, and general enquiries"
+    },
+    {
+      "type": "header",
+      "content": "Address card"
+    },
+    {
+      "type": "text",
+      "id": "address_label",
+      "label": "Card label",
+      "default": "Address"
+    },
+    {
+      "type": "text",
+      "id": "address_line1",
+      "label": "Address line 1",
+      "default": "California 93023"
+    },
+    {
+      "type": "text",
+      "id": "address_line2",
+      "label": "Address line 2",
+      "default": "United States"
+    },
+    {
+      "type": "header",
+      "content": "Order tracking card"
+    },
+    {
+      "type": "text",
+      "id": "tracking_card_label",
+      "label": "Card label",
+      "default": "Order Tracking"
+    },
+    {
+      "type": "text",
+      "id": "tracking_label",
+      "label": "Link label",
+      "default": "Track your order"
+    },
+    {
+      "type": "url",
+      "id": "tracking_url",
+      "label": "Tracking URL"
+    },
+    {
+      "type": "text",
+      "id": "tracking_desc",
+      "label": "Description",
+      "default": "Enter your order number to see real-time shipping status"
+    },
+    {
+      "type": "header",
+      "content": "Quick help"
+    },
+    {
+      "type": "text",
+      "id": "quick_label",
+      "label": "Section label",
+      "default": "Quick Help"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "select",
+      "id": "label_font",
+      "label": "Label & badge font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "select",
+      "id": "btn_font",
+      "label": "Submit button font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Navy (headings & icons)",
+      "default": "#1b2240"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Coral (accent, labels & button)",
+      "default": "#f4502b"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Gold (quick help)",
+      "default": "#d9a23c"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card background",
+      "default": "#faf6ee"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border",
+      "default": "#efe7d8"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quick_link",
+      "name": "Quick help card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "faq",     "label": "FAQ / Question mark" },
+            { "value": "shop",    "label": "Shop / Cart" },
+            { "value": "returns", "label": "Returns / Refresh" },
+            { "value": "book",    "label": "Book" },
+            { "value": "email",   "label": "Email" },
+            { "value": "clock",   "label": "Clock" }
+          ],
+          "default": "faq"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "FAQs"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Common questions answered"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact \u2014 RS",
+      "blocks": [
+        { "type": "quick_link", "settings": { "icon": "faq",     "title": "FAQs",      "description": "Common questions answered" } },
+        { "type": "quick_link", "settings": { "icon": "shop",    "title": "Shop",      "description": "Browse all OG3\u2122 products" } },
+        { "type": "quick_link", "settings": { "icon": "returns", "title": "Returns",   "description": "90-day satisfaction guarantee" } },
+        { "type": "quick_link", "settings": { "icon": "book",    "title": "Free Book", "description": "Download the Biome Hacker\u2019s Code" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,572 @@
+{%- style -%}
+  /* ── Section wrapper ───────────────────────────────────────── */
+  #shopify-section-{{ section.id }} {
+    --og-bg:     {{ section.settings.bg_color }};
+    --og-navy:   {{ section.settings.heading_color }};
+    --og-body:   {{ section.settings.body_color }};
+    --og-accent: {{ section.settings.accent_color }};
+    --og-panel:  {{ section.settings.panel_color }};
+    --og-card:   {{ section.settings.card_bg_color }};
+    --og-meta:   {{ section.settings.meta_color }};
+    --og-card-w: 248px;
+
+    background: var(--og-bg);
+    padding-top:    {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+      padding-top:    {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  /* ── Inner grid ────────────────────────────────────────────── */
+  .og-{{ section.id }} * { box-sizing: border-box; }
+
+  .og-{{ section.id }} .og__inner {
+    max-width: 1280px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1.02fr 1fr;
+    align-items: center;
+    gap: clamp(40px, 6vw, 90px);
+  }
+
+  /* ── Left: content ─────────────────────────────────────────── */
+  .og-{{ section.id }} .og__content { max-width: 560px; }
+
+  .og-{{ section.id }} .og__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 18px;
+    font-family: var({{ section.settings.eyebrow_font }});
+    font-weight: 700;
+    font-size: clamp(12px, 1.2vw, 13px);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--og-accent);
+    line-height: 1;
+  }
+  .og-{{ section.id }} .og__eyebrow::before {
+    content: "";
+    width: 26px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+
+  .og-{{ section.id }} .og__title {
+    margin: 0;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 700;
+    font-size: clamp(34px, 4.4vw, 52px);
+    line-height: 1.04;
+    letter-spacing: -0.5px;
+    color: var(--og-navy);
+  }
+
+  .og-{{ section.id }} .og__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var({{ section.settings.script_font }});
+    font-weight: 400;
+    font-size: clamp(30px, 4vw, 46px);
+    line-height: 1.05;
+    color: var(--og-accent);
+  }
+
+  .og-{{ section.id }} .og__body { margin-top: clamp(20px, 3vw, 28px); }
+  .og-{{ section.id }} .og__body p {
+    margin: 0;
+    font-family: var({{ section.settings.body_font }});
+    font-weight: 400;
+    font-size: clamp(15px, 1.3vw, 17px);
+    line-height: 1.65;
+    color: var(--og-body);
+  }
+  .og-{{ section.id }} .og__body p + p { margin-top: 18px; }
+  .og-{{ section.id }} .og__body strong { font-weight: 700; color: var(--og-navy); }
+  .og-{{ section.id }} .og__body sup { font-size: 0.6em; vertical-align: super; }
+
+  .og-{{ section.id }} .og__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: clamp(26px, 4vw, 36px);
+    padding: 16px 30px;
+    min-height: 52px;
+    border-radius: 999px;
+    background: var(--og-accent);
+    color: #fff;
+    font-family: var({{ section.settings.cta_font }});
+    font-weight: 700;
+    font-size: clamp(15px, 1.4vw, 16px);
+    text-decoration: none;
+    transition: background-color 0.18s ease, transform 0.18s ease;
+  }
+  .og-{{ section.id }} .og__cta span { transition: transform 0.18s ease; }
+  .og-{{ section.id }} .og__cta:hover { background: #df431f; }
+  .og-{{ section.id }} .og__cta:hover span { transform: translateX(3px); }
+  .og-{{ section.id }} .og__cta:focus-visible {
+    outline: 3px solid rgba(244,80,43,0.4);
+    outline-offset: 2px;
+  }
+
+  /* ── Right: diagram panel ──────────────────────────────────── */
+  .og-{{ section.id }} .og__diagram {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--og-panel);
+    border-radius: 24px;
+    padding: clamp(28px, 4vw, 52px) clamp(20px, 3vw, 40px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Cards ─────────────────────────────────────────────────── */
+  .og-{{ section.id }} .og__card {
+    width: 100%;
+    max-width: var(--og-card-w);
+    background: var(--og-card);
+    border-radius: 16px;
+    padding: 26px 24px;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(40,33,0,0.10);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .og-{{ section.id }} .og__card-icon {
+    font-size: 36px;
+    line-height: 1;
+  }
+  .og-{{ section.id }} .og__card-title {
+    margin: 0;
+    font-family: var({{ section.settings.card_title_font }});
+    font-weight: 700;
+    font-size: clamp(18px, 1.8vw, 22px);
+    line-height: 1.1;
+    color: var(--og-navy);
+  }
+  .og-{{ section.id }} .og__card-meta {
+    margin: 0;
+    font-family: var({{ section.settings.card_meta_font }});
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--og-meta);
+  }
+
+  /* ── Axis connectors ───────────────────────────────────────── */
+  .og-{{ section.id }} .og__connector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-block: clamp(14px, 2vw, 20px);
+    font-family: var({{ section.settings.connector_font }});
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--og-navy);
+  }
+  .og-{{ section.id }} .og__connector-arrow {
+    color: var(--og-accent);
+    font-size: 15px;
+    line-height: 1;
+  }
+
+  /* ── Mobile ────────────────────────────────────────────────── */
+  @media screen and (max-width: 859px) {
+    .og-{{ section.id }} .og__inner {
+      grid-template-columns: 1fr;
+      gap: clamp(36px, 7vw, 48px);
+    }
+    .og-{{ section.id }} .og__content { max-width: 600px; }
+    .og-{{ section.id }} { --og-card-w: 340px; }
+  }
+
+  @media screen and (max-width: 480px) {
+    .og-{{ section.id }} .og__cta { width: 100%; justify-content: center; }
+  }
+{%- endstyle -%}
+
+<div class="og-{{ section.id }}">
+  <div class="og__inner">
+
+    {%- comment -%} ── LEFT: content ── {%- endcomment -%}
+    <div class="og__content">
+
+      {%- if section.settings.eyebrow_text != blank -%}
+        <p class="og__eyebrow">{{ section.settings.eyebrow_text | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading_text != blank or section.settings.script_text != blank -%}
+        <h2 class="og__title">
+          {%- if section.settings.heading_text != blank -%}
+            {{ section.settings.heading_text | escape }}
+          {%- endif -%}
+          {%- if section.settings.script_text != blank -%}
+            <span class="og__script">{{ section.settings.script_text | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.body_text != blank -%}
+        <div class="og__body">{{ section.settings.body_text }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.cta_label != blank -%}
+        <a class="og__cta" href="{{ section.settings.cta_url }}">
+          {{ section.settings.cta_label | escape }}
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      {%- endif -%}
+
+    </div>
+
+    {%- comment -%} ── RIGHT: diagram ── {%- endcomment -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="og__diagram">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'card' -%}
+            <div class="og__card" {{ block.shopify_attributes }}>
+              {%- if block.settings.icon != blank -%}
+                <span class="og__card-icon" aria-hidden="true">{{ block.settings.icon }}</span>
+              {%- endif -%}
+              {%- if block.settings.title != blank -%}
+                <h3 class="og__card-title">{{ block.settings.title | escape }}</h3>
+              {%- endif -%}
+              {%- if block.settings.meta != blank -%}
+                <p class="og__card-meta">{{ block.settings.meta | escape }}</p>
+              {%- endif -%}
+            </div>
+
+          {%- elsif block.type == 'connector' -%}
+            <div class="og__connector" {{ block.shopify_attributes }}>
+              <span class="og__connector-arrow" aria-hidden="true">&darr;</span>
+              {{ block.settings.label | escape }}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Oral-Gut-Brain Axis",
+  "tag": "section",
+  "class": "oral-gut-axis-section",
+  "max_blocks": 10,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "Oral \u00b7 Gut \u00b7 Brain Axis"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading text",
+      "default": "Oral care is self care."
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Script line"
+    },
+    {
+      "type": "text",
+      "id": "script_text",
+      "label": "Script line text",
+      "default": "Oral care is gut care."
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-accent-family"
+    },
+    {
+      "type": "header",
+      "content": "Body text"
+    },
+    {
+      "type": "richtext",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "<p>Your mouth is the gateway to your gut \u2014 and your gut is the gateway to your mind. Every swallow of OG3\u2122 carries oxygen-rich, microbiome-friendly compounds into your oral-gut axis.</p><p>When your oral ecosystem thrives, your digestion improves, your immunity strengthens, and your energy rises. This is whole-body wellness beginning with 60 seconds.</p>"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "CTA button"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Start Your Ritual"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "select",
+      "id": "cta_font",
+      "label": "Button font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Diagram panel"
+    },
+    {
+      "type": "color",
+      "id": "panel_color",
+      "label": "Panel background color",
+      "default": "#f4c64e"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "card_title_font",
+      "label": "Card title font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "select",
+      "id": "card_meta_font",
+      "label": "Card meta font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "select",
+      "id": "connector_font",
+      "label": "Connector label font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading \u0026 card title color",
+      "default": "#1b2240"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text color",
+      "default": "#3a3f5e"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color (eyebrow, script, button, arrows)",
+      "default": "#f4502b"
+    },
+    {
+      "type": "color",
+      "id": "meta_color",
+      "label": "Card meta label color",
+      "default": "#ab8f3c"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Diagram card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "\ud83d\udc44"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card title",
+          "default": "Oral Microbiome"
+        },
+        {
+          "type": "text",
+          "id": "meta",
+          "label": "Meta label",
+          "default": "700+ Symbiotic Species"
+        }
+      ]
+    },
+    {
+      "type": "connector",
+      "name": "Axis connector",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Connector label",
+          "default": "Oral-Gut Axis"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Oral-Gut-Brain Axis",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "icon": "\ud83d\udc44",
+            "title": "Oral Microbiome",
+            "meta": "700+ Symbiotic Species"
+          }
+        },
+        {
+          "type": "connector",
+          "settings": { "label": "Oral-Gut Axis" }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "icon": "\ud83e\udef1",
+            "title": "Gut Microbiome",
+            "meta": "Immune Intelligence"
+          }
+        },
+        {
+          "type": "connector",
+          "settings": { "label": "Gut-Brain Axis" }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "icon": "\ud83e\udde0",
+            "title": "Brain & Body",
+            "meta": "Vitality \u00b7 Clarity \u00b7 Energy"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

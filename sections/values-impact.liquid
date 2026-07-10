@@ -1,0 +1,507 @@
+{%- style -%}
+  /* ── Section wrapper ───────────────────────────────────────── */
+  #shopify-section-{{ section.id }} {
+    --val-bg:     {{ section.settings.bg_color }};
+    --val-navy:   {{ section.settings.heading_color }};
+    --val-body:   {{ section.settings.body_color }};
+    --val-accent: {{ section.settings.accent_color }};
+
+    /* Card tints */
+    --val-cream:    linear-gradient(120deg, #f6efe1, #faf6ef);
+    --val-lavender: linear-gradient(120deg, #ece9f7, #f4f1fb);
+    --val-blue:     linear-gradient(120deg, #e4edf8, #eef4fc);
+    --val-green:    linear-gradient(120deg, #e9f1df, #f3f8ec);
+
+    background: var(--val-bg);
+    padding-top:    {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+      padding-top:    {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  /* ── Inner ─────────────────────────────────────────────────── */
+  .vi-{{ section.id }} * { box-sizing: border-box; }
+  .vi-{{ section.id }} .vi__inner { max-width: 1180px; margin-inline: auto; }
+
+  /* ── Header ────────────────────────────────────────────────── */
+  .vi-{{ section.id }} .vi__head {
+    text-align: center;
+    margin-bottom: clamp(40px, 6vw, 72px);
+  }
+
+  .vi-{{ section.id }} .vi__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 14px;
+    font-family: var({{ section.settings.eyebrow_font }});
+    font-weight: 700;
+    font-size: clamp(12px, 1.2vw, 13px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--val-accent);
+    line-height: 1;
+  }
+  .vi-{{ section.id }} .vi__eyebrow::before {
+    content: "";
+    width: 26px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+
+  .vi-{{ section.id }} .vi__title {
+    margin: 0;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 700;
+    font-size: clamp(34px, 4.4vw, 52px);
+    line-height: 1.04;
+    letter-spacing: -0.5px;
+    color: var(--val-navy);
+  }
+
+  .vi-{{ section.id }} .vi__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var({{ section.settings.script_font }});
+    font-weight: 400;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.05;
+    color: var(--val-accent);
+  }
+
+  /* ── Rows ──────────────────────────────────────────────────── */
+  .vi-{{ section.id }} .vi__rows {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(24px, 3vw, 36px);
+  }
+
+  .vi-{{ section.id }} .vi__row {
+    display: grid;
+    grid-template-columns: 3.2fr 1fr;
+    gap: clamp(16px, 2vw, 22px);
+    align-items: stretch;
+    min-height: clamp(260px, 30vw, 300px);
+  }
+  .vi-{{ section.id }} .vi__row--reverse {
+    grid-template-columns: 1fr 3.2fr;
+  }
+
+  /* ── Card ──────────────────────────────────────────────────── */
+  .vi-{{ section.id }} .vi__card {
+    border-radius: 20px;
+    padding: clamp(30px, 4vw, 56px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .vi-{{ section.id }} .vi__card--cream    { background: var(--val-cream); }
+  .vi-{{ section.id }} .vi__card--lavender { background: var(--val-lavender); }
+  .vi-{{ section.id }} .vi__card--blue     { background: var(--val-blue); }
+  .vi-{{ section.id }} .vi__card--green    { background: var(--val-green); }
+
+  .vi-{{ section.id }} .vi__icon {
+    display: block;
+    font-size: 38px;
+    line-height: 1;
+    margin-bottom: clamp(16px, 2vw, 22px);
+  }
+
+  .vi-{{ section.id }} .vi__card-title {
+    margin: 0 0 12px;
+    font-family: var({{ section.settings.card_title_font }});
+    font-weight: 700;
+    font-size: clamp(20px, 2vw, 24px);
+    line-height: 1.15;
+    color: var(--val-navy);
+  }
+
+  .vi-{{ section.id }} .vi__card-body {
+    margin: 0;
+    max-width: 70ch;
+    font-family: var({{ section.settings.card_body_font }});
+    font-weight: 400;
+    font-size: clamp(15px, 1.3vw, 16px);
+    line-height: 1.65;
+    color: var(--val-body);
+  }
+
+  /* ── Media ─────────────────────────────────────────────────── */
+  .vi-{{ section.id }} .vi__media { display: flex; }
+  .vi-{{ section.id }} .vi__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+    aspect-ratio:  1 / 1;
+  }
+
+  /* ── Mobile ────────────────────────────────────────────────── */
+  @media screen and (max-width: 859px) {
+    .vi-{{ section.id }} .vi__row,
+    .vi-{{ section.id }} .vi__row--reverse {
+      grid-template-columns: 1fr;
+      min-height: 0;
+      gap: 0;
+    }
+    .vi-{{ section.id }} .vi__media {
+      order: -1;
+      aspect-ratio: 4 / 3;
+    }
+    .vi-{{ section.id }} .vi__media img {
+      border-radius: 20px 20px 0 0;
+    }
+    .vi-{{ section.id }} .vi__card {
+      border-radius: 0 0 20px 20px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="vi-{{ section.id }}">
+  <div class="vi__inner">
+
+    {%- comment -%} ── Header ── {%- endcomment -%}
+    {%- if section.settings.eyebrow_text != blank
+        or section.settings.heading_text != blank
+        or section.settings.script_text != blank -%}
+      <header class="vi__head">
+        {%- if section.settings.eyebrow_text != blank -%}
+          <p class="vi__eyebrow">{{ section.settings.eyebrow_text | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading_text != blank or section.settings.script_text != blank -%}
+          <h2 class="vi__title">
+            {{ section.settings.heading_text | escape }}
+            {%- if section.settings.script_text != blank -%}
+              <span class="vi__script">{{ section.settings.script_text | escape }}</span>
+            {%- endif -%}
+          </h2>
+        {%- endif -%}
+      </header>
+    {%- endif -%}
+
+    {%- comment -%} ── Rows ── {%- endcomment -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="vi__rows">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'row' -%}
+            {%- assign is_reverse = false -%}
+            {%- if block.settings.layout == 'reverse' -%}
+              {%- assign is_reverse = true -%}
+            {%- endif -%}
+
+            <div class="vi__row{% if is_reverse %} vi__row--reverse{% endif %}" {{ block.shopify_attributes }}>
+
+              {%- if is_reverse -%}
+                {%- comment -%} Image left {%- endcomment -%}
+                <div class="vi__media">
+                  {%- if block.settings.image != blank -%}
+                    {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '400, 600, 800', alt: block.settings.image.alt | default: '' }}
+                  {%- else -%}
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {%- endif -%}
+                </div>
+                <div class="vi__card vi__card--{{ block.settings.tint }}">
+                  {%- if block.settings.icon != blank -%}
+                    <span class="vi__icon" aria-hidden="true">{{ block.settings.icon }}</span>
+                  {%- endif -%}
+                  {%- if block.settings.card_title != blank -%}
+                    <h3 class="vi__card-title">{{ block.settings.card_title | escape }}</h3>
+                  {%- endif -%}
+                  {%- if block.settings.card_body != blank -%}
+                    <p class="vi__card-body">{{ block.settings.card_body | escape }}</p>
+                  {%- endif -%}
+                </div>
+
+              {%- else -%}
+                {%- comment -%} Card left, image right {%- endcomment -%}
+                <div class="vi__card vi__card--{{ block.settings.tint }}">
+                  {%- if block.settings.icon != blank -%}
+                    <span class="vi__icon" aria-hidden="true">{{ block.settings.icon }}</span>
+                  {%- endif -%}
+                  {%- if block.settings.card_title != blank -%}
+                    <h3 class="vi__card-title">{{ block.settings.card_title | escape }}</h3>
+                  {%- endif -%}
+                  {%- if block.settings.card_body != blank -%}
+                    <p class="vi__card-body">{{ block.settings.card_body | escape }}</p>
+                  {%- endif -%}
+                </div>
+                <div class="vi__media">
+                  {%- if block.settings.image != blank -%}
+                    {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '400, 600, 800', alt: block.settings.image.alt | default: '' }}
+                  {%- else -%}
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Values & Impact",
+  "tag": "section",
+  "class": "values-impact-section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "What We Stand For"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading text",
+      "default": "Our Values"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Script line"
+    },
+    {
+      "type": "text",
+      "id": "script_text",
+      "label": "Script line text",
+      "default": "& Impact."
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-accent-family"
+    },
+    {
+      "type": "header",
+      "content": "Card typography"
+    },
+    {
+      "type": "select",
+      "id": "card_title_font",
+      "label": "Card title font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "select",
+      "id": "card_body_font",
+      "label": "Card body font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading & card title color",
+      "default": "#1b2240"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Card body text color",
+      "default": "#4a4e66"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color (eyebrow & script)",
+      "default": "#f4502b"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Value row",
+      "settings": [
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "Layout",
+          "options": [
+            { "value": "normal",  "label": "Card left, image right" },
+            { "value": "reverse", "label": "Image left, card right" }
+          ],
+          "default": "normal"
+        },
+        {
+          "type": "select",
+          "id": "tint",
+          "label": "Card tint",
+          "options": [
+            { "value": "cream",    "label": "Cream" },
+            { "value": "lavender", "label": "Lavender" },
+            { "value": "blue",     "label": "Blue" },
+            { "value": "green",    "label": "Green" }
+          ],
+          "default": "cream"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "\ud83c\udf08"
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Card title",
+          "default": "Our Value"
+        },
+        {
+          "type": "textarea",
+          "id": "card_body",
+          "label": "Card body text",
+          "default": "Describe this value and what it means for your brand and customers."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Values & Impact",
+      "blocks": [
+        {
+          "type": "row",
+          "settings": {
+            "layout": "normal",
+            "tint": "cream",
+            "icon": "\ud83c\udf08",
+            "card_title": "Unity in Diversity",
+            "card_body": "A rainbow is many colors, yet one arc. We celebrate individuality and believe authenticity is nature\u2019s highest form of beauty. Every microbiome, like every person, is unique \u2014 and true balance arises from honoring that diversity."
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "layout": "reverse",
+            "tint": "lavender",
+            "icon": "\ud83d\ude0a",
+            "card_title": "Joy, Always",
+            "card_body": "Wellness should feel alive, not clinical. Every bottle we make is designed to spark a small moment of joy \u2014 a ritual that reminds you to smile, breathe, and reconnect with your body\u2019s natural brilliance."
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "layout": "normal",
+            "tint": "blue",
+            "icon": "\ud83e\udde0",
+            "card_title": "The Oral\u2013Gut Connection",
+            "card_body": "Your mouth is the gateway to the body\u2019s overall balance. By caring for it consciously, you help support healthy digestion, circulation, immunity, and mood. We\u2019re redefining oral care as mindful, whole-body care."
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "layout": "reverse",
+            "tint": "green",
+            "icon": "\ud83c\udf0d",
+            "card_title": "Impact That Travels",
+            "card_body": "Your purchase helps Rainbow Smile donate oxygen-infused oral care to underserved villages in Kenya through our non-profit alliance with Springboard Connectivity. Together, we\u2019re spreading access, balance, and hope."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

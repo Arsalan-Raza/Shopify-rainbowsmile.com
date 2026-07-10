@@ -1,0 +1,592 @@
+{%- style -%}
+  /* ── Section wrapper ───────────────────────────────────────── */
+  #shopify-section-{{ section.id }} {
+    --cta-coral:  {{ section.settings.bg_color }};
+    --cta-navy:   {{ section.settings.navy_color }};
+    --cta-white:  #ffffff;
+    --cta-gold:   {{ section.settings.gold_color }};
+    --cta-script: {{ section.settings.script_color }};
+    --cta-curve-top:    {{ section.settings.curve_top_color }};
+    --cta-curve-bottom: {{ section.settings.curve_bottom_color }};
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: var(--cta-coral);
+    padding-top:    {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-inline: clamp(20px, 5vw, 40px);
+    text-align: center;
+  }
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+      padding-top:    {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  /* Background image layer */
+  #shopify-section-{{ section.id }}::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    {%- if section.settings.bg_image != blank -%}
+      background-image: url("{{ section.settings.bg_image | image_url: width: 1800 }}");
+      {%- if section.settings.bg_image_mode == 'repeat' -%}
+        background-size:     460px;
+        background-repeat:   repeat;
+        background-position: center;
+      {%- else -%}
+        background-size:     cover;
+        background-repeat:   no-repeat;
+        background-position: center;
+      {%- endif -%}
+    {%- else -%}
+      background-image: none;
+    {%- endif -%}
+    opacity: {{ section.settings.bg_image_opacity | divided_by: 100.0 }};
+  }
+
+  /* ── Curves ────────────────────────────────────────────────── */
+  .cta-{{ section.id }} .cta__curve {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: clamp(22px, 4.5vw, 45px);
+    z-index: 1;
+    display: block;
+  }
+  .cta-{{ section.id }} .cta__curve--top    { top: 0; }
+  .cta-{{ section.id }} .cta__curve--bottom { bottom: 0; }
+  .cta-{{ section.id }} .cta__curve svg { width: 100%; height: 100%; display: block; }
+  .cta-{{ section.id }} .cta__curve--top svg path    { fill: var(--cta-curve-top); }
+  .cta-{{ section.id }} .cta__curve--bottom svg path { fill: var(--cta-curve-bottom); }
+
+  /* ── Inner ─────────────────────────────────────────────────── */
+  .cta-{{ section.id }} * { box-sizing: border-box; }
+
+  .cta-{{ section.id }} .cta__inner {
+    position: relative;
+    z-index: 2;
+    max-width: 840px;
+    margin-inline: auto;
+  }
+
+  /* ── Eyebrow ───────────────────────────────────────────────── */
+  .cta-{{ section.id }} .cta__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 16px;
+    font-family: var({{ section.settings.eyebrow_font }});
+    font-weight: 700;
+    font-size: clamp(12px, 1.2vw, 13px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cta-white);
+    line-height: 1;
+  }
+  .cta-{{ section.id }} .cta__eyebrow::before {
+    content: "";
+    width: 26px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+
+  /* ── Heading ───────────────────────────────────────────────── */
+  .cta-{{ section.id }} .cta__title {
+    margin: 0;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 800;
+    font-size: clamp(36px, 5.6vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -1px;
+    color: var(--cta-white);
+  }
+
+  .cta-{{ section.id }} .cta__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var({{ section.settings.script_font }});
+    font-weight: 400;
+    font-size: clamp(34px, 4.8vw, 54px);
+    line-height: 1.05;
+    color: var(--cta-script);
+  }
+
+  /* ── Body ──────────────────────────────────────────────────── */
+  .cta-{{ section.id }} .cta__body {
+    max-width: 640px;
+    margin: clamp(20px, 3vw, 28px) auto 0;
+    font-family: var({{ section.settings.body_font }});
+    font-weight: 400;
+    font-size: clamp(15px, 1.5vw, 18px);
+    line-height: 1.6;
+    color: rgba(255,255,255,0.9);
+  }
+
+  /* ── Buttons ───────────────────────────────────────────────── */
+  .cta-{{ section.id }} .cta__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: clamp(32px, 4.5vw, 44px);
+  }
+  .cta-{{ section.id }} .cta__row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cta-{{ section.id }} .cta__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 30px;
+    min-height: 52px;
+    border-radius: 999px;
+    font-family: var({{ section.settings.btn_font }});
+    font-weight: 700;
+    font-size: clamp(14px, 1.4vw, 15px);
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: transform 0.18s ease, background-color 0.18s ease;
+  }
+  .cta-{{ section.id }} .cta__btn span { transition: transform 0.18s ease; }
+  .cta-{{ section.id }} .cta__btn:hover span { transform: translateX(3px); }
+
+  .cta-{{ section.id }} .cta__btn--white {
+    background: var(--cta-white);
+    color: var(--cta-navy);
+  }
+  .cta-{{ section.id }} .cta__btn--white:hover { transform: translateY(-2px); }
+
+  .cta-{{ section.id }} .cta__btn--gold {
+    background: var(--cta-gold);
+    color: var(--cta-navy);
+  }
+  .cta-{{ section.id }} .cta__btn--gold:hover { transform: translateY(-2px); }
+
+  .cta-{{ section.id }} .cta__btn--outline {
+    background: transparent;
+    color: var(--cta-white);
+    border-color: rgba(255,255,255,0.7);
+  }
+  .cta-{{ section.id }} .cta__btn--outline:hover { background: rgba(255,255,255,0.12); }
+
+  .cta-{{ section.id }} .cta__btn:focus-visible {
+    outline: 3px solid rgba(255,255,255,0.6);
+    outline-offset: 3px;
+  }
+
+  /* ── Donation line ─────────────────────────────────────────── */
+  .cta-{{ section.id }} .cta__donate {
+    margin: clamp(36px, 5vw, 56px) auto 0;
+    max-width: 560px;
+    font-family: var({{ section.settings.donate_font }});
+    font-weight: 400;
+    font-size: clamp(13px, 1.3vw, 15px);
+    letter-spacing: 0.5px;
+    line-height: 1.7;
+    color: var(--cta-white);
+  }
+  .cta-{{ section.id }} .cta__donate a {
+    color: var(--cta-white);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ── Mobile ────────────────────────────────────────────────── */
+  @media screen and (max-width: 520px) {
+    .cta-{{ section.id }} .cta__row {
+      flex-direction: column;
+      width: 100%;
+      max-width: 360px;
+    }
+    .cta-{{ section.id }} .cta__btn { width: 100%; }
+    .cta-{{ section.id }} .cta__actions { width: 100%; }
+    .cta-{{ section.id }} .cta__btn--outline { max-width: 360px; }
+  }
+{%- endstyle -%}
+
+<div class="cta-{{ section.id }}">
+
+  {%- comment -%} Top curve {%- endcomment -%}
+  {%- if section.settings.show_curve_top -%}
+    <div class="cta__curve cta__curve--top" aria-hidden="true">
+      <svg viewBox="0 0 1440 44" preserveAspectRatio="none">
+        <path d="M0,0 L1440,0 L1440,8 Q720,72 0,8 Z"/>
+      </svg>
+    </div>
+  {%- endif -%}
+
+  <div class="cta__inner">
+
+    {%- if section.settings.eyebrow_text != blank -%}
+      <p class="cta__eyebrow">{{ section.settings.eyebrow_text | escape }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.heading_text != blank or section.settings.script_text != blank -%}
+      <h2 class="cta__title">
+        {{ section.settings.heading_text | escape }}
+        {%- if section.settings.script_text != blank -%}
+          <span class="cta__script">{{ section.settings.script_text | escape }}</span>
+        {%- endif -%}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.settings.body_text != blank -%}
+      <p class="cta__body">{{ section.settings.body_text | escape }}</p>
+    {%- endif -%}
+
+    {%- comment -%} Buttons {%- endcomment -%}
+    {%- if section.settings.btn1_label != blank or section.settings.btn2_label != blank or section.settings.btn3_label != blank -%}
+      <div class="cta__actions">
+        {%- if section.settings.btn1_label != blank or section.settings.btn2_label != blank -%}
+          <div class="cta__row">
+            {%- if section.settings.btn1_label != blank -%}
+              <a class="cta__btn cta__btn--white" href="{{ section.settings.btn1_url }}">
+                {{ section.settings.btn1_label | escape }}
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            {%- endif -%}
+            {%- if section.settings.btn2_label != blank -%}
+              <a class="cta__btn cta__btn--gold" href="{{ section.settings.btn2_url }}">
+                {{ section.settings.btn2_label | escape }}
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+        {%- if section.settings.btn3_label != blank -%}
+          <a class="cta__btn cta__btn--outline" href="{{ section.settings.btn3_url }}">
+            {{ section.settings.btn3_label | escape }}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.donate_text != blank -%}
+      <p class="cta__donate">
+        {{ section.settings.donate_text }}
+        {%- if section.settings.donate_link_label != blank -%}
+          · <a href="{{ section.settings.donate_link_url }}">{{ section.settings.donate_link_label | escape }}</a>
+        {%- endif -%}
+      </p>
+    {%- endif -%}
+
+  </div>
+
+  {%- comment -%} Bottom curve {%- endcomment -%}
+  {%- if section.settings.show_curve_bottom -%}
+    <div class="cta__curve cta__curve--bottom" aria-hidden="true">
+      <svg viewBox="0 0 1440 44" preserveAspectRatio="none">
+        <path d="M0,44 L1440,44 L1440,36 Q720,-28 0,36 Z"/>
+      </svg>
+    </div>
+  {%- endif -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "CTA \u2014 Biome Unlocked",
+  "tag": "section",
+  "class": "cta-biome-unlocked-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#f0512a"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image / texture",
+      "info": "Optional. Overlaid on the background color."
+    },
+    {
+      "type": "select",
+      "id": "bg_image_mode",
+      "label": "Background image display",
+      "options": [
+        { "value": "cover",  "label": "Cover (photo)" },
+        { "value": "repeat", "label": "Repeat (texture / tile)" }
+      ],
+      "default": "repeat"
+    },
+    {
+      "type": "range",
+      "id": "bg_image_opacity",
+      "label": "Background image opacity",
+      "min": 5,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Curved dividers"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_curve_top",
+      "label": "Show top curve",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "curve_top_color",
+      "label": "Top curve color",
+      "info": "Should match the background color of the section above.",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_curve_bottom",
+      "label": "Show bottom curve",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "curve_bottom_color",
+      "label": "Bottom curve color",
+      "info": "Should match the background color of the section below.",
+      "default": "#1b2240"
+    },
+    {
+      "type": "header",
+      "content": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "Love Serves All"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading text",
+      "default": "Your Unique Biome."
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Script line"
+    },
+    {
+      "type": "text",
+      "id": "script_text",
+      "label": "Script line text",
+      "default": "Unlocked"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-accent-family"
+    },
+    {
+      "type": "header",
+      "content": "Body text"
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "Join 50,000+ biome hackers who\u2019ve returned to their original design. Sophisticated science. Joyful results. Every smile \u2014 uniquely yours."
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Primary button (white)"
+    },
+    {
+      "type": "text",
+      "id": "btn1_label",
+      "label": "Label",
+      "default": "Shop Rainbow Smile"
+    },
+    {
+      "type": "url",
+      "id": "btn1_url",
+      "label": "URL"
+    },
+    {
+      "type": "header",
+      "content": "Secondary button (gold)"
+    },
+    {
+      "type": "text",
+      "id": "btn2_label",
+      "label": "Label",
+      "default": "Free Biome Book"
+    },
+    {
+      "type": "url",
+      "id": "btn2_url",
+      "label": "URL"
+    },
+    {
+      "type": "header",
+      "content": "Tertiary button (outline)"
+    },
+    {
+      "type": "text",
+      "id": "btn3_label",
+      "label": "Label",
+      "default": "Join Community"
+    },
+    {
+      "type": "url",
+      "id": "btn3_url",
+      "label": "URL"
+    },
+    {
+      "type": "select",
+      "id": "btn_font",
+      "label": "Button font (all)",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Donation line"
+    },
+    {
+      "type": "text",
+      "id": "donate_text",
+      "label": "Donation text",
+      "default": "Donates to Underserved Communities"
+    },
+    {
+      "type": "text",
+      "id": "donate_link_label",
+      "label": "Link label",
+      "default": "springboardconnectivity.org"
+    },
+    {
+      "type": "url",
+      "id": "donate_link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "select",
+      "id": "donate_font",
+      "label": "Donation font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Navy color (button text)",
+      "default": "#1b2240"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Gold button color",
+      "default": "#f3bd42"
+    },
+    {
+      "type": "color",
+      "id": "script_color",
+      "label": "Script line color",
+      "default": "#f6c873"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 120
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA \u2014 Biome Unlocked"
+    }
+  ]
+}
+{% endschema %}

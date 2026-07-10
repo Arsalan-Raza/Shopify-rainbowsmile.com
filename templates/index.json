@@ -1,0 +1,54 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "cta_biome_unlocked_jMNjxd": {
+      "type": "cta-biome-unlocked",
+      "disabled": true,
+      "name": "CTA — Biome Unlocked",
+      "settings": {
+        "bg_color": "#f0512a",
+        "bg_image_mode": "repeat",
+        "bg_image_opacity": 100,
+        "show_curve_top": true,
+        "curve_top_color": "#ffffff",
+        "show_curve_bottom": true,
+        "curve_bottom_color": "#262949",
+        "eyebrow_text": "Love Serves All",
+        "eyebrow_font": "--font-tag-family",
+        "heading_text": "Your Unique Biome.",
+        "heading_font": "--font-heading-family",
+        "script_text": "Unlocked",
+        "script_font": "--font-accent-family",
+        "body_text": "Join 50,000+ biome hackers who’ve returned to their original design. Sophisticated science. Joyful results. Every smile — uniquely yours.",
+        "body_font": "--font-heading-family",
+        "btn1_label": "Shop Rainbow Smile",
+        "btn1_url": "",
+        "btn2_label": "Free Biome Book",
+        "btn2_url": "",
+        "btn3_label": "Join Community",
+        "btn3_url": "",
+        "btn_font": "--font-heading-family",
+        "donate_text": "Donates to Underserved Communities",
+        "donate_link_label": "springboardconnectivity.org",
+        "donate_link_url": "",
+        "donate_font": "--font-tag-family",
+        "navy_color": "#1b2240",
+        "gold_color": "#f3bd42",
+        "script_color": "#f6c873",
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
+    }
+  },
+  "order": [
+    "cta_biome_unlocked_jMNjxd"
+  ]
+}
