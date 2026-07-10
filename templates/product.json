@@ -83,6 +83,21 @@
       ],
       "settings": {
         "enable_sticky_info": true,
+        "pdp_bg": "#f5f0e8",
+        "pdp_navy": "#232748",
+        "pdp_coral": "#ef4d24",
+        "pdp_gold": "#c39a4e",
+        "pdp_gold_bg": "#fdf3dc",
+        "pdp_green": "#2d6a4f",
+        "pdp_body": "#4a4a4a",
+        "pdp_meta": "#888888",
+        "pdp_line": "#e0dbd0",
+        "pdp_media": "#eceee0",
+        "pdp_star": "#f0a93a",
+        "pdp_heading_font": "--font-heading-family",
+        "pdp_script_font": "--font-accent-family",
+        "pdp_body_font": "--font-heading-family",
+        "pdp_mono_font": "--font-tag-family",
         "color_scheme": "scheme-1",
         "media_size": "large",
         "constrain_to_viewport": true,
@@ -255,27 +270,365 @@
         "pill_font": "--font-tag-family",
         "marquee_label": "Product attributes",
         "bg_color": "#262949",
-        "gold_color": "#FABE54",
+        "gold_color": "#fabe54",
         "body_color": "#b6b8cd",
         "eyebrow_color": "#9497b4"
+      }
+    },
+    "on_the_go_3Wa7qR": {
+      "type": "on-the-go",
+      "blocks": {
+        "checklist_item_V6FPdb": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Toss in your tote bag or purse"
+          }
+        },
+        "checklist_item_tXH7yf": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Keep in your car (store in cool place)"
+          }
+        },
+        "checklist_item_HRUarC": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Pack in your carry-on"
+          }
+        },
+        "checklist_item_7qXFQn": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Add to your gym bag"
+          }
+        },
+        "checklist_item_47fN3E": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Miron Glass bottle with travel cap"
+          }
+        },
+        "benefit_kTXkAb": {
+          "type": "benefit",
+          "settings": {
+            "title": "Fresher breath",
+            "desc": "lasts naturally"
+          }
+        },
+        "benefit_iMU7Hj": {
+          "type": "benefit",
+          "settings": {
+            "title": "Comfort",
+            "desc": "extends beyond the mouth"
+          }
+        },
+        "benefit_yefpiL": {
+          "type": "benefit",
+          "settings": {
+            "title": "Daily energy",
+            "desc": "feels steadier"
+          }
+        },
+        "benefit_xrTV6E": {
+          "type": "benefit",
+          "settings": {
+            "title": "Confidence",
+            "desc": "returns to social moments"
+          }
+        }
+      },
+      "block_order": [
+        "checklist_item_V6FPdb",
+        "checklist_item_tXH7yf",
+        "checklist_item_HRUarC",
+        "checklist_item_7qXFQn",
+        "checklist_item_47fN3E",
+        "benefit_kTXkAb",
+        "benefit_iMU7Hj",
+        "benefit_yefpiL",
+        "benefit_xrTV6E"
+      ],
+      "name": "On The Go",
+      "settings": {
+        "eyebrow_text": "Made For",
+        "eyebrow_font": "--font-tag-family",
+        "heading_text": "Made for an",
+        "heading_font": "--font-heading-family",
+        "script_text": "On-the-Go You.",
+        "script_font": "--font-accent-family",
+        "list_font": "--font-heading-family",
+        "panel_title": "Oxygen + Hydration =",
+        "panel_em": "Life",
+        "panel_title_font": "--font-heading-family",
+        "panel_sub": "When your mouth ecosystem finds balance:",
+        "panel_sub_font": "--font-heading-family",
+        "benefit_title_font": "--font-heading-family",
+        "benefit_desc_font": "--font-heading-family",
+        "image": "shopify://shop_images/32bd46c813fb195a74e754c5d3a1d888bfe93585.png",
+        "tag_top": "Simple Ingredients",
+        "tag_bottom": "Supports All Day Freshness",
+        "tag_font": "--font-tag-family",
+        "caption": "100% Organic Coconut Glycerin infused with Bio-available Oxygen Nano-Bubbles and Fourth Phase Water with Bio-field Resonance Technology.",
+        "caption_font": "--font-heading-family",
+        "bg_color": "#ffffff",
+        "navy_color": "#2b3054",
+        "coral_color": "#f0522c",
+        "gold_color": "#f5c66a",
+        "gold_text_color": "#e8a53a",
+        "body_color": "#3f4256",
+        "sub_color": "#5c5f70",
+        "panel_bg_color": "#f4efe4",
+        "ink_color": "#1f1f1f"
+      }
+    },
+    "how_to_use_33aggh": {
+      "type": "how-to-use",
+      "blocks": {
+        "step_cW6E6T": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Pump + Spray",
+            "body": "Choose sublingual, targeted freshness, or spray throughout the day for instant freshness.",
+            "meta": "0–5 Seconds"
+          }
+        },
+        "step_fVUhLf": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "The 60-Second Hold",
+            "body": "Apply 1-2 drops under the tongue or spray directly into the mouth. Hold for 30–60 seconds to allow to penetrate and activate.",
+            "meta": "30 Seconds"
+          }
+        },
+        "step_YcRdtT": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Safe to Swallow",
+            "body": "Our formula is 100% natural, made from Certified Organic Coconut Glycerin. Gentle, nourishing, and completely safe.",
+            "meta": "20 Seconds"
+          }
+        },
+        "step_LbC4Rm": {
+          "type": "step",
+          "settings": {
+            "number": "04",
+            "title": "Feel Alive",
+            "body": "Experience the fresh vitality of a truly living, balanced oral ecosystem. Naturally sweet taste. Clean — not sterilized. Alive.",
+            "meta": "Every Morning"
+          }
+        }
+      },
+      "block_order": [
+        "step_cW6E6T",
+        "step_fVUhLf",
+        "step_YcRdtT",
+        "step_LbC4Rm"
+      ],
+      "name": "How To Use",
+      "settings": {
+        "eyebrow_text": "The Daily Reset",
+        "eyebrow_font": "--font-tag-family",
+        "heading_text": "60 Seconds",
+        "heading_font": "--font-heading-family",
+        "script_text": "to freshness",
+        "script_font": "--font-accent-family",
+        "subtitle_text": "A simple 60-second oral reset for lasting wellness",
+        "subtitle_font": "--font-heading-family",
+        "columns_desktop": "4",
+        "num_font": "--font-heading-family",
+        "card_title_font": "--font-heading-family",
+        "card_body_font": "--font-heading-family",
+        "card_meta_font": "--font-tag-family",
+        "bg_color": "#ef4a22",
+        "script_color": "#f7ca6a",
+        "sub_color": "#fbd9cc",
+        "num_bg_color": "#ffffff",
+        "num_text_color": "#ef4a22",
+        "card_bg_color": "#232748",
+        "card_body_color": "#c9ccdd",
+        "card_meta_color": "#8f93ab",
+        "gold_color": "#f6b944",
+        "gold_ink_color": "#26202a",
+        "gold_body_color": "#4a3d28",
+        "gold_meta_color": "#8a7343"
+      }
+    },
+    "comparison_table_g4YXzi": {
+      "type": "comparison-table",
+      "blocks": {
+        "row_67hRkT": {
+          "type": "row",
+          "settings": {
+            "feature": "Supports the microbiome",
+            "brand_check": true,
+            "other_check": false
+          }
+        },
+        "row_73tVMA": {
+          "type": "row",
+          "settings": {
+            "feature": "Delivers oxygen",
+            "brand_check": true,
+            "other_check": false
+          }
+        },
+        "row_7LPB9h": {
+          "type": "row",
+          "settings": {
+            "feature": "Long-lasting hydration",
+            "brand_check": true,
+            "other_check": false
+          }
+        },
+        "row_mCVgCW": {
+          "type": "row",
+          "settings": {
+            "feature": "Organic coconut glycerin",
+            "brand_check": true,
+            "other_check": false
+          }
+        },
+        "row_pRndfw": {
+          "type": "row",
+          "settings": {
+            "feature": "Biome hacking",
+            "brand_check": true,
+            "other_check": false
+          }
+        }
+      },
+      "block_order": [
+        "row_67hRkT",
+        "row_73tVMA",
+        "row_7LPB9h",
+        "row_mCVgCW",
+        "row_pRndfw"
+      ],
+      "name": "Comparison Table",
+      "settings": {
+        "heading_text": "Bad Breath Isn’t Normal.",
+        "heading_font": "--font-heading-family",
+        "script_text": "Compare.",
+        "script_font": "--font-accent-family",
+        "compare_label": "Compare to:",
+        "label_font": "--font-tag-family",
+        "brand_image": "shopify://shop_images/Gemini_Generated_Image_h2oo7ch2oo7ch2oo_1_1.png",
+        "brand_name": "Rainbow Smile",
+        "brand_font": "--font-tag-family",
+        "other_label": "Traditional\nOral Care",
+        "other_font": "--font-tag-family",
+        "feature_font": "--font-heading-family",
+        "bg_color": "#ffffff",
+        "navy_color": "#232748",
+        "accent_color": "#f4502b",
+        "gold_color": "#f0b03c",
+        "muted_color": "#b6bacb",
+        "check_color": "#3cb043",
+        "cross_color": "#d8cec0",
+        "row_color": "#e9e9ee",
+        "alt_color": "#fbfbfc",
+        "border_color": "#ececf1"
+      }
+    },
+    "reviews_slider_PKVNUe": {
+      "type": "reviews-slider",
+      "blocks": {
+        "review_zGRaPR": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "I have a sensitive palate and can't handle minty products. Pure Cleanse is perfect — gentle, clean, no overwhelming taste.",
+            "name": "Linda P.",
+            "meta": "London, UK · Pure Cleanse"
+          }
+        },
+        "review_7YdG7d": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Gave this to my mum and she says her gums have never felt better. The gentle formula is exactly what she needed.",
+            "name": "Robert M.",
+            "meta": "Toronto · Pure Cleanse"
+          }
+        },
+        "review_iwAw3d": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "As someone who avoids flavored oral products, this was a relief to find. Just works, no fuss.",
+            "name": "Devi K.",
+            "meta": "Mumbai · Pure Cleanse"
+          }
+        }
+      },
+      "block_order": [
+        "review_zGRaPR",
+        "review_7YdG7d",
+        "review_iwAw3d"
+      ],
+      "name": "Reviews Slider",
+      "settings": {
+        "heading_text": "What customers are",
+        "heading_font": "--font-heading-family",
+        "script_text": "saying.",
+        "script_font": "--font-accent-family",
+        "rating_score": "4.9",
+        "review_count": "1,800+ verified reviews",
+        "quote_font": "--font-heading-family",
+        "name_font": "--font-heading-family",
+        "meta_font": "--font-tag-family",
+        "bg_color": "#f4efe4",
+        "navy_color": "#232748",
+        "accent_color": "#f4502b",
+        "star_color": "#f0b03c",
+        "body_color": "#3f4256",
+        "meta_color": "#a09383",
+        "card_color": "#fffdfa"
       }
     },
     "related-products": {
       "type": "related-products",
       "settings": {
-        "heading": "You may also like",
-        "heading_size": "h2",
+        "heading_text": "Products",
+        "heading_font": "--font-heading-family",
+        "script_text": "recommendation",
+        "script_font": "--font-accent-family",
         "products_to_show": 4,
-        "columns_desktop": 4,
-        "columns_mobile": "2",
-        "color_scheme": "scheme-1",
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "padding_top": 36,
-        "padding_bottom": 28
+        "card_width": 330,
+        "badge_text": "Subscribe & Save",
+        "badge_font": "--font-tag-family",
+        "meta_font": "--font-tag-family",
+        "name_font": "--font-heading-family",
+        "bg_color": "#ffffff",
+        "navy_color": "#232748",
+        "accent_color": "#f4502b",
+        "gold_color": "#f5b731",
+        "meta_color": "#f0a93a",
+        "line_color": "#ececec",
+        "card_color": "#ffffff"
+      }
+    },
+    "sticky_atc_FJr7Ue": {
+      "type": "sticky-atc",
+      "name": "Sticky Add to Cart",
+      "settings": {
+        "enable": true,
+        "show_image": true,
+        "show_price": true,
+        "price_suffix": "Subscribe & Save",
+        "button_text": "Add to Cart",
+        "name_font": "--font-heading-family",
+        "price_font": "--font-heading-family",
+        "btn_font": "--font-heading-family",
+        "bg_color": "#ffffff",
+        "navy_color": "#232748",
+        "meta_color": "#c39a4e",
+        "btn_color": "#ef4d24",
+        "btn_hover_color": "#dc411b",
+        "bar_label": "Sticky add to cart"
       }
     }
   },
@@ -283,6 +636,11 @@
     "main",
     "ingredients_band_GRpGd9",
     "how_it_works_6PzQUH",
-    "related-products"
+    "on_the_go_3Wa7qR",
+    "how_to_use_33aggh",
+    "comparison_table_g4YXzi",
+    "reviews_slider_PKVNUe",
+    "related-products",
+    "sticky_atc_FJr7Ue"
   ]
 }
