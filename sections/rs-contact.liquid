@@ -37,14 +37,6 @@
   }
 
   /* ── Form column ───────────────────────────────────────────── */
-  @media screen and (min-width: 860px) {
-    .rsc-{{ section.id }} .rsc__form-col {
-      position: sticky;
-      top: clamp(20px, 4vw, 40px);
-      align-self: start;
-    }
-  }
-
   .rsc-{{ section.id }} .rsc__title {
     margin: 0 0 8px;
     font-family: var({{ section.settings.heading_font }});
@@ -65,7 +57,7 @@
     display: block;
     margin-bottom: 8px;
     font-family: var({{ section.settings.label_font }});
-    /* font-weight: 700; */
+    font-weight: 700;
     font-size: clamp(12px, 1.1vw, 13px);
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -165,7 +157,7 @@
     border-radius: 999px;
     background: var(--c-green-bg);
     font-family: var({{ section.settings.label_font }});
-    /* font-weight: 700; */
+    font-weight: 700;
     font-size: clamp(12px, 1.1vw, 13px);
     letter-spacing: 0.8px;
     text-transform: uppercase;
@@ -227,7 +219,7 @@
   .rsc-{{ section.id }} .rsc__quick-label {
     margin: clamp(26px, 3.5vw, 32px) 0 14px;
     font-family: var({{ section.settings.label_font }});
-    /* font-weight: 700; */
+    font-weight: 700;
     font-size: clamp(12px, 1.1vw, 13px);
     letter-spacing: 1px;
     text-transform: uppercase;

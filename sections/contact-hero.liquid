@@ -80,6 +80,34 @@
     text-shadow: 0 3px 20px rgba(0,0,0,0.35);
   }
 
+  /* ── Logo wordmark ─────────────────────────────────────────── */
+  .hero-{{ section.id }} .hero__logo {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(-72px, -6vw, -104px);
+    transform: translateX(-50%);
+    width: clamp(240px, 30vw, 420px);
+    z-index: 2;
+    color: #ffffff;
+  }
+  .hero-{{ section.id }} .hero__logo svg  { width: 100%; height: auto; display: block; }
+  .hero-{{ section.id }} .hero__logo img  { width: 100%; height: auto; display: block; }
+  .hero-{{ section.id }} .hero__logo-word {
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 800;
+    font-size: 46px;
+    letter-spacing: -1px;
+    fill: #ffffff;
+  }
+  .hero-{{ section.id }} .hero__logo-arc {
+    font-family: var({{ section.settings.eyebrow_font }});
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    fill: #ffffff;
+  }
+
   /* ── Bottom curve ──────────────────────────────────────────── */
   .hero-{{ section.id }} .hero__curve {
     position: absolute;
@@ -133,6 +161,30 @@
       </h1>
     {%- endif -%}
   </div>
+
+  {%- comment -%} Logo wordmark {%- endcomment -%}
+  {%- if section.settings.show_logo -%}
+    <div class="hero__logo" aria-hidden="true">
+      {%- if section.settings.logo != blank -%}
+        {{
+          section.settings.logo
+          | image_url: width: 500
+          | image_tag: loading: 'lazy', alt: ''
+        }}
+      {%- else -%}
+        <svg viewBox="0 0 220 150" role="img" aria-label="ubu — unique biome unlocked">
+          <defs>
+            <path id="heroTagArc-{{ section.id }}" d="M22,78 A92,92 0 0,0 198,78" fill="none"/>
+          </defs>
+          <text x="110" y="58" text-anchor="middle" class="hero__logo-word">ubu</text>
+          <path d="M66,66 A46,34 0 0,0 154,66" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+          <text class="hero__logo-arc">
+            <textPath href="#heroTagArc-{{ section.id }}" startOffset="50%" text-anchor="middle">unique biome unlocked</textPath>
+          </text>
+        </svg>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
 
   {%- comment -%} Bottom curve {%- endcomment -%}
   {%- if section.settings.show_curve -%}
@@ -256,6 +308,22 @@
         { "value": "--font-accent-family",  "label": "Alkaline Test" }
       ],
       "default": "--font-accent-family"
+    },
+    {
+      "type": "header",
+      "content": "Logo wordmark"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_logo",
+      "label": "Show logo wordmark",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image",
+      "info": "Upload the UBU badge. Leave blank to use the built-in SVG."
     },
     {
       "type": "header",
