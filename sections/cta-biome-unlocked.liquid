@@ -25,12 +25,12 @@
     }
   }
 
-  /* Background image layer */
+  /* Background image layer — sits above the bg-color, below content (z:2) */
   #shopify-section-{{ section.id }}::before {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: -1;
+    z-index: 0;
     {%- if section.settings.bg_image != blank -%}
       background-image: url("{{ section.settings.bg_image | image_url: width: 1800 }}");
       {%- if section.settings.bg_image_mode == 'repeat' -%}

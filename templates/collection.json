@@ -62,21 +62,23 @@
         "eyebrow_font": "--font-tag-family",
         "heading_text": "Shop All",
         "heading_font": "--font-heading-family",
-        "script_text": "OG3 Drops.",
-        "script_font": "--font-accent-family",
+        "script_before": "OG3",
         "show_tm": true,
+        "script_after": "Drops.",
+        "script_font": "--font-accent-family",
         "subtitle_text": "3 flavors · 2 formats · 6 ways to restore your living mouth",
         "subtitle_font": "--font-heading-family",
         "badge_font": "--font-tag-family",
         "show_curve": true,
         "curve_color": "#ffffff",
-        "bg_color": "#EF4F28",
+        "bg_color": "#ef4f28",
         "script_color": "#f7c85f",
         "tm_color": "#23324a"
       }
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "disabled": true,
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
@@ -91,14 +93,228 @@
         "enable_filtering": true,
         "filter_type": "horizontal",
         "enable_sorting": true,
+        "pg_heading_font": "--font-heading-family",
+        "pg_body_font": "--font-heading-family",
+        "pg_mono_font": "--font-tag-family",
+        "pg_bg": "#fdf8f2",
+        "pg_navy": "#1b2240",
+        "pg_coral": "#ef4d24",
+        "pg_gold": "#f5c04a",
+        "pg_muted": "#a9917c",
+        "pg_line": "#e8e0d6",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "shop_product_grid_gK9zGE": {
+      "type": "shop-product-grid",
+      "blocks": {
+        "format_pill_xPgR7q": {
+          "type": "format_pill",
+          "settings": {
+            "icon": "🧴",
+            "label": "Pump",
+            "tag": "pump"
+          }
+        },
+        "format_pill_4NRJ6e": {
+          "type": "format_pill",
+          "settings": {
+            "icon": "💨",
+            "label": "Spray",
+            "tag": "spray"
+          }
+        },
+        "flavor_pill_tw8biH": {
+          "type": "flavor_pill",
+          "settings": {
+            "icon": "🌿",
+            "label": "Minty Fusion",
+            "collection": ""
+          }
+        },
+        "flavor_pill_bRpmA4": {
+          "type": "flavor_pill",
+          "settings": {
+            "icon": "🤍",
+            "label": "Pure Cleanse",
+            "collection": ""
+          }
+        },
+        "flavor_pill_GKEpYW": {
+          "type": "flavor_pill",
+          "settings": {
+            "icon": "🔥",
+            "label": "Zesty Cinnamon",
+            "collection": "frontpage"
+          }
+        }
+      },
+      "block_order": [
+        "format_pill_xPgR7q",
+        "format_pill_4NRJ6e",
+        "flavor_pill_tw8biH",
+        "flavor_pill_bRpmA4",
+        "flavor_pill_GKEpYW"
+      ],
+      "name": "Shop Product Grid",
+      "settings": {
+        "products_per_page": 12,
+        "columns_desktop": 3,
+        "format_label": "Format",
+        "flavor_label": "Flavor",
+        "all_label": "All",
+        "all_products_url": "",
+        "showing_prefix": "Showing",
+        "products_word": "products",
+        "show_sort": true,
+        "sort_label": "Sort products",
+        "sort_featured": "Sort: Featured",
+        "sort_best": "Sort: Best Selling",
+        "sort_price_asc": "Sort: Price Low–High",
+        "sort_price_desc": "Sort: Price High–Low",
+        "sort_az": "Sort: A–Z",
+        "sort_za": "Sort: Z–A",
+        "sort_newest": "Sort: Newest",
+        "badge_tag": "subscribe-and-save",
+        "badge_text": "Subscribe & Save",
+        "add_to_cart_label": "Add to Cart",
+        "sold_out_label": "Sold Out",
+        "view_label": "View",
+        "empty_message": "No products found in this collection.",
+        "mono_font": "--font-tag-family",
+        "heading_font": "--font-heading-family",
+        "body_font": "--font-heading-family",
+        "bg_color": "#fdf8f2",
+        "navy_color": "#1b2240",
+        "coral_color": "#ef4d24",
+        "gold_color": "#f5c04a",
+        "muted_color": "#a9917c",
+        "desc_color": "#8a7a6b",
+        "line_color": "#e8e0d6"
+      }
+    },
+    "bundle_section_wTjATT": {
+      "type": "bundle-section",
+      "blocks": {
+        "stat_VzXgiA": {
+          "type": "stat",
+          "settings": {
+            "number": "3",
+            "label": "Flavors"
+          }
+        },
+        "stat_bNCRLB": {
+          "type": "stat",
+          "settings": {
+            "number": "11%",
+            "label": "Subscribe Saving"
+          }
+        },
+        "stat_YeFmdj": {
+          "type": "stat",
+          "settings": {
+            "number": "$120",
+            "label": "Bundle Price"
+          }
+        }
+      },
+      "block_order": [
+        "stat_VzXgiA",
+        "stat_bNCRLB",
+        "stat_YeFmdj"
+      ],
+      "name": "Bundle",
+      "settings": {
+        "eyebrow_text": "Best Value",
+        "eyebrow_font": "--font-tag-family",
+        "heading_text": "Can't decide?",
+        "heading_font": "--font-heading-family",
+        "script_text": "Try all three.",
+        "script_font": "--font-accent-family",
+        "body_text": "<p>The 3-Flavor Bundle gives you one of each — Minty Fusion, Pure Cleanse, and Zesty Cinnamon — so you can find your ritual and subscribe to your favorite.</p>",
+        "body_font": "--font-heading-family",
+        "stat_num_font": "--font-heading-family",
+        "stat_label_font": "--font-tag-family",
+        "btn_label": "Add Bundle to Cart",
+        "btn_url": "",
+        "link_label": "Learn More",
+        "link_url": "",
+        "btn_font": "--font-heading-family",
+        "image": "shopify://shop_images/Overlay_Border.png",
+        "bg_color": "#262a4d",
+        "gold_color": "#f2b544",
+        "coral_color": "#ef4d24",
+        "body_text_color": "#b9bcd0",
+        "label_color": "#cfd2e2"
+      }
+    },
+    "why_subscribe_eEHYHp": {
+      "type": "why-subscribe",
+      "blocks": {
+        "card_Wnk9iR": {
+          "type": "card",
+          "settings": {
+            "icon": "save",
+            "title": "Save 11% Every Order",
+            "body": "Automatic discount applied on every delivery — no codes needed, ever."
+          }
+        },
+        "card_kPN3wE": {
+          "type": "card",
+          "settings": {
+            "icon": "shipping",
+            "title": "Free Priority Shipping",
+            "body": "Subscribers get free shipping on every order, regardless of order size."
+          }
+        },
+        "card_UcadG6": {
+          "type": "card",
+          "settings": {
+            "icon": "pause",
+            "title": "Pause or Cancel Anytime",
+            "body": "No lock-ins. No fees. Change, pause or cancel from your account in seconds."
+          }
+        },
+        "card_UVqrBg": {
+          "type": "card",
+          "settings": {
+            "icon": "star",
+            "title": "Early Access & Perks",
+            "body": "Subscribers get first access to new flavors, limited editions, and community events."
+          }
+        }
+      },
+      "block_order": [
+        "card_Wnk9iR",
+        "card_kPN3wE",
+        "card_UcadG6",
+        "card_UVqrBg"
+      ],
+      "name": "Why Subscribe",
+      "settings": {
+        "heading_text": "Why subscribe?",
+        "heading_font": "--font-heading-family",
+        "script_text": "Here's why.",
+        "script_font": "--font-accent-family",
+        "columns_desktop": 4,
+        "card_title_font": "--font-heading-family",
+        "card_body_font": "--font-heading-family",
+        "bg_color": "#ffffff",
+        "navy_color": "#2b3054",
+        "accent_color": "#f4502b",
+        "gold_color": "#f0b542",
+        "card_color": "#f5ece0",
+        "body_color": "#6f7285"
       }
     }
   },
   "order": [
     "banner",
     "shop_page_header_Wj78BY",
-    "product-grid"
+    "product-grid",
+    "shop_product_grid_gK9zGE",
+    "bundle_section_wTjATT",
+    "why_subscribe_eEHYHp"
   ]
 }

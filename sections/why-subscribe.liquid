@@ -1,0 +1,388 @@
+{%- style -%}
+  /* ── Section wrapper ───────────────────────────────────────── */
+  #shopify-section-{{ section.id }} {
+    --ws-navy:   {{ section.settings.navy_color }};
+    --ws-accent: {{ section.settings.accent_color }};
+    --ws-gold:   {{ section.settings.gold_color }};
+    --ws-body:   {{ section.settings.body_color }};
+    --ws-card:   {{ section.settings.card_color }};
+
+    background: {{ section.settings.bg_color }};
+    padding-block: clamp(48px, 7vw, 88px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  .ws-{{ section.id }} * { box-sizing: border-box; }
+  .ws-{{ section.id }} { max-width: 1240px; margin-inline: auto; }
+
+  /* ── Header ────────────────────────────────────────────────── */
+  .ws-{{ section.id }} .ws__head {
+    text-align: center;
+    margin-bottom: clamp(32px, 5vw, 56px);
+  }
+  .ws-{{ section.id }} .ws__title {
+    margin: 0;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 800;
+    font-size: clamp(32px, 4.2vw, 50px);
+    line-height: 1.04;
+    letter-spacing: -0.5px;
+    color: var(--ws-navy);
+  }
+  .ws-{{ section.id }} .ws__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var({{ section.settings.script_font }});
+    font-weight: 400;
+    font-size: clamp(30px, 3.8vw, 46px);
+    line-height: 1.08;
+    color: var(--ws-accent);
+  }
+
+  /* ── Cards grid ────────────────────────────────────────────── */
+  .ws-{{ section.id }} .ws__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+    gap: clamp(16px, 1.8vw, 22px);
+  }
+  .ws-{{ section.id }} .ws__card {
+    background: var(--ws-card);
+    border-radius: 14px;
+    padding: clamp(26px, 2.6vw, 34px) clamp(20px, 2vw, 26px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .ws-{{ section.id }} .ws__icon {
+    color: var(--ws-gold);
+    margin-bottom: clamp(16px, 2vw, 22px);
+    display: block;
+  }
+  .ws-{{ section.id }} .ws__icon svg { width: 32px; height: 32px; display: block; }
+  .ws-{{ section.id }} .ws__card-title {
+    margin: 0 0 12px;
+    font-family: var({{ section.settings.card_title_font }});
+    font-weight: 700;
+    font-size: clamp(15px, 1.4vw, 17px);
+    line-height: 1.25;
+    color: var(--ws-navy);
+  }
+  .ws-{{ section.id }} .ws__card-body {
+    margin: 0;
+    font-family: var({{ section.settings.card_body_font }});
+    font-weight: 400;
+    font-size: clamp(13px, 1.2vw, 14px);
+    line-height: 1.6;
+    color: var(--ws-body);
+  }
+
+  /* ── Responsive ─────────────────────────────────────────────── */
+  @media screen and (max-width: 979px) {
+    .ws-{{ section.id }} .ws__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media screen and (max-width: 520px) {
+    .ws-{{ section.id }} .ws__grid { grid-template-columns: 1fr; gap: 14px; }
+    .ws-{{ section.id }} .ws__card { padding: 28px 24px; }
+  }
+{%- endstyle -%}
+
+<div class="ws-{{ section.id }}">
+  <div class="ws__inner">
+
+    {%- if section.settings.heading_text != blank or section.settings.script_text != blank -%}
+      <header class="ws__head">
+        <h2 class="ws__title">
+          {{- section.settings.heading_text | escape -}}
+          {%- if section.settings.script_text != blank -%}
+            <span class="ws__script">{{ section.settings.script_text | escape }}</span>
+          {%- endif -%}
+        </h2>
+      </header>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="ws__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'card' -%}
+            <article class="ws__card" {{ block.shopify_attributes }}>
+
+              <span class="ws__icon" aria-hidden="true">
+                {%- case block.settings.icon -%}
+                  {%- when 'save' -%}
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M13 4h6l-2.2 3.4a1 1 0 0 1-1.6 0L13 4Z"/>
+                      <path d="M16 7.4c5 0 9 4.6 9 10.3S21 28 16 28 7 23.4 7 17.7s4-10.3 9-10.3Z"/>
+                      <path d="M16 12.6v8.6M18.3 14.6h-3.5a1.7 1.7 0 0 0 0 3.4h2.4a1.7 1.7 0 0 1 0 3.4h-3.6"/>
+                    </svg>
+                  {%- when 'shipping' -%}
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M14.4 19.6c-1.4-1.4-2.2-3-2.2-3s2.4-6.2 7.6-9.2c3.2-1.8 6.2-1.6 6.2-1.6s.2 3-1.6 6.2c-3 5.2-9.2 7.6-9.2 7.6s-1.6-.8-.8 0Z"/>
+                      <circle cx="20.4" cy="11.6" r="1.9"/>
+                      <path d="M12.2 16.6l-4.4 1.2 2.6 2.6M15.4 19.8l-1.2 4.4 2.6-2.6"/>
+                      <path d="M9.6 22.4c-1.4 1.4-2 5-2 5s3.6-.6 5-2a2.1 2.1 0 0 0-3-3Z"/>
+                    </svg>
+                  {%- when 'pause' -%}
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="6" y="6" width="20" height="20" rx="3"/>
+                      <path d="M13.4 12v8M18.6 12v8"/>
+                    </svg>
+                  {%- when 'star' -%}
+                    <svg viewBox="0 0 32 32" fill="currentColor">
+                      <path d="M19 5.5c.9 4.1 2.4 5.6 6.5 6.5-4.1.9-5.6 2.4-6.5 6.5-.9-4.1-2.4-5.6-6.5-6.5 4.1-.9 5.6-2.4 6.5-6.5Z"/>
+                      <path d="M10.5 17c.5 2.4 1.4 3.3 3.8 3.8-2.4.5-3.3 1.4-3.8 3.8-.5-2.4-1.4-3.3-3.8-3.8 2.4-.5 3.3-1.4 3.8-3.8Z"/>
+                    </svg>
+                  {%- when 'leaf' -%}
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 26c2-8 8-14 18-14-8 0-14 6-18 14Z"/>
+                      <path d="M6 26c4-4 10-7 18-7"/>
+                    </svg>
+                  {%- when 'shield' -%}
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 4l10 4v6c0 6.6-4.2 12.2-10 14C10.2 26.2 6 20.6 6 14v-6l10-4Z"/>
+                      <path d="M11.5 16.5l3 3 6-6"/>
+                    </svg>
+                  {%- when 'gift' -%}
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="4" y="13" width="24" height="4" rx="1"/>
+                      <rect x="6" y="17" width="20" height="11" rx="1"/>
+                      <path d="M16 13v15"/>
+                      <path d="M12 13c0-2.2 1.8-4 4-4s4 1.8 4 4"/>
+                      <path d="M12 9c-2 0-4 1-4 4h4V9ZM20 9c2 0 4 1 4 4h-4V9Z"/>
+                    </svg>
+                  {%- when 'heart' -%}
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 27S5 20.4 5 12.4C5 8.8 7.9 6 11.5 6c2 0 3.8.9 4.5 2.3C16.7 6.9 18.5 6 20.5 6 24.1 6 27 8.8 27 12.4 27 20.4 16 27 16 27Z"/>
+                    </svg>
+                  {%- when 'clock' -%}
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="16" cy="16" r="11"/>
+                      <path d="M16 10v6l4 3"/>
+                    </svg>
+                  {%- else -%}
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="16" cy="16" r="11"/>
+                      <path d="M16 12v4l3 3"/>
+                    </svg>
+                {%- endcase -%}
+              </span>
+
+              {%- if block.settings.title != blank -%}
+                <h3 class="ws__card-title">{{ block.settings.title | escape }}</h3>
+              {%- endif -%}
+              {%- if block.settings.body != blank -%}
+                <p class="ws__card-body">{{ block.settings.body | escape }}</p>
+              {%- endif -%}
+
+            </article>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Why Subscribe",
+  "tag": "section",
+  "class": "why-subscribe-section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading",
+      "default": "Why subscribe?"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Script line"
+    },
+    {
+      "type": "text",
+      "id": "script_text",
+      "label": "Script line",
+      "default": "Here's why."
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-accent-family"
+    },
+    {
+      "type": "header",
+      "content": "Cards"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns (desktop)",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "card_title_font",
+      "label": "Card title font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "select",
+      "id": "card_body_font",
+      "label": "Card body font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading & card title color",
+      "default": "#2b3054"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Script line color",
+      "default": "#f4502b"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Icon color",
+      "default": "#f0b542"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card background",
+      "default": "#f5ece0"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Card body text",
+      "default": "#6f7285"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Benefit card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "save",     "label": "Save / Money"         },
+            { "value": "shipping", "label": "Shipping / Rocket"    },
+            { "value": "pause",    "label": "Pause / Stop"         },
+            { "value": "star",     "label": "Star / Perks"         },
+            { "value": "leaf",     "label": "Leaf / Organic"       },
+            { "value": "shield",   "label": "Shield / Guarantee"   },
+            { "value": "gift",     "label": "Gift"                 },
+            { "value": "heart",    "label": "Heart"                },
+            { "value": "clock",    "label": "Clock"                }
+          ],
+          "default": "star"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card title",
+          "default": "Benefit title"
+        },
+        {
+          "type": "text",
+          "id": "body",
+          "label": "Card body",
+          "default": "Short description of this subscriber benefit."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Subscribe",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "icon": "save",
+            "title": "Save 11% Every Order",
+            "body": "Automatic discount applied on every delivery — no codes needed, ever."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "icon": "shipping",
+            "title": "Free Priority Shipping",
+            "body": "Subscribers get free shipping on every order, regardless of order size."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "icon": "pause",
+            "title": "Pause or Cancel Anytime",
+            "body": "No lock-ins. No fees. Change, pause or cancel from your account in seconds."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "icon": "star",
+            "title": "Early Access & Perks",
+            "body": "Subscribers get first access to new flavors, limited editions, and community events."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
