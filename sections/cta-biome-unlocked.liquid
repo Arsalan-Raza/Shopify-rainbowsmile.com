@@ -34,8 +34,6 @@
     {%- if section.settings.bg_image != blank -%}
       background-image: url("{{ section.settings.bg_image | image_url: width: 1800 }}");
       {%- if section.settings.bg_image_mode == 'repeat' -%}
-        background-size:     460px;
-        background-repeat:   repeat;
         background-position: center;
       {%- else -%}
         background-size:     cover;
