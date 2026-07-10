@@ -307,6 +307,44 @@
         "card_color": "#f5ece0",
         "body_color": "#6f7285"
       }
+    },
+    "cta_biome_unlocked_MHXnQg": {
+      "type": "cta-biome-unlocked",
+      "name": "CTA — Biome Unlocked",
+      "settings": {
+        "bg_color": "#f0512a",
+        "bg_image": "shopify://shop_images/MICROBES_1.png",
+        "bg_image_mode": "repeat",
+        "bg_image_opacity": 100,
+        "show_curve_top": true,
+        "curve_top_color": "#ffffff",
+        "show_curve_bottom": true,
+        "curve_bottom_color": "#262949",
+        "eyebrow_text": "Love Serves All",
+        "eyebrow_font": "--font-tag-family",
+        "heading_text": "Not sure?",
+        "heading_font": "--font-heading-family",
+        "script_text": "Start free.",
+        "script_font": "--font-accent-family",
+        "body_text": "Download the Biome Hacker's Code — William Robertson's free guide to why OG3™ works and how to get the most from your ritual.",
+        "body_font": "--font-heading-family",
+        "btn1_label": "Download Free Book",
+        "btn1_url": "",
+        "btn2_label": "",
+        "btn2_url": "",
+        "btn3_label": "",
+        "btn3_url": "",
+        "btn_font": "--font-heading-family",
+        "donate_text": "",
+        "donate_link_label": "",
+        "donate_link_url": "",
+        "donate_font": "--font-tag-family",
+        "navy_color": "#1b2240",
+        "gold_color": "#f3bd42",
+        "script_color": "#f6c873",
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
     }
   },
   "order": [
@@ -315,6 +353,7 @@
     "product-grid",
     "shop_product_grid_gK9zGE",
     "bundle_section_wTjATT",
-    "why_subscribe_eEHYHp"
+    "why_subscribe_eEHYHp",
+    "cta_biome_unlocked_MHXnQg"
   ]
 }

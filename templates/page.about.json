@@ -42,6 +42,7 @@
       "name": "Clinical Study Banner",
       "settings": {
         "bg_color": "#1e2240",
+        "bg_image": "shopify://shop_images/MICROBES_1_2.png",
         "bg_image_opacity": 100,
         "show_pill": true,
         "pill_text": "Dental Hygienist Recommended",
@@ -161,6 +162,7 @@
       "name": "Biome Hacker Revolution",
       "settings": {
         "bg_color": "#f4eee1",
+        "bg_image": "shopify://shop_images/MICROBES_1_1.png",
         "bg_image_opacity": 100,
         "eyebrow_text": "The Movement",
         "eyebrow_font": "--font-tag-family",
@@ -386,7 +388,8 @@
       ],
       "name": "Meet the Team",
       "settings": {
-        "bg_color": "#f4eee1",
+        "bg_color": "#F5EFE3",
+        "bg_image": "shopify://shop_images/MICROBES_1_3.png",
         "bg_image_opacity": 100,
         "eyebrow_text": "The People",
         "eyebrow_font": "--font-tag-family",
@@ -480,6 +483,7 @@
       "name": "CTA — Biome Unlocked",
       "settings": {
         "bg_color": "#f0512a",
+        "bg_image": "shopify://shop_images/MICROBES_1.png",
         "bg_image_mode": "repeat",
         "bg_image_opacity": 100,
         "show_curve_top": true,
