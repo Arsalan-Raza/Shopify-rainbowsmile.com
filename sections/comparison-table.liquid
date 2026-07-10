@@ -1,0 +1,483 @@
+{%- style -%}
+  /* ── Section wrapper ───────────────────────────────────────── */
+  #shopify-section-{{ section.id }} {
+    --cmp-navy:   {{ section.settings.navy_color }};
+    --cmp-accent: {{ section.settings.accent_color }};
+    --cmp-gold:   {{ section.settings.gold_color }};
+    --cmp-muted:  {{ section.settings.muted_color }};
+    --cmp-check:  {{ section.settings.check_color }};
+    --cmp-cross:  {{ section.settings.cross_color }};
+    --cmp-row:    {{ section.settings.row_color }};
+    --cmp-alt:    {{ section.settings.alt_color }};
+    --cmp-border: {{ section.settings.border_color }};
+
+    background: {{ section.settings.bg_color }};
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(16px, 5vw, 48px);
+  }
+
+  .cmp-{{ section.id }} * { box-sizing: border-box; }
+
+  .cmp-{{ section.id }} .cmp__inner {
+    max-width: 960px;
+    margin-inline: auto;
+  }
+
+  /* ── Header ─────────────────────────────────────────────────── */
+  .cmp-{{ section.id }} .cmp__head {
+    text-align: center;
+    margin-bottom: clamp(32px, 5vw, 56px);
+  }
+  .cmp-{{ section.id }} .cmp__title {
+    margin: 0;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 800;
+    font-size: clamp(32px, 4.6vw, 54px);
+    line-height: 1.04;
+    letter-spacing: -0.5px;
+    color: var(--cmp-navy);
+  }
+  .cmp-{{ section.id }} .cmp__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var({{ section.settings.script_font }});
+    font-weight: 400;
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.08;
+    color: var(--cmp-accent);
+  }
+
+  /* ── Table wrapper ──────────────────────────────────────────── */
+  .cmp-{{ section.id }} .cmp__table-wrap {
+    border: 1px solid var(--cmp-border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .cmp-{{ section.id }} .cmp__table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  .cmp-{{ section.id }} .cmp__col { width: clamp(96px, 22%, 220px); }
+
+  /* ── Header row ─────────────────────────────────────────────── */
+  .cmp-{{ section.id }} .cmp__thead th {
+    background: var(--cmp-navy);
+    padding: clamp(18px, 2.2vw, 26px) clamp(12px, 1.8vw, 26px);
+    vertical-align: middle;
+  }
+  .cmp-{{ section.id }} .cmp__label {
+    text-align: left;
+    font-family: var({{ section.settings.label_font }});
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--cmp-muted);
+  }
+  .cmp-{{ section.id }} .cmp__brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .cmp-{{ section.id }} .cmp__brand-img {
+    width: 18px;
+    height: 52px;
+    flex: none;
+    border-radius: 3px;
+    object-fit: cover;
+    display: block;
+  }
+  .cmp-{{ section.id }} .cmp__brand-img--placeholder {
+    background: linear-gradient(180deg, #3a3a3a, #111);
+  }
+  .cmp-{{ section.id }} .cmp__brand-name {
+    font-family: var({{ section.settings.brand_font }});
+    font-weight: 700;
+    font-size: clamp(12px, 1.2vw, 14px);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--cmp-gold);
+    line-height: 1.3;
+  }
+  .cmp-{{ section.id }} .cmp__other {
+    font-family: var({{ section.settings.other_font }});
+    font-weight: 400;
+    font-size: clamp(12px, 1.2vw, 14px);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--cmp-muted);
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  /* ── Body rows ──────────────────────────────────────────────── */
+  .cmp-{{ section.id }} .cmp__table tbody tr { border-top: 1px solid var(--cmp-row); }
+  .cmp-{{ section.id }} .cmp__table tbody tr:first-child { border-top: none; }
+  .cmp-{{ section.id }} .cmp__table tbody tr:nth-child(even) { background: var(--cmp-alt); }
+
+  .cmp-{{ section.id }} .cmp__feature {
+    text-align: left;
+    padding: clamp(18px, 2.2vw, 26px) clamp(14px, 1.8vw, 26px);
+    font-family: var({{ section.settings.feature_font }});
+    font-weight: 700;
+    font-size: clamp(14px, 1.5vw, 17px);
+    line-height: 1.35;
+    color: var(--cmp-navy);
+  }
+  .cmp-{{ section.id }} .cmp__cell {
+    text-align: center;
+    padding: clamp(18px, 2.2vw, 26px) 8px;
+    vertical-align: middle;
+  }
+  .cmp-{{ section.id }} .cmp__yes,
+  .cmp-{{ section.id }} .cmp__no {
+    display: inline-block;
+    font-size: clamp(20px, 2vw, 26px);
+    line-height: 1;
+    font-weight: 700;
+  }
+  .cmp-{{ section.id }} .cmp__yes { color: var(--cmp-check); }
+  .cmp-{{ section.id }} .cmp__no  { color: var(--cmp-cross); font-style: italic; }
+
+  /* Screen-reader-only */
+  .cmp-{{ section.id }} .cmp__sr {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ── Mobile ─────────────────────────────────────────────────── */
+  @media screen and (max-width: 599px) {
+    .cmp-{{ section.id }} .cmp__col { width: 68px; }
+    .cmp-{{ section.id }} .cmp__brand { flex-direction: column; gap: 8px; }
+    .cmp-{{ section.id }} .cmp__brand-img { width: 14px; height: 38px; }
+    .cmp-{{ section.id }} .cmp__brand-name,
+    .cmp-{{ section.id }} .cmp__other { font-size: 12px; letter-spacing: 0.6px; }
+    .cmp-{{ section.id }} .cmp__label { font-size: 12px; letter-spacing: 0.8px; }
+    .cmp-{{ section.id }} .cmp__thead th { padding: 16px 10px; }
+    .cmp-{{ section.id }} .cmp__feature { padding: 16px 12px; font-size: 14px; }
+    .cmp-{{ section.id }} .cmp__cell { padding: 16px 4px; }
+    .cmp-{{ section.id }} .cmp__yes,
+    .cmp-{{ section.id }} .cmp__no { font-size: 19px; }
+  }
+{%- endstyle -%}
+
+<div class="cmp-{{ section.id }}">
+  <div class="cmp__inner">
+
+    {%- comment -%} ── Header ── {%- endcomment -%}
+    {%- if section.settings.heading_text != blank or section.settings.script_text != blank -%}
+      <header class="cmp__head">
+        <h2 class="cmp__title">
+          {{- section.settings.heading_text | escape -}}
+          {%- if section.settings.script_text != blank -%}
+            <span class="cmp__script">{{ section.settings.script_text | escape }}</span>
+          {%- endif -%}
+        </h2>
+      </header>
+    {%- endif -%}
+
+    {%- comment -%} ── Table ── {%- endcomment -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="cmp__table-wrap">
+        <table class="cmp__table">
+          <colgroup>
+            <col>
+            <col class="cmp__col">
+            <col class="cmp__col">
+          </colgroup>
+
+          <thead class="cmp__thead">
+            <tr>
+              <th scope="col" class="cmp__label">{{ section.settings.compare_label | escape }}</th>
+              <th scope="col">
+                <span class="cmp__brand">
+                  {%- if section.settings.brand_image != blank -%}
+                    {{
+                      section.settings.brand_image
+                      | image_url: width: 80
+                      | image_tag:
+                        class: 'cmp__brand-img',
+                        alt: section.settings.brand_name | default: '',
+                        loading: 'lazy'
+                    }}
+                  {%- else -%}
+                    <span class="cmp__brand-img cmp__brand-img--placeholder" aria-hidden="true"></span>
+                  {%- endif -%}
+                  {%- if section.settings.brand_name != blank -%}
+                    <span class="cmp__brand-name">{{ section.settings.brand_name | escape }}</span>
+                  {%- endif -%}
+                </span>
+              </th>
+              <th scope="col">
+                <span class="cmp__other">{{ section.settings.other_label | newline_to_br }}</span>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'row' -%}
+                <tr {{ block.shopify_attributes }}>
+                  <th scope="row" class="cmp__feature">{{ block.settings.feature | escape }}</th>
+                  <td class="cmp__cell">
+                    {%- if block.settings.brand_check -%}
+                      <span class="cmp__yes" aria-hidden="true">✓</span><span class="cmp__sr">Yes</span>
+                    {%- else -%}
+                      <span class="cmp__no" aria-hidden="true">✗</span><span class="cmp__sr">No</span>
+                    {%- endif -%}
+                  </td>
+                  <td class="cmp__cell">
+                    {%- if block.settings.other_check -%}
+                      <span class="cmp__yes" aria-hidden="true">✓</span><span class="cmp__sr">Yes</span>
+                    {%- else -%}
+                      <span class="cmp__no" aria-hidden="true">✗</span><span class="cmp__sr">No</span>
+                    {%- endif -%}
+                  </td>
+                </tr>
+              {%- endif -%}
+            {%- endfor -%}
+          </tbody>
+        </table>
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Comparison Table",
+  "tag": "section",
+  "class": "comparison-table-section",
+  "max_blocks": 20,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading",
+      "default": "Bad Breath Isn\u2019t Normal."
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Script line"
+    },
+    {
+      "type": "text",
+      "id": "script_text",
+      "label": "Script line",
+      "default": "Compare."
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-accent-family"
+    },
+    {
+      "type": "header",
+      "content": "Table header"
+    },
+    {
+      "type": "text",
+      "id": "compare_label",
+      "label": "Left column label",
+      "default": "Compare to:"
+    },
+    {
+      "type": "select",
+      "id": "label_font",
+      "label": "Left label font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_image",
+      "label": "Brand image / product icon"
+    },
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand column label",
+      "default": "Rainbow Smile"
+    },
+    {
+      "type": "select",
+      "id": "brand_font",
+      "label": "Brand label font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "textarea",
+      "id": "other_label",
+      "label": "Competitor column label",
+      "default": "Traditional\nOral Care",
+      "info": "Use a line break to split onto two lines."
+    },
+    {
+      "type": "select",
+      "id": "other_font",
+      "label": "Competitor label font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "header",
+      "content": "Feature rows"
+    },
+    {
+      "type": "select",
+      "id": "feature_font",
+      "label": "Feature label font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading & table header background",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Script line color",
+      "default": "#f4502b"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Brand name color",
+      "default": "#f0b03c"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Column label color",
+      "default": "#b6bacb"
+    },
+    {
+      "type": "color",
+      "id": "check_color",
+      "label": "Check mark color",
+      "default": "#3cb043"
+    },
+    {
+      "type": "color",
+      "id": "cross_color",
+      "label": "Cross mark color",
+      "default": "#d8cec0"
+    },
+    {
+      "type": "color",
+      "id": "row_color",
+      "label": "Row divider color",
+      "default": "#e9e9ee"
+    },
+    {
+      "type": "color",
+      "id": "alt_color",
+      "label": "Alternating row tint",
+      "default": "#fbfbfc"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Table border color",
+      "default": "#ececf1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Feature row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature",
+          "label": "Feature",
+          "default": "Feature name"
+        },
+        {
+          "type": "checkbox",
+          "id": "brand_check",
+          "label": "Brand has this feature",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "other_check",
+          "label": "Competitor has this feature",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison Table",
+      "blocks": [
+        { "type": "row", "settings": { "feature": "Supports the microbiome",    "brand_check": true,  "other_check": false } },
+        { "type": "row", "settings": { "feature": "Delivers oxygen",             "brand_check": true,  "other_check": false } },
+        { "type": "row", "settings": { "feature": "Long-lasting hydration",      "brand_check": true,  "other_check": false } },
+        { "type": "row", "settings": { "feature": "Organic coconut glycerin",    "brand_check": true,  "other_check": false } },
+        { "type": "row", "settings": { "feature": "Biome hacking",               "brand_check": true,  "other_check": false } }
+      ]
+    }
+  ]
+}
+{% endschema %}

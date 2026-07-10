@@ -1,0 +1,632 @@
+{%- style -%}
+  /* ── Section wrapper ───────────────────────────────────────── */
+  #shopify-section-{{ section.id }} {
+    --otg-navy:     {{ section.settings.navy_color }};
+    --otg-ink:      {{ section.settings.ink_color }};
+    --otg-coral:    {{ section.settings.coral_color }};
+    --otg-gold:     {{ section.settings.gold_color }};
+    --otg-gold-tx:  {{ section.settings.gold_text_color }};
+    --otg-body:     {{ section.settings.body_color }};
+    --otg-sub:      {{ section.settings.sub_color }};
+    --otg-panel-bg: {{ section.settings.panel_bg_color }};
+
+    background: {{ section.settings.bg_color }};
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  .otg-{{ section.id }} * { box-sizing: border-box; }
+
+  /* ── Inner grid ─────────────────────────────────────────────── */
+  .otg-{{ section.id }} .otg__inner {
+    max-width: 1240px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 4.5vw, 64px);
+    align-items: start;
+  }
+
+  /* ── Eyebrow ────────────────────────────────────────────────── */
+  .otg-{{ section.id }} .otg__eyebrow {
+    margin: 0 0 14px;
+    font-family: var({{ section.settings.eyebrow_font }});
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--otg-coral);
+    line-height: 1;
+  }
+
+  /* ── Heading ────────────────────────────────────────────────── */
+  .otg-{{ section.id }} .otg__title {
+    margin: 0;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 800;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.02;
+    letter-spacing: -0.5px;
+    color: var(--otg-navy);
+  }
+  .otg-{{ section.id }} .otg__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var({{ section.settings.script_font }});
+    font-weight: 400;
+    font-size: clamp(30px, 3.8vw, 46px);
+    line-height: 1.08;
+    color: var(--otg-coral);
+  }
+
+  /* ── Checklist ──────────────────────────────────────────────── */
+  .otg-{{ section.id }} .otg__list {
+    list-style: none;
+    margin: clamp(24px, 3vw, 34px) 0 0;
+    padding: 0;
+  }
+  .otg-{{ section.id }} .otg__list li {
+    position: relative;
+    padding-left: 26px;
+    margin-bottom: 14px;
+    font-family: var({{ section.settings.list_font }});
+    font-weight: 400;
+    font-size: clamp(15px, 1.4vw, 16px);
+    line-height: 1.5;
+    color: var(--otg-body);
+  }
+  .otg-{{ section.id }} .otg__list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--otg-coral);
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* ── Benefits panel ─────────────────────────────────────────── */
+  .otg-{{ section.id }} .otg__panel {
+    margin-top: clamp(28px, 4vw, 42px);
+    background: var(--otg-panel-bg);
+    border-radius: 12px;
+    padding: clamp(22px, 2.6vw, 30px);
+  }
+  .otg-{{ section.id }} .otg__panel-title {
+    margin: 0 0 8px;
+    font-family: var({{ section.settings.panel_title_font }});
+    font-weight: 700;
+    font-size: clamp(14px, 1.3vw, 15px);
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: var(--otg-ink);
+  }
+  .otg-{{ section.id }} .otg__panel-title em {
+    font-style: normal;
+    color: var(--otg-gold-tx);
+  }
+  .otg-{{ section.id }} .otg__panel-sub {
+    margin: 0 0 18px;
+    font-family: var({{ section.settings.panel_sub_font }});
+    font-weight: 400;
+    font-size: clamp(12px, 1.15vw, 13px);
+    line-height: 1.5;
+    color: var(--otg-sub);
+  }
+  .otg-{{ section.id }} .otg__benefits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .otg-{{ section.id }} .otg__benefit {
+    background: var(--otg-gold);
+    border-radius: 8px;
+    padding: clamp(14px, 1.6vw, 18px);
+  }
+  .otg-{{ section.id }} .otg__benefit-title {
+    margin: 0 0 4px;
+    font-family: var({{ section.settings.benefit_title_font }});
+    font-weight: 700;
+    font-size: clamp(13px, 1.25vw, 14px);
+    line-height: 1.3;
+    color: var(--otg-ink);
+  }
+  .otg-{{ section.id }} .otg__benefit-desc {
+    margin: 0;
+    font-family: var({{ section.settings.benefit_desc_font }});
+    font-weight: 400;
+    font-size: clamp(12px, 1.15vw, 13px);
+    line-height: 1.4;
+    color: #4a4432;
+  }
+
+  /* ── Media (right column) ───────────────────────────────────── */
+  .otg-{{ section.id }} .otg__media {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 5 / 6;
+  }
+  .otg-{{ section.id }} .otg__media img,
+  .otg-{{ section.id }} .otg__media .placeholder-svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .otg-{{ section.id }} .otg__media::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 45%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.55));
+    pointer-events: none;
+  }
+
+  /* Floating tags */
+  .otg-{{ section.id }} .otg__tag {
+    position: absolute;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    padding: 11px 20px;
+    border-radius: 999px;
+    background: #fff;
+    font-family: var({{ section.settings.tag_font }});
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--otg-coral);
+  }
+  .otg-{{ section.id }} .otg__tag--top {
+    top: clamp(16px, 2.4vw, 26px);
+    left: clamp(16px, 2.4vw, 26px);
+  }
+  .otg-{{ section.id }} .otg__tag--bottom {
+    bottom: clamp(78px, 12vw, 100px);
+    right: clamp(16px, 2.4vw, 26px);
+  }
+
+  /* Caption */
+  .otg-{{ section.id }} .otg__caption {
+    position: absolute;
+    z-index: 2;
+    left: clamp(16px, 3vw, 40px);
+    right: clamp(16px, 2.4vw, 26px);
+    bottom: clamp(16px, 2.4vw, 26px);
+    margin: 0;
+    text-align: right;
+    font-family: var({{ section.settings.caption_font }});
+    font-weight: 400;
+    font-size: clamp(13px, 1.2vw, 15px);
+    line-height: 1.5;
+    color: #fff;
+  }
+
+  /* ── Responsive ─────────────────────────────────────────────── */
+  @media screen and (max-width: 899px) {
+    .otg-{{ section.id }} .otg__inner { grid-template-columns: 1fr; gap: clamp(32px, 6vw, 44px); }
+    .otg-{{ section.id }} .otg__media { order: -1; aspect-ratio: 4 / 5; }
+  }
+
+  @media screen and (max-width: 520px) {
+    .otg-{{ section.id }} .otg__benefits { grid-template-columns: 1fr; }
+    .otg-{{ section.id }} .otg__media { aspect-ratio: 3 / 4; }
+    .otg-{{ section.id }} .otg__tag { padding: 9px 15px; }
+    .otg-{{ section.id }} .otg__tag--bottom {
+      bottom: auto;
+      top: clamp(60px, 16vw, 74px);
+      right: auto;
+      left: clamp(16px, 4vw, 20px);
+    }
+    .otg-{{ section.id }} .otg__caption { text-align: left; left: 16px; right: 16px; }
+  }
+{%- endstyle -%}
+
+<div class="otg-{{ section.id }}">
+  <div class="otg__inner">
+
+    {%- comment -%} ── LEFT COLUMN ── {%- endcomment -%}
+    <div class="otg__content">
+
+      {%- if section.settings.eyebrow_text != blank -%}
+        <p class="otg__eyebrow">{{ section.settings.eyebrow_text | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading_text != blank or section.settings.script_text != blank -%}
+        <h2 class="otg__title">
+          {{- section.settings.heading_text | escape -}}
+          {%- if section.settings.script_text != blank -%}
+            <span class="otg__script">{{ section.settings.script_text | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+
+      {%- assign checklist_blocks = section.blocks | where: 'type', 'checklist_item' -%}
+      {%- if checklist_blocks.size > 0 -%}
+        <ul class="otg__list">
+          {%- for block in checklist_blocks -%}
+            {%- if block.settings.text != blank -%}
+              <li {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- assign benefit_blocks = section.blocks | where: 'type', 'benefit' -%}
+      {%- if section.settings.panel_title != blank or section.settings.panel_sub != blank or benefit_blocks.size > 0 -%}
+        <div class="otg__panel">
+          {%- if section.settings.panel_title != blank -%}
+            <p class="otg__panel-title">
+              {{- section.settings.panel_title | escape -}}
+              {%- if section.settings.panel_em != blank -%}
+                <em>{{ section.settings.panel_em | escape }}</em>
+              {%- endif -%}
+            </p>
+          {%- endif -%}
+          {%- if section.settings.panel_sub != blank -%}
+            <p class="otg__panel-sub">{{ section.settings.panel_sub | escape }}</p>
+          {%- endif -%}
+          {%- if benefit_blocks.size > 0 -%}
+            <div class="otg__benefits">
+              {%- for block in benefit_blocks -%}
+                <div class="otg__benefit" {{ block.shopify_attributes }}>
+                  {%- if block.settings.title != blank -%}
+                    <p class="otg__benefit-title">{{ block.settings.title | escape }}</p>
+                  {%- endif -%}
+                  {%- if block.settings.desc != blank -%}
+                    <p class="otg__benefit-desc">{{ block.settings.desc | escape }}</p>
+                  {%- endif -%}
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+
+    {%- comment -%} ── RIGHT COLUMN ── {%- endcomment -%}
+    <div class="otg__media">
+
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 1200
+          | image_tag:
+            loading: 'lazy',
+            alt: section.settings.image.alt | default: ''
+        }}
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+
+      {%- if section.settings.tag_top != blank -%}
+        <span class="otg__tag otg__tag--top">{{ section.settings.tag_top | escape }}</span>
+      {%- endif -%}
+
+      {%- if section.settings.tag_bottom != blank -%}
+        <span class="otg__tag otg__tag--bottom">{{ section.settings.tag_bottom | escape }}</span>
+      {%- endif -%}
+
+      {%- if section.settings.caption != blank -%}
+        <p class="otg__caption">{{ section.settings.caption | escape }}</p>
+      {%- endif -%}
+
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "On The Go",
+  "tag": "section",
+  "class": "on-the-go-section",
+  "max_blocks": 20,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "Made For"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading",
+      "default": "Made for an"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Script line"
+    },
+    {
+      "type": "text",
+      "id": "script_text",
+      "label": "Script line",
+      "default": "On-the-Go You."
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-accent-family"
+    },
+    {
+      "type": "header",
+      "content": "Checklist"
+    },
+    {
+      "type": "select",
+      "id": "list_font",
+      "label": "List font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Benefits panel"
+    },
+    {
+      "type": "text",
+      "id": "panel_title",
+      "label": "Panel title (before accent)",
+      "default": "Oxygen + Hydration = "
+    },
+    {
+      "type": "text",
+      "id": "panel_em",
+      "label": "Panel title accent word",
+      "default": "Life"
+    },
+    {
+      "type": "select",
+      "id": "panel_title_font",
+      "label": "Panel title font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "text",
+      "id": "panel_sub",
+      "label": "Panel subtitle",
+      "default": "When your mouth ecosystem finds balance:"
+    },
+    {
+      "type": "select",
+      "id": "panel_sub_font",
+      "label": "Panel subtitle font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "select",
+      "id": "benefit_title_font",
+      "label": "Benefit card title font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "select",
+      "id": "benefit_desc_font",
+      "label": "Benefit card desc font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "tag_top",
+      "label": "Top pill tag",
+      "default": "Simple Ingredients"
+    },
+    {
+      "type": "text",
+      "id": "tag_bottom",
+      "label": "Bottom pill tag",
+      "default": "Supports All Day Freshness"
+    },
+    {
+      "type": "select",
+      "id": "tag_font",
+      "label": "Pill tag font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "textarea",
+      "id": "caption",
+      "label": "Image caption",
+      "default": "100% Organic Coconut Glycerin infused with Bio-available Oxygen Nano-Bubbles and Fourth Phase Water with Bio-field Resonance Technology."
+    },
+    {
+      "type": "select",
+      "id": "caption_font",
+      "label": "Caption font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading color",
+      "default": "#2b3054"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Coral (eyebrow, script, checks, tags)",
+      "default": "#f0522c"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Benefit card background",
+      "default": "#f5c66a"
+    },
+    {
+      "type": "color",
+      "id": "gold_text_color",
+      "label": "Panel accent word color",
+      "default": "#e8a53a"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Checklist text color",
+      "default": "#3f4256"
+    },
+    {
+      "type": "color",
+      "id": "sub_color",
+      "label": "Panel subtitle color",
+      "default": "#5c5f70"
+    },
+    {
+      "type": "color",
+      "id": "panel_bg_color",
+      "label": "Panel background",
+      "default": "#f4efe4"
+    },
+    {
+      "type": "color",
+      "id": "ink_color",
+      "label": "Panel title & benefit card title color",
+      "default": "#1f1f1f"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "checklist_item",
+      "name": "Checklist item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Checklist item"
+        }
+      ]
+    },
+    {
+      "type": "benefit",
+      "name": "Benefit card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Benefit title"
+        },
+        {
+          "type": "text",
+          "id": "desc",
+          "label": "Description",
+          "default": "Short description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "On The Go",
+      "blocks": [
+        { "type": "checklist_item", "settings": { "text": "Toss in your tote bag or purse" } },
+        { "type": "checklist_item", "settings": { "text": "Keep in your car (store in cool place)" } },
+        { "type": "checklist_item", "settings": { "text": "Pack in your carry-on" } },
+        { "type": "checklist_item", "settings": { "text": "Add to your gym bag" } },
+        { "type": "checklist_item", "settings": { "text": "Miron Glass bottle with travel cap" } },
+        { "type": "benefit", "settings": { "title": "Fresher breath", "desc": "lasts naturally" } },
+        { "type": "benefit", "settings": { "title": "Comfort",        "desc": "extends beyond the mouth" } },
+        { "type": "benefit", "settings": { "title": "Daily energy",   "desc": "feels steadier" } },
+        { "type": "benefit", "settings": { "title": "Confidence",     "desc": "returns to social moments" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,255 +1,357 @@
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
-{{ 'section-related-products.css' | asset_url | stylesheet_tag }}
-
-{% if section.settings.image_shape == 'blob' %}
-  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
-{%- endif -%}
-
 {%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  /* ── Section wrapper ───────────────────────────────────────── */
+  #shopify-section-{{ section.id }} {
+    --xs-navy:   {{ section.settings.navy_color }};
+    --xs-accent: {{ section.settings.accent_color }};
+    --xs-gold:   {{ section.settings.gold_color }};
+    --xs-meta:   {{ section.settings.meta_color }};
+    --xs-line:   {{ section.settings.line_color }};
+    --xs-card:   {{ section.settings.card_color }};
+    --xs-card-w: {{ section.settings.card_width }}px;
+
+    background: {{ section.settings.bg_color }};
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(20px, 5vw, 48px);
   }
 
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+  .xsell-{{ section.id }} * { box-sizing: border-box; }
+
+  .xsell-{{ section.id }} .xs__inner {
+    max-width: 1180px;
+    margin-inline: auto;
+  }
+
+  /* ── Header ─────────────────────────────────────────────────── */
+  .xsell-{{ section.id }} .xs__head {
+    text-align: center;
+    margin-bottom: clamp(32px, 4.5vw, 52px);
+  }
+  .xsell-{{ section.id }} .xs__title {
+    margin: 0;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 800;
+    font-size: clamp(32px, 4.2vw, 50px);
+    line-height: 1.04;
+    letter-spacing: -0.5px;
+    color: var(--xs-navy);
+  }
+  .xsell-{{ section.id }} .xs__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var({{ section.settings.script_font }});
+    font-weight: 400;
+    font-size: clamp(30px, 3.8vw, 46px);
+    line-height: 1.1;
+    color: var(--xs-accent);
+  }
+
+  /* ── Cards ──────────────────────────────────────────────────── */
+  .xsell-{{ section.id }} .xs__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(18px, 2.2vw, 26px);
+  }
+  .xsell-{{ section.id }} .xs__card {
+    width: var(--xs-card-w);
+    max-width: 100%;
+    background: var(--xs-card);
+    border: 1px solid var(--xs-line);
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  @media (hover: hover) {
+    .xsell-{{ section.id }} .xs__card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 32px rgba(35, 39, 72, 0.10);
     }
+  }
+  .xsell-{{ section.id }} .xs__card:focus-visible {
+    outline: 3px solid rgba(244, 80, 43, 0.4);
+    outline-offset: 3px;
+  }
+
+  /* ── Media ──────────────────────────────────────────────────── */
+  .xsell-{{ section.id }} .xs__media {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(165deg, #eef0e2, #faf7ef);
+    overflow: hidden;
+  }
+  .xsell-{{ section.id }} .xs__media img,
+  .xsell-{{ section.id }} .xs__media .placeholder-svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Badge ──────────────────────────────────────────────────── */
+  .xsell-{{ section.id }} .xs__badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 8px 15px;
+    border-radius: 8px;
+    background: var(--xs-gold);
+    font-family: var({{ section.settings.badge_font }});
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--xs-navy);
+    white-space: nowrap;
+  }
+
+  /* ── Content ────────────────────────────────────────────────── */
+  .xsell-{{ section.id }} .xs__content {
+    padding: clamp(20px, 2.2vw, 26px);
+  }
+  .xsell-{{ section.id }} .xs__meta {
+    margin: 0 0 14px;
+    font-family: var({{ section.settings.meta_font }});
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--xs-meta);
+  }
+  .xsell-{{ section.id }} .xs__name {
+    margin: 0;
+    font-family: var({{ section.settings.name_font }});
+    font-weight: 700;
+    font-size: clamp(18px, 1.8vw, 21px);
+    line-height: 1.2;
+    color: var(--xs-navy);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .xsell-{{ section.id }} .xs__card { transition: none; }
   }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
-  <product-recommendations
-    class="related-products page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-    data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.products_to_show }}"
-    data-section-id="{{ section.id }}"
-    data-product-id="{{ product.id }}"
-  >
-    {% if recommendations.performed and recommendations.products_count > 0 %}
-      <h2 class="related-products__heading inline-richtext {{ section.settings.heading_size }}">
-        {{ section.settings.heading }}
-      </h2>
-      <ul
-        class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
-        role="list"
-      >
-        {% assign skip_card_product_styles = false %}
-        {% for recommendation in recommendations.products %}
-          <li class="grid__item">
-            {% render 'card-product',
-              card_product: recommendation,
-              media_aspect_ratio: section.settings.image_ratio,
-              image_shape: section.settings.image_shape,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating,
-              skip_styles: skip_card_product_styles,
-              product_view_context: 'recommendation'
-            %}
-          </li>
-          {%- assign skip_card_product_styles = true -%}
-        {% endfor %}
-      </ul>
-    {% endif %}
-  </product-recommendations>
-  {% if section.settings.image_shape == 'arch' %}
-    {{ 'mask-arch.svg' | inline_asset_content }}
+<product-recommendations
+  class="xsell-{{ section.id }}"
+  data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.products_to_show }}"
+  data-section-id="{{ section.id }}"
+  data-product-id="{{ product.id }}"
+>
+  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+    <div class="xs__inner">
+
+      {%- if section.settings.heading_text != blank or section.settings.script_text != blank -%}
+        <header class="xs__head">
+          <h2 class="xs__title">
+            {{- section.settings.heading_text | escape -}}
+            {%- if section.settings.script_text != blank -%}
+              <span class="xs__script">{{ section.settings.script_text | escape }}</span>
+            {%- endif -%}
+          </h2>
+        </header>
+      {%- endif -%}
+
+      <div class="xs__grid">
+        {%- for recommendation in recommendations.products -%}
+          <a class="xs__card" href="{{ recommendation.url }}">
+
+            <div class="xs__media">
+              {%- if recommendation.featured_image != blank -%}
+                {%- assign rec_alt = recommendation.featured_image.alt | default: recommendation.title | escape -%}
+                {{
+                  recommendation.featured_image
+                  | image_url: width: 700
+                  | image_tag:
+                    loading: 'lazy',
+                    alt: rec_alt,
+                    widths: '330, 660, 700'
+                }}
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+              {%- if section.settings.badge_text != blank -%}
+                <span class="xs__badge">{{ section.settings.badge_text | escape }}</span>
+              {%- endif -%}
+            </div>
+
+            <div class="xs__content">
+              {%- if recommendation.type != blank -%}
+                <p class="xs__meta">{{ recommendation.type | escape }}</p>
+              {%- endif -%}
+              <h3 class="xs__name">{{ recommendation.title | escape }}</h3>
+            </div>
+
+          </a>
+        {%- endfor -%}
+      </div>
+
+    </div>
   {%- endif -%}
-</div>
+</product-recommendations>
 
 {% schema %}
 {
-  "name": "t:sections.related-products.name",
+  "name": "Related products",
   "tag": "section",
-  "class": "section",
+  "class": "related-products-section",
   "settings": [
     {
       "type": "paragraph",
-      "content": "t:sections.related-products.settings.paragraph__1.content"
+      "content": "To select products, add a source in the Search & Discovery app."
     },
     {
-      "type": "inline_richtext",
-      "id": "heading",
-      "default": "t:sections.related-products.settings.paragraph__1.default",
-      "label": "t:sections.related-products.settings.heading.label"
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading",
+      "default": "Products"
     },
     {
       "type": "select",
-      "id": "heading_size",
+      "id": "heading_font",
+      "label": "Heading font",
       "options": [
-        {
-          "value": "h2",
-          "label": "t:sections.all.heading_size.options__1.label"
-        },
-        {
-          "value": "h1",
-          "label": "t:sections.all.heading_size.options__2.label"
-        },
-        {
-          "value": "h0",
-          "label": "t:sections.all.heading_size.options__3.label"
-        },
-        {
-          "value": "hxl",
-          "label": "t:sections.all.heading_size.options__4.label"
-        },
-        {
-          "value": "hxxl",
-          "label": "t:sections.all.heading_size.options__5.label"
-        }
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
       ],
-      "default": "h1",
-      "label": "t:sections.all.heading_size.label"
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Script line"
+    },
+    {
+      "type": "text",
+      "id": "script_text",
+      "label": "Script line",
+      "default": "recommendation"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-accent-family"
+    },
+    {
+      "type": "header",
+      "content": "Cards"
     },
     {
       "type": "range",
       "id": "products_to_show",
       "min": 2,
-      "max": 10,
+      "max": 8,
       "step": 1,
       "default": 4,
-      "label": "t:sections.related-products.settings.products_to_show.label"
+      "label": "Products to show"
     },
     {
       "type": "range",
-      "id": "columns_desktop",
-      "min": 1,
-      "max": 6,
-      "step": 1,
-      "default": 4,
-      "label": "t:sections.related-products.settings.columns_desktop.label"
+      "id": "card_width",
+      "min": 240,
+      "max": 480,
+      "step": 10,
+      "unit": "px",
+      "default": 330,
+      "label": "Card width"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Subscribe & Save",
+      "info": "Leave blank to hide the badge."
     },
     {
       "type": "select",
-      "id": "columns_mobile",
-      "default": "2",
-      "label": "t:sections.related-products.settings.columns_mobile.label",
+      "id": "badge_font",
+      "label": "Badge font",
       "options": [
-        {
-          "value": "1",
-          "label": "t:sections.related-products.settings.columns_mobile.options__1.label"
-        },
-        {
-          "value": "2",
-          "label": "t:sections.related-products.settings.columns_mobile.options__2.label"
-        }
-      ]    
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
     },
     {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
-      "info": "t:sections.all.colors.has_cards_info",
-      "default": "scheme-1"
+      "type": "select",
+      "id": "meta_font",
+      "label": "Product type font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "select",
+      "id": "name_font",
+      "label": "Product name font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
     },
     {
       "type": "header",
-      "content": "t:sections.related-products.settings.header__2.content"
+      "content": "Colors"
     },
     {
-      "type": "select",
-      "id": "image_ratio",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:sections.related-products.settings.image_ratio.options__1.label"
-        },
-        {
-          "value": "portrait",
-          "label": "t:sections.related-products.settings.image_ratio.options__2.label"
-        },
-        {
-          "value": "square",
-          "label": "t:sections.related-products.settings.image_ratio.options__3.label"
-        }
-      ],
-      "default": "adapt",
-      "label": "t:sections.related-products.settings.image_ratio.label"
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#ffffff"
     },
     {
-      "type": "select",
-      "id": "image_shape",
-      "options": [
-        {
-          "value": "default",
-          "label": "t:sections.all.image_shape.options__1.label"
-        },
-        {
-          "value": "arch",
-          "label": "t:sections.all.image_shape.options__2.label"
-        },
-        {
-          "value": "blob",
-          "label": "t:sections.all.image_shape.options__3.label"
-        },
-        {
-          "value": "chevronleft",
-          "label": "t:sections.all.image_shape.options__4.label"
-        },
-        {
-          "value": "chevronright",
-          "label": "t:sections.all.image_shape.options__5.label"
-        },
-        {
-          "value": "diamond",
-          "label": "t:sections.all.image_shape.options__6.label"
-        },
-        {
-          "value": "parallelogram",
-          "label": "t:sections.all.image_shape.options__7.label"
-        },
-        {
-          "value": "round",
-          "label": "t:sections.all.image_shape.options__8.label"
-        }
-      ],
-      "default": "default",
-      "label": "t:sections.all.image_shape.label"
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading & product name color",
+      "default": "#232748"
     },
     {
-      "type": "checkbox",
-      "id": "show_secondary_image",
-      "default": false,
-      "label": "t:sections.related-products.settings.show_secondary_image.label"
+      "type": "color",
+      "id": "accent_color",
+      "label": "Script line color",
+      "default": "#f4502b"
     },
     {
-      "type": "checkbox",
-      "id": "show_vendor",
-      "default": false,
-      "label": "t:sections.related-products.settings.show_vendor.label"
+      "type": "color",
+      "id": "gold_color",
+      "label": "Badge background",
+      "default": "#f5b731"
     },
     {
-      "type": "checkbox",
-      "id": "show_rating",
-      "default": false,
-      "label": "t:sections.related-products.settings.show_rating.label",
-      "info": "t:sections.related-products.settings.show_rating.info"
+      "type": "color",
+      "id": "meta_color",
+      "label": "Product type color",
+      "default": "#f0a93a"
     },
     {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
+      "type": "color",
+      "id": "line_color",
+      "label": "Card border color",
+      "default": "#ececec"
     },
     {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+      "type": "color",
+      "id": "card_color",
+      "label": "Card background",
+      "default": "#ffffff"
     }
   ]
 }

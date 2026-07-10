@@ -1,0 +1,565 @@
+{%- style -%}
+  /* ── Section wrapper ───────────────────────────────────────── */
+  #shopify-section-{{ section.id }} {
+    --htu-coral:     {{ section.settings.bg_color }};
+    --htu-white:     #ffffff;
+    --htu-gold:      {{ section.settings.gold_color }};
+    --htu-navy:      {{ section.settings.card_bg_color }};
+    --htu-script:    {{ section.settings.script_color }};
+    --htu-sub:       {{ section.settings.sub_color }};
+    --htu-card-body: {{ section.settings.card_body_color }};
+    --htu-card-meta: {{ section.settings.card_meta_color }};
+    --htu-gold-ink:  {{ section.settings.gold_ink_color }};
+    --htu-gold-body: {{ section.settings.gold_body_color }};
+    --htu-gold-meta: {{ section.settings.gold_meta_color }};
+    --htu-num-bg:    {{ section.settings.num_bg_color }};
+    --htu-num-tx:    {{ section.settings.num_text_color }};
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: var(--htu-coral);
+    padding-block: clamp(48px, 7vw, 88px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  .htu-{{ section.id }} * { box-sizing: border-box; }
+
+  /* ── Texture layer ──────────────────────────────────────────── */
+  #shopify-section-{{ section.id }}::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    {%- if section.settings.texture != blank -%}
+      background-image: url('{{ section.settings.texture | image_url: width: 1200 }}');
+      background-size: cover;
+      background-position: center;
+    {%- else -%}
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='460' viewBox='0 0 460 460'%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='80' cy='90' r='40' opacity='.045'/%3E%3Ccircle cx='380' cy='340' r='46' opacity='.04'/%3E%3Ccircle cx='310' cy='70' r='24' opacity='.045'/%3E%3Ccircle cx='150' cy='340' r='30' opacity='.04'/%3E%3Ccircle cx='60' cy='250' r='2.6' opacity='.09'/%3E%3Ccircle cx='250' cy='150' r='2.2' opacity='.09'/%3E%3Ccircle cx='420' cy='180' r='2.4' opacity='.08'/%3E%3Ccircle cx='200' cy='420' r='2.2' opacity='.09'/%3E%3Ccircle cx='120' cy='40' r='2' opacity='.08'/%3E%3Ccircle cx='350' cy='430' r='2' opacity='.08'/%3E%3Cpath d='M130,111 Q130,121 140,121 Q130,121 130,131 Q130,121 120,121 Q130,121 130,111 Z' opacity='.1'/%3E%3Cpath d='M300,249 Q300,258 309,258 Q300,258 300,267 Q300,258 291,258 Q300,258 300,249 Z' opacity='.09'/%3E%3Cpath d='M410,300 Q410,308 418,308 Q410,308 410,316 Q410,308 402,308 Q410,308 410,300 Z' opacity='.08'/%3E%3C/g%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2'%3E%3Ccircle cx='220' cy='190' r='14' stroke-opacity='.06'/%3E%3Ccircle cx='400' cy='250' r='10' stroke-opacity='.06'/%3E%3Ccircle cx='90' cy='390' r='12' stroke-opacity='.055'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 460px;
+      background-repeat: repeat;
+      background-position: center;
+    {%- endif -%}
+    pointer-events: none;
+  }
+
+  /* ── Inner ──────────────────────────────────────────────────── */
+  .htu-{{ section.id }} .htu__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1240px;
+    margin-inline: auto;
+  }
+
+  /* ── Header ─────────────────────────────────────────────────── */
+  .htu-{{ section.id }} .htu__head {
+    text-align: center;
+    margin-bottom: clamp(32px, 4.5vw, 52px);
+  }
+  .htu-{{ section.id }} .htu__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+    font-family: var({{ section.settings.eyebrow_font }});
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--htu-white);
+    line-height: 1;
+  }
+  .htu-{{ section.id }} .htu__eyebrow::before {
+    content: "";
+    width: 26px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+  .htu-{{ section.id }} .htu__title {
+    margin: 0;
+    font-family: var({{ section.settings.heading_font }});
+    font-weight: 800;
+    font-size: clamp(34px, 4.4vw, 52px);
+    line-height: 1.02;
+    letter-spacing: -0.5px;
+    color: var(--htu-white);
+  }
+  .htu-{{ section.id }} .htu__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var({{ section.settings.script_font }});
+    font-weight: 400;
+    font-size: clamp(30px, 3.8vw, 46px);
+    line-height: 1.1;
+    color: var(--htu-script);
+  }
+  .htu-{{ section.id }} .htu__sub {
+    margin: clamp(14px, 2vw, 20px) auto 0;
+    max-width: 560px;
+    font-family: var({{ section.settings.subtitle_font }});
+    font-weight: 400;
+    font-size: clamp(14px, 1.3vw, 16px);
+    line-height: 1.5;
+    color: var(--htu-sub);
+  }
+
+  /* ── Cards grid ─────────────────────────────────────────────── */
+  .htu-{{ section.id }} .htu__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+    gap: clamp(16px, 1.8vw, 24px);
+    align-items: stretch;
+  }
+  .htu-{{ section.id }} .htu__card {
+    background: var(--htu-navy);
+    border-radius: 10px;
+    padding: clamp(22px, 2.4vw, 30px);
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+  }
+
+  /* ── Number circle ──────────────────────────────────────────── */
+  .htu-{{ section.id }} .htu__num {
+    width: 52px;
+    height: 52px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--htu-num-bg);
+    color: var(--htu-num-tx);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var({{ section.settings.num_font }});
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: clamp(22px, 2.6vw, 32px);
+  }
+
+  /* ── Card text ──────────────────────────────────────────────── */
+  .htu-{{ section.id }} .htu__card-title {
+    margin: 0 0 12px;
+    font-family: var({{ section.settings.card_title_font }});
+    font-weight: 700;
+    font-size: clamp(17px, 1.6vw, 19px);
+    line-height: 1.25;
+    color: var(--htu-white);
+    transition: color 0.25s ease;
+  }
+  .htu-{{ section.id }} .htu__card-body {
+    margin: 0 0 clamp(24px, 3vw, 34px);
+    font-family: var({{ section.settings.card_body_font }});
+    font-weight: 400;
+    font-size: clamp(13px, 1.25vw, 14px);
+    line-height: 1.6;
+    color: var(--htu-card-body);
+    transition: color 0.25s ease;
+  }
+  .htu-{{ section.id }} .htu__card-meta {
+    margin: auto 0 0;
+    font-family: var({{ section.settings.card_meta_font }});
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 12px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--htu-card-meta);
+    transition: color 0.25s ease;
+  }
+
+  /* ── Hover: navy → gold ─────────────────────────────────────── */
+  @media (hover: hover) {
+    .htu-{{ section.id }} .htu__card:hover {
+      background: var(--htu-gold);
+      transform: translateY(-4px);
+    }
+    .htu-{{ section.id }} .htu__card:hover .htu__card-title { color: var(--htu-gold-ink); }
+    .htu-{{ section.id }} .htu__card:hover .htu__card-body  { color: var(--htu-gold-body); }
+    .htu-{{ section.id }} .htu__card:hover .htu__card-meta  { color: var(--htu-gold-meta); }
+  }
+  .htu-{{ section.id }} .htu__card:focus-within { background: var(--htu-gold); }
+  .htu-{{ section.id }} .htu__card:focus-within .htu__card-title { color: var(--htu-gold-ink); }
+  .htu-{{ section.id }} .htu__card:focus-within .htu__card-body  { color: var(--htu-gold-body); }
+  .htu-{{ section.id }} .htu__card:focus-within .htu__card-meta  { color: var(--htu-gold-meta); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .htu-{{ section.id }} .htu__card { transition: background-color 0.25s ease; }
+    .htu-{{ section.id }} .htu__card:hover { transform: none; }
+  }
+
+  /* ── Responsive ─────────────────────────────────────────────── */
+  @media screen and (max-width: 989px) {
+    .htu-{{ section.id }} .htu__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media screen and (max-width: 560px) {
+    .htu-{{ section.id }} .htu__grid { grid-template-columns: 1fr; }
+    .htu-{{ section.id }} .htu__card-body { margin-bottom: 20px; }
+  }
+{%- endstyle -%}
+
+<div class="htu-{{ section.id }}">
+  <div class="htu__inner">
+
+    {%- comment -%} ── Header ── {%- endcomment -%}
+    {%- if section.settings.eyebrow_text != blank or section.settings.heading_text != blank or section.settings.script_text != blank or section.settings.subtitle_text != blank -%}
+      <header class="htu__head">
+        {%- if section.settings.eyebrow_text != blank -%}
+          <p class="htu__eyebrow">{{ section.settings.eyebrow_text | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading_text != blank or section.settings.script_text != blank -%}
+          <h2 class="htu__title">
+            {{- section.settings.heading_text | escape -}}
+            {%- if section.settings.script_text != blank -%}
+              <span class="htu__script">{{ section.settings.script_text | escape }}</span>
+            {%- endif -%}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.subtitle_text != blank -%}
+          <p class="htu__sub">{{ section.settings.subtitle_text | escape }}</p>
+        {%- endif -%}
+      </header>
+    {%- endif -%}
+
+    {%- comment -%} ── Cards ── {%- endcomment -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="htu__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'step' -%}
+            <article class="htu__card" {{ block.shopify_attributes }}>
+              {%- if block.settings.number != blank -%}
+                <span class="htu__num" aria-hidden="true">{{ block.settings.number | escape }}</span>
+              {%- endif -%}
+              {%- if block.settings.title != blank -%}
+                <h3 class="htu__card-title">{{ block.settings.title | escape }}</h3>
+              {%- endif -%}
+              {%- if block.settings.body != blank -%}
+                <p class="htu__card-body">{{ block.settings.body | escape }}</p>
+              {%- endif -%}
+              {%- if block.settings.meta != blank -%}
+                <p class="htu__card-meta">{{ block.settings.meta | escape }}</p>
+              {%- endif -%}
+            </article>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "How To Use",
+  "tag": "section",
+  "class": "how-to-use-section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "The Daily Reset"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading",
+      "default": "60 Seconds"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Script line"
+    },
+    {
+      "type": "text",
+      "id": "script_text",
+      "label": "Script line",
+      "default": "to freshness"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-accent-family"
+    },
+    {
+      "type": "header",
+      "content": "Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_text",
+      "label": "Subtitle",
+      "default": "A simple 60-second oral reset for lasting wellness"
+    },
+    {
+      "type": "select",
+      "id": "subtitle_font",
+      "label": "Subtitle font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "header",
+      "content": "Cards"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Columns (desktop)",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "select",
+      "id": "num_font",
+      "label": "Step number font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "select",
+      "id": "card_title_font",
+      "label": "Card title font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "select",
+      "id": "card_body_font",
+      "label": "Card body font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-heading-family"
+    },
+    {
+      "type": "select",
+      "id": "card_meta_font",
+      "label": "Card meta / time font",
+      "options": [
+        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
+        { "value": "--font-heading-family", "label": "D-DIN" },
+        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+      ],
+      "default": "--font-tag-family"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "texture",
+      "label": "Texture / pattern image",
+      "info": "Optional overlay. Leave blank to use the default SVG pattern."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background (coral)",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "script_color",
+      "label": "Script line color",
+      "default": "#f7ca6a"
+    },
+    {
+      "type": "color",
+      "id": "sub_color",
+      "label": "Subtitle color",
+      "default": "#fbd9cc"
+    },
+    {
+      "type": "color",
+      "id": "num_bg_color",
+      "label": "Step number circle background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "num_text_color",
+      "label": "Step number text",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card background (default)",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "card_body_color",
+      "label": "Card body text color",
+      "default": "#c9ccdd"
+    },
+    {
+      "type": "color",
+      "id": "card_meta_color",
+      "label": "Card meta text color",
+      "default": "#8f93ab"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Card hover background",
+      "default": "#f6b944"
+    },
+    {
+      "type": "color",
+      "id": "gold_ink_color",
+      "label": "Card hover title color",
+      "default": "#26202a"
+    },
+    {
+      "type": "color",
+      "id": "gold_body_color",
+      "label": "Card hover body color",
+      "default": "#4a3d28"
+    },
+    {
+      "type": "color",
+      "id": "gold_meta_color",
+      "label": "Card hover meta color",
+      "default": "#8a7343"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Step number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Step Title"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Description",
+          "default": "Describe this step."
+        },
+        {
+          "type": "text",
+          "id": "meta",
+          "label": "Time / meta label",
+          "default": "0–5 Seconds"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How To Use",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Pump + Spray",
+            "body": "Choose sublingual, targeted freshness, or spray throughout the day for instant freshness.",
+            "meta": "0–5 Seconds"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "The 60-Second Hold",
+            "body": "Apply 1-2 drops under the tongue or spray directly into the mouth. Hold for 30–60 seconds to allow to penetrate and activate.",
+            "meta": "30 Seconds"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Safe to Swallow",
+            "body": "Our formula is 100% natural, made from Certified Organic Coconut Glycerin. Gentle, nourishing, and completely safe.",
+            "meta": "20 Seconds"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "04",
+            "title": "Feel Alive",
+            "body": "Experience the fresh vitality of a truly living, balanced oral ecosystem. Naturally sweet taste. Clean — not sterilized. Alive.",
+            "meta": "Every Morning"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -12,6 +12,19 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "kaching_bundles_app_block_MgejPt": {
+          "type": "shopify://apps/kaching-bundles/blocks/app-block/6c637362-a106-4a32-94ac-94dcfd68cdb8",
+          "settings": {
+            "product": "{{product}}",
+            "manual_deal_block_id": ""
+          }
+        },
+        "kaching_subscriptions_app_block_zWBpdf": {
+          "type": "shopify://apps/kaching-subscriptions/blocks/app-block/1fa39fd7-f6a3-4bbc-9383-7d91d27b44f5",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
         "vendor": {
           "type": "text",
           "settings": {
@@ -57,6 +70,8 @@
         }
       },
       "block_order": [
+        "kaching_bundles_app_block_MgejPt",
+        "kaching_subscriptions_app_block_zWBpdf",
         "vendor",
         "title",
         "price",
@@ -72,7 +87,7 @@
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail",
         "mobile_thumbnails": "hide",
         "media_position": "left",
         "image_zoom": "lightbox",
@@ -82,11 +97,167 @@
         "padding_bottom": 12
       }
     },
-    "disclosures": {
-      "type": "disclosures",
+    "ingredients_band_GRpGd9": {
+      "type": "ingredients-band",
+      "blocks": {
+        "ingredient_JmRQQK": {
+          "type": "ingredient",
+          "settings": {
+            "icon": "🥥",
+            "name": "Organic Coconut Glycerin",
+            "meta": "Certified Base"
+          }
+        },
+        "ingredient_eUUQnG": {
+          "type": "ingredient",
+          "settings": {
+            "icon": "🫧",
+            "name": "Oxygen Nanobubbles",
+            "meta": "15x Bioavailable"
+          }
+        },
+        "ingredient_mwN8gg": {
+          "type": "ingredient",
+          "settings": {
+            "icon": "💧",
+            "name": "Structured Water",
+            "meta": "4th Phase"
+          }
+        },
+        "ingredient_3J6J7Q": {
+          "type": "ingredient",
+          "settings": {
+            "icon": "✦",
+            "name": "Biofield Frequencies",
+            "meta": "Nature's Resonance"
+          }
+        },
+        "ingredient_4wNmTr": {
+          "type": "ingredient",
+          "settings": {
+            "icon": "🌾",
+            "name": "Zero Additives",
+            "meta": "Nothing Else"
+          }
+        },
+        "ingredient_6bbeyt": {
+          "type": "ingredient",
+          "settings": {
+            "icon": "💎",
+            "name": "Miron Violet Glass",
+            "meta": "Biophotonic Protection"
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_JmRQQK",
+        "ingredient_eUUQnG",
+        "ingredient_mwN8gg",
+        "ingredient_3J6J7Q",
+        "ingredient_4wNmTr",
+        "ingredient_6bbeyt"
+      ],
+      "name": "Ingredients Band",
       "settings": {
-        "padding_top": 36,
-        "padding_bottom": 0
+        "heading_text": "Pure. Simple.",
+        "heading_font": "--font-heading-family",
+        "script_text": "Unflavored.",
+        "script_font": "--font-accent-family",
+        "columns_desktop": "6",
+        "name_font": "--font-heading-family",
+        "meta_font": "--font-tag-family",
+        "bg_color": "#ffffff",
+        "ink_color": "#1a1a1a",
+        "accent_color": "#f4502b",
+        "meta_color": "#1a1a1a",
+        "line_color": "#e7e7e7"
+      }
+    },
+    "how_it_works_6PzQUH": {
+      "type": "how-it-works",
+      "blocks": {
+        "pill_h6VB4y": {
+          "type": "pill",
+          "settings": {
+            "label": "Vegan"
+          }
+        },
+        "pill_kieEUi": {
+          "type": "pill",
+          "settings": {
+            "label": "Plant-Based"
+          }
+        },
+        "pill_VJQMBE": {
+          "type": "pill",
+          "settings": {
+            "label": "Sugar Free"
+          }
+        },
+        "pill_6NbEET": {
+          "type": "pill",
+          "settings": {
+            "label": "Organic"
+          }
+        },
+        "pill_mpynee": {
+          "type": "pill",
+          "settings": {
+            "label": "Holistic"
+          }
+        },
+        "pill_RFcnCQ": {
+          "type": "pill",
+          "settings": {
+            "label": "Microbiome"
+          }
+        },
+        "pill_JkxDpF": {
+          "type": "pill",
+          "settings": {
+            "label": "Oral-Wellness"
+          }
+        },
+        "pill_FQHqeB": {
+          "type": "pill",
+          "settings": {
+            "label": "Science-Backed"
+          }
+        }
+      },
+      "block_order": [
+        "pill_h6VB4y",
+        "pill_kieEUi",
+        "pill_VJQMBE",
+        "pill_6NbEET",
+        "pill_mpynee",
+        "pill_RFcnCQ",
+        "pill_JkxDpF",
+        "pill_FQHqeB"
+      ],
+      "name": "How It Works",
+      "settings": {
+        "eyebrow_text": "How It Works",
+        "eyebrow_font": "--font-tag-family",
+        "heading_text": "Biology Sending",
+        "heading_font": "--font-heading-family",
+        "script_text": "Love Signals.",
+        "script_font": "--font-accent-family",
+        "subtitle_text": "Rainbow Smile isn’t just a product. It’s a movement awakening life’s quiet intelligence in your mouth.",
+        "subtitle_font": "--font-heading-family",
+        "video": "shopify://files/videos/Rainbow Smile 01-27-2026.mp4",
+        "video_url": "",
+        "poster": "shopify://shop_images/e4bdaf1cbec835533f55dbf39b92df62c48493ed.png",
+        "show_badge": false,
+        "play_label": "Play video",
+        "marquee_speed": 42,
+        "pill_star": "✶",
+        "pill_font": "--font-tag-family",
+        "marquee_label": "Product attributes",
+        "bg_color": "#262949",
+        "gold_color": "#FABE54",
+        "body_color": "#b6b8cd",
+        "eyebrow_color": "#9497b4"
       }
     },
     "related-products": {
@@ -110,7 +281,8 @@
   },
   "order": [
     "main",
-    "disclosures",
+    "ingredients_band_GRpGd9",
+    "how_it_works_6PzQUH",
     "related-products"
   ]
 }
