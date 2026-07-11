@@ -46,9 +46,162 @@
         "padding_top": 120,
         "padding_bottom": 120
       }
+    },
+    "hero_main_NJim4f": {
+      "type": "hero-main",
+      "name": "Hero — Main",
+      "settings": {
+        "bg_image": "shopify://shop_images/image_11_1.png",
+        "badge_text": "OG3™ Oxygen + Hydration Therapy",
+        "heading_accent": "Your Mouth",
+        "heading_rest": "Was Born Alive. Let's Keep It That Way.",
+        "subtitle": "Rainbow Smile is Biome Food™ — a certified organic daily ritual that supports your mouth's living ecology.",
+        "btn1_text": "Shop OG3™",
+        "btn1_url": "",
+        "btn2_text": "Download the Free Guide",
+        "btn2_url": "",
+        "show_proof": true,
+        "rating_score": "4.9",
+        "rating_text": "Loved by 2,400+ biome hackers",
+        "show_curve": true,
+        "curve_color": "#ffffff",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "body_font": "heading",
+        "coral_color": "#ef4a22"
+      }
+    },
+    "trust_bar_d9Nxzi": {
+      "type": "trust-bar",
+      "blocks": {
+        "item_NhHPfE": {
+          "type": "item",
+          "settings": {
+            "icon": "vegan",
+            "label": "100% Vegan"
+          }
+        },
+        "item_tVNMah": {
+          "type": "item",
+          "settings": {
+            "icon": "cruelty_free",
+            "label": "Cruelty-Free"
+          }
+        },
+        "item_g3GwEe": {
+          "type": "item",
+          "settings": {
+            "icon": "regenerative",
+            "label": "Regenerative Sourced"
+          }
+        },
+        "item_hVEhRQ": {
+          "type": "item",
+          "settings": {
+            "icon": "biome_safe",
+            "label": "ubu™ Biome Safe"
+          }
+        },
+        "item_TFAfiU": {
+          "type": "item",
+          "settings": {
+            "icon": "fsc",
+            "label": "FSC Certified"
+          }
+        },
+        "item_EhrGyK": {
+          "type": "item",
+          "settings": {
+            "icon": "science",
+            "label": "Science-Backed"
+          }
+        },
+        "item_PyYb9b": {
+          "type": "item",
+          "settings": {
+            "icon": "glass",
+            "label": "Miron Violet Glass"
+          }
+        },
+        "item_BfRBRg": {
+          "type": "item",
+          "settings": {
+            "icon": "organic",
+            "label": "Certified Organic"
+          }
+        }
+      },
+      "block_order": [
+        "item_NhHPfE",
+        "item_tVNMah",
+        "item_g3GwEe",
+        "item_hVEhRQ",
+        "item_TFAfiU",
+        "item_EhrGyK",
+        "item_PyYb9b",
+        "item_BfRBRg"
+      ],
+      "name": "Trust Bar",
+      "settings": {
+        "aria_label": "Product certifications",
+        "speed": 46,
+        "label_font": "heading",
+        "bg_color": "#ffffff",
+        "navy_color": "#232748",
+        "line_color": "#e9e9ec"
+      }
+    },
+    "signal_banner_NJ6b9z": {
+      "type": "signal-banner",
+      "name": "Signal Banner",
+      "settings": {
+        "image": "shopify://shop_images/img21_3.png",
+        "heading": "Bad Breath Isn't Normal",
+        "script_line": "It's a Signal.",
+        "show_curve": true,
+        "curve_color": "#ffffff",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "bg_color": "#ffffff",
+        "card_color": "#ef4a22",
+        "script_color": "#f7c85f"
+      }
+    },
+    "science_hook_Dhpmf7": {
+      "type": "science-hook",
+      "name": "Science Hook",
+      "settings": {
+        "eyebrow": "The Science Behind Bad Breath",
+        "title_before": "Healthy saliva needs",
+        "title_accent": "20% oxygen.",
+        "title_after": "Bad breath happens at just 2%.",
+        "subtitle": "Baby's breath, pure, fresh, alive. Modern life disrupts the thought that natural harmony. Cleaning products mask. <strong>Rainbow Smile OG3™ supports oxygen-rich freshness</strong> — the way your mouth was designed to work.",
+        "stat_low": "2%",
+        "label_low": "Oxygen-Poor Saliva",
+        "desc_low": "Low oxygen creates the environment where bad-breath bacteria thrive and damage tissues.",
+        "image": "shopify://shop_images/image_5_1.png",
+        "stat_high": "20%",
+        "label_high": "Healthy Saliva",
+        "desc_high": "OG3™ Drops restore oxygen to healthy levels — feeding good bacteria, crowding out the bad.",
+        "cta_text": "Restore Your Oral Oxygen",
+        "cta_url": "",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "body_font": "heading",
+        "bg_color": "#ffffff",
+        "navy_color": "#2b3054",
+        "coral_color": "#ef4a22",
+        "muted_color": "#cdc2b3",
+        "gold_color": "#c9a961",
+        "body_color": "#4b4f63"
+      }
     }
   },
   "order": [
-    "cta_biome_unlocked_jMNjxd"
+    "cta_biome_unlocked_jMNjxd",
+    "hero_main_NJim4f",
+    "trust_bar_d9Nxzi",
+    "signal_banner_NJ6b9z",
+    "science_hook_Dhpmf7"
   ]
 }
