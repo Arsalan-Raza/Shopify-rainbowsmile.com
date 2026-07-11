@@ -1,0 +1,436 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --sci-navy:  {{ section.settings.navy_color }};
+    --sci-coral: {{ section.settings.coral_color }};
+    --sci-muted: {{ section.settings.muted_color }};
+    --sci-gold:  {{ section.settings.gold_color }};
+    --sci-body:  {{ section.settings.body_color }};
+
+    background: {{ section.settings.bg_color }};
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  .scihook-{{ section.id }} * { box-sizing: border-box; }
+  .scihook-{{ section.id }} .sci__inner { max-width: 1100px; margin-inline: auto; }
+
+  /* ── Header ─────────────────────────────────────────────────── */
+  .scihook-{{ section.id }} .sci__head {
+    text-align: center;
+    margin-bottom: clamp(36px, 5vw, 56px);
+  }
+
+  .scihook-{{ section.id }} .sci__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 14px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--sci-coral);
+    line-height: 1;
+  }
+  .scihook-{{ section.id }} .sci__eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+
+  .scihook-{{ section.id }} .sci__title {
+    margin: 0 auto;
+    max-width: 760px;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(24px, 3.2vw, 38px);
+    line-height: 1.24;
+    letter-spacing: -0.4px;
+    color: var(--sci-navy);
+  }
+  .scihook-{{ section.id }} .sci__accent {
+    font-style: italic;
+    font-weight: 800;
+    color: var(--sci-coral);
+  }
+
+  .scihook-{{ section.id }} .sci__sub {
+    margin: clamp(14px, 2vw, 20px) auto 0;
+    max-width: 600px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.65;
+    color: var(--sci-body);
+  }
+  .scihook-{{ section.id }} .sci__sub strong { font-weight: 700; color: var(--sci-navy); }
+
+  /* ── Comparison ─────────────────────────────────────────────── */
+  .scihook-{{ section.id }} .sci__compare {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: clamp(24px, 4vw, 60px);
+    align-items: center;
+    margin-bottom: clamp(32px, 4.5vw, 50px);
+  }
+
+  .scihook-{{ section.id }} .sci__col { text-align: center; }
+
+  .scihook-{{ section.id }} .sci__stat {
+    margin: 0 0 10px;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(52px, 7vw, 92px);
+    line-height: 1;
+    letter-spacing: -3px;
+  }
+  .scihook-{{ section.id }} .sci__stat--low  { color: var(--sci-muted); }
+  .scihook-{{ section.id }} .sci__stat--high { color: var(--sci-coral); }
+
+  .scihook-{{ section.id }} .sci__label {
+    margin: 0 0 16px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.15vw, 13px);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--sci-gold);
+  }
+
+  .scihook-{{ section.id }} .sci__desc {
+    margin: 0 auto;
+    max-width: 260px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(13px, 1.3vw, 15px);
+    line-height: 1.6;
+    color: var(--sci-body);
+  }
+
+  /* Center image */
+  .scihook-{{ section.id }} .sci__media {
+    width: clamp(140px, 16vw, 180px);
+    aspect-ratio: 3 / 4;
+    border-radius: 3px;
+    overflow: hidden;
+    background: linear-gradient(160deg, #4a5c46, #7c8b6d);
+    justify-self: center;
+  }
+  .scihook-{{ section.id }} .sci__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── CTA ────────────────────────────────────────────────────── */
+  .scihook-{{ section.id }} .sci__cta-wrap { text-align: center; }
+  .scihook-{{ section.id }} .sci__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 20px 38px;
+    min-height: 60px;
+    border-radius: 999px;
+    background: var(--sci-coral);
+    color: #fff;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.4vw, 16px);
+    text-decoration: none;
+    transition: background-color 0.18s ease, transform 0.18s ease;
+  }
+  .scihook-{{ section.id }} .sci__cta-arrow { transition: transform 0.18s ease; }
+  .scihook-{{ section.id }} .sci__cta:hover { background: #dc411b; transform: translateY(-2px); }
+  .scihook-{{ section.id }} .sci__cta:hover .sci__cta-arrow { transform: translateX(3px); }
+  .scihook-{{ section.id }} .sci__cta:focus-visible { outline: 3px solid rgba(239,74,34,0.45); outline-offset: 3px; }
+
+  /* ── Responsive ─────────────────────────────────────────────── */
+  @media screen and (max-width: 780px) {
+    .scihook-{{ section.id }} .sci__compare {
+      grid-template-columns: 1fr;
+      gap: clamp(30px, 6vw, 44px);
+      justify-items: center;
+    }
+    .scihook-{{ section.id }} .sci__stat { letter-spacing: -2px; }
+    .scihook-{{ section.id }} .sci__desc { max-width: 380px; }
+    .scihook-{{ section.id }} .sci__media { width: min(200px, 60vw); }
+  }
+  @media screen and (max-width: 480px) {
+    .scihook-{{ section.id }} .sci__cta { width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scihook-{{ section.id }} .sci__cta:hover { transform: none; }
+    .scihook-{{ section.id }} .sci__cta-arrow { transition: none; }
+  }
+{%- endstyle -%}
+
+<div class="scihook-{{ section.id }}">
+  <div class="sci__inner">
+
+    <header class="sci__head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="sci__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.title != blank -%}
+        <h2 class="sci__title">
+          {%- if section.settings.title_before != blank -%}
+            {{ section.settings.title_before | escape }}
+          {%- endif -%}
+          {%- if section.settings.title_accent != blank -%}
+            <span class="sci__accent">{{ section.settings.title_accent | escape }}</span>
+          {%- endif -%}
+          {%- if section.settings.title_after != blank -%}
+            <br>{{ section.settings.title_after | escape }}
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.subtitle != blank -%}
+        <p class="sci__sub">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="sci__compare">
+
+      <!-- Left stat (low / muted) -->
+      <div class="sci__col">
+        <p class="sci__stat sci__stat--low">{{ section.settings.stat_low | escape }}</p>
+        <p class="sci__label">{{ section.settings.label_low | escape }}</p>
+        <p class="sci__desc">{{ section.settings.desc_low | escape }}</p>
+      </div>
+
+      <!-- Center image -->
+      <div class="sci__media">
+        {%- if section.settings.image != blank -%}
+          {%- assign sci_alt = section.settings.image.alt | default: section.settings.eyebrow | escape -%}
+          {{
+            section.settings.image
+            | image_url: width: 600
+            | image_tag:
+              loading: 'lazy',
+              alt: sci_alt,
+              widths: '180, 360, 600'
+          }}
+        {%- endif -%}
+      </div>
+
+      <!-- Right stat (high / accent) -->
+      <div class="sci__col">
+        <p class="sci__stat sci__stat--high">{{ section.settings.stat_high | escape }}</p>
+        <p class="sci__label">{{ section.settings.label_high | escape }}</p>
+        <p class="sci__desc">{{ section.settings.desc_high | escape }}</p>
+      </div>
+
+    </div>
+
+    {%- if section.settings.cta_text != blank -%}
+      <div class="sci__cta-wrap">
+        <a class="sci__cta" href="{{ section.settings.cta_url | default: '#' }}">
+          {{ section.settings.cta_text | escape }}
+          <span class="sci__cta-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Science Hook",
+  "tag": "section",
+  "class": "science-hook-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Science Behind Bad Breath"
+    },
+    {
+      "type": "text",
+      "id": "title_before",
+      "label": "Title — text before accent",
+      "default": "Healthy saliva needs"
+    },
+    {
+      "type": "text",
+      "id": "title_accent",
+      "label": "Title — accent (italic coral) part",
+      "default": "20% oxygen."
+    },
+    {
+      "type": "text",
+      "id": "title_after",
+      "label": "Title — text after accent (new line)",
+      "default": "Bad breath happens at just 2%."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle (HTML allowed for <strong>)",
+      "default": "Baby's breath, pure, fresh, alive. Modern life disrupts the thought that natural harmony. Cleaning products mask. <strong>Rainbow Smile OG3™ supports oxygen-rich freshness</strong> — the way your mouth was designed to work."
+    },
+    {
+      "type": "header",
+      "content": "Left stat (low)"
+    },
+    {
+      "type": "text",
+      "id": "stat_low",
+      "label": "Stat number",
+      "default": "2%"
+    },
+    {
+      "type": "text",
+      "id": "label_low",
+      "label": "Stat label",
+      "default": "Oxygen-Poor Saliva"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_low",
+      "label": "Description",
+      "default": "Low oxygen creates the environment where bad-breath bacteria thrive and damage tissues."
+    },
+    {
+      "type": "header",
+      "content": "Center image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product image"
+    },
+    {
+      "type": "header",
+      "content": "Right stat (high)"
+    },
+    {
+      "type": "text",
+      "id": "stat_high",
+      "label": "Stat number",
+      "default": "20%"
+    },
+    {
+      "type": "text",
+      "id": "label_high",
+      "label": "Stat label",
+      "default": "Healthy Saliva"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_high",
+      "label": "Description",
+      "default": "OG3™ Drops restore oxygen to healthy levels — feeding good bacteria, crowding out the bad."
+    },
+    {
+      "type": "header",
+      "content": "CTA button"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Restore Your Oral Oxygen"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow & label font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Title & stat font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Subtitle & description font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading color",
+      "default": "#2b3054"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Accent & button color",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Low stat color",
+      "default": "#cdc2b3"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Stat label color",
+      "default": "#c9a961"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text color",
+      "default": "#4b4f63"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Science Hook"
+    }
+  ]
+}
+{% endschema %}
