@@ -12,12 +12,17 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "kaching_bundles_app_block_MgejPt": {
-          "type": "shopify://apps/kaching-bundles/blocks/app-block/6c637362-a106-4a32-94ac-94dcfd68cdb8",
-          "settings": {
-            "product": "{{product}}",
-            "manual_deal_block_id": ""
-          }
+        "ag_product_reviews_app_summary_block_kabVrV": {
+          "type": "shopify://apps/ag-product-reviews/blocks/app-summary-block/c4e1e9ca-4d46-4e76-bc39-7e42417cb327",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
         },
         "kaching_subscriptions_app_block_zWBpdf": {
           "type": "shopify://apps/kaching-subscriptions/blocks/app-block/1fa39fd7-f6a3-4bbc-9383-7d91d27b44f5",
@@ -25,27 +30,9 @@
             "product": "{{product}}"
           }
         },
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
-        "title": {
-          "type": "title",
-          "settings": {}
-        },
         "price": {
           "type": "price",
           "settings": {}
-        },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
         },
         "quantity_selector": {
           "type": "quantity_selector",
@@ -54,43 +41,89 @@
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
           }
         },
-        "description": {
-          "type": "description",
-          "settings": {}
-        },
-        "share": {
-          "type": "share",
+        "trust_bar_EgtwAd": {
+          "type": "trust_bar",
           "settings": {
-            "share_label": "Share"
+            "item1_emoji": "🌿",
+            "item1_label": "Certified Organic",
+            "item2_emoji": "🚀",
+            "item2_label": "Free Shipping $49+",
+            "item3_emoji": "🐰",
+            "item3_label": "Cruelty-Free",
+            "item4_emoji": "💎",
+            "item4_label": "Miron Glass",
+            "item5_emoji": "",
+            "item5_label": "",
+            "item6_emoji": "",
+            "item6_label": ""
+          }
+        },
+        "collapsible_tab_xt8Uad": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "What's inside",
+            "icon": "apple",
+            "content": "<p>{{ product.metafields.custom.what_s_inside | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_tURayk": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "How to use",
+            "icon": "apple",
+            "content": "<p>{{ product.metafields.custom.how_to_use | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_jfmUtK": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & returns",
+            "icon": "apple",
+            "content": "<p>{{ product.metafields.custom.what_s_inside | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_UrzNdw": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "FDA disclosure",
+            "icon": "apple",
+            "content": "<p>{{ product.metafields.custom.what_s_inside | metafield_tag }}</p>",
+            "page": ""
           }
         }
       },
       "block_order": [
-        "kaching_bundles_app_block_MgejPt",
-        "kaching_subscriptions_app_block_zWBpdf",
-        "vendor",
+        "ag_product_reviews_app_summary_block_kabVrV",
         "title",
+        "description",
+        "kaching_subscriptions_app_block_zWBpdf",
         "price",
-        "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "description",
-        "share"
+        "trust_bar_EgtwAd",
+        "collapsible_tab_xt8Uad",
+        "collapsible_tab_tURayk",
+        "collapsible_tab_jfmUtK",
+        "collapsible_tab_UrzNdw"
       ],
       "settings": {
+        "gallery_badge": "",
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
-        "media_size": "large",
+        "media_size": "small",
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "gallery_layout": "thumbnail",
         "mobile_thumbnails": "hide",
         "media_position": "left",
-        "image_zoom": "lightbox",
+        "image_zoom": "hover",
         "hide_variants": true,
         "enable_video_looping": false,
         "padding_top": 36,
