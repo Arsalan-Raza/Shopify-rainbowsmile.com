@@ -1,0 +1,309 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --ogc-navy:  {{ section.settings.navy_color }};
+    --ogc-coral: {{ section.settings.coral_color }};
+    --ogc-body:  {{ section.settings.body_color }};
+
+    background: {{ section.settings.bg_color }};
+    padding-block: clamp(44px, 6vw, 84px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  .ogc-{{ section.id }} * { box-sizing: border-box; }
+
+  .ogc-{{ section.id }} .ogc__inner {
+    max-width: 1200px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+  }
+
+  /* ── Left ────────────────────────────────────────────────── */
+  .ogc-{{ section.id }} .ogc__content { max-width: 520px; }
+
+  .ogc-{{ section.id }} .ogc__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 16px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--ogc-coral);
+    line-height: 1;
+  }
+  .ogc-{{ section.id }} .ogc__eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+
+  .ogc-{{ section.id }} .ogc__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(28px, 3.6vw, 44px);
+    line-height: 1.08;
+    letter-spacing: -0.5px;
+    color: var(--ogc-navy);
+  }
+  .ogc-{{ section.id }} .ogc__title-accent {
+    display: block;
+    font-style: italic;
+    color: var(--ogc-coral);
+  }
+
+  .ogc-{{ section.id }} .ogc__body {
+    margin: clamp(18px, 2.4vw, 24px) 0 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.65;
+    color: var(--ogc-body);
+  }
+  .ogc-{{ section.id }} .ogc__body + .ogc__body { margin-top: clamp(16px, 2.2vw, 22px); }
+  .ogc-{{ section.id }} .ogc__body strong { font-weight: 700; color: var(--ogc-navy); }
+
+  .ogc-{{ section.id }} .ogc__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: clamp(24px, 3.2vw, 34px);
+    padding: 16px 30px;
+    min-height: 54px;
+    border-radius: 999px;
+    background: var(--ogc-coral);
+    color: #fff;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(14px, 1.4vw, 15px);
+    text-decoration: none;
+    transition: background-color 0.18s ease, transform 0.18s ease;
+  }
+  .ogc-{{ section.id }} .ogc__cta-arrow { transition: transform 0.18s ease; }
+  @media (hover: hover) {
+    .ogc-{{ section.id }} .ogc__cta:hover { background: #dc411b; transform: translateY(-2px); }
+    .ogc-{{ section.id }} .ogc__cta:hover .ogc__cta-arrow { transform: translateX(3px); }
+  }
+  .ogc-{{ section.id }} .ogc__cta:focus-visible { outline: 3px solid rgba(239,74,34,0.45); outline-offset: 3px; }
+
+  /* ── Right: image ────────────────────────────────────────── */
+  .ogc-{{ section.id }} .ogc__media {
+    border-radius: 18px;
+    overflow: hidden;
+    aspect-ratio: 5 / 4;
+    background: linear-gradient(160deg, #eadfce, #f6efe3);
+  }
+  .ogc-{{ section.id }} .ogc__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ── Responsive ──────────────────────────────────────────── */
+  @media screen and (max-width: 899px) {
+    .ogc-{{ section.id }} .ogc__inner { grid-template-columns: 1fr; gap: clamp(30px, 6vw, 42px); }
+    .ogc-{{ section.id }} .ogc__media { order: -1; aspect-ratio: 4 / 3; }
+    .ogc-{{ section.id }} .ogc__content { max-width: 620px; }
+  }
+  @media screen and (max-width: 480px) {
+    .ogc-{{ section.id }} .ogc__cta { width: 100%; justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ogc-{{ section.id }} .ogc__cta { transition: none; }
+    .ogc-{{ section.id }} .ogc__cta-arrow { transition: none; }
+  }
+{%- endstyle -%}
+
+<div class="ogc-{{ section.id }}">
+  <div class="ogc__inner">
+
+    <div class="ogc__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="ogc__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.title != blank or section.settings.title_accent != blank -%}
+        <h2 class="ogc__title">
+          {{- section.settings.title | escape -}}
+          {%- if section.settings.title_accent != blank -%}
+            <span class="ogc__title-accent">{{ section.settings.title_accent | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.body_1 != blank -%}
+        <p class="ogc__body">{{ section.settings.body_1 }}</p>
+      {%- endif -%}
+      {%- if section.settings.body_2 != blank -%}
+        <p class="ogc__body">{{ section.settings.body_2 }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.cta_text != blank -%}
+        <a class="ogc__cta" href="{{ section.settings.cta_url | default: '#' }}">
+          {{ section.settings.cta_text | escape }}
+          <span class="ogc__cta-arrow" aria-hidden="true">→</span>
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="ogc__media">
+      {%- if section.settings.image != blank -%}
+        {%- assign ogc_img_alt = section.settings.image.alt | default: section.settings.image_alt | escape -%}
+        {{
+          section.settings.image
+          | image_url: width: 1200
+          | image_tag:
+            loading: 'lazy',
+            alt: ogc_img_alt,
+            widths: '600, 900, 1200'
+        }}
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Oral Gut Care",
+  "tag": "section",
+  "class": "oral-gut-care-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Oral \u00b7 Gut \u00b7 Brain Axis"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title — line 1",
+      "default": "Oral Care is Self Care"
+    },
+    {
+      "type": "text",
+      "id": "title_accent",
+      "label": "Title — line 2 (italic coral)",
+      "default": "Oral Care is Gut Care"
+    },
+    {
+      "type": "textarea",
+      "id": "body_1",
+      "label": "Body paragraph 1",
+      "default": "Your mouth is the gateway to your gut, and your <strong>gut is the gateway<\/strong> to whole-body wellness. <strong>OG3 helps<\/strong> balance the oral-gut axis, supporting immunity, digestion, mood, and vitality.",
+      "info": "HTML supported: use <strong> for bold."
+    },
+    {
+      "type": "textarea",
+      "id": "body_2",
+      "label": "Body paragraph 2",
+      "default": "A living daily ritual for inner wellbeing.",
+      "info": "HTML supported: use <strong> for bold."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Start Your Ritual"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "default": "Rainbow Smile OG3 bottles with botanicals"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Title & button font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading color",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Accent & button color",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text color",
+      "default": "#4b4f63"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Oral Gut Care"
+    }
+  ]
+}
+{% endschema %}

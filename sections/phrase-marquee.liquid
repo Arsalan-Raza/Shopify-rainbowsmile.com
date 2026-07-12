@@ -1,0 +1,175 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --pmq-navy:  {{ section.settings.bg_color }};
+    --pmq-text:  {{ section.settings.text_color }};
+    --pmq-dot:   {{ section.settings.dot_color }};
+    --pmq-speed: {{ section.settings.speed }}s;
+
+    background: var(--pmq-navy);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .pmq-{{ section.id }} * { box-sizing: border-box; }
+
+  .pmq-{{ section.id }} .pmq__viewport {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+  }
+
+  .pmq-{{ section.id }} .pmq__track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: pmqScroll-{{ section.id }} var(--pmq-speed) linear infinite;
+  }
+  .pmq-{{ section.id }} .pmq__viewport:hover .pmq__track {
+    animation-play-state: paused;
+  }
+
+  @keyframes pmqScroll-{{ section.id }} {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .pmq-{{ section.id }} .pmq__item {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(20px, 3vw, 40px);
+    padding: clamp(12px, 1.6vw, 16px) 0;
+    padding-left: clamp(20px, 3vw, 40px);
+  }
+  .pmq-{{ section.id }} .pmq__item::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--pmq-dot);
+  }
+  .pmq-{{ section.id }} .pmq__label {
+    font-family: var(--font-{{ section.settings.label_font }}-family);
+    font-weight: 700;
+    font-size: clamp(13px, 1.3vw, 15px);
+    color: var(--pmq-text);
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  @media screen and (max-width: 640px) {
+    #shopify-section-{{ section.id }} { --pmq-speed: {{ section.settings.speed | times: 0.65 | round }}s; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pmq-{{ section.id }} .pmq__track { animation: none; }
+    .pmq-{{ section.id }} .pmq__viewport { overflow-x: auto; }
+  }
+{%- endstyle -%}
+
+{%- capture pmq_items -%}
+  {%- for block in section.blocks -%}
+    <span class="pmq__item" {{ block.shopify_attributes }}>
+      <span class="pmq__label">{{ block.settings.label | escape }}</span>
+    </span>
+  {%- endfor -%}
+{%- endcapture -%}
+
+<section class="pmq-{{ section.id }}" aria-label="{{ section.settings.aria_label | escape }}">
+  <div class="pmq__viewport">
+    <div class="pmq__track">
+      {{ pmq_items }}
+      <span aria-hidden="true">{{ pmq_items }}</span>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Phrase Marquee",
+  "tag": "section",
+  "class": "phrase-marquee-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "Accessibility label",
+      "default": "Brand values"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Scroll speed (seconds per loop)",
+      "min": 16,
+      "max": 90,
+      "step": 2,
+      "default": 40,
+      "info": "Lower = faster. Increase if you add more phrases."
+    },
+    {
+      "type": "header",
+      "content": "Font"
+    },
+    {
+      "type": "select",
+      "id": "label_font",
+      "label": "Phrase font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#23264a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Phrase text color",
+      "default": "#d7d9e6"
+    },
+    {
+      "type": "color",
+      "id": "dot_color",
+      "label": "Separator dot color",
+      "default": "#ef4a22"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "phrase",
+      "name": "Phrase",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Phrase",
+          "default": "Oral care is self care"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Phrase Marquee",
+      "blocks": [
+        { "type": "phrase", "settings": { "label": "Oral care is self care" } },
+        { "type": "phrase", "settings": { "label": "Bad breath isn't normal" } },
+        { "type": "phrase", "settings": { "label": "Your mouth is alive" } },
+        { "type": "phrase", "settings": { "label": "Oral care is gut care" } },
+        { "type": "phrase", "settings": { "label": "Love Serves All" } },
+        { "type": "phrase", "settings": { "label": "Oral care is self care" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

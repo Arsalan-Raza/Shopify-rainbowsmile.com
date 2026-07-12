@@ -1,0 +1,205 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --mf-navy:   {{ section.settings.bg_color }};
+    --mf-white:  {{ section.settings.quote_color }};
+    --mf-gold:   {{ section.settings.highlight_color }};
+    --mf-coral:  {{ section.settings.rule_color }};
+    --mf-attr:   {{ section.settings.attr_color }};
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: var(--mf-navy);
+    padding-block: clamp(48px, 8vw, 96px);
+    padding-inline: clamp(20px, 5vw, 48px);
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }}::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='440' height='440' viewBox='0 0 440 440'%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='70' cy='90' r='30' opacity='.016'/%3E%3Ccircle cx='370' cy='330' r='34' opacity='.014'/%3E%3Ccircle cx='300' cy='70' r='20' opacity='.016'/%3E%3Ccircle cx='150' cy='330' r='26' opacity='.014'/%3E%3Ccircle cx='60' cy='250' r='2' opacity='.04'/%3E%3Ccircle cx='250' cy='150' r='1.8' opacity='.04'/%3E%3Ccircle cx='410' cy='180' r='2' opacity='.035'/%3E%3Cpath d='M120,110 Q120,120 130,120 Q120,120 120,130 Q120,120 110,120 Q120,120 120,110 Z' opacity='.05'/%3E%3Cpath d='M340,250 Q340,259 349,259 Q340,259 340,268 Q340,259 331,259 Q340,259 340,250 Z' opacity='.045'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 440px;
+    background-repeat: repeat;
+    pointer-events: none;
+  }
+
+  .mfquote-{{ section.id }} * { box-sizing: border-box; }
+  .mfquote-{{ section.id }} .mf__inner { max-width: 900px; margin-inline: auto; }
+
+  /* ── Rules ───────────────────────────────────────────────── */
+  .mfquote-{{ section.id }} .mf__rule {
+    width: 56px;
+    height: 3px;
+    background: var(--mf-coral);
+    border: none;
+    margin-inline: auto;
+  }
+  .mfquote-{{ section.id }} .mf__rule--top    { margin-bottom: clamp(26px, 4vw, 42px); }
+  .mfquote-{{ section.id }} .mf__rule--bottom { margin-top: clamp(26px, 4vw, 40px); }
+
+  /* ── Quote ───────────────────────────────────────────────── */
+  .mfquote-{{ section.id }} .mf__quote {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(22px, 3.4vw, 42px);
+    line-height: 1.3;
+    letter-spacing: -0.3px;
+    color: var(--mf-white);
+  }
+  .mfquote-{{ section.id }} .mf__hl { color: var(--mf-gold); font-style: italic; }
+
+  /* ── Attribution ─────────────────────────────────────────── */
+  .mfquote-{{ section.id }} .mf__attr {
+    margin: clamp(24px, 3.4vw, 36px) 0 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(13px, 1.3vw, 15px);
+    line-height: 1.5;
+    color: var(--mf-attr);
+  }
+{%- endstyle -%}
+
+<div class="mfquote-{{ section.id }}">
+  <div class="mf__inner">
+
+    {%- if section.settings.show_rules -%}
+      <hr class="mf__rule mf__rule--top" aria-hidden="true">
+    {%- endif -%}
+
+    <blockquote class="mf__quote">
+      {%- if section.settings.quote_before != blank -%}
+        {{- section.settings.quote_before | escape -}}
+      {%- endif -%}
+      {%- if section.settings.quote_highlight != blank -%}
+        <span class="mf__hl">{{- section.settings.quote_highlight | escape -}}</span>
+      {%- endif -%}
+      {%- if section.settings.quote_after != blank -%}
+        {{- section.settings.quote_after | escape -}}
+      {%- endif -%}
+    </blockquote>
+
+    {%- if section.settings.attribution != blank -%}
+      <p class="mf__attr">{{ section.settings.attribution | escape }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.show_rules -%}
+      <hr class="mf__rule mf__rule--bottom" aria-hidden="true">
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Manifesto Quote",
+  "tag": "section",
+  "class": "manifesto-quote-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Quote"
+    },
+    {
+      "type": "textarea",
+      "id": "quote_before",
+      "label": "Quote — text before highlight",
+      "default": "\"We're not selling toothpaste. We're not selling mouthwash. We're supporting the "
+    },
+    {
+      "type": "text",
+      "id": "quote_highlight",
+      "label": "Quote — highlighted word(s)",
+      "default": "living ecosystem",
+      "info": "Displayed in the accent/gold color."
+    },
+    {
+      "type": "textarea",
+      "id": "quote_after",
+      "label": "Quote — text after highlight",
+      "default": " your mouth was born with. This is oral care for the 21st century.\""
+    },
+    {
+      "type": "text",
+      "id": "attribution",
+      "label": "Attribution",
+      "default": "— William Robertson, Founder & Microbiome Pioneer"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rules",
+      "label": "Show coral rules",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Quote font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Attribution font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#23264a"
+    },
+    {
+      "type": "color",
+      "id": "quote_color",
+      "label": "Quote text color",
+      "default": "#f4f5fb"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlighted word color",
+      "default": "#f2b544"
+    },
+    {
+      "type": "color",
+      "id": "rule_color",
+      "label": "Rule color",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "attr_color",
+      "label": "Attribution color",
+      "default": "#7e83a3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Manifesto Quote"
+    }
+  ]
+}
+{% endschema %}

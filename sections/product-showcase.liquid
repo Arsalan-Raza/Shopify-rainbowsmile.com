@@ -1,0 +1,535 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --pr-bg:      {{ section.settings.bg_color }};
+    --pr-navy:    {{ section.settings.navy_color }};
+    --pr-accent:  {{ section.settings.accent_color }};
+    --pr-gold:    {{ section.settings.gold_color }};
+    --pr-green:   {{ section.settings.green_color }};
+    --pr-intro:   {{ section.settings.intro_color }};
+    --pr-icon:    {{ section.settings.icon_color }};
+    --pr-ben-sub: {{ section.settings.ben_sub_color }};
+    --pr-card:    {{ section.settings.card_color }};
+    --pr-line:    {{ section.settings.line_color }};
+
+    background: var(--pr-bg);
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  .prods-{{ section.id }} * { box-sizing: border-box; }
+  .prods-{{ section.id }} .prods__inner { max-width: 1240px; margin-inline: auto; }
+
+  /* ── Header ──────────────────────────────────────────────── */
+  .prods-{{ section.id }} .prods__head {
+    text-align: center;
+    margin-bottom: clamp(32px, 4.5vw, 52px);
+  }
+  .prods-{{ section.id }} .prods__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--pr-navy);
+    line-height: 1;
+  }
+  .prods-{{ section.id }} .prods__eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+  .prods-{{ section.id }} .prods__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(32px, 4.2vw, 50px);
+    line-height: 1.02;
+    letter-spacing: -0.5px;
+    color: var(--pr-navy);
+  }
+  .prods-{{ section.id }} .prods__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: clamp(30px, 3.8vw, 46px);
+    line-height: 1.1;
+    color: var(--pr-accent);
+  }
+  .prods-{{ section.id }} .prods__sub {
+    margin: clamp(12px, 1.8vw, 18px) auto 0;
+    max-width: 520px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.55;
+    color: var(--pr-intro);
+  }
+
+  /* ── Cards ───────────────────────────────────────────────── */
+  .prods-{{ section.id }} .prods__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(18px, 2.2vw, 26px);
+    margin-bottom: clamp(26px, 3.4vw, 40px);
+  }
+  .prods-{{ section.id }} .prods__card {
+    background: var(--pr-card);
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 26px rgba(60, 45, 30, 0.08);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  @media (hover: hover) {
+    .prods-{{ section.id }} .prods__card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 38px rgba(60, 45, 30, 0.13);
+    }
+  }
+  .prods-{{ section.id }} .prods__card:focus-visible {
+    outline: 3px solid rgba(239, 74, 34, 0.4);
+    outline-offset: 3px;
+  }
+  .prods-{{ section.id }} .prods__media {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(165deg, #eef0e2, #faf7ef);
+  }
+  .prods-{{ section.id }} .prods__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .prods-{{ section.id }} .prods__badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 8px 15px;
+    border-radius: 999px;
+    background: var(--pr-gold);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--pr-navy);
+    white-space: nowrap;
+  }
+  .prods-{{ section.id }} .prods__content { padding: clamp(20px, 2.2vw, 26px); }
+  .prods-{{ section.id }} .prods__type {
+    margin: 0 0 12px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .prods-{{ section.id }} .prods__name {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 600;
+    font-size: clamp(18px, 1.9vw, 22px);
+    line-height: 1.2;
+    color: var(--pr-navy);
+  }
+
+  /* ── Benefits bar ────────────────────────────────────────── */
+  .prods-{{ section.id }} .prods__benefits {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--pr-card);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .prods-{{ section.id }} .prods__benefit {
+    padding: clamp(22px, 2.6vw, 32px) clamp(14px, 2vw, 24px);
+    text-align: center;
+    border-left: 1px solid var(--pr-line);
+  }
+  .prods-{{ section.id }} .prods__benefit:nth-child(4n+1) { border-left: none; }
+  .prods-{{ section.id }} .prods__benefit-icon {
+    color: var(--pr-icon);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .prods-{{ section.id }} .prods__benefit-icon svg { width: 24px; height: 24px; display: block; margin-inline: auto; }
+  .prods-{{ section.id }} .prods__benefit-title {
+    margin: 0 0 6px;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(14px, 1.4vw, 15px);
+    color: var(--pr-navy);
+  }
+  .prods-{{ section.id }} .prods__benefit-sub {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    line-height: 1.4;
+    color: var(--pr-ben-sub);
+  }
+
+  /* ── Responsive ──────────────────────────────────────────── */
+  @media screen and (max-width: 899px) {
+    .prods-{{ section.id }} .prods__grid {
+      grid-template-columns: 1fr;
+      max-width: 420px;
+      margin-inline: auto;
+      margin-bottom: clamp(26px, 3.4vw, 40px);
+    }
+    .prods-{{ section.id }} .prods__benefits { grid-template-columns: repeat(2, 1fr); }
+    .prods-{{ section.id }} .prods__benefit:nth-child(n)     { border-left: 1px solid var(--pr-line); border-top: none; }
+    .prods-{{ section.id }} .prods__benefit:nth-child(2n+1)  { border-left: none; }
+    .prods-{{ section.id }} .prods__benefit:nth-child(n+3)   { border-top: 1px solid var(--pr-line); }
+  }
+  @media screen and (max-width: 420px) {
+    .prods-{{ section.id }} .prods__benefits { grid-template-columns: 1fr; }
+    .prods-{{ section.id }} .prods__benefit:nth-child(n)  { border-left: none; border-top: 1px solid var(--pr-line); }
+    .prods-{{ section.id }} .prods__benefit:nth-child(1)  { border-top: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .prods-{{ section.id }} .prods__card { transition: none; }
+  }
+{%- endstyle -%}
+
+<div class="prods-{{ section.id }}">
+  <div class="prods__inner">
+
+    <header class="prods__head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="prods__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.title != blank or section.settings.script_line != blank -%}
+        <h2 class="prods__title">
+          {{- section.settings.title | escape -}}
+          {%- if section.settings.script_line != blank -%}
+            <span class="prods__script">{{ section.settings.script_line | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="prods__sub">{{ section.settings.subtitle | escape }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="prods__grid">
+      {%- if section.settings.collection != blank -%}
+        {%- assign pr_collection = collections[section.settings.collection] -%}
+        {%- for product in pr_collection.products limit: section.settings.product_limit -%}
+          {%- assign type_lower = product.type | downcase -%}
+          {%- if type_lower contains 'pump' -%}
+            {%- assign pr_type_color = 'var(--pr-green)' -%}
+          {%- else -%}
+            {%- assign pr_type_color = 'var(--pr-gold)' -%}
+          {%- endif -%}
+          {%- assign prod_img_alt = product.featured_image.alt | default: product.title | escape -%}
+          <a class="prods__card" href="{{ product.url }}">
+            <div class="prods__media">
+              {%- if product.featured_image != blank -%}
+                {{
+                  product.featured_image
+                  | image_url: width: 800
+                  | image_tag:
+                    loading: 'lazy',
+                    alt: prod_img_alt,
+                    widths: '400, 600, 800'
+                }}
+              {%- endif -%}
+              {%- if section.settings.badge_text != blank -%}
+                <span class="prods__badge">{{ section.settings.badge_text | escape }}</span>
+              {%- endif -%}
+            </div>
+            <div class="prods__content">
+              {%- if product.type != blank -%}
+                <p class="prods__type" style="color: {{ pr_type_color }};">{{ product.type | escape }}</p>
+              {%- endif -%}
+              <h3 class="prods__name">{{ product.title | escape }}</h3>
+            </div>
+          </a>
+        {%- else -%}
+          <p style="grid-column: 1 / -1; text-align: center; padding: 40px; font-family: var(--font-heading-family); color: var(--pr-navy);">
+            No products found in this collection.
+          </p>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..3) -%}
+          <div class="prods__card">
+            <div class="prods__media">{{ 'product-' | append: i | placeholder_svg_tag }}</div>
+            <div class="prods__content">
+              <p class="prods__type" style="color: var(--pr-gold);">Product Type</p>
+              <h3 class="prods__name">Product Name</h3>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="prods__benefits">
+        {%- for block in section.blocks -%}
+          <div class="prods__benefit" {{ block.shopify_attributes }}>
+            <span class="prods__benefit-icon" aria-hidden="true">
+              {%- case block.settings.icon -%}
+                {%- when 'returns' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 2.6-6.3"/><path d="M3 4v4h4"/></svg>
+                {%- when 'globe' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+                {%- when 'gift' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9"/><path d="M12 8v13"/><path d="M12 8S10.5 3 8 3a2.5 2.5 0 0 0 0 5h4Zm0 0s1.5-5 4-5a2.5 2.5 0 0 1 0 5h-4Z"/></svg>
+                {%- when 'chat' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H5l-2 2V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8Z"/></svg>
+                {%- when 'shield' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5 3.6 9.4 8 10.8C16.4 21.4 20 17 20 12V6L12 2Z"/><path d="m9 12 2 2 4-4"/></svg>
+                {%- when 'truck' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11v14H5Z"/><path d="M9 17h6"/><path d="M17 5h3l3 4v6h-3"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="18.5" cy="17.5" r="2.5"/></svg>
+                {%- when 'star' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6 6.6 1-4.8 4.6 1.1 6.5L12 17.1l-5.8 3 1.1-6.5L2.5 9l6.6-1z"/></svg>
+                {%- when 'leaf' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c0-7 5-12 11-12 0 6-4 11-11 12Z"/><path d="M4 20c2.5-4 5.5-6.5 9-8"/></svg>
+                {%- else -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg>
+              {%- endcase -%}
+            </span>
+            <p class="prods__benefit-title">{{ block.settings.title | escape }}</p>
+            <p class="prods__benefit-sub">{{ block.settings.sub | escape }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Showcase",
+  "tag": "section",
+  "class": "product-showcase-section",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Three Flavors. One Formula."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title (heading part)",
+      "default": "Alcohol free"
+    },
+    {
+      "type": "text",
+      "id": "script_line",
+      "label": "Script line",
+      "default": "daily oral wellness."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "All day spray freshness and sublingual wellness ritual in 3 flavors"
+    },
+    {
+      "type": "header",
+      "content": "Products"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "product_limit",
+      "label": "Products to show",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Subscribe & Save",
+      "info": "Shown on every card. Leave blank to hide."
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow, label & benefit sub font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Title & product name font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script line font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Subtitle font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#f4eee1"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading & text color",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Script & accent color",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Badge & spray label color",
+      "default": "#f5b731"
+    },
+    {
+      "type": "color",
+      "id": "green_color",
+      "label": "Pump label color",
+      "default": "#4f9e57"
+    },
+    {
+      "type": "color",
+      "id": "intro_color",
+      "label": "Subtitle color",
+      "default": "#4b4f63"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Benefit icon color",
+      "default": "#4a2f23"
+    },
+    {
+      "type": "color",
+      "id": "ben_sub_color",
+      "label": "Benefit sub-copy color",
+      "default": "#c99a5a"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card & benefits bar background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Divider line color",
+      "default": "#ece5da"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "returns", "label": "Returns (refresh)" },
+            { "value": "globe",   "label": "Globe (community)" },
+            { "value": "gift",    "label": "Gift / Book" },
+            { "value": "chat",    "label": "Chat (support)" },
+            { "value": "shield",  "label": "Shield (guarantee)" },
+            { "value": "truck",   "label": "Truck (shipping)" },
+            { "value": "star",    "label": "Star" },
+            { "value": "leaf",    "label": "Leaf (organic)" }
+          ],
+          "default": "shield"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Free Returns"
+        },
+        {
+          "type": "text",
+          "id": "sub",
+          "label": "Sub-copy",
+          "default": "Not happy? We'll sort it."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Showcase",
+      "blocks": [
+        { "type": "benefit", "settings": { "icon": "returns", "title": "Free Returns",   "sub": "Not happy? We'll sort it." } },
+        { "type": "benefit", "settings": { "icon": "globe",   "title": "Free Community", "sub": "Join 50,000+ biome hackers" } },
+        { "type": "benefit", "settings": { "icon": "gift",    "title": "Free Book",      "sub": "Download William's guide" } },
+        { "type": "benefit", "settings": { "icon": "chat",    "title": "24/7 Support",   "sub": "support@rainbowsmile.com" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

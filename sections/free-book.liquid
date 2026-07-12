@@ -1,0 +1,561 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --bk-bg:    {{ section.settings.bg_color }};
+    --bk-navy:  {{ section.settings.navy_color }};
+    --bk-coral: {{ section.settings.coral_color }};
+    --bk-gold:  {{ section.settings.gold_color }};
+    --bk-body:  {{ section.settings.body_color }};
+    --bk-meta:  {{ section.settings.meta_color }};
+    --bk-card:  {{ section.settings.card_color }};
+    --bk-line:  {{ section.settings.line_color }};
+    --bk-blob:  {{ section.settings.blob_color }};
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: var(--bk-bg);
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  #shopify-section-{{ section.id }}::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      radial-gradient(circle at 8% 30%,  var(--bk-blob) 0 90px,  transparent 91px),
+      radial-gradient(circle at 92% 78%, var(--bk-blob) 0 120px, transparent 121px),
+      radial-gradient(circle at 70% 12%, var(--bk-blob) 0 70px,  transparent 71px);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .book-{{ section.id }} * { box-sizing: border-box; }
+
+  .book-{{ section.id }} .bk__inner {
+    max-width: 1240px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) 1fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: start;
+  }
+
+  /* ── Book cover ──────────────────────────────────────────── */
+  .book-{{ section.id }} .bk__cover {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 10 / 13;
+    background: #f4ecd8;
+    box-shadow: 0 20px 50px rgba(80, 55, 25, 0.16);
+    max-width: 480px;
+  }
+  .book-{{ section.id }} .bk__cover-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .book-{{ section.id }} .bk__cover-placeholder {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(165deg, #ddd9ce, #f4ede0);
+  }
+
+  /* ── Content ─────────────────────────────────────────────── */
+  .book-{{ section.id }} .bk__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--bk-coral);
+    line-height: 1;
+  }
+  .book-{{ section.id }} .bk__eyebrow::before {
+    content: "";
+    width: 22px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+  .book-{{ section.id }} .bk__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(30px, 3.8vw, 48px);
+    line-height: 1.02;
+    letter-spacing: -0.5px;
+    color: var(--bk-navy);
+  }
+  .book-{{ section.id }} .bk__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: clamp(28px, 3.2vw, 42px);
+    line-height: 1.1;
+    color: var(--bk-coral);
+  }
+  .book-{{ section.id }} .bk__desc {
+    margin: clamp(18px, 2.4vw, 24px) 0 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 15px);
+    line-height: 1.6;
+    color: var(--bk-body);
+  }
+  .book-{{ section.id }} .bk__desc + .bk__desc { margin-top: 14px; }
+  .book-{{ section.id }} .bk__desc strong { font-weight: 700; color: var(--bk-navy); }
+  .book-{{ section.id }} .bk__desc sup { font-size: 0.62em; vertical-align: super; }
+
+  /* Checklist */
+  .book-{{ section.id }} .bk__list {
+    list-style: none;
+    margin: clamp(20px, 2.6vw, 28px) 0 0;
+    padding: 0;
+  }
+  .book-{{ section.id }} .bk__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-size: clamp(14px, 1.3vw, 15px);
+    line-height: 1.5;
+    color: var(--bk-body);
+  }
+  .book-{{ section.id }} .bk__check {
+    flex: none;
+    width: 22px;
+    height: 22px;
+    margin-top: 1px;
+    border-radius: 6px;
+    background: var(--bk-gold);
+    display: grid;
+    place-items: center;
+  }
+  .book-{{ section.id }} .bk__check svg {
+    width: 12px;
+    height: 12px;
+    stroke: #fff;
+    stroke-width: 2.6;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .book-{{ section.id }} .bk__list sup { font-size: 0.62em; vertical-align: super; }
+
+  /* Email capture */
+  .book-{{ section.id }} .bk__capture {
+    margin-top: clamp(26px, 3.4vw, 36px);
+    background: var(--bk-card);
+    border-radius: 14px;
+    padding: clamp(22px, 2.6vw, 30px);
+    box-shadow: 0 16px 40px rgba(80, 55, 25, 0.10);
+  }
+  .book-{{ section.id }} .bk__capture-title {
+    margin: 0 0 6px;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(16px, 1.6vw, 18px);
+    color: var(--bk-navy);
+  }
+  .book-{{ section.id }} .bk__capture-sub {
+    margin: 0 0 16px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-size: clamp(12px, 1.2vw, 13px);
+    line-height: 1.5;
+    color: var(--bk-meta);
+  }
+  .book-{{ section.id }} .bk__form {
+    display: flex;
+    gap: 12px;
+  }
+  .book-{{ section.id }} .bk__form input[type="email"] {
+    flex: 1;
+    min-width: 0;
+    border: 1px solid var(--bk-line);
+    border-radius: 999px;
+    padding: 15px 20px;
+    min-height: 52px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-size: clamp(14px, 1.35vw, 15px);
+    color: var(--bk-navy);
+    background: #fff;
+    appearance: none;
+  }
+  .book-{{ section.id }} .bk__form input[type="email"]::placeholder { color: #9a9eb2; }
+  .book-{{ section.id }} .bk__form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--bk-coral);
+    box-shadow: 0 0 0 3px rgba(239, 74, 34, 0.15);
+  }
+  .book-{{ section.id }} .bk__form button {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    border-radius: 999px;
+    padding: 15px 26px;
+    min-height: 52px;
+    background: var(--bk-coral);
+    color: #fff;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(14px, 1.35vw, 15px);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.18s ease;
+  }
+  .book-{{ section.id }} .bk__arrow { transition: transform 0.18s ease; }
+  .book-{{ section.id }} .bk__form button:hover { background: #dc411b; }
+  .book-{{ section.id }} .bk__form button:hover .bk__arrow { transform: translateX(3px); }
+  .book-{{ section.id }} .bk__form button:focus-visible { outline: 3px solid rgba(239,74,34,0.45); outline-offset: 2px; }
+  .book-{{ section.id }} .bk__note {
+    margin: 14px 0 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-size: clamp(12px, 1.2vw, 13px);
+    color: var(--bk-meta);
+  }
+
+  /* ── Responsive ──────────────────────────────────────────── */
+  @media screen and (max-width: 899px) {
+    .book-{{ section.id }} .bk__inner {
+      grid-template-columns: 1fr;
+      gap: clamp(32px, 6vw, 44px);
+      justify-items: center;
+    }
+    .book-{{ section.id }} .bk__cover  { order: -1; width: 100%; max-width: 480px; }
+    .book-{{ section.id }} .bk__content { max-width: 620px; width: 100%; }
+  }
+  @media screen and (max-width: 520px) {
+    .book-{{ section.id }} .bk__form { flex-direction: column; }
+    .book-{{ section.id }} .bk__form button { width: 100%; justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .book-{{ section.id }} .bk__arrow { transition: none; }
+    .book-{{ section.id }} .bk__form button { transition: none; }
+  }
+{%- endstyle -%}
+
+<div class="book-{{ section.id }}">
+  <div class="bk__inner">
+
+    <!-- Book cover -->
+    <div class="bk__cover">
+      {%- if section.settings.cover_image != blank -%}
+        {%- assign cover_alt = section.settings.cover_image.alt | default: 'Book cover' | escape -%}
+        {{
+          section.settings.cover_image
+          | image_url: width: 960
+          | image_tag:
+            class: 'bk__cover-img',
+            loading: 'lazy',
+            alt: cover_alt,
+            widths: '480, 720, 960'
+        }}
+      {%- else -%}
+        <div class="bk__cover-placeholder"></div>
+      {%- endif -%}
+    </div>
+
+    <!-- Content -->
+    <div class="bk__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="bk__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.title != blank or section.settings.script_line != blank -%}
+        <h2 class="bk__title">
+          {{- section.settings.title | escape -}}
+          {%- if section.settings.script_line != blank -%}
+            <span class="bk__script">{{ section.settings.script_line | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.desc_1 != blank -%}
+        <p class="bk__desc">{{ section.settings.desc_1 }}</p>
+      {%- endif -%}
+      {%- if section.settings.desc_2 != blank -%}
+        <p class="bk__desc">{{ section.settings.desc_2 }}</p>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <ul class="bk__list">
+          {%- for block in section.blocks -%}
+            <li {{ block.shopify_attributes }}>
+              <span class="bk__check" aria-hidden="true">
+                <svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 4.5"/></svg>
+              </span>
+              {{ block.settings.text }}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      <div class="bk__capture">
+        {%- if section.settings.form_title != blank -%}
+          <p class="bk__capture-title">{{ section.settings.form_title | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.form_sub != blank -%}
+          <p class="bk__capture-sub">{{ section.settings.form_sub | escape }}</p>
+        {%- endif -%}
+
+        {%- form 'customer', id: 'bk-form-{{ section.id }}', class: 'bk__form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter,biome-hacker-book">
+          <label for="bk-email-{{ section.id }}" hidden>{{ section.settings.email_placeholder | default: 'Email address' | escape }}</label>
+          <input
+            id="bk-email-{{ section.id }}"
+            type="email"
+            name="contact[email]"
+            placeholder="{{ section.settings.email_placeholder | escape }}"
+            required
+            autocomplete="email"
+          >
+          <button type="submit">
+            {{ section.settings.btn_text | escape }}
+            <span class="bk__arrow" aria-hidden="true">→</span>
+          </button>
+        {%- endform -%}
+
+        {%- if section.settings.form_note != blank -%}
+          <p class="bk__note">{{ section.settings.form_note | escape }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Free Book",
+  "tag": "section",
+  "class": "free-book-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Book cover"
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "Book cover image"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Free \u00b7 The Biome Hacker Community"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title (heading part)",
+      "default": "The Biome Hacker's Code."
+    },
+    {
+      "type": "text",
+      "id": "script_line",
+      "label": "Script line",
+      "default": "Read the book."
+    },
+    {
+      "type": "textarea",
+      "id": "desc_1",
+      "label": "Description paragraph 1",
+      "default": "A field guide to human potential. Free for Biome Hackers. Your mouth is the command centre of your biology. This book explains why, and what to do about it.",
+      "info": "HTML supported: use <strong> for bold, <sup> for superscript."
+    },
+    {
+      "type": "textarea",
+      "id": "desc_2",
+      "label": "Description paragraph 2",
+      "default": "Foreword by <strong>Dr. Vanita K. Gupta, PhD, MBA<\/strong> \u2014 Chief Founding Science Officer, Rainbow Smile",
+      "info": "HTML supported: use <strong> for bold."
+    },
+    {
+      "type": "header",
+      "content": "Email capture"
+    },
+    {
+      "type": "text",
+      "id": "form_title",
+      "label": "Form title",
+      "default": "Get Your Free Copy"
+    },
+    {
+      "type": "text",
+      "id": "form_sub",
+      "label": "Form sub-copy",
+      "default": "Instant download. No credit card. Join biome hackers community."
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email input placeholder",
+      "default": "Enter your email address"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button text",
+      "default": "Download Free"
+    },
+    {
+      "type": "text",
+      "id": "form_note",
+      "label": "Note below form",
+      "default": "Dr. Gupta\u2019s foreword credit displayed prominently"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow & mono font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Title & heading font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script line font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body & description font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#f6edd8"
+    },
+    {
+      "type": "color",
+      "id": "blob_color",
+      "label": "Background blob color",
+      "default": "#f0dcae"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading color",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Accent, script & button color",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Check icon color",
+      "default": "#e8a53a"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text color",
+      "default": "#55586b"
+    },
+    {
+      "type": "color",
+      "id": "meta_color",
+      "label": "Form sub-copy & note color",
+      "default": "#c99a5a"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Capture card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Input border color",
+      "default": "#dcd5cb"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "checklist_item",
+      "name": "Checklist Item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Item text",
+          "default": "Why your oral microbiome influences whole-body health \u2014 from gut to brain.",
+          "info": "HTML supported: use <sup>\u2122<\/sup> for trademark symbols."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Free Book",
+      "blocks": [
+        { "type": "checklist_item", "settings": { "text": "Why your oral microbiome influences whole-body health \u2014 from gut to brain." } },
+        { "type": "checklist_item", "settings": { "text": "What conventional oral care may be quietly doing to your bacterial allies." } },
+        { "type": "checklist_item", "settings": { "text": "How to upgrade your mOS<sup>\u2122<\/sup> \u2014 your Microbial Operating System \u2014 starting today." } },
+        { "type": "checklist_item", "settings": { "text": "The 60-second daily protocols that support oral vitality and long-term resilience." } },
+        { "type": "checklist_item", "settings": { "text": "How to join the Biome Hacker movement and the community building around it." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,364 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --ec-navy:   {{ section.settings.navy_color }};
+    --ec-accent: {{ section.settings.accent_color }};
+    --ec-body:   {{ section.settings.body_color }};
+
+    background: {{ section.settings.bg_color }};
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  .eco-{{ section.id }} * { box-sizing: border-box; }
+  .eco-{{ section.id }} .eco__inner { max-width: 1180px; margin-inline: auto; }
+
+  /* ── Header ──────────────────────────────────────────────── */
+  .eco-{{ section.id }} .eco__head {
+    text-align: center;
+    margin-bottom: clamp(30px, 4vw, 48px);
+  }
+  .eco-{{ section.id }} .eco__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--ec-accent);
+    line-height: 1;
+  }
+  .eco-{{ section.id }} .eco__eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+  .eco-{{ section.id }} .eco__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(32px, 4.2vw, 50px);
+    line-height: 1.02;
+    letter-spacing: -0.5px;
+    color: var(--ec-navy);
+  }
+  .eco-{{ section.id }} .eco__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: clamp(30px, 3.8vw, 46px);
+    line-height: 1.1;
+    color: var(--ec-accent);
+  }
+  .eco-{{ section.id }} .eco__sub {
+    margin: clamp(14px, 2vw, 20px) auto 0;
+    max-width: 560px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.6;
+    color: var(--ec-body);
+  }
+
+  /* ── Mosaic ──────────────────────────────────────────────── */
+  .eco-{{ section.id }} .eco__mosaic {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "a b c"
+      "d d c";
+    gap: clamp(14px, 1.8vw, 22px);
+  }
+  .eco-{{ section.id }} .eco__tile {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(160deg, #e6ddd0, #f3ece1);
+  }
+  .eco-{{ section.id }} .eco__tile img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .eco-{{ section.id }} .eco__tile--a { grid-area: a; aspect-ratio: 4 / 3; }
+  .eco-{{ section.id }} .eco__tile--b { grid-area: b; aspect-ratio: 4 / 3; }
+  .eco-{{ section.id }} .eco__tile--c { grid-area: c; }
+  .eco-{{ section.id }} .eco__tile--d { grid-area: d; aspect-ratio: 16 / 6.5; }
+
+  /* ── Responsive ──────────────────────────────────────────── */
+  @media screen and (max-width: 720px) {
+    .eco-{{ section.id }} .eco__mosaic {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "a b"
+        "d d"
+        "c c";
+    }
+    .eco-{{ section.id }} .eco__tile--c { aspect-ratio: 3 / 2; }
+  }
+  @media screen and (max-width: 460px) {
+    .eco-{{ section.id }} .eco__mosaic {
+      grid-template-columns: 1fr;
+      grid-template-areas: "a" "b" "d" "c";
+    }
+    .eco-{{ section.id }} .eco__tile--a,
+    .eco-{{ section.id }} .eco__tile--b { aspect-ratio: 3 / 2; }
+    .eco-{{ section.id }} .eco__tile--d { aspect-ratio: 16 / 9; }
+    .eco-{{ section.id }} .eco__tile--c { aspect-ratio: 4 / 5; }
+  }
+{%- endstyle -%}
+
+<div class="eco-{{ section.id }}">
+  <div class="eco__inner">
+
+    <header class="eco__head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eco__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.title != blank or section.settings.script_line != blank -%}
+        <h2 class="eco__title">
+          {{- section.settings.title | escape -}}
+          {%- if section.settings.script_line != blank -%}
+            <span class="eco__script">{{ section.settings.script_line | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="eco__sub">{{ section.settings.subtitle | escape }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="eco__mosaic">
+
+      <div class="eco__tile eco__tile--a">
+        {%- if section.settings.image_a != blank -%}
+          {%- assign img_a_alt = section.settings.image_a.alt | default: section.settings.alt_a | escape -%}
+          {{
+            section.settings.image_a
+            | image_url: width: 900
+            | image_tag:
+              loading: 'lazy',
+              alt: img_a_alt,
+              widths: '450, 700, 900'
+          }}
+        {%- endif -%}
+      </div>
+
+      <div class="eco__tile eco__tile--b">
+        {%- if section.settings.image_b != blank -%}
+          {%- assign img_b_alt = section.settings.image_b.alt | default: section.settings.alt_b | escape -%}
+          {{
+            section.settings.image_b
+            | image_url: width: 900
+            | image_tag:
+              loading: 'lazy',
+              alt: img_b_alt,
+              widths: '450, 700, 900'
+          }}
+        {%- endif -%}
+      </div>
+
+      <div class="eco__tile eco__tile--c">
+        {%- if section.settings.image_c != blank -%}
+          {%- assign img_c_alt = section.settings.image_c.alt | default: section.settings.alt_c | escape -%}
+          {{
+            section.settings.image_c
+            | image_url: width: 900
+            | image_tag:
+              loading: 'lazy',
+              alt: img_c_alt,
+              widths: '450, 700, 900'
+          }}
+        {%- endif -%}
+      </div>
+
+      <div class="eco__tile eco__tile--d">
+        {%- if section.settings.image_d != blank -%}
+          {%- assign img_d_alt = section.settings.image_d.alt | default: section.settings.alt_d | escape -%}
+          {{
+            section.settings.image_d
+            | image_url: width: 1400
+            | image_tag:
+              loading: 'lazy',
+              alt: img_d_alt,
+              widths: '700, 1000, 1400'
+          }}
+        {%- endif -%}
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Living Ecosystem",
+  "tag": "section",
+  "class": "living-ecosystem-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Living Ecosystem"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title (heading part)",
+      "default": "Your mouth"
+    },
+    {
+      "type": "text",
+      "id": "script_line",
+      "label": "Script line",
+      "default": "is alive"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "The mouth is your control panel for programming your energy, immunity, and vitality through 1,000+ swallows a day. Healthy microbes and tissues thrive on bio-available oxygen. Bottled in ultra-violet Miron glass for potency."
+    },
+    {
+      "type": "header",
+      "content": "Mosaic images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_a",
+      "label": "Image A (top-left, 4:3)"
+    },
+    {
+      "type": "text",
+      "id": "alt_a",
+      "label": "Image A alt text"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_b",
+      "label": "Image B (top-middle, 4:3)"
+    },
+    {
+      "type": "text",
+      "id": "alt_b",
+      "label": "Image B alt text"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_c",
+      "label": "Image C (right column, tall)"
+    },
+    {
+      "type": "text",
+      "id": "alt_c",
+      "label": "Image C alt text"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_d",
+      "label": "Image D (bottom-wide, 16:6.5)"
+    },
+    {
+      "type": "text",
+      "id": "alt_d",
+      "label": "Image D alt text"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Title font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script line font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Subtitle font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading color",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Eyebrow & script color",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Subtitle color",
+      "default": "#6c5f4e"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Living Ecosystem"
+    }
+  ]
+}
+{% endschema %}

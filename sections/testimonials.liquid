@@ -1,0 +1,665 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --tst-navy:  {{ section.settings.navy_color }};
+    --tst-coral: {{ section.settings.coral_color }};
+    --tst-star:  {{ section.settings.star_color }};
+    --tst-body:  {{ section.settings.body_color }};
+    --tst-meta:  {{ section.settings.meta_color }};
+    --tst-intro: {{ section.settings.intro_color }};
+    --tst-card:  {{ section.settings.card_color }};
+    --tst-line:  {{ section.settings.line_color }};
+
+    background: {{ section.settings.bg_color }};
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  .tst-{{ section.id }} * { box-sizing: border-box; }
+  .tst-{{ section.id }} .tst__inner { max-width: 1240px; margin-inline: auto; }
+
+  /* ── Header ──────────────────────────────────────────────── */
+  .tst-{{ section.id }} .tst__head {
+    text-align: center;
+    margin-bottom: clamp(28px, 4vw, 44px);
+  }
+  .tst-{{ section.id }} .tst__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--tst-coral);
+    line-height: 1;
+  }
+  .tst-{{ section.id }} .tst__eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+  .tst-{{ section.id }} .tst__eyebrow sup { font-size: 0.7em; vertical-align: super; }
+  .tst-{{ section.id }} .tst__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(32px, 4.2vw, 50px);
+    line-height: 1.02;
+    letter-spacing: -0.5px;
+    color: var(--tst-navy);
+  }
+  .tst-{{ section.id }} .tst__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: clamp(30px, 3.8vw, 46px);
+    line-height: 1.1;
+    color: var(--tst-coral);
+  }
+  .tst-{{ section.id }} .tst__sub {
+    margin: clamp(12px, 1.8vw, 18px) auto 0;
+    max-width: 520px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.55;
+    color: var(--tst-intro);
+  }
+
+  /* ── Stars (shared) ──────────────────────────────────────── */
+  .tst-{{ section.id }} .tst__stars { display: inline-flex; gap: 3px; line-height: 0; }
+  .tst-{{ section.id }} .tst__stars svg { width: 15px; height: 15px; fill: currentColor; display: block; }
+
+  /* ── Featured coral card ─────────────────────────────────── */
+  .tst-{{ section.id }} .tst__featured {
+    background: var(--tst-coral);
+    border-radius: 20px;
+    padding: clamp(28px, 4vw, 56px);
+    color: #fff;
+    margin-bottom: clamp(20px, 2.6vw, 30px);
+  }
+  .tst-{{ section.id }} .tst__featured .tst__stars {
+    color: var(--tst-star);
+    margin-bottom: clamp(20px, 3vw, 30px);
+  }
+  .tst-{{ section.id }} .tst__featured-quote {
+    margin: 0 0 clamp(24px, 3.4vw, 36px);
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(20px, 2.6vw, 32px);
+    line-height: 1.35;
+    color: #fff;
+  }
+  .tst-{{ section.id }} .tst__author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .tst-{{ section.id }} .tst__avatar {
+    width: 46px;
+    height: 46px;
+    flex: none;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    background: rgba(255, 255, 255, 0.25);
+  }
+  .tst-{{ section.id }} .tst__featured .tst__avatar { border: 2px solid rgba(255,255,255,0.6); }
+  .tst-{{ section.id }} .tst__name {
+    margin: 0 0 3px;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(14px, 1.4vw, 16px);
+    line-height: 1.2;
+  }
+  .tst-{{ section.id }} .tst__loc {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+  .tst-{{ section.id }} .tst__featured .tst__name { color: #fff; }
+  .tst-{{ section.id }} .tst__featured .tst__loc  { color: rgba(255,255,255,0.8); }
+
+  /* ── Supporting cards (slider) ───────────────────────────── */
+  .tst-{{ section.id }} .tst__slider-clip { overflow: hidden; }
+  .tst-{{ section.id }} .tst__swiper { overflow: visible; cursor: grab; }
+  .tst-{{ section.id }} .tst__swiper:active { cursor: grabbing; }
+  .tst-{{ section.id }} .tst__swiper .swiper-wrapper { align-items: stretch; }
+  .tst-{{ section.id }} .tst__swiper .swiper-slide { height: auto; display: flex; }
+  .tst-{{ section.id }} .tst__swiper .swiper-slide .tst__card { width: 100%; }
+
+  .tst-{{ section.id }} .tst__card {
+    background: var(--tst-card);
+    border: 1px solid var(--tst-line);
+    border-radius: 14px;
+    padding: clamp(22px, 2.4vw, 30px);
+    display: flex;
+    flex-direction: column;
+  }
+  .tst-{{ section.id }} .tst__card .tst__stars { color: var(--tst-star); margin-bottom: 16px; }
+  .tst-{{ section.id }} .tst__card-quote {
+    margin: 0 0 clamp(22px, 3vw, 30px);
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(14px, 1.35vw, 15px);
+    line-height: 1.65;
+    color: var(--tst-body);
+    flex: 1;
+  }
+  .tst-{{ section.id }} .tst__card .tst__author { margin-top: auto; }
+  .tst-{{ section.id }} .tst__card .tst__avatar { border: 1px solid var(--tst-line); }
+  .tst-{{ section.id }} .tst__card .tst__name { color: var(--tst-navy); }
+  .tst-{{ section.id }} .tst__card .tst__loc  { color: var(--tst-meta); }
+
+  /* ── CTA ─────────────────────────────────────────────────── */
+  .tst-{{ section.id }} .tst__cta-wrap {
+    text-align: center;
+    margin-top: clamp(34px, 4.5vw, 52px);
+  }
+  .tst-{{ section.id }} .tst__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 17px 34px;
+    min-height: 56px;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--tst-coral);
+    border: 2px solid var(--tst-coral);
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(14px, 1.4vw, 15px);
+    text-decoration: none;
+    transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  }
+  .tst-{{ section.id }} .tst__cta-arrow { transition: transform 0.18s ease; }
+  @media (hover: hover) {
+    .tst-{{ section.id }} .tst__cta:hover {
+      background: var(--tst-coral);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .tst-{{ section.id }} .tst__cta:hover .tst__cta-arrow { transform: translateX(3px); }
+  }
+  .tst-{{ section.id }} .tst__cta:focus-visible { outline: 3px solid rgba(239,74,34,0.4); outline-offset: 3px; }
+
+  /* ── Responsive ──────────────────────────────────────────── */
+  @media screen and (max-width: 480px) {
+    .tst-{{ section.id }} .tst__cta { width: 100%; justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tst-{{ section.id }} .tst__cta { transition: none; }
+    .tst-{{ section.id }} .tst__cta-arrow { transition: none; }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign star_svg = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8L10 14.9 4.7 17.6l1-5.8L1.5 7.7l5.9-.9z"/></svg>'
+-%}
+
+<div class="tst-{{ section.id }}">
+  <div class="tst__inner">
+
+    <header class="tst__head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="tst__eyebrow">
+          {{ section.settings.eyebrow | escape }}
+          {%- if section.settings.eyebrow_sup != blank -%}
+            <sup>{{ section.settings.eyebrow_sup | escape }}</sup>
+          {%- endif -%}
+        </p>
+      {%- endif -%}
+      {%- if section.settings.title != blank or section.settings.script_line != blank -%}
+        <h2 class="tst__title">
+          {{- section.settings.title | escape -}}
+          {%- if section.settings.script_line != blank -%}
+            <span class="tst__script">{{ section.settings.script_line | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="tst__sub">{{ section.settings.subtitle | escape }}</p>
+      {%- endif -%}
+    </header>
+
+    <!-- Featured testimonial -->
+    {%- if section.settings.feat_quote != blank -%}
+      <div class="tst__featured">
+        <span class="tst__stars" role="img" aria-label="5 out of 5 stars">
+          {{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}{{ star_svg }}
+        </span>
+        <blockquote class="tst__featured-quote">{{ section.settings.feat_quote | escape }}</blockquote>
+        <div class="tst__author">
+          {%- if section.settings.feat_avatar != blank -%}
+            {%- assign feat_av_alt = section.settings.feat_avatar.alt | default: section.settings.feat_name | escape -%}
+            {{
+              section.settings.feat_avatar
+              | image_url: width: 120
+              | image_tag:
+                class: 'tst__avatar',
+                loading: 'lazy',
+                alt: feat_av_alt,
+                widths: '60, 92, 120'
+            }}
+          {%- else -%}
+            <div class="tst__avatar"></div>
+          {%- endif -%}
+          <div>
+            {%- if section.settings.feat_name != blank -%}
+              <p class="tst__name">{{ section.settings.feat_name | escape }}</p>
+            {%- endif -%}
+            {%- if section.settings.feat_location != blank -%}
+              <p class="tst__loc">{{ section.settings.feat_location | escape }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
+    <!-- Supporting cards slider -->
+    {%- if section.blocks.size > 0 -%}
+      <div class="tst__slider-clip">
+        <div class="tst__swiper swiper" id="tst-swiper-{{ section.id }}">
+          <div class="swiper-wrapper">
+            {%- comment -%} Set A — with shopify_attributes for Theme Editor {%- endcomment -%}
+            {%- for block in section.blocks -%}
+              {%- assign card_rating = block.settings.rating | default: 5 -%}
+              <div class="swiper-slide" {{ block.shopify_attributes }}>
+                <article class="tst__card">
+                  <span class="tst__stars" role="img" aria-label="{{ card_rating }} out of 5 stars">
+                    {%- for i in (1..card_rating) -%}{{ star_svg }}{%- endfor -%}
+                    {%- assign empty_count = 5 | minus: card_rating -%}
+                    {%- if empty_count > 0 -%}
+                      {%- for i in (1..empty_count) -%}
+                        <svg viewBox="0 0 20 20" aria-hidden="true" style="opacity:0.25"><path d="M10 1.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8L10 14.9 4.7 17.6l1-5.8L1.5 7.7l5.9-.9z"/></svg>
+                      {%- endfor -%}
+                    {%- endif -%}
+                  </span>
+                  <p class="tst__card-quote">{{ block.settings.quote | escape }}</p>
+                  <div class="tst__author">
+                    {%- if block.settings.avatar != blank -%}
+                      {%- assign card_av_alt = block.settings.avatar.alt | default: block.settings.name | escape -%}
+                      {{
+                        block.settings.avatar
+                        | image_url: width: 120
+                        | image_tag:
+                          class: 'tst__avatar',
+                          loading: 'lazy',
+                          alt: card_av_alt,
+                          widths: '60, 92, 120'
+                      }}
+                    {%- else -%}
+                      <div class="tst__avatar" style="background: var(--tst-line);"></div>
+                    {%- endif -%}
+                    <div>
+                      {%- if block.settings.name != blank -%}
+                        <p class="tst__name">{{ block.settings.name | escape }}</p>
+                      {%- endif -%}
+                      {%- if block.settings.location != blank -%}
+                        <p class="tst__loc">{{ block.settings.location | escape }}</p>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </article>
+              </div>
+            {%- endfor -%}
+            {%- comment -%} Set B — duplicate for seamless infinite loop {%- endcomment -%}
+            {%- for block in section.blocks -%}
+              {%- assign card_rating_b = block.settings.rating | default: 5 -%}
+              <div class="swiper-slide" aria-hidden="true">
+                <article class="tst__card">
+                  <span class="tst__stars" role="img" aria-label="{{ card_rating_b }} out of 5 stars">
+                    {%- for i in (1..card_rating_b) -%}{{ star_svg }}{%- endfor -%}
+                    {%- assign empty_count_b = 5 | minus: card_rating_b -%}
+                    {%- if empty_count_b > 0 -%}
+                      {%- for i in (1..empty_count_b) -%}
+                        <svg viewBox="0 0 20 20" aria-hidden="true" style="opacity:0.25"><path d="M10 1.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8L10 14.9 4.7 17.6l1-5.8L1.5 7.7l5.9-.9z"/></svg>
+                      {%- endfor -%}
+                    {%- endif -%}
+                  </span>
+                  <p class="tst__card-quote">{{ block.settings.quote | escape }}</p>
+                  <div class="tst__author">
+                    {%- if block.settings.avatar != blank -%}
+                      {%- assign card_av_alt_b = block.settings.avatar.alt | default: block.settings.name | escape -%}
+                      {{
+                        block.settings.avatar
+                        | image_url: width: 120
+                        | image_tag:
+                          class: 'tst__avatar',
+                          loading: 'lazy',
+                          alt: card_av_alt_b,
+                          widths: '60, 92, 120'
+                      }}
+                    {%- else -%}
+                      <div class="tst__avatar" style="background: var(--tst-line);"></div>
+                    {%- endif -%}
+                    <div>
+                      {%- if block.settings.name != blank -%}
+                        <p class="tst__name">{{ block.settings.name | escape }}</p>
+                      {%- endif -%}
+                      {%- if block.settings.location != blank -%}
+                        <p class="tst__loc">{{ block.settings.location | escape }}</p>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </article>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.cta_text != blank -%}
+      <div class="tst__cta-wrap">
+        <a class="tst__cta" href="{{ section.settings.cta_url | default: '#' }}">
+          {{ section.settings.cta_text | escape }}
+          <span class="tst__cta-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+(function () {
+  var el = document.getElementById('tst-swiper-{{ section.id }}');
+  if (!el) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  new Swiper(el, {
+    slidesPerView: 1.15,
+    spaceBetween: 18,
+    loop: true,
+    loopedSlides: {{ section.blocks.size }},
+    grabCursor: true,
+    speed: 700,
+    autoplay: reduce ? false : {
+      delay: 3000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true
+    },
+    breakpoints: {
+      640:  { slidesPerView: 2.2, spaceBetween: 22 },
+      1024: { slidesPerView: 3,   spaceBetween: 26 }
+    }
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "class": "testimonials-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "This is Biome Food"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_sup",
+      "label": "Eyebrow superscript",
+      "default": "\u2122",
+      "info": "Rendered as superscript after the eyebrow text. Leave blank to hide."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title (heading part)",
+      "default": "Feed Your"
+    },
+    {
+      "type": "text",
+      "id": "script_line",
+      "label": "Script line",
+      "default": "Ecology"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "And so is the community learning to feed it."
+    },
+    {
+      "type": "header",
+      "content": "Featured testimonial"
+    },
+    {
+      "type": "textarea",
+      "id": "feat_quote",
+      "label": "Featured quote",
+      "default": "\u201cI stopped looking for the next miracle product and started seeing actual change \u2014 in my breath, my gums, my mornings. That\u2019s the difference Rainbow Smile made. I tell everyone.\u201d"
+    },
+    {
+      "type": "image_picker",
+      "id": "feat_avatar",
+      "label": "Featured avatar"
+    },
+    {
+      "type": "text",
+      "id": "feat_name",
+      "label": "Featured name",
+      "default": "Maya R."
+    },
+    {
+      "type": "text",
+      "id": "feat_location",
+      "label": "Featured location",
+      "default": "Los Angeles"
+    },
+    {
+      "type": "header",
+      "content": "CTA button"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Join the Biome Hacker Community"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow & location font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Title, name & featured quote font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script line font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Card quote & subtitle font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading & name color",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Featured card & accent color",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star color",
+      "default": "#f5b731"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Card quote color",
+      "default": "#3f4256"
+    },
+    {
+      "type": "color",
+      "id": "meta_color",
+      "label": "Location color",
+      "default": "#b7ad9e"
+    },
+    {
+      "type": "color",
+      "id": "intro_color",
+      "label": "Subtitle color",
+      "default": "#4b4f63"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Card border color",
+      "default": "#ece7de"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial Card",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Star rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "\u201cMy dentist asked what I\u2019d changed. Three months of Rainbow Smile \u2014 my gum pockets are healthier than they\u2019ve been in 20 years. The science is real.\u201d"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Avatar photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "James T."
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Location",
+          "default": "New Jersey"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\u201cMy dentist asked what I\u2019d changed. Three months of Rainbow Smile \u2014 my gum pockets are healthier than they\u2019ve been in 20 years. The science is real.\u201d",
+            "name": "James T.",
+            "location": "New Jersey"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\u201cSweet fresh breath all day without harsh mint masking the problem. Rainbow Smile actually fixes the root cause. My whole family converted within a month.\u201d",
+            "name": "Sara K.",
+            "location": "San Francisco"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\u201cThe 60-second ritual has completely changed my morning. I actually look forward to it now. Who knew oral care could feel like real self-care? Worth every penny.\u201d",
+            "name": "Aisha C.",
+            "location": "New York"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
