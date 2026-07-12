@@ -37,6 +37,357 @@
         padding-bottom: {{ section.settings.padding_bottom }}px;
       }
     }
+
+    /* ─────────────────────────────────────────────────────────
+       CUSTOM PRODUCT PAGE STYLING
+       ───────────────────────────────────────────────────────── */
+
+    /* ── Media border radius ── */
+    .section-{{ section.id }}-padding .product-media-container {
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    .section-{{ section.id }}-padding .thumbnail.global-media-settings {
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    /* ── Gallery badge ── */
+    .section-{{ section.id }}-padding .product__gallery-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+    background: #FBBE53;
+    color: #232748;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 7px 16px;
+    border-radius: 999px;
+    border: 1px solid #e8dcba;
+    pointer-events: none;
+    white-space: nowrap;
+    }
+
+    /* ── AirReviews rating widget ── */
+    .section-{{ section.id }}-padding .product__air-rating {
+      margin-bottom: 14px;
+    }
+
+    /* ── Product tag subtitle ── */
+    .section-{{ section.id }}-padding .product__tag-subtitle {
+      font-family: var(--font-accent-family);
+      font-style: italic;
+      font-size: clamp(16px, 1.8vw, 20px);
+      color: #ef4a22;
+      margin: 6px 0 0;
+      line-height: 1.3;
+    }
+
+    /* ── Title ── */
+    .section-{{ section.id }}-padding .product__title h1,
+    .section-{{ section.id }}-padding .product__title .h1 {
+      font-weight: 800;
+      font-size: clamp(28px, 3.8vw, 46px) !important;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+      color: #232748;
+      margin: 0;
+    }
+    .section-{{ section.id }}-padding .product__title a { text-decoration: none; }
+
+    /* ── Subtitle (text block set to "Subtitle" style) ── */
+    .section-{{ section.id }}-padding .product__text.subtitle {
+      font-family: var(--font-accent-family);
+      font-style: italic;
+      font-size: clamp(16px, 1.8vw, 20px);
+      color: #ef4a22;
+      margin: 6px 0 0;
+      display: block;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    /* ── Description ── */
+    .section-{{ section.id }}-padding .product__description {
+      font-size: 15px;
+      line-height: 1.65;
+      color: #4b4f63;
+    }
+    .section-{{ section.id }}-padding .product__description strong,
+    .section-{{ section.id }}-padding .product__description b {
+      font-weight: 700;
+      color: #232748;
+    }
+
+    /* ── Price ── */
+    .section-{{ section.id }}-padding .price--large .price-item {
+      font-size: 24px;
+      font-weight: 700;
+      color: #232748;
+    }
+
+    /* ── Selling plan option cards (Subscribe/One-time) ── */
+    .section-{{ section.id }}-padding .product-form__input--pill {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 0;
+      border: none;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+    .section-{{ section.id }}-padding .product-form__input--pill .btn {
+      border-radius: 14px;
+      border: 2px solid #e0dbd0;
+      background: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      color: #232748;
+      padding: 14px 18px;
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+    .section-{{ section.id }}-padding .product-form__input--pill input[type="radio"]:checked + .btn {
+      border-color: #ef4a22;
+      background: #fff8f3;
+    }
+    /* First option (Subscribe) gets the amber tint */
+    .section-{{ section.id }}-padding .product-form__input--pill input[type="radio"]:first-of-type:checked + .btn {
+      background: #fef8ec;
+      border-color: #e8c65a;
+    }
+
+    /* ── Quantity + ATC side-by-side row ── */
+    .section-{{ section.id }}-padding .quantity__label,
+    .section-{{ section.id }}-padding .quantity__rules { display: none; }
+
+    .section-{{ section.id }}-padding #Quantity-Form-{{ section.id }} {
+      display: inline-flex;
+      align-items: center;
+      vertical-align: middle;
+      width: auto;
+      margin: 0 12px 0 0 !important;
+      padding: 0;
+    }
+    .section-{{ section.id }}-padding #Quantity-Form-{{ section.id }} .price-per-item__container {
+      display: flex;
+    }
+    .section-{{ section.id }}-padding #Quantity-Form-{{ section.id }} + div {
+      display: inline-flex;
+      vertical-align: middle;
+      width: calc(100% - 160px);
+    }
+    .section-{{ section.id }}-padding #Quantity-Form-{{ section.id }} + div .product-form,
+    .section-{{ section.id }}-padding #Quantity-Form-{{ section.id }} + div .product-form__buttons {
+      width: 100%;
+      margin: 0;
+    }
+
+    /* ── Quantity stepper ── */
+    .section-{{ section.id }}-padding .quantity {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #4c5064;
+      border-radius: 999px;
+      height: 56px;
+      min-width: 128px;
+      box-shadow: none;
+      background: #fff;
+      overflow: hidden;
+    }
+    .section-{{ section.id }}-padding .quantity__button {
+      width: 46px;
+      height: 52px;
+      border: none;
+      background: transparent;
+      color: #232748;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-{{ section.id }}-padding .quantity__input {
+      font-size: 16px;
+      font-weight: 700;
+      color: #232748;
+      border-left: 1px solid #e0dbd0;
+      border-right: 1px solid #e0dbd0;
+      border-top: none;
+      border-bottom: none;
+      background: transparent;
+      width: 36px;
+      text-align: center;
+      height: 52px;
+      padding: 0;
+      box-shadow: none;
+      -moz-appearance: textfield;
+    }
+    .section-{{ section.id }}-padding .quantity__input::-webkit-outer-spin-button,
+    .section-{{ section.id }}-padding .quantity__input::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+    /* ── Add to Cart button ── */
+    .section-{{ section.id }}-padding .product-form__submit {
+      background: #ef4a22 !important;
+      color: #ffffff !important;
+      border: none !important;
+      border-radius: 999px !important;
+      font-size: 16px !important;
+      font-weight: 700 !important;
+      min-height: 56px;
+      width: 100%;
+      padding: 16px 28px !important;
+      letter-spacing: 0.2px;
+      transition: background-color 0.18s ease !important;
+      box-shadow: none !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+    .section-{{ section.id }}-padding .product-form__submit-price {
+      font-weight: 700;
+      margin-left: 2px;
+    }
+    @media (hover: hover) {
+      .section-{{ section.id }}-padding .product-form__submit:hover:not([disabled]):not([aria-disabled='true']) {
+        background: #dc411b !important;
+      }
+    }
+    .section-{{ section.id }}-padding .product-form__submit[disabled],
+    .section-{{ section.id }}-padding .product-form__submit[aria-disabled='true'] {
+      background: #c0bdb8 !important;
+      cursor: not-allowed;
+    }
+    .section-{{ section.id }}-padding .product-form__submit[disabled] .product-form__submit-price,
+    .section-{{ section.id }}-padding .product-form__submit[aria-disabled='true'] .product-form__submit-price {
+      display: none;
+    }
+
+    /* ── Trust bar ── */
+    .section-{{ section.id }}-padding .pi-trust {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px 22px;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid #e0dbd0;
+    }
+    .section-{{ section.id }}-padding .pi-trust__item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.9px;
+      color: #4b4f63;
+      white-space: nowrap;
+    }
+    .section-{{ section.id }}-padding .pi-trust__emoji {
+      font-size: 15px;
+      line-height: 1;
+      flex: none;
+    }
+
+    /* ── Accordions ── */
+    .section-{{ section.id }}-padding .product__accordion { border: none; }
+    .section-{{ section.id }}-padding .product__accordion details {
+      border-top: 1px solid #e2ddd6;
+      padding: 0;
+    }
+    .section-{{ section.id }}-padding .product__accordion details:last-child {
+      border-bottom: 1px solid #e2ddd6;
+    }
+    .section-{{ section.id }}-padding .product__accordion summary {
+      padding: 20px 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      gap: 16px;
+    }
+    .section-{{ section.id }}-padding .product__accordion summary::-webkit-details-marker { display: none; }
+    /* Hide built-in left accordion icon + caret SVG */
+    .section-{{ section.id }}-padding .product__accordion .summary__title .svg-wrapper { display: none; }
+    .section-{{ section.id }}-padding .product__accordion summary > svg { display: none; }
+    .section-{{ section.id }}-padding .product__accordion .summary__title {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      flex: 1;
+    }
+    .section-{{ section.id }}-padding .product__accordion .accordion__title {
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #232748;
+      margin: 0;
+    }
+    /* Gold circle — + closed / × open */
+    .section-{{ section.id }}-padding .product__accordion summary::after {
+      content: "+";
+      display: inline-block;
+      width: 34px;
+      height: 34px;
+      min-width: 34px;
+      border-radius: 50%;
+      background: #FBBE53;
+      color: #ffffff;
+      font-size: 22px;
+      font-weight: 300;
+      line-height: 34px;
+      text-align: center;
+      flex-shrink: 0;
+      box-sizing: border-box;
+      padding: 0;
+    }
+    .section-{{ section.id }}-padding .product__accordion details[open] > summary::after {
+      content: "\00d7";
+      font-size: 26px;
+      font-weight: 300;
+      line-height: 32px;
+    }
+    /* Smooth height transition on content */
+    .section-{{ section.id }}-padding .product__accordion .accordion__content {
+      overflow: hidden;
+    }
+    /* Content area */
+    .section-{{ section.id }}-padding .product__accordion .accordion__content {
+      padding: 4px 0 24px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #4b4f63;
+    }
+    .section-{{ section.id }}-padding .product__accordion .accordion__content p {
+      margin: 0 0 16px;
+    }
+    .section-{{ section.id }}-padding .product__accordion .accordion__content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .section-{{ section.id }}-padding .product__accordion .accordion__content ul li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 10px;
+      color: #4b4f63;
+    }
+    .section-{{ section.id }}-padding .product__accordion .accordion__content ul li::before {
+      content: "\00b7";
+      position: absolute;
+      left: 4px;
+      top: 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: #232748;
+      line-height: 1.5;
+    }
+
+    /* ── Hide "View full details" link ── */
+    .section-{{ section.id }}-padding .product__view-details { display: none; }
   {%- endstyle -%}
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
@@ -76,8 +427,12 @@
   <product-component view-event-payload="{{ product | standard_event_data: 'view', context: 'page' | escape }}">
     <div class="page-width">
       <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
-        <div class="grid__item product__media-wrapper">
+        <div class="grid__item product__media-wrapper" style="position: relative;">
           {% render 'product-media-gallery', variant_images: variant_images %}
+          {%- assign gallery_badge_text = product.metafields.custom.badge | default: section.settings.gallery_badge -%}
+          {%- if gallery_badge_text != blank -%}
+            <span class="product__gallery-badge">{{ gallery_badge_text | escape }}</span>
+          {%- endif -%}
         </div>
         <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
           <section
@@ -105,6 +460,9 @@
                         {{ product.title | escape }}
                       </h2>
                     </a>
+                    {%- if product.type != blank -%}
+                      <p class="product__tag-subtitle">{{ product.type }}</p>
+                    {%- endif -%}
                   </div>
                 {%- when 'price' -%}
                   <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
@@ -500,43 +858,12 @@
                     show_pickup_availability: true
                   -%}
                 {%- when 'rating' -%}
-                  {%- if product.metafields.reviews.rating.value != blank -%}
-                    <div class="rating-wrapper">
-                      {% liquid
-                        assign rating_decimal = 0
-                        assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
-                        if decimal >= 0.3 and decimal <= 0.7
-                          assign rating_decimal = 0.5
-                        elsif decimal > 0.7
-                          assign rating_decimal = 1
-                        endif
-                      %}
-                      <div
-                        class="rating"
-                        role="img"
-                        aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="rating-star"
-                          style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"
-                        ></span>
-                      </div>
-                      <p class="rating-text caption">
-                        <span aria-hidden="true">
-                          {{- product.metafields.reviews.rating.value }} /
-                          {{ product.metafields.reviews.rating.value.scale_max -}}
-                        </span>
-                      </p>
-                      <p class="rating-count caption">
-                        <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
-                        <span class="visually-hidden">
-                          {{- product.metafields.reviews.rating_count }}
-                          {{ 'accessibility.total_reviews' | t -}}
-                        </span>
-                      </p>
+                  <div class="product__air-rating" {{ block.shopify_attributes }}>
+                    <div class="AirReviews-Widget AirReviews-Widget--Stars"
+                      data-review-avg="{{ product.metafields.air_reviews_product.review_avg }}"
+                      data-review-count="{{ product.metafields.air_reviews_product.review_count }}">
                     </div>
-                  {%- endif -%}
+                  </div>
                 {%- when 'complementary' -%}
                   <product-recommendations
                     class="complementary-products quick-add-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %}{% if block.settings.enable_quick_add %} complementary-products-contains-quick-add{% endif %}"
@@ -688,6 +1015,23 @@
                   </product-recommendations>
                 {%- when 'icon-with-text' -%}
                   {% render 'icon-with-text', block: block %}
+                {%- when 'trust_bar' -%}
+                  <div class="pi-trust" {{ block.shopify_attributes }}>
+                    {%- for i in (1..6) -%}
+                      {%- assign emoji_key = 'item' | append: i | append: '_emoji' -%}
+                      {%- assign label_key = 'item' | append: i | append: '_label' -%}
+                      {%- assign t_label = block.settings[label_key] -%}
+                      {%- if t_label != blank -%}
+                        <span class="pi-trust__item">
+                          {%- assign t_emoji = block.settings[emoji_key] -%}
+                          {%- if t_emoji != blank -%}
+                            <span class="pi-trust__emoji" aria-hidden="true">{{ t_emoji }}</span>
+                          {%- endif -%}
+                          {{ t_label | escape }}
+                        </span>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
               {%- endcase -%}
             {%- endfor -%}
             <a href="{{ product.url }}" class="link product__view-details animate-arrow">
@@ -751,6 +1095,78 @@
       </script>
     </div>
   </product-component>
+
+  <script>
+    (function () {
+      /* ── Smooth accordion animation ── */
+      document.querySelectorAll('#ProductInfo-{{ section.id }} .product__accordion details summary').forEach(function (summary) {
+        summary.addEventListener('click', function (e) {
+          e.preventDefault();
+          var details = summary.parentElement;
+          var content = details.querySelector('.accordion__content');
+          if (!content) { details.open = !details.open; return; }
+
+          if (!details.open) {
+            details.open = true;
+            content.style.height = '0px';
+            content.style.overflow = 'hidden';
+            requestAnimationFrame(function () {
+              content.style.transition = 'height 0.28s ease';
+              content.style.height = content.scrollHeight + 'px';
+              content.addEventListener('transitionend', function done() {
+                content.style.cssText = '';
+                content.removeEventListener('transitionend', done);
+              });
+            });
+          } else {
+            content.style.height = content.offsetHeight + 'px';
+            content.style.overflow = 'hidden';
+            requestAnimationFrame(function () {
+              content.style.transition = 'height 0.28s ease';
+              content.style.height = '0px';
+              content.addEventListener('transitionend', function done() {
+                details.open = false;
+                content.style.cssText = '';
+                content.removeEventListener('transitionend', done);
+              });
+            });
+          }
+        });
+      });
+    })();
+
+    (function () {
+      var sectionId = '{{ section.id }}';
+      var btn = document.getElementById('ProductSubmitButton-' + sectionId);
+      if (!btn) return;
+
+      function updatePrice(priceInCents) {
+        var span = btn.querySelector('.product-form__submit-price');
+        if (!span) return;
+        var formatted = window.Shopify && window.Shopify.formatMoney
+          ? Shopify.formatMoney(priceInCents, {{ shop.money_format | json }})
+          : '$' + (priceInCents / 100).toFixed(2);
+        span.textContent = ' \u2014 ' + formatted;
+      }
+
+      /* Subscribe to Dawn's variant-change pub/sub event */
+      document.addEventListener('variant-change', function (e) {
+        if (!e.detail || e.detail.sectionId !== sectionId) return;
+        var variant = e.detail.variant;
+        if (variant && variant.price != null) updatePrice(variant.price);
+      });
+
+      /* Fallback: watch the rendered price element via MutationObserver */
+      var priceEl = document.querySelector('#price-' + sectionId + ' .price-item--regular, #price-' + sectionId + ' .price-item--sale');
+      if (priceEl) {
+        new MutationObserver(function () {
+          var text = priceEl.textContent.trim();
+          var span = btn.querySelector('.product-form__submit-price');
+          if (span && text) span.textContent = ' \u2014 ' + text;
+        }).observe(priceEl, { childList: true, subtree: true, characterData: true });
+      }
+    })();
+  </script>
 </product-info>
 
 {% schema %}
@@ -2144,9 +2560,38 @@
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
         }
       ]
+    },
+    {
+      "type": "trust_bar",
+      "name": "Trust Bar",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "item1_emoji", "label": "Item 1 — emoji", "default": "\ud83c\udf3f" },
+        { "type": "text", "id": "item1_label", "label": "Item 1 — label", "default": "Certified Organic" },
+        { "type": "text", "id": "item2_emoji", "label": "Item 2 — emoji", "default": "\ud83d\ude80" },
+        { "type": "text", "id": "item2_label", "label": "Item 2 — label", "default": "Free Shipping $49+" },
+        { "type": "text", "id": "item3_emoji", "label": "Item 3 — emoji", "default": "\ud83d\udc30" },
+        { "type": "text", "id": "item3_label", "label": "Item 3 — label", "default": "Cruelty-Free" },
+        { "type": "text", "id": "item4_emoji", "label": "Item 4 — emoji", "default": "\ud83d\udc8e" },
+        { "type": "text", "id": "item4_label", "label": "Item 4 — label", "default": "Miron Glass" },
+        { "type": "text", "id": "item5_emoji", "label": "Item 5 — emoji (optional)" },
+        { "type": "text", "id": "item5_label", "label": "Item 5 — label (optional)" },
+        { "type": "text", "id": "item6_emoji", "label": "Item 6 — emoji (optional)" },
+        { "type": "text", "id": "item6_label", "label": "Item 6 — label (optional)" }
+      ]
     }
   ],
   "settings": [
+    {
+      "type": "header",
+      "content": "Gallery badge"
+    },
+    {
+      "type": "text",
+      "id": "gallery_badge",
+      "label": "Badge text — fallback (leave empty to hide)",
+      "info": "Pulled from product metafield custom.badge first. Set this as a fallback for products without the metafield."
+    },
     {
       "type": "checkbox",
       "id": "enable_sticky_info",
