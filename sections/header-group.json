@@ -48,10 +48,159 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
+    },
+    "how_to_use_drawer_wc4ieH": {
+      "type": "how-to-use-drawer",
+      "blocks": {
+        "step_7M8VPR": {
+          "type": "step",
+          "settings": {
+            "panel": "spray",
+            "title": "Spray into your mouth",
+            "body": "2–3 sprays directly into the mouth. Anytime, anywhere — after coffee, after a meal, before a meeting.",
+            "tag": ""
+          }
+        },
+        "step_iAW4Dq": {
+          "type": "step",
+          "settings": {
+            "panel": "spray",
+            "title": "Close your mouth and hold",
+            "body": "Close your mouth and let it saturate for 60 seconds. The oxygen-rich glycerin coats every surface.",
+            "tag": "60 Seconds · The Saturation Window"
+          }
+        },
+        "step_KkdG9F": {
+          "type": "step",
+          "settings": {
+            "panel": "spray",
+            "title": "Swallow or spit — your call",
+            "body": "OG3 is certified organic and completely safe to swallow. Swallowing extends the benefit into the gut.",
+            "tag": "Certified Organic · Safe to Swallow"
+          }
+        },
+        "faq_bPHk3F": {
+          "type": "faq",
+          "settings": {
+            "panel": "spray",
+            "question": "Is this just a breath spray?",
+            "answer": "No — it freshens breath like one, but it works by saturating your mouth with oxygen to remove the cause of bad breath, not mask it."
+          }
+        },
+        "faq_3tq96g": {
+          "type": "faq",
+          "settings": {
+            "panel": "spray",
+            "question": "Why close my mouth for 60 seconds?",
+            "answer": "That’s the saturation window — it lets the oxygen-rich glycerin coat every surface and shift the environment against anaerobic bacteria."
+          }
+        },
+        "step_4acqCn": {
+          "type": "step",
+          "settings": {
+            "panel": "pump",
+            "title": "Pump under your tongue",
+            "body": "Dispense 1–2 pumps directly under the tongue, morning and evening, as the anchor of your daily routine.",
+            "tag": ""
+          }
+        },
+        "step_wX8neG": {
+          "type": "step",
+          "settings": {
+            "panel": "pump",
+            "title": "Hold for 60 seconds",
+            "body": "Let it absorb sublingually so the compounds reach the tissue directly.",
+            "tag": "60 Seconds · The Saturation Window"
+          }
+        },
+        "step_zT73cV": {
+          "type": "step",
+          "settings": {
+            "panel": "pump",
+            "title": "Swallow to finish",
+            "body": "Carry the benefit into the oral-gut axis. Certified organic and safe to swallow.",
+            "tag": "Certified Organic · Safe to Swallow"
+          }
+        },
+        "faq_9XmM9d": {
+          "type": "faq",
+          "settings": {
+            "panel": "pump",
+            "question": "Can I use the pump on the go?",
+            "answer": "You can, but the pump is designed for a measured morning/evening ritual. The spray is the on-the-go option."
+          }
+        },
+        "faq_qLpLAj": {
+          "type": "faq",
+          "settings": {
+            "panel": "pump",
+            "question": "How long does a bottle last?",
+            "answer": "A 30 ml pump bottle lasts about a month with twice-daily use."
+          }
+        }
+      },
+      "block_order": [
+        "step_7M8VPR",
+        "step_iAW4Dq",
+        "step_KkdG9F",
+        "faq_bPHk3F",
+        "faq_3tq96g",
+        "step_4acqCn",
+        "step_wX8neG",
+        "step_zT73cV",
+        "faq_9XmM9d",
+        "faq_qLpLAj"
+      ],
+      "name": "How To Use Drawer",
+      "settings": {
+        "launcher_text": "How to Use OG3",
+        "drawer_eyebrow": "OG3 by Rainbow Smile",
+        "spray_product": "rainbow-smile-og3™-minty-fusion",
+        "spray_hero_image": "shopify://shop_images/2c9ad7886253d80a5dffbc38d23cd51d5009f446.png",
+        "spray_hero_title": "Anytime fresh breath",
+        "spray_hero_meta": "Spray Format · On-the-Go · 15 ml",
+        "spray_drawer_title": "Works like a breath spray.",
+        "spray_drawer_subtitle": "Does so much more.",
+        "spray_callout_label": "Why the 60 seconds matters",
+        "spray_callout_body": "OG3 doesn’t mask bad breath — it removes the conditions that cause it. Harmful anaerobic bacteria thrive in low-oxygen environments. OG3 saturates the oral ecosystem with oxygen, making it impossible for anaerobes to maintain their competitive advantage.",
+        "spray_cross_title": "Want the full ritual?",
+        "spray_cross_body": "Meet the Pump — sublingual delivery, morning and evening, the deepest version of the OG3 practice.",
+        "spray_cross_link": "See Pump",
+        "pump_product": "100-organic-glycerin",
+        "pump_hero_image": "shopify://shop_images/Background_Border_3.png",
+        "pump_hero_title": "The deep daily ritual",
+        "pump_hero_meta": "Pump Format · Sublingual · 30 ml",
+        "pump_drawer_title": "The deep daily ritual.",
+        "pump_drawer_subtitle": "Sublingual, morning and evening.",
+        "pump_callout_label": "Why the pump goes deeper",
+        "pump_callout_body": "Sublingual delivery holds OG3 against the tissue for maximum absorption. Used morning and evening, it’s the most complete version of the practice — building oral-ecosystem resilience over time.",
+        "pump_cross_title": "Prefer on-the-go?",
+        "pump_cross_body": "The Spray gives you anytime fresh breath in the same OG3 formula — perfect for your bag or car.",
+        "pump_cross_link": "See Spray",
+        "tab_spray_label": "The Spray",
+        "tab_pump_label": "The Pump",
+        "flavours_label": "Choose your flavour",
+        "atc_label": "Add to cart",
+        "sub_note": "or Subscribe & Save $5/month",
+        "faq_label": "Questions",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "body_font": "heading",
+        "navy_color": "#232748",
+        "coral_color": "#ef4a22",
+        "body_color": "#4b4f63",
+        "peach_color": "#fce7dc",
+        "peach_tx_color": "#c8613f",
+        "cream_color": "#fdf6f0",
+        "green_color": "#3fae54",
+        "line_color": "#ececf1",
+        "meta_color": "#9097a8"
+      }
     }
   },
   "order": [
     "announcement-bar",
-    "header"
+    "header",
+    "how_to_use_drawer_wc4ieH"
   ]
 }
