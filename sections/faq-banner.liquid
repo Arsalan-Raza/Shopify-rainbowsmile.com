@@ -1,0 +1,227 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --fqb-navy:  {{ section.settings.bg_color }};
+    --fqb-white: {{ section.settings.text_color }};
+    --fqb-gold:  {{ section.settings.gold_color }};
+    --fqb-coral: {{ section.settings.coral_color }};
+    --fqb-curve: {{ section.settings.curve_color }};
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: var(--fqb-navy);
+    padding: clamp(56px, 9vw, 96px) clamp(20px, 5vw, 40px) clamp(72px, 10vw, 116px);
+    text-align: center;
+  }
+
+  .fqb-{{ section.id }} * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }}::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='440' height='440' viewBox='0 0 440 440'%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='70' cy='90' r='30' opacity='.016'/%3E%3Ccircle cx='370' cy='330' r='34' opacity='.014'/%3E%3Ccircle cx='300' cy='70' r='20' opacity='.016'/%3E%3Ccircle cx='150' cy='330' r='26' opacity='.014'/%3E%3Ccircle cx='60' cy='250' r='2' opacity='.035'/%3E%3Ccircle cx='250' cy='150' r='1.8' opacity='.035'/%3E%3Ccircle cx='410' cy='180' r='2' opacity='.03'/%3E%3Cpath d='M120%2C110 Q120%2C120 130%2C120 Q120%2C120 120%2C130 Q120%2C120 110%2C120 Q120%2C120 120%2C110 Z' opacity='.045'/%3E%3Cpath d='M340%2C250 Q340%2C259 349%2C259 Q340%2C259 340%2C268 Q340%2C259 331%2C259 Q340%2C259 340%2C250 Z' opacity='.04'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 440px;
+    background-repeat: repeat;
+  }
+
+  .fqb-{{ section.id }} .fqb__inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    margin-inline: auto;
+  }
+
+  .fqb-{{ section.id }} .fqb__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 clamp(16px, 2.4vw, 24px);
+    font-family: var(--font-{{ section.settings.eyebrow_font }}-family);
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--fqb-coral);
+    line-height: 1;
+  }
+  .fqb-{{ section.id }} .fqb__eyebrow::before {
+    content: "";
+    width: 26px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+
+  .fqb-{{ section.id }} .fqb__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(30px, 5vw, 58px);
+    line-height: 1.06;
+    letter-spacing: -0.5px;
+    color: var(--fqb-white);
+  }
+
+  .fqb-{{ section.id }} .fqb__script {
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: 1.08em;
+    letter-spacing: 0;
+    color: var(--fqb-gold);
+    margin-left: 8px;
+  }
+
+  .fqb-{{ section.id }} .fqb__curve {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: clamp(34px, 5vw, 60px);
+    z-index: 3;
+  }
+  .fqb-{{ section.id }} .fqb__curve svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .fqb-{{ section.id }} .fqb__curve svg path {
+    fill: var(--fqb-curve);
+  }
+
+  @media (max-width: 520px) {
+    .fqb-{{ section.id }} .fqb__script { display: inline-block; margin-left: 4px; }
+  }
+{%- endstyle -%}
+
+<div class="fqb-{{ section.id }}">
+  <div class="fqb__inner">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="fqb__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.title != blank or section.settings.script_word != blank -%}
+      <h1 class="fqb__title">
+        {{- section.settings.title | escape -}}
+        {%- if section.settings.script_word != blank -%}
+          <span class="fqb__script">{{ section.settings.script_word | escape }}</span>
+        {%- endif -%}
+      </h1>
+    {%- endif -%}
+  </div>
+
+  <div class="fqb__curve" aria-hidden="true">
+    <svg viewBox="0 0 1440 52" preserveAspectRatio="none">
+      <path d="M0,52 L1440,52 L1440,44 Q720,-26 0,44 Z"/>
+    </svg>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ Banner",
+  "tag": "section",
+  "class": "faq-banner-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Need Help?"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Frequently asked"
+    },
+    {
+      "type": "text",
+      "id": "script_word",
+      "label": "Script word (inline, gold)",
+      "default": "Questions"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Title font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script word font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#1e2340"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Title color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Script word color",
+      "default": "#f5b842"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Eyebrow & rule color",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "curve_color",
+      "label": "Bottom curve color (match section below)",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Banner"
+    }
+  ]
+}
+{% endschema %}
