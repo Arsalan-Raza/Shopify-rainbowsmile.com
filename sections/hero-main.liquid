@@ -1,8 +1,15 @@
+{%- liquid
+  assign overlay_r     = section.settings.overlay_color | color_extract: 'red'
+  assign overlay_g     = section.settings.overlay_color | color_extract: 'green'
+  assign overlay_b     = section.settings.overlay_color | color_extract: 'blue'
+  assign overlay_alpha = section.settings.overlay_opacity | divided_by: 100.0
+-%}
 {%- style -%}
   #shopify-section-{{ section.id }} {
-    --hro-coral: {{ section.settings.coral_color }};
-    --hro-curve: {{ section.settings.curve_color }};
-    --hro-rule:  rgba(255, 255, 255, 0.28);
+    --hro-coral:   {{ section.settings.coral_color }};
+    --hro-curve:   {{ section.settings.curve_color }};
+    --hro-rule:    rgba(255, 255, 255, 0.28);
+    --hro-overlay: rgba({{ overlay_r }}, {{ overlay_g }}, {{ overlay_b }}, {{ overlay_alpha }});
   }
 
   .hero-{{ section.id }} * { box-sizing: border-box; }
@@ -34,9 +41,8 @@
     position: absolute;
     inset: 0;
     z-index: 1;
-    background:
-      linear-gradient(95deg, rgba(20,18,16,0.62) 0%, rgba(20,18,16,0.32) 42%, transparent 66%),
-      linear-gradient(to top, rgba(20,18,16,0.28), transparent 40%);
+    background: var(--hro-overlay);
+    display: block;
   }
 
   /* Inner */
@@ -181,7 +187,7 @@
     .hero-{{ section.id }} { min-height: 640px; }
     .hero-{{ section.id }} .hero__bg { object-position: 70% center; }
     .hero-{{ section.id }} .hero__scrim {
-      background: linear-gradient(180deg, rgba(20,18,16,0.55) 0%, rgba(20,18,16,0.35) 45%, rgba(20,18,16,0.55) 100%);
+      background: var(--hro-overlay);
     }
     .hero-{{ section.id }} .hero__badge { letter-spacing: 1px; padding: 10px 16px; white-space: normal; }
     .hero-{{ section.id }} .hero__title { letter-spacing: -1px; }
@@ -315,6 +321,22 @@
       "type": "image_picker",
       "id": "bg_image",
       "label": "Background image"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#141210"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 50
     },
     {
       "type": "header",

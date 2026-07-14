@@ -1,0 +1,1296 @@
+{%- liquid
+  assign spray_product = section.settings.spray_product
+  assign pump_product  = section.settings.pump_product
+  assign spray_default = spray_product.selected_or_first_available_variant
+  assign pump_default  = pump_product.selected_or_first_available_variant
+-%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .htu-launch,
+  #shopify-section-{{ section.id }} .htu-overlay,
+  #shopify-section-{{ section.id }} .htu-drawer {
+    --hd-navy:     {{ section.settings.navy_color }};
+    --hd-coral:    {{ section.settings.coral_color }};
+    --hd-body:     {{ section.settings.body_color }};
+    --hd-peach:    {{ section.settings.peach_color }};
+    --hd-peach-tx: {{ section.settings.peach_tx_color }};
+    --hd-cream:    {{ section.settings.cream_color }};
+    --hd-green:    {{ section.settings.green_color }};
+    --hd-line:     {{ section.settings.line_color }};
+    --hd-meta:     {{ section.settings.meta_color }};
+    --hd-font-mono:    var(--font-{{ section.settings.mono_font }}-family);
+    --hd-font-heading: var(--font-{{ section.settings.heading_font }}-family);
+    --hd-font-body:    var(--font-{{ section.settings.body_font }}-family);
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .htu-launch {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 300;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 12px;
+    border: none;
+    border-radius: 12px 0 0 12px;
+    background: var(--hd-coral);
+    color: #fff;
+    font-family: var(--hd-font-mono);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    cursor: pointer;
+    box-shadow: -4px 0 18px rgba(60, 40, 25, 0.18);
+    transition: padding-right 0.18s ease;
+  }
+  #shopify-section-{{ section.id }} .htu-launch:hover { padding-right: 16px; }
+  #shopify-section-{{ section.id }} .htu-launch:focus-visible { outline: 3px solid rgba(35,39,72,0.4); outline-offset: 3px; }
+  #shopify-section-{{ section.id }} .htu-launch__arrow { writing-mode: horizontal-tb; }
+
+  #shopify-section-{{ section.id }} .htu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 310;
+    background: #26294980;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.28s ease, visibility 0.28s ease;
+  }
+  #shopify-section-{{ section.id }} .htu-overlay.is-open { opacity: 1; visibility: visible; }
+
+  #shopify-section-{{ section.id }} .htu-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 320;
+    width: min(560px, 100vw);
+    height: 100%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 40px rgba(30, 20, 15, 0.22);
+  }
+  #shopify-section-{{ section.id }} .htu-drawer.is-open { transform: translateX(0); }
+
+  #shopify-section-{{ section.id }} .htu-drawer__head {
+    position: relative;
+    background: var(--hd-navy);
+    color: #fff;
+    padding: clamp(20px, 4vw, 28px) clamp(20px, 4vw, 28px) 0;
+    flex: none;
+  }
+  #shopify-section-{{ section.id }} .htu-drawer__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 16px;
+    font-family: var(--hd-font-mono);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+  }
+  #shopify-section-{{ section.id }} .htu-drawer__eyebrow::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--hd-coral);
+  }
+  #shopify-section-{{ section.id }} .htu-drawer__close {
+    position: absolute;
+    top: clamp(18px, 4vw, 26px);
+    right: clamp(18px, 4vw, 26px);
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.14);
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+  }
+  #shopify-section-{{ section.id }} .htu-drawer__close:hover { background: rgba(255,255,255,0.24); }
+  #shopify-section-{{ section.id }} .htu-drawer__close:focus-visible { outline: 3px solid rgba(255,255,255,0.6); outline-offset: 2px; }
+  #shopify-section-{{ section.id }} .htu-drawer__title {
+    margin: 0 0 6px;
+    font-family: var(--hd-font-heading);
+    font-weight: 800;
+    font-size: clamp(22px, 5vw, 28px);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+  }
+  #shopify-section-{{ section.id }} .htu-drawer__subtitle {
+    margin: 0 0 20px;
+    font-family: var(--hd-font-body);
+    font-size: 14px;
+    color: rgba(255,255,255,0.72);
+  }
+
+  #shopify-section-{{ section.id }} .htu-tabs { display: flex; gap: 4px; }
+  #shopify-section-{{ section.id }} .htu-tab {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 8px;
+    border: none;
+    background: transparent;
+    color: rgba(255,255,255,0.6);
+    font-family: var(--hd-font-heading);
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  #shopify-section-{{ section.id }} .htu-tab[aria-selected="true"] { color: #fff; border-bottom-color: var(--hd-coral); }
+  #shopify-section-{{ section.id }} .htu-tab:focus-visible { outline: 3px solid rgba(255,255,255,0.5); outline-offset: -3px; }
+
+  #shopify-section-{{ section.id }} .htu-drawer__body {
+    flex: 1;
+    overflow-y: auto;
+    padding: clamp(18px, 4vw, 26px);
+  }
+  #shopify-section-{{ section.id }} .htu-panel { display: none; }
+  #shopify-section-{{ section.id }} .htu-panel.is-active { display: block; }
+
+  #shopify-section-{{ section.id }} .htu-hero {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    background: linear-gradient(160deg, #c9a184, #e2c4a8);
+    margin-bottom: clamp(20px, 4vw, 28px);
+  }
+  #shopify-section-{{ section.id }} .htu-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  #shopify-section-{{ section.id }} .htu-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent 40%, rgba(0,0,0,0.5));
+    pointer-events: none;
+  }
+  #shopify-section-{{ section.id }} .htu-hero__text {
+    position: absolute;
+    left: 18px;
+    bottom: 16px;
+    z-index: 2;
+    color: #fff;
+  }
+  #shopify-section-{{ section.id }} .htu-hero__title {
+    margin: 0 0 6px;
+    font-family: var(--hd-font-heading);
+    font-weight: 800;
+    font-size: clamp(18px, 4.5vw, 22px);
+  }
+  #shopify-section-{{ section.id }} .htu-hero__meta {
+    margin: 0;
+    font-family: var(--hd-font-mono);
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+  }
+
+  #shopify-section-{{ section.id }} .htu-step {
+    display: flex;
+    gap: 14px;
+    padding-block: clamp(16px, 3vw, 22px);
+    border-top: 1px solid var(--hd-line);
+  }
+  #shopify-section-{{ section.id }} .htu-step:first-of-type { border-top: none; padding-top: 0; }
+  #shopify-section-{{ section.id }} .htu-step__num {
+    flex: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--hd-coral);
+    color: #fff;
+    font-family: var(--hd-font-heading);
+    font-weight: 700;
+    font-size: 13px;
+    display: grid;
+    place-items: center;
+    margin-top: 2px;
+  }
+  #shopify-section-{{ section.id }} .htu-step__title {
+    margin: 0 0 6px;
+    font-family: var(--hd-font-heading);
+    font-weight: 700;
+    font-size: clamp(15px, 3.6vw, 16px);
+    color: var(--hd-navy);
+  }
+  #shopify-section-{{ section.id }} .htu-step__body {
+    margin: 0;
+    font-family: var(--hd-font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--hd-body);
+  }
+  #shopify-section-{{ section.id }} .htu-step__tag {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: var(--hd-peach);
+    font-family: var(--hd-font-mono);
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--hd-peach-tx);
+  }
+
+  #shopify-section-{{ section.id }} .htu-callout {
+    margin: clamp(20px, 4vw, 26px) 0;
+    background: var(--hd-cream);
+    border-left: 4px solid var(--hd-coral);
+    border-radius: 10px;
+    padding: clamp(18px, 3.5vw, 24px);
+  }
+  #shopify-section-{{ section.id }} .htu-callout__label {
+    margin: 0 0 10px;
+    font-family: var(--hd-font-mono);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--hd-coral);
+  }
+  #shopify-section-{{ section.id }} .htu-callout__body {
+    margin: 0;
+    font-family: var(--hd-font-body);
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--hd-body);
+  }
+
+  #shopify-section-{{ section.id }} .htu-flavours-label {
+    margin: 0 0 12px;
+    font-family: var(--hd-font-mono);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--hd-meta);
+  }
+  #shopify-section-{{ section.id }} .htu-flavours {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: clamp(18px, 3.5vw, 24px);
+  }
+  #shopify-section-{{ section.id }} .htu-flavour {
+    padding: 14px 8px;
+    border: 1px solid var(--hd-line);
+    border-radius: 10px;
+    background: #fff;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+  #shopify-section-{{ section.id }} .htu-flavour[aria-pressed="true"] {
+    border-color: var(--hd-coral);
+    background: var(--hd-peach);
+  }
+  #shopify-section-{{ section.id }} .htu-flavour:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  #shopify-section-{{ section.id }} .htu-flavour:focus-visible { outline: 3px solid rgba(239,74,34,0.35); outline-offset: 2px; }
+  #shopify-section-{{ section.id }} .htu-flavour__name {
+    font-family: var(--hd-font-heading);
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--hd-navy);
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .htu-atc {
+    width: 100%;
+    min-height: 56px;
+    border: none;
+    border-radius: 999px;
+    background: var(--hd-coral);
+    color: #fff;
+    font-family: var(--hd-font-heading);
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.18s ease, opacity 0.18s ease;
+  }
+  #shopify-section-{{ section.id }} .htu-atc:hover:not(:disabled) { background: #dc411b; }
+  #shopify-section-{{ section.id }} .htu-atc:disabled { opacity: 0.6; cursor: not-allowed; }
+  #shopify-section-{{ section.id }} .htu-atc:focus-visible { outline: 3px solid rgba(239,74,34,0.45); outline-offset: 3px; }
+
+  #shopify-section-{{ section.id }} .htu-sub-note {
+    margin: 12px 0 0;
+    text-align: center;
+    font-family: var(--hd-font-body);
+    font-size: 13px;
+    color: var(--hd-body);
+  }
+  #shopify-section-{{ section.id }} .htu-sub-note strong { color: var(--hd-green); font-weight: 700; }
+
+  #shopify-section-{{ section.id }} .htu-cross {
+    margin: clamp(22px, 4vw, 30px) 0 clamp(20px, 4vw, 26px);
+    background: var(--hd-navy);
+    border-radius: 12px;
+    padding: clamp(18px, 3.5vw, 24px);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  #shopify-section-{{ section.id }} .htu-cross__text { flex: 1; min-width: 0; }
+  #shopify-section-{{ section.id }} .htu-cross__title {
+    margin: 0 0 6px;
+    font-family: var(--hd-font-heading);
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+  }
+  #shopify-section-{{ section.id }} .htu-cross__body {
+    margin: 0;
+    font-family: var(--hd-font-body);
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.72);
+  }
+  #shopify-section-{{ section.id }} .htu-cross__link {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 999px;
+    background: var(--hd-coral);
+    color: #fff;
+    font-family: var(--hd-font-heading);
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  #shopify-section-{{ section.id }} .htu-cross__link:hover { background: #dc411b; }
+
+  #shopify-section-{{ section.id }} .htu-faq-label {
+    margin: 0 0 6px;
+    font-family: var(--hd-font-mono);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--hd-meta);
+  }
+  #shopify-section-{{ section.id }} .htu-q { border-bottom: 1px solid var(--hd-line); }
+  #shopify-section-{{ section.id }} .htu-q-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px 0;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--hd-font-heading);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--hd-navy);
+  }
+  #shopify-section-{{ section.id }} .htu-q-summary::-webkit-details-marker { display: none; }
+  #shopify-section-{{ section.id }} .htu-q-icon {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    flex: none;
+  }
+  #shopify-section-{{ section.id }} .htu-q-icon::before,
+  #shopify-section-{{ section.id }} .htu-q-icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: var(--hd-coral);
+    transform: translate(-50%, -50%);
+  }
+  #shopify-section-{{ section.id }} .htu-q-icon::before { width: 12px; height: 2px; }
+  #shopify-section-{{ section.id }} .htu-q-icon::after { width: 2px; height: 12px; transition: transform 0.2s ease; }
+  #shopify-section-{{ section.id }} .htu-q[open] .htu-q-icon::after { transform: translate(-50%, -50%) scaleY(0); }
+  #shopify-section-{{ section.id }} .htu-q-body { padding: 0 0 16px; }
+  #shopify-section-{{ section.id }} .htu-q-body p {
+    margin: 0;
+    font-family: var(--hd-font-body);
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--hd-body);
+  }
+
+  @media (max-width: 480px) {
+    #shopify-section-{{ section.id }} .htu-flavours { grid-template-columns: 1fr; }
+    #shopify-section-{{ section.id }} .htu-flavour {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      text-align: left;
+      padding: 14px 16px;
+    }
+    #shopify-section-{{ section.id }} .htu-cross { flex-direction: column; align-items: stretch; }
+    #shopify-section-{{ section.id }} .htu-cross__link { justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .htu-drawer,
+    #shopify-section-{{ section.id }} .htu-overlay { transition: none; }
+  }
+</style>
+
+{%- if template.name == 'index' -%}
+<button class="htu-launch"
+  id="htu-launcher-{{ section.id }}"
+  type="button"
+  aria-controls="htu-drawer-{{ section.id }}"
+  aria-expanded="false">
+  {{- section.settings.launcher_text | escape -}}
+  <span class="htu-launch__arrow" aria-hidden="true">→</span>
+</button>
+
+<div class="htu-overlay"
+  id="htu-overlay-{{ section.id }}"
+  hidden></div>
+
+<aside class="htu-drawer"
+  id="htu-drawer-{{ section.id }}"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="htu-title-{{ section.id }}"
+  tabindex="-1"
+  hidden>
+
+  <div class="htu-drawer__head">
+    <button class="htu-drawer__close"
+      type="button"
+      id="htu-close-{{ section.id }}"
+      aria-label="{{ 'accessibility.close' | t }}">✕</button>
+
+    <p class="htu-drawer__eyebrow">{{ section.settings.drawer_eyebrow | escape }}</p>
+
+    <h2 class="htu-drawer__title"
+      id="htu-title-{{ section.id }}"
+      data-htu-title-spray="{{ section.settings.spray_drawer_title | escape }}"
+      data-htu-title-pump="{{ section.settings.pump_drawer_title | escape }}">
+      {{- section.settings.spray_drawer_title | escape -}}
+    </h2>
+    <p class="htu-drawer__subtitle"
+      data-htu-sub-spray="{{ section.settings.spray_drawer_subtitle | escape }}"
+      data-htu-sub-pump="{{ section.settings.pump_drawer_subtitle | escape }}">
+      {{- section.settings.spray_drawer_subtitle | escape -}}
+    </p>
+
+    <div class="htu-tabs" role="tablist">
+      <button class="htu-tab" role="tab"
+        aria-selected="true"
+        aria-controls="htu-panel-spray-{{ section.id }}"
+        data-htu-tab="spray">
+        {{- section.settings.tab_spray_label | escape -}}
+      </button>
+      <button class="htu-tab" role="tab"
+        aria-selected="false"
+        aria-controls="htu-panel-pump-{{ section.id }}"
+        data-htu-tab="pump">
+        {{- section.settings.tab_pump_label | escape -}}
+      </button>
+    </div>
+  </div>
+
+  <div class="htu-drawer__body" id="htu-body-{{ section.id }}">
+
+    {%- comment %} ===== SPRAY PANEL ===== {%- endcomment %}
+    <div class="htu-panel is-active"
+      id="htu-panel-spray-{{ section.id }}"
+      role="tabpanel"
+      data-htu-panel="spray">
+
+      {%- liquid
+        assign spray_img = section.settings.spray_hero_image
+        if spray_img == blank and spray_product != blank
+          assign spray_img = spray_product.featured_image
+        endif
+      -%}
+      {%- if spray_img != blank -%}
+        <div class="htu-hero">
+          {{
+            spray_img
+            | image_url: width: 700
+            | image_tag:
+              loading: 'lazy',
+              alt: spray_img.alt | default: spray_product.title,
+              widths: '400, 700'
+          }}
+          <div class="htu-hero__text">
+            <h3 class="htu-hero__title">{{ section.settings.spray_hero_title | escape }}</h3>
+            <p class="htu-hero__meta">{{ section.settings.spray_hero_meta | escape }}</p>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- assign spray_step_num = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'step' and block.settings.panel == 'spray' -%}
+          {%- assign spray_step_num = spray_step_num | plus: 1 -%}
+          <div class="htu-step" {{ block.shopify_attributes }}>
+            <span class="htu-step__num">{{ spray_step_num }}</span>
+            <div>
+              <h4 class="htu-step__title">{{ block.settings.title | escape }}</h4>
+              <p class="htu-step__body">{{ block.settings.body | escape }}</p>
+              {%- if block.settings.tag != blank -%}
+                <span class="htu-step__tag">{{ block.settings.tag | escape }}</span>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- if section.settings.spray_callout_label != blank or section.settings.spray_callout_body != blank -%}
+        <div class="htu-callout">
+          {%- if section.settings.spray_callout_label != blank -%}
+            <p class="htu-callout__label">{{ section.settings.spray_callout_label | escape }}</p>
+          {%- endif -%}
+          {%- if section.settings.spray_callout_body != blank -%}
+            <p class="htu-callout__body">{{ section.settings.spray_callout_body }}</p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if spray_product != blank -%}
+        {%- unless spray_product.has_only_default_variant -%}
+          <p class="htu-flavours-label">{{ section.settings.flavours_label | escape }}</p>
+          <div class="htu-flavours" data-htu-flavours="spray">
+            {%- for variant in spray_product.variants -%}
+              <button class="htu-flavour" type="button"
+                aria-pressed="{{ forloop.first | json }}"
+                data-variant-id="{{ variant.id }}"
+                data-price="{{ variant.price | money }}"
+                data-available="{{ variant.available | json }}"
+                {%- unless variant.available %} disabled{%- endunless -%}>
+                <span class="htu-flavour__name">{{ variant.title | escape }}</span>
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endunless -%}
+
+        <button class="htu-atc" type="button"
+          id="htu-atc-spray-{{ section.id }}"
+          data-htu-atc="spray"
+          {%- unless spray_default.available %} disabled{%- endunless -%}>
+          {%- if spray_default.available -%}
+            {{- section.settings.atc_label | escape }} &mdash; {{ spray_default.price | money -}}
+          {%- else -%}
+            {{- 'products.product.sold_out' | t -}}
+          {%- endif -%}
+        </button>
+        {%- if section.settings.sub_note != blank -%}
+          <p class="htu-sub-note">{{ section.settings.sub_note }}</p>
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- if section.settings.spray_cross_title != blank -%}
+        <div class="htu-cross">
+          <div class="htu-cross__text">
+            <p class="htu-cross__title">{{ section.settings.spray_cross_title | escape }}</p>
+            {%- if section.settings.spray_cross_body != blank -%}
+              <p class="htu-cross__body">{{ section.settings.spray_cross_body | escape }}</p>
+            {%- endif -%}
+          </div>
+          <button class="htu-cross__link" type="button" data-htu-tab="pump">
+            {{ section.settings.spray_cross_link | escape }} <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      {%- endif -%}
+
+      {%- assign spray_has_faq = false -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'faq' and block.settings.panel == 'spray' -%}{%- assign spray_has_faq = true -%}{%- endif -%}
+      {%- endfor -%}
+      {%- if spray_has_faq -%}
+        <p class="htu-faq-label">{{ section.settings.faq_label | escape }}</p>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'faq' and block.settings.panel == 'spray' -%}
+            <details class="htu-q" {{ block.shopify_attributes }}>
+              <summary class="htu-q-summary">
+                {{ block.settings.question | escape }}
+                <span class="htu-q-icon" aria-hidden="true"></span>
+              </summary>
+              <div class="htu-q-body"><p>{{ block.settings.answer | escape }}</p></div>
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    {%- comment %} ===== PUMP PANEL ===== {%- endcomment %}
+    <div class="htu-panel"
+      id="htu-panel-pump-{{ section.id }}"
+      role="tabpanel"
+      data-htu-panel="pump">
+
+      {%- liquid
+        assign pump_img = section.settings.pump_hero_image
+        if pump_img == blank and pump_product != blank
+          assign pump_img = pump_product.featured_image
+        endif
+      -%}
+      {%- if pump_img != blank -%}
+        <div class="htu-hero">
+          {{
+            pump_img
+            | image_url: width: 700
+            | image_tag:
+              loading: 'lazy',
+              alt: pump_img.alt | default: pump_product.title,
+              widths: '400, 700'
+          }}
+          <div class="htu-hero__text">
+            <h3 class="htu-hero__title">{{ section.settings.pump_hero_title | escape }}</h3>
+            <p class="htu-hero__meta">{{ section.settings.pump_hero_meta | escape }}</p>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- assign pump_step_num = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'step' and block.settings.panel == 'pump' -%}
+          {%- assign pump_step_num = pump_step_num | plus: 1 -%}
+          <div class="htu-step" {{ block.shopify_attributes }}>
+            <span class="htu-step__num">{{ pump_step_num }}</span>
+            <div>
+              <h4 class="htu-step__title">{{ block.settings.title | escape }}</h4>
+              <p class="htu-step__body">{{ block.settings.body | escape }}</p>
+              {%- if block.settings.tag != blank -%}
+                <span class="htu-step__tag">{{ block.settings.tag | escape }}</span>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- if section.settings.pump_callout_label != blank or section.settings.pump_callout_body != blank -%}
+        <div class="htu-callout">
+          {%- if section.settings.pump_callout_label != blank -%}
+            <p class="htu-callout__label">{{ section.settings.pump_callout_label | escape }}</p>
+          {%- endif -%}
+          {%- if section.settings.pump_callout_body != blank -%}
+            <p class="htu-callout__body">{{ section.settings.pump_callout_body }}</p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if pump_product != blank -%}
+        {%- unless pump_product.has_only_default_variant -%}
+          <p class="htu-flavours-label">{{ section.settings.flavours_label | escape }}</p>
+          <div class="htu-flavours" data-htu-flavours="pump">
+            {%- for variant in pump_product.variants -%}
+              <button class="htu-flavour" type="button"
+                aria-pressed="{{ forloop.first | json }}"
+                data-variant-id="{{ variant.id }}"
+                data-price="{{ variant.price | money }}"
+                data-available="{{ variant.available | json }}"
+                {%- unless variant.available %} disabled{%- endunless -%}>
+                <span class="htu-flavour__name">{{ variant.title | escape }}</span>
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endunless -%}
+
+        <button class="htu-atc" type="button"
+          id="htu-atc-pump-{{ section.id }}"
+          data-htu-atc="pump"
+          {%- unless pump_default.available %} disabled{%- endunless -%}>
+          {%- if pump_default.available -%}
+            {{- section.settings.atc_label | escape }} &mdash; {{ pump_default.price | money -}}
+          {%- else -%}
+            {{- 'products.product.sold_out' | t -}}
+          {%- endif -%}
+        </button>
+        {%- if section.settings.sub_note != blank -%}
+          <p class="htu-sub-note">{{ section.settings.sub_note }}</p>
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- if section.settings.pump_cross_title != blank -%}
+        <div class="htu-cross">
+          <div class="htu-cross__text">
+            <p class="htu-cross__title">{{ section.settings.pump_cross_title | escape }}</p>
+            {%- if section.settings.pump_cross_body != blank -%}
+              <p class="htu-cross__body">{{ section.settings.pump_cross_body | escape }}</p>
+            {%- endif -%}
+          </div>
+          <button class="htu-cross__link" type="button" data-htu-tab="spray">
+            {{ section.settings.pump_cross_link | escape }} <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      {%- endif -%}
+
+      {%- assign pump_has_faq = false -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'faq' and block.settings.panel == 'pump' -%}{%- assign pump_has_faq = true -%}{%- endif -%}
+      {%- endfor -%}
+      {%- if pump_has_faq -%}
+        <p class="htu-faq-label">{{ section.settings.faq_label | escape }}</p>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'faq' and block.settings.panel == 'pump' -%}
+            <details class="htu-q" {{ block.shopify_attributes }}>
+              <summary class="htu-q-summary">
+                {{ block.settings.question | escape }}
+                <span class="htu-q-icon" aria-hidden="true"></span>
+              </summary>
+              <div class="htu-q-body"><p>{{ block.settings.answer | escape }}</p></div>
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+  </div>
+</aside>
+
+<script>
+(function () {
+  var sid     = '{{ section.id }}';
+  var drawer  = document.getElementById('htu-drawer-' + sid);
+  var overlay = document.getElementById('htu-overlay-' + sid);
+  var launcher= document.getElementById('htu-launcher-' + sid);
+  var closeBtn= document.getElementById('htu-close-' + sid);
+  var bodyEl  = document.getElementById('htu-body-' + sid);
+  var titleEl = document.getElementById('htu-title-' + sid);
+  var subEl   = titleEl && titleEl.nextElementSibling;
+  var tabs    = drawer.querySelectorAll('[data-htu-tab]');
+  var panels  = drawer.querySelectorAll('[data-htu-panel]');
+  var lastFocus = null;
+  var atcLabel = '{{ section.settings.atc_label | escape }}';
+  var soldOut  = '{{ 'products.product.sold_out' | t }}';
+
+  function openDrawer() {
+    lastFocus = document.activeElement;
+    overlay.hidden = false;
+    drawer.hidden = false;
+    requestAnimationFrame(function () {
+      overlay.classList.add('is-open');
+      drawer.classList.add('is-open');
+    });
+    document.body.style.overflow = 'hidden';
+    launcher.setAttribute('aria-expanded', 'true');
+    drawer.focus();
+    document.addEventListener('keydown', onKey);
+  }
+
+  function closeDrawer() {
+    overlay.classList.remove('is-open');
+    drawer.classList.remove('is-open');
+    document.body.style.overflow = '';
+    launcher.setAttribute('aria-expanded', 'false');
+    document.removeEventListener('keydown', onKey);
+    setTimeout(function () {
+      overlay.hidden = true;
+      drawer.hidden = true;
+    }, 320);
+    if (lastFocus) lastFocus.focus();
+  }
+
+  function onKey(e) {
+    if (e.key === 'Escape') closeDrawer();
+  }
+
+  function selectTab(name) {
+    tabs.forEach(function (t) {
+      t.setAttribute('aria-selected', String(t.dataset.htuTab === name));
+    });
+    panels.forEach(function (p) {
+      p.classList.toggle('is-active', p.dataset.htuPanel === name);
+    });
+    if (titleEl) {
+      var key = 'htuTitle' + name.charAt(0).toUpperCase() + name.slice(1);
+      if (titleEl.dataset[key]) titleEl.textContent = titleEl.dataset[key];
+    }
+    if (subEl) {
+      var subKey = 'htuSub' + name.charAt(0).toUpperCase() + name.slice(1);
+      if (subEl.dataset[subKey]) subEl.textContent = subEl.dataset[subKey];
+    }
+    bodyEl.scrollTop = 0;
+  }
+
+  function updateAtcButton(panel, flavourBtn) {
+    var atcBtn = document.getElementById('htu-atc-' + panel + '-' + sid);
+    if (!atcBtn) return;
+    var available = flavourBtn.dataset.available === 'true';
+    if (available) {
+      atcBtn.textContent = atcLabel + ' \u2014 ' + flavourBtn.dataset.price;
+      atcBtn.disabled = false;
+    } else {
+      atcBtn.textContent = soldOut;
+      atcBtn.disabled = true;
+    }
+  }
+
+  function addToCart(panel) {
+    var flavourWrap = drawer.querySelector('[data-htu-flavours="' + panel + '"]');
+    var atcBtn = document.getElementById('htu-atc-' + panel + '-' + sid);
+    if (!atcBtn) return;
+
+    var variantId;
+    if (flavourWrap) {
+      var selected = flavourWrap.querySelector('[aria-pressed="true"]');
+      if (selected) variantId = parseInt(selected.dataset.variantId, 10);
+    } else {
+      variantId = parseInt(atcBtn.dataset.variantId, 10);
+    }
+    if (!variantId) return;
+
+    var originalText = atcBtn.textContent;
+    atcBtn.textContent = 'Adding\u2026';
+    atcBtn.disabled = true;
+
+    fetch(window.Shopify.routes.root + 'cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      },
+      body: JSON.stringify({ items: [{ id: variantId, quantity: 1 }] })
+    })
+    .then(function (res) {
+      if (!res.ok) return res.json().then(function (err) { throw err; });
+      return res.json();
+    })
+    .then(function (data) {
+      atcBtn.textContent = 'Added \u2713';
+      atcBtn.disabled = false;
+      if (typeof publish !== 'undefined' && typeof PUB_SUB_EVENTS !== 'undefined') {
+        publish(PUB_SUB_EVENTS.cartUpdate, { source: 'htu-drawer', cartData: data });
+      }
+      setTimeout(function () { atcBtn.textContent = originalText; }, 1800);
+    })
+    .catch(function (err) {
+      atcBtn.textContent = (err && err.description) ? err.description : 'Error \u2014 try again';
+      atcBtn.disabled = false;
+      setTimeout(function () { atcBtn.textContent = originalText; }, 2400);
+    });
+  }
+
+  panels.forEach(function (panel) {
+    var panelName = panel.dataset.htuPanel;
+    var flavours = panel.querySelectorAll('.htu-flavour');
+    flavours.forEach(function (f) {
+      f.addEventListener('click', function () {
+        flavours.forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+        f.setAttribute('aria-pressed', 'true');
+        updateAtcButton(panelName, f);
+      });
+    });
+  });
+
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { selectTab(t.dataset.htuTab); });
+  });
+
+  drawer.querySelectorAll('[data-htu-atc]').forEach(function (btn) {
+    btn.addEventListener('click', function () { addToCart(btn.dataset.htuAtc); });
+  });
+
+  launcher.addEventListener('click', openDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+})();
+</script>
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "How To Use Drawer",
+  "class": "htu-drawer-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Launcher"
+    },
+    {
+      "type": "text",
+      "id": "launcher_text",
+      "label": "Tab label",
+      "default": "How to Use OG3"
+    },
+    {
+      "type": "text",
+      "id": "drawer_eyebrow",
+      "label": "Drawer eyebrow",
+      "default": "OG3 by Rainbow Smile"
+    },
+    {
+      "type": "header",
+      "content": "Spray Product"
+    },
+    {
+      "type": "product",
+      "id": "spray_product",
+      "label": "Spray product"
+    },
+    {
+      "type": "image_picker",
+      "id": "spray_hero_image",
+      "label": "Hero image (overrides product image)"
+    },
+    {
+      "type": "text",
+      "id": "spray_hero_title",
+      "label": "Hero title",
+      "default": "Anytime fresh breath"
+    },
+    {
+      "type": "text",
+      "id": "spray_hero_meta",
+      "label": "Hero meta line",
+      "default": "Spray Format \u00b7 On-the-Go \u00b7 15 ml"
+    },
+    {
+      "type": "text",
+      "id": "spray_drawer_title",
+      "label": "Drawer title",
+      "default": "Works like a breath spray."
+    },
+    {
+      "type": "text",
+      "id": "spray_drawer_subtitle",
+      "label": "Drawer subtitle",
+      "default": "Does so much more."
+    },
+    {
+      "type": "text",
+      "id": "spray_callout_label",
+      "label": "Callout label",
+      "default": "Why the 60 seconds matters"
+    },
+    {
+      "type": "textarea",
+      "id": "spray_callout_body",
+      "label": "Callout body",
+      "default": "OG3 doesn\u2019t mask bad breath \u2014 it removes the conditions that cause it. Harmful anaerobic bacteria thrive in low-oxygen environments. OG3 saturates the oral ecosystem with oxygen, making it impossible for anaerobes to maintain their competitive advantage."
+    },
+    {
+      "type": "text",
+      "id": "spray_cross_title",
+      "label": "Cross-sell title",
+      "default": "Want the full ritual?"
+    },
+    {
+      "type": "textarea",
+      "id": "spray_cross_body",
+      "label": "Cross-sell body",
+      "default": "Meet the Pump \u2014 sublingual delivery, morning and evening, the deepest version of the OG3 practice."
+    },
+    {
+      "type": "text",
+      "id": "spray_cross_link",
+      "label": "Cross-sell button text",
+      "default": "See Pump"
+    },
+    {
+      "type": "header",
+      "content": "Pump Product"
+    },
+    {
+      "type": "product",
+      "id": "pump_product",
+      "label": "Pump product"
+    },
+    {
+      "type": "image_picker",
+      "id": "pump_hero_image",
+      "label": "Hero image (overrides product image)"
+    },
+    {
+      "type": "text",
+      "id": "pump_hero_title",
+      "label": "Hero title",
+      "default": "The deep daily ritual"
+    },
+    {
+      "type": "text",
+      "id": "pump_hero_meta",
+      "label": "Hero meta line",
+      "default": "Pump Format \u00b7 Sublingual \u00b7 30 ml"
+    },
+    {
+      "type": "text",
+      "id": "pump_drawer_title",
+      "label": "Drawer title",
+      "default": "The deep daily ritual."
+    },
+    {
+      "type": "text",
+      "id": "pump_drawer_subtitle",
+      "label": "Drawer subtitle",
+      "default": "Sublingual, morning and evening."
+    },
+    {
+      "type": "text",
+      "id": "pump_callout_label",
+      "label": "Callout label",
+      "default": "Why the pump goes deeper"
+    },
+    {
+      "type": "textarea",
+      "id": "pump_callout_body",
+      "label": "Callout body",
+      "default": "Sublingual delivery holds OG3 against the tissue for maximum absorption. Used morning and evening, it\u2019s the most complete version of the practice \u2014 building oral-ecosystem resilience over time."
+    },
+    {
+      "type": "text",
+      "id": "pump_cross_title",
+      "label": "Cross-sell title",
+      "default": "Prefer on-the-go?"
+    },
+    {
+      "type": "textarea",
+      "id": "pump_cross_body",
+      "label": "Cross-sell body",
+      "default": "The Spray gives you anytime fresh breath in the same OG3 formula \u2014 perfect for your bag or car."
+    },
+    {
+      "type": "text",
+      "id": "pump_cross_link",
+      "label": "Cross-sell button text",
+      "default": "See Spray"
+    },
+    {
+      "type": "header",
+      "content": "Tabs & Labels"
+    },
+    {
+      "type": "text",
+      "id": "tab_spray_label",
+      "label": "Spray tab label",
+      "default": "The Spray"
+    },
+    {
+      "type": "text",
+      "id": "tab_pump_label",
+      "label": "Pump tab label",
+      "default": "The Pump"
+    },
+    {
+      "type": "text",
+      "id": "flavours_label",
+      "label": "Variant picker label",
+      "default": "Choose your flavour"
+    },
+    {
+      "type": "text",
+      "id": "atc_label",
+      "label": "Add to cart label",
+      "default": "Add to cart"
+    },
+    {
+      "type": "text",
+      "id": "sub_note",
+      "label": "Note below ATC button",
+      "default": "or <strong>Subscribe & Save $5/month</strong>",
+      "info": "HTML allowed. Use <strong> for bold."
+    },
+    {
+      "type": "text",
+      "id": "faq_label",
+      "label": "FAQ section label",
+      "default": "Questions"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow & label font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Title & button font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body text font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Navy (header background)",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Coral (accent, tab, ATC)",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text",
+      "default": "#4b4f63"
+    },
+    {
+      "type": "color",
+      "id": "peach_color",
+      "label": "Peach (selected variant bg, step tag)",
+      "default": "#fce7dc"
+    },
+    {
+      "type": "color",
+      "id": "peach_tx_color",
+      "label": "Peach text",
+      "default": "#c8613f"
+    },
+    {
+      "type": "color",
+      "id": "cream_color",
+      "label": "Cream (callout background)",
+      "default": "#fdf6f0"
+    },
+    {
+      "type": "color",
+      "id": "green_color",
+      "label": "Green (sub-note highlight)",
+      "default": "#3fae54"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Divider lines",
+      "default": "#ececf1"
+    },
+    {
+      "type": "color",
+      "id": "meta_color",
+      "label": "Meta / label text",
+      "default": "#9097a8"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "select",
+          "id": "panel",
+          "label": "Product",
+          "options": [
+            { "value": "spray", "label": "Spray" },
+            { "value": "pump",  "label": "Pump" }
+          ],
+          "default": "spray"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step title",
+          "default": "Step title"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Step body",
+          "default": "Step description."
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Badge text (optional)",
+          "info": "e.g. \"60 Seconds \u00b7 The Saturation Window\""
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "panel",
+          "label": "Product",
+          "options": [
+            { "value": "spray", "label": "Spray" },
+            { "value": "pump",  "label": "Pump" }
+          ],
+          "default": "spray"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Your question here?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Your answer here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How To Use Drawer",
+      "blocks": [
+        { "type": "step", "settings": { "panel": "spray", "title": "Spray into your mouth", "body": "2\u20133 sprays directly into the mouth. Anytime, anywhere \u2014 after coffee, after a meal, before a meeting.", "tag": "" } },
+        { "type": "step", "settings": { "panel": "spray", "title": "Close your mouth and hold", "body": "Close your mouth and let it saturate for 60 seconds. The oxygen-rich glycerin coats every surface.", "tag": "60 Seconds \u00b7 The Saturation Window" } },
+        { "type": "step", "settings": { "panel": "spray", "title": "Swallow or spit \u2014 your call", "body": "OG3 is certified organic and completely safe to swallow. Swallowing extends the benefit into the gut.", "tag": "Certified Organic \u00b7 Safe to Swallow" } },
+        { "type": "faq",  "settings": { "panel": "spray", "question": "Is this just a breath spray?", "answer": "No \u2014 it freshens breath like one, but it works by saturating your mouth with oxygen to remove the cause of bad breath, not mask it." } },
+        { "type": "faq",  "settings": { "panel": "spray", "question": "Why close my mouth for 60 seconds?", "answer": "That\u2019s the saturation window \u2014 it lets the oxygen-rich glycerin coat every surface and shift the environment against anaerobic bacteria." } },
+        { "type": "step", "settings": { "panel": "pump",  "title": "Pump under your tongue", "body": "Dispense 1\u20132 pumps directly under the tongue, morning and evening, as the anchor of your daily routine.", "tag": "" } },
+        { "type": "step", "settings": { "panel": "pump",  "title": "Hold for 60 seconds", "body": "Let it absorb sublingually so the compounds reach the tissue directly.", "tag": "60 Seconds \u00b7 The Saturation Window" } },
+        { "type": "step", "settings": { "panel": "pump",  "title": "Swallow to finish", "body": "Carry the benefit into the oral-gut axis. Certified organic and safe to swallow.", "tag": "Certified Organic \u00b7 Safe to Swallow" } },
+        { "type": "faq",  "settings": { "panel": "pump",  "question": "Can I use the pump on the go?", "answer": "You can, but the pump is designed for a measured morning/evening ritual. The spray is the on-the-go option." } },
+        { "type": "faq",  "settings": { "panel": "pump",  "question": "How long does a bottle last?", "answer": "A 30 ml pump bottle lasts about a month with twice-daily use." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
