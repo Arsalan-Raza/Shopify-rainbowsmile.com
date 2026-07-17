@@ -1,0 +1,478 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --fd-navy:   {{ section.settings.navy_color }};
+    --fd-accent: {{ section.settings.accent_color }};
+    --fd-intro:  {{ section.settings.intro_color }};
+    --fd-body:   {{ section.settings.body_color }};
+    --fd-time:   {{ section.settings.time_color }};
+    --fd-count:  {{ section.settings.count_color }};
+    --fd-pill:   {{ section.settings.pill_color }};
+    --fd-card:   {{ section.settings.card_color }};
+    --fd-heart:  {{ section.settings.heart_color }};
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .feed {
+    background: {{ section.settings.bg_color }};
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  #shopify-section-{{ section.id }} .feed__inner { max-width: 1180px; margin-inline: auto; }
+
+  #shopify-section-{{ section.id }} .feed__head {
+    text-align: center;
+    margin-bottom: clamp(32px, 4.5vw, 54px);
+  }
+
+  #shopify-section-{{ section.id }} .feed__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--fd-accent);
+    line-height: 1;
+  }
+  #shopify-section-{{ section.id }} .feed__eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+
+  #shopify-section-{{ section.id }} .feed__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(32px, 4.2vw, 50px);
+    line-height: 1.02;
+    letter-spacing: -0.5px;
+    color: var(--fd-navy);
+  }
+  #shopify-section-{{ section.id }} .feed__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: clamp(30px, 3.8vw, 46px);
+    line-height: 1.1;
+    color: var(--fd-accent);
+  }
+  #shopify-section-{{ section.id }} .feed__sub {
+    margin: clamp(12px, 1.8vw, 18px) auto 0;
+    max-width: 520px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.6;
+    color: var(--fd-intro);
+  }
+
+  #shopify-section-{{ section.id }} .feed__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(18px, 2.2vw, 26px);
+    align-items: stretch;
+  }
+
+  #shopify-section-{{ section.id }} .feed__card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--fd-card);
+    box-shadow: 0 8px 22px rgba(60, 45, 30, 0.07);
+  }
+
+  #shopify-section-{{ section.id }} .feed__media {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    background: linear-gradient(160deg, #dfe9e3, #f2efe8);
+    overflow: hidden;
+  }
+  #shopify-section-{{ section.id }} .feed__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .feed__author {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--fd-pill);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: #fff;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .feed__content {
+    padding: clamp(18px, 2vw, 24px);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .feed__time {
+    margin: 0 0 14px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--fd-time);
+  }
+
+  #shopify-section-{{ section.id }} .feed__quote {
+    margin: 0 0 clamp(20px, 2.4vw, 26px);
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 15px);
+    line-height: 1.65;
+    color: var(--fd-body);
+  }
+
+  #shopify-section-{{ section.id }} .feed__engage {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: auto;
+  }
+  #shopify-section-{{ section.id }} .feed__stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--fd-count);
+    line-height: 1;
+  }
+  #shopify-section-{{ section.id }} .feed__stat svg { width: 15px; height: 15px; display: block; }
+  #shopify-section-{{ section.id }} .feed__stat--comment svg { fill: none; stroke: var(--fd-count); stroke-width: 1.6px; }
+  #shopify-section-{{ section.id }} .feed__stat--like svg { fill: var(--fd-heart); }
+
+  @media (max-width: 899px) {
+    #shopify-section-{{ section.id }} .feed__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 620px) {
+    #shopify-section-{{ section.id }} .feed__grid { grid-template-columns: 1fr; }
+    #shopify-section-{{ section.id }} .feed__media { aspect-ratio: 4 / 3; }
+  }
+</style>
+
+<div class="feed">
+  <div class="feed__inner">
+
+    <header class="feed__head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="feed__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      <h2 class="feed__title">
+        {{ section.settings.title | escape }}
+        {%- if section.settings.script_line != blank -%}
+          <span class="feed__script">{{ section.settings.script_line | escape }}</span>
+        {%- endif -%}
+      </h2>
+      {%- if section.settings.subtitle != blank -%}
+        <p class="feed__sub">{{ section.settings.subtitle | escape }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="feed__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'post' -%}
+          {%- assign card_img_alt = block.settings.image.alt | default: block.settings.author | escape -%}
+          <article class="feed__card" {{ block.shopify_attributes }}>
+            <div class="feed__media">
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 800
+                  | image_tag:
+                    loading: 'lazy',
+                    alt: card_img_alt,
+                    widths: '400, 600, 800'
+                }}
+              {%- endif -%}
+              {%- if block.settings.author != blank -%}
+                <span class="feed__author">{{ block.settings.author | escape }}</span>
+              {%- endif -%}
+            </div>
+            <div class="feed__content">
+              {%- if block.settings.timestamp != blank -%}
+                <p class="feed__time">{{ block.settings.timestamp | escape }}</p>
+              {%- endif -%}
+              {%- if block.settings.quote != blank -%}
+                <p class="feed__quote">&ldquo;{{ block.settings.quote | escape }}&rdquo;</p>
+              {%- endif -%}
+              <div class="feed__engage">
+                {%- if block.settings.comment_count != blank -%}
+                  <span class="feed__stat feed__stat--comment">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-8 8H5l-2 2V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8Z" stroke-linejoin="round"/></svg>
+                    {{ block.settings.comment_count | escape }}
+                    <span class="visually-hidden">comments</span>
+                  </span>
+                {%- endif -%}
+                {%- if block.settings.like_count != blank -%}
+                  <span class="feed__stat feed__stat--like">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-8-5.2-8-10.4A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 3.6C20 15.8 12 21 12 21Z"/></svg>
+                    {{ block.settings.like_count | escape }}
+                    <span class="visually-hidden">likes</span>
+                  </span>
+                {%- endif -%}
+              </div>
+            </div>
+          </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Community Feed",
+  "tag": "section",
+  "class": "community-feed-section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "From William & the Team"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "The latest from the"
+    },
+    {
+      "type": "text",
+      "id": "script_line",
+      "label": "Script line",
+      "default": "founders."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Curated updates, research notes, and behind-the-scenes from the people building Rainbow Smile."
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow, timestamp & pill font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Title font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script line font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Quote & body font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading color",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Eyebrow & script color",
+      "default": "#f4502b"
+    },
+    {
+      "type": "color",
+      "id": "intro_color",
+      "label": "Subtitle color",
+      "default": "#4b4f63"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Quote text color",
+      "default": "#34384c"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card background",
+      "default": "#fdf9f3"
+    },
+    {
+      "type": "color",
+      "id": "pill_color",
+      "label": "Author pill background",
+      "default": "#2b2b2b"
+    },
+    {
+      "type": "color",
+      "id": "time_color",
+      "label": "Timestamp color",
+      "default": "#b3aa9c"
+    },
+    {
+      "type": "color",
+      "id": "count_color",
+      "label": "Engagement count color",
+      "default": "#8b8478"
+    },
+    {
+      "type": "color",
+      "id": "heart_color",
+      "label": "Like icon color",
+      "default": "#e5342b"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "post",
+      "name": "Post",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author name",
+          "default": "William R."
+        },
+        {
+          "type": "text",
+          "id": "timestamp",
+          "label": "Timestamp",
+          "default": "3 Days Ago"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Post text",
+          "default": "Your founder update goes here."
+        },
+        {
+          "type": "text",
+          "id": "comment_count",
+          "label": "Comment count",
+          "default": "84"
+        },
+        {
+          "type": "text",
+          "id": "like_count",
+          "label": "Like count",
+          "default": "312"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community Feed",
+      "blocks": [
+        {
+          "type": "post",
+          "settings": {
+            "author": "William R.",
+            "timestamp": "3 Days Ago",
+            "quote": "Just got back from the lab \u2014 new oxygen retention data on the Minty Fusion batch. Sharing the full breakdown in the Mouth forum this week.",
+            "comment_count": "84",
+            "like_count": "312"
+          }
+        },
+        {
+          "type": "post",
+          "settings": {
+            "author": "Dr. Gupta",
+            "timestamp": "1 Week Ago",
+            "quote": "A reader asked why structured water matters more than \u2018regular\u2019 hydration. Wrote a plain-language explainer \u2014 link in the Gut category.",
+            "comment_count": "56",
+            "like_count": "198"
+          }
+        },
+        {
+          "type": "post",
+          "settings": {
+            "author": "Tracy T.",
+            "timestamp": "2 Weeks Ago",
+            "quote": "Update from Kenya \u2014 400 more bottles distributed through Springboard Connectivity this month. Thank you to every subscriber making this possible.",
+            "comment_count": "102",
+            "like_count": "540"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

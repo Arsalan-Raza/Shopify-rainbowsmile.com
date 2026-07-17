@@ -1,0 +1,590 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --ama-navy:  {{ section.settings.bg_color }};
+    --ama-coral: {{ section.settings.coral_color }};
+    --ama-gold:  {{ section.settings.gold_color }};
+    --ama-body:  {{ section.settings.body_color }};
+    --ama-meta:  {{ section.settings.meta_color }};
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .ama {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: var(--ama-navy);
+    padding-block: clamp(48px, 7vw, 88px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  #shopify-section-{{ section.id }} .ama::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420' viewBox='0 0 420 420'%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='70' cy='80' r='30' opacity='.014'/%3E%3Ccircle cx='340' cy='300' r='34' opacity='.012'/%3E%3Ccircle cx='280' cy='60' r='18' opacity='.014'/%3E%3Ccircle cx='140' cy='330' r='24' opacity='.012'/%3E%3Ccircle cx='60' cy='240' r='2' opacity='.03'/%3E%3Ccircle cx='250' cy='160' r='1.8' opacity='.03'/%3E%3Ccircle cx='390' cy='170' r='2' opacity='.026'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 420px;
+    background-repeat: repeat;
+  }
+
+  #shopify-section-{{ section.id }} .ama__inner {
+    max-width: 1240px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(36px, 5vw, 80px);
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .ama__content { max-width: 540px; }
+
+  #shopify-section-{{ section.id }} .ama__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 14px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--ama-gold);
+    line-height: 1;
+  }
+  #shopify-section-{{ section.id }} .ama__eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+
+  #shopify-section-{{ section.id }} .ama__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(32px, 4.2vw, 50px);
+    line-height: 1.02;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+  }
+  #shopify-section-{{ section.id }} .ama__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: clamp(30px, 3.8vw, 46px);
+    line-height: 1.1;
+    color: var(--ama-coral);
+  }
+
+  #shopify-section-{{ section.id }} .ama__body {
+    margin: clamp(18px, 2.4vw, 26px) 0 0;
+    max-width: 480px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.6;
+    color: var(--ama-body);
+  }
+
+  #shopify-section-{{ section.id }} .ama__card {
+    margin-top: clamp(24px, 3.2vw, 34px);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    padding: clamp(20px, 2.4vw, 28px);
+  }
+
+  #shopify-section-{{ section.id }} .ama__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--ama-gold);
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--ama-gold);
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+  #shopify-section-{{ section.id }} .ama__pill::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--ama-gold);
+  }
+
+  #shopify-section-{{ section.id }} .ama__speaker {
+    margin: clamp(16px, 2vw, 20px) 0 8px;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(18px, 1.9vw, 22px);
+    line-height: 1.2;
+    color: #ffffff;
+  }
+  #shopify-section-{{ section.id }} .ama__role {
+    margin: 0 0 clamp(14px, 1.8vw, 18px);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--ama-meta);
+  }
+  #shopify-section-{{ section.id }} .ama__topic {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 15px);
+    line-height: 1.6;
+    color: var(--ama-body);
+  }
+
+  #shopify-section-{{ section.id }} .ama__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-top: clamp(24px, 3vw, 32px);
+    padding: 18px 34px;
+    min-height: 58px;
+    border-radius: 999px;
+    background: var(--ama-gold);
+    color: #ffffff;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(14px, 1.4vw, 16px);
+    text-decoration: none;
+    transition: background-color 0.18s ease, transform 0.18s ease;
+  }
+  #shopify-section-{{ section.id }} .ama__cta span { transition: transform 0.18s ease; }
+  #shopify-section-{{ section.id }} .ama__cta:hover { background: #e6a930; transform: translateY(-2px); }
+  #shopify-section-{{ section.id }} .ama__cta:hover span { transform: translateX(3px); }
+  #shopify-section-{{ section.id }} .ama__cta:focus-visible { outline: 3px solid rgba(242, 181, 68, 0.5); outline-offset: 3px; }
+
+  #shopify-section-{{ section.id }} .ama__archive-label {
+    margin: 0 0 6px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--ama-meta);
+  }
+
+  #shopify-section-{{ section.id }} .ama__row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: clamp(14px, 1.8vw, 20px) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    text-decoration: none;
+  }
+  #shopify-section-{{ section.id }} .ama__row:focus-visible {
+    outline: 3px solid rgba(242, 181, 68, 0.45);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .ama__avatar {
+    width: clamp(38px, 4vw, 44px);
+    height: clamp(38px, 4vw, 44px);
+    flex: none;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .ama__avatar-placeholder {
+    width: clamp(38px, 4vw, 44px);
+    height: clamp(38px, 4vw, 44px);
+    flex: none;
+    border-radius: 50%;
+    background: linear-gradient(140deg, #6d6250, #b09b7c);
+  }
+
+  #shopify-section-{{ section.id }} .ama__row-text { flex: 1; min-width: 0; }
+  #shopify-section-{{ section.id }} .ama__row-name {
+    display: block;
+    margin: 0 0 5px;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(13px, 1.3vw, 15px);
+    line-height: 1.2;
+    color: #ffffff;
+  }
+  #shopify-section-{{ section.id }} .ama__row-topic {
+    display: block;
+    margin: 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.2vw, 13px);
+    line-height: 1.35;
+    color: var(--ama-meta);
+  }
+
+  #shopify-section-{{ section.id }} .ama__watch {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(13px, 1.3vw, 14px);
+    color: var(--ama-gold);
+    white-space: nowrap;
+  }
+  #shopify-section-{{ section.id }} .ama__watch span { transition: transform 0.18s ease; }
+  #shopify-section-{{ section.id }} .ama__row:hover .ama__watch span { transform: translateX(3px); }
+
+  @media (max-width: 899px) {
+    #shopify-section-{{ section.id }} .ama__inner {
+      grid-template-columns: 1fr;
+      gap: clamp(36px, 7vw, 52px);
+      align-items: start;
+    }
+    #shopify-section-{{ section.id }} .ama__content { max-width: 620px; }
+  }
+  @media (max-width: 520px) {
+    #shopify-section-{{ section.id }} .ama__cta { width: 100%; }
+    #shopify-section-{{ section.id }} .ama__watch-label { display: none; }
+    #shopify-section-{{ section.id }} .ama__row { gap: 12px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .ama__cta:hover { transform: none; }
+    #shopify-section-{{ section.id }} .ama__row:hover .ama__watch span { transform: none; }
+  }
+</style>
+
+<div class="ama">
+  <div class="ama__inner">
+
+    <div class="ama__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="ama__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      <h2 class="ama__title">
+        {{ section.settings.title | escape }}
+        {%- if section.settings.script_line != blank -%}
+          <span class="ama__script">{{ section.settings.script_line | escape }}</span>
+        {%- endif -%}
+      </h2>
+
+      {%- if section.settings.body_text != blank -%}
+        <p class="ama__body">{{ section.settings.body_text }}</p>
+      {%- endif -%}
+
+      <div class="ama__card">
+        {%- if section.settings.pill_text != blank -%}
+          <span class="ama__pill">{{ section.settings.pill_text | escape }}</span>
+        {%- endif -%}
+        {%- if section.settings.speaker_name != blank -%}
+          <h3 class="ama__speaker">{{ section.settings.speaker_name | escape }}</h3>
+        {%- endif -%}
+        {%- if section.settings.speaker_role != blank -%}
+          <p class="ama__role">{{ section.settings.speaker_role | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.speaker_topic != blank -%}
+          <p class="ama__topic">{{ section.settings.speaker_topic }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.cta_text != blank -%}
+        <a class="ama__cta" href="{{ section.settings.cta_url | default: '#' }}">
+          {{ section.settings.cta_text | escape }} <span aria-hidden="true">→</span>
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="ama__archive">
+      {%- if section.settings.archive_label != blank -%}
+        <p class="ama__archive-label">{{ section.settings.archive_label | escape }}</p>
+      {%- endif -%}
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'session' -%}
+          {%- assign session_url = block.settings.url | default: '#' -%}
+          {%- assign avatar_alt = block.settings.name | escape -%}
+          <a class="ama__row" href="{{ session_url }}" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 88
+                | image_tag:
+                  class: 'ama__avatar',
+                  alt: avatar_alt,
+                  width: 44,
+                  height: 44,
+                  loading: 'lazy'
+              }}
+            {%- else -%}
+              <div class="ama__avatar-placeholder" aria-hidden="true"></div>
+            {%- endif -%}
+            <span class="ama__row-text">
+              {%- if block.settings.name != blank -%}
+                <span class="ama__row-name">{{ block.settings.name | escape }}</span>
+              {%- endif -%}
+              {%- if block.settings.topic != blank -%}
+                <span class="ama__row-topic">{{ block.settings.topic | escape }}</span>
+              {%- endif -%}
+            </span>
+            <span class="ama__watch">
+              <span class="ama__watch-label">Watch</span>
+              <span aria-hidden="true">→</span>
+            </span>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Community AMA",
+  "tag": "section",
+  "class": "community-ama-section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Live Sessions"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Ask the people"
+    },
+    {
+      "type": "text",
+      "id": "script_line",
+      "label": "Script line",
+      "default": "who built it."
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "Monthly AMAs with Dr. Vanita K. Gupta, William Robertson, and guest experts in microbiome science. Live, recorded, and archived for the community."
+    },
+    {
+      "type": "header",
+      "content": "Featured Session"
+    },
+    {
+      "type": "text",
+      "id": "pill_text",
+      "label": "Pill / date label",
+      "default": "Upcoming \u00b7 July 14"
+    },
+    {
+      "type": "text",
+      "id": "speaker_name",
+      "label": "Speaker name",
+      "default": "Dr. Vanita K. Gupta, PhD, MBA"
+    },
+    {
+      "type": "text",
+      "id": "speaker_role",
+      "label": "Speaker role",
+      "default": "Chief Science Officer, Rainbow Smile"
+    },
+    {
+      "type": "textarea",
+      "id": "speaker_topic",
+      "label": "Topic / description",
+      "default": "\u201cThe Oral-Gut-Brain Axis: What 2 Years of Research Taught Us\u201d \u2014 live Q&A, open to all members."
+    },
+    {
+      "type": "header",
+      "content": "CTA Button"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Reserve Your Spot"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Archive Column"
+    },
+    {
+      "type": "text",
+      "id": "archive_label",
+      "label": "Archive column label",
+      "default": "Recent Sessions \u2014 Archived"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow & label font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Title & speaker font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script line font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body & topic font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#262a4d"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Script color",
+      "default": "#f4502b"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Eyebrow, CTA & links color",
+      "default": "#f2b544"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text color",
+      "default": "#b0b3c8"
+    },
+    {
+      "type": "color",
+      "id": "meta_color",
+      "label": "Meta & label color",
+      "default": "#9599b2"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "session",
+      "name": "Archived Session",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Speaker avatar"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Speaker name",
+          "default": "William Robertson"
+        },
+        {
+          "type": "text",
+          "id": "topic",
+          "label": "Session topic",
+          "default": "Why we built Biome Food\u2122"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Watch / recording URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community AMA",
+      "blocks": [
+        {
+          "type": "session",
+          "settings": {
+            "name": "William Robertson",
+            "topic": "Why we built Biome Food\u2122"
+          }
+        },
+        {
+          "type": "session",
+          "settings": {
+            "name": "Dr. Vanita K. Gupta",
+            "topic": "Understanding oral dysbiosis"
+          }
+        },
+        {
+          "type": "session",
+          "settings": {
+            "name": "Tracy Tarlow",
+            "topic": "Inside the Kenya partnership"
+          }
+        },
+        {
+          "type": "session",
+          "settings": {
+            "name": "Guest: Dr. Amara Singh",
+            "topic": "Microbiome research, 2025"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

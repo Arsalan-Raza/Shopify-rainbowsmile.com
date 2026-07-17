@@ -1,0 +1,560 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --bk-navy:  {{ section.settings.navy_color }};
+    --bk-coral: {{ section.settings.coral_color }};
+    --bk-body:  {{ section.settings.body_color }};
+    --bk-label: {{ section.settings.label_color }};
+    --bk-green: {{ section.settings.green_color }};
+    --bk-meta:  {{ section.settings.meta_color }};
+    --bk-blob:  {{ section.settings.blob_color }};
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .bkh {
+    --bk-tilt-y: -14deg;
+    --bk-tilt-z: 3deg;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: #fff;
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  #shopify-section-{{ section.id }} .bkh::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      radial-gradient(circle at 6% 12%, var(--bk-blob) 0 70px, transparent 71px),
+      radial-gradient(circle at 94% 82%, var(--bk-blob) 0 90px, transparent 91px),
+      radial-gradient(circle at 52% 96%, var(--bk-blob) 0 60px, transparent 61px);
+    opacity: 0.7;
+  }
+
+  #shopify-section-{{ section.id }} .bkh__inner {
+    max-width: 1240px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .bkh__content { max-width: 560px; }
+
+  #shopify-section-{{ section.id }} .bkh__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 clamp(16px, 2.4vw, 22px);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--bk-coral);
+    line-height: 1;
+  }
+  #shopify-section-{{ section.id }} .bkh__eyebrow::before {
+    content: "";
+    width: 22px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+
+  #shopify-section-{{ section.id }} .bkh__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(32px, 4.4vw, 54px);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    color: var(--bk-navy);
+  }
+  #shopify-section-{{ section.id }} .bkh__title-italic {
+    font-style: italic;
+    color: var(--bk-coral);
+  }
+  #shopify-section-{{ section.id }} .bkh__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: 1.02em;
+    line-height: 1.12;
+    letter-spacing: 0;
+    color: var(--bk-coral);
+  }
+
+  #shopify-section-{{ section.id }} .bkh__body {
+    margin: clamp(20px, 2.8vw, 28px) 0 0;
+    max-width: 430px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.3vw, 15px);
+    line-height: 1.65;
+    color: var(--bk-body);
+  }
+
+  #shopify-section-{{ section.id }} .bkh__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(20px, 3.4vw, 44px);
+    margin-top: clamp(24px, 3.4vw, 34px);
+  }
+  #shopify-section-{{ section.id }} .bkh__meta-label {
+    margin: 0 0 8px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--bk-label);
+  }
+  #shopify-section-{{ section.id }} .bkh__meta-value {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(14px, 1.35vw, 15px);
+    line-height: 1.3;
+    color: var(--bk-navy);
+  }
+
+  #shopify-section-{{ section.id }} .bkh__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: clamp(26px, 3.6vw, 36px);
+  }
+  #shopify-section-{{ section.id }} .bkh__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 18px 32px;
+    min-height: 58px;
+    border-radius: 999px;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(14px, 1.4vw, 16px);
+    text-decoration: none;
+    border: 2px solid var(--bk-coral);
+    transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  }
+  #shopify-section-{{ section.id }} .bkh__btn span { transition: transform 0.18s ease; }
+  #shopify-section-{{ section.id }} .bkh__btn:hover span { transform: translateX(3px); }
+  #shopify-section-{{ section.id }} .bkh__btn--solid { background: var(--bk-coral); color: #fff; }
+  #shopify-section-{{ section.id }} .bkh__btn--solid:hover { background: #dc411b; transform: translateY(-2px); }
+  #shopify-section-{{ section.id }} .bkh__btn--outline { background: #fff; color: var(--bk-navy); border-color: var(--bk-navy); }
+  #shopify-section-{{ section.id }} .bkh__btn--outline:hover { background: var(--bk-navy); color: #fff; }
+  #shopify-section-{{ section.id }} .bkh__btn:focus-visible { outline: 3px solid rgba(239,74,34,0.4); outline-offset: 3px; }
+
+  #shopify-section-{{ section.id }} .bkh__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin: clamp(22px, 3vw, 30px) 0 0;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--bk-meta);
+  }
+  #shopify-section-{{ section.id }} .bkh__status::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--bk-green);
+  }
+
+  #shopify-section-{{ section.id }} .bkh__cover-stage {
+    perspective: 1400px;
+    display: flex;
+    justify-content: center;
+  }
+  #shopify-section-{{ section.id }} .bkh__cover {
+    width: min(420px, 100%);
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transform: rotateY(var(--bk-tilt-y)) rotateZ(var(--bk-tilt-z));
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                filter   0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    filter: drop-shadow(-18px 22px 34px rgba(70, 45, 25, 0.28));
+    display: block;
+    text-decoration: none;
+  }
+  #shopify-section-{{ section.id }} .bkh__cover-stage:hover .bkh__cover,
+  #shopify-section-{{ section.id }} .bkh__cover:focus-visible {
+    transform: rotateY(0deg) rotateZ(0deg) translateY(-6px) scale(1.02);
+    filter: drop-shadow(0 26px 40px rgba(70, 45, 25, 0.24));
+  }
+  #shopify-section-{{ section.id }} .bkh__cover:focus-visible { outline: 3px solid rgba(239,74,34,0.4); outline-offset: 8px; border-radius: 4px; }
+  #shopify-section-{{ section.id }} .bkh__cover img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    aspect-ratio: 10 / 13;
+    object-fit: cover;
+    background: linear-gradient(160deg, #f3e2c8, #f7efe1);
+  }
+
+  @media (max-width: 899px) {
+    #shopify-section-{{ section.id }} .bkh__inner { grid-template-columns: 1fr; gap: clamp(32px, 6vw, 46px); }
+    #shopify-section-{{ section.id }} .bkh__cover-stage { order: -1; }
+    #shopify-section-{{ section.id }} .bkh__content { max-width: 620px; }
+    #shopify-section-{{ section.id }} .bkh { --bk-tilt-y: -8deg; --bk-tilt-z: 2deg; }
+    #shopify-section-{{ section.id }} .bkh__cover { width: min(320px, 78%); }
+  }
+  @media (max-width: 480px) {
+    #shopify-section-{{ section.id }} .bkh { --bk-tilt-y: 0deg; --bk-tilt-z: 0deg; }
+    #shopify-section-{{ section.id }} .bkh__actions .bkh__btn { width: 100%; }
+    #shopify-section-{{ section.id }} .bkh__meta { gap: 18px 28px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .bkh { --bk-tilt-y: 0deg; --bk-tilt-z: 0deg; }
+    #shopify-section-{{ section.id }} .bkh__cover { transition: none; }
+    #shopify-section-{{ section.id }} .bkh__cover-stage:hover .bkh__cover { transform: none; }
+    #shopify-section-{{ section.id }} .bkh__btn:hover { transform: none; }
+  }
+</style>
+
+<div class="bkh">
+  <div class="bkh__inner">
+
+    <div class="bkh__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="bkh__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.title != blank or section.settings.title_italic != blank or section.settings.script_line != blank -%}
+        <h2 class="bkh__title">
+          {{- section.settings.title | escape -}}
+          {%- if section.settings.title_italic != blank -%}
+            <span class="bkh__title-italic"> {{ section.settings.title_italic | escape }}</span>
+          {%- endif -%}
+          {%- if section.settings.script_line != blank -%}
+            <span class="bkh__script">{{ section.settings.script_line | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.body != blank -%}
+        <p class="bkh__body">{{ section.settings.body | escape }}</p>
+      {%- endif -%}
+
+      {%- assign has_meta = false -%}
+      {%- if section.settings.meta1_label != blank or section.settings.meta2_label != blank or section.settings.meta3_label != blank -%}
+        {%- assign has_meta = true -%}
+      {%- endif -%}
+      {%- if has_meta -%}
+        <div class="bkh__meta">
+          {%- if section.settings.meta1_label != blank -%}
+            <div>
+              <p class="bkh__meta-label">{{ section.settings.meta1_label | escape }}</p>
+              <p class="bkh__meta-value">{{ section.settings.meta1_value | escape }}</p>
+            </div>
+          {%- endif -%}
+          {%- if section.settings.meta2_label != blank -%}
+            <div>
+              <p class="bkh__meta-label">{{ section.settings.meta2_label | escape }}</p>
+              <p class="bkh__meta-value">{{ section.settings.meta2_value | escape }}</p>
+            </div>
+          {%- endif -%}
+          {%- if section.settings.meta3_label != blank -%}
+            <div>
+              <p class="bkh__meta-label">{{ section.settings.meta3_label | escape }}</p>
+              <p class="bkh__meta-value">{{ section.settings.meta3_value | escape }}</p>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.btn1_text != blank or section.settings.btn2_text != blank -%}
+        <div class="bkh__actions">
+          {%- if section.settings.btn1_text != blank -%}
+            <a class="bkh__btn bkh__btn--solid" href="{{ section.settings.btn1_url | default: '#' }}">
+              {{ section.settings.btn1_text | escape }} <span aria-hidden="true">→</span>
+            </a>
+          {%- endif -%}
+          {%- if section.settings.btn2_text != blank -%}
+            <a class="bkh__btn bkh__btn--outline" href="{{ section.settings.btn2_url | default: '#' }}">
+              {{ section.settings.btn2_text | escape }}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.status_text != blank -%}
+        <p class="bkh__status">{{ section.settings.status_text | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="bkh__cover-stage">
+      {%- if section.settings.cover_image != blank -%}
+        {%- assign cover_alt = section.settings.cover_image.alt | default: section.settings.title | escape -%}
+        {%- if section.settings.cover_url != blank -%}
+          <a class="bkh__cover" href="{{ section.settings.cover_url }}" aria-label="{{ section.settings.btn1_text | default: 'Preview the book' | escape }}">
+        {%- else -%}
+          <button class="bkh__cover" type="button" aria-label="{{ section.settings.btn1_text | default: 'Preview the book' | escape }}">
+        {%- endif -%}
+            {{
+              section.settings.cover_image
+              | image_url: width: 840
+              | image_tag:
+                loading: 'lazy',
+                alt: cover_alt,
+                widths: '420, 640, 840'
+            }}
+        {%- if section.settings.cover_url != blank -%}
+          </a>
+        {%- else -%}
+          </button>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Book Hero",
+  "tag": "section",
+  "class": "book-hero-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Biome Hacker\u2019s Code \u00b7 Volume I \u00b7 12 Chapters"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading (navy part)",
+      "default": "Your operating system for"
+    },
+    {
+      "type": "text",
+      "id": "title_italic",
+      "label": "Heading — italic coral word",
+      "default": "the"
+    },
+    {
+      "type": "text",
+      "id": "script_line",
+      "label": "Script line (coral, below heading)",
+      "default": "living mouth"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body text",
+      "default": "Twelve chapters. One complete transformation. The oral microbiome, your mOS, and the 60-second daily reset that changes everything."
+    },
+    {
+      "type": "header",
+      "content": "Meta info"
+    },
+    {
+      "type": "text",
+      "id": "meta1_label",
+      "label": "Meta 1 label",
+      "default": "By"
+    },
+    {
+      "type": "text",
+      "id": "meta1_value",
+      "label": "Meta 1 value",
+      "default": "William Robertson"
+    },
+    {
+      "type": "text",
+      "id": "meta2_label",
+      "label": "Meta 2 label",
+      "default": "Scientific Strategy"
+    },
+    {
+      "type": "text",
+      "id": "meta2_value",
+      "label": "Meta 2 value",
+      "default": "Dr. Vanita K. Gupta, PhD"
+    },
+    {
+      "type": "text",
+      "id": "meta3_label",
+      "label": "Meta 3 label",
+      "default": "Format"
+    },
+    {
+      "type": "text",
+      "id": "meta3_value",
+      "label": "Meta 3 value",
+      "default": "PDF \u00b7 70 pages"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "btn1_text",
+      "label": "Primary button text",
+      "default": "Preview the book"
+    },
+    {
+      "type": "url",
+      "id": "btn1_url",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "btn2_text",
+      "label": "Secondary button text",
+      "default": "Download free now"
+    },
+    {
+      "type": "url",
+      "id": "btn2_url",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "text",
+      "id": "status_text",
+      "label": "Status line",
+      "default": "Free \u00b7 No credit card \u00b7 Instant delivery"
+    },
+    {
+      "type": "header",
+      "content": "Book Cover"
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "Cover image"
+    },
+    {
+      "type": "url",
+      "id": "cover_url",
+      "label": "Cover click link (optional)",
+      "info": "Leave blank to render as a button. Set to link to a preview or download."
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow & meta label font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Title & button font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script line font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body text font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading color",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Accent color (eyebrow, italic, script, buttons)",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text color",
+      "default": "#5b5f72"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Meta label color",
+      "default": "#9aa0b3"
+    },
+    {
+      "type": "color",
+      "id": "green_color",
+      "label": "Status dot color",
+      "default": "#4caf50"
+    },
+    {
+      "type": "color",
+      "id": "meta_color",
+      "label": "Status text color",
+      "default": "#8a8f9e"
+    },
+    {
+      "type": "color",
+      "id": "blob_color",
+      "label": "Background blob color",
+      "default": "#fdeee4"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Book Hero"
+    }
+  ]
+}
+{% endschema %}

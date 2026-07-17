@@ -1,0 +1,430 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --bhh-green-1: {{ section.settings.green1_color }};
+    --bhh-green-2: {{ section.settings.green2_color }};
+    --bhh-navy:    {{ section.settings.navy_color }};
+    --bhh-white:   {{ section.settings.white_color }};
+    --bhh-coral:   {{ section.settings.coral_color }};
+    --bhh-curve:   {{ section.settings.curve_color }};
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .bh-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: linear-gradient(125deg,
+      var(--bhh-green-1) 0%,
+      var(--bhh-green-2) 42%,
+      var(--bhh-navy) 100%);
+    padding: clamp(48px, 7vw, 76px) clamp(20px, 5vw, 40px) clamp(80px, 10vw, 116px);
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .bh-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='480' viewBox='0 0 480 480'%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='70' cy='90' r='30' opacity='.05'/%3E%3Ccircle cx='390' cy='330' r='34' opacity='.045'/%3E%3Ccircle cx='300' cy='60' r='18' opacity='.05'/%3E%3Ccircle cx='150' cy='350' r='24' opacity='.045'/%3E%3Ccircle cx='440' cy='150' r='14' opacity='.05'/%3E%3Ccircle cx='60' cy='260' r='2.4' opacity='.1'/%3E%3Ccircle cx='250' cy='160' r='2' opacity='.1'/%3E%3Ccircle cx='430' cy='420' r='2.2' opacity='.09'/%3E%3Ccircle cx='200' cy='450' r='2' opacity='.1'/%3E%3Cpath d='M120%2C100 Q120%2C111 131%2C111 Q120%2C111 120%2C122 Q120%2C111 109%2C111 Q120%2C111 120%2C100 Z' opacity='.13'/%3E%3Cpath d='M330%2C250 Q330%2C259 339%2C259 Q330%2C259 330%2C268 Q330%2C259 321%2C259 Q330%2C259 330%2C250 Z' opacity='.11'/%3E%3Cpath d='M60%2C400 Q60%2C409 69%2C409 Q60%2C409 60%2C418 Q60%2C409 51%2C409 Q60%2C409 60%2C400 Z' opacity='.11'/%3E%3C/g%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2.4' stroke-linecap='round'%3E%3Cg stroke-opacity='.09' transform='translate(400%2C90)'%3E%3Ccircle r='10'/%3E%3Cpath d='M0%2C-15 V-11 M0%2C15 V11 M-15%2C0 H-11 M15%2C0 H11 M-10.6%2C-10.6 l2.8%2C2.8 M10.6%2C10.6 l-2.8%2C-2.8 M-10.6%2C10.6 l2.8%2C-2.8 M10.6%2C-10.6 l-2.8%2C2.8'/%3E%3C/g%3E%3Cg stroke-opacity='.08' transform='translate(150%2C200)'%3E%3Ccircle r='8'/%3E%3Cpath d='M0%2C-12 V-9 M0%2C12 V9 M-12%2C0 H-9 M12%2C0 H9'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-size: 480px;
+    background-repeat: repeat;
+  }
+
+  #shopify-section-{{ section.id }} .bh-hero__inner {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  #shopify-section-{{ section.id }} .bh-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 20px;
+    min-height: 36px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--bhh-white);
+    white-space: nowrap;
+  }
+  #shopify-section-{{ section.id }} .bh-hero__badge-star { font-size: 11px; line-height: 1; }
+
+  #shopify-section-{{ section.id }} .bh-hero__title {
+    margin: clamp(16px, 2.4vw, 24px) 0 0;
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: clamp(38px, 5.4vw, 64px);
+    line-height: 1.06;
+    color: var(--bhh-coral);
+  }
+
+  #shopify-section-{{ section.id }} .bh-hero__sub {
+    margin: clamp(14px, 2vw, 20px) auto 0;
+    max-width: 560px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.4vw, 16px);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  #shopify-section-{{ section.id }} .bh-hero__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: clamp(24px, 3.4vw, 34px) auto 0;
+    max-width: 520px;
+    background: #f7f7f7;
+    border-radius: 999px;
+    padding: 4px 4px 4px 20px;
+    transition: box-shadow 0.18s ease;
+  }
+  #shopify-section-{{ section.id }} .bh-hero__search-icon {
+    flex: none;
+    width: 20px;
+    height: 20px;
+    color: #6d6d6d;
+  }
+  #shopify-section-{{ section.id }} .bh-hero__search-icon svg { width: 100%; height: 100%; display: block; }
+  #shopify-section-{{ section.id }} .bh-hero__search input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    padding: 14px 12px;
+    min-height: 48px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.4vw, 16px);
+    color: #2b2b2b;
+  }
+  #shopify-section-{{ section.id }} .bh-hero__search input::placeholder { color: #7c7c7c; }
+  #shopify-section-{{ section.id }} .bh-hero__search input:focus { outline: none; }
+  #shopify-section-{{ section.id }} .bh-hero__search:focus-within { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.55); }
+  #shopify-section-{{ section.id }} .bh-hero__search-submit {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    height: 48px;
+    border: none;
+    border-radius: 999px;
+    background: var(--bhh-coral);
+    color: #fff;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.18s ease;
+  }
+  #shopify-section-{{ section.id }} .bh-hero__search-submit:hover { background: #dc411b; }
+  #shopify-section-{{ section.id }} .bh-hero__search-submit:focus-visible { outline: 3px solid rgba(255,255,255,0.7); outline-offset: 2px; }
+
+  #shopify-section-{{ section.id }} .bh-hero__actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: clamp(24px, 3.4vw, 34px);
+  }
+  #shopify-section-{{ section.id }} .bh-hero__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 17px 32px;
+    min-height: 56px;
+    border-radius: 999px;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(14px, 1.4vw, 16px);
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: background-color 0.18s ease, transform 0.18s ease;
+  }
+  #shopify-section-{{ section.id }} .bh-hero__btn--solid { background: var(--bhh-white); color: var(--bhh-coral); }
+  #shopify-section-{{ section.id }} .bh-hero__btn--solid:hover { transform: translateY(-2px); }
+  #shopify-section-{{ section.id }} .bh-hero__btn--outline { background: transparent; color: var(--bhh-white); border-color: rgba(255, 255, 255, 0.6); }
+  #shopify-section-{{ section.id }} .bh-hero__btn--outline:hover { background: rgba(255, 255, 255, 0.12); }
+  #shopify-section-{{ section.id }} .bh-hero__btn:focus-visible { outline: 3px solid rgba(255,255,255,0.7); outline-offset: 3px; }
+
+  #shopify-section-{{ section.id }} .bh-hero__curve {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: clamp(34px, 5vw, 60px);
+    z-index: 3;
+  }
+  #shopify-section-{{ section.id }} .bh-hero__curve svg { width: 100%; height: 100%; display: block; }
+  #shopify-section-{{ section.id }} .bh-hero__curve svg path { fill: var(--bhh-curve); }
+
+  @media (max-width: 520px) {
+    #shopify-section-{{ section.id }} .bh-hero__badge { letter-spacing: 0.7px; padding: 9px 14px; white-space: normal; }
+    #shopify-section-{{ section.id }} .bh-hero__actions { flex-direction: column; align-items: stretch; }
+    #shopify-section-{{ section.id }} .bh-hero__btn { width: 100%; }
+    #shopify-section-{{ section.id }} .bh-hero__search { padding-left: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .bh-hero__btn:hover { transform: none; }
+  }
+</style>
+
+<div class="bh-hero">
+  <div class="bh-hero__inner">
+
+    {%- if section.settings.badge_text != blank -%}
+      <span class="bh-hero__badge">
+        <span class="bh-hero__badge-star" aria-hidden="true">✦</span>
+        {{ section.settings.badge_text | escape }}
+      </span>
+    {%- endif -%}
+
+    {%- if section.settings.title != blank -%}
+      <h1 class="bh-hero__title">{{ section.settings.title | escape }}</h1>
+    {%- endif -%}
+
+    {%- if section.settings.subtitle != blank -%}
+      <p class="bh-hero__sub">{{ section.settings.subtitle | escape }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.show_search -%}
+      <form class="bh-hero__search" role="search" action="{{ routes.search_url }}" method="get">
+        <input type="hidden" name="type" value="article">
+        <span class="bh-hero__search-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/>
+          </svg>
+        </span>
+        <label for="bh-search-{{ section.id }}" class="visually-hidden">{{ section.settings.search_placeholder | default: 'Search' | escape }}</label>
+        <input
+          id="bh-search-{{ section.id }}"
+          type="search"
+          name="q"
+          placeholder="{{ section.settings.search_placeholder | default: 'Search discussions, articles, or ask a question...' | escape }}">
+        <button class="bh-hero__search-submit" type="submit">
+          {{ section.settings.search_button | default: 'Search' | escape }}
+        </button>
+      </form>
+    {%- endif -%}
+
+    {%- if section.settings.btn1_text != blank or section.settings.btn2_text != blank -%}
+      <div class="bh-hero__actions">
+        {%- if section.settings.btn1_text != blank -%}
+          <a class="bh-hero__btn bh-hero__btn--solid" href="{{ section.settings.btn1_url | default: '#' }}">
+            {{ section.settings.btn1_text | escape }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.btn2_text != blank -%}
+          <a class="bh-hero__btn bh-hero__btn--outline" href="{{ section.settings.btn2_url | default: '#' }}">
+            {{ section.settings.btn2_text | escape }}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+
+  {%- if section.settings.show_curve -%}
+    <div class="bh-hero__curve" aria-hidden="true">
+      <svg viewBox="0 0 1440 52" preserveAspectRatio="none">
+        <path d="M0,52 L1440,52 L1440,44 Q720,-26 0,44 Z"/>
+      </svg>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Community Hero",
+  "tag": "section",
+  "class": "community-hero-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Free \u00b7 50,000+ Members and Growing"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Biome Hacker."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "The hub for everyone who wants to go deeper than the product \u2014 into the science, the philosophy, and the people doing this with you."
+    },
+    {
+      "type": "header",
+      "content": "Search"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search placeholder",
+      "default": "Search discussions, articles, or ask a question..."
+    },
+    {
+      "type": "text",
+      "id": "search_button",
+      "label": "Search button text",
+      "default": "Search"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "btn1_text",
+      "label": "Primary button text",
+      "default": "Browse the Forum"
+    },
+    {
+      "type": "url",
+      "id": "btn1_url",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "btn2_text",
+      "label": "Secondary button text",
+      "default": "Upcoming AMAs"
+    },
+    {
+      "type": "url",
+      "id": "btn2_url",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Curve"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_curve",
+      "label": "Show bottom curve",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "curve_color",
+      "label": "Curve color (match section below)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Badge font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Button font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Title font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Subtitle & search font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "green1_color",
+      "label": "Gradient start (top-left)",
+      "default": "#3f9e49"
+    },
+    {
+      "type": "color",
+      "id": "green2_color",
+      "label": "Gradient mid",
+      "default": "#2f8a45"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Gradient end (bottom-right)",
+      "default": "#2a3253"
+    },
+    {
+      "type": "color",
+      "id": "white_color",
+      "label": "Text & solid button background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Title & primary button text",
+      "default": "#f4502b"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community Hero"
+    }
+  ]
+}
+{% endschema %}

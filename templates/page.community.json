@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "community-hero": {
+      "type": "community-hero",
+      "settings": {}
+    },
+    "community-stats": {
+      "type": "community-stats",
+      "settings": {}
+    },
+    "community-forum": {
+      "type": "community-forum",
+      "settings": {}
+    },
+    "community-feed": {
+      "type": "community-feed",
+      "settings": {}
+    },
+    "community-ama": {
+      "type": "community-ama",
+      "settings": {}
+    },
+    "community-education": {
+      "type": "community-education",
+      "settings": {}
+    }
+  },
+  "order": [
+    "community-hero",
+    "community-stats",
+    "community-forum",
+    "community-feed",
+    "community-ama",
+    "community-education"
+  ]
+}

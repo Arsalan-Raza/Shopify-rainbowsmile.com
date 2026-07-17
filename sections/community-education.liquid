@@ -1,0 +1,391 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --edu-bg:     {{ section.settings.bg_color }};
+    --edu-navy:   {{ section.settings.navy_color }};
+    --edu-accent: {{ section.settings.accent_color }};
+    --edu-meta:   {{ section.settings.meta_color }};
+    --edu-card:   {{ section.settings.card_color }};
+    --edu-line:   {{ section.settings.line_color }};
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .edu {
+    background: var(--edu-bg);
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  #shopify-section-{{ section.id }} .edu__inner { max-width: 1180px; margin-inline: auto; }
+
+  #shopify-section-{{ section.id }} .edu__head {
+    text-align: center;
+    margin-bottom: clamp(32px, 4.5vw, 54px);
+  }
+
+  #shopify-section-{{ section.id }} .edu__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--edu-accent);
+    line-height: 1;
+  }
+  #shopify-section-{{ section.id }} .edu__eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+
+  #shopify-section-{{ section.id }} .edu__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(32px, 4.2vw, 50px);
+    line-height: 1.02;
+    letter-spacing: -0.5px;
+    color: var(--edu-navy);
+  }
+  #shopify-section-{{ section.id }} .edu__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: clamp(30px, 3.8vw, 46px);
+    line-height: 1.1;
+    color: var(--edu-accent);
+  }
+
+  #shopify-section-{{ section.id }} .edu__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(18px, 2.2vw, 26px);
+    align-items: stretch;
+  }
+
+  #shopify-section-{{ section.id }} .edu__card {
+    background: var(--edu-card);
+    border: 1px solid var(--edu-line);
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  #shopify-section-{{ section.id }} .edu__card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(70, 55, 40, 0.10);
+  }
+  #shopify-section-{{ section.id }} .edu__card:focus-visible {
+    outline: 3px solid rgba(244, 80, 43, 0.4);
+    outline-offset: 3px;
+  }
+
+  #shopify-section-{{ section.id }} .edu__media {
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(160deg, #e6d9cf, #f4ece2);
+    overflow: hidden;
+  }
+  #shopify-section-{{ section.id }} .edu__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .edu__content {
+    padding: clamp(18px, 2vw, 24px);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .edu__category {
+    margin: 0 0 14px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--edu-accent);
+  }
+
+  #shopify-section-{{ section.id }} .edu__name {
+    margin: 0 0 clamp(18px, 2.2vw, 24px);
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(15px, 1.5vw, 17px);
+    line-height: 1.35;
+    color: var(--edu-navy);
+  }
+
+  #shopify-section-{{ section.id }} .edu__meta {
+    margin: auto 0 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--edu-meta);
+  }
+
+  @media (max-width: 899px) {
+    #shopify-section-{{ section.id }} .edu__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 620px) {
+    #shopify-section-{{ section.id }} .edu__grid { grid-template-columns: 1fr; }
+    #shopify-section-{{ section.id }} .edu__media { aspect-ratio: 16 / 10; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .edu__card:hover { transform: none; }
+  }
+</style>
+
+<div class="edu">
+  <div class="edu__inner">
+
+    <header class="edu__head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="edu__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      <h2 class="edu__title">
+        {{ section.settings.title | escape }}
+        {%- if section.settings.script_line != blank -%}
+          <span class="edu__script">{{ section.settings.script_line | escape }}</span>
+        {%- endif -%}
+      </h2>
+    </header>
+
+    <div class="edu__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'card' -%}
+          {%- assign card_url = block.settings.url | default: '#' -%}
+          {%- assign img_alt = block.settings.name | escape -%}
+          <a class="edu__card" href="{{ card_url }}" {{ block.shopify_attributes }}>
+            <div class="edu__media">
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 800
+                  | image_tag:
+                    loading: 'lazy',
+                    alt: img_alt,
+                    widths: '400, 600, 800'
+                }}
+              {%- endif -%}
+            </div>
+            <div class="edu__content">
+              {%- if block.settings.category != blank -%}
+                <p class="edu__category">{{ block.settings.category | escape }}</p>
+              {%- endif -%}
+              {%- if block.settings.name != blank -%}
+                <h3 class="edu__name">{{ block.settings.name | escape }}</h3>
+              {%- endif -%}
+              {%- if block.settings.meta != blank -%}
+                <p class="edu__meta">{{ block.settings.meta | escape }}</p>
+              {%- endif -%}
+            </div>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Community Education",
+  "tag": "section",
+  "class": "community-education-section",
+  "max_blocks": 9,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Education"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Learn something"
+    },
+    {
+      "type": "text",
+      "id": "script_line",
+      "label": "Script line",
+      "default": "new today."
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow & category font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Title & card name font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script line font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Meta text font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section background",
+      "default": "#fdf8f2"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading & card title color",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Eyebrow, script & category color",
+      "default": "#f4502b"
+    },
+    {
+      "type": "color",
+      "id": "meta_color",
+      "label": "Meta text color",
+      "default": "#bdb2a4"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Card border color",
+      "default": "#efe8de"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Article Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card image"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category",
+          "default": "Mind"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Article title",
+          "default": "The Gut-Brain Connection, Explained Simply"
+        },
+        {
+          "type": "text",
+          "id": "meta",
+          "label": "Meta (read time \u00b7 author)",
+          "default": "6 min read \u00b7 By Dr. Vanita K. Gupta"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Article URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community Education",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "category": "Mind",
+            "name": "The Gut-Brain Connection, Explained Simply",
+            "meta": "6 min read \u00b7 By Dr. Vanita K. Gupta"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "category": "Mouth",
+            "name": "Why Conventional Mouthwash Might Be Hurting You",
+            "meta": "5 min read \u00b7 By William Robertson"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "category": "Rituals",
+            "name": "Stacking Habits: Making 60 Seconds Stick",
+            "meta": "4 min read \u00b7 Community Team"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
