@@ -138,6 +138,15 @@
     color: var(--edu-meta);
   }
 
+  #shopify-section-{{ section.id }} .edu__empty {
+    grid-column: 1 / -1;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-size: 14px;
+    color: var(--edu-meta);
+    text-align: center;
+    padding: 40px 0;
+  }
+
   @media (max-width: 899px) {
     #shopify-section-{{ section.id }} .edu__grid { grid-template-columns: repeat(2, 1fr); }
   }
@@ -165,38 +174,39 @@
       </h2>
     </header>
 
+    {%- assign edu_blog = blogs[section.settings.blog] -%}
     <div class="edu__grid">
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'card' -%}
-          {%- assign card_url = block.settings.url | default: '#' -%}
-          {%- assign img_alt = block.settings.name | escape -%}
-          <a class="edu__card" href="{{ card_url }}" {{ block.shopify_attributes }}>
+      {%- if edu_blog != blank -%}
+        {%- for article in edu_blog.articles limit: section.settings.posts_count -%}
+          {%- assign word_count = article.content | strip_html | split: ' ' | size -%}
+          {%- assign read_time = word_count | divided_by: 200 | plus: 1 -%}
+          {%- assign article_category = article.tags | first -%}
+          {%- assign article_img_alt = article.image.alt | default: article.title -%}
+          <a class="edu__card" href="{{ article.url }}">
             <div class="edu__media">
-              {%- if block.settings.image != blank -%}
+              {%- if article.image != blank -%}
                 {{
-                  block.settings.image
+                  article.image
                   | image_url: width: 800
                   | image_tag:
                     loading: 'lazy',
-                    alt: img_alt,
+                    alt: article_img_alt,
                     widths: '400, 600, 800'
                 }}
               {%- endif -%}
             </div>
             <div class="edu__content">
-              {%- if block.settings.category != blank -%}
-                <p class="edu__category">{{ block.settings.category | escape }}</p>
+              {%- if article_category != blank -%}
+                <p class="edu__category">{{ article_category | escape }}</p>
               {%- endif -%}
-              {%- if block.settings.name != blank -%}
-                <h3 class="edu__name">{{ block.settings.name | escape }}</h3>
-              {%- endif -%}
-              {%- if block.settings.meta != blank -%}
-                <p class="edu__meta">{{ block.settings.meta | escape }}</p>
-              {%- endif -%}
+              <h3 class="edu__name">{{ article.title | escape }}</h3>
+              <p class="edu__meta">{{ read_time }} min read &middot; {{ article.author | escape }}</p>
             </div>
           </a>
-        {%- endif -%}
-      {%- endfor -%}
+        {%- endfor -%}
+      {%- else -%}
+        <p class="edu__empty">Select a blog in the Theme Editor to display articles here.</p>
+      {%- endif -%}
     </div>
 
   </div>
@@ -207,7 +217,6 @@
   "name": "Community Education",
   "tag": "section",
   "class": "community-education-section",
-  "max_blocks": 9,
   "settings": [
     {
       "type": "header",
@@ -230,6 +239,25 @@
       "id": "script_line",
       "label": "Script line",
       "default": "new today."
+    },
+    {
+      "type": "header",
+      "content": "Blog Source"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog",
+      "info": "Articles will be pulled automatically from the selected blog."
+    },
+    {
+      "type": "range",
+      "id": "posts_count",
+      "label": "Number of articles to show",
+      "min": 3,
+      "max": 9,
+      "step": 3,
+      "default": 3
     },
     {
       "type": "header",
@@ -320,71 +348,9 @@
       "default": "#efe8de"
     }
   ],
-  "blocks": [
-    {
-      "type": "card",
-      "name": "Article Card",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Card image"
-        },
-        {
-          "type": "text",
-          "id": "category",
-          "label": "Category",
-          "default": "Mind"
-        },
-        {
-          "type": "text",
-          "id": "name",
-          "label": "Article title",
-          "default": "The Gut-Brain Connection, Explained Simply"
-        },
-        {
-          "type": "text",
-          "id": "meta",
-          "label": "Meta (read time \u00b7 author)",
-          "default": "6 min read \u00b7 By Dr. Vanita K. Gupta"
-        },
-        {
-          "type": "url",
-          "id": "url",
-          "label": "Article URL"
-        }
-      ]
-    }
-  ],
   "presets": [
     {
-      "name": "Community Education",
-      "blocks": [
-        {
-          "type": "card",
-          "settings": {
-            "category": "Mind",
-            "name": "The Gut-Brain Connection, Explained Simply",
-            "meta": "6 min read \u00b7 By Dr. Vanita K. Gupta"
-          }
-        },
-        {
-          "type": "card",
-          "settings": {
-            "category": "Mouth",
-            "name": "Why Conventional Mouthwash Might Be Hurting You",
-            "meta": "5 min read \u00b7 By William Robertson"
-          }
-        },
-        {
-          "type": "card",
-          "settings": {
-            "category": "Rituals",
-            "name": "Stacking Habits: Making 60 Seconds Stick",
-            "meta": "4 min read \u00b7 Community Team"
-          }
-        }
-      ]
+      "name": "Community Education"
     }
   ]
 }

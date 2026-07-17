@@ -1,36 +1,397 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "community-hero": {
       "type": "community-hero",
-      "settings": {}
+      "settings": {
+        "badge_text": "Free · 50,000+ Members and Growing",
+        "title": "Biome Hacker.",
+        "subtitle": "The hub for everyone who wants to go deeper than the product — into the science, the philosophy, and the people doing this with you.",
+        "show_search": true,
+        "search_placeholder": "Search discussions, articles, or ask a question...",
+        "search_button": "Search",
+        "btn1_text": "Browse the Forum",
+        "btn1_url": "",
+        "btn2_text": "Upcoming AMAs",
+        "btn2_url": "",
+        "show_curve": true,
+        "curve_color": "#ffffff",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "body_font": "heading",
+        "green1_color": "#3f9e49",
+        "green2_color": "#2f8a45",
+        "navy_color": "#2a3253",
+        "white_color": "#ffffff",
+        "coral_color": "#f4502b"
+      }
     },
-    "community-stats": {
+    "community_stats_p9ExyM": {
       "type": "community-stats",
-      "settings": {}
+      "blocks": {
+        "stat_dNtpzp": {
+          "type": "stat",
+          "settings": {
+            "number": "50K+",
+            "label": "Members"
+          }
+        },
+        "stat_7V73ze": {
+          "type": "stat",
+          "settings": {
+            "number": "8",
+            "label": "Forum Categories"
+          }
+        },
+        "stat_nGCf4Y": {
+          "type": "stat",
+          "settings": {
+            "number": "12+",
+            "label": "AMA Sessions Hosted"
+          }
+        },
+        "stat_y8YhyY": {
+          "type": "stat",
+          "settings": {
+            "number": "40+",
+            "label": "Countries Represented"
+          }
+        }
+      },
+      "block_order": [
+        "stat_dNtpzp",
+        "stat_7V73ze",
+        "stat_nGCf4Y",
+        "stat_y8YhyY"
+      ],
+      "name": "Community Stats",
+      "settings": {
+        "heading_font": "heading",
+        "mono_font": "tag",
+        "bg_color": "#ffffff",
+        "navy_color": "#2b3054",
+        "line_color": "#e9e9ec"
+      }
     },
-    "community-forum": {
+    "community_forum_7zbceT": {
       "type": "community-forum",
-      "settings": {}
+      "blocks": {
+        "category_cVL4Lg": {
+          "type": "category",
+          "settings": {
+            "icon": "mouth",
+            "name": "Mouth",
+            "description": "Oral microbiome basics, breath, gum health, the ritual itself.",
+            "status": "today",
+            "post_count": "1.2K",
+            "url": ""
+          }
+        },
+        "category_xeyGci": {
+          "type": "category",
+          "settings": {
+            "icon": "gut",
+            "name": "Gut",
+            "description": "The oral-gut axis, digestion, and whole-body microbiome talk.",
+            "status": "today",
+            "post_count": "890",
+            "url": ""
+          }
+        },
+        "category_Rtztqz": {
+          "type": "category",
+          "settings": {
+            "icon": "mind",
+            "name": "Mind",
+            "description": "Gut-brain connection, mood, clarity, and mental energy.",
+            "status": "today",
+            "post_count": "640",
+            "url": ""
+          }
+        },
+        "category_74LdxJ": {
+          "type": "category",
+          "settings": {
+            "icon": "performance",
+            "name": "Performance",
+            "description": "Energy, athletic performance, and biome-driven vitality.",
+            "status": "week",
+            "post_count": "410",
+            "url": ""
+          }
+        },
+        "category_VGnpDJ": {
+          "type": "category",
+          "settings": {
+            "icon": "intimacy",
+            "name": "Intimacy",
+            "description": "Confidence, closeness, and what a living mouth means for connection.",
+            "status": "week",
+            "post_count": "355",
+            "url": ""
+          }
+        },
+        "category_8zCk9z": {
+          "type": "category",
+          "settings": {
+            "icon": "rituals",
+            "name": "Rituals",
+            "description": "Morning routines, stacking habits, and making the 60 seconds stick.",
+            "status": "today",
+            "post_count": "980",
+            "url": ""
+          }
+        },
+        "category_rGgGQP": {
+          "type": "category",
+          "settings": {
+            "icon": "product",
+            "name": "Product Q’s",
+            "description": "Pump vs spray, subscriptions, ingredients — ask the community.",
+            "status": "today",
+            "post_count": "1.5K",
+            "url": ""
+          }
+        },
+        "category_VfjATq": {
+          "type": "category",
+          "settings": {
+            "icon": "intros",
+            "name": "Intros",
+            "description": "New here? Say hello and meet other biome hackers.",
+            "status": "today",
+            "post_count": "2.1K",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_cVL4Lg",
+        "category_xeyGci",
+        "category_Rtztqz",
+        "category_74LdxJ",
+        "category_VGnpDJ",
+        "category_8zCk9z",
+        "category_rGgGQP",
+        "category_VfjATq"
+      ],
+      "name": "Community Forum",
+      "settings": {
+        "eyebrow": "The Forum",
+        "title": "Find your",
+        "script_line": "conversation.",
+        "intro": "Eight spaces for every part of the biome hacker journey — from your first question to deep dives on performance and rituals.",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "body_font": "heading",
+        "bg_color": "#fdf8f2",
+        "navy_color": "#232748",
+        "accent_color": "#f4502b",
+        "body_color": "#8b8478",
+        "intro_color": "#4b4f63",
+        "green_color": "#4caf50",
+        "posts_color": "#cbb99f",
+        "card_color": "#ffffff",
+        "line_color": "#efe8de"
+      }
     },
-    "community-feed": {
+    "community_feed_KYkLTA": {
       "type": "community-feed",
-      "settings": {}
+      "blocks": {
+        "post_GWhXP9": {
+          "type": "post",
+          "settings": {
+            "author": "William R.",
+            "timestamp": "3 Days Ago",
+            "quote": "Just got back from the lab — new oxygen retention data on the Minty Fusion batch. Sharing the full breakdown in the Mouth forum this week.",
+            "comment_count": "84",
+            "like_count": "312"
+          }
+        },
+        "post_cY7Ltq": {
+          "type": "post",
+          "settings": {
+            "author": "Dr. Gupta",
+            "timestamp": "1 Week Ago",
+            "quote": "A reader asked why structured water matters more than ‘regular’ hydration. Wrote a plain-language explainer — link in the Gut category.",
+            "comment_count": "56",
+            "like_count": "198"
+          }
+        },
+        "post_qNC7zH": {
+          "type": "post",
+          "settings": {
+            "author": "Tracy T.",
+            "timestamp": "2 Weeks Ago",
+            "quote": "Update from Kenya — 400 more bottles distributed through Springboard Connectivity this month. Thank you to every subscriber making this possible.",
+            "comment_count": "102",
+            "like_count": "540"
+          }
+        }
+      },
+      "block_order": [
+        "post_GWhXP9",
+        "post_cY7Ltq",
+        "post_qNC7zH"
+      ],
+      "name": "Community Feed",
+      "settings": {
+        "eyebrow": "From William & the Team",
+        "title": "The latest from the",
+        "script_line": "founders.",
+        "subtitle": "Curated updates, research notes, and behind-the-scenes from the people building Rainbow Smile.",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "body_font": "heading",
+        "bg_color": "#ffffff",
+        "navy_color": "#232748",
+        "accent_color": "#f4502b",
+        "intro_color": "#4b4f63",
+        "body_color": "#34384c",
+        "card_color": "#fdf9f3",
+        "pill_color": "#2b2b2b",
+        "time_color": "#b3aa9c",
+        "count_color": "#8b8478",
+        "heart_color": "#e5342b"
+      }
     },
-    "community-ama": {
+    "community_ama_pcaz6e": {
       "type": "community-ama",
-      "settings": {}
+      "blocks": {
+        "session_d6BUDQ": {
+          "type": "session",
+          "settings": {
+            "name": "William Robertson",
+            "topic": "Why we built Biome Food™",
+            "url": ""
+          }
+        },
+        "session_pziyRf": {
+          "type": "session",
+          "settings": {
+            "name": "Dr. Vanita K. Gupta",
+            "topic": "Understanding oral dysbiosis",
+            "url": ""
+          }
+        },
+        "session_kq9h8T": {
+          "type": "session",
+          "settings": {
+            "name": "Tracy Tarlow",
+            "topic": "Inside the Kenya partnership",
+            "url": ""
+          }
+        },
+        "session_Rh6j9C": {
+          "type": "session",
+          "settings": {
+            "name": "Guest: Dr. Amara Singh",
+            "topic": "Microbiome research, 2025",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "session_d6BUDQ",
+        "session_pziyRf",
+        "session_kq9h8T",
+        "session_Rh6j9C"
+      ],
+      "name": "Community AMA",
+      "settings": {
+        "eyebrow": "Live Sessions",
+        "title": "Ask the people",
+        "script_line": "who built it.",
+        "body_text": "Monthly AMAs with Dr. Vanita K. Gupta, William Robertson, and guest experts in microbiome science. Live, recorded, and archived for the community.",
+        "pill_text": "Upcoming · July 14",
+        "speaker_name": "Dr. Vanita K. Gupta, PhD, MBA",
+        "speaker_role": "Chief Science Officer, Rainbow Smile",
+        "speaker_topic": "“The Oral-Gut-Brain Axis: What 2 Years of Research Taught Us” — live Q&A, open to all members.",
+        "cta_text": "Reserve Your Spot",
+        "cta_url": "",
+        "archive_label": "Recent Sessions — Archived",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "body_font": "heading",
+        "bg_color": "#262a4d",
+        "coral_color": "#f4502b",
+        "gold_color": "#f2b544",
+        "body_color": "#b0b3c8",
+        "meta_color": "#9599b2"
+      }
     },
-    "community-education": {
+    "community_education_dLLTUn": {
       "type": "community-education",
-      "settings": {}
+      "blocks": {
+        "card_3qtEeX": {
+          "type": "card",
+          "settings": {
+            "category": "Mind",
+            "name": "The Gut-Brain Connection, Explained Simply",
+            "meta": "6 min read · By Dr. Vanita K. Gupta",
+            "url": ""
+          }
+        },
+        "card_HT7teb": {
+          "type": "card",
+          "settings": {
+            "category": "Mouth",
+            "name": "Why Conventional Mouthwash Might Be Hurting You",
+            "meta": "5 min read · By William Robertson",
+            "url": ""
+          }
+        },
+        "card_jXQiA6": {
+          "type": "card",
+          "settings": {
+            "category": "Rituals",
+            "name": "Stacking Habits: Making 60 Seconds Stick",
+            "meta": "4 min read · Community Team",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_3qtEeX",
+        "card_HT7teb",
+        "card_jXQiA6"
+      ],
+      "name": "Community Education",
+      "settings": {
+        "eyebrow": "Education",
+        "title": "Learn something",
+        "script_line": "new today.",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "body_font": "heading",
+        "bg_color": "#fdf8f2",
+        "navy_color": "#232748",
+        "accent_color": "#f4502b",
+        "meta_color": "#bdb2a4",
+        "card_color": "#ffffff",
+        "line_color": "#efe8de"
+      }
     }
   },
   "order": [
     "community-hero",
-    "community-stats",
-    "community-forum",
-    "community-feed",
-    "community-ama",
-    "community-education"
+    "community_stats_p9ExyM",
+    "community_forum_7zbceT",
+    "community_feed_KYkLTA",
+    "community_ama_pcaz6e",
+    "community_education_dLLTUn"
   ]
 }

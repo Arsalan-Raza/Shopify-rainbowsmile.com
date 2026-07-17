@@ -11,13 +11,98 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "community_hero_aHJL7X": {
+      "type": "community-hero",
+      "name": "Community Hero",
+      "settings": {
+        "badge_text": "Free · 50,000+ Members and Growing",
+        "title": "Biome Hacker.",
+        "subtitle": "The hub for everyone who wants to go deeper than the product — into the science, the philosophy, and the people doing this with you.",
+        "show_search": true,
+        "search_placeholder": "Search discussions, articles, or ask a question...",
+        "search_button": "Search",
+        "btn1_text": "Browse the Forum",
+        "btn1_url": "",
+        "btn2_text": "Upcoming AMAs",
+        "btn2_url": "",
+        "show_curve": true,
+        "curve_color": "#ffffff",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "body_font": "heading",
+        "green1_color": "#3f9e49",
+        "green2_color": "#2f8a45",
+        "navy_color": "#2a3253",
+        "white_color": "#ffffff",
+        "coral_color": "#f4502b"
+      }
+    },
+    "community_stats_HAzUnK": {
+      "type": "community-stats",
+      "blocks": {
+        "stat_tGhJbk": {
+          "type": "stat",
+          "settings": {
+            "number": "50K+",
+            "label": "Members"
+          }
+        },
+        "stat_UpNjPm": {
+          "type": "stat",
+          "settings": {
+            "number": "8",
+            "label": "Forum Categories"
+          }
+        },
+        "stat_xwdP9J": {
+          "type": "stat",
+          "settings": {
+            "number": "12+",
+            "label": "AMA Sessions Hosted"
+          }
+        },
+        "stat_4J7aAb": {
+          "type": "stat",
+          "settings": {
+            "number": "40+",
+            "label": "Countries Represented"
+          }
+        },
+        "stat_aAef4H": {
+          "type": "stat",
+          "settings": {
+            "number": "50K+",
+            "label": "Members"
+          }
+        }
+      },
+      "block_order": [
+        "stat_tGhJbk",
+        "stat_UpNjPm",
+        "stat_xwdP9J",
+        "stat_4J7aAb",
+        "stat_aAef4H"
+      ],
+      "name": "Community Stats",
+      "settings": {
+        "heading_font": "heading",
+        "mono_font": "tag",
+        "bg_color": "#ffffff",
+        "navy_color": "#2b3054",
+        "line_color": "#e9e9ec"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "community_hero_aHJL7X",
+    "community_stats_HAzUnK"
   ]
 }
