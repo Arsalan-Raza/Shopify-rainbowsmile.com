@@ -334,40 +334,6 @@
     },
     "community_education_dLLTUn": {
       "type": "community-education",
-      "blocks": {
-        "card_3qtEeX": {
-          "type": "card",
-          "settings": {
-            "category": "Mind",
-            "name": "The Gut-Brain Connection, Explained Simply",
-            "meta": "6 min read · By Dr. Vanita K. Gupta",
-            "url": ""
-          }
-        },
-        "card_HT7teb": {
-          "type": "card",
-          "settings": {
-            "category": "Mouth",
-            "name": "Why Conventional Mouthwash Might Be Hurting You",
-            "meta": "5 min read · By William Robertson",
-            "url": ""
-          }
-        },
-        "card_jXQiA6": {
-          "type": "card",
-          "settings": {
-            "category": "Rituals",
-            "name": "Stacking Habits: Making 60 Seconds Stick",
-            "meta": "4 min read · Community Team",
-            "url": ""
-          }
-        }
-      },
-      "block_order": [
-        "card_3qtEeX",
-        "card_HT7teb",
-        "card_jXQiA6"
-      ],
       "name": "Community Education",
       "settings": {
         "eyebrow": "Education",
