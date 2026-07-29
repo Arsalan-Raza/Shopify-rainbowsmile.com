@@ -1,0 +1,456 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --kh-bg:      {{ section.settings.bg_color }};
+    --kh-cream:   {{ section.settings.cream_color }};
+    --kh-coral:   {{ section.settings.coral_color }};
+    --kh-white:   {{ section.settings.white_color }};
+    --kh-body:    {{ section.settings.body_color }};
+    --kh-caption: {{ section.settings.caption_color }};
+    --kh-border:  rgba(255, 255, 255, 0.28);
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} .khero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: var(--kh-bg);
+    padding-block: clamp(44px, 6vw, 84px);
+    padding-inline: clamp(20px, 4vw, 48px);
+  }
+
+  #shopify-section-{{ section.id }} .khero * { box-sizing: border-box; }
+
+  /* Warm glow */
+  #shopify-section-{{ section.id }} .khero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(70% 60% at 78% 4%, rgba(196, 118, 44, 0.28), transparent 68%),
+      radial-gradient(50% 50% at 8% 96%, rgba(150, 84, 30, 0.14), transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Particle texture */
+  #shopify-section-{{ section.id }} .khero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='440' height='440' viewBox='0 0 440 440'%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='60' cy='250' r='2' opacity='.05'/%3E%3Ccircle cx='250' cy='150' r='1.8' opacity='.045'/%3E%3Ccircle cx='400' cy='400' r='2' opacity='.04'/%3E%3Cpath d='M120,110 Q120,120 130,120 Q120,120 120,130 Q120,120 110,120 Q120,120 120,110 Z' opacity='.06'/%3E%3Cpath d='M340,250 Q340,259 349,259 Q340,259 340,268 Q340,259 331,259 Q340,259 340,250 Z' opacity='.05'/%3E%3Cpath d='M60,400 Q60,408 68,408 Q60,408 60,416 Q60,408 52,408 Q60,408 60,400 Z' opacity='.045'/%3E%3C/g%3E%3Cg fill='%23c4762c'%3E%3Ccircle cx='200' cy='60' r='3' opacity='.12'/%3E%3Ccircle cx='380' cy='190' r='2.4' opacity='.1'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 440px;
+    background-repeat: repeat;
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .khero__inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1320px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .khero__content { max-width: 560px; }
+
+  #shopify-section-{{ section.id }} .khero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 clamp(18px, 2.6vw, 26px);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--kh-coral);
+    line-height: 1;
+  }
+  #shopify-section-{{ section.id }} .khero__eyebrow::before {
+    content: "";
+    width: 34px; height: 1.5px;
+    background: currentColor;
+    flex: none;
+  }
+
+  #shopify-section-{{ section.id }} .khero__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.display_font }}-family);
+    font-weight: 800;
+    font-size: clamp(46px, 7vw, 96px);
+    line-height: 1.0;
+    letter-spacing: -1px;
+    color: var(--kh-cream);
+  }
+
+  #shopify-section-{{ section.id }} .khero__title-accent {
+    display: block;
+    font-style: italic;
+    color: var(--kh-coral);
+  }
+
+  #shopify-section-{{ section.id }} .khero__body {
+    margin: clamp(26px, 3.6vw, 40px) 0 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(15px, 1.4vw, 18px);
+    line-height: 1.75;
+    color: var(--kh-body);
+  }
+  #shopify-section-{{ section.id }} .khero__body + .khero__body { margin-top: clamp(20px, 2.8vw, 30px); }
+  #shopify-section-{{ section.id }} .khero__body p { margin: 0; }
+  #shopify-section-{{ section.id }} .khero__body strong { color: var(--kh-white); font-weight: 400; }
+  #shopify-section-{{ section.id }} .khero__body sup { font-size: 0.62em; vertical-align: super; }
+
+  #shopify-section-{{ section.id }} .khero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: clamp(28px, 4vw, 42px);
+  }
+
+  #shopify-section-{{ section.id }} .khero__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 18px 34px;
+    min-height: 58px;
+    border-radius: 999px;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(15px, 1.4vw, 17px);
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: background-color 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+  }
+  #shopify-section-{{ section.id }} .khero__btn span { transition: transform 0.18s ease; }
+  #shopify-section-{{ section.id }} .khero__btn:hover span { transform: translateX(3px); }
+
+  #shopify-section-{{ section.id }} .khero__btn--solid { background: var(--kh-coral); color: #fff; }
+  #shopify-section-{{ section.id }} .khero__btn--solid:hover { background: #dc411b; transform: translateY(-2px); }
+
+  #shopify-section-{{ section.id }} .khero__btn--outline {
+    background: transparent;
+    color: var(--kh-cream);
+    border-color: var(--kh-border);
+  }
+  #shopify-section-{{ section.id }} .khero__btn--outline:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.5); }
+  #shopify-section-{{ section.id }} .khero__btn:focus-visible { outline: 3px solid rgba(239,74,34,0.5); outline-offset: 3px; }
+
+  /* Image */
+  #shopify-section-{{ section.id }} .khero__media {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(160deg, #8a5a34, #c08b5c);
+  }
+  #shopify-section-{{ section.id }} .khero__media img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .khero__media svg {
+    width: 100%; height: 100%;
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .khero__media::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 34%;
+    background: linear-gradient(transparent, rgba(20, 10, 4, 0.72));
+    pointer-events: none;
+  }
+  #shopify-section-{{ section.id }} .khero__caption {
+    position: absolute;
+    left: clamp(16px, 2.4vw, 28px);
+    right: clamp(16px, 2.4vw, 28px);
+    bottom: clamp(14px, 2.2vw, 22px);
+    z-index: 2;
+    margin: 0;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.05vw, 13px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1.5;
+    color: var(--kh-caption);
+  }
+
+  /* Responsive */
+  @media (max-width: 899px) {
+    #shopify-section-{{ section.id }} .khero__inner { grid-template-columns: 1fr; gap: clamp(30px, 6vw, 44px); }
+    #shopify-section-{{ section.id }} .khero__media { order: -1; aspect-ratio: 4 / 3; }
+    #shopify-section-{{ section.id }} .khero__content { max-width: 640px; }
+    #shopify-section-{{ section.id }} .khero::before {
+      background: radial-gradient(80% 40% at 60% 0%, rgba(196, 118, 44, 0.26), transparent 70%);
+    }
+  }
+
+  @media (max-width: 480px) {
+    #shopify-section-{{ section.id }} .khero__actions .khero__btn { width: 100%; }
+    #shopify-section-{{ section.id }} .khero__title { letter-spacing: -0.5px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .khero__btn:hover { transform: none; }
+  }
+</style>
+
+<div class="khero">
+  <div class="khero__inner">
+
+    <!-- LEFT: content -->
+    <div class="khero__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="khero__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.title != blank or section.settings.title_accent != blank -%}
+        <h1 class="khero__title">
+          {{- section.settings.title | escape -}}
+          {%- if section.settings.title_accent != blank -%}
+            <span class="khero__title-accent">{{ section.settings.title_accent | escape }}</span>
+          {%- endif -%}
+        </h1>
+      {%- endif -%}
+
+      {%- if section.settings.body_1 != blank -%}
+        <div class="khero__body">{{ section.settings.body_1 }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.body_2 != blank -%}
+        <div class="khero__body">{{ section.settings.body_2 }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.btn1_text != blank or section.settings.btn2_text != blank -%}
+        <div class="khero__actions">
+          {%- if section.settings.btn1_text != blank -%}
+            <a class="khero__btn khero__btn--solid" href="{{ section.settings.btn1_url | default: '#' }}">
+              {{ section.settings.btn1_text | escape }} <span aria-hidden="true">→</span>
+            </a>
+          {%- endif -%}
+          {%- if section.settings.btn2_text != blank -%}
+            <a class="khero__btn khero__btn--outline" href="{{ section.settings.btn2_url | default: '#' }}">
+              {{ section.settings.btn2_text | escape }}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <!-- RIGHT: image -->
+    <div class="khero__media">
+      {%- if section.settings.image != blank -%}
+        {%- assign img_alt = section.settings.image_alt | default: section.settings.caption -%}
+        {{
+          section.settings.image
+          | image_url: width: 1000
+          | image_tag:
+            loading: 'lazy',
+            alt: img_alt,
+            widths: '500, 750, 1000'
+        }}
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag }}
+      {%- endif -%}
+      {%- if section.settings.caption != blank -%}
+        <p class="khero__caption">{{ section.settings.caption | escape }}</p>
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kenya Hero",
+  "tag": "section",
+  "class": "kenya-hero-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Rainbow Smile \u00b7 Springboard Connectivity \u00b7 Kenya"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Headline — main line (cream)",
+      "default": "The Invisible"
+    },
+    {
+      "type": "text",
+      "id": "title_accent",
+      "label": "Headline — accent line (coral, italic)",
+      "default": "Crisis."
+    },
+    {
+      "type": "richtext",
+      "id": "body_1",
+      "label": "Body paragraph 1",
+      "default": "<p>3.5 billion people live with oral disease. In Kenya, the number is not a majority. <strong>It is everyone.<\/strong><\/p>"
+    },
+    {
+      "type": "richtext",
+      "id": "body_2",
+      "label": "Body paragraph 2",
+      "default": "<p>We are Rainbow Smile \u2014 a small startup with a revolutionary oral wellness product and a mission that reaches further than any product can alone. We are committed to getting OG3\u2122 into the hands of people who need it most. One village at a time.<\/p>"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "btn1_text",
+      "label": "Primary button text",
+      "default": "Donate to the Cause"
+    },
+    {
+      "type": "url",
+      "id": "btn1_url",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "btn2_text",
+      "label": "Secondary button text",
+      "default": "Read the Full Story"
+    },
+    {
+      "type": "url",
+      "id": "btn2_url",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "info": "Leave blank to use the caption text"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Image caption",
+      "default": "Tracy Tarlow \u00b7 Executive Director, Springboard Connectivity \u00b7 Kenya"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "display_font",
+      "label": "Headline font",
+      "info": "The design uses a bold serif. Use Alkaline Test or swap in a custom display font.",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow & caption font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Button font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body text font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#1c1109"
+    },
+    {
+      "type": "color",
+      "id": "cream_color",
+      "label": "Headline color",
+      "default": "#ece2d4"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Accent color (eyebrow, accent line, button)",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "white_color",
+      "label": "Emphasis text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text color",
+      "default": "#a2978c"
+    },
+    {
+      "type": "color",
+      "id": "caption_color",
+      "label": "Image caption color",
+      "default": "#efe6da"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kenya Hero"
+    }
+  ]
+}
+{% endschema %}

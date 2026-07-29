@@ -1,0 +1,52 @@
+{
+  "layout": "kenya",
+  "sections": {
+    "kenya-header": {
+      "type": "kenya-header",
+      "settings": {}
+    },
+    "kenya-hero": {
+      "type": "kenya-hero",
+      "settings": {}
+    },
+    "kenya-stats": {
+      "type": "kenya-stats",
+      "settings": {}
+    },
+    "kenya-photo-break": {
+      "type": "kenya-photo-break",
+      "settings": {}
+    },
+    "kenya-anatomy": {
+      "type": "kenya-anatomy",
+      "settings": {}
+    },
+    "kenya-village": {
+      "type": "kenya-village",
+      "settings": {}
+    },
+    "kenya-springboard": {
+      "type": "kenya-springboard",
+      "settings": {}
+    },
+    "kenya-donate": {
+      "type": "kenya-donate",
+      "settings": {}
+    },
+    "kenya-share": {
+      "type": "kenya-share",
+      "settings": {}
+    }
+  },
+  "order": [
+    "kenya-header",
+    "kenya-hero",
+    "kenya-stats",
+    "kenya-photo-break",
+    "kenya-anatomy",
+    "kenya-village",
+    "kenya-springboard",
+    "kenya-donate",
+    "kenya-share"
+  ]
+}

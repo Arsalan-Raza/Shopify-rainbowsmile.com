@@ -1,0 +1,298 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --dq-navy:   {{ section.settings.navy_color }};
+    --dq-coral:  {{ section.settings.coral_color }};
+    --dq-olive:  {{ section.settings.olive_color }};
+    --dq-meta:   {{ section.settings.meta_color }};
+    --dq-line:   {{ section.settings.line_color }};
+    --dq-border: {{ section.settings.border_color }};
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} .dfq {
+    background: {{ section.settings.bg_color }};
+    padding-block: clamp(36px, 5vw, 60px);
+    padding-inline: clamp(16px, 4vw, 40px);
+  }
+
+  #shopify-section-{{ section.id }} .dfq * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .dfq__inner { max-width: 1100px; margin-inline: auto; }
+
+  /* ---------- Quote ---------- */
+  #shopify-section-{{ section.id }} .dfq__quote-wrap {
+    text-align: center;
+    padding-bottom: clamp(28px, 4vw, 44px);
+    border-bottom: 1px solid var(--dq-line);
+  }
+
+  #shopify-section-{{ section.id }} .dfq__quote {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(22px, 3.2vw, 38px);
+    line-height: 1.22;
+    letter-spacing: -0.5px;
+    color: var(--dq-navy);
+  }
+
+  #shopify-section-{{ section.id }} .dfq__quote-accent {
+    display: block;
+    color: var(--dq-coral);
+  }
+
+  #shopify-section-{{ section.id }} .dfq__caption {
+    margin: clamp(14px, 2.4vw, 20px) 0 0;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--dq-olive);
+  }
+
+  /* ---------- Stats bar ---------- */
+  #shopify-section-{{ section.id }} .dfq__stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 780px;
+    margin: clamp(34px, 5vw, 56px) auto 0;
+    border: 1px solid var(--dq-border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .dfq__stat {
+    padding: clamp(22px, 3vw, 32px) clamp(10px, 1.6vw, 18px);
+    text-align: center;
+    border-left: 1px solid var(--dq-line);
+  }
+
+  #shopify-section-{{ section.id }} .dfq__num {
+    margin: 0 0 clamp(14px, 2vw, 18px);
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(26px, 3vw, 36px);
+    line-height: 1;
+    letter-spacing: -0.5px;
+    color: var(--dq-coral);
+  }
+
+  #shopify-section-{{ section.id }} .dfq__label {
+    margin: 0 0 8px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    line-height: 1.4;
+    color: var(--dq-olive);
+  }
+
+  #shopify-section-{{ section.id }} .dfq__sub {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    line-height: 1.4;
+    color: var(--dq-meta);
+  }
+
+  /* Dividers: reset at each row start */
+  #shopify-section-{{ section.id }} .dfq__stat:nth-child(4n + 1) { border-left: none; }
+
+  @media (max-width: 680px) {
+    #shopify-section-{{ section.id }} .dfq__stats { grid-template-columns: repeat(2, 1fr); }
+    #shopify-section-{{ section.id }} .dfq__stat:nth-child(n)      { border-left: 1px solid var(--dq-line); border-top: none; }
+    #shopify-section-{{ section.id }} .dfq__stat:nth-child(2n + 1) { border-left: none; }
+    #shopify-section-{{ section.id }} .dfq__stat:nth-child(n + 3)  { border-top: 1px solid var(--dq-line); }
+  }
+
+  @media (max-width: 480px) {
+    #shopify-section-{{ section.id }} .dfq__stats { grid-template-columns: 1fr; }
+    #shopify-section-{{ section.id }} .dfq__stat:nth-child(n)  { border-left: none; border-top: 1px solid var(--dq-line); }
+    #shopify-section-{{ section.id }} .dfq__stat:nth-child(1)  { border-top: none; }
+  }
+</style>
+
+<div class="dfq">
+  <div class="dfq__inner">
+
+    <div class="dfq__quote-wrap">
+      {%- if section.settings.quote_line1 != blank or section.settings.quote_line2 != blank -%}
+        <blockquote class="dfq__quote">
+          {{- section.settings.quote_line1 | escape -}}
+          {%- if section.settings.quote_line2 != blank -%}
+            <span class="dfq__quote-accent">{{ section.settings.quote_line2 | escape }}</span>
+          {%- endif -%}
+        </blockquote>
+      {%- endif -%}
+      {%- if section.settings.caption != blank -%}
+        <p class="dfq__caption">{{ section.settings.caption | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="dfq__stats">
+        {%- for block in section.blocks -%}
+          <div class="dfq__stat" {{ block.shopify_attributes }}>
+            {%- if block.settings.num != blank -%}
+              <p class="dfq__num">{{ block.settings.num | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.label != blank -%}
+              <p class="dfq__label">{{ block.settings.label | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.sub != blank -%}
+              <p class="dfq__sub">{{ block.settings.sub | escape }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Book Defining Quote",
+  "tag": "section",
+  "class": "book-defining-quote-section",
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "num",
+          "label": "Number",
+          "default": "700+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Species Living"
+        },
+        {
+          "type": "text",
+          "id": "sub",
+          "label": "Sub-label",
+          "default": "In Your Mouth"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Quote"
+    },
+    {
+      "type": "text",
+      "id": "quote_line1",
+      "label": "Quote — first line (navy)",
+      "default": "\u201cI didn\u2019t learn something new."
+    },
+    {
+      "type": "text",
+      "id": "quote_line2",
+      "label": "Quote — second line (coral accent)",
+      "default": "I remembered something I already knew.\u201d"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption",
+      "default": "The Biome Hacker\u2019s Defining Sentence"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Quote & stat number font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Caption & stat label font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Quote line 1 color",
+      "default": "#2b3054"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Quote line 2 & stat numbers color",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "olive_color",
+      "label": "Caption & stat label color",
+      "default": "#9a8a3f"
+    },
+    {
+      "type": "color",
+      "id": "meta_color",
+      "label": "Stat sub-label color",
+      "default": "#b9a97e"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Divider color",
+      "default": "#ededf1"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Stats bar border color",
+      "default": "#f0eeea"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Book Defining Quote",
+      "blocks": [
+        { "type": "stat", "settings": { "num": "700+", "label": "Species Living",  "sub": "In Your Mouth" } },
+        { "type": "stat", "settings": { "num": "60s",  "label": "Daily Ritual",    "sub": "The Ecosystem Reset" } },
+        { "type": "stat", "settings": { "num": "3.5B", "label": "Years Old",       "sub": "The Intelligence You Carry" } },
+        { "type": "stat", "settings": { "num": "\u221e", "label": "The Reach Of",  "sub": "The Circle You Build" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

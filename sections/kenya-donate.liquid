@@ -1,0 +1,676 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --dn-bg:      {{ section.settings.bg_color }};
+    --dn-card:    {{ section.settings.card_color }};
+    --dn-line:    {{ section.settings.line_color }};
+    --dn-cream:   {{ section.settings.cream_color }};
+    --dn-white:   {{ section.settings.white_color }};
+    --dn-coral:   {{ section.settings.coral_color }};
+    --dn-gold:    {{ section.settings.gold_color }};
+    --dn-gold-tx: {{ section.settings.gold_tx_color }};
+    --dn-body:    {{ section.settings.body_color }};
+    --dn-muted:   {{ section.settings.muted_color }};
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} .dnt {
+    background: var(--dn-bg);
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  #shopify-section-{{ section.id }} .dnt * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .dnt__inner { max-width: 940px; margin-inline: auto; }
+
+  /* Header */
+  #shopify-section-{{ section.id }} .dnt__head { text-align: center; margin-bottom: clamp(30px, 4.5vw, 50px); }
+
+  #shopify-section-{{ section.id }} .dnt__eyebrow {
+    margin: 0 0 clamp(14px, 2vw, 20px);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--dn-coral);
+    line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .dnt__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.display_font }}-family);
+    font-weight: 700;
+    font-size: clamp(30px, 4.4vw, 52px);
+    line-height: 1.14;
+    letter-spacing: -0.5px;
+    color: var(--dn-cream);
+  }
+
+  #shopify-section-{{ section.id }} .dnt__title-accent {
+    font-style: italic;
+    color: var(--dn-coral);
+  }
+
+  #shopify-section-{{ section.id }} .dnt__body {
+    margin: clamp(18px, 2.6vw, 26px) auto 0;
+    max-width: 660px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.7;
+    color: var(--dn-body);
+  }
+
+  /* Tier grid */
+  #shopify-section-{{ section.id }} .dnt__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(14px, 1.8vw, 22px);
+    margin-bottom: clamp(14px, 1.8vw, 22px);
+    align-items: stretch;
+  }
+
+  #shopify-section-{{ section.id }} .dnt__card {
+    position: relative;
+    background: var(--dn-card);
+    border: 1px solid var(--dn-line);
+    border-radius: 14px;
+    padding: clamp(22px, 2.8vw, 32px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .dnt__card--featured { border-color: var(--dn-gold); }
+
+  #shopify-section-{{ section.id }} .dnt__badge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: var(--dn-gold);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #2a1c12;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .dnt__amount {
+    margin: 0 0 10px;
+    font-family: var(--font-{{ section.settings.display_font }}-family);
+    font-weight: 700;
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1;
+    color: var(--dn-gold);
+  }
+
+  #shopify-section-{{ section.id }} .dnt__meta {
+    margin: 0 0 clamp(16px, 2.2vw, 22px);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    line-height: 1.5;
+    color: var(--dn-gold-tx);
+  }
+
+  #shopify-section-{{ section.id }} .dnt__desc {
+    margin: 0 0 clamp(22px, 3vw, 30px);
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(13px, 1.25vw, 14px);
+    line-height: 1.6;
+    color: var(--dn-body);
+  }
+
+  /* Buttons */
+  #shopify-section-{{ section.id }} .dnt__btn {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 15px 24px;
+    min-height: 52px;
+    border-radius: 999px;
+    border: 1px solid var(--dn-gold);
+    background: transparent;
+    color: var(--dn-gold);
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 700;
+    font-size: clamp(14px, 1.35vw, 15px);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  }
+  #shopify-section-{{ section.id }} .dnt__btn:hover {
+    background: var(--dn-gold);
+    color: #2a1c12;
+    transform: translateY(-2px);
+  }
+  #shopify-section-{{ section.id }} .dnt__btn--solid { background: var(--dn-gold); color: #2a1c12; }
+  #shopify-section-{{ section.id }} .dnt__btn--solid:hover { background: #e5a836; transform: translateY(-2px); }
+  #shopify-section-{{ section.id }} .dnt__btn:focus-visible { outline: 3px solid rgba(240,182,73,0.5); outline-offset: 3px; }
+
+  /* Wide sponsor card */
+  #shopify-section-{{ section.id }} .dnt__wide {
+    background: var(--dn-card);
+    border: 1px solid var(--dn-line);
+    border-radius: 14px;
+    padding: clamp(22px, 2.8vw, 32px);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: clamp(20px, 3vw, 40px);
+    align-items: center;
+    margin-bottom: clamp(20px, 3vw, 34px);
+  }
+  #shopify-section-{{ section.id }} .dnt__wide .dnt__amount { margin-bottom: 8px; }
+  #shopify-section-{{ section.id }} .dnt__wide .dnt__meta { margin: 0; }
+  #shopify-section-{{ section.id }} .dnt__wide .dnt__desc { margin: 0; }
+  #shopify-section-{{ section.id }} .dnt__wide .dnt__btn { margin: 0; width: auto; padding-inline: 28px; white-space: nowrap; }
+
+  /* Custom amount */
+  #shopify-section-{{ section.id }} .dnt__custom {
+    border: 1px solid var(--dn-line);
+    border-radius: 16px;
+    padding: clamp(20px, 2.6vw, 30px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: clamp(16px, 2.4vw, 28px);
+    margin-bottom: clamp(24px, 3.4vw, 38px);
+  }
+
+  #shopify-section-{{ section.id }} .dnt__custom-title {
+    margin: 0 0 6px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 700;
+    font-size: clamp(15px, 1.5vw, 17px);
+    color: var(--dn-white);
+  }
+
+  #shopify-section-{{ section.id }} .dnt__custom-sub {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(13px, 1.25vw, 14px);
+    color: var(--dn-muted);
+  }
+
+  #shopify-section-{{ section.id }} .dnt__btn--custom { width: auto; margin: 0; padding-inline: 32px; white-space: nowrap; }
+
+  /* Trust row */
+  #shopify-section-{{ section.id }} .dnt__trust {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px clamp(18px, 3vw, 34px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  #shopify-section-{{ section.id }} .dnt__trust li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--dn-body);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 780px) {
+    #shopify-section-{{ section.id }} .dnt__grid { grid-template-columns: 1fr; }
+    #shopify-section-{{ section.id }} .dnt__wide { grid-template-columns: 1fr; gap: 18px; }
+    #shopify-section-{{ section.id }} .dnt__wide .dnt__btn { width: 100%; }
+    #shopify-section-{{ section.id }} .dnt__custom { flex-direction: column; align-items: stretch; }
+    #shopify-section-{{ section.id }} .dnt__btn--custom { width: 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .dnt__btn:hover { transform: none; }
+  }
+</style>
+
+<section class="dnt">
+  <div class="dnt__inner">
+
+    <header class="dnt__head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="dnt__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.title != blank or section.settings.title_accent != blank -%}
+        <h2 class="dnt__title">
+          {{- section.settings.title | escape -}}
+          {%- if section.settings.title_accent != blank -%}
+            <span class="dnt__title-accent"> {{ section.settings.title_accent | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.body != blank -%}
+        <p class="dnt__body">{{ section.settings.body | escape }}</p>
+      {%- endif -%}
+    </header>
+
+    {%- assign tier_blocks = section.blocks | where: 'type', 'tier' -%}
+    {%- if tier_blocks.size > 0 -%}
+      <div class="dnt__grid">
+        {%- for block in tier_blocks -%}
+          <article class="dnt__card{% if block.settings.is_featured %} dnt__card--featured{% endif %}" {{ block.shopify_attributes }}>
+            {%- if block.settings.is_featured and block.settings.badge_text != blank -%}
+              <span class="dnt__badge">{{ block.settings.badge_text | escape }}</span>
+            {%- endif -%}
+            {%- if block.settings.amount != blank -%}
+              <p class="dnt__amount">{{ block.settings.amount | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.meta != blank -%}
+              <p class="dnt__meta">{{ block.settings.meta | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.desc != blank -%}
+              <p class="dnt__desc">{{ block.settings.desc | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.btn_text != blank -%}
+              <a
+                class="dnt__btn{% if block.settings.is_featured %} dnt__btn--solid{% endif %}"
+                href="{{ block.settings.btn_url | default: '#' }}"
+                rel="noopener"
+              >{{ block.settings.btn_text | escape }}</a>
+            {%- endif -%}
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.wide_amount != blank -%}
+      <div class="dnt__wide">
+        <div>
+          <p class="dnt__amount">{{ section.settings.wide_amount | escape }}</p>
+          {%- if section.settings.wide_meta != blank -%}
+            <p class="dnt__meta">{{ section.settings.wide_meta | escape }}</p>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.wide_desc != blank -%}
+          <p class="dnt__desc">{{ section.settings.wide_desc | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.wide_btn_text != blank -%}
+          <a class="dnt__btn" href="{{ section.settings.wide_btn_url | default: '#' }}" rel="noopener">
+            {{ section.settings.wide_btn_text | escape }}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.custom_btn_text != blank -%}
+      <div class="dnt__custom">
+        <div>
+          {%- if section.settings.custom_title != blank -%}
+            <p class="dnt__custom-title">{{ section.settings.custom_title | escape }}</p>
+          {%- endif -%}
+          {%- if section.settings.custom_sub != blank -%}
+            <p class="dnt__custom-sub">{{ section.settings.custom_sub | escape }}</p>
+          {%- endif -%}
+        </div>
+        <a class="dnt__btn dnt__btn--solid dnt__btn--custom" href="{{ section.settings.custom_btn_url | default: '#' }}" rel="noopener">
+          {{ section.settings.custom_btn_text | escape }} <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    {%- endif -%}
+
+    {%- assign trust_blocks = section.blocks | where: 'type', 'trust_item' -%}
+    {%- if trust_blocks.size > 0 -%}
+      <ul class="dnt__trust">
+        {%- for block in trust_blocks -%}
+          {%- if block.settings.text != blank -%}
+            <li {{ block.shopify_attributes }}>
+              {%- if block.settings.icon != blank -%}
+                <span aria-hidden="true">{{ block.settings.icon }}</span>
+              {%- endif -%}
+              {{ block.settings.text | escape }}
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Kenya Donate",
+  "tag": "section",
+  "class": "kenya-donate-section",
+  "blocks": [
+    {
+      "type": "tier",
+      "name": "Donation tier",
+      "settings": [
+        {
+          "type": "text",
+          "id": "amount",
+          "label": "Amount",
+          "default": "$10"
+        },
+        {
+          "type": "text",
+          "id": "meta",
+          "label": "Meta line (gold, uppercase)",
+          "default": "One Person · One Month"
+        },
+        {
+          "type": "textarea",
+          "id": "desc",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Button text",
+          "default": "Donate $10"
+        },
+        {
+          "type": "url",
+          "id": "btn_url",
+          "label": "Button URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_featured",
+          "label": "Featured card (gold border + solid button)",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge text (featured only)",
+          "default": "Most Popular"
+        }
+      ]
+    },
+    {
+      "type": "trust_item",
+      "name": "Trust badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "\ud83d\udd12"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Make a Difference Today"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title — main",
+      "default": "Every amount has"
+    },
+    {
+      "type": "text",
+      "id": "title_accent",
+      "label": "Title — italic accent (coral)",
+      "default": "a real impact."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "We will not tell you what to give. What we will tell you is exactly what your contribution does \u2014 because you deserve to know precisely where your generosity lands."
+    },
+    {
+      "type": "header",
+      "content": "Wide sponsor card"
+    },
+    {
+      "type": "text",
+      "id": "wide_amount",
+      "label": "Amount",
+      "default": "$4,400"
+    },
+    {
+      "type": "text",
+      "id": "wide_meta",
+      "label": "Meta line",
+      "default": "Village Sponsor"
+    },
+    {
+      "type": "textarea",
+      "id": "wide_desc",
+      "label": "Description",
+      "default": "Sponsors a full village for one month \u2014 100 people. The number that changes a community. This is the quorum threshold: when enough people in one place restore, the ecology of the whole shifts."
+    },
+    {
+      "type": "text",
+      "id": "wide_btn_text",
+      "label": "Button text",
+      "default": "Donate $4,400"
+    },
+    {
+      "type": "url",
+      "id": "wide_btn_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Custom amount row"
+    },
+    {
+      "type": "text",
+      "id": "custom_title",
+      "label": "Title",
+      "default": "Choose your amount"
+    },
+    {
+      "type": "text",
+      "id": "custom_sub",
+      "label": "Subtitle",
+      "default": "Give what feels right. Every amount extends the reach."
+    },
+    {
+      "type": "text",
+      "id": "custom_btn_text",
+      "label": "Button text",
+      "default": "Donate Now"
+    },
+    {
+      "type": "url",
+      "id": "custom_btn_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "display_font",
+      "label": "Title & amount font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow, meta & trust font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body & button font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#1c1109"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card background",
+      "default": "#251710"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Card border",
+      "default": "#ffffff12"
+    },
+    {
+      "type": "color",
+      "id": "cream_color",
+      "label": "Headline",
+      "default": "#ede3d5"
+    },
+    {
+      "type": "color",
+      "id": "white_color",
+      "label": "Custom amount title",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Eyebrow & accent",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Amounts & buttons",
+      "default": "#f0b649"
+    },
+    {
+      "type": "color",
+      "id": "gold_tx_color",
+      "label": "Meta lines",
+      "default": "#d9a13c"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body copy & trust text",
+      "default": "#a2988c"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Sub-labels",
+      "default": "#8d8478"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kenya Donate",
+      "blocks": [
+        {
+          "type": "tier",
+          "settings": {
+            "amount": "$10",
+            "meta": "One Person \u00b7 One Month",
+            "desc": "$10 delivers OG3\u2122 to one individual for a full month \u2014 60 seconds every morning, all four pillars, 100 sprays. One person whose oral ecosystem begins to restore itself.",
+            "btn_text": "Donate $10",
+            "is_featured": false
+          }
+        },
+        {
+          "type": "tier",
+          "settings": {
+            "amount": "$44",
+            "meta": "One Full Bottle \u00b7 One Family \u00b7 One Month",
+            "desc": "$44 sends one complete bottle of OG3\u2122 to a Kenyan family \u2014 the same price as a bottle in the US, the same product, reaching someone who could not otherwise access it.",
+            "btn_text": "Donate $44",
+            "is_featured": true,
+            "badge_text": "Most Popular"
+          }
+        },
+        {
+          "type": "tier",
+          "settings": {
+            "amount": "$220",
+            "meta": "Village Builder \u00b7 Five Families \u00b7 One Month",
+            "desc": "$220 reaches five families simultaneously \u2014 a cluster within a village, a school group, a community circle. The quorum sensing effect: when enough people restore, the community shifts.",
+            "btn_text": "Donate $220",
+            "is_featured": false
+          }
+        },
+        {
+          "type": "tier",
+          "settings": {
+            "amount": "$528",
+            "meta": "Village Champion \u00b7 One Person \u00b7 One Full Year",
+            "desc": "$528 commits to one person\u2019s complete oral ecosystem restoration for twelve months \u2014 long enough for the biology to genuinely shift. Long enough for quorum to re-establish. Long enough to matter.",
+            "btn_text": "Donate $528",
+            "is_featured": false
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": { "icon": "\ud83d\udd12", "text": "Secure donation via Zeffy" }
+        },
+        {
+          "type": "trust_item",
+          "settings": { "icon": "\ud83d\udcc4", "text": "Tax receipt provided" }
+        },
+        {
+          "type": "trust_item",
+          "settings": { "icon": "\ud83c\udf0d", "text": "100% reaches the cause" }
+        },
+        {
+          "type": "trust_item",
+          "settings": { "icon": "\ud83c\udf3f", "text": "1% of Rainbow Smile profits to Kenya" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

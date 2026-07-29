@@ -1,0 +1,346 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --av-bg:    {{ section.settings.bg_color }};
+    --av-card:  {{ section.settings.card_color }};
+    --av-line:  {{ section.settings.line_color }};
+    --av-cream: {{ section.settings.cream_color }};
+    --av-coral: {{ section.settings.coral_color }};
+    --av-gold:  {{ section.settings.gold_color }};
+    --av-body:  {{ section.settings.body_color }};
+    --av-sub:   {{ section.settings.sub_color }};
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} .anv {
+    background: var(--av-bg);
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  #shopify-section-{{ section.id }} .anv * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .anv__inner { max-width: 1240px; margin-inline: auto; }
+
+  #shopify-section-{{ section.id }} .anv__head { margin-bottom: clamp(30px, 4vw, 48px); }
+
+  #shopify-section-{{ section.id }} .anv__eyebrow {
+    margin: 0 0 clamp(12px, 1.8vw, 16px);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--av-coral);
+    line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .anv__title {
+    margin: 0 0 clamp(14px, 2vw, 20px);
+    font-family: var(--font-{{ section.settings.display_font }}-family);
+    font-weight: 700;
+    font-size: clamp(30px, 4.2vw, 50px);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    color: var(--av-cream);
+  }
+
+  #shopify-section-{{ section.id }} .anv__title-accent {
+    font-style: italic;
+    color: var(--av-coral);
+  }
+
+  #shopify-section-{{ section.id }} .anv__sub {
+    margin: 0;
+    max-width: 900px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.6;
+    color: var(--av-sub);
+  }
+
+  #shopify-section-{{ section.id }} .anv__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    grid-auto-flow: column;
+    gap: clamp(16px, 2vw, 26px);
+  }
+
+  #shopify-section-{{ section.id }} .anv__card {
+    background: var(--av-card);
+    border: 1px solid var(--av-line);
+    border-radius: 16px;
+    padding: clamp(24px, 3vw, 38px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .anv__num {
+    margin: 0 0 clamp(16px, 2.2vw, 24px);
+    font-family: var(--font-{{ section.settings.display_font }}-family);
+    font-weight: 700;
+    font-size: clamp(30px, 3.2vw, 40px);
+    line-height: 1;
+    letter-spacing: -0.5px;
+    color: var(--av-gold);
+  }
+
+  #shopify-section-{{ section.id }} .anv__card-title {
+    margin: 0 0 clamp(14px, 2vw, 18px);
+    font-family: var(--font-{{ section.settings.display_font }}-family);
+    font-weight: 700;
+    font-size: clamp(17px, 1.8vw, 22px);
+    line-height: 1.35;
+    color: var(--av-cream);
+  }
+
+  #shopify-section-{{ section.id }} .anv__card-body {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(13px, 1.25vw, 15px);
+    line-height: 1.65;
+    color: var(--av-body);
+  }
+
+  @media (max-width: 780px) {
+    #shopify-section-{{ section.id }} .anv__grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: none;
+      grid-auto-flow: row;
+    }
+  }
+</style>
+
+<section class="anv">
+  <div class="anv__inner">
+
+    <header class="anv__head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="anv__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.title != blank or section.settings.title_accent != blank -%}
+        <h2 class="anv__title">
+          {{- section.settings.title | escape -}}
+          {%- if section.settings.title_accent != blank -%}
+            <span class="anv__title-accent"> {{ section.settings.title_accent | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="anv__sub">{{ section.settings.subtitle | escape }}</p>
+      {%- endif -%}
+    </header>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="anv__grid">
+        {%- for block in section.blocks -%}
+          <article class="anv__card" {{ block.shopify_attributes }}>
+            {%- if block.settings.num != blank -%}
+              <p class="anv__num">{{ block.settings.num | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.title != blank -%}
+              <h3 class="anv__card-title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+            {%- if block.settings.body != blank -%}
+              <p class="anv__card-body">{{ block.settings.body | escape }}</p>
+            {%- endif -%}
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Kenya Anatomy",
+  "tag": "section",
+  "class": "kenya-anatomy-section",
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "num",
+          "label": "Number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card title"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Card body"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Why Nobody Is Talking About It"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title — main",
+      "default": "The anatomy of"
+    },
+    {
+      "type": "text",
+      "id": "title_accent",
+      "label": "Title — italic accent (coral)",
+      "default": "invisibility."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Oral disease is the most widespread health condition on earth \u2014 and one of the least discussed. Four reasons it stays out of public consciousness:"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "display_font",
+      "label": "Title & number font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body & subtitle font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#1c1109"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card background",
+      "default": "#2a1c12"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Card border",
+      "default": "#ffffff0d"
+    },
+    {
+      "type": "color",
+      "id": "cream_color",
+      "label": "Heading & card title",
+      "default": "#ede3d5"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Eyebrow & accent",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Card numbers",
+      "default": "#f0b649"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Card body text",
+      "default": "#a2988c"
+    },
+    {
+      "type": "color",
+      "id": "sub_color",
+      "label": "Subtitle text",
+      "default": "#b0a698"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kenya Anatomy",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "num": "01",
+            "title": "The disease progresses silently",
+            "body": "Periodontal disease destroys bone and tissue over years \u2014 almost entirely without pain \u2014 until the damage is severe enough to cause tooth loss. Silent diseases don\u2019t generate alarm. They accumulate in statistics."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "num": "02",
+            "title": "The mouth is professionally separated from the body",
+            "body": "Dentistry sits in a separate system \u2014 different training, different buildings, different insurance. The documented links to cardiovascular disease, neurodegeneration, diabetes, and pregnancy outcomes are not crossing the disciplinary boundary."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "num": "03",
+            "title": "It is worst where voices are least heard",
+            "body": "The communities most affected have the least political voice, least media representation, and least research funding. The invisibility of the crisis mirrors the invisibility of the people it affects most."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "num": "04",
+            "title": "The industry profits from the wrong solution",
+            "body": "A $50B+ oral care industry built on the antiseptic paradigm has no structural incentive to question it. The ecological understanding of oral health \u2014 which OG3\u2122 is built on \u2014 represents a fundamental disruption to a very established business model."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,556 @@
+{%- liquid
+  assign progress_pct = section.settings.progress_current | times: 100.0 | divided_by: section.settings.progress_goal | round
+  assign progress_pct_str = progress_pct | append: '%'
+-%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --kv-bg:    {{ section.settings.bg_color }};
+    --kv-card:  {{ section.settings.card_color }};
+    --kv-line:  {{ section.settings.line_color }};
+    --kv-cream: {{ section.settings.cream_color }};
+    --kv-white: {{ section.settings.white_color }};
+    --kv-coral: {{ section.settings.coral_color }};
+    --kv-gold:  {{ section.settings.gold_color }};
+    --kv-body:  {{ section.settings.body_color }};
+    --kv-muted: {{ section.settings.muted_color }};
+    --kv-progress: {{ progress_pct_str }};
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} .kvl {
+    background: var(--kv-bg);
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  #shopify-section-{{ section.id }} .kvl * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .kvl__inner { max-width: 1120px; margin-inline: auto; }
+
+  /* Header */
+  #shopify-section-{{ section.id }} .kvl__head { text-align: center; margin-bottom: clamp(30px, 4.5vw, 50px); }
+
+  #shopify-section-{{ section.id }} .kvl__eyebrow {
+    margin: 0 0 clamp(14px, 2vw, 20px);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--kv-coral);
+    line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .kvl__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.display_font }}-family);
+    font-weight: 700;
+    font-size: clamp(30px, 4.4vw, 52px);
+    line-height: 1.14;
+    letter-spacing: -0.5px;
+    color: var(--kv-cream);
+  }
+
+  #shopify-section-{{ section.id }} .kvl__title-accent {
+    font-style: italic;
+    color: var(--kv-coral);
+  }
+
+  #shopify-section-{{ section.id }} .kvl__body {
+    margin: clamp(18px, 2.6vw, 26px) auto 0;
+    max-width: 700px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.7;
+    color: var(--kv-body);
+  }
+  #shopify-section-{{ section.id }} .kvl__body p { margin: 0; }
+
+  #shopify-section-{{ section.id }} .kvl__tagline {
+    margin: clamp(20px, 3vw, 30px) auto 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.5;
+    color: var(--kv-gold);
+  }
+
+  /* Stat cards */
+  #shopify-section-{{ section.id }} .kvl__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(14px, 1.8vw, 22px);
+    margin-bottom: clamp(34px, 5vw, 56px);
+  }
+
+  #shopify-section-{{ section.id }} .kvl__stat {
+    background: var(--kv-card);
+    border: 1px solid var(--kv-line);
+    border-radius: 14px;
+    padding: clamp(22px, 3vw, 34px) clamp(18px, 2.4vw, 28px);
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .kvl__stat-num {
+    margin: 0 0 clamp(14px, 2vw, 20px);
+    font-family: var(--font-{{ section.settings.display_font }}-family);
+    font-weight: 700;
+    font-size: clamp(30px, 3.2vw, 40px);
+    line-height: 1;
+    color: var(--kv-num-color, var(--kv-coral));
+  }
+
+  #shopify-section-{{ section.id }} .kvl__stat-title {
+    margin: 0 0 10px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 700;
+    font-size: clamp(14px, 1.4vw, 16px);
+    line-height: 1.3;
+    color: var(--kv-white);
+  }
+
+  #shopify-section-{{ section.id }} .kvl__stat-body {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(13px, 1.25vw, 14px);
+    line-height: 1.6;
+    color: var(--kv-body);
+  }
+
+  /* Progress */
+  #shopify-section-{{ section.id }} .kvl__progress-wrap {
+    max-width: 700px;
+    margin: 0 auto clamp(34px, 5vw, 56px);
+  }
+
+  #shopify-section-{{ section.id }} .kvl__progress-labels {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 12px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    color: var(--kv-muted);
+  }
+  #shopify-section-{{ section.id }} .kvl__progress-labels strong { color: var(--kv-gold); font-weight: 700; }
+
+  #shopify-section-{{ section.id }} .kvl__track {
+    height: 7px;
+    border-radius: 999px;
+    background: {{ section.settings.line_color }};
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .kvl__fill {
+    height: 100%;
+    width: var(--kv-progress);
+    min-width: 14px;
+    border-radius: 999px;
+    background: var(--kv-gold);
+  }
+
+  #shopify-section-{{ section.id }} .kvl__note {
+    margin: clamp(14px, 2.2vw, 20px) auto 0;
+    max-width: 640px;
+    text-align: center;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(13px, 1.3vw, 15px);
+    line-height: 1.65;
+    color: var(--kv-body);
+  }
+  #shopify-section-{{ section.id }} .kvl__note p { margin: 0; }
+  #shopify-section-{{ section.id }} .kvl__note strong { color: var(--kv-white); font-weight: 400; }
+
+  /* Photos */
+  #shopify-section-{{ section.id }} .kvl__photos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(14px, 1.8vw, 22px);
+  }
+
+  #shopify-section-{{ section.id }} .kvl__photo {
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(160deg, #6b4a2c, #a3764a);
+  }
+
+  #shopify-section-{{ section.id }} .kvl__photo img,
+  #shopify-section-{{ section.id }} .kvl__photo svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 860px) {
+    #shopify-section-{{ section.id }} .kvl__stats { grid-template-columns: 1fr; max-width: 460px; margin-inline: auto; }
+    #shopify-section-{{ section.id }} .kvl__photos { grid-template-columns: 1fr 1fr; }
+    #shopify-section-{{ section.id }} .kvl__photo:first-child { grid-column: span 2; aspect-ratio: 16 / 9; }
+  }
+
+  @media (max-width: 520px) {
+    #shopify-section-{{ section.id }} .kvl__progress-labels { flex-direction: column; align-items: flex-start; gap: 6px; }
+    #shopify-section-{{ section.id }} .kvl__photos { grid-template-columns: 1fr; }
+    #shopify-section-{{ section.id }} .kvl__photo:first-child { grid-column: auto; aspect-ratio: 4 / 3; }
+    #shopify-section-{{ section.id }} .kvl__photo { aspect-ratio: 4 / 3; }
+  }
+</style>
+
+<section class="kvl">
+  <div class="kvl__inner">
+
+    <header class="kvl__head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="kvl__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.title != blank or section.settings.title_accent != blank -%}
+        <h2 class="kvl__title">
+          {{- section.settings.title | escape -}}
+          {%- if section.settings.title_accent != blank -%}
+            <span class="kvl__title-accent"> {{ section.settings.title_accent | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.body != blank -%}
+        <div class="kvl__body">{{ section.settings.body }}</div>
+      {%- endif -%}
+      {%- if section.settings.tagline != blank -%}
+        <p class="kvl__tagline">{{ section.settings.tagline | escape }}</p>
+      {%- endif -%}
+    </header>
+
+    {%- assign stat_blocks = section.blocks | where: 'type', 'stat' -%}
+    {%- if stat_blocks.size > 0 -%}
+      <div class="kvl__stats">
+        {%- for block in stat_blocks -%}
+          <div class="kvl__stat" style="--kv-num-color: {{ block.settings.num_color }};" {{ block.shopify_attributes }}>
+            {%- if block.settings.num != blank -%}
+              <p class="kvl__stat-num">{{ block.settings.num | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.title != blank -%}
+              <h3 class="kvl__stat-title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+            {%- if block.settings.body != blank -%}
+              <p class="kvl__stat-body">{{ block.settings.body | escape }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    <div class="kvl__progress-wrap">
+      <div class="kvl__progress-labels">
+        <span><strong>{{ section.settings.progress_label_current }}</strong> &middot; {{ section.settings.progress_current }} {{ section.settings.progress_unit }}</span>
+        <span>Goal: <strong>{{ section.settings.progress_goal }} {{ section.settings.progress_unit }}</strong> by {{ section.settings.progress_goal_date }}</span>
+      </div>
+      <div
+        class="kvl__track"
+        role="progressbar"
+        aria-valuemin="0"
+        aria-valuemax="{{ section.settings.progress_goal }}"
+        aria-valuenow="{{ section.settings.progress_current }}"
+        aria-label="{{ section.settings.progress_unit | capitalize }} supported: {{ section.settings.progress_current }} of {{ section.settings.progress_goal }}"
+      >
+        <div class="kvl__fill"></div>
+      </div>
+      {%- if section.settings.progress_note != blank -%}
+        <div class="kvl__note">{{ section.settings.progress_note }}</div>
+      {%- endif -%}
+    </div>
+
+    {%- assign photo_blocks = section.blocks | where: 'type', 'photo' -%}
+    {%- if photo_blocks.size > 0 -%}
+      <div class="kvl__photos">
+        {%- for block in photo_blocks -%}
+          <div class="kvl__photo" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 800
+                | image_tag:
+                  alt: block.settings.alt | escape,
+                  loading: 'lazy',
+                  widths: '400, 600, 800',
+                  sizes: '(max-width: 520px) 100vw, (max-width: 860px) 50vw, 33vw'
+              }}
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag }}
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Kenya Village",
+  "tag": "section",
+  "class": "kenya-village-section",
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "num",
+          "label": "Number",
+          "default": "1"
+        },
+        {
+          "type": "color",
+          "id": "num_color",
+          "label": "Number color",
+          "default": "#ef4a22"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card title"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Card body"
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "name": "Photo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "What Rainbow Smile Is Doing"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title — main",
+      "default": "One village at a time."
+    },
+    {
+      "type": "text",
+      "id": "title_accent",
+      "label": "Title — italic accent (coral)",
+      "default": "Growing exponentially."
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body paragraph",
+      "default": "<p>We are a startup. We are small. We are honest about that. But we are also the company that created the world\u2019s first Biome Food\u2122 for the oral microbiome. Our commitment to Kenya is not a marketing gesture. It is the ecological logic of what we believe: that a community that leaves people at the fringe impoverishes its own intelligence.</p>"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline (gold)",
+      "default": "Love Serves All\u2122 is not a tagline. It is a supply chain."
+    },
+    {
+      "type": "header",
+      "content": "Progress bar"
+    },
+    {
+      "type": "text",
+      "id": "progress_label_current",
+      "label": "Current label",
+      "default": "Today"
+    },
+    {
+      "type": "text",
+      "id": "progress_unit",
+      "label": "Unit (singular)",
+      "default": "village"
+    },
+    {
+      "type": "number",
+      "id": "progress_current",
+      "label": "Villages currently supported",
+      "default": 1
+    },
+    {
+      "type": "number",
+      "id": "progress_goal",
+      "label": "Goal (total villages)",
+      "default": 50
+    },
+    {
+      "type": "text",
+      "id": "progress_goal_date",
+      "label": "Goal target date",
+      "default": "end 2027"
+    },
+    {
+      "type": "richtext",
+      "id": "progress_note",
+      "label": "Note below progress bar",
+      "default": "<p>We are not big enough to do this alone. But we are <strong>committed enough to start</strong>, and honest enough to ask for help. Every donation extends the reach of the signal.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "display_font",
+      "label": "Title & stat number font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow & progress label font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body & card text font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#1c1109"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card background",
+      "default": "#2a1c12"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Card border & progress track",
+      "default": "#ffffff0d"
+    },
+    {
+      "type": "color",
+      "id": "cream_color",
+      "label": "Headline",
+      "default": "#ede3d5"
+    },
+    {
+      "type": "color",
+      "id": "white_color",
+      "label": "Card title & note highlight",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Eyebrow & italic accent",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Tagline & progress bar",
+      "default": "#f0b649"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body copy",
+      "default": "#a2988c"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Progress labels",
+      "default": "#8d8478"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kenya Village",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "num": "1",
+            "num_color": "#ef4a22",
+            "title": "Village supported monthly",
+            "body": "Our current commitment. Every month, OG3\u2122 reaches one Kenyan village through Springboard Connectivity."
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "num": "\u221e",
+            "num_color": "#ef4a22",
+            "title": "The goal",
+            "body": "Every village in need. Every family. The quorum is not complete until everyone is in it."
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "num": "1%",
+            "num_color": "#3fae54",
+            "title": "Of profits to Kenya",
+            "body": "Every sale contributes. As we grow, so does what we can give. Your purchase is already part of this."
+          }
+        },
+        { "type": "photo", "settings": {} },
+        { "type": "photo", "settings": {} },
+        { "type": "photo", "settings": {} }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,467 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --sb-bg:      {{ section.settings.bg_color }};
+    --sb-ink:     {{ section.settings.ink_color }};
+    --sb-coral:   {{ section.settings.coral_color }};
+    --sb-body:    {{ section.settings.body_color }};
+    --sb-strong:  {{ section.settings.strong_color }};
+    --sb-card:    {{ section.settings.card_color }};
+    --sb-cream:   {{ section.settings.cream_color }};
+    --sb-card-tx: {{ section.settings.card_tx_color }};
+    --sb-green:   {{ section.settings.green_color }};
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} .spb {
+    background: var(--sb-bg);
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  #shopify-section-{{ section.id }} .spb * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .spb__inner {
+    max-width: 1200px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: start;
+  }
+
+  /* Left (sticky) */
+  #shopify-section-{{ section.id }} .spb__content {
+    position: sticky;
+    top: clamp(20px, 4vw, 48px);
+    max-width: 520px;
+  }
+
+  #shopify-section-{{ section.id }} .spb__eyebrow {
+    margin: 0 0 clamp(12px, 1.8vw, 18px);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--sb-coral);
+    line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .spb__title {
+    margin: 0 0 clamp(18px, 2.4vw, 24px);
+    font-family: var(--font-{{ section.settings.display_font }}-family);
+    font-weight: 700;
+    font-size: clamp(30px, 3.8vw, 46px);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    color: var(--sb-ink);
+  }
+
+  #shopify-section-{{ section.id }} .spb__title-accent {
+    font-style: italic;
+    color: var(--sb-coral);
+  }
+
+  #shopify-section-{{ section.id }} .spb__body {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.7;
+    color: var(--sb-body);
+  }
+  #shopify-section-{{ section.id }} .spb__body p { margin: 0; }
+  #shopify-section-{{ section.id }} .spb__body + .spb__body { margin-top: clamp(16px, 2.2vw, 22px); }
+  #shopify-section-{{ section.id }} .spb__body strong { color: var(--sb-strong); font-weight: 700; }
+
+  #shopify-section-{{ section.id }} .spb__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: clamp(22px, 3vw, 32px);
+    min-height: 40px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.15vw, 13px);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--sb-coral);
+    text-decoration: none;
+    transition: color 0.16s ease;
+  }
+  #shopify-section-{{ section.id }} .spb__link span { transition: transform 0.16s ease; }
+  #shopify-section-{{ section.id }} .spb__link:hover span { transform: translateX(3px); }
+  #shopify-section-{{ section.id }} .spb__link:hover { color: #dc411b; }
+  #shopify-section-{{ section.id }} .spb__link:focus-visible { outline: 3px solid rgba(239,74,34,0.35); outline-offset: 3px; border-radius: 3px; }
+
+  /* Right: dark profile card */
+  #shopify-section-{{ section.id }} .spb__card {
+    background: var(--sb-card);
+    border-radius: 20px;
+    padding: clamp(18px, 2.4vw, 28px);
+  }
+
+  #shopify-section-{{ section.id }} .spb__photo {
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 5 / 5.4;
+    background: linear-gradient(160deg, #6b4a2c, #a3764a);
+    margin-bottom: clamp(18px, 2.6vw, 26px);
+  }
+  #shopify-section-{{ section.id }} .spb__photo img,
+  #shopify-section-{{ section.id }} .spb__photo svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .spb__name {
+    margin: 0 0 8px;
+    font-family: var(--font-{{ section.settings.display_font }}-family);
+    font-weight: 700;
+    font-size: clamp(19px, 2vw, 24px);
+    line-height: 1.2;
+    color: var(--sb-cream);
+  }
+
+  #shopify-section-{{ section.id }} .spb__role {
+    margin: 0 0 clamp(18px, 2.6vw, 26px);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    line-height: 1.6;
+    color: var(--sb-coral);
+  }
+
+  #shopify-section-{{ section.id }} .spb__quote {
+    margin: 0 0 clamp(18px, 2.6vw, 26px);
+    padding-left: clamp(14px, 1.8vw, 20px);
+    border-left: 2px solid var(--sb-coral);
+    font-family: var(--font-{{ section.settings.display_font }}-family);
+    font-weight: 600;
+    font-style: italic;
+    font-size: clamp(14px, 1.5vw, 17px);
+    line-height: 1.6;
+    color: var(--sb-cream);
+  }
+
+  #shopify-section-{{ section.id }} .spb__list { list-style: none; margin: 0; padding: 0; }
+  #shopify-section-{{ section.id }} .spb__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin-bottom: 12px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(13px, 1.25vw, 14px);
+    line-height: 1.5;
+    color: var(--sb-card-tx);
+  }
+  #shopify-section-{{ section.id }} .spb__list li:last-child { margin-bottom: 0; }
+  #shopify-section-{{ section.id }} .spb__list li::before {
+    content: "";
+    width: 6px; height: 6px;
+    flex: none;
+    margin-top: 7px;
+    border-radius: 50%;
+    background: var(--sb-green);
+  }
+
+  @media (max-width: 899px) {
+    #shopify-section-{{ section.id }} .spb__inner { grid-template-columns: 1fr; gap: clamp(30px, 6vw, 42px); }
+    #shopify-section-{{ section.id }} .spb__content { position: static; max-width: 640px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .spb__link:hover span { transform: none; }
+  }
+</style>
+
+<section class="spb">
+  <div class="spb__inner">
+
+    <!-- Left (sticky) -->
+    <div class="spb__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="spb__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.title != blank or section.settings.title_accent != blank -%}
+        <h2 class="spb__title">
+          {{- section.settings.title | escape -}}
+          {%- if section.settings.title_accent != blank -%}
+            <span class="spb__title-accent"> {{ section.settings.title_accent | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.body_1 != blank -%}
+        <div class="spb__body">{{ section.settings.body_1 }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.body_2 != blank -%}
+        <div class="spb__body">{{ section.settings.body_2 }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.link_text != blank and section.settings.link_url != blank -%}
+        <a class="spb__link" href="{{ section.settings.link_url }}">
+          {{ section.settings.link_text | escape }}
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      {%- endif -%}
+    </div>
+
+    <!-- Right: profile card -->
+    <div class="spb__card">
+      <div class="spb__photo">
+        {%- if section.settings.photo != blank -%}
+          {{
+            section.settings.photo
+            | image_url: width: 800
+            | image_tag:
+              alt: section.settings.photo_alt | escape,
+              loading: 'lazy',
+              widths: '400, 600, 800',
+              sizes: '(max-width: 899px) min(100vw, 640px), 50vw'
+          }}
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag }}
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.person_name != blank -%}
+        <h3 class="spb__name">{{ section.settings.person_name | escape }}</h3>
+      {%- endif -%}
+
+      {%- if section.settings.person_role != blank -%}
+        <p class="spb__role">{{ section.settings.person_role | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.quote != blank -%}
+        <blockquote class="spb__quote">{{ section.settings.quote | escape }}</blockquote>
+      {%- endif -%}
+
+      {%- assign credential_blocks = section.blocks | where: 'type', 'credential' -%}
+      {%- if credential_blocks.size > 0 -%}
+        <ul class="spb__list">
+          {%- for block in credential_blocks -%}
+            {%- if block.settings.text != blank -%}
+              <li {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Kenya Springboard",
+  "tag": "section",
+  "class": "kenya-springboard-section",
+  "blocks": [
+    {
+      "type": "credential",
+      "name": "Credential",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Credential text"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Left column"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Our Non-Profit Partner"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title — main",
+      "default": "Springboard"
+    },
+    {
+      "type": "text",
+      "id": "title_accent",
+      "label": "Title — italic accent (coral)",
+      "default": "Connectivity."
+    },
+    {
+      "type": "richtext",
+      "id": "body_1",
+      "label": "Body paragraph 1",
+      "default": "<p>Springboard Connectivity works directly within Kenyan communities to build sustainable health access infrastructure. Tracy and her team know these villages personally \u2014 their names, their children, their challenges, and their extraordinary resilience.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "body_2",
+      "label": "Body paragraph 2",
+      "default": "<p><strong>Rainbow Smile and Springboard Connectivity are partners in the truest sense</strong> \u2014 united by the same belief that health is a human right that should have no fringe.</p>"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text",
+      "default": "Visit Springboard Connectivity"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Profile card"
+    },
+    {
+      "type": "image_picker",
+      "id": "photo",
+      "label": "Profile photo"
+    },
+    {
+      "type": "text",
+      "id": "photo_alt",
+      "label": "Photo alt text",
+      "default": "Tracy Tarlow with community members in Kenya"
+    },
+    {
+      "type": "text",
+      "id": "person_name",
+      "label": "Name",
+      "default": "Tracy Tarlow"
+    },
+    {
+      "type": "text",
+      "id": "person_role",
+      "label": "Role / title",
+      "default": "Executive Director \u00b7 Springboard Connectivity \u00b7 On the ground in Kenya"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote",
+      "default": "\u201cThese villages don\u2019t need charity. They need access. OG3\u2122 is the first product I\u2019ve seen that actually fits the ecology of what they\u2019re living with.\u201d"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "display_font",
+      "label": "Title, name & quote font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow, role & link font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body & credentials font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#fdf9f3"
+    },
+    {
+      "type": "color",
+      "id": "ink_color",
+      "label": "Headline",
+      "default": "#1c1109"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Eyebrow, accent & link",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body copy",
+      "default": "#6b5f52"
+    },
+    {
+      "type": "color",
+      "id": "strong_color",
+      "label": "Bold text",
+      "default": "#2a1c12"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card background",
+      "default": "#2a1c12"
+    },
+    {
+      "type": "color",
+      "id": "cream_color",
+      "label": "Card name & quote",
+      "default": "#ede3d5"
+    },
+    {
+      "type": "color",
+      "id": "card_tx_color",
+      "label": "Card list text",
+      "default": "#cbbfae"
+    },
+    {
+      "type": "color",
+      "id": "green_color",
+      "label": "List dots",
+      "default": "#3fae54"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kenya Springboard",
+      "blocks": [
+        { "type": "credential", "settings": { "text": "On the ground in Kenya" } },
+        { "type": "credential", "settings": { "text": "Co-Founder \u00b7 Rainbow Smile" } },
+        { "type": "credential", "settings": { "text": "Building sustainable health access infrastructure" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

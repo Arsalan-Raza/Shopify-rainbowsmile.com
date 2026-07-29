@@ -1,0 +1,228 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --pb-cream:  {{ section.settings.cream_color }};
+    --pb-coral:  {{ section.settings.coral_color }};
+    --pb-bg:     {{ section.settings.bg_color }};
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} .pbrk {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--pb-bg);
+  }
+
+  #shopify-section-{{ section.id }} .pbrk * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .pbrk__media {
+    position: relative;
+    aspect-ratio: 24 / 9;
+    min-height: 300px;
+  }
+
+  #shopify-section-{{ section.id }} .pbrk__media img,
+  #shopify-section-{{ section.id }} .pbrk__media .pbrk__placeholder {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .pbrk__placeholder svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .pbrk__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background:
+      linear-gradient(100deg, rgba(18, 10, 4, 0.72) 0%, rgba(18, 10, 4, 0.38) 38%, transparent 62%),
+      linear-gradient(to top, rgba(18, 10, 4, 0.55), transparent 42%);
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .pbrk__content {
+    position: absolute;
+    z-index: 3;
+    left: clamp(20px, 6vw, 100px);
+    right: clamp(20px, 6vw, 100px);
+    bottom: clamp(22px, 5vw, 64px);
+    max-width: 620px;
+  }
+
+  #shopify-section-{{ section.id }} .pbrk__quote {
+    margin: 0 0 clamp(12px, 1.8vw, 18px);
+    font-family: var(--font-{{ section.settings.display_font }}-family);
+    font-weight: 700;
+    font-style: italic;
+    font-size: clamp(18px, 2.2vw, 30px);
+    line-height: 1.35;
+    letter-spacing: -0.2px;
+    color: var(--pb-cream);
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  #shopify-section-{{ section.id }} .pbrk__attr {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.05vw, 13px);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--pb-coral);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+  }
+
+  @media (max-width: 899px) {
+    #shopify-section-{{ section.id }} .pbrk__media { aspect-ratio: 16 / 10; }
+    #shopify-section-{{ section.id }} .pbrk__scrim {
+      background: linear-gradient(to top, rgba(18, 10, 4, 0.82) 0%, rgba(18, 10, 4, 0.35) 52%, transparent 78%);
+    }
+    #shopify-section-{{ section.id }} .pbrk__content { max-width: 100%; }
+  }
+
+  @media (max-width: 560px) {
+    #shopify-section-{{ section.id }} .pbrk__media { aspect-ratio: 4 / 3; }
+    #shopify-section-{{ section.id }} .pbrk__media img { object-position: {{ section.settings.mobile_focal }} center; }
+  }
+</style>
+
+<section class="pbrk">
+  <div class="pbrk__media">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 1920
+        | image_tag:
+          alt: section.settings.image_alt | escape,
+          loading: 'lazy',
+          widths: '600, 900, 1200, 1600, 1920',
+          sizes: '100vw'
+      }}
+    {%- else -%}
+      <div class="pbrk__placeholder">
+        {{ 'image' | placeholder_svg_tag }}
+      </div>
+    {%- endif -%}
+
+    <div class="pbrk__scrim" aria-hidden="true"></div>
+
+    <div class="pbrk__content">
+      {%- if section.settings.quote != blank -%}
+        <blockquote class="pbrk__quote">{{ section.settings.quote | escape }}</blockquote>
+      {%- endif -%}
+      {%- if section.settings.attribution != blank -%}
+        <p class="pbrk__attr">{{ section.settings.attribution | escape }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Kenya Photo Break",
+  "tag": "section",
+  "class": "kenya-photo-break-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Photo"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "default": "A Maasai man and children standing in the Kenyan landscape"
+    },
+    {
+      "type": "text",
+      "id": "mobile_focal",
+      "label": "Mobile focal point (horizontal %)",
+      "info": "Shifts the image left/right on mobile to keep the subject visible. e.g. 50% (center), 68% (right of center)",
+      "default": "68%"
+    },
+    {
+      "type": "header",
+      "content": "Quote"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote text",
+      "default": "\u201cThe landscape holds everything. The children, the soil, the air, the silence. And 966 dentists for 55 million people.\u201d"
+    },
+    {
+      "type": "text",
+      "id": "attribution",
+      "label": "Attribution",
+      "default": "Kenya \u00b7 Springboard Connectivity"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "display_font",
+      "label": "Quote font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Attribution font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fallback background",
+      "default": "#1c1109"
+    },
+    {
+      "type": "color",
+      "id": "cream_color",
+      "label": "Quote text",
+      "default": "#f0e7d8"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Attribution text",
+      "default": "#ef4a22"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kenya Photo Break"
+    }
+  ]
+}
+{% endschema %}

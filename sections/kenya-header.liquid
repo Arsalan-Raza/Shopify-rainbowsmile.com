@@ -1,0 +1,248 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --kn-bg:    {{ section.settings.bg_color }};
+    --kn-back:  {{ section.settings.back_color }};
+    --kn-gold:  {{ section.settings.gold_color }};
+    --kn-dot:   {{ section.settings.gold_color }};
+    --kn-coral: {{ section.settings.coral_color }};
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} .knav {
+    background: var(--kn-bg);
+    padding-inline: clamp(14px, 3vw, 32px);
+  }
+
+  #shopify-section-{{ section.id }} .knav * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .knav__inner {
+    max-width: 1440px;
+    margin-inline: auto;
+    min-height: 58px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .knav__back {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 40px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--kn-back);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.16s ease;
+  }
+  #shopify-section-{{ section.id }} .knav__back:hover { color: #fff; }
+  #shopify-section-{{ section.id }} .knav__back:focus-visible { outline: 2px solid var(--kn-gold); outline-offset: 3px; border-radius: 3px; }
+  #shopify-section-{{ section.id }} .knav__back-arrow { transition: transform 0.16s ease; }
+  #shopify-section-{{ section.id }} .knav__back:hover .knav__back-arrow { transform: translateX(-3px); }
+
+  #shopify-section-{{ section.id }} .knav__label {
+    justify-self: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--kn-gold);
+    white-space: nowrap;
+    line-height: 1;
+  }
+  #shopify-section-{{ section.id }} .knav__label::before {
+    content: "";
+    width: 7px; height: 7px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--kn-dot);
+  }
+
+  #shopify-section-{{ section.id }} .knav__cta {
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 24px;
+    min-height: 42px;
+    border-radius: 999px;
+    background: var(--kn-coral);
+    color: #fff;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(13px, 1.3vw, 15px);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.18s ease, transform 0.18s ease;
+  }
+  #shopify-section-{{ section.id }} .knav__cta:hover { background: #dc4a1c; transform: translateY(-1px); }
+  #shopify-section-{{ section.id }} .knav__cta:focus-visible { outline: 3px solid rgba(239,90,42,0.5); outline-offset: 3px; }
+
+  @media (max-width: 860px) {
+    #shopify-section-{{ section.id }} .knav__label { letter-spacing: 1px; }
+    #shopify-section-{{ section.id }} .knav__back  { letter-spacing: 0.8px; }
+  }
+
+  @media (max-width: 640px) {
+    #shopify-section-{{ section.id }} .knav__back-text { display: none; }
+    #shopify-section-{{ section.id }} .knav__back      { gap: 0; }
+    #shopify-section-{{ section.id }} .knav__label     { font-size: 12px; letter-spacing: 0.6px; }
+    #shopify-section-{{ section.id }} .knav__cta       { padding: 10px 16px; font-size: 13px; }
+  }
+
+  @media (max-width: 400px) {
+    #shopify-section-{{ section.id }} .knav__label-sub { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .knav__cta:hover { transform: none; }
+    #shopify-section-{{ section.id }} .knav__back:hover .knav__back-arrow { transform: none; }
+  }
+</style>
+
+<header class="knav">
+  <div class="knav__inner">
+
+    <a class="knav__back" href="{{ section.settings.back_url | default: '/' }}" aria-label="{{ section.settings.back_text | default: 'Back to Rainbow Smile' | escape }}">
+      <span class="knav__back-arrow" aria-hidden="true">←</span>
+      <span class="knav__back-text">{{ section.settings.back_text | default: 'Back to Rainbow Smile' | escape }}</span>
+    </a>
+
+    <p class="knav__label">
+      {{ section.settings.label_main | escape }}<span class="knav__label-sub">{{ section.settings.label_sub | escape }}</span>
+    </p>
+
+    <a class="knav__cta" href="{{ section.settings.cta_url | default: '#' }}">
+      {{ section.settings.cta_text | default: 'Donate Now' | escape }}
+    </a>
+
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Kenya Header",
+  "tag": "section",
+  "class": "kenya-header-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Back link"
+    },
+    {
+      "type": "text",
+      "id": "back_text",
+      "label": "Back link text",
+      "default": "Back to Rainbow Smile"
+    },
+    {
+      "type": "url",
+      "id": "back_url",
+      "label": "Back link URL"
+    },
+    {
+      "type": "header",
+      "content": "Centre label"
+    },
+    {
+      "type": "text",
+      "id": "label_main",
+      "label": "Label — main part",
+      "default": "Rainbow Smile"
+    },
+    {
+      "type": "text",
+      "id": "label_sub",
+      "label": "Label — secondary part",
+      "info": "Hidden below 400px wide. Include a separator, e.g. \u00b7 The Kenya Project",
+      "default": " \u00b7 The Kenya Project"
+    },
+    {
+      "type": "header",
+      "content": "CTA button"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Donate Now"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Back link & label font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Button font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Bar background",
+      "default": "#1c1109"
+    },
+    {
+      "type": "color",
+      "id": "back_color",
+      "label": "Back link color",
+      "default": "#d8cfc4"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Label & dot color",
+      "default": "#f0a83c"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Button color",
+      "default": "#ef5a2a"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kenya Header"
+    }
+  ]
+}
+{% endschema %}

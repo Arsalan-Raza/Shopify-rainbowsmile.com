@@ -1,0 +1,933 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --bp-navy:   {{ section.settings.navy_color }};
+    --bp-card:   {{ section.settings.card_color }};
+    --bp-card-2: {{ section.settings.card2_color }};
+    --bp-white:  {{ section.settings.white_color }};
+    --bp-gold:   {{ section.settings.gold_color }};
+    --bp-coral:  {{ section.settings.coral_color }};
+    --bp-green:  {{ section.settings.green_color }};
+    --bp-body:   {{ section.settings.body_color }};
+    --bp-muted:  {{ section.settings.muted_color }};
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} .bpv {
+    --bp-line: rgba(255, 255, 255, 0.08);
+    --bp-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='460' viewBox='0 0 460 460'%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='70' cy='90' r='34' opacity='.014'/%3E%3Ccircle cx='380' cy='340' r='38' opacity='.012'/%3E%3Ccircle cx='300' cy='60' r='20' opacity='.014'/%3E%3Ccircle cx='150' cy='350' r='26' opacity='.012'/%3E%3Ccircle cx='60' cy='250' r='2.2' opacity='.045'/%3E%3Ccircle cx='250' cy='150' r='2' opacity='.045'/%3E%3Ccircle cx='420' cy='180' r='2' opacity='.04'/%3E%3Cpath d='M120,110 Q120,120 130,120 Q120,120 120,130 Q120,120 110,120 Q120,120 120,110 Z' opacity='.05'/%3E%3C/g%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2' stroke-opacity='.028'%3E%3Ccircle cx='400' cy='90' r='14'/%3E%3Ccircle cx='80' cy='400' r='11'/%3E%3C/g%3E%3C/svg%3E");
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: var(--bp-navy);
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(16px, 4vw, 40px);
+  }
+
+  #shopify-section-{{ section.id }} .bpv * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .bpv::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: var(--bp-texture);
+    background-size: 460px;
+    background-repeat: repeat;
+  }
+
+  #shopify-section-{{ section.id }} .bpv__inner { max-width: 1280px; margin-inline: auto; }
+
+  /* ---------- Header ---------- */
+  #shopify-section-{{ section.id }} .bpv__head { text-align: center; margin-bottom: clamp(30px, 4.5vw, 48px); }
+
+  #shopify-section-{{ section.id }} .bpv__eyebrow {
+    margin: 0 0 clamp(14px, 2vw, 20px);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bp-gold);
+    line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .bpv__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(30px, 4.2vw, 50px);
+    line-height: 1.04;
+    letter-spacing: -0.5px;
+    color: var(--bp-white);
+  }
+
+  #shopify-section-{{ section.id }} .bpv__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: clamp(28px, 3.8vw, 46px);
+    line-height: 1.12;
+    color: var(--bp-gold);
+  }
+
+  #shopify-section-{{ section.id }} .bpv__sub {
+    margin: clamp(14px, 2vw, 20px) auto 0;
+    max-width: 620px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(13px, 1.3vw, 15px);
+    line-height: 1.6;
+    color: var(--bp-body);
+  }
+
+  /* ---------- Layout ---------- */
+  #shopify-section-{{ section.id }} .bpv__grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(16px, 2vw, 26px);
+    align-items: start;
+  }
+
+  #shopify-section-{{ section.id }} .bpv__panel {
+    background: var(--bp-card);
+    border: 1px solid var(--bp-line);
+    border-radius: 16px;
+    padding: clamp(16px, 2vw, 24px);
+  }
+
+  #shopify-section-{{ section.id }} .bpv__panel + .bpv__panel { margin-top: clamp(14px, 1.8vw, 20px); }
+
+  /* ---------- Left: viewer ---------- */
+  #shopify-section-{{ section.id }} .bpv__viewer {
+    position: sticky;
+    top: clamp(16px, 3vw, 28px);
+    border-color: transparent;
+  }
+
+  #shopify-section-{{ section.id }} .bpv__viewer-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: clamp(12px, 1.6vw, 18px);
+  }
+
+  #shopify-section-{{ section.id }} .bpv__counter {
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--bp-muted);
+  }
+
+  #shopify-section-{{ section.id }} .bpv__fs {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--bp-muted);
+    cursor: pointer;
+    transition: color 0.15s ease;
+  }
+  #shopify-section-{{ section.id }} .bpv__fs:hover { color: var(--bp-white); }
+  #shopify-section-{{ section.id }} .bpv__fs:focus-visible { outline: 2px solid var(--bp-gold); outline-offset: 3px; }
+  #shopify-section-{{ section.id }} .bpv__fs svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+
+  #shopify-section-{{ section.id }} .bpv__stage {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 10 / 13;
+    max-height: calc(100vh - 210px);
+    margin-inline: auto;
+    background: #0f1226;
+  }
+
+  #shopify-section-{{ section.id }} .bpv__page {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease;
+  }
+  #shopify-section-{{ section.id }} .bpv__page.is-active { opacity: 1; visibility: visible; }
+  #shopify-section-{{ section.id }} .bpv__page img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  #shopify-section-{{ section.id }} .bpv__page-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #232748, #161a35);
+    display: grid;
+    place-items: center;
+    color: rgba(255,255,255,0.2);
+    font-size: 13px;
+    font-family: sans-serif;
+  }
+
+  /* Controls */
+  #shopify-section-{{ section.id }} .bpv__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: clamp(14px, 2vw, 20px);
+  }
+
+  #shopify-section-{{ section.id }} .bpv__arrow {
+    width: 46px; height: 46px;
+    flex: none;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background: var(--bp-white);
+    color: var(--bp-navy);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    font-size: 17px;
+    line-height: 1;
+    transition: background-color 0.16s ease, color 0.16s ease, transform 0.16s ease;
+  }
+  #shopify-section-{{ section.id }} .bpv__arrow:hover:not([disabled]) { transform: scale(1.08); }
+  #shopify-section-{{ section.id }} .bpv__arrow[disabled] {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--bp-line);
+    color: rgba(255, 255, 255, 0.35);
+    cursor: not-allowed;
+    transform: none;
+  }
+  #shopify-section-{{ section.id }} .bpv__arrow:focus-visible { outline: 3px solid rgba(245,184,66,0.6); outline-offset: 3px; }
+
+  #shopify-section-{{ section.id }} .bpv__dots { display: flex; gap: 8px; flex-wrap: wrap; }
+  #shopify-section-{{ section.id }} .bpv__dot {
+    width: 7px; height: 7px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.22);
+    cursor: pointer;
+    transition: background-color 0.16s ease, transform 0.16s ease;
+  }
+  #shopify-section-{{ section.id }} .bpv__dot[aria-current="true"] { background: var(--bp-gold); transform: scale(1.25); }
+  #shopify-section-{{ section.id }} .bpv__dot:focus-visible { outline: 2px solid var(--bp-gold); outline-offset: 3px; }
+
+  /* ---------- Right panels ---------- */
+  #shopify-section-{{ section.id }} .bpv__panel-label {
+    margin: 0 0 clamp(12px, 1.6vw, 16px);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--bp-gold);
+  }
+
+  #shopify-section-{{ section.id }} .bpv__book-title {
+    margin: 0 0 clamp(14px, 2vw, 20px);
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(19px, 1.9vw, 23px);
+    line-height: 1.2;
+    color: var(--bp-white);
+  }
+  #shopify-section-{{ section.id }} .bpv__book-title em {
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-style: normal;
+    font-weight: 400;
+    color: var(--bp-gold);
+    margin-left: 4px;
+  }
+
+  /* Chapters */
+  #shopify-section-{{ section.id }} .bpv__chapters { list-style: none; margin: 0; padding: 0; }
+  #shopify-section-{{ section.id }} .bpv__chapter { border-top: 1px solid var(--bp-line); }
+  #shopify-section-{{ section.id }} .bpv__chapter:first-child { border-top: none; }
+
+  #shopify-section-{{ section.id }} .bpv__chapter-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 4px;
+    border: none;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.15s ease;
+  }
+  #shopify-section-{{ section.id }} .bpv__chapter-btn:hover { background: rgba(255,255,255,0.04); }
+  #shopify-section-{{ section.id }} .bpv__chapter-btn:focus-visible { outline: 2px solid var(--bp-gold); outline-offset: -2px; }
+
+  #shopify-section-{{ section.id }} .bpv__chapter-num {
+    width: 28px; height: 28px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--bp-card-2);
+    color: var(--bp-muted);
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: 12px;
+    display: grid;
+    place-items: center;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  #shopify-section-{{ section.id }} .bpv__chapter-name {
+    display: block;
+    margin-bottom: 3px;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(13px, 1.3vw, 14px);
+    line-height: 1.2;
+    color: var(--bp-white);
+    transition: color 0.15s ease;
+  }
+
+  #shopify-section-{{ section.id }} .bpv__chapter-meta {
+    display: block;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--bp-muted);
+  }
+
+  #shopify-section-{{ section.id }} .bpv__chapter-btn[aria-current="true"] .bpv__chapter-num { background: var(--bp-coral); color: #fff; }
+  #shopify-section-{{ section.id }} .bpv__chapter-btn[aria-current="true"] .bpv__chapter-name { color: var(--bp-coral); }
+  #shopify-section-{{ section.id }} .bpv__chapter--gate .bpv__chapter-name { color: var(--bp-gold); }
+
+  /* What's inside */
+  #shopify-section-{{ section.id }} .bpv__list { list-style: none; margin: 0; padding: 0; }
+  #shopify-section-{{ section.id }} .bpv__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    line-height: 1.45;
+    color: var(--bp-body);
+  }
+  #shopify-section-{{ section.id }} .bpv__list li:last-child { margin-bottom: 0; }
+  #shopify-section-{{ section.id }} .bpv__check { color: var(--bp-green); flex: none; font-size: 13px; line-height: 1.3; }
+
+  /* Author */
+  #shopify-section-{{ section.id }} .bpv__author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: clamp(14px, 2vw, 18px);
+  }
+  #shopify-section-{{ section.id }} .bpv__avatar {
+    width: 52px; height: 52px;
+    flex: none;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(140deg, #4b5068, #7d8296);
+  }
+  #shopify-section-{{ section.id }} .bpv__author-name {
+    margin: 0 0 4px;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(14px, 1.4vw, 16px);
+    line-height: 1.2;
+    color: var(--bp-white);
+  }
+  #shopify-section-{{ section.id }} .bpv__author-role {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--bp-muted);
+  }
+  #shopify-section-{{ section.id }} .bpv__author-body {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(13px, 1.25vw, 14px);
+    line-height: 1.6;
+    color: var(--bp-body);
+  }
+  #shopify-section-{{ section.id }} .bpv__author-body p { margin: 0; }
+  #shopify-section-{{ section.id }} .bpv__author-body strong { color: var(--bp-white); font-weight: 700; }
+  #shopify-section-{{ section.id }} .bpv__author-body sup { font-size: 0.62em; vertical-align: super; }
+
+  /* Fullscreen */
+  #shopify-section-{{ section.id }} .bpv__stage:fullscreen { background: #0f1226; padding: 20px; }
+  #shopify-section-{{ section.id }} .bpv__stage:fullscreen img { object-fit: contain; }
+
+  /* Responsive */
+  @media (max-width: 979px) {
+    #shopify-section-{{ section.id }} .bpv__grid { grid-template-columns: 1fr; }
+    #shopify-section-{{ section.id }} .bpv__viewer { position: static; }
+    #shopify-section-{{ section.id }} .bpv__stage { max-height: none; }
+  }
+
+  @media (max-width: 560px) {
+    #shopify-section-{{ section.id }} .bpv__viewer-bar { flex-wrap: wrap; gap: 8px; }
+    #shopify-section-{{ section.id }} .bpv__arrow { width: 42px; height: 42px; }
+    #shopify-section-{{ section.id }} .bpv__chapter-btn { gap: 11px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .bpv__page { transition: none; }
+    #shopify-section-{{ section.id }} .bpv__arrow:hover { transform: none; }
+  }
+</style>
+
+{%- assign page_blocks   = section.blocks | where: 'type', 'page' -%}
+{%- assign inside_blocks = section.blocks | where: 'type', 'inside_item' -%}
+
+<div class="bpv" data-bpv="{{ section.id }}">
+  <div class="bpv__inner">
+
+    <header class="bpv__head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="bpv__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.title != blank or section.settings.script_line != blank -%}
+        <h2 class="bpv__title">
+          {{- section.settings.title | escape -}}
+          {%- if section.settings.script_line != blank -%}
+            <span class="bpv__script">{{ section.settings.script_line | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="bpv__sub">{{ section.settings.subtitle | escape }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="bpv__grid">
+
+      <!-- LEFT: page flipper -->
+      <div class="bpv__panel bpv__viewer">
+        <div class="bpv__viewer-bar">
+          <span class="bpv__counter" data-counter></span>
+          <button class="bpv__fs" type="button" data-fullscreen>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9V3h6M21 9V3h-6M3 15v6h6M21 15v6h-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Full-screen reading mode
+          </button>
+        </div>
+
+        <div class="bpv__stage" data-stage>
+          {%- for block in page_blocks -%}
+            {%- assign page_alt = block.settings.alt | default: block.settings.chapter_name -%}
+            <div class="bpv__page{% if forloop.first %} is-active{% endif %}" data-page="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 840
+                  | image_tag:
+                    loading: 'lazy',
+                    alt: page_alt,
+                    widths: '420, 640, 840'
+                }}
+              {%- else -%}
+                <div class="bpv__page-placeholder">Add page image</div>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <div class="bpv__controls">
+          <button class="bpv__arrow" type="button" data-prev aria-label="Previous page">←</button>
+          <div class="bpv__dots" data-dots role="tablist" aria-label="Pages"></div>
+          <button class="bpv__arrow" type="button" data-next aria-label="Next page">→</button>
+        </div>
+      </div>
+
+      <!-- RIGHT: chapter list + what's inside + author -->
+      <div class="bpv__side">
+
+        <!-- Chapters -->
+        <div class="bpv__panel">
+          {%- if section.settings.chapters_label != blank -%}
+            <p class="bpv__panel-label">{{ section.settings.chapters_label | escape }}</p>
+          {%- endif -%}
+          {%- if section.settings.book_title_main != blank or section.settings.book_title_script != blank -%}
+            <h3 class="bpv__book-title">
+              {{- section.settings.book_title_main | escape -}}
+              {%- if section.settings.book_title_script != blank -%}
+                <em>{{ section.settings.book_title_script | escape }}</em>
+              {%- endif -%}
+            </h3>
+          {%- endif -%}
+
+          {%- if page_blocks.size > 0 -%}
+            <ul class="bpv__chapters" data-chapters>
+              {%- for block in page_blocks -%}
+                {%- if block.settings.show_in_chapters -%}
+                  <li class="bpv__chapter{% if block.settings.is_gate %} bpv__chapter--gate{% endif %}">
+                    <button class="bpv__chapter-btn" type="button" data-goto="{{ forloop.index0 }}" aria-current="false">
+                      <span class="bpv__chapter-num">{{ block.settings.chapter_num | default: forloop.index | escape }}</span>
+                      <span>
+                        {%- if block.settings.chapter_name != blank -%}
+                          <span class="bpv__chapter-name">{{ block.settings.chapter_name | escape }}</span>
+                        {%- endif -%}
+                        {%- if block.settings.chapter_meta != blank -%}
+                          <span class="bpv__chapter-meta">{{ block.settings.chapter_meta | escape }}</span>
+                        {%- endif -%}
+                      </span>
+                    </button>
+                  </li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
+
+        <!-- What's Inside -->
+        {%- if inside_blocks.size > 0 -%}
+          <div class="bpv__panel">
+            {%- if section.settings.inside_label != blank -%}
+              <p class="bpv__panel-label">{{ section.settings.inside_label | escape }}</p>
+            {%- endif -%}
+            <ul class="bpv__list">
+              {%- for block in inside_blocks -%}
+                {%- if block.settings.text != blank -%}
+                  <li {{ block.shopify_attributes }}>
+                    <span class="bpv__check" aria-hidden="true">✓</span>
+                    {{ block.settings.text | escape }}
+                  </li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        <!-- Author -->
+        {%- if section.settings.author_name != blank or section.settings.author_bio != blank -%}
+          <div class="bpv__panel">
+            {%- if section.settings.author_label != blank -%}
+              <p class="bpv__panel-label">{{ section.settings.author_label | escape }}</p>
+            {%- endif -%}
+            <div class="bpv__author">
+              {%- if section.settings.author_image != blank -%}
+                {%- assign avatar_alt = section.settings.author_name | default: '' -%}
+                {{
+                  section.settings.author_image
+                  | image_url: width: 104
+                  | image_tag:
+                    class: 'bpv__avatar',
+                    loading: 'lazy',
+                    alt: avatar_alt,
+                    widths: '52, 104'
+                }}
+              {%- else -%}
+                <div class="bpv__avatar"></div>
+              {%- endif -%}
+              <div>
+                {%- if section.settings.author_name != blank -%}
+                  <p class="bpv__author-name">{{ section.settings.author_name | escape }}</p>
+                {%- endif -%}
+                {%- if section.settings.author_role != blank -%}
+                  <p class="bpv__author-role">{{ section.settings.author_role | escape }}</p>
+                {%- endif -%}
+              </div>
+            </div>
+            {%- if section.settings.author_bio != blank -%}
+              <div class="bpv__author-body">{{ section.settings.author_bio }}</div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="application/json" id="bpv-config-{{ section.id }}">
+{
+  "total": {{ page_blocks | size }},
+  "labels": [
+    {%- for block in page_blocks -%}
+      {%- unless forloop.first -%},{%- endunless -%}
+      {{ block.settings.counter_label | default: forloop.index | json }}
+    {%- endfor -%}
+  ]
+}
+</script>
+
+<script>
+(function () {
+  var root     = document.querySelector('[data-bpv="{{ section.id }}"]');
+  if (!root) return;
+  var cfg      = JSON.parse(document.getElementById('bpv-config-{{ section.id }}').textContent);
+  var LABELS   = cfg.labels;
+  var total    = cfg.total;
+  if (total === 0) return;
+
+  var pages    = Array.prototype.slice.call(root.querySelectorAll('[data-page]'));
+  var stage    = root.querySelector('[data-stage]');
+  var prevBtn  = root.querySelector('[data-prev]');
+  var nextBtn  = root.querySelector('[data-next]');
+  var dotsWrap = root.querySelector('[data-dots]');
+  var counter  = root.querySelector('[data-counter]');
+  var chapBtns = Array.prototype.slice.call(root.querySelectorAll('[data-goto]'));
+  var fsBtn    = root.querySelector('[data-fullscreen]');
+  var index    = 0;
+
+  var dots = pages.map(function (_, i) {
+    var d = document.createElement('button');
+    d.className = 'bpv__dot';
+    d.type = 'button';
+    d.setAttribute('role', 'tab');
+    d.setAttribute('aria-label', 'Go to page ' + (i + 1));
+    d.setAttribute('aria-current', i === 0 ? 'true' : 'false');
+    d.addEventListener('click', function () { go(i); });
+    dotsWrap.appendChild(d);
+    return d;
+  });
+
+  function go(i) {
+    index = Math.min(total - 1, Math.max(0, i));
+
+    pages.forEach(function (p, n) { p.classList.toggle('is-active', n === index); });
+    dots.forEach(function (d, n) { d.setAttribute('aria-current', String(n === index)); });
+    chapBtns.forEach(function (b) {
+      b.setAttribute('aria-current', String(parseInt(b.dataset.goto, 10) === index));
+    });
+
+    counter.textContent = (LABELS[index] || 'Page ' + (index + 1)) + ' \u00b7 ' + (index + 1) + ' of ' + total;
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === total - 1;
+  }
+
+  prevBtn.addEventListener('click', function () { go(index - 1); });
+  nextBtn.addEventListener('click', function () { go(index + 1); });
+  chapBtns.forEach(function (b) {
+    b.addEventListener('click', function () { go(parseInt(b.dataset.goto, 10)); });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!root.contains(document.activeElement) && document.activeElement !== document.body) return;
+    if (e.key === 'ArrowRight') go(index + 1);
+    if (e.key === 'ArrowLeft')  go(index - 1);
+  });
+
+  if (fsBtn && stage) {
+    fsBtn.addEventListener('click', function () {
+      if (!document.fullscreenElement) {
+        if (stage.requestFullscreen) stage.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    });
+  }
+
+  go(0);
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Book Preview",
+  "tag": "section",
+  "class": "book-preview-section",
+  "blocks": [
+    {
+      "type": "page",
+      "name": "Page",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Page image"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Image alt text",
+          "info": "Leave blank to use the chapter name"
+        },
+        {
+          "type": "text",
+          "id": "counter_label",
+          "label": "Counter label",
+          "info": "Shown as \"Label · X of Y\" in the viewer bar. E.g. Cover, Chapter 1, Unlock"
+        },
+        {
+          "type": "text",
+          "id": "chapter_num",
+          "label": "Chapter badge",
+          "info": "Text shown in the numbered circle. Use — for cover."
+        },
+        {
+          "type": "text",
+          "id": "chapter_name",
+          "label": "Chapter name"
+        },
+        {
+          "type": "text",
+          "id": "chapter_meta",
+          "label": "Chapter meta",
+          "info": "e.g. P. 13 or Email Gate"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_in_chapters",
+          "label": "Show in chapter list",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "is_gate",
+          "label": "Gate row (gold chapter name)",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "inside_item",
+      "name": "What's Inside item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Item text"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Free Preview"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Click the arrows."
+    },
+    {
+      "type": "text",
+      "id": "script_line",
+      "label": "Script line",
+      "default": "Flip the pages."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Preview the cover and first 5 chapters. Enter your email at the gate to unlock the complete book."
+    },
+    {
+      "type": "header",
+      "content": "Chapter panel"
+    },
+    {
+      "type": "text",
+      "id": "chapters_label",
+      "label": "Panel label",
+      "default": "12 Chapters \u00b7 Volume I"
+    },
+    {
+      "type": "text",
+      "id": "book_title_main",
+      "label": "Book title (main)",
+      "default": "The Biome Hacker\u2019s"
+    },
+    {
+      "type": "text",
+      "id": "book_title_script",
+      "label": "Book title (script suffix)",
+      "default": "Code."
+    },
+    {
+      "type": "header",
+      "content": "What's Inside panel"
+    },
+    {
+      "type": "text",
+      "id": "inside_label",
+      "label": "Panel label",
+      "default": "What\u2019s Inside"
+    },
+    {
+      "type": "header",
+      "content": "Author panel"
+    },
+    {
+      "type": "text",
+      "id": "author_label",
+      "label": "Panel label",
+      "default": "About the Author"
+    },
+    {
+      "type": "image_picker",
+      "id": "author_image",
+      "label": "Author photo"
+    },
+    {
+      "type": "text",
+      "id": "author_name",
+      "label": "Author name",
+      "default": "William Robertson"
+    },
+    {
+      "type": "text",
+      "id": "author_role",
+      "label": "Author role",
+      "default": "Founder \u00b7 Rainbow Smile"
+    },
+    {
+      "type": "richtext",
+      "id": "author_bio",
+      "label": "Author bio",
+      "default": "<p>William formulated <strong>OG3\u2122<\/strong> after realising that conventional oral care was doing the opposite of what he needed. He created the <strong>Biome Food\u2122<\/strong> category and founded Rainbow Smile in Ojai, California. Scientific strategy by Dr. Vanita K. Gupta, PhD, MBA.<\/p>"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow, counter & meta font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Title & chapter name font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script line font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body & subtitle font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Background",
+      "default": "#161a35"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Panel background",
+      "default": "#1e2240"
+    },
+    {
+      "type": "color",
+      "id": "card2_color",
+      "label": "Chapter badge background",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "white_color",
+      "label": "Primary text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Gold accent",
+      "default": "#f5b842"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Active chapter accent",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "green_color",
+      "label": "Checkmark color",
+      "default": "#4caf50"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text",
+      "default": "#b7bbd0"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Muted text",
+      "default": "#838aa8"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Book Preview",
+      "blocks": [
+        { "type": "page", "settings": { "counter_label": "Cover", "chapter_num": "\u2014", "chapter_name": "Cover", "chapter_meta": "The Biome Hacker\u2019s Code", "show_in_chapters": true, "is_gate": false } },
+        { "type": "page", "settings": { "counter_label": "Chapter 1", "chapter_num": "1", "chapter_name": "The Dawn of the Bio-Age", "chapter_meta": "P. 13", "show_in_chapters": true, "is_gate": false } },
+        { "type": "page", "settings": { "counter_label": "Chapter 2", "chapter_num": "2", "chapter_name": "Meet Your mOS", "chapter_meta": "P. 19", "show_in_chapters": true, "is_gate": false } },
+        { "type": "page", "settings": { "counter_label": "Chapter 3", "chapter_num": "3", "chapter_name": "The Mouth Control Panel", "chapter_meta": "P. 25", "show_in_chapters": true, "is_gate": false } },
+        { "type": "page", "settings": { "counter_label": "Chapter 4", "chapter_num": "4", "chapter_name": "75 Years of Wrong Turns", "chapter_meta": "P. 31", "show_in_chapters": true, "is_gate": false } },
+        { "type": "page", "settings": { "counter_label": "Chapter 5", "chapter_num": "5", "chapter_name": "The Decay vs. Youth Signal Battle", "chapter_meta": "P. 37", "show_in_chapters": true, "is_gate": false } },
+        { "type": "page", "settings": { "counter_label": "Unlock", "chapter_num": "6", "chapter_name": "+ Unlock 7 more chapters", "chapter_meta": "Email Gate", "show_in_chapters": true, "is_gate": true } },
+        { "type": "page", "settings": { "counter_label": "Back cover", "chapter_num": "", "chapter_name": "Back cover", "chapter_meta": "", "show_in_chapters": false, "is_gate": false } },
+        { "type": "inside_item", "settings": { "text": "12 Full Chapters \u00b7 70 Pages" } },
+        { "type": "inside_item", "settings": { "text": "12 Full-Page Chapter Illustrations" } },
+        { "type": "inside_item", "settings": { "text": "The 60-Second Daily Reset Protocol" } },
+        { "type": "inside_item", "settings": { "text": "The 4 Pillars of OG3\u2122 Explained" } },
+        { "type": "inside_item", "settings": { "text": "The Amplifier Protocol" } },
+        { "type": "inside_item", "settings": { "text": "Foreword by Dr. Vanita K. Gupta, PhD" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

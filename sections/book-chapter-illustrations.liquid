@@ -1,0 +1,395 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --cg-navy:  {{ section.settings.navy_color }};
+    --cg-coral: {{ section.settings.coral_color }};
+    --cg-sub:   {{ section.settings.sub_color }};
+    --cg-meta:  {{ section.settings.meta_color }};
+    --cg-line:  {{ section.settings.line_color }};
+    --cg-plate: {{ section.settings.plate_color }};
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} .chg {
+    background: {{ section.settings.bg_color }};
+    padding-block: clamp(44px, 6vw, 84px);
+    padding-inline: clamp(16px, 4vw, 48px);
+  }
+
+  #shopify-section-{{ section.id }} .chg * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .chg__inner { max-width: 1240px; margin-inline: auto; }
+
+  /* ---------- Header ---------- */
+  #shopify-section-{{ section.id }} .chg__head { text-align: center; margin-bottom: clamp(34px, 5vw, 60px); }
+
+  #shopify-section-{{ section.id }} .chg__eyebrow {
+    margin: 0 0 clamp(14px, 2vw, 20px);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--cg-coral);
+    line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .chg__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(30px, 4.2vw, 50px);
+    line-height: 1.12;
+    letter-spacing: -0.5px;
+    color: var(--cg-navy);
+  }
+
+  #shopify-section-{{ section.id }} .chg__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: clamp(28px, 3.8vw, 46px);
+    line-height: 1.15;
+    color: var(--cg-coral);
+  }
+
+  #shopify-section-{{ section.id }} .chg__sub {
+    margin: clamp(12px, 1.8vw, 18px) auto 0;
+    max-width: 520px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(13px, 1.3vw, 15px);
+    line-height: 1.6;
+    color: var(--cg-sub);
+  }
+
+  /* ---------- Grid ---------- */
+  #shopify-section-{{ section.id }} .chg__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(16px, 2.4vw, 34px) clamp(14px, 1.8vw, 24px);
+  }
+
+  #shopify-section-{{ section.id }} .chg__item { margin: 0; }
+
+  #shopify-section-{{ section.id }} .chg__plate {
+    display: block;
+    border: 1px solid var(--cg-line);
+    border-radius: 3px;
+    overflow: hidden;
+    background: var(--cg-plate);
+    aspect-ratio: 3 / 4;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .chg__plate img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .chg__plate svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} a.chg__plate:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(40, 35, 30, 0.14);
+    border-color: #d6d6de;
+  }
+  #shopify-section-{{ section.id }} a.chg__plate:focus-visible {
+    outline: 3px solid rgba(239,74,34,0.4);
+    outline-offset: 3px;
+  }
+
+  #shopify-section-{{ section.id }} .chg__caption {
+    margin: 12px 0 0;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--cg-meta);
+  }
+
+  #shopify-section-{{ section.id }} .chg__ch { color: var(--cg-coral); }
+
+  /* Responsive */
+  @media (max-width: 979px) {
+    #shopify-section-{{ section.id }} .chg__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 680px) {
+    #shopify-section-{{ section.id }} .chg__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} a.chg__plate:hover { transform: none; }
+  }
+</style>
+
+<div class="chg">
+  <div class="chg__inner">
+
+    <header class="chg__head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="chg__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.title != blank or section.settings.script_line != blank -%}
+        <h2 class="chg__title">
+          {{ section.settings.title | escape | newline_to_br }}
+          {%- if section.settings.script_line != blank -%}
+            <span class="chg__script">{{ section.settings.script_line | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="chg__sub">{{ section.settings.subtitle | escape }}</p>
+      {%- endif -%}
+    </header>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="chg__grid">
+        {%- for block in section.blocks -%}
+          <figure class="chg__item" {{ block.shopify_attributes }}>
+
+            {%- if block.settings.link != blank -%}
+              <a class="chg__plate" href="{{ block.settings.link }}">
+            {%- else -%}
+              <div class="chg__plate">
+            {%- endif -%}
+
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 600
+                  | image_tag:
+                    loading: 'lazy',
+                    alt: block.settings.alt | default: block.settings.chapter_label,
+                    widths: '300, 450, 600'
+                }}
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag }}
+              {%- endif -%}
+
+            {%- if block.settings.link != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.chapter_label != blank or block.settings.page_label != blank -%}
+              <figcaption class="chg__caption">
+                {%- if block.settings.chapter_label != blank -%}
+                  <span class="chg__ch">{{ block.settings.chapter_label | escape }}</span>
+                {%- endif -%}
+                {%- if block.settings.page_label != blank -%}
+                  {%- if block.settings.chapter_label != blank -%} &middot; {%- endif -%}
+                  {{ block.settings.page_label | escape }}
+                {%- endif -%}
+              </figcaption>
+            {%- endif -%}
+
+          </figure>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Book Chapter Illustrations",
+  "tag": "section",
+  "class": "book-chapter-illustrations-section",
+  "blocks": [
+    {
+      "type": "illustration",
+      "name": "Illustration",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Illustration image"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Image alt text",
+          "info": "Leave blank to use the chapter label"
+        },
+        {
+          "type": "text",
+          "id": "chapter_label",
+          "label": "Chapter label",
+          "info": "e.g. CH.1",
+          "default": "CH.1"
+        },
+        {
+          "type": "text",
+          "id": "page_label",
+          "label": "Page label",
+          "info": "e.g. P.13",
+          "default": "P.13"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (optional)",
+          "info": "Leave blank to render as a non-interactive plate"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "12 Chapter Illustrations"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "info": "Use a line break (Enter) for a new line",
+      "default": "Twelve chapters.\nOne complete"
+    },
+    {
+      "type": "text",
+      "id": "script_line",
+      "label": "Script line",
+      "default": "transformation."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Each chapter opens with a full-page illustration."
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow & caption font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Title font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script line font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Subtitle font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading color",
+      "default": "#2b3054"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Accent color (eyebrow, script, chapter no.)",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "sub_color",
+      "label": "Subtitle color",
+      "default": "#6f7488"
+    },
+    {
+      "type": "color",
+      "id": "meta_color",
+      "label": "Caption color",
+      "default": "#9aa0b3"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Plate border color",
+      "default": "#e4e4ea"
+    },
+    {
+      "type": "color",
+      "id": "plate_color",
+      "label": "Plate placeholder background",
+      "default": "#f6f4ef"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Book Chapter Illustrations",
+      "blocks": [
+        { "type": "illustration", "settings": { "chapter_label": "CH.1",  "page_label": "P.13", "alt": "Human 1.0 vs. Biome 2.0 \u2014 The Dawn of the Bio-Age" } },
+        { "type": "illustration", "settings": { "chapter_label": "CH.2",  "page_label": "P.19", "alt": "Meet Your mOS" } },
+        { "type": "illustration", "settings": { "chapter_label": "CH.3",  "page_label": "P.25", "alt": "The Mouth Control Panel" } },
+        { "type": "illustration", "settings": { "chapter_label": "CH.4",  "page_label": "P.31", "alt": "75 Years of Wrong Turns" } },
+        { "type": "illustration", "settings": { "chapter_label": "CH.5",  "page_label": "P.37", "alt": "The Decay vs. Youth Signal Battle" } },
+        { "type": "illustration", "settings": { "chapter_label": "CH.6",  "page_label": "P.43", "alt": "The 4 Pillars of a Youthful Mouth" } },
+        { "type": "illustration", "settings": { "chapter_label": "CH.7",  "page_label": "P.49", "alt": "Your 60-Second Daily Reset" } },
+        { "type": "illustration", "settings": { "chapter_label": "CH.8",  "page_label": "P.53", "alt": "Youth Signals Hit Every System" } },
+        { "type": "illustration", "settings": { "chapter_label": "CH.9",  "page_label": "P.57", "alt": "The Biome Hacker Rituals" } },
+        { "type": "illustration", "settings": { "chapter_label": "CH.10", "page_label": "P.61", "alt": "Track Your Biome Upgrades" } },
+        { "type": "illustration", "settings": { "chapter_label": "CH.11", "page_label": "P.65", "alt": "The Amplifier Protocol" } },
+        { "type": "illustration", "settings": { "chapter_label": "CH.12", "page_label": "P.69", "alt": "The Biome Hacker Movement" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

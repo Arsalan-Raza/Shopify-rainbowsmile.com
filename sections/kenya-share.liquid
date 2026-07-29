@@ -1,0 +1,657 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --sh-bg:      {{ section.settings.bg_color }};
+    --sh-ink:     {{ section.settings.ink_color }};
+    --sh-coral:   {{ section.settings.coral_color }};
+    --sh-body:    {{ section.settings.body_color }};
+    --sh-strong:  {{ section.settings.strong_color }};
+    --sh-card:    {{ section.settings.card_color }};
+    --sh-line:    {{ section.settings.line_color }};
+    --sh-dark:    {{ section.settings.dark_color }};
+    --sh-cream:   {{ section.settings.cream_color }};
+    --sh-gold:    {{ section.settings.gold_color }};
+    --sh-dark-tx: {{ section.settings.dark_tx_color }};
+    --sh-rule:    {{ section.settings.rule_color }};
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} .shr {
+    background: var(--sh-bg);
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  #shopify-section-{{ section.id }} .shr * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .shr__inner {
+    max-width: 1200px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(30px, 4.5vw, 60px);
+    align-items: start;
+  }
+
+  /* Left */
+  #shopify-section-{{ section.id }} .shr__content { max-width: 540px; }
+
+  #shopify-section-{{ section.id }} .shr__eyebrow {
+    margin: 0 0 clamp(12px, 1.8vw, 18px);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--sh-coral);
+    line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .shr__title {
+    margin: 0 0 clamp(18px, 2.4vw, 24px);
+    font-family: var(--font-{{ section.settings.display_font }}-family);
+    font-weight: 700;
+    font-size: clamp(30px, 3.8vw, 46px);
+    line-height: 1.12;
+    letter-spacing: -0.5px;
+    color: var(--sh-ink);
+  }
+
+  #shopify-section-{{ section.id }} .shr__title-accent {
+    font-style: italic;
+    color: var(--sh-coral);
+  }
+
+  #shopify-section-{{ section.id }} .shr__body {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.7;
+    color: var(--sh-body);
+  }
+  #shopify-section-{{ section.id }} .shr__body p { margin: 0; }
+  #shopify-section-{{ section.id }} .shr__body + .shr__body { margin-top: clamp(16px, 2.4vw, 24px); }
+  #shopify-section-{{ section.id }} .shr__body strong { color: var(--sh-strong); font-weight: 700; }
+
+  /* Action cards */
+  #shopify-section-{{ section.id }} .shr__actions {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 1.6vw, 16px);
+    margin-top: clamp(22px, 3vw, 32px);
+  }
+
+  #shopify-section-{{ section.id }} .shr__action {
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 2vw, 20px);
+    width: 100%;
+    padding: clamp(16px, 2vw, 22px) clamp(16px, 2.2vw, 24px);
+    border: 1px solid var(--sh-line);
+    border-radius: 10px;
+    background: var(--sh-card);
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    font: inherit;
+    transition: border-color 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
+  }
+  #shopify-section-{{ section.id }} .shr__action:hover {
+    border-color: #d9cbb8;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(90, 70, 45, 0.08);
+  }
+  #shopify-section-{{ section.id }} .shr__action:focus-visible { outline: 3px solid rgba(239,74,34,0.4); outline-offset: 3px; }
+
+  #shopify-section-{{ section.id }} .shr__action-icon { flex: none; color: var(--sh-ink); }
+  #shopify-section-{{ section.id }} .shr__action-icon svg { width: 22px; height: 22px; display: block; }
+
+  #shopify-section-{{ section.id }} .shr__action-title {
+    display: block;
+    margin: 0 0 5px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 700;
+    font-size: clamp(14px, 1.4vw, 15px);
+    line-height: 1.2;
+    color: var(--sh-ink);
+  }
+
+  #shopify-section-{{ section.id }} .shr__action-sub {
+    display: block;
+    margin: 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.2vw, 13px);
+    line-height: 1.4;
+    color: var(--sh-coral);
+  }
+  #shopify-section-{{ section.id }} .shr__action--muted .shr__action-sub { color: var(--sh-body); }
+
+  /* Right */
+  #shopify-section-{{ section.id }} .shr__media {
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    background: linear-gradient(160deg, #7d8f5c, #b3a06a);
+    margin-bottom: clamp(14px, 1.8vw, 20px);
+  }
+  #shopify-section-{{ section.id }} .shr__media img,
+  #shopify-section-{{ section.id }} .shr__media svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .shr__quote-card {
+    background: var(--sh-dark);
+    border-radius: 16px;
+    padding: clamp(24px, 3.2vw, 38px);
+  }
+
+  #shopify-section-{{ section.id }} .shr__quote {
+    margin: 0 0 clamp(16px, 2.2vw, 22px);
+    font-family: var(--font-{{ section.settings.display_font }}-family);
+    font-weight: 700;
+    font-style: italic;
+    font-size: clamp(17px, 1.9vw, 23px);
+    line-height: 1.42;
+    color: var(--sh-cream);
+  }
+
+  #shopify-section-{{ section.id }} .shr__quote-accent { color: var(--sh-coral); }
+
+  #shopify-section-{{ section.id }} .shr__attr {
+    margin: 0 0 clamp(18px, 2.4vw, 26px);
+    padding-bottom: clamp(18px, 2.4vw, 26px);
+    border-bottom: 1px solid var(--sh-rule);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--sh-gold);
+  }
+
+  #shopify-section-{{ section.id }} .shr__quote-body {
+    margin: 0 0 clamp(16px, 2.2vw, 22px);
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(13px, 1.25vw, 14px);
+    line-height: 1.65;
+    color: var(--sh-dark-tx);
+  }
+
+  #shopify-section-{{ section.id }} .shr__quote-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--sh-coral);
+    text-decoration: none;
+    transition: color 0.16s ease;
+  }
+  #shopify-section-{{ section.id }} .shr__quote-link span { transition: transform 0.16s ease; }
+  #shopify-section-{{ section.id }} .shr__quote-link:hover { color: #ff6a45; }
+  #shopify-section-{{ section.id }} .shr__quote-link:hover span { transform: translateX(3px); }
+  #shopify-section-{{ section.id }} .shr__quote-link:focus-visible { outline: 3px solid rgba(239,74,34,0.4); outline-offset: 3px; border-radius: 3px; }
+
+  @media (max-width: 899px) {
+    #shopify-section-{{ section.id }} .shr__inner { grid-template-columns: 1fr; gap: clamp(30px, 6vw, 42px); }
+    #shopify-section-{{ section.id }} .shr__content { max-width: 640px; }
+    #shopify-section-{{ section.id }} .shr__media { aspect-ratio: 16 / 9; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .shr__action:hover { transform: none; }
+    #shopify-section-{{ section.id }} .shr__quote-link:hover span { transform: none; }
+  }
+</style>
+
+<section class="shr">
+  <div class="shr__inner">
+
+    <!-- Left -->
+    <div class="shr__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="shr__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.title != blank or section.settings.title_accent != blank -%}
+        <h2 class="shr__title">
+          {{- section.settings.title | escape -}}
+          {%- if section.settings.title_accent != blank -%}
+            <span class="shr__title-accent"> {{ section.settings.title_accent | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.body_1 != blank -%}
+        <div class="shr__body">{{ section.settings.body_1 }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.body_2 != blank -%}
+        <div class="shr__body">{{ section.settings.body_2 }}</div>
+      {%- endif -%}
+
+      {%- assign action_blocks = section.blocks | where: 'type', 'action' -%}
+      {%- if action_blocks.size > 0 -%}
+        <div class="shr__actions">
+          {%- for block in action_blocks -%}
+            {%- assign is_share = block.settings.is_share -%}
+            {%- if is_share -%}
+              <button
+                class="shr__action{% if block.settings.is_muted %} shr__action--muted{% endif %}"
+                type="button"
+                data-share-btn="{{ section.id }}"
+                {{ block.shopify_attributes }}
+              >
+            {%- else -%}
+              <a
+                class="shr__action{% if block.settings.is_muted %} shr__action--muted{% endif %}"
+                href="{{ block.settings.url | default: '#' }}"
+                {% unless block.settings.url == blank %}rel="noopener"{% endunless %}
+                {{ block.shopify_attributes }}
+              >
+            {%- endif -%}
+                <span class="shr__action-icon" aria-hidden="true">
+                  {%- case block.settings.icon_type -%}
+                    {%- when 'share' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+                    {%- when 'shop' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M10 7h4"/><rect x="9.5" y="10.5" width="5" height="4" rx="1"/></svg>
+                    {%- when 'donate' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.7-7.5-10a4.5 4.5 0 0 1 7.5-3.3A4.5 4.5 0 0 1 19.5 10c0 5.3-7.5 10-7.5 10Z"/><path d="M6 9.5h4l1.2 2 1.6-4 1.2 2h4"/></svg>
+                    {%- when 'link' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                  {%- endcase -%}
+                </span>
+                <span>
+                  <span class="shr__action-title">{{ block.settings.title | escape }}</span>
+                  {%- if block.settings.sub != blank -%}
+                    <span class="shr__action-sub" data-share-sub>{{ block.settings.sub | escape }}</span>
+                  {%- endif -%}
+                </span>
+            {%- if is_share -%}
+              </button>
+            {%- else -%}
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <!-- Right -->
+    <div class="shr__side">
+      <div class="shr__media">
+        {%- if section.settings.photo != blank -%}
+          {{
+            section.settings.photo
+            | image_url: width: 1000
+            | image_tag:
+              alt: section.settings.photo_alt | escape,
+              loading: 'lazy',
+              widths: '500, 700, 1000',
+              sizes: '(max-width: 899px) 100vw, 50vw'
+          }}
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag }}
+        {%- endif -%}
+      </div>
+
+      <div class="shr__quote-card">
+        {%- if section.settings.quote != blank or section.settings.quote_accent != blank -%}
+          <blockquote class="shr__quote">
+            {{- section.settings.quote | escape -}}
+            {%- if section.settings.quote_accent != blank -%}
+              <span class="shr__quote-accent"> {{ section.settings.quote_accent | escape }}</span>
+            {%- endif -%}
+          </blockquote>
+        {%- endif -%}
+
+        {%- if section.settings.attribution != blank -%}
+          <p class="shr__attr">{{ section.settings.attribution | escape }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.quote_body != blank -%}
+          <p class="shr__quote-body">{{ section.settings.quote_body | escape }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.quote_link_text != blank -%}
+          <a
+            class="shr__quote-link"
+            href="{{ section.settings.quote_link_url | default: '#' }}"
+            rel="noopener"
+          >
+            {{ section.settings.quote_link_text | escape }}
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function () {
+  var btn = document.querySelector('#shopify-section-{{ section.id }} [data-share-btn]');
+  if (!btn) return;
+
+  btn.addEventListener('click', function () {
+    var data = { title: document.title, url: location.href };
+    var sub = btn.querySelector('[data-share-sub]');
+    var original = sub ? sub.textContent : '';
+
+    if (navigator.share) {
+      navigator.share(data).catch(function () {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(location.href).then(function () {
+        if (sub) {
+          sub.textContent = 'Link copied';
+          setTimeout(function () { sub.textContent = original; }, 2000);
+        }
+      });
+    }
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Kenya Share",
+  "tag": "section",
+  "class": "kenya-share-section",
+  "blocks": [
+    {
+      "type": "action",
+      "name": "Action card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon",
+          "options": [
+            { "value": "share",  "label": "Share arrow" },
+            { "value": "shop",   "label": "Phone / shop" },
+            { "value": "donate", "label": "Heart / donate" },
+            { "value": "link",   "label": "Link" }
+          ],
+          "default": "share"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "sub",
+          "label": "Subtitle"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL (leave blank for share button)"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_share",
+          "label": "Native share button (overrides URL)",
+          "info": "On mobile, opens the OS share sheet. On desktop, copies the URL to clipboard.",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "is_muted",
+          "label": "Muted subtitle (body color instead of coral)",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Left column"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Extend the Signal"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title — main",
+      "default": "Share this page with"
+    },
+    {
+      "type": "text",
+      "id": "title_accent",
+      "label": "Title — italic accent (coral)",
+      "default": "your people."
+    },
+    {
+      "type": "richtext",
+      "id": "body_1",
+      "label": "Body paragraph 1",
+      "default": "<p>Tell them about the invisible crisis. Tell them about Kenya. Tell them that <strong>a single $10 donation gives one person one month of daily oral care</strong> \u2014 and that is not a small thing to be.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "body_2",
+      "label": "Body paragraph 2",
+      "default": "<p>The quorum sensing community extends the signal until everyone is in it. Every person excluded impoverishes the community\u2019s collective intelligence. This is not charity. This is ecology.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Quote card"
+    },
+    {
+      "type": "image_picker",
+      "id": "photo",
+      "label": "Photo"
+    },
+    {
+      "type": "text",
+      "id": "photo_alt",
+      "label": "Photo alt text",
+      "default": "Visitors meeting Maasai community members in Kenya"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote — main (cream)",
+      "default": "\u201cEvery person excluded impoverishes the community\u2019s collective intelligence."
+    },
+    {
+      "type": "textarea",
+      "id": "quote_accent",
+      "label": "Quote — accent (coral)",
+      "default": "This is not charity. This is ecology.\u201d"
+    },
+    {
+      "type": "text",
+      "id": "attribution",
+      "label": "Attribution (gold)",
+      "default": "William Robertson \u00b7 Founder, Rainbow Smile"
+    },
+    {
+      "type": "textarea",
+      "id": "quote_body",
+      "label": "Quote card body text",
+      "default": "The quorum sensing community extends the signal until everyone is in it. Every person excluded impoverishes the community\u2019s collective intelligence."
+    },
+    {
+      "type": "text",
+      "id": "quote_link_text",
+      "label": "Quote card link text",
+      "default": "Donate Now"
+    },
+    {
+      "type": "url",
+      "id": "quote_link_url",
+      "label": "Quote card link URL"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "display_font",
+      "label": "Title & quote font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow, attribution & link font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body & action card font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#fdf9f3"
+    },
+    {
+      "type": "color",
+      "id": "ink_color",
+      "label": "Headline & card title",
+      "default": "#1c1109"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Eyebrow, accent & links",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body copy",
+      "default": "#7a6a5b"
+    },
+    {
+      "type": "color",
+      "id": "strong_color",
+      "label": "Bold text",
+      "default": "#2a1c12"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Action card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Action card border",
+      "default": "#ece4d8"
+    },
+    {
+      "type": "color",
+      "id": "dark_color",
+      "label": "Quote card background",
+      "default": "#1c1109"
+    },
+    {
+      "type": "color",
+      "id": "cream_color",
+      "label": "Quote text",
+      "default": "#ede3d5"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Attribution",
+      "default": "#d9a13c"
+    },
+    {
+      "type": "color",
+      "id": "dark_tx_color",
+      "label": "Quote card body text",
+      "default": "#a2988c"
+    },
+    {
+      "type": "color",
+      "id": "rule_color",
+      "label": "Quote card divider",
+      "default": "#ffffff1f"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kenya Share",
+      "blocks": [
+        {
+          "type": "action",
+          "settings": {
+            "icon_type": "share",
+            "title": "Share via text or email",
+            "sub": "Native share on mobile",
+            "is_share": true,
+            "is_muted": false
+          }
+        },
+        {
+          "type": "action",
+          "settings": {
+            "icon_type": "shop",
+            "title": "Shop OG3\u2122",
+            "sub": "Every purchase contributes 1% to Kenya",
+            "is_share": false,
+            "is_muted": true
+          }
+        },
+        {
+          "type": "action",
+          "settings": {
+            "icon_type": "donate",
+            "title": "Donate Now",
+            "sub": "Secure \u00b7 Tax receipt \u00b7 100% to cause",
+            "is_share": false,
+            "is_muted": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,454 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --gt-navy:   {{ section.settings.navy_color }};
+    --gt-white:  {{ section.settings.white_color }};
+    --gt-gold:   {{ section.settings.gold_color }};
+    --gt-coral:  {{ section.settings.coral_color }};
+    --gt-body:   {{ section.settings.body_color }};
+    --gt-faint:  {{ section.settings.faint_color }};
+    --gt-input:  rgba(255, 255, 255, 0.06);
+    --gt-border: rgba(255, 255, 255, 0.16);
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} .gate {
+    --gt-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='460' viewBox='0 0 460 460'%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='70' cy='90' r='34' opacity='.02'/%3E%3Ccircle cx='380' cy='340' r='38' opacity='.018'/%3E%3Ccircle cx='300' cy='60' r='20' opacity='.02'/%3E%3Ccircle cx='150' cy='350' r='26' opacity='.018'/%3E%3Ccircle cx='60' cy='250' r='2.4' opacity='.05'/%3E%3Ccircle cx='250' cy='150' r='2' opacity='.05'/%3E%3Ccircle cx='420' cy='180' r='2.2' opacity='.045'/%3E%3Ccircle cx='200' cy='420' r='2' opacity='.05'/%3E%3Cpath d='M120,110 Q120,121 131,121 Q120,121 120,132 Q120,121 109,121 Q120,121 120,110 Z' opacity='.07'/%3E%3Cpath d='M340,250 Q340,259 349,259 Q340,259 340,268 Q340,259 331,259 Q340,259 340,250 Z' opacity='.06'/%3E%3Cpath d='M410,420 Q410,428 418,428 Q410,428 410,436 Q410,428 402,428 Q410,428 410,420 Z' opacity='.05'/%3E%3C/g%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2' stroke-opacity='.035'%3E%3Ccircle cx='400' cy='90' r='15'/%3E%3Ccircle cx='80' cy='400' r='12'/%3E%3Ccircle cx='250' cy='300' r='9'/%3E%3C/g%3E%3C/svg%3E");
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: var(--gt-navy);
+    padding-block: clamp(52px, 8vw, 96px);
+    padding-inline: clamp(20px, 5vw, 40px);
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .gate * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .gate::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: var(--gt-texture);
+    background-size: 460px;
+    background-repeat: repeat;
+  }
+
+  #shopify-section-{{ section.id }} .gate__inner {
+    position: relative;
+    z-index: 2;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  #shopify-section-{{ section.id }} .gate__eyebrow {
+    margin: 0 0 clamp(14px, 2vw, 20px);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--gt-gold);
+    line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .gate__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(30px, 4.4vw, 52px);
+    line-height: 1.06;
+    letter-spacing: -0.5px;
+    color: var(--gt-white);
+  }
+
+  #shopify-section-{{ section.id }} .gate__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: clamp(28px, 3.8vw, 46px);
+    line-height: 1.15;
+    color: var(--gt-coral);
+  }
+
+  #shopify-section-{{ section.id }} .gate__body {
+    margin: clamp(18px, 2.6vw, 26px) auto 0;
+    max-width: 500px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.6;
+    color: var(--gt-body);
+  }
+
+  #shopify-section-{{ section.id }} .gate__form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 440px;
+    margin: clamp(26px, 4vw, 40px) auto 0;
+  }
+
+  #shopify-section-{{ section.id }} .gate__input {
+    width: 100%;
+    min-height: 58px;
+    padding: 18px 26px;
+    border: 1px solid var(--gt-border);
+    border-radius: 999px;
+    background: var(--gt-input);
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(15px, 1.4vw, 16px);
+    color: var(--gt-white);
+    text-align: center;
+    transition: border-color 0.16s ease, background-color 0.16s ease;
+  }
+  #shopify-section-{{ section.id }} .gate__input::placeholder { color: var(--gt-faint); }
+  #shopify-section-{{ section.id }} .gate__input:focus {
+    outline: none;
+    border-color: var(--gt-coral);
+    background: rgba(255, 255, 255, 0.09);
+    box-shadow: 0 0 0 3px rgba(239, 74, 34, 0.22);
+  }
+
+  #shopify-section-{{ section.id }} .gate__submit {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 58px;
+    padding: 18px 26px;
+    border: none;
+    border-radius: 999px;
+    background: var(--gt-coral);
+    color: #fff;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(15px, 1.4vw, 16px);
+    cursor: pointer;
+    transition: background-color 0.18s ease, transform 0.18s ease;
+  }
+  #shopify-section-{{ section.id }} .gate__submit span { transition: transform 0.18s ease; }
+  #shopify-section-{{ section.id }} .gate__submit:hover { background: #dc411b; transform: translateY(-2px); }
+  #shopify-section-{{ section.id }} .gate__submit:hover span { transform: translateX(3px); }
+  #shopify-section-{{ section.id }} .gate__submit:focus-visible { outline: 3px solid rgba(239,74,34,0.5); outline-offset: 3px; }
+
+  #shopify-section-{{ section.id }} .gate__error {
+    margin: 10px 0 0;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    color: #ff8a75;
+  }
+
+  #shopify-section-{{ section.id }} .gate__bypass {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin: clamp(20px, 3vw, 28px) 0 0;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.2vw, 13px);
+    letter-spacing: 0.6px;
+    color: var(--gt-faint);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.16s ease;
+  }
+  #shopify-section-{{ section.id }} .gate__bypass:hover { color: var(--gt-white); }
+  #shopify-section-{{ section.id }} .gate__bypass:focus-visible { outline: 3px solid rgba(255,255,255,0.4); outline-offset: 3px; border-radius: 3px; }
+
+  #shopify-section-{{ section.id }} .gate__fine {
+    margin: clamp(16px, 2.4vw, 22px) auto 0;
+    max-width: 560px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    line-height: 1.6;
+    color: var(--gt-faint);
+    opacity: 0.75;
+  }
+
+  /* Success state */
+  #shopify-section-{{ section.id }} .gate__success {
+    margin: clamp(26px, 4vw, 40px) auto 0;
+    max-width: 440px;
+    padding: 22px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.06);
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(15px, 1.4vw, 17px);
+    line-height: 1.4;
+    color: var(--gt-white);
+  }
+  #shopify-section-{{ section.id }} .gate__success-icon {
+    display: block;
+    margin: 0 auto 12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gt-coral);
+    color: #fff;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    #shopify-section-{{ section.id }} .gate__input { padding-inline: 18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .gate__submit:hover { transform: none; }
+  }
+</style>
+
+<div class="gate">
+  <div class="gate__inner">
+
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="gate__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.title != blank or section.settings.script_line != blank -%}
+      <h2 class="gate__title">
+        {{- section.settings.title | escape -}}
+        {%- if section.settings.script_line != blank -%}
+          <span class="gate__script">{{ section.settings.script_line | escape }}</span>
+        {%- endif -%}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.settings.body != blank -%}
+      <p class="gate__body">{{ section.settings.body | escape }}</p>
+    {%- endif -%}
+
+    {%- form 'customer', id: 'gate-form-{{ section.id }}', class: 'gate__form' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter,book-download">
+
+      {%- if form.posted_successfully? -%}
+        <p class="gate__success">
+          <span class="gate__success-icon" aria-hidden="true">✓</span>
+          {{ section.settings.success_text | default: 'Check your inbox — the book is on its way.' | escape }}
+        </p>
+      {%- else -%}
+        <label for="gate-email-{{ section.id }}" hidden>{{ 'general.newsletter_form.email_placeholder' | t }}</label>
+        <input
+          class="gate__input"
+          id="gate-email-{{ section.id }}"
+          type="email"
+          name="contact[email]"
+          value="{{ form.email }}"
+          placeholder="{{ section.settings.input_placeholder | default: 'your@email.com' | escape }}"
+          required
+          autocomplete="email"
+        >
+
+        {%- if form.errors -%}
+          <p class="gate__error" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+        {%- endif -%}
+
+        <button class="gate__submit" type="submit">
+          {{ section.settings.btn_text | default: 'Send me the book' | escape }}
+          <span aria-hidden="true">→</span>
+        </button>
+      {%- endif -%}
+    {%- endform -%}
+
+    {%- if section.settings.bypass_text != blank and section.settings.bypass_url != blank -%}
+      <a class="gate__bypass" href="{{ section.settings.bypass_url }}">
+        {{ section.settings.bypass_text | escape }} <span aria-hidden="true">→</span>
+      </a>
+    {%- endif -%}
+
+    {%- if section.settings.fine_print != blank -%}
+      <p class="gate__fine">{{ section.settings.fine_print | escape }}</p>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Book Email Gate",
+  "tag": "section",
+  "class": "book-email-gate-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Get the Complete Book"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "The complete book."
+    },
+    {
+      "type": "text",
+      "id": "script_line",
+      "label": "Script line",
+      "default": "Free."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body text",
+      "default": "All 12 chapters. Yours instantly. Plus the Biome Dispatch \u2014 monthly oral microbiome science for the genuinely curious."
+    },
+    {
+      "type": "header",
+      "content": "Form"
+    },
+    {
+      "type": "text",
+      "id": "input_placeholder",
+      "label": "Email input placeholder",
+      "default": "your@email.com"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Submit button text",
+      "default": "Send me the book"
+    },
+    {
+      "type": "text",
+      "id": "success_text",
+      "label": "Success message",
+      "default": "Check your inbox \u2014 the book is on its way."
+    },
+    {
+      "type": "header",
+      "content": "Bypass link"
+    },
+    {
+      "type": "text",
+      "id": "bypass_text",
+      "label": "Bypass link text",
+      "default": "Or download without email"
+    },
+    {
+      "type": "url",
+      "id": "bypass_url",
+      "label": "Bypass link URL",
+      "info": "Link to direct PDF download. Leave both text and URL blank to hide."
+    },
+    {
+      "type": "header",
+      "content": "Fine print"
+    },
+    {
+      "type": "textarea",
+      "id": "fine_print",
+      "label": "Fine print",
+      "default": "No spam. Unsubscribe anytime. We\u2019ll also send the Biome Dispatch newsletter monthly."
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow, bypass & fine print font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Title & button font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script line font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body & input font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Background",
+      "default": "#232a4d"
+    },
+    {
+      "type": "color",
+      "id": "white_color",
+      "label": "Primary text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Eyebrow color",
+      "default": "#f5b842"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Accent color (script, button)",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text color",
+      "default": "#b6bbd2"
+    },
+    {
+      "type": "color",
+      "id": "faint_color",
+      "label": "Fine print & bypass color",
+      "default": "#7e849f"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Book Email Gate"
+    }
+  ]
+}
+{% endschema %}

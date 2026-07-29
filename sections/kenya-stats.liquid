@@ -1,0 +1,366 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --ks-bg:     {{ section.settings.bg_color }};
+    --ks-navy:   {{ section.settings.navy_color }};
+    --ks-coral:  {{ section.settings.coral_color }};
+    --ks-body:   {{ section.settings.body_color }};
+    --ks-source: {{ section.settings.source_color }};
+    --ks-line:   {{ section.settings.line_color }};
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} .kst {
+    background: var(--ks-bg);
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(16px, 4vw, 40px);
+  }
+
+  #shopify-section-{{ section.id }} .kst * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .kst__inner { max-width: 1200px; margin-inline: auto; }
+
+  /* Header */
+  #shopify-section-{{ section.id }} .kst__head { text-align: center; margin-bottom: clamp(28px, 4vw, 44px); }
+
+  #shopify-section-{{ section.id }} .kst__eyebrow {
+    margin: 0 0 clamp(14px, 2vw, 20px);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--ks-coral);
+    line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .kst__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.display_font }}-family);
+    font-weight: 800;
+    font-size: clamp(30px, 4.4vw, 52px);
+    line-height: 1.12;
+    letter-spacing: -0.5px;
+    color: var(--ks-navy);
+  }
+
+  #shopify-section-{{ section.id }} .kst__title-accent {
+    font-style: italic;
+    color: var(--ks-coral);
+  }
+
+  /* Stats box */
+  #shopify-section-{{ section.id }} .kst__box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--ks-line);
+    border-radius: 14px;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  #shopify-section-{{ section.id }} .kst__stat {
+    padding: clamp(24px, 3vw, 40px) clamp(16px, 2vw, 28px);
+    border-left: 1px solid var(--ks-line);
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .kst__num {
+    margin: 0 0 clamp(14px, 2vw, 20px);
+    font-family: var(--font-{{ section.settings.display_font }}-family);
+    font-weight: 700;
+    font-size: clamp(38px, 4.2vw, 54px);
+    line-height: 1;
+    letter-spacing: -1px;
+    color: var(--ks-num-color, var(--ks-coral));
+  }
+
+  #shopify-section-{{ section.id }} .kst__body {
+    margin: 0 0 clamp(18px, 2.4vw, 26px);
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(13px, 1.25vw, 15px);
+    line-height: 1.6;
+    color: var(--ks-body);
+  }
+
+  #shopify-section-{{ section.id }} .kst__source {
+    margin: auto 0 0;
+    padding-top: clamp(12px, 1.8vw, 16px);
+    border-top: 1px solid var(--ks-line);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    line-height: 1.5;
+    color: var(--ks-source);
+  }
+
+  /* Reset left border at row starts */
+  #shopify-section-{{ section.id }} .kst__stat:nth-child(4n + 1) { border-left: none; }
+
+  /* Closing note */
+  #shopify-section-{{ section.id }} .kst__note {
+    margin: clamp(26px, 4vw, 40px) auto 0;
+    max-width: 760px;
+    text-align: center;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.7;
+    color: var(--ks-body);
+  }
+  #shopify-section-{{ section.id }} .kst__note p { margin: 0; }
+  #shopify-section-{{ section.id }} .kst__note strong { font-weight: 700; color: var(--ks-navy); }
+
+  /* Responsive — 4 → 2 → 1 columns */
+  @media (max-width: 979px) {
+    #shopify-section-{{ section.id }} .kst__box { grid-template-columns: repeat(2, 1fr); }
+    #shopify-section-{{ section.id }} .kst__stat:nth-child(n)      { border-left: 1px solid var(--ks-line); border-top: none; }
+    #shopify-section-{{ section.id }} .kst__stat:nth-child(2n + 1) { border-left: none; }
+    #shopify-section-{{ section.id }} .kst__stat:nth-child(n + 3)  { border-top: 1px solid var(--ks-line); }
+  }
+
+  @media (max-width: 560px) {
+    #shopify-section-{{ section.id }} .kst__box { grid-template-columns: 1fr; }
+    #shopify-section-{{ section.id }} .kst__stat:nth-child(n) { border-left: none; border-top: 1px solid var(--ks-line); }
+    #shopify-section-{{ section.id }} .kst__stat:nth-child(1) { border-top: none; }
+  }
+</style>
+
+<div class="kst">
+  <div class="kst__inner">
+
+    <header class="kst__head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="kst__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.title != blank or section.settings.title_accent != blank -%}
+        <h2 class="kst__title">
+          {{- section.settings.title | escape -}}
+          {%- if section.settings.title_accent != blank -%}
+            <span class="kst__title-accent"> {{ section.settings.title_accent | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+    </header>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="kst__box">
+        {%- for block in section.blocks -%}
+          <div class="kst__stat" style="--ks-num-color: {{ block.settings.num_color }};" {{ block.shopify_attributes }}>
+            {%- if block.settings.num != blank -%}
+              <p class="kst__num">{{ block.settings.num | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.body != blank -%}
+              <p class="kst__body">{{ block.settings.body | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.source != blank -%}
+              <p class="kst__source">{{ block.settings.source | escape }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.note != blank -%}
+      <div class="kst__note">{{ section.settings.note }}</div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kenya Stats",
+  "tag": "section",
+  "class": "kenya-stats-section",
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "num",
+          "label": "Number",
+          "default": "3.5B"
+        },
+        {
+          "type": "color",
+          "id": "num_color",
+          "label": "Number color",
+          "default": "#ef4a22"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "source",
+          "label": "Source / citation"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Scale of What We Face"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title — main (navy)",
+      "default": "Numbers that demand"
+    },
+    {
+      "type": "text",
+      "id": "title_accent",
+      "label": "Title — italic accent (coral)",
+      "default": "a response."
+    },
+    {
+      "type": "header",
+      "content": "Closing note"
+    },
+    {
+      "type": "richtext",
+      "id": "note",
+      "label": "Closing paragraph",
+      "default": "<p>Oral disease is not a mouth problem. The oral microbiome seeds the gut every time you swallow. The gut governs immunity, mood, metabolism, and cognition. <strong>What happens in the mouth in Kenya is not local \u2014 it is systemic, generational, and largely invisible to the world.<\/strong><\/p>"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "display_font",
+      "label": "Title & stat number font",
+      "info": "Match to the Kenya Hero display font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow & citation font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body & note font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#fdf9f3"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading & bold text",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Eyebrow & accent color",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text",
+      "default": "#3f4256"
+    },
+    {
+      "type": "color",
+      "id": "source_color",
+      "label": "Citation text",
+      "default": "#8a8f9e"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Divider & border color",
+      "default": "#e8e2d8"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kenya Stats",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "num": "3.5B",
+            "num_color": "#ef4a22",
+            "body": "People globally living with oral disease \u2014 cavities, gum disease, tooth loss. More than the combined population of the entire Western hemisphere.",
+            "source": "WHO Global Oral Health Status Report, 2022"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "num": "98%",
+            "num_color": "#f0c04a",
+            "body": "Of Kenyan adults have periodontal disease. This is not a high-risk group statistic. It is the baseline condition of an entire adult population.",
+            "source": "Kenya National Health Survey"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "num": "966",
+            "num_color": "#efb93c",
+            "body": "Licensed dentists for 55 million people. One dentist for every 56,000 Kenyans. In rural areas, professional dental care does not just fail to reach people.",
+            "source": "Kenya Medical Practitioners Board"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "num": "28",
+            "num_color": "#2f7d32",
+            "body": "Pediatric dentists in the entire country. Twenty-eight specialists caring for the dental needs of 28 million children. The math is not difficult.",
+            "source": "FDI World Dental Federation"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
