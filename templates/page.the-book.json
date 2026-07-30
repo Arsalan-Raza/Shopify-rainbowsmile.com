@@ -1,0 +1,650 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "audio_story_QAz98R": {
+      "type": "audio-story",
+      "name": "Audio Story",
+      "settings": {
+        "eyebrow": "A Personal Introduction · 90 Seconds",
+        "author_avatar": "shopify://shop_images/Background_Border_5.png",
+        "author_name": "William Robertson",
+        "author_role": "Founder · Rainbow Smile",
+        "title": "Hear the story behind",
+        "script_word": "the book.",
+        "note": "No autoplay · Press play when you’re ready",
+        "audio_url": "https://cdn.shopify.com/s/files/1/0950/6671/8529/files/N_Encinal_Ave_9_STMASTER-MP320.mp3?v=1785405678",
+        "track_title": "A personal introduction to The Biome Hacker’s Code",
+        "track_meta": "By William Robertson",
+        "action1_title": "Read the book",
+        "action1_sub": "PDF Download",
+        "action1_url": "",
+        "action2_title": "Listen free",
+        "action2_sub": "Audiobook Coming",
+        "action2_url": "",
+        "action3_title": "Share this page",
+        "action3_sub": "Text or Email",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "navy_color": "#14172E",
+        "white_color": "#ffffff",
+        "gold_color": "#f5b842",
+        "coral_color": "#ef4a22",
+        "green_color": "#4caf50",
+        "meta_color": "#8a90a8",
+        "faint_color": "#6d7391"
+      }
+    },
+    "book_hero_XwxiEf": {
+      "type": "book-hero",
+      "name": "Book Hero",
+      "settings": {
+        "eyebrow": "The Biome Hacker’s Code · Volume I · 12 Chapters",
+        "title": "Your operating system for",
+        "title_italic": "the",
+        "script_line": "living mouth",
+        "body": "Twelve chapters. One complete transformation. The oral microbiome, your mOS, and the 60-second daily reset that changes everything.",
+        "meta1_label": "By",
+        "meta1_value": "William Robertson",
+        "meta2_label": "Scientific Strategy",
+        "meta2_value": "Dr. Vanita K. Gupta, PhD",
+        "meta3_label": "Format",
+        "meta3_value": "PDF · 70 pages",
+        "btn1_text": "Preview the book",
+        "btn1_url": "",
+        "btn2_text": "Download free now",
+        "btn2_url": "",
+        "status_text": "Free · No credit card · Instant delivery",
+        "cover_image": "shopify://shop_images/Background_2.png",
+        "cover_url": "",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "body_font": "heading",
+        "navy_color": "#232748",
+        "coral_color": "#ef4a22",
+        "body_color": "#5b5f72",
+        "label_color": "#9aa0b3",
+        "green_color": "#4caf50",
+        "meta_color": "#8a8f9e",
+        "blob_color": "#fdeee4"
+      }
+    },
+    "book_preview_nWR6m7": {
+      "type": "book-preview",
+      "blocks": {
+        "page_jVWBtr": {
+          "type": "page",
+          "settings": {
+            "image": "shopify://shop_images/Background_2.png",
+            "alt": "",
+            "counter_label": "Cover",
+            "chapter_num": "—",
+            "chapter_name": "Cover",
+            "chapter_meta": "The Biome Hacker’s Code",
+            "show_in_chapters": true,
+            "is_gate": false
+          }
+        },
+        "page_Qn6x3J": {
+          "type": "page",
+          "settings": {
+            "image": "shopify://shop_images/Component_18.png",
+            "alt": "",
+            "counter_label": "Chapter 1",
+            "chapter_num": "1",
+            "chapter_name": "The Dawn of the Bio-Age",
+            "chapter_meta": "P. 13",
+            "show_in_chapters": true,
+            "is_gate": false
+          }
+        },
+        "page_k6FKV6": {
+          "type": "page",
+          "settings": {
+            "image": "shopify://shop_images/Component_22.png",
+            "alt": "",
+            "counter_label": "Chapter 2",
+            "chapter_num": "2",
+            "chapter_name": "Meet Your mOS",
+            "chapter_meta": "P. 19",
+            "show_in_chapters": true,
+            "is_gate": false
+          }
+        },
+        "page_kRpqWB": {
+          "type": "page",
+          "settings": {
+            "image": "shopify://shop_images/Component_15.png",
+            "alt": "",
+            "counter_label": "Chapter 3",
+            "chapter_num": "3",
+            "chapter_name": "The Mouth Control Panel",
+            "chapter_meta": "P. 25",
+            "show_in_chapters": true,
+            "is_gate": false
+          }
+        },
+        "page_7EbfLN": {
+          "type": "page",
+          "settings": {
+            "image": "shopify://shop_images/Component_23.png",
+            "alt": "",
+            "counter_label": "Chapter 4",
+            "chapter_num": "4",
+            "chapter_name": "75 Years of Wrong Turns",
+            "chapter_meta": "P. 31",
+            "show_in_chapters": true,
+            "is_gate": false
+          }
+        },
+        "page_9yMPDW": {
+          "type": "page",
+          "settings": {
+            "image": "shopify://shop_images/Component_24.png",
+            "alt": "",
+            "counter_label": "Chapter 5",
+            "chapter_num": "5",
+            "chapter_name": "The Decay vs. Youth Signal Battle",
+            "chapter_meta": "P. 37",
+            "show_in_chapters": true,
+            "is_gate": false
+          }
+        },
+        "page_KY6VH6": {
+          "type": "page",
+          "settings": {
+            "image": "shopify://shop_images/Component_25.png",
+            "alt": "",
+            "counter_label": "Unlock",
+            "chapter_num": "6",
+            "chapter_name": "+ Unlock 7 more chapters",
+            "chapter_meta": "Email Gate",
+            "show_in_chapters": true,
+            "is_gate": true
+          }
+        },
+        "page_mYW9WR": {
+          "type": "page",
+          "settings": {
+            "image": "shopify://shop_images/Component_26.png",
+            "alt": "",
+            "counter_label": "Back cover",
+            "chapter_num": "",
+            "chapter_name": "Back cover",
+            "chapter_meta": "",
+            "show_in_chapters": false,
+            "is_gate": false
+          }
+        },
+        "inside_item_kXp83p": {
+          "type": "inside_item",
+          "settings": {
+            "text": "12 Full Chapters · 70 Pages"
+          }
+        },
+        "inside_item_NqWVnj": {
+          "type": "inside_item",
+          "settings": {
+            "text": "12 Full-Page Chapter Illustrations"
+          }
+        },
+        "inside_item_9BKRa4": {
+          "type": "inside_item",
+          "settings": {
+            "text": "The 60-Second Daily Reset Protocol"
+          }
+        },
+        "inside_item_FgcwKx": {
+          "type": "inside_item",
+          "settings": {
+            "text": "The 4 Pillars of OG3™ Explained"
+          }
+        },
+        "inside_item_nCk8Bf": {
+          "type": "inside_item",
+          "settings": {
+            "text": "The Amplifier Protocol"
+          }
+        },
+        "inside_item_QiGNED": {
+          "type": "inside_item",
+          "settings": {
+            "text": "Foreword by Dr. Vanita K. Gupta, PhD"
+          }
+        }
+      },
+      "block_order": [
+        "page_jVWBtr",
+        "page_Qn6x3J",
+        "page_k6FKV6",
+        "page_kRpqWB",
+        "page_7EbfLN",
+        "page_9yMPDW",
+        "page_KY6VH6",
+        "page_mYW9WR",
+        "inside_item_kXp83p",
+        "inside_item_NqWVnj",
+        "inside_item_9BKRa4",
+        "inside_item_FgcwKx",
+        "inside_item_nCk8Bf",
+        "inside_item_QiGNED"
+      ],
+      "name": "Book Preview",
+      "settings": {
+        "eyebrow": "Free Preview",
+        "title": "Click the arrows.",
+        "script_line": "Flip the pages.",
+        "subtitle": "Preview the cover and first 5 chapters. Enter your email at the gate to unlock the complete book.",
+        "chapters_label": "12 Chapters · Volume I",
+        "book_title_main": "The Biome Hacker’s",
+        "book_title_script": "Code.",
+        "inside_label": "What’s Inside",
+        "author_label": "About the Author",
+        "author_image": "shopify://shop_images/Background_Border_5.png",
+        "author_name": "William Robertson",
+        "author_role": "Founder · Rainbow Smile",
+        "author_bio": "<p>William formulated <strong>OG3™</strong> after realising that conventional oral care was doing the opposite of what he needed. He created the <strong>Biome Food™</strong> category and founded Rainbow Smile in Ojai, California. Scientific strategy by Dr. Vanita K. Gupta, PhD, MBA.</p>",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "body_font": "heading",
+        "navy_color": "#161a35",
+        "card_color": "#1e2240",
+        "card2_color": "#232748",
+        "white_color": "#ffffff",
+        "gold_color": "#f5b842",
+        "coral_color": "#ef4a22",
+        "green_color": "#4caf50",
+        "body_color": "#b7bbd0",
+        "muted_color": "#838aa8"
+      }
+    },
+    "book_chapter_illustrations_LF36gq": {
+      "type": "book-chapter-illustrations",
+      "blocks": {
+        "illustration_7hPe7N": {
+          "type": "illustration",
+          "settings": {
+            "image": "shopify://shop_images/Component_18.png",
+            "alt": "Human 1.0 vs. Biome 2.0 — The Dawn of the Bio-Age",
+            "chapter_label": "CH.1",
+            "page_label": "P.13",
+            "link": ""
+          }
+        },
+        "illustration_CWcmdX": {
+          "type": "illustration",
+          "settings": {
+            "image": "shopify://shop_images/Component_22.png",
+            "alt": "Meet Your mOS",
+            "chapter_label": "CH.2",
+            "page_label": "P.19",
+            "link": ""
+          }
+        },
+        "illustration_Pax3Bx": {
+          "type": "illustration",
+          "settings": {
+            "image": "shopify://shop_images/Component_15.png",
+            "alt": "The Mouth Control Panel",
+            "chapter_label": "CH.3",
+            "page_label": "P.25",
+            "link": ""
+          }
+        },
+        "illustration_zN36gC": {
+          "type": "illustration",
+          "settings": {
+            "image": "shopify://shop_images/Component_23.png",
+            "alt": "75 Years of Wrong Turns",
+            "chapter_label": "CH.4",
+            "page_label": "P.31",
+            "link": ""
+          }
+        },
+        "illustration_qyDVbx": {
+          "type": "illustration",
+          "settings": {
+            "image": "shopify://shop_images/Component_24.png",
+            "alt": "The Decay vs. Youth Signal Battle",
+            "chapter_label": "CH.5",
+            "page_label": "P.37",
+            "link": ""
+          }
+        },
+        "illustration_EAgJ8a": {
+          "type": "illustration",
+          "settings": {
+            "image": "shopify://shop_images/Component_25.png",
+            "alt": "The 4 Pillars of a Youthful Mouth",
+            "chapter_label": "CH.6",
+            "page_label": "P.43",
+            "link": ""
+          }
+        },
+        "illustration_rjgBiW": {
+          "type": "illustration",
+          "settings": {
+            "image": "shopify://shop_images/Component_26.png",
+            "alt": "Your 60-Second Daily Reset",
+            "chapter_label": "CH.7",
+            "page_label": "P.49",
+            "link": ""
+          }
+        },
+        "illustration_ryqnmB": {
+          "type": "illustration",
+          "settings": {
+            "image": "shopify://shop_images/Component_27.png",
+            "alt": "Youth Signals Hit Every System",
+            "chapter_label": "CH.8",
+            "page_label": "P.53",
+            "link": ""
+          }
+        },
+        "illustration_EKw3YU": {
+          "type": "illustration",
+          "settings": {
+            "image": "shopify://shop_images/Component_28.png",
+            "alt": "The Biome Hacker Rituals",
+            "chapter_label": "CH.9",
+            "page_label": "P.57",
+            "link": ""
+          }
+        },
+        "illustration_d3G9na": {
+          "type": "illustration",
+          "settings": {
+            "image": "shopify://shop_images/Component_19.png",
+            "alt": "Track Your Biome Upgrades",
+            "chapter_label": "CH.10",
+            "page_label": "P.61",
+            "link": ""
+          }
+        },
+        "illustration_kaDtL4": {
+          "type": "illustration",
+          "settings": {
+            "image": "shopify://shop_images/Component_16.png",
+            "alt": "The Amplifier Protocol",
+            "chapter_label": "CH.11",
+            "page_label": "P.65",
+            "link": ""
+          }
+        },
+        "illustration_eTTe7X": {
+          "type": "illustration",
+          "settings": {
+            "image": "shopify://shop_images/Component_20.png",
+            "alt": "The Biome Hacker Movement",
+            "chapter_label": "CH.12",
+            "page_label": "P.69",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "illustration_7hPe7N",
+        "illustration_CWcmdX",
+        "illustration_Pax3Bx",
+        "illustration_zN36gC",
+        "illustration_qyDVbx",
+        "illustration_EAgJ8a",
+        "illustration_rjgBiW",
+        "illustration_ryqnmB",
+        "illustration_EKw3YU",
+        "illustration_d3G9na",
+        "illustration_kaDtL4",
+        "illustration_eTTe7X"
+      ],
+      "name": "Book Illustrations",
+      "settings": {
+        "eyebrow": "12 Chapter Illustrations",
+        "title": "Twelve chapters.One complete",
+        "script_line": "transformation.",
+        "subtitle": "Each chapter opens with a full-page illustration.",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "body_font": "heading",
+        "bg_color": "#ffffff",
+        "navy_color": "#2b3054",
+        "coral_color": "#ef4a22",
+        "sub_color": "#6f7488",
+        "meta_color": "#9aa0b3",
+        "line_color": "#e4e4ea",
+        "plate_color": "#f6f4ef"
+      }
+    },
+    "book_email_gate_C3YfeJ": {
+      "type": "book-email-gate",
+      "name": "Book Email Gate",
+      "settings": {
+        "eyebrow": "Get the Complete Book",
+        "title": "The complete book.",
+        "script_line": "Free.",
+        "body": "All 12 chapters. Yours instantly. Plus the Biome Dispatch — monthly oral microbiome science for the genuinely curious.",
+        "input_placeholder": "your@email.com",
+        "btn_text": "Send me the book",
+        "success_text": "Check your inbox — the book is on its way.",
+        "bypass_text": "Or download without email",
+        "bypass_url": "",
+        "fine_print": "No spam. Unsubscribe anytime. We’ll also send the Biome Dispatch newsletter monthly.",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "body_font": "heading",
+        "navy_color": "#262949",
+        "white_color": "#ffffff",
+        "gold_color": "#f5b842",
+        "coral_color": "#ef4a22",
+        "body_color": "#b6bbd2",
+        "faint_color": "#7e849f"
+      }
+    },
+    "book_biome_hacker_47H7Yk": {
+      "type": "book-biome-hacker",
+      "blocks": {
+        "card_R9UA8G": {
+          "type": "card",
+          "settings": {
+            "num": "01",
+            "title": "They think of their body as a living ecosystem, not a machine",
+            "body": "They came to this through functional medicine, biohacking, yoga, unexplained illness, or a single conversation that opened something. They are ready for the science that confirms what they already sensed."
+          }
+        },
+        "card_EiwqAP": {
+          "type": "card",
+          "settings": {
+            "num": "02",
+            "title": "They have already rejected conventional oral care",
+            "body": "Not because they read a study. Because they noticed. The mouthwash felt wrong. Something in their body knew before their mind had the language for it."
+          }
+        },
+        "card_Kam4BJ": {
+          "type": "card",
+          "settings": {
+            "num": "03",
+            "title": "They hold science and spirit without needing to choose",
+            "body": "They might be a nurse who meditates, a microbiologist who does reiki, a data scientist who takes adaptogenic mushrooms. They don’t experience these as contradictions."
+          }
+        },
+        "card_HNhjXx": {
+          "type": "card",
+          "settings": {
+            "num": "04",
+            "title": "They share things that change them",
+            "body": "The Biome Hacker doesn’t keep discoveries to themselves. When something works — really works — they tell their partner, their friend, their mother. Sharing is their natural response to transformation."
+          }
+        },
+        "card_c8CtCx": {
+          "type": "card",
+          "settings": {
+            "num": "05",
+            "title": "They sense needs before they’re spoken",
+            "body": "This is quorum sensing at the human level. They are naturally empathic — they read rooms, they feel into relationships, they respond to what isn’t said. This is 3.5 billion years old."
+          }
+        },
+        "card_JjadiB": {
+          "type": "card",
+          "settings": {
+            "num": "06",
+            "title": "They believe health is ecological, not chemical",
+            "body": "You don’t fix a garden by poisoning it. You restore the conditions that let the right things grow. This is how they think about their body — and how they judge anything that claims to help it."
+          }
+        }
+      },
+      "block_order": [
+        "card_R9UA8G",
+        "card_EiwqAP",
+        "card_Kam4BJ",
+        "card_HNhjXx",
+        "card_c8CtCx",
+        "card_JjadiB"
+      ],
+      "name": "Book Biome Hacker",
+      "settings": {
+        "eyebrow": "The Next Question",
+        "title": "Are you a",
+        "script_line": "Biome Hacker?",
+        "tagline": "You probably already are.",
+        "intro": "Not a demographic. A state of mind. A way of sensing the world. You’ve sensed that fighting, sterilizing, or attempting to conquer the body has been quietly working against the very ecosystems that keep it healthy. You’ve been looking for a different answer — one that works with the body rather than against it.",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "body_font": "heading",
+        "bg_color": "#ffffff",
+        "navy_color": "#2b3054",
+        "coral_color": "#ef4a22",
+        "olive_color": "#AC9E64",
+        "intro_color": "#3f4256",
+        "body_color": "#AC9E64",
+        "line_color": "#ece7de"
+      }
+    },
+    "book_defining_quote_iUPtij": {
+      "type": "book-defining-quote",
+      "blocks": {
+        "stat_ygRzxb": {
+          "type": "stat",
+          "settings": {
+            "num": "700+",
+            "label": "Species Living",
+            "sub": "In Your Mouth"
+          }
+        },
+        "stat_Hk67nV": {
+          "type": "stat",
+          "settings": {
+            "num": "60s",
+            "label": "Daily Ritual",
+            "sub": "The Ecosystem Reset"
+          }
+        },
+        "stat_WJwM3U": {
+          "type": "stat",
+          "settings": {
+            "num": "3.5B",
+            "label": "Years Old",
+            "sub": "The Intelligence You Carry"
+          }
+        },
+        "stat_AKiURe": {
+          "type": "stat",
+          "settings": {
+            "num": "∞",
+            "label": "The Reach Of",
+            "sub": "The Circle You Build"
+          }
+        }
+      },
+      "block_order": [
+        "stat_ygRzxb",
+        "stat_Hk67nV",
+        "stat_WJwM3U",
+        "stat_AKiURe"
+      ],
+      "name": "Book Defining Quote",
+      "settings": {
+        "quote_line1": "“I didn’t learn something new.",
+        "quote_line2": "I remembered something I already knew.”",
+        "caption": "The Biome Hacker’s Defining Sentence",
+        "heading_font": "heading",
+        "mono_font": "tag",
+        "bg_color": "#ffffff",
+        "navy_color": "#2b3054",
+        "coral_color": "#ef4a22",
+        "olive_color": "#9a8a3f",
+        "meta_color": "#b9a97e",
+        "line_color": "#ededf1",
+        "border_color": "#f0eeea"
+      }
+    },
+    "cta_biome_unlocked_iBiam4": {
+      "type": "cta-biome-unlocked",
+      "name": "CTA — Biome Unlocked",
+      "settings": {
+        "bg_color": "#f0512a",
+        "bg_image": "shopify://shop_images/MICROBES_1.png",
+        "bg_image_mode": "repeat",
+        "bg_image_opacity": 100,
+        "show_curve_top": true,
+        "curve_top_color": "#ffffff",
+        "show_curve_bottom": true,
+        "curve_bottom_color": "#262949",
+        "eyebrow_text": "The community is already alive",
+        "eyebrow_font": "--font-tag-family",
+        "heading_text": "The quorum is",
+        "heading_font": "--font-heading-family",
+        "script_text": "forming.",
+        "script_font": "--font-accent-family",
+        "body_text": "Join 50,000+ biome hackers who’ve returned to their original design. Sophisticated science. Joyful results. Every smile — uniquely yours.",
+        "body_font": "--font-heading-family",
+        "btn1_label": "Shop Rainbow Smile",
+        "btn1_url": "",
+        "btn2_label": "Join Community",
+        "btn2_url": "",
+        "btn3_label": "",
+        "btn3_url": "",
+        "btn_font": "--font-heading-family",
+        "donate_text": "The Biome Hacker · A Field Guide to a Way of Seeing · Quorum sensing · The ecology of care",
+        "donate_link_label": "",
+        "donate_link_url": "",
+        "donate_font": "--font-tag-family",
+        "navy_color": "#262949",
+        "gold_color": "#f3bd42",
+        "script_color": "#f6c873",
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
+    }
+  },
+  "order": [
+    "main",
+    "audio_story_QAz98R",
+    "book_hero_XwxiEf",
+    "book_preview_nWR6m7",
+    "book_chapter_illustrations_LF36gq",
+    "book_email_gate_C3YfeJ",
+    "book_biome_hacker_47H7Yk",
+    "book_defining_quote_iUPtij",
+    "cta_biome_unlocked_iBiam4"
+  ]
+}
