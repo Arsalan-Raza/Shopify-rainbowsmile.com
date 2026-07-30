@@ -39,7 +39,8 @@
     object-fit: cover;
   }
 
-  #shopify-section-{{ section.id }} .pbrk__scrim {
+  #shopify-section-{{ section.id }} .pbrk__media::after {
+    content: "";
     position: absolute;
     inset: 0;
     z-index: 2;
@@ -83,7 +84,7 @@
 
   @media (max-width: 899px) {
     #shopify-section-{{ section.id }} .pbrk__media { aspect-ratio: 16 / 10; }
-    #shopify-section-{{ section.id }} .pbrk__scrim {
+    #shopify-section-{{ section.id }} .pbrk__media::after {
       background: linear-gradient(to top, rgba(18, 10, 4, 0.82) 0%, rgba(18, 10, 4, 0.35) 52%, transparent 78%);
     }
     #shopify-section-{{ section.id }} .pbrk__content { max-width: 100%; }
@@ -112,8 +113,6 @@
         {{ 'image' | placeholder_svg_tag }}
       </div>
     {%- endif -%}
-
-    <div class="pbrk__scrim" aria-hidden="true"></div>
 
     <div class="pbrk__content">
       {%- if section.settings.quote != blank -%}
