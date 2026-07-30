@@ -11,17 +11,58 @@
   "sections": {
     "community-hero": {
       "type": "community-hero",
+      "blocks": {
+        "pill_RYRzc4": {
+          "type": "pill",
+          "settings": {
+            "text": "Oral microbiome aware"
+          }
+        },
+        "pill_34xphh": {
+          "type": "pill",
+          "settings": {
+            "text": "Quorum sensing literate"
+          }
+        },
+        "pill_cizFHX": {
+          "type": "pill",
+          "settings": {
+            "text": "Rejects antiseptic thinking"
+          }
+        },
+        "pill_aE3Yg9": {
+          "type": "pill",
+          "settings": {
+            "text": "Body as ecosystem"
+          }
+        },
+        "pill_tFNt3D": {
+          "type": "pill",
+          "settings": {
+            "text": "Science AND spirit"
+          }
+        },
+        "pill_cmTfN8": {
+          "type": "pill",
+          "settings": {
+            "text": "Love Serves All™"
+          }
+        }
+      },
+      "block_order": [
+        "pill_RYRzc4",
+        "pill_34xphh",
+        "pill_cizFHX",
+        "pill_aE3Yg9",
+        "pill_tFNt3D",
+        "pill_cmTfN8"
+      ],
       "settings": {
-        "badge_text": "Free · 50,000+ Members and Growing",
-        "title": "Biome Hacker.",
-        "subtitle": "The hub for everyone who wants to go deeper than the product — into the science, the philosophy, and the people doing this with you.",
-        "show_search": true,
-        "search_placeholder": "Search discussions, articles, or ask a question...",
-        "search_button": "Search",
-        "btn1_text": "Browse the Forum",
-        "btn1_url": "",
-        "btn2_text": "Upcoming AMAs",
-        "btn2_url": "",
+        "bg_image": "shopify://shop_images/Section_-_HERO_3.png",
+        "eyebrow": "Rainbow Smile · The Biome Hacker Community",
+        "title": "Your already sendsed it.",
+        "script_line": "Welcome home.",
+        "subtitle": "The community for people who think of their body as a living ecosystem — and are done accepting the wrong answers for it.",
         "show_curve": true,
         "curve_color": "#ffffff",
         "mono_font": "tag",
@@ -32,54 +73,8 @@
         "green2_color": "#2f8a45",
         "navy_color": "#2a3253",
         "white_color": "#ffffff",
+        "gold_color": "#f5b842",
         "coral_color": "#f4502b"
-      }
-    },
-    "community_stats_p9ExyM": {
-      "type": "community-stats",
-      "blocks": {
-        "stat_dNtpzp": {
-          "type": "stat",
-          "settings": {
-            "number": "50K+",
-            "label": "Members"
-          }
-        },
-        "stat_7V73ze": {
-          "type": "stat",
-          "settings": {
-            "number": "8",
-            "label": "Forum Categories"
-          }
-        },
-        "stat_nGCf4Y": {
-          "type": "stat",
-          "settings": {
-            "number": "12+",
-            "label": "AMA Sessions Hosted"
-          }
-        },
-        "stat_y8YhyY": {
-          "type": "stat",
-          "settings": {
-            "number": "40+",
-            "label": "Countries Represented"
-          }
-        }
-      },
-      "block_order": [
-        "stat_dNtpzp",
-        "stat_7V73ze",
-        "stat_nGCf4Y",
-        "stat_y8YhyY"
-      ],
-      "name": "Community Stats",
-      "settings": {
-        "heading_font": "heading",
-        "mono_font": "tag",
-        "bg_color": "#ffffff",
-        "navy_color": "#2b3054",
-        "line_color": "#e9e9ec"
       }
     },
     "community_forum_7zbceT": {
@@ -205,133 +200,6 @@
         "line_color": "#efe8de"
       }
     },
-    "community_feed_KYkLTA": {
-      "type": "community-feed",
-      "blocks": {
-        "post_GWhXP9": {
-          "type": "post",
-          "settings": {
-            "author": "William R.",
-            "timestamp": "3 Days Ago",
-            "quote": "Just got back from the lab — new oxygen retention data on the Minty Fusion batch. Sharing the full breakdown in the Mouth forum this week.",
-            "comment_count": "84",
-            "like_count": "312"
-          }
-        },
-        "post_cY7Ltq": {
-          "type": "post",
-          "settings": {
-            "author": "Dr. Gupta",
-            "timestamp": "1 Week Ago",
-            "quote": "A reader asked why structured water matters more than ‘regular’ hydration. Wrote a plain-language explainer — link in the Gut category.",
-            "comment_count": "56",
-            "like_count": "198"
-          }
-        },
-        "post_qNC7zH": {
-          "type": "post",
-          "settings": {
-            "author": "Tracy T.",
-            "timestamp": "2 Weeks Ago",
-            "quote": "Update from Kenya — 400 more bottles distributed through Springboard Connectivity this month. Thank you to every subscriber making this possible.",
-            "comment_count": "102",
-            "like_count": "540"
-          }
-        }
-      },
-      "block_order": [
-        "post_GWhXP9",
-        "post_cY7Ltq",
-        "post_qNC7zH"
-      ],
-      "name": "Community Feed",
-      "settings": {
-        "eyebrow": "From William & the Team",
-        "title": "The latest from the",
-        "script_line": "founders.",
-        "subtitle": "Curated updates, research notes, and behind-the-scenes from the people building Rainbow Smile.",
-        "mono_font": "tag",
-        "heading_font": "heading",
-        "script_font": "accent",
-        "body_font": "heading",
-        "bg_color": "#ffffff",
-        "navy_color": "#232748",
-        "accent_color": "#f4502b",
-        "intro_color": "#4b4f63",
-        "body_color": "#34384c",
-        "card_color": "#fdf9f3",
-        "pill_color": "#2b2b2b",
-        "time_color": "#b3aa9c",
-        "count_color": "#8b8478",
-        "heart_color": "#e5342b"
-      }
-    },
-    "community_ama_pcaz6e": {
-      "type": "community-ama",
-      "blocks": {
-        "session_d6BUDQ": {
-          "type": "session",
-          "settings": {
-            "name": "William Robertson",
-            "topic": "Why we built Biome Food™",
-            "url": ""
-          }
-        },
-        "session_pziyRf": {
-          "type": "session",
-          "settings": {
-            "name": "Dr. Vanita K. Gupta",
-            "topic": "Understanding oral dysbiosis",
-            "url": ""
-          }
-        },
-        "session_kq9h8T": {
-          "type": "session",
-          "settings": {
-            "name": "Tracy Tarlow",
-            "topic": "Inside the Kenya partnership",
-            "url": ""
-          }
-        },
-        "session_Rh6j9C": {
-          "type": "session",
-          "settings": {
-            "name": "Guest: Dr. Amara Singh",
-            "topic": "Microbiome research, 2025",
-            "url": ""
-          }
-        }
-      },
-      "block_order": [
-        "session_d6BUDQ",
-        "session_pziyRf",
-        "session_kq9h8T",
-        "session_Rh6j9C"
-      ],
-      "name": "Community AMA",
-      "settings": {
-        "eyebrow": "Live Sessions",
-        "title": "Ask the people",
-        "script_line": "who built it.",
-        "body_text": "Monthly AMAs with Dr. Vanita K. Gupta, William Robertson, and guest experts in microbiome science. Live, recorded, and archived for the community.",
-        "pill_text": "Upcoming · July 14",
-        "speaker_name": "Dr. Vanita K. Gupta, PhD, MBA",
-        "speaker_role": "Chief Science Officer, Rainbow Smile",
-        "speaker_topic": "“The Oral-Gut-Brain Axis: What 2 Years of Research Taught Us” — live Q&A, open to all members.",
-        "cta_text": "Reserve Your Spot",
-        "cta_url": "",
-        "archive_label": "Recent Sessions — Archived",
-        "mono_font": "tag",
-        "heading_font": "heading",
-        "script_font": "accent",
-        "body_font": "heading",
-        "bg_color": "#262a4d",
-        "coral_color": "#f4502b",
-        "gold_color": "#f2b544",
-        "body_color": "#b0b3c8",
-        "meta_color": "#9599b2"
-      }
-    },
     "community_education_dLLTUn": {
       "type": "community-education",
       "name": "Community Education",
@@ -339,6 +207,8 @@
         "eyebrow": "Education",
         "title": "Learn something",
         "script_line": "new today.",
+        "blog": "",
+        "posts_count": 3,
         "mono_font": "tag",
         "heading_font": "heading",
         "script_font": "accent",
@@ -354,10 +224,7 @@
   },
   "order": [
     "community-hero",
-    "community_stats_p9ExyM",
     "community_forum_7zbceT",
-    "community_feed_KYkLTA",
-    "community_ama_pcaz6e",
     "community_education_dLLTUn"
   ]
 }
