@@ -1,0 +1,558 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --vt-navy:  {{ section.settings.navy_color }};
+    --vt-gold:  {{ section.settings.gold_color }};
+    --vt-coral: {{ section.settings.coral_color }};
+    --vt-quote: {{ section.settings.quote_color }};
+    --vt-meta:  {{ section.settings.meta_color }};
+    --vt-bg:    {{ section.settings.bg_color }};
+    --vt-dot:   {{ section.settings.dot_color }};
+    --vt-media: #23281f;
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .vtm {
+    background: var(--vt-bg);
+    padding-block: clamp(40px, 5.5vw, 72px);
+    padding-inline: clamp(16px, 4vw, 40px);
+  }
+
+  #shopify-section-{{ section.id }} .vtm__inner { max-width: 1240px; margin-inline: auto; }
+
+  /* ---------- Header ---------- */
+  #shopify-section-{{ section.id }} .vtm__head { text-align: center; margin-bottom: clamp(24px, 3.4vw, 40px); }
+
+  #shopify-section-{{ section.id }} .vtm__title {
+    margin: 0 0 clamp(16px, 2.2vw, 22px);
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(30px, 4.4vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    color: var(--vt-navy);
+  }
+  #shopify-section-{{ section.id }} .vtm__script {
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: 1.02em;
+    letter-spacing: 0;
+    color: var(--vt-gold);
+    margin-left: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .vtm__quote {
+    max-width: 760px;
+    margin: 0 auto clamp(10px, 1.4vw, 14px);
+    padding-left: clamp(14px, 1.8vw, 20px);
+    border-left: 2px solid var(--vt-coral);
+    text-align: left;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(15px, 1.6vw, 20px);
+    line-height: 1.5;
+    color: var(--vt-quote);
+    display: none;
+  }
+  #shopify-section-{{ section.id }} .vtm__quote.is-active { display: block; }
+
+  #shopify-section-{{ section.id }} .vtm__attr {
+    margin: 0;
+    text-align: center;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--vt-meta);
+    display: none;
+  }
+  #shopify-section-{{ section.id }} .vtm__attr.is-active { display: block; }
+
+  /* ---------- Video slides ---------- */
+  #shopify-section-{{ section.id }} .vtm__slide { display: none; }
+  #shopify-section-{{ section.id }} .vtm__slide.is-visible { display: block; }
+
+  #shopify-section-{{ section.id }} .vtm__video {
+    position: relative;
+    margin-top: clamp(24px, 3.4vw, 40px);
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: var(--vt-media);
+  }
+
+  #shopify-section-{{ section.id }} .vtm__poster,
+  #shopify-section-{{ section.id }} .vtm__player {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #shopify-section-{{ section.id }} .vtm__poster {
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+  }
+  #shopify-section-{{ section.id }} .vtm__poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .vtm__poster::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(closest-side at 50% 50%, rgba(0,0,0,0.18), transparent 60%);
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .vtm__play-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    pointer-events: none;
+  }
+  #shopify-section-{{ section.id }} .vtm__play {
+    width: clamp(64px, 7vw, 84px);
+    height: clamp(64px, 7vw, 84px);
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(2px);
+    display: grid;
+    place-items: center;
+    transition: background-color 0.18s ease, transform 0.18s ease;
+  }
+  #shopify-section-{{ section.id }} .vtm__poster:hover .vtm__play {
+    background: rgba(255, 255, 255, 0.26);
+    transform: scale(1.06);
+  }
+  #shopify-section-{{ section.id }} .vtm__play svg { width: 30%; height: 30%; fill: #fff; margin-left: 3px; }
+  #shopify-section-{{ section.id }} .vtm__watch {
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+  }
+  #shopify-section-{{ section.id }} .vtm__poster:focus-visible { outline: 3px solid var(--vt-gold); outline-offset: -3px; }
+
+  #shopify-section-{{ section.id }} .vtm__player { border: none; display: none; }
+  #shopify-section-{{ section.id }} .vtm__video.is-playing .vtm__poster { display: none; }
+  #shopify-section-{{ section.id }} .vtm__video.is-playing .vtm__player { display: block; }
+
+  /* ---------- Footer ---------- */
+  #shopify-section-{{ section.id }} .vtm__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: clamp(16px, 2.2vw, 22px);
+  }
+  #shopify-section-{{ section.id }} .vtm__caption {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--vt-meta);
+  }
+  #shopify-section-{{ section.id }} .vtm__dots { display: flex; gap: 7px; }
+  #shopify-section-{{ section.id }} .vtm__dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--vt-dot);
+    cursor: pointer;
+    transition: background-color 0.16s ease, transform 0.16s ease;
+  }
+  #shopify-section-{{ section.id }} .vtm__dot[aria-current="true"] { background: var(--vt-gold); transform: scale(1.2); }
+  #shopify-section-{{ section.id }} .vtm__dot:focus-visible { outline: 2px solid var(--vt-gold); outline-offset: 3px; }
+
+  @media (max-width: 620px) {
+    #shopify-section-{{ section.id }} .vtm__quote { text-align: left; }
+    #shopify-section-{{ section.id }} .vtm__foot { flex-direction: column; align-items: flex-start; gap: 12px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .vtm__poster:hover .vtm__play { transform: none; }
+  }
+</style>
+
+{%- assign video_blocks = section.blocks | where: 'type', 'video' -%}
+
+<section class="vtm">
+  <div class="vtm__inner">
+
+    <header class="vtm__head">
+      {%- if section.settings.title != blank or section.settings.script_word != blank -%}
+        <h2 class="vtm__title">
+          {{- section.settings.title | escape -}}
+          {%- if section.settings.script_word != blank -%}
+            <span class="vtm__script">{{ section.settings.script_word | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+
+      {%- for block in video_blocks -%}
+        {%- if block.settings.quote != blank -%}
+          <blockquote class="vtm__quote{% if forloop.first %} is-active{% endif %}" data-quote="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+            {{ block.settings.quote | escape }}
+          </blockquote>
+        {%- endif -%}
+        {%- if block.settings.attribution != blank -%}
+          <p class="vtm__attr{% if forloop.first %} is-active{% endif %}" data-attr="{{ forloop.index0 }}">
+            {{ block.settings.attribution | escape }}
+          </p>
+        {%- endif -%}
+      {%- endfor -%}
+    </header>
+
+    {%- for block in video_blocks -%}
+      <div class="vtm__slide{% if forloop.first %} is-visible{% endif %}" data-slide="{{ forloop.index0 }}" data-video-url="{{ block.settings.video_url | escape }}">
+        <div class="vtm__video">
+          <button class="vtm__poster" type="button" data-play aria-label="{{ section.settings.watch_label | default: 'Play video' | escape }}">
+            {%- if block.settings.poster_image != blank -%}
+              <img
+                src="{{ block.settings.poster_image | image_url: width: 1240 }}"
+                srcset="{{ block.settings.poster_image | image_url: width: 620 }} 620w, {{ block.settings.poster_image | image_url: width: 940 }} 940w, {{ block.settings.poster_image | image_url: width: 1240 }} 1240w"
+                sizes="(max-width: 1280px) calc(100vw - 80px), 1240px"
+                alt="{{ block.settings.poster_alt | escape }}"
+                loading="lazy"
+                width="{{ block.settings.poster_image.width }}"
+                height="{{ block.settings.poster_image.height }}"
+              >
+            {%- endif -%}
+            <span class="vtm__play-wrap">
+              <span class="vtm__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+              <span class="vtm__watch">{{ section.settings.watch_label | default: 'Watch the Testimonial' | escape }}</span>
+            </span>
+          </button>
+          <div class="vtm__player" data-player></div>
+        </div>
+      </div>
+    {%- endfor -%}
+
+    {%- if video_blocks.size > 0 -%}
+      <div class="vtm__foot">
+        <p class="vtm__caption">{{ section.settings.caption | escape }}</p>
+        {%- if video_blocks.size > 1 -%}
+          <div class="vtm__dots" role="tablist" aria-label="Testimonials">
+            {%- for block in video_blocks -%}
+              <button class="vtm__dot" type="button" data-dot="{{ forloop.index0 }}"
+                aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+                aria-label="Testimonial {{ forloop.index }}"></button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+<script>
+(function () {
+  var root = document.getElementById('shopify-section-{{ section.id }}');
+  if (!root) return;
+
+  var slides  = Array.prototype.slice.call(root.querySelectorAll('[data-slide]'));
+  var dots    = Array.prototype.slice.call(root.querySelectorAll('[data-dot]'));
+  var quotes  = Array.prototype.slice.call(root.querySelectorAll('[data-quote]'));
+  var attrs   = Array.prototype.slice.call(root.querySelectorAll('[data-attr]'));
+  var current = 0;
+
+  /* ---- Resolve playable URL ---- */
+  function getEmbedUrl(url) {
+    if (!url) return null;
+    /* YouTube: youtube.com/watch?v=ID or youtu.be/ID */
+    var yt = url.match(/(?:youtube\.com\/(?:watch\?.*v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+    if (yt) return 'https://www.youtube.com/embed/' + yt[1] + '?autoplay=1&rel=0';
+    /* Vimeo: vimeo.com/ID or vimeo.com/video/ID */
+    var vm = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    if (vm) return 'https://player.vimeo.com/video/' + vm[1] + '?autoplay=1';
+    /* Direct / Shopify-hosted */
+    return url;
+  }
+
+  function isEmbed(url) {
+    return url && /youtube\.com|youtu\.be|vimeo\.com/.test(url);
+  }
+
+  /* ---- Play a slide ---- */
+  function activatePlay(slide) {
+    var url      = slide.dataset.videoUrl;
+    var playerEl = slide.querySelector('[data-player]');
+    var embedUrl = getEmbedUrl(url);
+    if (!embedUrl) return;
+
+    slide.querySelector('.vtm__video').classList.add('is-playing');
+
+    if (isEmbed(url)) {
+      var iframe = document.createElement('iframe');
+      iframe.src = embedUrl;
+      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;';
+      playerEl.appendChild(iframe);
+    } else {
+      var vid = document.createElement('video');
+      vid.src = url;
+      vid.controls = true;
+      vid.autoplay = true;
+      vid.playsInline = true;
+      vid.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;background:#000;';
+      playerEl.appendChild(vid);
+      vid.play().catch(function () {});
+    }
+  }
+
+  /* ---- Reset a slide ---- */
+  function resetSlide(slide) {
+    var videoEl  = slide.querySelector('.vtm__video');
+    var playerEl = slide.querySelector('[data-player]');
+    if (videoEl)  videoEl.classList.remove('is-playing');
+    if (playerEl) playerEl.innerHTML = '';
+  }
+
+  /* ---- Navigate ---- */
+  function goTo(index) {
+    if (index === current) return;
+
+    resetSlide(slides[current]);
+    slides[current].classList.remove('is-visible');
+    if (quotes[current]) quotes[current].classList.remove('is-active');
+    if (attrs[current])  attrs[current].classList.remove('is-active');
+    if (dots[current])   dots[current].setAttribute('aria-current', 'false');
+
+    current = index;
+
+    slides[current].classList.add('is-visible');
+    if (quotes[current]) quotes[current].classList.add('is-active');
+    if (attrs[current])  attrs[current].classList.add('is-active');
+    if (dots[current])   dots[current].setAttribute('aria-current', 'true');
+  }
+
+  /* ---- Wire play buttons ---- */
+  slides.forEach(function (slide) {
+    var btn = slide.querySelector('[data-play]');
+    if (btn) btn.addEventListener('click', function () { activatePlay(slide); });
+  });
+
+  /* ---- Wire dots ---- */
+  dots.forEach(function (dot, i) {
+    dot.addEventListener('click', function () { goTo(i); });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Video Testimonial",
+  "tag": "section",
+  "class": "video-testimonial-section",
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Testimonial video",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Video"
+        },
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "Video URL",
+          "info": "Paste a YouTube, Vimeo, or Shopify-hosted direct video URL."
+        },
+        {
+          "type": "header",
+          "content": "Poster image"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster_image",
+          "label": "Poster / thumbnail image"
+        },
+        {
+          "type": "text",
+          "id": "poster_alt",
+          "label": "Poster alt text"
+        },
+        {
+          "type": "header",
+          "content": "Quote"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Pull quote",
+          "default": "\u201cI didn\u2019t learn something new. I remembered something I always knew.\u201d"
+        },
+        {
+          "type": "text",
+          "id": "attribution",
+          "label": "Attribution",
+          "default": "Biome Hacker \u00b7 OG3\u2122 Community Member"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "A Biome Hacker"
+    },
+    {
+      "type": "text",
+      "id": "script_word",
+      "label": "Script word (gold, inline)",
+      "default": "speaks."
+    },
+    {
+      "type": "text",
+      "id": "watch_label",
+      "label": "Play button label",
+      "default": "Watch the Testimonial"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Footer caption",
+      "default": "Community Voices \u00b7 Growing"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow, attribution & caption font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Title font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script word font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Quote font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading color",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Script & active dot",
+      "default": "#f5b842"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Quote rule",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "quote_color",
+      "label": "Quote text",
+      "default": "#3f4256"
+    },
+    {
+      "type": "color",
+      "id": "meta_color",
+      "label": "Attribution & caption",
+      "default": "#9aa0b3"
+    },
+    {
+      "type": "color",
+      "id": "dot_color",
+      "label": "Inactive dot",
+      "default": "#d7d3cb"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Testimonial",
+      "blocks": [
+        {
+          "type": "video",
+          "settings": {
+            "quote": "\u201cI didn\u2019t learn something new. I remembered something I always knew.\u201d",
+            "attribution": "Biome Hacker \u00b7 OG3\u2122 Community Member"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

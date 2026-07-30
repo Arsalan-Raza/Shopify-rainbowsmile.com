@@ -1,216 +1,284 @@
 {%- style -%}
   #shopify-section-{{ section.id }} {
-    --edu-bg:     {{ section.settings.bg_color }};
-    --edu-navy:   {{ section.settings.navy_color }};
-    --edu-accent: {{ section.settings.accent_color }};
-    --edu-meta:   {{ section.settings.meta_color }};
-    --edu-card:   {{ section.settings.card_color }};
-    --edu-line:   {{ section.settings.line_color }};
+    --bg-navy:    {{ section.settings.navy_color }};
+    --bg-white:   {{ section.settings.white_color }};
+    --bg-gold:    {{ section.settings.gold_color }};
+    --bg-coral:   {{ section.settings.coral_color }};
+    --bg-sub:     {{ section.settings.sub_color }};
+    --bg-card:    {{ section.settings.card_color }};
+    --bg-title:   {{ section.settings.card_title_color }};
+    --bg-meta:    {{ section.settings.meta_color }};
+    --bg-excerpt: {{ section.settings.excerpt_color }};
+    --bg-pill:    rgba(20, 18, 30, 0.55);
+    --bg-curve:   {{ section.settings.curve_color }};
   }
 {%- endstyle -%}
 
 <style>
   #shopify-section-{{ section.id }} * { box-sizing: border-box; }
 
-  #shopify-section-{{ section.id }} .edu {
-    background: var(--edu-bg);
-    padding-block: clamp(44px, 6vw, 80px);
-    padding-inline: clamp(20px, 5vw, 48px);
+  #shopify-section-{{ section.id }} .blg {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: var(--bg-navy);
+    padding: clamp(44px, 6vw, 80px) clamp(20px, 5vw, 48px) clamp(70px, 9vw, 120px);
   }
 
-  #shopify-section-{{ section.id }} .edu__inner { max-width: 1180px; margin-inline: auto; }
+  #shopify-section-{{ section.id }} .blg__inner { max-width: 1240px; margin-inline: auto; }
 
-  #shopify-section-{{ section.id }} .edu__head {
-    text-align: center;
-    margin-bottom: clamp(32px, 4.5vw, 54px);
-  }
+  /* ---------- Header ---------- */
+  #shopify-section-{{ section.id }} .blg__head { margin-bottom: clamp(30px, 4.5vw, 50px); }
 
-  #shopify-section-{{ section.id }} .edu__eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0 0 12px;
+  #shopify-section-{{ section.id }} .blg__eyebrow {
+    margin: 0 0 clamp(14px, 2vw, 20px);
     font-family: var(--font-{{ section.settings.mono_font }}-family);
-    font-weight: 700;
+    font-weight: 400;
     font-size: clamp(12px, 1.1vw, 13px);
-    letter-spacing: 1.4px;
+    letter-spacing: 1.6px;
     text-transform: uppercase;
-    color: var(--edu-accent);
+    color: var(--bg-sub);
     line-height: 1;
   }
-  #shopify-section-{{ section.id }} .edu__eyebrow::before {
-    content: "";
-    width: 24px;
-    height: 2px;
-    background: currentColor;
-    flex: none;
-  }
 
-  #shopify-section-{{ section.id }} .edu__title {
+  #shopify-section-{{ section.id }} .blg__title {
     margin: 0;
     font-family: var(--font-{{ section.settings.heading_font }}-family);
     font-weight: 800;
-    font-size: clamp(32px, 4.2vw, 50px);
-    line-height: 1.02;
-    letter-spacing: -0.5px;
-    color: var(--edu-navy);
+    font-size: clamp(34px, 4.4vw, 56px);
+    line-height: 1.0;
+    letter-spacing: -1px;
+    color: var(--bg-white);
   }
-  #shopify-section-{{ section.id }} .edu__script {
+  #shopify-section-{{ section.id }} .blg__script {
     display: block;
     margin-top: 2px;
     font-family: var(--font-{{ section.settings.script_font }}-family);
     font-weight: 400;
-    font-size: clamp(30px, 3.8vw, 46px);
+    font-size: clamp(30px, 4vw, 48px);
     line-height: 1.1;
-    color: var(--edu-accent);
+    color: var(--bg-gold);
+  }
+  #shopify-section-{{ section.id }} .blg__sub {
+    margin: clamp(14px, 2vw, 20px) 0 0;
+    max-width: 700px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.6;
+    color: var(--bg-sub);
   }
 
-  #shopify-section-{{ section.id }} .edu__grid {
+  /* ---------- Grid ---------- */
+  #shopify-section-{{ section.id }} .blg__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: clamp(18px, 2.2vw, 26px);
+    gap: clamp(18px, 2.2vw, 28px);
     align-items: stretch;
   }
 
-  #shopify-section-{{ section.id }} .edu__card {
-    background: var(--edu-card);
-    border: 1px solid var(--edu-line);
-    border-radius: 8px;
-    overflow: hidden;
-    text-decoration: none;
+  #shopify-section-{{ section.id }} .blg__card {
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--bg-card);
+    text-decoration: none;
     transition: transform 0.18s ease, box-shadow 0.18s ease;
   }
-  #shopify-section-{{ section.id }} .edu__card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 30px rgba(70, 55, 40, 0.10);
+  #shopify-section-{{ section.id }} .blg__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
   }
-  #shopify-section-{{ section.id }} .edu__card:focus-visible {
-    outline: 3px solid rgba(244, 80, 43, 0.4);
-    outline-offset: 3px;
-  }
+  #shopify-section-{{ section.id }} .blg__card:focus-visible { outline: 3px solid var(--bg-gold); outline-offset: 3px; }
 
-  #shopify-section-{{ section.id }} .edu__media {
-    aspect-ratio: 4 / 3;
-    background: linear-gradient(160deg, #e6d9cf, #f4ece2);
+  /* Media */
+  #shopify-section-{{ section.id }} .blg__media {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    background: linear-gradient(160deg, #9a7a52, #c2a173);
     overflow: hidden;
   }
-  #shopify-section-{{ section.id }} .edu__media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  #shopify-section-{{ section.id }} .blg__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  #shopify-section-{{ section.id }} .blg__pill {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: 6px 13px;
+    border-radius: 6px;
+    background: var(--bg-pill);
+    backdrop-filter: blur(3px);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: #fff;
+    white-space: nowrap;
   }
 
-  #shopify-section-{{ section.id }} .edu__content {
-    padding: clamp(18px, 2vw, 24px);
+  /* Content */
+  #shopify-section-{{ section.id }} .blg__content {
+    padding: clamp(20px, 2.4vw, 28px);
     display: flex;
     flex-direction: column;
     flex: 1;
   }
 
-  #shopify-section-{{ section.id }} .edu__category {
-    margin: 0 0 14px;
+  #shopify-section-{{ section.id }} .blg__meta {
+    margin: 0 0 12px;
     font-family: var(--font-{{ section.settings.mono_font }}-family);
     font-weight: 400;
     font-size: 12px;
     letter-spacing: 0.8px;
     text-transform: uppercase;
-    color: var(--edu-accent);
+    color: var(--bg-meta);
   }
 
-  #shopify-section-{{ section.id }} .edu__name {
-    margin: 0 0 clamp(18px, 2.2vw, 24px);
+  #shopify-section-{{ section.id }} .blg__card-title {
+    margin: 0 0 clamp(12px, 1.6vw, 16px);
     font-family: var(--font-{{ section.settings.heading_font }}-family);
     font-weight: 700;
-    font-size: clamp(15px, 1.5vw, 17px);
-    line-height: 1.35;
-    color: var(--edu-navy);
+    font-size: clamp(17px, 1.7vw, 20px);
+    line-height: 1.28;
+    color: var(--bg-title);
   }
 
-  #shopify-section-{{ section.id }} .edu__meta {
-    margin: auto 0 0;
+  #shopify-section-{{ section.id }} .blg__excerpt {
+    margin: 0 0 clamp(18px, 2.4vw, 24px);
     font-family: var(--font-{{ section.settings.body_font }}-family);
     font-weight: 400;
-    font-size: 13px;
-    line-height: 1.4;
-    color: var(--edu-meta);
+    font-size: clamp(13px, 1.25vw, 14px);
+    line-height: 1.6;
+    color: var(--bg-excerpt);
   }
 
-  #shopify-section-{{ section.id }} .edu__empty {
+  #shopify-section-{{ section.id }} .blg__read {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.15vw, 13px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--bg-coral);
+  }
+  #shopify-section-{{ section.id }} .blg__read span { transition: transform 0.16s ease; }
+  #shopify-section-{{ section.id }} .blg__card:hover .blg__read span { transform: translateX(3px); }
+
+  /* Empty state */
+  #shopify-section-{{ section.id }} .blg__empty {
     grid-column: 1 / -1;
     font-family: var(--font-{{ section.settings.body_font }}-family);
     font-size: 14px;
-    color: var(--edu-meta);
+    color: var(--bg-sub);
     text-align: center;
     padding: 40px 0;
   }
 
-  @media (max-width: 899px) {
-    #shopify-section-{{ section.id }} .edu__grid { grid-template-columns: repeat(2, 1fr); }
+  /* ---------- Bottom curve ---------- */
+  #shopify-section-{{ section.id }} .blg__curve {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: clamp(34px, 5vw, 60px);
+    z-index: 3;
+    pointer-events: none;
+  }
+  #shopify-section-{{ section.id }} .blg__curve svg { width: 100%; height: 100%; display: block; }
+  #shopify-section-{{ section.id }} .blg__curve svg path { fill: var(--bg-curve); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 979px) {
+    #shopify-section-{{ section.id }} .blg__grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 620px) {
-    #shopify-section-{{ section.id }} .edu__grid { grid-template-columns: 1fr; }
-    #shopify-section-{{ section.id }} .edu__media { aspect-ratio: 16 / 10; }
+    #shopify-section-{{ section.id }} .blg__grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
   }
   @media (prefers-reduced-motion: reduce) {
-    #shopify-section-{{ section.id }} .edu__card:hover { transform: none; }
+    #shopify-section-{{ section.id }} .blg__card:hover { transform: none; }
+    #shopify-section-{{ section.id }} .blg__card:hover .blg__read span { transform: none; }
   }
 </style>
 
-<div class="edu">
-  <div class="edu__inner">
+{%- assign edu_blog = blogs[section.settings.blog] -%}
 
-    <header class="edu__head">
+<section class="blg">
+  <div class="blg__inner">
+
+    <header class="blg__head">
       {%- if section.settings.eyebrow != blank -%}
-        <p class="edu__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        <p class="blg__eyebrow">{{ section.settings.eyebrow | escape }}</p>
       {%- endif -%}
-      <h2 class="edu__title">
-        {{ section.settings.title | escape }}
-        {%- if section.settings.script_line != blank -%}
-          <span class="edu__script">{{ section.settings.script_line | escape }}</span>
-        {%- endif -%}
-      </h2>
+      {%- if section.settings.title != blank or section.settings.script_line != blank -%}
+        <h2 class="blg__title">
+          {{- section.settings.title | escape -}}
+          {%- if section.settings.script_line != blank -%}
+            <span class="blg__script">{{ section.settings.script_line | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="blg__sub">{{ section.settings.subtitle | escape }}</p>
+      {%- endif -%}
     </header>
 
-    {%- assign edu_blog = blogs[section.settings.blog] -%}
-    <div class="edu__grid">
+    <div class="blg__grid">
       {%- if edu_blog != blank -%}
         {%- for article in edu_blog.articles limit: section.settings.posts_count -%}
           {%- assign word_count = article.content | strip_html | split: ' ' | size -%}
           {%- assign read_time = word_count | divided_by: 200 | plus: 1 -%}
           {%- assign article_category = article.tags | first -%}
+          {%- assign article_year = article.published_at | date: '%Y' -%}
           {%- assign article_img_alt = article.image.alt | default: article.title -%}
-          <a class="edu__card" href="{{ article.url }}">
-            <div class="edu__media">
+          {%- assign article_excerpt = article.excerpt_or_content | strip_html | truncate: 130 -%}
+
+          <a class="blg__card" href="{{ article.url }}">
+            <div class="blg__media">
               {%- if article.image != blank -%}
-                {{
-                  article.image
-                  | image_url: width: 800
-                  | image_tag:
-                    loading: 'lazy',
-                    alt: article_img_alt,
-                    widths: '400, 600, 800'
-                }}
+                <img
+                  src="{{ article.image | image_url: width: 700 }}"
+                  srcset="{{ article.image | image_url: width: 400 }} 400w, {{ article.image | image_url: width: 600 }} 600w, {{ article.image | image_url: width: 700 }} 700w"
+                  sizes="(max-width: 620px) min(420px, 100vw), (max-width: 979px) calc(50vw - 40px), calc(33vw - 34px)"
+                  alt="{{ article_img_alt | escape }}"
+                  loading="lazy"
+                  width="{{ article.image.width }}"
+                  height="{{ article.image.height }}"
+                >
+              {%- endif -%}
+              {%- if article_category != blank -%}
+                <span class="blg__pill">{{ article_category | escape }}</span>
               {%- endif -%}
             </div>
-            <div class="edu__content">
-              {%- if article_category != blank -%}
-                <p class="edu__category">{{ article_category | escape }}</p>
+            <div class="blg__content">
+              <p class="blg__meta">{{ article_year }} &middot; {{ read_time }} Min Read</p>
+              <h3 class="blg__card-title">{{ article.title | escape }}</h3>
+              {%- if article_excerpt != blank -%}
+                <p class="blg__excerpt">{{ article_excerpt }}</p>
               {%- endif -%}
-              <h3 class="edu__name">{{ article.title | escape }}</h3>
-              <p class="edu__meta">{{ read_time }} min read &middot; {{ article.author | escape }}</p>
+              <span class="blg__read">{{ section.settings.read_label | default: 'Read the Science' | escape }} <span aria-hidden="true">→</span></span>
             </div>
           </a>
         {%- endfor -%}
       {%- else -%}
-        <p class="edu__empty">Select a blog in the Theme Editor to display articles here.</p>
+        <p class="blg__empty">Select a blog in the Theme Editor to display articles here.</p>
       {%- endif -%}
     </div>
 
   </div>
-</div>
+
+  {%- if section.settings.show_curve -%}
+    <div class="blg__curve" aria-hidden="true">
+      <svg viewBox="0 0 1440 56" preserveAspectRatio="none">
+        <path d="M0,56 L1440,56 L1440,46 Q720,-28 0,46 Z"/>
+      </svg>
+    </div>
+  {%- endif -%}
+</section>
 
 {% schema %}
 {
@@ -226,19 +294,25 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "Education"
+      "default": "The Science \u00b7 Latest From the Community"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Title",
-      "default": "Learn something"
+      "default": "The blog."
     },
     {
       "type": "text",
       "id": "script_line",
-      "label": "Script line",
-      "default": "new today."
+      "label": "Script line (gold, below title)",
+      "default": "What the research says."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "The science of the oral microbiome explained for people who want to understand \u2014 not just be told. Every post is grounded in published research. Every post is free."
     },
     {
       "type": "header",
@@ -248,16 +322,38 @@
       "type": "blog",
       "id": "blog",
       "label": "Blog",
-      "info": "Articles will be pulled automatically from the selected blog."
+      "info": "Articles are pulled automatically from the selected blog."
     },
     {
       "type": "range",
       "id": "posts_count",
-      "label": "Number of articles to show",
+      "label": "Number of articles",
       "min": 3,
       "max": 9,
       "step": 3,
-      "default": 3
+      "default": 6
+    },
+    {
+      "type": "text",
+      "id": "read_label",
+      "label": "Read link label",
+      "default": "Read the Science"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Curve"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_curve",
+      "label": "Show bottom curve",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "curve_color",
+      "label": "Curve color (match section below)",
+      "default": "#f2ede4"
     },
     {
       "type": "header",
@@ -266,7 +362,7 @@
     {
       "type": "select",
       "id": "mono_font",
-      "label": "Eyebrow & category font",
+      "label": "Eyebrow, meta & pill font",
       "options": [
         { "value": "tag",     "label": "PP Neue Montreal Mono" },
         { "value": "heading", "label": "D-DIN" },
@@ -277,7 +373,7 @@
     {
       "type": "select",
       "id": "heading_font",
-      "label": "Title & card name font",
+      "label": "Title & card title font",
       "options": [
         { "value": "tag",     "label": "PP Neue Montreal Mono" },
         { "value": "heading", "label": "D-DIN" },
@@ -299,7 +395,7 @@
     {
       "type": "select",
       "id": "body_font",
-      "label": "Meta text font",
+      "label": "Subtitle & excerpt font",
       "options": [
         { "value": "tag",     "label": "PP Neue Montreal Mono" },
         { "value": "heading", "label": "D-DIN" },
@@ -313,39 +409,57 @@
     },
     {
       "type": "color",
-      "id": "bg_color",
-      "label": "Section background",
-      "default": "#fdf8f2"
-    },
-    {
-      "type": "color",
       "id": "navy_color",
-      "label": "Heading & card title color",
-      "default": "#232748"
+      "label": "Section background",
+      "default": "#262a4d"
     },
     {
       "type": "color",
-      "id": "accent_color",
-      "label": "Eyebrow, script & category color",
-      "default": "#f4502b"
+      "id": "white_color",
+      "label": "Title color",
+      "default": "#ffffff"
     },
     {
       "type": "color",
-      "id": "meta_color",
-      "label": "Meta text color",
-      "default": "#bdb2a4"
+      "id": "gold_color",
+      "label": "Script & active dot",
+      "default": "#f5b842"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Read link color",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "sub_color",
+      "label": "Eyebrow & subtitle color",
+      "default": "#b7bbd0"
     },
     {
       "type": "color",
       "id": "card_color",
       "label": "Card background",
-      "default": "#ffffff"
+      "default": "#fdf9f3"
     },
     {
       "type": "color",
-      "id": "line_color",
-      "label": "Card border color",
-      "default": "#efe8de"
+      "id": "card_title_color",
+      "label": "Card title color",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "meta_color",
+      "label": "Date & read time color",
+      "default": "#9a9182"
+    },
+    {
+      "type": "color",
+      "id": "excerpt_color",
+      "label": "Excerpt text color",
+      "default": "#6f6c66"
     }
   ],
   "presets": [

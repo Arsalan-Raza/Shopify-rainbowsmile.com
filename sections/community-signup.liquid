@@ -1,0 +1,599 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --bs-bg:       {{ section.settings.bg_color }};
+    --bs-navy:     {{ section.settings.navy_color }};
+    --bs-coral:    {{ section.settings.coral_color }};
+    --bs-body:     {{ section.settings.body_color }};
+    --bs-fine:     {{ section.settings.fine_color }};
+    --bs-card:     {{ section.settings.card_color }};
+    --bs-gold:     {{ section.settings.gold_color }};
+    --bs-card-tx:  {{ section.settings.card_tx_color }};
+    --bs-card-mut: {{ section.settings.card_mut_color }};
+    --bs-white:    {{ section.settings.white_color }};
+    --bs-input-bd: {{ section.settings.input_bd_color }};
+  }
+{%- endstyle -%}
+
+<style>
+  #shopify-section-{{ section.id }} * { box-sizing: border-box; }
+
+  #shopify-section-{{ section.id }} .bsg {
+    background: var(--bs-bg);
+    padding-block: clamp(44px, 6vw, 80px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  #shopify-section-{{ section.id }} .bsg__inner { max-width: 1080px; margin-inline: auto; }
+
+  /* ---------- Signup ---------- */
+  #shopify-section-{{ section.id }} .bsg__signup {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto clamp(40px, 6vw, 64px);
+  }
+
+  #shopify-section-{{ section.id }} .bsg__eyebrow {
+    margin: 0 0 clamp(14px, 2vw, 20px);
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--bs-coral);
+    line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .bsg__title {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(30px, 4.2vw, 48px);
+    line-height: 1.04;
+    letter-spacing: -0.5px;
+    color: var(--bs-navy);
+  }
+  #shopify-section-{{ section.id }} .bsg__script {
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: 1.04em;
+    letter-spacing: 0;
+    color: var(--bs-coral);
+    margin-left: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .bsg__body {
+    margin: clamp(16px, 2.4vw, 22px) auto 0;
+    max-width: 460px;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.6;
+    color: var(--bs-body);
+  }
+
+  /* Form */
+  #shopify-section-{{ section.id }} .bsg__form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 380px;
+    margin: clamp(24px, 3.4vw, 34px) auto 0;
+  }
+  #shopify-section-{{ section.id }} .bsg__input {
+    width: 100%;
+    min-height: 56px;
+    padding: 17px 24px;
+    border: 1px solid var(--bs-input-bd);
+    border-radius: 999px;
+    background: var(--bs-white);
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(15px, 1.4vw, 16px);
+    color: var(--bs-navy);
+    text-align: center;
+  }
+  #shopify-section-{{ section.id }} .bsg__input::placeholder { color: #a7a396; }
+  #shopify-section-{{ section.id }} .bsg__input:focus {
+    outline: none;
+    border-color: var(--bs-coral);
+    box-shadow: 0 0 0 3px rgba(239, 74, 34, 0.16);
+  }
+
+  #shopify-section-{{ section.id }} .bsg__submit {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 56px;
+    padding: 17px 24px;
+    border: none;
+    border-radius: 999px;
+    background: var(--bs-coral);
+    color: #fff;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(15px, 1.4vw, 16px);
+    cursor: pointer;
+    transition: background-color 0.18s ease, transform 0.18s ease;
+  }
+  #shopify-section-{{ section.id }} .bsg__submit span { transition: transform 0.18s ease; }
+  #shopify-section-{{ section.id }} .bsg__submit:hover { background: #dc411b; transform: translateY(-2px); }
+  #shopify-section-{{ section.id }} .bsg__submit:hover span { transform: translateX(3px); }
+  #shopify-section-{{ section.id }} .bsg__submit:focus-visible { outline: 3px solid rgba(239,74,34,0.5); outline-offset: 3px; }
+
+  #shopify-section-{{ section.id }} .bsg__success {
+    margin: clamp(20px, 3vw, 28px) auto 0;
+    max-width: 380px;
+    padding: 18px 24px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.7);
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(15px, 1.4vw, 16px);
+    color: var(--bs-navy);
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .bsg__fine {
+    margin: clamp(16px, 2.4vw, 20px) auto 0;
+    max-width: 480px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    line-height: 1.6;
+    text-transform: uppercase;
+    color: var(--bs-fine);
+  }
+
+  /* ---------- Resource cards ---------- */
+  #shopify-section-{{ section.id }} .bsg__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(16px, 2vw, 24px);
+  }
+
+  #shopify-section-{{ section.id }} .bsg__card {
+    background: var(--bs-card);
+    border-radius: 16px;
+    padding: clamp(24px, 3vw, 36px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .bsg__card-icon {
+    margin-bottom: clamp(24px, 3.4vw, 40px);
+    display: block;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .bsg__card-label {
+    margin: 0 0 12px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--bs-gold);
+  }
+
+  #shopify-section-{{ section.id }} .bsg__card-title {
+    margin: 0 0 12px;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(18px, 1.9vw, 23px);
+    line-height: 1.25;
+    color: var(--bs-white);
+  }
+
+  #shopify-section-{{ section.id }} .bsg__card-body {
+    margin: 0 0 clamp(20px, 2.8vw, 28px);
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(13px, 1.25vw, 14px);
+    line-height: 1.6;
+    color: var(--bs-card-tx);
+  }
+
+  #shopify-section-{{ section.id }} .bsg__card-link {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(12px, 1.15vw, 13px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--bs-gold);
+    text-decoration: none;
+  }
+  #shopify-section-{{ section.id }} .bsg__card-link .arrow { transition: transform 0.16s ease; }
+  #shopify-section-{{ section.id }} .bsg__card-link:hover .arrow { transform: translateX(3px); }
+  #shopify-section-{{ section.id }} .bsg__card-link .soon { color: var(--bs-card-mut); letter-spacing: 0.6px; }
+  #shopify-section-{{ section.id }} .bsg__card-link:focus-visible { outline: 3px solid rgba(245,184,66,0.5); outline-offset: 3px; border-radius: 3px; }
+
+  @media (max-width: 760px) {
+    #shopify-section-{{ section.id }} .bsg__cards { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .bsg__submit:hover { transform: none; }
+    #shopify-section-{{ section.id }} .bsg__submit:hover span { transform: none; }
+    #shopify-section-{{ section.id }} .bsg__card-link:hover .arrow { transform: none; }
+  }
+</style>
+
+{%- assign card_blocks = section.blocks | where: 'type', 'card' -%}
+
+<section class="bsg">
+  <div class="bsg__inner">
+
+    <!-- Signup -->
+    <div class="bsg__signup">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="bsg__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.title != blank or section.settings.script_word != blank -%}
+        <h2 class="bsg__title">
+          {{- section.settings.title | escape -}}
+          {%- if section.settings.script_word != blank -%}
+            <span class="bsg__script">{{ section.settings.script_word | escape }}</span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.body_text != blank -%}
+        <p class="bsg__body">{{ section.settings.body_text | escape }}</p>
+      {%- endif -%}
+
+      {%- form 'customer', id: 'bsg-form-{{ section.id }}', class: 'bsg__form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter,biome-hacker">
+        {%- if form.posted_successfully? -%}
+          <p class="bsg__success">{{ section.settings.success_text | default: "You're in. Watch your inbox." | escape }}</p>
+        {%- else -%}
+          <label for="bsg-email-{{ section.id }}" hidden>Email address</label>
+          <input
+            class="bsg__input"
+            id="bsg-email-{{ section.id }}"
+            type="email"
+            name="contact[email]"
+            value="{{ form.email }}"
+            placeholder="{{ section.settings.input_placeholder | default: 'your@email.com' | escape }}"
+            required
+            autocomplete="email"
+          >
+          {%- if form.errors -%}
+            <p style="color:#ef4a22;font-size:13px;margin:0;text-align:center;">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+          {%- endif -%}
+          <button class="bsg__submit" type="submit">
+            {{ section.settings.btn_text | default: "I'm in" | escape }} <span aria-hidden="true">→</span>
+          </button>
+        {%- endif -%}
+      {%- endform -%}
+
+      {%- if section.settings.fine_print != blank -%}
+        <p class="bsg__fine">{{ section.settings.fine_print | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    <!-- Resource cards -->
+    {%- if card_blocks.size > 0 -%}
+      <div class="bsg__cards">
+        {%- for block in card_blocks -%}
+          <div class="bsg__card" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon_image != blank -%}
+              <img
+                class="bsg__card-icon"
+                src="{{ block.settings.icon_image | image_url: width: 96 }}"
+                srcset="{{ block.settings.icon_image | image_url: width: 48 }} 48w, {{ block.settings.icon_image | image_url: width: 96 }} 96w"
+                sizes="48px"
+                alt="{{ block.settings.icon_alt | escape }}"
+                loading="lazy"
+                width="{{ block.settings.icon_image.width }}"
+                height="{{ block.settings.icon_image.height }}"
+              >
+            {%- endif -%}
+
+            {%- if block.settings.label != blank -%}
+              <p class="bsg__card-label">{{ block.settings.label | escape }}</p>
+            {%- endif -%}
+
+            {%- if block.settings.title != blank -%}
+              <h3 class="bsg__card-title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+
+            {%- if block.settings.body != blank -%}
+              <p class="bsg__card-body">{{ block.settings.body | escape }}</p>
+            {%- endif -%}
+
+            {%- if block.settings.link_text != blank -%}
+              <a class="bsg__card-link" href="{{ block.settings.link_url | default: '#' }}">
+                {{ block.settings.link_text | escape }}
+                <span class="arrow" aria-hidden="true">→</span>
+                {%- if block.settings.coming_soon != blank -%}
+                  <span class="soon">{{ block.settings.coming_soon | escape }}</span>
+                {%- endif -%}
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Community Signup",
+  "tag": "section",
+  "class": "community-signup-section",
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Resource card",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon image"
+        },
+        {
+          "type": "text",
+          "id": "icon_alt",
+          "label": "Icon alt text"
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label (gold, mono)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card title"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Card body"
+        },
+        {
+          "type": "header",
+          "content": "Link"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "text",
+          "id": "coming_soon",
+          "label": "Coming soon label (optional)",
+          "info": "e.g. (Coming Soon) — shown after the arrow in muted text"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Signup"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Free \u00b7 No Noise \u00b7 Just the Science"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "I\u2019m a"
+    },
+    {
+      "type": "text",
+      "id": "script_word",
+      "label": "Script phrase (coral, inline)",
+      "default": "Biome Hacker."
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "New science from the oral microbiome. New posts when they drop. The community signal, in your inbox. No noise. No selling. Just the science and the people building around it."
+    },
+    {
+      "type": "header",
+      "content": "Form"
+    },
+    {
+      "type": "text",
+      "id": "input_placeholder",
+      "label": "Email placeholder",
+      "default": "your@email.com"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Submit button text",
+      "default": "I\u2019m in"
+    },
+    {
+      "type": "text",
+      "id": "success_text",
+      "label": "Success message",
+      "default": "You\u2019re in. Watch your inbox."
+    },
+    {
+      "type": "textarea",
+      "id": "fine_print",
+      "label": "Fine print",
+      "default": "No spam. Unsubscribe any time. We take your data as seriously as your microbiome."
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow, fine print & card label font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Title & card title font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script phrase font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body & card body font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section background",
+      "default": "#f2ede4"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading color",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Eyebrow, script & button",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text",
+      "default": "#55586b"
+    },
+    {
+      "type": "color",
+      "id": "fine_color",
+      "label": "Fine print",
+      "default": "#9a9182"
+    },
+    {
+      "type": "color",
+      "id": "input_bd_color",
+      "label": "Input border",
+      "default": "#e2dccf"
+    },
+    {
+      "type": "color",
+      "id": "white_color",
+      "label": "Input & card title text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card background",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Card label & link",
+      "default": "#f5b842"
+    },
+    {
+      "type": "color",
+      "id": "card_tx_color",
+      "label": "Card body text",
+      "default": "#b0b3c8"
+    },
+    {
+      "type": "color",
+      "id": "card_mut_color",
+      "label": "Card muted text (coming soon)",
+      "default": "#6f7390"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community Signup",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "label": "Free Download \u00b7 The Biome Hacker\u2019s Code",
+            "title": "The complete science of the oral microbiome.",
+            "body": "12 chapters. The oral microbiome explained without compromise. Your mOS, the oral-gut-brain axis, and the 60-second daily reset. Free. Always.",
+            "link_text": "Download Free"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "label": "The Biome Hacker Podcast \u00b7 Dr. Vanita K. Gupta",
+            "title": "Your mouth is alive. Let\u2019s talk about what that means.",
+            "body": "New episodes exploring the science of the oral microbiome and the 3.5 billion-year-old intelligence running in your mouth right now.",
+            "link_text": "Listen Free",
+            "coming_soon": "(Coming Soon)"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
