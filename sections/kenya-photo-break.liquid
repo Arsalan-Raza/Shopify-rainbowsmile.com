@@ -29,7 +29,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
     display: block;
   }
 
@@ -44,9 +44,7 @@
     position: absolute;
     inset: 0;
     z-index: 2;
-    background:
-      linear-gradient(100deg, rgba(18, 10, 4, 0.72) 0%, rgba(18, 10, 4, 0.38) 38%, transparent 62%),
-      linear-gradient(to top, rgba(18, 10, 4, 0.55), transparent 42%);
+    background: linear-gradient(to top, rgb(18 10 4 / 85%) 0%, transparent 100%);
     pointer-events: none;
   }
 
@@ -56,7 +54,8 @@
     left: clamp(20px, 6vw, 100px);
     right: clamp(20px, 6vw, 100px);
     bottom: clamp(22px, 5vw, 64px);
-    max-width: 620px;
+    max-width: 1275px;
+    margin: 0 auto;
   }
 
   #shopify-section-{{ section.id }} .pbrk__quote {
@@ -69,6 +68,7 @@
     letter-spacing: -0.2px;
     color: var(--pb-cream);
     text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+    max-width: 640px;
   }
 
   #shopify-section-{{ section.id }} .pbrk__attr {
@@ -93,6 +93,8 @@
   @media (max-width: 560px) {
     #shopify-section-{{ section.id }} .pbrk__media { aspect-ratio: 4 / 3; }
     #shopify-section-{{ section.id }} .pbrk__media img { object-position: {{ section.settings.mobile_focal }} center; }
+    #shopify-section-{{ section.id }} .pbrk__quote{
+    max-width: 100%;}
   }
 </style>
 
