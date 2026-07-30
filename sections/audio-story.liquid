@@ -139,6 +139,7 @@
     margin-bottom: clamp(18px, 2.6vw, 24px);
   }
   #shopify-section-{{ section.id }} .aud__play {
+    position: relative;
     width: 54px;
     height: 54px;
     flex: none;
@@ -150,6 +151,16 @@
     display: grid;
     place-items: center;
     transition: background-color 0.18s ease, transform 0.18s ease;
+  }
+  #shopify-section-{{ section.id }} .aud__play::before {
+    content: "";
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(239, 79, 39, 0.55) 0%, transparent 68%);
+    z-index: -1;
+    pointer-events: none;
+    top: 0;
   }
   #shopify-section-{{ section.id }} .aud__play:hover { background: #dc411b; transform: scale(1.05); }
   #shopify-section-{{ section.id }} .aud__play:focus-visible { outline: 3px solid rgba(239,74,34,0.5); outline-offset: 3px; }
@@ -191,11 +202,12 @@
   #shopify-section-{{ section.id }} .aud__bar {
     flex: 1;
     min-width: 2px;
-    border-radius: 1px;
+    border-radius: 15px;
     background: var(--au-bar);
     transition: background-color 0.1s linear;
   }
-  #shopify-section-{{ section.id }} .aud__bar.is-played { background: var(--au-coral); }
+  #shopify-section-{{ section.id }} .aud__bar.is-played { background: #ef4a22; }
+  #shopify-section-{{ section.id }} .aud__bar.is-current { background: #fabe54; }
   #shopify-section-{{ section.id }} .aud__times {
     display: flex;
     justify-content: space-between;
@@ -471,7 +483,10 @@
   function paint() {
     var pct  = audio.duration ? audio.currentTime / audio.duration : 0;
     var upTo = Math.floor(pct * bars.length);
-    bars.forEach(function (b, i) { b.classList.toggle('is-played', i < upTo); });
+    bars.forEach(function (b, i) {
+      b.classList.toggle('is-played',  i < upTo);
+      b.classList.toggle('is-current', i === upTo);
+    });
     wave.setAttribute('aria-valuenow', Math.round(pct * 100));
   }
 
