@@ -9,11 +9,17 @@
     --gt-input:  rgba(255, 255, 255, 0.06);
     --gt-border: rgba(255, 255, 255, 0.16);
   }
+  {%- if section.settings.bg_image != blank -%}
+    #shopify-section-{{ section.id }} .gate {
+      background-image: url('{{ section.settings.bg_image | image_url: width: 1920 }}');
+      background-size: cover;
+      background-position: center;
+    }
+  {%- endif -%}
 {%- endstyle -%}
 
 <style>
   #shopify-section-{{ section.id }} .gate {
-    --gt-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='460' viewBox='0 0 460 460'%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='70' cy='90' r='34' opacity='.02'/%3E%3Ccircle cx='380' cy='340' r='38' opacity='.018'/%3E%3Ccircle cx='300' cy='60' r='20' opacity='.02'/%3E%3Ccircle cx='150' cy='350' r='26' opacity='.018'/%3E%3Ccircle cx='60' cy='250' r='2.4' opacity='.05'/%3E%3Ccircle cx='250' cy='150' r='2' opacity='.05'/%3E%3Ccircle cx='420' cy='180' r='2.2' opacity='.045'/%3E%3Ccircle cx='200' cy='420' r='2' opacity='.05'/%3E%3Cpath d='M120,110 Q120,121 131,121 Q120,121 120,132 Q120,121 109,121 Q120,121 120,110 Z' opacity='.07'/%3E%3Cpath d='M340,250 Q340,259 349,259 Q340,259 340,268 Q340,259 331,259 Q340,259 340,250 Z' opacity='.06'/%3E%3Cpath d='M410,420 Q410,428 418,428 Q410,428 410,436 Q410,428 402,428 Q410,428 410,420 Z' opacity='.05'/%3E%3C/g%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2' stroke-opacity='.035'%3E%3Ccircle cx='400' cy='90' r='15'/%3E%3Ccircle cx='80' cy='400' r='12'/%3E%3Ccircle cx='250' cy='300' r='9'/%3E%3C/g%3E%3C/svg%3E");
     position: relative;
     isolation: isolate;
     overflow: hidden;
@@ -24,16 +30,6 @@
   }
 
   #shopify-section-{{ section.id }} .gate * { box-sizing: border-box; }
-
-  #shopify-section-{{ section.id }} .gate::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background-image: var(--gt-texture);
-    background-size: 460px;
-    background-repeat: repeat;
-  }
 
   #shopify-section-{{ section.id }} .gate__inner {
     position: relative;
@@ -280,6 +276,16 @@
   "tag": "section",
   "class": "book-email-gate-section",
   "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image",
+      "info": "Replaces the solid background color. Recommended: dark, wide image."
+    },
     {
       "type": "header",
       "content": "Header"

@@ -10,12 +10,18 @@
     --bp-body:   {{ section.settings.body_color }};
     --bp-muted:  {{ section.settings.muted_color }};
   }
+  {%- if section.settings.bg_image != blank -%}
+    #shopify-section-{{ section.id }} .bpv {
+      background-image: url('{{ section.settings.bg_image | image_url: width: 1920 }}');
+      background-size: cover;
+      background-position: center;
+    }
+  {%- endif -%}
 {%- endstyle -%}
 
 <style>
   #shopify-section-{{ section.id }} .bpv {
     --bp-line: rgba(255, 255, 255, 0.08);
-    --bp-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='460' viewBox='0 0 460 460'%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='70' cy='90' r='34' opacity='.014'/%3E%3Ccircle cx='380' cy='340' r='38' opacity='.012'/%3E%3Ccircle cx='300' cy='60' r='20' opacity='.014'/%3E%3Ccircle cx='150' cy='350' r='26' opacity='.012'/%3E%3Ccircle cx='60' cy='250' r='2.2' opacity='.045'/%3E%3Ccircle cx='250' cy='150' r='2' opacity='.045'/%3E%3Ccircle cx='420' cy='180' r='2' opacity='.04'/%3E%3Cpath d='M120,110 Q120,120 130,120 Q120,120 120,130 Q120,120 110,120 Q120,120 120,110 Z' opacity='.05'/%3E%3C/g%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2' stroke-opacity='.028'%3E%3Ccircle cx='400' cy='90' r='14'/%3E%3Ccircle cx='80' cy='400' r='11'/%3E%3C/g%3E%3C/svg%3E");
     position: relative;
     isolation: isolate;
     overflow: hidden;
@@ -25,16 +31,6 @@
   }
 
   #shopify-section-{{ section.id }} .bpv * { box-sizing: border-box; }
-
-  #shopify-section-{{ section.id }} .bpv::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background-image: var(--bp-texture);
-    background-size: 460px;
-    background-repeat: repeat;
-  }
 
   #shopify-section-{{ section.id }} .bpv__inner { max-width: 1280px; margin-inline: auto; }
 
@@ -712,6 +708,16 @@
     }
   ],
   "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image",
+      "info": "Replaces the solid background color. Recommended: dark, wide image."
+    },
     {
       "type": "header",
       "content": "Header"

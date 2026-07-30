@@ -26,7 +26,7 @@
   #shopify-section-{{ section.id }} .chg__eyebrow {
     margin: 0 0 clamp(14px, 2vw, 20px);
     font-family: var(--font-{{ section.settings.mono_font }}-family);
-    font-weight: 400;
+    font-weight: 500;
     font-size: clamp(12px, 1.1vw, 13px);
     letter-spacing: 1.6px;
     text-transform: uppercase;
@@ -76,10 +76,9 @@
   #shopify-section-{{ section.id }} .chg__plate {
     display: block;
     border: 1px solid var(--cg-line);
-    border-radius: 3px;
     overflow: hidden;
     background: var(--cg-plate);
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 3 / 4.5;
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     text-decoration: none;
   }
@@ -110,7 +109,7 @@
   #shopify-section-{{ section.id }} .chg__caption {
     margin: 12px 0 0;
     font-family: var(--font-{{ section.settings.mono_font }}-family);
-    font-weight: 400;
+    font-weight: 500;
     font-size: 12px;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -148,9 +147,9 @@
           {%- endif -%}
         </h2>
       {%- endif -%}
-      {%- if section.settings.subtitle != blank -%}
+      {% comment %} {%- if section.settings.subtitle != blank -%}
         <p class="chg__sub">{{ section.settings.subtitle | escape }}</p>
-      {%- endif -%}
+      {%- endif -%} {% endcomment %}
     </header>
 
     {%- if section.blocks.size > 0 -%}
@@ -359,7 +358,7 @@
       "type": "color",
       "id": "meta_color",
       "label": "Caption color",
-      "default": "#9aa0b3"
+      "default": "#262949"
     },
     {
       "type": "color",

@@ -21,6 +21,7 @@
       "type": "audio-story",
       "name": "Audio Story",
       "settings": {
+        "bg_image": "shopify://shop_images/Section_20.png",
         "eyebrow": "A Personal Introduction · 90 Seconds",
         "author_avatar": "shopify://shop_images/Background_Border_5.png",
         "author_name": "William Robertson",
@@ -42,7 +43,7 @@
         "mono_font": "tag",
         "heading_font": "heading",
         "script_font": "accent",
-        "navy_color": "#14172E",
+        "navy_color": "#14172e",
         "white_color": "#ffffff",
         "gold_color": "#f5b842",
         "coral_color": "#ef4a22",
@@ -56,9 +57,8 @@
       "name": "Book Hero",
       "settings": {
         "eyebrow": "The Biome Hacker’s Code · Volume I · 12 Chapters",
-        "title": "Your operating system for",
-        "title_italic": "the",
-        "script_line": "living mouth",
+        "title": "<p>Your operating system for <em>the living mouth</em></p>",
+        "script_line": "",
         "body": "Twelve chapters. One complete transformation. The oral microbiome, your mOS, and the 60-second daily reset that changes everything.",
         "meta1_label": "By",
         "meta1_value": "William Robertson",
@@ -533,9 +533,9 @@
         "bg_color": "#ffffff",
         "navy_color": "#2b3054",
         "coral_color": "#ef4a22",
-        "olive_color": "#AC9E64",
+        "olive_color": "#ac9e64",
         "intro_color": "#3f4256",
-        "body_color": "#AC9E64",
+        "body_color": "#ac9e64",
         "line_color": "#ece7de"
       }
     },
