@@ -91,8 +91,10 @@
   }
 
   #shopify-section-{{ section.id }} .bpv__panel {
-    background: var(--bp-card);
-    border: 1px solid var(--bp-line);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.10);
     border-radius: 16px;
     padding: clamp(16px, 2vw, 24px);
   }
@@ -148,7 +150,7 @@
     border-radius: 10px;
     overflow: hidden;
     aspect-ratio: 10 / 13;
-    max-height: calc(100vh - 210px);
+    {% comment %} max-height: calc(100vh - 210px); {% endcomment %}
     margin-inline: auto;
     background: #0f1226;
   }
@@ -161,7 +163,7 @@
     transition: opacity 0.35s ease;
   }
   #shopify-section-{{ section.id }} .bpv__page.is-active { opacity: 1; visibility: visible; }
-  #shopify-section-{{ section.id }} .bpv__page img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  #shopify-section-{{ section.id }} .bpv__page img { width: 100%; height: 100%; object-fit: fill; display: block; }
 
   #shopify-section-{{ section.id }} .bpv__page-placeholder {
     width: 100%;
@@ -432,14 +434,15 @@
             {%- assign page_alt = block.settings.alt | default: block.settings.chapter_name -%}
             <div class="bpv__page{% if forloop.first %} is-active{% endif %}" data-page="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
               {%- if block.settings.image != blank -%}
-                {{
-                  block.settings.image
-                  | image_url: width: 840
-                  | image_tag:
-                    loading: 'lazy',
-                    alt: page_alt,
-                    widths: '420, 640, 840'
-                }}
+                <img
+                  src="{{ block.settings.image | image_url: width: 840 }}"
+                  srcset="{{ block.settings.image | image_url: width: 420 }} 420w, {{ block.settings.image | image_url: width: 640 }} 640w, {{ block.settings.image | image_url: width: 840 }} 840w"
+                  sizes="(max-width: 979px) min(100vw, 840px), 58vw"
+                  alt="{{ page_alt | escape }}"
+                  loading="lazy"
+                  width="{{ block.settings.image.width }}"
+                  height="{{ block.settings.image.height }}"
+                >
               {%- else -%}
                 <div class="bpv__page-placeholder">Add page image</div>
               {%- endif -%}
@@ -522,15 +525,16 @@
             <div class="bpv__author">
               {%- if section.settings.author_image != blank -%}
                 {%- assign avatar_alt = section.settings.author_name | default: '' -%}
-                {{
-                  section.settings.author_image
-                  | image_url: width: 104
-                  | image_tag:
-                    class: 'bpv__avatar',
-                    loading: 'lazy',
-                    alt: avatar_alt,
-                    widths: '52, 104'
-                }}
+                <img
+                  class="bpv__avatar"
+                  src="{{ section.settings.author_image | image_url: width: 104 }}"
+                  srcset="{{ section.settings.author_image | image_url: width: 52 }} 52w, {{ section.settings.author_image | image_url: width: 104 }} 104w"
+                  sizes="52px"
+                  alt="{{ avatar_alt | escape }}"
+                  loading="lazy"
+                  width="{{ section.settings.author_image.width }}"
+                  height="{{ section.settings.author_image.height }}"
+                >
               {%- else -%}
                 <div class="bpv__avatar"></div>
               {%- endif -%}

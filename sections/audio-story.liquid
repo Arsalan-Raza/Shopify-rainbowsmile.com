@@ -11,6 +11,13 @@
     --au-line:    rgba(255, 255, 255, 0.10);
     --au-bar:     rgba(255, 255, 255, 0.22);
   }
+  {%- if section.settings.bg_image != blank -%}
+    #shopify-section-{{ section.id }} .aud {
+      background-image: url('{{ section.settings.bg_image | image_url: width: 1920 }}');
+      background-size: cover;
+      background-position: center;
+    }
+  {%- endif -%}
 {%- endstyle -%}
 
 <style>
@@ -24,28 +31,6 @@
     padding-block: clamp(48px, 7vw, 84px);
     padding-inline: clamp(20px, 5vw, 40px);
     text-align: center;
-  }
-
-  #shopify-section-{{ section.id }} .aud::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: radial-gradient(circle at center, rgba(239, 79, 39, 0.14) 0%, rgba(239, 79, 39, 0) 60%);
-    background-size: 720px 704px;
-    background-position: center;
-    background-repeat: no-repeat;
-    pointer-events: none;
-  }
-
-  #shopify-section-{{ section.id }} .aud::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='460' viewBox='0 0 460 460'%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='70' cy='90' r='34' opacity='.016'/%3E%3Ccircle cx='380' cy='340' r='38' opacity='.014'/%3E%3Ccircle cx='300' cy='60' r='20' opacity='.016'/%3E%3Ccircle cx='150' cy='350' r='26' opacity='.014'/%3E%3Ccircle cx='60' cy='250' r='2.2' opacity='.05'/%3E%3Ccircle cx='250' cy='150' r='2' opacity='.05'/%3E%3Ccircle cx='420' cy='180' r='2' opacity='.045'/%3E%3Ccircle cx='200' cy='420' r='2' opacity='.05'/%3E%3Cpath d='M120%2C110 Q120%2C120 130%2C120 Q120%2C120 120%2C130 Q120%2C120 110%2C120 Q120%2C120 120%2C110 Z' opacity='.06'/%3E%3Cpath d='M340%2C250 Q340%2C259 349%2C259 Q340%2C259 340%2C268 Q340%2C259 331%2C259 Q340%2C259 340%2C250 Z' opacity='.05'/%3E%3C/g%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2' stroke-opacity='.03'%3E%3Ccircle cx='60' cy='40' r='16'/%3E%3Ccircle cx='400' cy='430' r='12'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: 460px;
-    background-repeat: repeat;
   }
 
   #shopify-section-{{ section.id }} .aud__inner {
@@ -289,15 +274,16 @@
       <div class="aud__author">
         {%- if section.settings.author_avatar != blank -%}
           {%- assign avatar_alt = section.settings.author_name | escape -%}
-          {{
-            section.settings.author_avatar
-            | image_url: width: 120
-            | image_tag:
-              class: 'aud__avatar',
-              loading: 'lazy',
-              alt: avatar_alt,
-              widths: '52, 104'
-          }}
+          <img
+            class="aud__avatar"
+            src="{{ section.settings.author_avatar | image_url: width: 120 }}"
+            srcset="{{ section.settings.author_avatar | image_url: width: 52 }} 52w, {{ section.settings.author_avatar | image_url: width: 104 }} 104w"
+            sizes="52px"
+            alt="{{ avatar_alt }}"
+            loading="lazy"
+            width="{{ section.settings.author_avatar.width }}"
+            height="{{ section.settings.author_avatar.height }}"
+          >
         {%- else -%}
           <span class="aud__avatar"></span>
         {%- endif -%}
@@ -555,6 +541,16 @@
   "tag": "section",
   "class": "audio-story-section",
   "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image",
+      "info": "Replaces the solid background color. Recommended: dark, wide image."
+    },
     {
       "type": "header",
       "content": "Eyebrow"
