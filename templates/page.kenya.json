@@ -39,6 +39,7 @@
         "btn1_url": "",
         "btn2_text": "Read the Full Story",
         "btn2_url": "",
+        "bg_image": "shopify://shop_images/Section_1.svg",
         "image": "shopify://shop_images/3f2c5ad7a4351c86f2422967227ca0a4f0ab04d4.jpg",
         "image_alt": "",
         "caption": "Tracy Tarlow · Executive Director, Springboard Connectivity · Kenya",
@@ -70,7 +71,7 @@
           "type": "stat",
           "settings": {
             "num": "98%",
-            "num_color": "#FABE54",
+            "num_color": "#fabe54",
             "body": "Of Kenyan adults have\nperiodontal disease. This is not\na high-risk group statistic. It is\nthe baseline condition of an\nentire adult population.",
             "source": "Kenya National Health Survey"
           }
@@ -79,7 +80,7 @@
           "type": "stat",
           "settings": {
             "num": "966",
-            "num_color": "#FABE54",
+            "num_color": "#fabe54",
             "body": "Licensed dentists for 55 million\npeople. One dentist for every\n56,000 Kenyans. In rural areas,\nprofessional dental care does\nnot just fail to reach people",
             "source": "Kenya Medical Practitioners Board"
           }
@@ -88,7 +89,7 @@
           "type": "stat",
           "settings": {
             "num": "28",
-            "num_color": "#3D8A2A",
+            "num_color": "#3d8a2a",
             "body": "Pediatric dentists in the entire\ncountry. Twenty-eight\nspecialists caring for the dental\nneeds of 28 million children. The\nmath is not difficult.",
             "source": "FDI World Dental Federation"
           }
@@ -181,7 +182,7 @@
         "display_font": "accent",
         "mono_font": "tag",
         "body_font": "heading",
-        "bg_color": "#1A0E06",
+        "bg_color": "#1a0e06",
         "card_color": "#2a1c12",
         "line_color": "#ffffff0d",
         "cream_color": "#ede3d5",
@@ -237,7 +238,7 @@
           "type": "stat",
           "settings": {
             "num": "1%",
-            "num_color": "#3D8A2A",
+            "num_color": "#3d8a2a",
             "title": "Of profits to Kenya",
             "body": "Every sale contributes. As we grow, so does what we can give. Your purchase is already part of this."
           }
