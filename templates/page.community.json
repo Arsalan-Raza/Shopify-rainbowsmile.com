@@ -77,6 +77,108 @@
         "coral_color": "#f4502b"
       }
     },
+    "community_video_testimonial_cehkaW": {
+      "type": "community-video-testimonial",
+      "blocks": {
+        "video_4bAUBp": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/e8441a707e934f26a1306760bdad329d.mp4",
+            "poster_image": "shopify://shop_images/iframe.png",
+            "poster_alt": "",
+            "quote": "“I didn’t learn something new. I remembered something I always knew.”",
+            "attribution": "Biome Hacker · OG3™ Community Member"
+          }
+        }
+      },
+      "block_order": [
+        "video_4bAUBp"
+      ],
+      "name": "Video Testimonial",
+      "settings": {
+        "title": "A Biome Hacker",
+        "script_word": "speaks.",
+        "watch_label": "Watch the Testimonial",
+        "caption": "Community Voices · Growing",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "body_font": "heading",
+        "bg_color": "#ffffff",
+        "navy_color": "#232748",
+        "gold_color": "#f5b842",
+        "coral_color": "#f5b842",
+        "quote_color": "#3f4256",
+        "meta_color": "#9aa0b3",
+        "dot_color": "#d7d3cb"
+      }
+    },
+    "community_identity_hyG7kY": {
+      "type": "community-identity",
+      "blocks": {
+        "row_xARMe7": {
+          "type": "row",
+          "settings": {
+            "row_title": "They think of their body as a living ecosystem, not a machine",
+            "row_body": "They came to this through functional medicine, biohacking, yoga, unexplained illness, or a single conversation. Ready for the science that confirms what they already sensed."
+          }
+        },
+        "row_KbQzdL": {
+          "type": "row",
+          "settings": {
+            "row_title": "They have already rejected conventional oral care",
+            "row_body": "Not because they read a study. Because they noticed. The mouthwash felt wrong. Something in their body knew before their mind had the language for it."
+          }
+        },
+        "row_zMNbTf": {
+          "type": "row",
+          "settings": {
+            "row_title": "They hold science and spirit without needing to choose",
+            "row_body": "A nurse who meditates, a microbiologist who does reiki, a data scientist who takes adaptogenic mushrooms. They don’t experience these as contradictions."
+          }
+        },
+        "row_3XHDrf": {
+          "type": "row",
+          "settings": {
+            "row_title": "They share things that change them",
+            "row_body": "When something works — really works — they tell their partner, their friend, their mother. Sharing is their natural response to transformation."
+          }
+        },
+        "row_dqJCW7": {
+          "type": "row",
+          "settings": {
+            "row_title": "They carry a sense of mission",
+            "row_body": "Their health is connected to the health of their community and their world. Caring for their ecology is an act of care for the ecology around them."
+          }
+        }
+      },
+      "block_order": [
+        "row_xARMe7",
+        "row_KbQzdL",
+        "row_zMNbTf",
+        "row_3XHDrf",
+        "row_dqJCW7"
+      ],
+      "name": "Community Identity",
+      "settings": {
+        "eyebrow": "Who We Are",
+        "title": "The Biome Hacker is not",
+        "script_word": "a demographic.",
+        "intro": "<p>They are defined by a particular relationship with the world — a willingness to look at the familiar and find it strange, a refusal to accept the received answer, and an intuition that the body already knows things medicine hasn’t caught up with yet.</p><p>When they find the science of the oral microbiome, they don’t feel like they’ve learned something new. They feel like they’ve remembered something they always knew.</p>",
+        "cta_text": "Read the full Biome Hacker guide",
+        "cta_url": "",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "body_font": "heading",
+        "bg_color": "#ffffff",
+        "navy_color": "#232748",
+        "coral_color": "#ef4a22",
+        "body_color": "#4b4f63",
+        "line_color": "#ece7de",
+        "tint_color": "#fdf6ef"
+      }
+    },
     "community_forum_7zbceT": {
       "type": "community-forum",
       "blocks": {
@@ -207,24 +309,93 @@
         "eyebrow": "Education",
         "title": "Learn something",
         "script_line": "new today.",
+        "subtitle": "The science of the oral microbiome explained for people who want to understand — not just be told. Every post is grounded in published research. Every post is free.",
         "blog": "",
         "posts_count": 3,
+        "read_label": "Read the Science",
+        "show_curve": true,
+        "curve_color": "#f2ede4",
         "mono_font": "tag",
         "heading_font": "heading",
         "script_font": "accent",
         "body_font": "heading",
-        "bg_color": "#fdf8f2",
         "navy_color": "#232748",
-        "accent_color": "#f4502b",
-        "meta_color": "#bdb2a4",
+        "white_color": "#ffffff",
+        "gold_color": "#f5b842",
+        "coral_color": "#ef4a22",
+        "sub_color": "#b7bbd0",
         "card_color": "#ffffff",
-        "line_color": "#efe8de"
+        "card_title_color": "#232748",
+        "meta_color": "#bdb2a4",
+        "excerpt_color": "#6f6c66"
+      }
+    },
+    "community_signup_PwRWY9": {
+      "type": "community-signup",
+      "blocks": {
+        "card_effhVU": {
+          "type": "card",
+          "settings": {
+            "icon_alt": "",
+            "label": "Free Download · The Biome Hacker’s Code",
+            "title": "The complete science of the oral microbiome.",
+            "body": "12 chapters. The oral microbiome explained without compromise. Your mOS, the oral-gut-brain axis, and the 60-second daily reset. Free. Always.",
+            "link_text": "Download Free",
+            "link_url": "",
+            "coming_soon": ""
+          }
+        },
+        "card_bW4eYU": {
+          "type": "card",
+          "settings": {
+            "icon_alt": "",
+            "label": "The Biome Hacker Podcast · Dr. Vanita K. Gupta",
+            "title": "Your mouth is alive. Let’s talk about what that means.",
+            "body": "New episodes exploring the science of the oral microbiome and the 3.5 billion-year-old intelligence running in your mouth right now.",
+            "link_text": "Listen Free",
+            "link_url": "",
+            "coming_soon": "(Coming Soon)"
+          }
+        }
+      },
+      "block_order": [
+        "card_effhVU",
+        "card_bW4eYU"
+      ],
+      "name": "Community Signup",
+      "settings": {
+        "eyebrow": "Free · No Noise · Just the Science",
+        "title": "I’m a",
+        "script_word": "Biome Hacker.",
+        "body_text": "New science from the oral microbiome. New posts when they drop. The community signal, in your inbox. No noise. No selling. Just the science and the people building around it.",
+        "input_placeholder": "your@email.com",
+        "btn_text": "I’m in",
+        "success_text": "You’re in. Watch your inbox.",
+        "fine_print": "No spam. Unsubscribe any time. We take your data as seriously as your microbiome.",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "body_font": "heading",
+        "bg_color": "#f2ede4",
+        "navy_color": "#232748",
+        "coral_color": "#ef4a22",
+        "body_color": "#55586b",
+        "fine_color": "#9a9182",
+        "input_bd_color": "#e2dccf",
+        "white_color": "#ffffff",
+        "card_color": "#232748",
+        "gold_color": "#f5b842",
+        "card_tx_color": "#b0b3c8",
+        "card_mut_color": "#6f7390"
       }
     }
   },
   "order": [
     "community-hero",
+    "community_video_testimonial_cehkaW",
+    "community_identity_hyG7kY",
     "community_forum_7zbceT",
-    "community_education_dLLTUn"
+    "community_education_dLLTUn",
+    "community_signup_PwRWY9"
   ]
 }
