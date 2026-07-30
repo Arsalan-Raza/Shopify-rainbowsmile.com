@@ -98,15 +98,15 @@
 <section class="pbrk">
   <div class="pbrk__media">
     {%- if section.settings.image != blank -%}
-      {{
-        section.settings.image
-        | image_url: width: 1920
-        | image_tag:
-          alt: section.settings.image_alt | escape,
-          loading: 'lazy',
-          widths: '600, 900, 1200, 1600, 1920',
-          sizes: '100vw'
-      }}
+      <img
+        src="{{ section.settings.image | image_url: width: 1920 }}"
+        srcset="{{ section.settings.image | image_url: width: 600 }} 600w, {{ section.settings.image | image_url: width: 900 }} 900w, {{ section.settings.image | image_url: width: 1200 }} 1200w, {{ section.settings.image | image_url: width: 1920 }} 1920w"
+        sizes="100vw"
+        alt="{{ section.settings.image_alt | escape }}"
+        loading="lazy"
+        width="{{ section.settings.image.width }}"
+        height="{{ section.settings.image.height }}"
+      >
     {%- else -%}
       <div class="pbrk__placeholder">
         {{ 'image' | placeholder_svg_tag }}

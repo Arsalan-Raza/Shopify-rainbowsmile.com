@@ -292,15 +292,15 @@
     <div class="shr__side">
       <div class="shr__media">
         {%- if section.settings.photo != blank -%}
-          {{
-            section.settings.photo
-            | image_url: width: 1000
-            | image_tag:
-              alt: section.settings.photo_alt | escape,
-              loading: 'lazy',
-              widths: '500, 700, 1000',
-              sizes: '(max-width: 899px) 100vw, 50vw'
-          }}
+          <img
+            src="{{ section.settings.photo | image_url: width: 1000 }}"
+            srcset="{{ section.settings.photo | image_url: width: 500 }} 500w, {{ section.settings.photo | image_url: width: 700 }} 700w, {{ section.settings.photo | image_url: width: 1000 }} 1000w"
+            sizes="(max-width: 899px) 100vw, 50vw"
+            alt="{{ section.settings.photo_alt | escape }}"
+            loading="lazy"
+            width="{{ section.settings.photo.width }}"
+            height="{{ section.settings.photo.height }}"
+          >
         {%- else -%}
           {{ 'image' | placeholder_svg_tag }}
         {%- endif -%}
