@@ -1,0 +1,564 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --ki-bg:    {{ section.settings.bg_color }};
+    --ki-navy:  {{ section.settings.navy_color }};
+    --ki-gold:  {{ section.settings.gold_color }};
+    --ki-coral: {{ section.settings.coral_color }};
+    --ki-body:  {{ section.settings.body_color }};
+    --ki-meta:  {{ section.settings.meta_color }};
+    --ki-card:  {{ section.settings.card_overlay_color }};
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--ki-bg);
+    padding-block: clamp(56px, 8vw, 100px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  .kim-{{ section.id }} * { box-sizing: border-box; }
+
+  .kim-{{ section.id }} .kim__inner {
+    max-width: 1200px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: center;
+  }
+
+  /* ── Left content ──────────────────────────────────────── */
+  .kim-{{ section.id }} .kim__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 18px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(11px, 1vw, 12px);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--ki-gold);
+    line-height: 1;
+  }
+  .kim-{{ section.id }} .kim__eyebrow::before {
+    content: "";
+    width: 20px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+
+  .kim-{{ section.id }} .kim__heading {
+    margin: 0 0 clamp(18px, 2.5vw, 26px);
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(32px, 4.2vw, 54px);
+    line-height: 1.04;
+    letter-spacing: -0.5px;
+    color: var(--ki-navy);
+  }
+  .kim-{{ section.id }} .kim__heading-script {
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ki-gold);
+    display: block;
+    font-size: 1.08em;
+    line-height: 1.1;
+  }
+
+  .kim-{{ section.id }} .kim__body p {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.7;
+    color: var(--ki-body);
+  }
+  .kim-{{ section.id }} .kim__body p + p { margin-top: 14px; }
+  .kim-{{ section.id }} .kim__body strong { font-weight: 700; color: var(--ki-navy); }
+
+  /* ── Stats row ─────────────────────────────────────────── */
+  .kim-{{ section.id }} .kim__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(20px, 3vw, 36px);
+    margin-top: clamp(28px, 4vw, 40px);
+    padding-top: clamp(24px, 3vw, 32px);
+    border-top: 1px solid rgba(35, 39, 72, 0.12);
+  }
+  .kim-{{ section.id }} .kim__stat-num {
+    display: block;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(28px, 3.6vw, 44px);
+    line-height: 1;
+    color: var(--ki-coral);
+    letter-spacing: -1px;
+  }
+  .kim-{{ section.id }} .kim__stat-num sup {
+    font-size: 0.5em;
+    vertical-align: super;
+    letter-spacing: 0;
+  }
+  .kim-{{ section.id }} .kim__stat-label {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(11px, 1vw, 12px);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--ki-body);
+    line-height: 1.3;
+  }
+
+  /* ── Right card ─────────────────────────────────────────── */
+  .kim-{{ section.id }} .kim__card-wrap {
+    position: relative;
+  }
+  .kim-{{ section.id }} .kim__card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(160deg, #c9a97e, #e2cba6);
+  }
+  .kim-{{ section.id }} .kim__card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .kim-{{ section.id }} .kim__card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--ki-card) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .kim-{{ section.id }} .kim__card-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: clamp(18px, 2.5vw, 28px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .kim-{{ section.id }} .kim__donate {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: var(--ki-coral);
+    color: #fff;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(12px, 1.2vw, 14px);
+    text-decoration: none;
+    transition: background-color 0.18s ease, transform 0.18s ease;
+    white-space: nowrap;
+  }
+  @media (hover: hover) {
+    .kim-{{ section.id }} .kim__donate:hover { background: #dc411b; transform: translateY(-2px); }
+  }
+  .kim-{{ section.id }} .kim__story-link {
+    color: #fff;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(11px, 1vw, 12px);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    opacity: 0.82;
+    transition: opacity 0.15s ease;
+    white-space: nowrap;
+  }
+  @media (hover: hover) {
+    .kim-{{ section.id }} .kim__story-link:hover { opacity: 1; }
+  }
+
+  /* Pill badge */
+  .kim-{{ section.id }} .kim__pill {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    border-radius: 999px;
+    padding: 7px 16px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(10px, 0.95vw, 11px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--ki-navy);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  /* Credit text below card */
+  .kim-{{ section.id }} .kim__credit {
+    margin-top: 12px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(10px, 0.95vw, 11px);
+    letter-spacing: 0.6px;
+    color: var(--ki-meta);
+    line-height: 1.5;
+  }
+
+  /* ── Responsive ─────────────────────────────────────────── */
+  @media screen and (max-width: 860px) {
+    .kim-{{ section.id }} .kim__inner {
+      grid-template-columns: 1fr;
+      gap: clamp(32px, 6vw, 48px);
+    }
+    .kim-{{ section.id }} .kim__card-wrap { order: -1; }
+    .kim-{{ section.id }} .kim__card { aspect-ratio: 4 / 3; max-height: 380px; }
+  }
+  @media screen and (max-width: 480px) {
+    .kim-{{ section.id }} .kim__donate { width: 100%; justify-content: center; }
+    .kim-{{ section.id }} .kim__card-footer { flex-direction: column; align-items: flex-start; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .kim-{{ section.id }} .kim__donate { transition: none; }
+  }
+{%- endstyle -%}
+
+<div class="kim-{{ section.id }}">
+  <div class="kim__inner">
+
+    <!-- Left: Content -->
+    <div class="kim__content">
+
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="kim__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      <h2 class="kim__heading">
+        {%- if section.settings.title_before != blank -%}
+          {{ section.settings.title_before | escape }}
+        {%- endif -%}
+        {%- if section.settings.title_script != blank -%}
+          <span class="kim__heading-script">{{ section.settings.title_script | escape }}</span>
+        {%- endif -%}
+        {%- if section.settings.title_after != blank -%}
+          {{ section.settings.title_after | escape }}
+        {%- endif -%}
+      </h2>
+
+      {%- if section.settings.body != blank -%}
+        <div class="kim__body">{{ section.settings.body }}</div>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="kim__stats">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'stat' -%}
+              <div class="kim__stat" {{ block.shopify_attributes }}>
+                <span class="kim__stat-num">
+                  {{- block.settings.stat_num | escape -}}
+                  {%- if block.settings.stat_sup != blank -%}
+                    <sup>{{ block.settings.stat_sup | escape }}</sup>
+                  {%- endif -%}
+                </span>
+                {%- if block.settings.stat_label != blank -%}
+                  <span class="kim__stat-label">{{ block.settings.stat_label | escape }}</span>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+
+    <!-- Right: Photo card -->
+    <div class="kim__card-wrap">
+      <div class="kim__card">
+        {%- if section.settings.image != blank -%}
+          {%- assign kim_alt = section.settings.image.alt | default: section.settings.eyebrow | escape -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 900 }}"
+            srcset="{{ section.settings.image | image_url: width: 480 }} 480w, {{ section.settings.image | image_url: width: 700 }} 700w, {{ section.settings.image | image_url: width: 900 }} 900w"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+            alt="{{ kim_alt }}"
+            loading="lazy">
+        {%- endif -%}
+
+        <div class="kim__card-overlay" aria-hidden="true"></div>
+
+        {%- if section.settings.pill_text != blank -%}
+          <span class="kim__pill">{{ section.settings.pill_text | escape }}</span>
+        {%- endif -%}
+
+        <div class="kim__card-footer">
+          {%- if section.settings.donate_text != blank -%}
+            <a class="kim__donate" href="{{ section.settings.donate_url | default: '#' }}" target="_blank" rel="noopener">
+              {{ section.settings.donate_text | escape }}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.story_text != blank -%}
+            <a class="kim__story-link" href="{{ section.settings.story_url | default: '#' }}">
+              {{ section.settings.story_text | escape }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- if section.settings.credit_text != blank -%}
+        <p class="kim__credit">{{ section.settings.credit_text | escape }}</p>
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kenya Impact",
+  "tag": "section",
+  "class": "kenya-impact-section",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Photo"
+    },
+    {
+      "type": "text",
+      "id": "pill_text",
+      "label": "Pill badge text",
+      "default": "Kenya, 2024"
+    },
+    {
+      "type": "text",
+      "id": "credit_text",
+      "label": "Photo credit / caption",
+      "default": "In partnership with Springboard Connectivity, directed by Tracy Tarlow."
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Love Serves All"
+    },
+    {
+      "type": "text",
+      "id": "title_before",
+      "label": "Heading — line 1",
+      "default": "Giving Back to"
+    },
+    {
+      "type": "text",
+      "id": "title_script",
+      "label": "Heading — script / accent line",
+      "default": "Communities in Need"
+    },
+    {
+      "type": "text",
+      "id": "title_after",
+      "label": "Heading — line after script",
+      "info": "Leave blank if not needed."
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body text",
+      "default": "<p>Every bottle of Rainbow Smile supports oral wellness access in Kenya, where 80% of rural communities have no access to dental care. Through our partnership with Springboard Connectivity, we donate OG3™ to communities who deserve the same support.</p><p>Feed your ecology. Feed someone else's too.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Card buttons"
+    },
+    {
+      "type": "text",
+      "id": "donate_text",
+      "label": "Donate button text",
+      "default": "Donate Now"
+    },
+    {
+      "type": "url",
+      "id": "donate_url",
+      "label": "Donate button link"
+    },
+    {
+      "type": "text",
+      "id": "story_text",
+      "label": "Story link text",
+      "default": "Read the story →"
+    },
+    {
+      "type": "url",
+      "id": "story_url",
+      "label": "Story link URL"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading & stat font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script / accent font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow, label & pill font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#f2e8d3"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading color",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Eyebrow & script color",
+      "default": "#c9a961"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Stat & button color",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text color",
+      "default": "#5a5340"
+    },
+    {
+      "type": "color",
+      "id": "meta_color",
+      "label": "Photo credit color",
+      "default": "#9c9070"
+    },
+    {
+      "type": "color",
+      "id": "card_overlay_color",
+      "label": "Card overlay color",
+      "default": "#23264a"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "stat_num",
+          "label": "Number",
+          "default": "80%"
+        },
+        {
+          "type": "text",
+          "id": "stat_sup",
+          "label": "Superscript",
+          "info": "Leave blank if not needed."
+        },
+        {
+          "type": "text",
+          "id": "stat_label",
+          "label": "Label",
+          "default": "No dental access"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kenya Impact",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "stat_num": "80%",
+            "stat_label": "Rural communities lack dental care"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "stat_num": "3K",
+            "stat_sup": "+",
+            "stat_label": "Bottles donated so far"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "stat_num": "12",
+            "stat_label": "Villages reached"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

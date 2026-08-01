@@ -100,6 +100,7 @@
     color: #ffffff;
     text-shadow: 0 2px 18px rgba(0, 0, 0, 0.3);
   }
+  .hero-{{ section.id }} .hero__sub p { margin: 0; }
 
   /* ── Buttons ────────────────────────────────────────────────── */
   .hero-{{ section.id }} .hero__actions {
@@ -242,7 +243,7 @@
       {%- endif -%}
 
       {%- if section.settings.subtitle != blank -%}
-        <p class="hero__sub">{{ section.settings.subtitle | escape }}</p>
+        <div class="hero__sub">{{ section.settings.subtitle }}</div>
       {%- endif -%}
 
       {%- if section.settings.btn1_text != blank or section.settings.btn2_text != blank -%}
@@ -361,10 +362,10 @@
       "default": " Was Born Alive. Let's Keep It That Way."
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "Rainbow Smile is Biome Food™ — a certified organic daily ritual that supports your mouth's living ecology."
+      "default": "<p>Rainbow Smile is Biome Food\u2122 \u2014 a certified organic daily ritual that supports your mouth\u2019s living ecology.<\/p>"
     },
     {
       "type": "header",

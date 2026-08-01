@@ -76,6 +76,7 @@
     line-height: 1.6;
     color: var(--fd-intro);
   }
+  #shopify-section-{{ section.id }} .feed__sub p { margin: 0; }
 
   #shopify-section-{{ section.id }} .feed__grid {
     display: grid;
@@ -190,7 +191,7 @@
         {%- endif -%}
       </h2>
       {%- if section.settings.subtitle != blank -%}
-        <p class="feed__sub">{{ section.settings.subtitle | escape }}</p>
+        <div class="feed__sub">{{ section.settings.subtitle }}</div>
       {%- endif -%}
     </header>
 
@@ -276,10 +277,10 @@
       "default": "founders."
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "Curated updates, research notes, and behind-the-scenes from the people building Rainbow Smile."
+      "default": "<p>Curated updates, research notes, and behind-the-scenes from the people building Rainbow Smile.<\/p>"
     },
     {
       "type": "header",

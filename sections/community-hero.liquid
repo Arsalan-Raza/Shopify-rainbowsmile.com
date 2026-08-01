@@ -93,6 +93,7 @@
     line-height: 1.5;
     color: var(--bh-body);
   }
+  #shopify-section-{{ section.id }} .bhero__sub p { margin: 0; }
 
   /* ---------- Pills ---------- */
   #shopify-section-{{ section.id }} .bhero__pills {
@@ -163,7 +164,7 @@
       <hr class="bhero__rule">
 
       {%- if section.settings.subtitle != blank -%}
-        <p class="bhero__sub">{{ section.settings.subtitle | escape }}</p>
+        <div class="bhero__sub">{{ section.settings.subtitle }}</div>
       {%- endif -%}
 
       {%- if section.blocks.size > 0 -%}
@@ -241,10 +242,10 @@
       "default": "Welcome home."
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "subtitle",
-      "label": "Subtitle (italic)",
-      "default": "The community for people who think of their body as a living ecosystem \u2014 and are done accepting the wrong answers for it."
+      "label": "Subtitle",
+      "default": "<p>The community for people who think of their body as a living ecosystem \u2014 and are done accepting the wrong answers for it.<\/p>"
     },
     {
       "type": "header",

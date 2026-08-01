@@ -59,6 +59,7 @@
     line-height: 1.6;
     color: var(--av-sub);
   }
+  #shopify-section-{{ section.id }} .anv__sub p { margin: 0; }
 
   #shopify-section-{{ section.id }} .anv__grid {
     display: grid;
@@ -130,7 +131,7 @@
         </h2>
       {%- endif -%}
       {%- if section.settings.subtitle != blank -%}
-        <p class="anv__sub">{{ section.settings.subtitle | escape }}</p>
+        <div class="anv__sub">{{ section.settings.subtitle }}</div>
       {%- endif -%}
     </header>
 
@@ -208,10 +209,10 @@
       "default": "invisibility."
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "Oral disease is the most widespread health condition on earth \u2014 and one of the least discussed. Four reasons it stays out of public consciousness:"
+      "default": "<p>Oral disease is the most widespread health condition on earth \u2014 and one of the least discussed. Four reasons it stays out of public consciousness:<\/p>"
     },
     {
       "type": "header",

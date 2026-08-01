@@ -70,6 +70,7 @@
     line-height: 1.6;
     color: var(--bs-body);
   }
+  #shopify-section-{{ section.id }} .bsg__body p { margin: 0; }
 
   /* Form */
   #shopify-section-{{ section.id }} .bsg__form {
@@ -247,7 +248,7 @@
       {%- endif -%}
 
       {%- if section.settings.body_text != blank -%}
-        <p class="bsg__body">{{ section.settings.body_text | escape }}</p>
+        <div class="bsg__body">{{ section.settings.body_text }}</div>
       {%- endif -%}
 
       {%- form 'customer', id: 'bsg-form-{{ section.id }}', class: 'bsg__form' -%}
@@ -417,10 +418,10 @@
       "default": "Biome Hacker."
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "body_text",
       "label": "Body text",
-      "default": "New science from the oral microbiome. New posts when they drop. The community signal, in your inbox. No noise. No selling. Just the science and the people building around it."
+      "default": "<p>New science from the oral microbiome. New posts when they drop. The community signal, in your inbox. No noise. No selling. Just the science and the people building around it.<\/p>"
     },
     {
       "type": "header",

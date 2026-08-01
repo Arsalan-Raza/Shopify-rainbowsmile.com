@@ -90,6 +90,7 @@
     line-height: 1.6;
     color: var(--ama-body);
   }
+  #shopify-section-{{ section.id }} .ama__body p { margin: 0; }
 
   #shopify-section-{{ section.id }} .ama__card {
     margin-top: clamp(24px, 3.2vw, 34px);
@@ -281,7 +282,7 @@
       </h2>
 
       {%- if section.settings.body_text != blank -%}
-        <p class="ama__body">{{ section.settings.body_text }}</p>
+        <div class="ama__body">{{ section.settings.body_text }}</div>
       {%- endif -%}
 
       <div class="ama__card">
@@ -380,10 +381,10 @@
       "default": "who built it."
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "body_text",
       "label": "Body text",
-      "default": "Monthly AMAs with Dr. Vanita K. Gupta, William Robertson, and guest experts in microbiome science. Live, recorded, and archived for the community."
+      "default": "<p>Monthly AMAs with Dr. Vanita K. Gupta, William Robertson, and guest experts in microbiome science. Live, recorded, and archived for the community.<\/p>"
     },
     {
       "type": "header",

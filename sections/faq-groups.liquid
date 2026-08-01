@@ -173,7 +173,7 @@
             <span class="gfaq__icon" aria-hidden="true"></span>
           </summary>
           <div class="gfaq__answer">
-            <p>{{ block.settings.answer }}</p>
+            {{ block.settings.answer }}
           </div>
         </details>
 
@@ -224,9 +224,18 @@
       "id": "heading_font",
       "label": "Heading & question font",
       "options": [
-        { "value": "tag",     "label": "PP Neue Montreal Mono" },
-        { "value": "heading", "label": "D-DIN" },
-        { "value": "accent",  "label": "Alkaline Test" }
+        {
+          "value": "tag",
+          "label": "PP Neue Montreal Mono"
+        },
+        {
+          "value": "heading",
+          "label": "D-DIN"
+        },
+        {
+          "value": "accent",
+          "label": "Alkaline Test"
+        }
       ],
       "default": "heading"
     },
@@ -235,9 +244,18 @@
       "id": "body_font",
       "label": "Answer font",
       "options": [
-        { "value": "tag",     "label": "PP Neue Montreal Mono" },
-        { "value": "heading", "label": "D-DIN" },
-        { "value": "accent",  "label": "Alkaline Test" }
+        {
+          "value": "tag",
+          "label": "PP Neue Montreal Mono"
+        },
+        {
+          "value": "heading",
+          "label": "D-DIN"
+        },
+        {
+          "value": "accent",
+          "label": "Alkaline Test"
+        }
       ],
       "default": "heading"
     },
@@ -324,10 +342,10 @@
           "default": "Your question here?"
         },
         {
-          "type": "textarea",
+          "type": "richtext",
           "id": "answer",
           "label": "Answer",
-          "default": "Your answer here."
+          "default": "<p>Your answer here.</p>"
         }
       ]
     }
@@ -336,13 +354,52 @@
     {
       "name": "FAQ Groups",
       "blocks": [
-        { "type": "category", "settings": { "title": "Shipping" } },
-        { "type": "qa", "settings": { "question": "Do you ship overseas?", "answer": "Yes — we ship worldwide. Delivery times and duties vary by destination; you'll see exact options and costs at checkout." } },
-        { "type": "qa", "settings": { "question": "How long will it take to get my orders?", "answer": "Domestic orders typically arrive in 3–5 business days. International delivery usually takes 7–14 business days depending on the carrier." } },
-        { "type": "category", "settings": { "title": "Returns & Refunds" } },
-        { "type": "qa", "settings": { "question": "Your question here?", "answer": "Your answer here." } },
-        { "type": "category", "settings": { "title": "Safety & Ingredients" } },
-        { "type": "qa", "settings": { "question": "What is OG3™?", "answer": "OG3™ is our oxygen-rich oral care formula, designed to support the oral-gut axis with bioavailable oxygen and plant-based compounds." } }
+        {
+          "type": "category",
+          "settings": {
+            "title": "Shipping"
+          }
+        },
+        {
+          "type": "qa",
+          "settings": {
+            "question": "Do you ship overseas?",
+            "answer": "<p>Yes — we ship worldwide. Delivery times and duties vary by destination; you'll see exact options and costs at checkout.</p>"
+          }
+        },
+        {
+          "type": "qa",
+          "settings": {
+            "question": "How long will it take to get my orders?",
+            "answer": "<p>Domestic orders typically arrive in 3–5 business days. International delivery usually takes 7–14 business days depending on the carrier.</p>"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Returns & Refunds"
+          }
+        },
+        {
+          "type": "qa",
+          "settings": {
+            "question": "Your question here?",
+            "answer": "<p>Your answer here.</p>"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Safety & Ingredients"
+          }
+        },
+        {
+          "type": "qa",
+          "settings": {
+            "question": "What is OG3™?",
+            "answer": "<p>OG3™ is our oxygen-rich oral care formula, designed to support the oral-gut axis with bioavailable oxygen and plant-based compounds.</p>"
+          }
+        }
       ]
     }
   ]

@@ -124,6 +124,7 @@
     line-height: 1.6;
     color: rgba(255,255,255,0.9);
   }
+  .cta-{{ section.id }} .cta__body p { margin: 0; }
 
   /* ── Buttons ───────────────────────────────────────────────── */
   .cta-{{ section.id }} .cta__actions {
@@ -238,7 +239,7 @@
     {%- endif -%}
 
     {%- if section.settings.body_text != blank -%}
-      <p class="cta__body">{{ section.settings.body_text | escape }}</p>
+      <div class="cta__body">{{ section.settings.body_text }}</div>
     {%- endif -%}
 
     {%- comment -%} Buttons {%- endcomment -%}
@@ -429,10 +430,10 @@
       "content": "Body text"
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "body_text",
       "label": "Body text",
-      "default": "Join 50,000+ biome hackers who\u2019ve returned to their original design. Sophisticated science. Joyful results. Every smile \u2014 uniquely yours."
+      "default": "<p>Join 50,000+ biome hackers who\u2019ve returned to their original design. Sophisticated science. Joyful results. Every smile \u2014 uniquely yours.<\/p>"
     },
     {
       "type": "select",

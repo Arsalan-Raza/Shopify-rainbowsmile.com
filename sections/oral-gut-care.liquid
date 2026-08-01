@@ -68,6 +68,7 @@
     color: var(--ogc-body);
   }
   .ogc-{{ section.id }} .ogc__body + .ogc__body { margin-top: clamp(16px, 2.2vw, 22px); }
+  .ogc-{{ section.id }} .ogc__body p { margin: 0; }
   .ogc-{{ section.id }} .ogc__body strong { font-weight: 700; color: var(--ogc-navy); }
 
   .ogc-{{ section.id }} .ogc__cta {
@@ -97,7 +98,7 @@
   .ogc-{{ section.id }} .ogc__media {
     border-radius: 18px;
     overflow: hidden;
-    aspect-ratio: 5 / 4;
+    aspect-ratio: 4 / 5;
     background: linear-gradient(160deg, #eadfce, #f6efe3);
   }
   .ogc-{{ section.id }} .ogc__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -135,10 +136,10 @@
       {%- endif -%}
 
       {%- if section.settings.body_1 != blank -%}
-        <p class="ogc__body">{{ section.settings.body_1 }}</p>
+        <div class="ogc__body">{{ section.settings.body_1 }}</div>
       {%- endif -%}
       {%- if section.settings.body_2 != blank -%}
-        <p class="ogc__body">{{ section.settings.body_2 }}</p>
+        <div class="ogc__body">{{ section.settings.body_2 }}</div>
       {%- endif -%}
 
       {%- if section.settings.cta_text != blank -%}
@@ -195,18 +196,16 @@
       "default": "Oral Care is Gut Care"
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "body_1",
       "label": "Body paragraph 1",
-      "default": "Your mouth is the gateway to your gut, and your <strong>gut is the gateway<\/strong> to whole-body wellness. <strong>OG3 helps<\/strong> balance the oral-gut axis, supporting immunity, digestion, mood, and vitality.",
-      "info": "HTML supported: use <strong> for bold."
+      "default": "<p>Your mouth is the gateway to your gut, and your <strong>gut is the gateway<\/strong> to whole-body wellness. <strong>OG3 helps<\/strong> balance the oral-gut axis, supporting immunity, digestion, mood, and vitality.<\/p>"
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "body_2",
       "label": "Body paragraph 2",
-      "default": "A living daily ritual for inner wellbeing.",
-      "info": "HTML supported: use <strong> for bold."
+      "default": "<p>A living daily ritual for inner wellbeing.<\/p>"
     },
     {
       "type": "text",

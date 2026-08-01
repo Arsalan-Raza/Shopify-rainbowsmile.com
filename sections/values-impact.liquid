@@ -131,6 +131,7 @@
     line-height: 1.65;
     color: var(--val-body);
   }
+  .vi-{{ section.id }} .vi__card-body p { margin: 0; }
 
   /* ── Media ─────────────────────────────────────────────────── */
   .vi-{{ section.id }} .vi__media { display: flex; }
@@ -215,7 +216,7 @@
                     <h3 class="vi__card-title">{{ block.settings.card_title | escape }}</h3>
                   {%- endif -%}
                   {%- if block.settings.card_body != blank -%}
-                    <p class="vi__card-body">{{ block.settings.card_body | escape }}</p>
+                    <div class="vi__card-body">{{ block.settings.card_body }}</div>
                   {%- endif -%}
                 </div>
 
@@ -229,7 +230,7 @@
                     <h3 class="vi__card-title">{{ block.settings.card_title | escape }}</h3>
                   {%- endif -%}
                   {%- if block.settings.card_body != blank -%}
-                    <p class="vi__card-body">{{ block.settings.card_body | escape }}</p>
+                    <div class="vi__card-body">{{ block.settings.card_body }}</div>
                   {%- endif -%}
                 </div>
                 <div class="vi__media">
@@ -282,9 +283,18 @@
       "id": "eyebrow_font",
       "label": "Eyebrow font",
       "options": [
-        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
-        { "value": "--font-heading-family", "label": "D-DIN" },
-        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+        {
+          "value": "--font-tag-family",
+          "label": "PP Neue Montreal Mono"
+        },
+        {
+          "value": "--font-heading-family",
+          "label": "D-DIN"
+        },
+        {
+          "value": "--font-accent-family",
+          "label": "Alkaline Test"
+        }
       ],
       "default": "--font-tag-family"
     },
@@ -303,9 +313,18 @@
       "id": "heading_font",
       "label": "Heading font",
       "options": [
-        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
-        { "value": "--font-heading-family", "label": "D-DIN" },
-        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+        {
+          "value": "--font-tag-family",
+          "label": "PP Neue Montreal Mono"
+        },
+        {
+          "value": "--font-heading-family",
+          "label": "D-DIN"
+        },
+        {
+          "value": "--font-accent-family",
+          "label": "Alkaline Test"
+        }
       ],
       "default": "--font-heading-family"
     },
@@ -324,9 +343,18 @@
       "id": "script_font",
       "label": "Script font",
       "options": [
-        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
-        { "value": "--font-heading-family", "label": "D-DIN" },
-        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+        {
+          "value": "--font-tag-family",
+          "label": "PP Neue Montreal Mono"
+        },
+        {
+          "value": "--font-heading-family",
+          "label": "D-DIN"
+        },
+        {
+          "value": "--font-accent-family",
+          "label": "Alkaline Test"
+        }
       ],
       "default": "--font-accent-family"
     },
@@ -339,9 +367,18 @@
       "id": "card_title_font",
       "label": "Card title font",
       "options": [
-        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
-        { "value": "--font-heading-family", "label": "D-DIN" },
-        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+        {
+          "value": "--font-tag-family",
+          "label": "PP Neue Montreal Mono"
+        },
+        {
+          "value": "--font-heading-family",
+          "label": "D-DIN"
+        },
+        {
+          "value": "--font-accent-family",
+          "label": "Alkaline Test"
+        }
       ],
       "default": "--font-heading-family"
     },
@@ -350,9 +387,18 @@
       "id": "card_body_font",
       "label": "Card body font",
       "options": [
-        { "value": "--font-tag-family",     "label": "PP Neue Montreal Mono" },
-        { "value": "--font-heading-family", "label": "D-DIN" },
-        { "value": "--font-accent-family",  "label": "Alkaline Test" }
+        {
+          "value": "--font-tag-family",
+          "label": "PP Neue Montreal Mono"
+        },
+        {
+          "value": "--font-heading-family",
+          "label": "D-DIN"
+        },
+        {
+          "value": "--font-accent-family",
+          "label": "Alkaline Test"
+        }
       ],
       "default": "--font-heading-family"
     },
@@ -413,8 +459,14 @@
           "id": "layout",
           "label": "Layout",
           "options": [
-            { "value": "normal",  "label": "Card left, image right" },
-            { "value": "reverse", "label": "Image left, card right" }
+            {
+              "value": "normal",
+              "label": "Card left, image right"
+            },
+            {
+              "value": "reverse",
+              "label": "Image left, card right"
+            }
           ],
           "default": "normal"
         },
@@ -423,10 +475,22 @@
           "id": "tint",
           "label": "Card tint",
           "options": [
-            { "value": "cream",    "label": "Cream" },
-            { "value": "lavender", "label": "Lavender" },
-            { "value": "blue",     "label": "Blue" },
-            { "value": "green",    "label": "Green" }
+            {
+              "value": "cream",
+              "label": "Cream"
+            },
+            {
+              "value": "lavender",
+              "label": "Lavender"
+            },
+            {
+              "value": "blue",
+              "label": "Blue"
+            },
+            {
+              "value": "green",
+              "label": "Green"
+            }
           ],
           "default": "cream"
         },
@@ -439,7 +503,7 @@
           "type": "text",
           "id": "icon",
           "label": "Icon (emoji)",
-          "default": "\ud83c\udf08"
+          "default": "🌈"
         },
         {
           "type": "text",
@@ -448,10 +512,10 @@
           "default": "Our Value"
         },
         {
-          "type": "textarea",
+          "type": "richtext",
           "id": "card_body",
           "label": "Card body text",
-          "default": "Describe this value and what it means for your brand and customers."
+          "default": "<p>Describe this value and what it means for your brand and customers.</p>"
         }
       ]
     }
@@ -465,9 +529,9 @@
           "settings": {
             "layout": "normal",
             "tint": "cream",
-            "icon": "\ud83c\udf08",
+            "icon": "🌈",
             "card_title": "Unity in Diversity",
-            "card_body": "A rainbow is many colors, yet one arc. We celebrate individuality and believe authenticity is nature\u2019s highest form of beauty. Every microbiome, like every person, is unique \u2014 and true balance arises from honoring that diversity."
+            "card_body": "<p>A rainbow is many colors, yet one arc. We celebrate individuality and believe authenticity is nature’s highest form of beauty. Every microbiome, like every person, is unique — and true balance arises from honoring that diversity.</p>"
           }
         },
         {
@@ -475,9 +539,9 @@
           "settings": {
             "layout": "reverse",
             "tint": "lavender",
-            "icon": "\ud83d\ude0a",
+            "icon": "😊",
             "card_title": "Joy, Always",
-            "card_body": "Wellness should feel alive, not clinical. Every bottle we make is designed to spark a small moment of joy \u2014 a ritual that reminds you to smile, breathe, and reconnect with your body\u2019s natural brilliance."
+            "card_body": "<p>Wellness should feel alive, not clinical. Every bottle we make is designed to spark a small moment of joy — a ritual that reminds you to smile, breathe, and reconnect with your body’s natural brilliance.</p>"
           }
         },
         {
@@ -485,9 +549,9 @@
           "settings": {
             "layout": "normal",
             "tint": "blue",
-            "icon": "\ud83e\udde0",
-            "card_title": "The Oral\u2013Gut Connection",
-            "card_body": "Your mouth is the gateway to the body\u2019s overall balance. By caring for it consciously, you help support healthy digestion, circulation, immunity, and mood. We\u2019re redefining oral care as mindful, whole-body care."
+            "icon": "🧠",
+            "card_title": "The Oral–Gut Connection",
+            "card_body": "<p>Your mouth is the gateway to the body’s overall balance. By caring for it consciously, you help support healthy digestion, circulation, immunity, and mood. We’re redefining oral care as mindful, whole-body care.</p>"
           }
         },
         {
@@ -495,9 +559,9 @@
           "settings": {
             "layout": "reverse",
             "tint": "green",
-            "icon": "\ud83c\udf0d",
+            "icon": "🌍",
             "card_title": "Impact That Travels",
-            "card_body": "Your purchase helps Rainbow Smile donate oxygen-infused oral care to underserved villages in Kenya through our non-profit alliance with Springboard Connectivity. Together, we\u2019re spreading access, balance, and hope."
+            "card_body": "<p>Your purchase helps Rainbow Smile donate oxygen-infused oral care to underserved villages in Kenya through our non-profit alliance with Springboard Connectivity. Together, we’re spreading access, balance, and hope.</p>"
           }
         }
       ]

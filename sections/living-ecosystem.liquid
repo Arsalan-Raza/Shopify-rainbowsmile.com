@@ -64,6 +64,7 @@
     line-height: 1.6;
     color: var(--ec-body);
   }
+  .eco-{{ section.id }} .eco__sub p { margin: 0; }
 
   /* ── Mosaic ──────────────────────────────────────────────── */
   .eco-{{ section.id }} .eco__mosaic {
@@ -133,7 +134,7 @@
         </h2>
       {%- endif -%}
       {%- if section.settings.subtitle != blank -%}
-        <p class="eco__sub">{{ section.settings.subtitle | escape }}</p>
+        <div class="eco__sub">{{ section.settings.subtitle }}</div>
       {%- endif -%}
     </header>
 
@@ -229,10 +230,10 @@
       "default": "is alive"
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "The mouth is your control panel for programming your energy, immunity, and vitality through 1,000+ swallows a day. Healthy microbes and tissues thrive on bio-available oxygen. Bottled in ultra-violet Miron glass for potency."
+      "default": "<p>The mouth is your control panel for programming your energy, immunity, and vitality through 1,000+ swallows a day. Healthy microbes and tissues thrive on bio-available oxygen. Bottled in ultra-violet Miron glass for potency.<\/p>"
     },
     {
       "type": "header",

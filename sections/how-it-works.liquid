@@ -66,6 +66,7 @@
     line-height: 1.6;
     color: var(--hiw-body);
   }
+  .hiw-{{ section.id }} .hiw__sub p { margin: 0; }
 
   /* ── Video ─────────────────────────────────────────────────── */
   .hiw-{{ section.id }} .hiw__video-wrap {
@@ -228,7 +229,7 @@
       {%- endif -%}
 
       {%- if section.settings.subtitle_text != blank -%}
-        <p class="hiw__sub">{{ section.settings.subtitle_text | escape }}</p>
+        <div class="hiw__sub">{{ section.settings.subtitle_text }}</div>
       {%- endif -%}
     </header>
 
@@ -429,10 +430,10 @@
       "content": "Subtitle"
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "subtitle_text",
       "label": "Subtitle",
-      "default": "Rainbow Smile isn\u2019t just a product. It\u2019s a movement awakening life\u2019s quiet intelligence in your mouth."
+      "default": "<p>Rainbow Smile isn\u2019t just a product. It\u2019s a movement awakening life\u2019s quiet intelligence in your mouth.<\/p>"
     },
     {
       "type": "select",

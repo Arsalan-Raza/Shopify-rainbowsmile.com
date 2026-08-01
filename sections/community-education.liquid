@@ -68,6 +68,7 @@
     line-height: 1.6;
     color: var(--bg-sub);
   }
+  #shopify-section-{{ section.id }} .blg__sub p { margin: 0; }
 
   /* ---------- Grid ---------- */
   #shopify-section-{{ section.id }} .blg__grid {
@@ -223,7 +224,7 @@
         </h2>
       {%- endif -%}
       {%- if section.settings.subtitle != blank -%}
-        <p class="blg__sub">{{ section.settings.subtitle | escape }}</p>
+        <div class="blg__sub">{{ section.settings.subtitle }}</div>
       {%- endif -%}
     </header>
 
@@ -309,10 +310,10 @@
       "default": "What the research says."
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "The science of the oral microbiome explained for people who want to understand \u2014 not just be told. Every post is grounded in published research. Every post is free."
+      "default": "<p>The science of the oral microbiome explained for people who want to understand \u2014 not just be told. Every post is grounded in published research. Every post is free.<\/p>"
     },
     {
       "type": "header",

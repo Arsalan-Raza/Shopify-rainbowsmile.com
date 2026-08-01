@@ -81,6 +81,7 @@
     line-height: 1.6;
     color: var(--fm-intro);
   }
+  #shopify-section-{{ section.id }} .forum__intro p { margin: 0; }
 
   #shopify-section-{{ section.id }} .forum__grid {
     display: grid;
@@ -199,7 +200,7 @@
         </h2>
       </div>
       {%- if section.settings.intro != blank -%}
-        <p class="forum__intro">{{ section.settings.intro | escape }}</p>
+        <div class="forum__intro">{{ section.settings.intro }}</div>
       {%- endif -%}
     </header>
 
@@ -296,10 +297,10 @@
       "default": "conversation."
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "intro",
       "label": "Intro paragraph",
-      "default": "Eight spaces for every part of the biome hacker journey \u2014 from your first question to deep dives on performance and rituals."
+      "default": "<p>Eight spaces for every part of the biome hacker journey \u2014 from your first question to deep dives on performance and rituals.<\/p>"
     },
     {
       "type": "header",
