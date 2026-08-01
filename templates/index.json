@@ -27,18 +27,18 @@
         "heading_font": "--font-heading-family",
         "script_text": "Unlocked",
         "script_font": "--font-accent-family",
-        "body_text": "Join 50,000+ biome hackers who’ve returned to their original design. Sophisticated science. Joyful results. Every smile — uniquely yours.",
+        "body_text": "Join biome hackers who’ve returned to their original design. Sophisticated science. Joyful results. Every smile — uniquely yours.",
         "body_font": "--font-heading-family",
         "btn1_label": "Shop Rainbow Smile",
-        "btn1_url": "",
+        "btn1_url": "shopify://collections/all",
         "btn2_label": "Free Biome Book",
-        "btn2_url": "",
+        "btn2_url": "/pages/the-book",
         "btn3_label": "Join Community",
-        "btn3_url": "",
+        "btn3_url": "/pages/community",
         "btn_font": "--font-heading-family",
         "donate_text": "Donates to Underserved Communities",
         "donate_link_label": "springboardconnectivity.org",
-        "donate_link_url": "",
+        "donate_link_url": "https://springboardconnectivity.org",
         "donate_font": "--font-tag-family",
         "navy_color": "#1b2240",
         "gold_color": "#f3bd42",
@@ -61,14 +61,14 @@
         "btn1_text": "Shop OG3™",
         "btn1_url": "shopify://collections/all",
         "btn2_text": "Download the Free Guide",
-        "btn2_url": "",
+        "btn2_url": "/pages/the-book",
         "show_proof": true,
         "avatar_1": "shopify://shop_images/f1b10586e03058fe4c28a9c6229aeaca8cf0d981.png",
         "avatar_2": "shopify://shop_images/2c9f12a4028f7f7f6702de6c23eb198642b15be4.png",
         "avatar_3": "shopify://shop_images/9894a57b45dcb678a95e7063e80155ccab96bd2a.png",
         "avatar_4": "shopify://shop_images/1bf91cfa32eb6476eb842c0258796e265e868d37.png",
         "rating_score": "4.9",
-        "rating_text": "Loved by 2,400+ biome hackers",
+        "rating_text": "Loved by biome hackers",
         "show_curve": true,
         "curve_color": "#ffffff",
         "mono_font": "tag",
@@ -190,7 +190,7 @@
         "label_high": "Healthy Saliva",
         "desc_high": "OG3™ Drops restore oxygen to healthy levels — feeding good bacteria, crowding out the bad.",
         "cta_text": "Restore Your Oral Oxygen",
-        "cta_url": "",
+        "cta_url": "shopify://collections/all",
         "mono_font": "tag",
         "heading_font": "heading",
         "body_font": "heading",
@@ -218,7 +218,7 @@
           "settings": {
             "icon": "globe",
             "title": "Free Community",
-            "sub": "Join 50,000+ biome hackers"
+            "sub": "Join biome hackers"
           }
         },
         "benefit_R8rtx8": {
@@ -525,7 +525,7 @@
         "body_1": "Your mouth is the gateway to your gut, and your <strong>gut is the gateway</strong> to whole-body wellness. <strong>OG3 helps</strong> balance the oral-gut axis, supporting immunity, digestion, mood, and vitality.",
         "body_2": "A living daily ritual for inner wellbeing.",
         "cta_text": "Start Your Ritual",
-        "cta_url": "",
+        "cta_url": "shopify://collections/all",
         "image": "shopify://shop_images/Background_7.png",
         "image_alt": "Rainbow Smile OG3 bottles with botanicals",
         "mono_font": "tag",
@@ -540,38 +540,69 @@
     "testimonials_gTUMYg": {
       "type": "testimonials",
       "blocks": {
-        "testimonial_GiJ3ba": {
-          "type": "testimonial",
-          "settings": {
-            "rating": 5,
-            "quote": "“My dentist asked what I’d changed. Three months of Rainbow Smile — my gum pockets are healthier than they’ve been in 20 years. The science is real.”",
-            "name": "James T.",
-            "location": "New Jersey"
+        “testimonial_GiJ3ba”: {
+          “type”: “testimonial”,
+          “settings”: {
+            “rating”: 5,
+            “quote”: “”I keep this in my bag and use it before basically everything, meetings, dates, the second I wake up. The 60-second hold felt weird for like two days and now it’s just part of how I do things. My mouth genuinely feels different than it used to, not just fresher.””,
+            “name”: “Jenna R.”,
+            “location”: “Spray, Zesty Cinnamon”
           }
         },
-        "testimonial_3PVEcy": {
-          "type": "testimonial",
-          "settings": {
-            "rating": 5,
-            "quote": "“Sweet fresh breath all day without harsh mint masking the problem. Rainbow Smile actually fixes the root cause. My whole family converted within a month.”",
-            "name": "Sara K.",
-            "location": "San Francisco"
+        “testimonial_3PVEcy”: {
+          “type”: “testimonial”,
+          “settings”: {
+            “rating”: 5,
+            “quote”: “”I was skeptical of the ‘feed the ecosystem, don’t kill it’ pitch until I actually read into oral microbiome science, now it makes total sense. Sublingual every morning and before bed. Simple, and my dentist actually asked what changed at my last cleaning.””,
+            “name”: “Marcus T.”,
+            “location”: “Pump, Pure Cleanse”
           }
         },
-        "testimonial_cWnbCG": {
+        “testimonial_cWnbCG”: {
+          “type”: “testimonial”,
+          “settings”: {
+            “rating”: 5,
+            “quote”: “”Started using this as a toothpaste booster because I didn’t want to add another step to my routine, and honestly that’s become my favorite way to use it. Brush like normal, formula gets everywhere. My mouth feels cleaner by the end of the day than it used to feel right after brushing.””,
+            “name”: “Priya S.”,
+            “location”: “Pump, Minty Fusion”
+          }
+        }
+      },
+        "testimonial_Devon": {
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "quote": "“The 60-second ritual has completely changed my morning. I actually look forward to it now. Who knew oral care could feel like real self-care? Worth every penny.”",
-            "name": "Aisha C.",
-            "location": "New York"
+            "quote": ""Not going to lie, I bought this because of the pre-kiss thing and it's become a whole bit with my partner now, we both keep a bottle around. But it's stuck around because it actually works, not just because it's cute."",
+            "name": "Devon K.",
+            "location": "Spray, Zesty Cinnamon"
+          }
+        },
+        "testimonial_Anita": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": ""The before-bed pump is the one that sold me. I used to wake up with that thick morning-mouth feeling every single day. It's noticeably less now, and it keeps getting better the longer I stick with it."",
+            "name": "Anita W.",
+            "location": "Pump, Pure Cleanse"
+          }
+        },
+        "testimonial_Chris": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": ""I'm the guy who reads the ingredient list before buying anything, and this is the first oral care product in years I didn't have questions about. Certified organic, safe to swallow, no weird aftertaste. It's just become the thing I reach for now."",
+            "name": "Chris B.",
+            "location": "Spray, Minty Fusion"
           }
         }
       },
       "block_order": [
         "testimonial_GiJ3ba",
         "testimonial_3PVEcy",
-        "testimonial_cWnbCG"
+        "testimonial_cWnbCG",
+        "testimonial_Devon",
+        "testimonial_Anita",
+        "testimonial_Chris"
       ],
       "name": "Testimonials",
       "settings": {
@@ -579,13 +610,13 @@
         "eyebrow_sup": "™",
         "title": "Feed Your",
         "script_line": "Ecology",
-        "subtitle": "And so is the community learning to feed it.",
-        "feat_quote": "“I stopped looking for the next miracle product and started seeing actual change — in my breath, my gums, my mornings. That’s the difference Rainbow Smile made. I tell everyone.”",
-        "feat_avatar": "shopify://shop_images/Overlay_Border_2.png",
-        "feat_name": "Maya R.",
-        "feat_location": "Los Angeles",
+        "subtitle": "Join our community",
+        “feat_quote”: “”The before-bed pump is the one that sold me. I used to wake up with that thick morning-mouth feeling every single day. It’s noticeably less now, and it keeps getting better the longer I stick with it.””,
+        “feat_avatar”: “shopify://shop_images/Overlay_Border_2.png”,
+        “feat_name”: “Anita W.”,
+        “feat_location”: “Pump, Pure Cleanse”,
         "cta_text": "Join the Biome Hacker Community",
-        "cta_url": "",
+        "cta_url": "/pages/community",
         "mono_font": "tag",
         "heading_font": "heading",
         "script_font": "accent",
@@ -708,15 +739,15 @@
         "mission_quote": "“Our Mission: A Planet Smiling — A planet smiling in harmony with its own living code, where every mouth becomes a messenger of peace and every smile a sign of health restored.”",
         "mission_attr": "— William Robertson",
         "btn1_text": "Get the Free Book",
-        "btn1_url": "",
+        "btn1_url": "/pages/the-book",
         "btn2_text": "Our Story",
-        "btn2_url": "",
+        "btn2_url": "/pages/about",
         "ls_image": "shopify://shop_images/image_8.png",
         "ls_image_alt": "Rainbow Smile team with a community in Kenya",
         "ls_title": "Love Serves All.™",
         "ls_body": "Every bottle of Rainbow Smile supports oral wellness access in Kenya, where 80% of rural communities have no access to dental care. Through our partnership with Springboard Connectivity, directed by Tracy Tarlow, we donate OG3™ to communities who deserve the same support. Feed your ecology. Feed someone else’s too.",
         "ls_btn_text": "Learn more about our mission",
-        "ls_btn_url": "",
+        "ls_btn_url": "/pages/kenya",
         "mono_font": "tag",
         "heading_font": "heading",
         "script_font": "accent",
@@ -737,14 +768,14 @@
           "type": "faq_item",
           "settings": {
             "question": "What is Biome Food™?",
-            "answer": "<p>Biome Food™ is our proprietary blend of prebiotic, microbiome-friendly nutrients that feed the beneficial bacteria in your mouth — helping your oral ecosystem stay balanced and thriving.</p>"
+            "answer": "<p>Biome Food™ is Rainbow Smile's proprietary approach to oral care: formulations built to feed the beneficial bacteria in your mouth with the oxygen-rich conditions they need to thrive — supporting balance in the oral ecosystem, instead of sanitizing it the way conventional oral care does.</p>"
           }
         },
         "faq_item_Kd9k9q": {
           "type": "faq_item",
           "settings": {
             "question": "What is OG3™?",
-            "answer": "<p>OG3™ is our oxygen-rich oral care formula, designed to support the oral-gut axis with bioavailable oxygen and plant-based, microbiome-friendly compounds.</p>"
+            "answer": "<p>OG3™ is Rainbow Smile's oxygen-infused, certified organic coconut glycerin formulation — the science behind our Biome Food™, built on four pillars: a certified organic base, oxygen infusion, EZ water generation, and embedded bioresonance frequency. It supports the oxygen-rich conditions beneficial oral bacteria need to thrive, instead of sanitizing the mouth the way conventional oral care does.</p>"
           }
         },
         "faq_item_m9JMPF": {
@@ -788,7 +819,7 @@
         "question_font": "--font-heading-family",
         "answer_font": "--font-heading-family",
         "cta_label": "Still have more Questions",
-        "cta_url": "",
+        "cta_url": "/pages/contact",
         "cta_font": "--font-heading-family",
         "heading_color": "#1b2240",
         "body_color": "#4a4e66",
@@ -818,18 +849,18 @@
         "heading_font": "--font-heading-family",
         "script_text": "Unlocked",
         "script_font": "--font-accent-family",
-        "body_text": "Join 50,000+ biome hackers who’ve returned to their original design. Sophisticated science. Joyful results. Every smile — uniquely yours.",
+        "body_text": "Join biome hackers who’ve returned to their original design. Sophisticated science. Joyful results. Every smile — uniquely yours.",
         "body_font": "--font-heading-family",
         "btn1_label": "Shop Rainbow Smile",
-        "btn1_url": "",
+        "btn1_url": "shopify://collections/all",
         "btn2_label": "Free Biome Book",
-        "btn2_url": "",
+        "btn2_url": "/pages/the-book",
         "btn3_label": "Join Community",
-        "btn3_url": "",
+        "btn3_url": "/pages/community",
         "btn_font": "--font-heading-family",
         "donate_text": "Donates to Underserved Communities",
         "donate_link_label": "springboardconnectivity.org",
-        "donate_link_url": "",
+        "donate_link_url": "https://springboardconnectivity.org",
         "donate_font": "--font-tag-family",
         "navy_color": "#1b2240",
         "gold_color": "#f3bd42",

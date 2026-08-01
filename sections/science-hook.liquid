@@ -181,8 +181,8 @@
         <h2 class="sci__title">
           {%- if section.settings.title_before != blank -%}
             {{ section.settings.title_before | escape }}
-          {%- endif -%}
-          {%- if section.settings.title_accent != blank -%}
+          {%- endif %}
+          {% if section.settings.title_accent != blank -%}
             <span class="sci__accent">{{ section.settings.title_accent | escape }}</span>
           {%- endif -%}
           {%- if section.settings.title_after != blank -%}

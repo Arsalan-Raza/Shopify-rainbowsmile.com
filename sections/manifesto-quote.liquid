@@ -73,12 +73,12 @@
 
     <blockquote class="mf__quote">
       {%- if section.settings.quote_before != blank -%}
-        {{- section.settings.quote_before | escape -}}
-      {%- endif -%}
-      {%- if section.settings.quote_highlight != blank -%}
-        <span class="mf__hl">{{- section.settings.quote_highlight | escape -}}</span>
-      {%- endif -%}
-      {%- if section.settings.quote_after != blank -%}
+        {{- section.settings.quote_before | escape }}
+      {%- endif %}
+      {% if section.settings.quote_highlight != blank -%}
+        <span class="mf__hl">{{ section.settings.quote_highlight | escape }}</span>
+      {% endif %}
+      {% if section.settings.quote_after != blank -%}
         {{- section.settings.quote_after | escape -}}
       {%- endif -%}
     </blockquote>
