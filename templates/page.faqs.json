@@ -47,22 +47,50 @@
         "qa_cVw8fn": {
           "type": "qa",
           "settings": {
-            "question": "Do you ship overseas?",
-            "answer": "<p>Yes — we ship worldwide. Delivery times and duties vary by destination; you'll see exact options and costs at checkout.</p>"
+            "question": "Where do you ship?",
+            "answer": "<p>We ship both within the U.S. and internationally.</p>"
           }
         },
         "qa_rjphXX": {
           "type": "qa",
           "settings": {
-            "question": "Do you ship overseas?",
-            "answer": "<p>Yes — we ship worldwide. Delivery times and duties vary by destination; you'll see exact options and costs at checkout.</p>"
+            "question": "How fast will my order arrive?",
+            "answer": "<p>Within the U.S., shipping typically takes 2 days. International delivery times vary by location — some destinations may take a little longer, depending on where you're located.</p>"
           }
         },
         "qa_NqiCdL": {
           "type": "qa",
           "settings": {
-            "question": "How long will it take to get my orders?",
-            "answer": "<p>Domestic orders typically arrive in 3–5 business days. International delivery usually takes 7–14 business days depending on the carrier.</p>"
+            "question": "Is your packaging eco-friendly?",
+            "answer": "<p><strong>Yes — every layer of it.</strong> Your order ships in a padded, 100% eco-friendly paper envelope, with the OG3™ tubes packed inside. The product itself comes in reusable, infinitely recyclable Miron violet glass. Sustainability isn't a separate initiative for us — it's consistent with a brand built around feeding ecosystems, not depleting them.</p>"
+          }
+        },
+        "qa_BtVWkT": {
+          "type": "qa",
+          "settings": {
+            "question": "How do I track my order?",
+            "answer": "<p>You'll receive a shipping confirmation email with a tracking link as soon as your order ships. You can also check order status anytime by logging into your account.</p>"
+          }
+        },
+        "qa_QhjVPj": {
+          "type": "qa",
+          "settings": {
+            "question": "Can I change or cancel my order after placing it?",
+            "answer": "<p>Reach out as soon as possible after placing your order. Because we ship fast, we can only make changes or cancellations before the order has been processed for shipment — once it's on its way, we're not able to intercept it.</p>"
+          }
+        },
+        "qa_JHiiqM": {
+          "type": "qa",
+          "settings": {
+            "question": "Do you ship to PO boxes or APO/FPO addresses?",
+            "answer": "<p>Yes, we ship to PO boxes and military APO/FPO addresses. Note that 2-day delivery isn't guaranteed to these addresses, as delivery times can vary with postal and military mail services.</p>"
+          }
+        },
+        "qa_aP7yzC": {
+          "type": "qa",
+          "settings": {
+            "question": "What if my order arrives damaged?",
+            "answer": "<p>We're sorry if that happens — contact us with a photo of the damaged item and packaging, and we'll send a replacement or issue a full refund at no cost to you.</p>"
           }
         },
         "category_zMYfAP": {
@@ -75,50 +103,253 @@
         "qa_MPGkr9": {
           "type": "qa",
           "settings": {
-            "question": "Your question here?",
-            "answer": "<p>Your answer here.</p>"
+            "question": "What is your return policy?",
+            "answer": "<p>We 100% guarantee every product we sell. If OG3™ isn't right for you for any reason, you can return it for a full refund within <strong>30 days</strong> of your purchase.</p>"
           }
         },
         "qa_NPNYxC": {
           "type": "qa",
           "settings": {
-            "question": "Your question here?",
-            "answer": "<p>Your answer here.</p>"
+            "question": "How do I return a product?",
+            "answer": "<p>Contact us within 30 days of your purchase to start a return. You'll need to send the product back to us — we're not able to issue a refund without the returned item.</p>"
           }
         },
         "qa_Tw6UNx": {
           "type": "qa",
           "settings": {
-            "question": "Your question here?",
-            "answer": "<p>Your answer here.</p>"
+            "question": "Does the product need to be unopened to return it?",
+            "answer": "<p>No — our guarantee is designed so you can genuinely try OG3™. Opened or used bottles are eligible for return within the 30-day window.</p>"
+          }
+        },
+        "qa_JPc4Ap": {
+          "type": "qa",
+          "settings": {
+            "question": "Who pays for return shipping?",
+            "answer": "<p>Customers cover return shipping costs, unless the return is due to our error — a damaged, defective, or incorrect item. In those cases, return shipping is on us.</p>"
+          }
+        },
+        "qa_K6Rxp7": {
+          "type": "qa",
+          "settings": {
+            "question": "How long does my refund take?",
+            "answer": "<p>Once we receive your returned product, expect your refund within <strong>2 weeks</strong>. Most refunds process faster, but please allow up to two weeks from the date we receive your return.</p>"
+          }
+        },
+        "qa_nxaWbM": {
+          "type": "qa",
+          "settings": {
+            "question": "Can I exchange instead of returning?",
+            "answer": "<p>Yes — if you'd rather try a different flavor or format (Spray vs. Pump) instead of a refund, let us know when you reach out and we'll set up an exchange instead.</p>"
+          }
+        },
+        "qa_kXPMte": {
+          "type": "qa",
+          "settings": {
+            "question": "Can I return a subscription order?",
+            "answer": "<p>Yes, the same 30-day guarantee applies to subscription orders. You can also pause, skip, or cancel your subscription anytime from your account before your next order ships.</p>"
           }
         },
         "category_6UfYnh": {
           "type": "category",
           "settings": {
-            "title": "Safety & Ingredients",
+            "title": "How to Use",
             "subtitle": ""
           }
         },
         "qa_QVeMnD": {
           "type": "qa",
           "settings": {
-            "question": "What is OG3™?",
-            "answer": "<p>OG3™ is our oxygen-rich oral care formula, designed to support the oral-gut axis with bioavailable oxygen and plant-based compounds.</p>"
+            "question": "How do I use the Spray?",
+            "answer": "<p>The Spray is built for anytime use:</p><ul><li><strong>Spray into your mouth</strong> — 2–3 sprays, anytime, anywhere: after coffee, after a meal, before a meeting, before a kiss.</li><li><strong>Close your mouth and hold — 60 seconds</strong> — this is the saturation window. Oxygen-rich glycerin coats every surface, feeding beneficial bacteria the conditions they need to thrive.</li><li><strong>Swallow</strong> — safe to swallow, tastes great.</li></ul>"
           }
         },
         "qa_WeDT3y": {
           "type": "qa",
           "settings": {
-            "question": "What is OG3™?",
-            "answer": "<p>OG3™ is our oxygen-rich oral care formula, designed to support the oral-gut axis with bioavailable oxygen and plant-based compounds.</p>"
+            "question": "How do I use the Pump?",
+            "answer": "<p>There are many ways to use the Pump — we list several below — but we recommend two in particular. <strong>Sublingual is the primary way</strong>: held under the tongue, where thin, blood-vessel-rich tissue absorbs it rapidly, straight into your bloodstream, during the 60-second hold. <strong>Adding it to your toothpaste is the secondary way</strong> — a great daily boost, but not a substitute for the sublingual ritual.</p><p>To use it sublingually:</p><ul><li><strong>Pump under the tongue</strong> — 1–2 pumps. First thing in the morning and before bed are the two key times, but sublingual works anytime.</li><li><strong>Close your mouth and hold — 60 seconds</strong> — keep it held under your tongue. That's what sublingual means, and it's the window where the underlying glands can absorb it and beneficial bacteria get what they need to re-establish quorum.</li><li><strong>Swallow</strong> — safe to swallow, tastes great.</li></ul><p><strong>The evening pump, right before bed, is the single most important moment in the whole ritual.</strong> Here's why: your mouth's biggest natural defense is saliva, and saliva production nearly stops while you sleep. For 6–8 hours, the beneficial bacteria lose the fluid that normally keeps them fed and the anaerobic bacteria in check — which is exactly why breath is at its worst in the morning. That overnight stretch is the hardest battle your oral</p>"
           }
         },
         "qa_cgYTjw": {
           "type": "qa",
           "settings": {
-            "question": "What is OG3™?",
-            "answer": "<p>OG3™ is our oxygen-rich oral care formula, designed to support the oral-gut axis with bioavailable oxygen and plant-based compounds.</p>"
+            "question": "Can I use the Pump as a toothpaste booster?",
+            "answer": "<p><strong>Yes — it's a great boost to add to your favorite toothpaste, and the secondary way we recommend using the Pump.</strong> Add 1–2 pumps on top of your toothpaste and brush as usual. Brushing is what spreads it, carrying the formula across every surface of your mouth, not just where it was applied — giving your regular routine an oxygen-rich assist. Sublingual gets OG3™ into your bloodstream; the toothpaste boost gets it everywhere your brush reaches. Use both, and you're covering the two things a mouth actually needs.</p>"
+          }
+        },
+        "qa_EXbahN": {
+          "type": "qa",
+          "settings": {
+            "question": "What are other ways to use the Pump?",
+            "answer": "<p>Beyond the primary sublingual ritual and the toothpaste boost, a few other ways Biome Hackers use the Pump:</p><ul><li>On a fingertip — massage directly into gums or troubled areas</li><li>In a water pick — 1–2 pumps per 8 oz</li><li>In a mouthguard or tray — before bed</li><li>As a gargle — 1–2 pumps in 8 oz water, 30–60 seconds</li></ul>"
+          }
+        },
+        "qa_F4PVfd": {
+          "type": "qa",
+          "settings": {
+            "question": "Why does the 60-second hold matter?",
+            "answer": "<p>You swallow nearly a thousand times a day, and every swallow carries a signal from your mouth into the rest of your body. The 60-second hold gives OG3™ time to fully saturate the mouth before that happens — feeding beneficial bacteria the oxygen-rich conditions they need, rather than rinsing through too quickly to make a difference.</p>"
+          }
+        },
+        "qa_MqgXCf": {
+          "type": "qa",
+          "settings": {
+            "question": "Should I use the Spray, the Pump, or both?",
+            "answer": "<p><strong>Honestly — get both.</strong> They're companion products, not alternatives to each other. The Pump handles the sublingual ritual — held under the tongue, where it's absorbed straight into your bloodstream — anchored around morning and before bed. The Spray handles everything in between: after coffee, after lunch, before meetings, social moments, anytime you want it. Most Biome Hackers keep the Pump at home and the Spray in their pocket, and use them together.</p>"
+          }
+        },
+        "category_36QrhB": {
+          "type": "category",
+          "settings": {
+            "title": "The Mouth Is Alive",
+            "subtitle": ""
+          }
+        },
+        "qa_YdLCeQ": {
+          "type": "qa",
+          "settings": {
+            "question": "How many species of bacteria live in your mouth?",
+            "answer": "<p>More than 700 species of bacteria, fungi, and other microorganisms call your mouth home — each with its own niche and role. This isn't contamination. It's the ecosystem itself. A healthy oral microbiome is a highly diverse one.</p><p>What sterilizing disrupts</p><p>Antiseptics don't selectively remove the harmful species. They kill indiscriminately — collapsing the diversity that keeps the ecosystem stable, and opening up empty niches for the worst-behaved species to move into.</p>"
+          }
+        },
+        "qa_MxnWMC": {
+          "type": "qa",
+          "settings": {
+            "question": "How many times do you swallow in a day?",
+            "answer": "<p>Nearly a thousand times. Every single swallow carries a signal from your mouth into the rest of your body.</p><p>What sterilizing disrupts</p><p>If antiseptic use leaves your mouth in the imbalanced, anaerobe-favoring state described below, you're not sending that signal to the rest of your body once. You're sending it roughly a thousand times a day.</p>"
+          }
+        },
+        "qa_6Ke3F9": {
+          "type": "qa",
+          "settings": {
+            "question": "Is there really a connection between your mouth, gut, and brain?",
+            "answer": "<p>Yes. The oral microbiome seeds the gut microbiome, and the gut communicates with the brain through the enteric nervous system and the vagus nerve. Research has linked oral dysbiosis to neuroinflammation, mood, metabolic health, and immune function.</p><p>What sterilizing disrupts</p><p>Because the mouth continuously reseeds the gut, an oral ecosystem depleted by antiseptics doesn't just affect your breath. It changes what gets planted downstream — all day, every day.</p>"
+          }
+        },
+        "qa_k4ztGd": {
+          "type": "qa",
+          "settings": {
+            "question": "How much saliva do you produce in a day?",
+            "answer": "<p>About 0.5 to 1.5 liters — roughly 2 to 6 cups. Saliva is more than 99% water, but that remaining fraction does serious work: antimicrobial compounds like lysozyme and lactoferrin, digestive enzymes like amylase, and minerals like calcium and phosphate that help remineralize enamel.</p><p>What sterilizing disrupts</p><p>Alcohol-based rinses are well known to dry out oral tissue and reduce saliva flow — undermining the very fluid your mouth relies on to fight bad bacteria and remineralize teeth in the first place.</p>"
+          }
+        },
+        "qa_aBXBzj": {
+          "type": "qa",
+          "settings": {
+            "question": "How many taste buds does the tongue have?",
+            "answer": "<p>An estimated <strong>3.5 billion people — 45% of everyone alive</strong> — according to the World Health Organization's 2022 Global Oral Health Status Report. Three out of every four live in low- and middle-income countries. Oral disease is now the most widespread noncommunicable health condition on Earth.</p><p>Why it matters</p><p>This scale of disease has grown up alongside a global oral care industry overwhelmingly built on sterilization. The two facts sitting next to each other should give anyone pause.</p>"
+          }
+        },
+        "qa_E83dJD": {
+          "type": "qa",
+          "settings": {
+            "question": "Do babies really have naturally fresh breath?",
+            "answer": "<p>Yes — a newborn's oral microbiome hasn't been disrupted yet. It's maximally diverse and well-coordinated.</p><p>Why it matters</p><p>Babies don't have bad breath because their oral ecosystem hasn't encountered antiseptics, sugar, or anything else that reshapes it later in life. The starting design works. What we do to it afterward is the variable.</p>"
+          }
+        },
+        "qa_kJYpd3": {
+          "type": "qa",
+          "settings": {
+            "question": "How did sterilization become the industry standard — and why are we changing it?",
+            "answer": "<p>For roughly 75 years, sterilization hasn't just been the default for mouthwash — it's been the operating assumption of the entire dentistry industry, from consumer antiseptic rinses to standard clinical protocols. Kill the bacteria, the thinking goes, and you solve the problem.</p><p>The mechanism is backwards. Antiseptic products kill beneficial, oxygen-loving bacteria first — leaving the odor- and disease-associated anaerobic bacteria free to rebound. It doesn't fix the underlying imbalance. It resets the same cycle, which is why it needs repeating, forever.</p><p>What we're changing</p><p>Rainbow Smile exists because we think 75 years is long enough to try one idea and watch the numbers not improve. Biome Food™ is built on the opposite premise: feed the ecosystem the conditions it needs to defend itself, instead of sterilizing it and hoping nothing bad grows back first.</p>"
+          }
+        },
+        "qa_4DbtCt": {
+          "type": "qa",
+          "settings": {
+            "question": "What is EZ water?",
+            "answer": "<p>Water has four phases, not three. The fourth — EZ water, discovered by Dr. Gerald Pollack at the University of Washington — is structured and gel-like, the same form found inside living plant cells. OG3™ generates EZ water in situ during formulation.</p><p>Why it matters</p><p>Living systems are built on structure and organization, not chaos. Sterilizing processes don't have a mechanism to build anything like this — they're only built to strip and disrupt, never to organize or restore.</p>"
+          }
+        },
+        "qa_PqrRfB": {
+          "type": "qa",
+          "settings": {
+            "question": "What is quorum sensing?",
+            "answer": "<p>The beneficial bacteria in your mouth use quorum sensing — chemical signaling — to coordinate their protective work: producing antimicrobial peptides, maintaining a healthy pH, and occupying the niches that would otherwise let harmful bacteria move in.</p><p>What sterilizing disrupts</p><p>Wiping out the bacteria performing this coordination doesn't just reduce bacterial count — it silences the communication network keeping harmful species in check, leaving the door open for whichever species rebounds fastest. That's usually the anaerobes responsible for bad breath and disease in the first place.</p>"
+          }
+        },
+        "category_gJNFwE": {
+          "type": "category",
+          "settings": {
+            "title": "Safety & Ingredients",
+            "subtitle": ""
+          }
+        },
+        "qa_eeLPXX": {
+          "type": "qa",
+          "settings": {
+            "question": "What's actually in OG3™?",
+            "answer": "<p>Every OG3™ formula starts with a base of <strong>certified organic coconut glycerin</strong>, infused with:</p><ul><li>Oxygen nano-bubbles</li><li>Biofield resonance frequencies</li><li>Structured EZ water</li></ul><p>This is what we mean by Biome Food™ — a formula built to feed the beneficial bacteria in your mouth, not sterilize them away.</p>"
+          }
+        },
+        "qa_P9WxcK": {
+          "type": "qa",
+          "settings": {
+            "question": "Is OG3™ safe to swallow?",
+            "answer": "<p><strong>Yes. Safe to swallow. Tastes great.</strong> Swallowing is part of the ritual, not something to avoid.</p>"
+          }
+        },
+        "qa_de6GpQ": {
+          "type": "qa",
+          "settings": {
+            "question": "What are oxygen nano-bubbles, biofield resonance frequencies, and structured EZ water?",
+            "answer": "<p>These are the elements that make OG3™ more than a flavored glycerin base. Oxygen nano-bubbles feed beneficial aerobic bacteria the conditions they need to thrive. Structured EZ water is a naturally occurring, gel-like phase of water generated during formulation. Biofield resonance frequencies are embedded during manufacturing to help extend the formula's effectiveness. Together, they're the science behind Biome Food™.</p>"
+          }
+        },
+        "qa_yVaPXj": {
+          "type": "qa",
+          "settings": {
+            "question": "What flavors are available, and what's in them?",
+            "answer": "<p>All three flavors share the same certified organic coconut glycerin base, oxygen nano-bubbles, biofield resonance frequencies, and structured EZ water. What differs is the flavoring:</p><p><strong>🌿 Pure Cleanse<br/></strong>Unflavored — no added flavoring oils<strong>.</strong></p><p><strong>🌱 Minty Fusion<br/></strong>Organic spearmint, organic peppermint, organic coconut, and organic myrrh essential oils.<strong><br/></strong></p><p><strong>🌶 Zesty Cinnamon</strong></p><p>Organic orange, organic cinnamon, organic vanilla, and organic clove essential oils.</p>"
+          }
+        },
+        "qa_N44K8F": {
+          "type": "qa",
+          "settings": {
+            "question": "Is OG3™ certified organic?",
+            "answer": "<p>Yes — the coconut glycerin base is certified organic, as are every one of the essential oils used across our flavors.</p>"
+          }
+        },
+        "qa_PetC8X": {
+          "type": "qa",
+          "settings": {
+            "question": "Is OG3™ vegan?",
+            "answer": "<p>Yes. Every ingredient across all three flavors is plant-derived — there are no animal-derived ingredients in any OG3™ formula.</p>"
+          }
+        },
+        "qa_VHdB6P": {
+          "type": "qa",
+          "settings": {
+            "question": "Are there any allergens I should know about?",
+            "answer": "<p>OG3™ is coconut-derived, so if you have a coconut allergy, this product may not be right for you — though it's worth knowing that coconut glycerin is an extractive derivative of coconut, meaning it's processed in a way that many people with coconut sensitivities find they can tolerate. If you're unsure, check with your doctor before trying it. Minty Fusion and Zesty Cinnamon also contain essential oils (including mint, clove, and cinnamon) that can be sensitizing for some people — if you have known sensitivities to essential oils, we'd suggest starting with Pure Cleanse, our unflavored formula.</p>"
+          }
+        },
+        "qa_qgwj3J": {
+          "type": "qa",
+          "settings": {
+            "question": "Is it safe during pregnancy or breastfeeding?",
+            "answer": "<p>We're not able to make that call for you — please check with your doctor or midwife before using OG3™ if you're pregnant or breastfeeding, especially given the essential oils in Minty Fusion and Zesty Cinnamon.</p>"
+          }
+        },
+        "qa_66MgAe": {
+          "type": "qa",
+          "settings": {
+            "question": "Is it safe for children?",
+            "answer": "<p>Yes — OG3™ is used by kids of all ages in our community, including babies and toddlers. It's 100% natural and safe to swallow.</p>"
+          }
+        },
+        "qa_7qFe8H": {
+          "type": "qa",
+          "settings": {
+            "question": "Does OG3™ replace brushing or toothpaste?",
+            "answer": "<p>It can replace toothpaste, but it's worth knowing what it isn't: it's not a cleanser the way toothpaste is designed to be — it doesn't have the abrasive ingredients that scrub debris off your teeth. Most people use it as a toothpaste booster, adding it on top of their regular toothpaste. You can also use it by itself on a toothbrush if you'd like to spread it evenly throughout your mouth.</p>"
+          }
+        },
+        "qa_pp6Gqb": {
+          "type": "qa",
+          "settings": {
+            "question": "How long does a bottle last, and how should I store it?",
+            "answer": "<p>Each bottle contains roughly a month's supply, depending on how often you use it. Store it at room temperature, away from direct sunlight — the Miron violet glass bottle is designed to protect the formula from light degradation and preserve its potency. Shelf life is a minimum of 1 year.</p>"
           }
         }
       },
@@ -127,14 +358,47 @@
         "qa_cVw8fn",
         "qa_rjphXX",
         "qa_NqiCdL",
+        "qa_BtVWkT",
+        "qa_QhjVPj",
+        "qa_JHiiqM",
+        "qa_aP7yzC",
         "category_zMYfAP",
         "qa_MPGkr9",
         "qa_NPNYxC",
         "qa_Tw6UNx",
+        "qa_JPc4Ap",
+        "qa_K6Rxp7",
+        "qa_nxaWbM",
+        "qa_kXPMte",
         "category_6UfYnh",
         "qa_QVeMnD",
         "qa_WeDT3y",
-        "qa_cgYTjw"
+        "qa_cgYTjw",
+        "qa_EXbahN",
+        "qa_F4PVfd",
+        "qa_MqgXCf",
+        "category_36QrhB",
+        "qa_YdLCeQ",
+        "qa_MxnWMC",
+        "qa_6Ke3F9",
+        "qa_k4ztGd",
+        "qa_aBXBzj",
+        "qa_E83dJD",
+        "qa_kJYpd3",
+        "qa_4DbtCt",
+        "qa_PqrRfB",
+        "category_gJNFwE",
+        "qa_eeLPXX",
+        "qa_P9WxcK",
+        "qa_de6GpQ",
+        "qa_yVaPXj",
+        "qa_N44K8F",
+        "qa_PetC8X",
+        "qa_VHdB6P",
+        "qa_qgwj3J",
+        "qa_66MgAe",
+        "qa_7qFe8H",
+        "qa_pp6Gqb"
       ],
       "name": "FAQ Groups",
       "settings": {

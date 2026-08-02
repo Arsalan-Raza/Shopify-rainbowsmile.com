@@ -60,9 +60,9 @@
       "settings": {
         "bg_image": "shopify://shop_images/Section_-_HERO_3.png",
         "eyebrow": "Rainbow Smile · The Biome Hacker Community",
-        "title": "Your already sendsed it.",
+        "title": "Your already Sensed it.",
         "script_line": "Welcome home.",
-        "subtitle": "<p>The community for people who think of their body as a living ecosystem — and are done accepting the wrong answers for it.</p>",
+        "subtitle": "<p>The community for people who think of their body as a living ecosystem — and never stopped sensing it, even when no one else did.</p>",
         "show_curve": true,
         "curve_color": "#ffffff",
         "mono_font": "tag",
@@ -84,7 +84,7 @@
           "type": "video",
           "settings": {
             "video_url": "https://cdn.shopify.com/videos/c/o/v/e8441a707e934f26a1306760bdad329d.mp4",
-            "poster_image": "shopify://shop_images/iframe.png",
+            "poster_image": "shopify://shop_images/thumbnail.png",
             "poster_alt": "",
             "quote": "“I didn’t learn something new. I remembered something I always knew.”",
             "attribution": "Biome Hacker · OG3™ Community Member"

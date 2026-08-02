@@ -20,7 +20,7 @@
         "text": "THE BIOME HACKER'S CODE — BY WILLIAM ROBERTSON",
         "bullet_color": "#ef4f28",
         "button_label": "GET FREE BOOK",
-        "button_link": "",
+        "button_link": "shopify://pages/the-book",
         "button_bg_color": "#ef4f28",
         "button_text_color": "#ffffff",
         "ticker_speed": 25

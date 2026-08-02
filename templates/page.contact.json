@@ -21,7 +21,7 @@
       "type": "contact-hero",
       "name": "Contact Hero",
       "settings": {
-        "bg_image": "shopify://shop_images/vrw.jpg",
+        "bg_image": "shopify://shop_images/w_1.jpg",
         "overlay_opacity": 80,
         "min_height_mobile": 480,
         "min_height_desktop": 660,

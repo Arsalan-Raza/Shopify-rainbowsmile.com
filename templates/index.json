@@ -123,7 +123,7 @@
       "type": "signal-banner",
       "name": "Signal Banner",
       "settings": {
-        "image": "shopify://shop_images/img21_3.png",
+        "image": "shopify://shop_images/img21_3_1.png",
         "heading": "Bad Breath Isn't Normal",
         "script_line": "It's a Signal.",
         "show_curve": true,
@@ -143,14 +143,14 @@
         "title_before": "Healthy saliva needs",
         "title_accent": "20% oxygen.",
         "title_after": "Bad breath happens at just 2%.",
-        "subtitle": " Baby's breath, pure, fresh, alive. Modern life disrupts the thought that natural harmony. Cleaning products mask. <strong>Rainbow Smile OG3™ supports oxygen-rich freshness</strong> — the way your mouth was designed to work. ",
+        "subtitle": "Baby's breath, pure, fresh, alive. Modern life disrupts the thought that natural harmony. Cleaning products mask. <b>Rainbow Smile OG3™ supports oxygen-rich freshness</b> — the way your mouth was designed to work.",
         "stat_low": "2%",
-        "label_low": "Oxygen-Poor Saliva",
-        "desc_low": "Low oxygen creates the environment where bad-breath bacteria thrive and damage tissues.",
+        "label_low": "Oxygen-poor",
+        "desc_low": "Anaerobic bacteria dominate. Decay and odor follow.",
         "image": "shopify://shop_images/image_5_1.png",
         "stat_high": "20%",
-        "label_high": "Healthy Saliva",
-        "desc_high": "OG3™ Drops restore oxygen to healthy levels — feeding good bacteria, crowding out the bad.",
+        "label_high": "Oxygen-rich",
+        "desc_high": "Aerobic bacteria thrive. Balance and freshness restored.",
         "cta_text": "Restore Your Oral Oxygen",
         "cta_url": "shopify://collections/all",
         "mono_font": "tag",
@@ -180,7 +180,7 @@
           "settings": {
             "icon": "globe",
             "title": "Free Community",
-            "sub": "Join 50,000+ biome hackers"
+            "sub": "Join biome hackers"
           }
         },
         "benefit_R8rtx8": {
@@ -488,7 +488,7 @@
         "body_2": "<p>A living daily ritual for inner wellbeing.</p>",
         "cta_text": "Start Your Ritual",
         "cta_url": "shopify://collections/all",
-        "image": "shopify://shop_images/Background_7.png",
+        "image": "shopify://shop_images/Background_13.png",
         "image_alt": "Rainbow Smile OG3 bottles with botanicals",
         "mono_font": "tag",
         "heading_font": "heading",
@@ -571,7 +571,7 @@
         "eyebrow_sup": "™",
         "title": "Feed Your",
         "script_line": "Ecology",
-        "subtitle": " Join our community ",
+        "subtitle": "Join our community",
         "feat_quote": "“The before-bed pump is the one that sold me. I used to wake up with that thick morning-mouth feeling every single day. It’s noticeably less now, and it keeps getting better the longer I stick with it.”",
         "feat_avatar": "shopify://shop_images/Overlay_Border_2.png",
         "feat_name": "Anita W.",
@@ -689,12 +689,28 @@
       "type": "founder",
       "name": "Founder — Love Serves All",
       "settings": {
+        "image": "shopify://shop_images/Component_13_1.png",
+        "image_alt": "William Robertson, founder of Rainbow Smile",
+        "eyebrow": "About the Founder",
+        "title_before": "Hi, I'm",
+        "title_script": "William",
+        "body": "<p>Founder of Rainbow Smile, a company born from a deep passion for wellness, the wisdom of nature, and the belief that true health begins within the small but mighty ecosystem living inside each of us.</p><p>Rainbow Smile is more than just a line of products, it's a movement. A movement toward reconnecting with nature, reclaiming vibrant, whole-body health, and embracing joy-filled, authentic smiles as symbols of genuine wellness.</p>",
+        "quote": "<p>\"Our Mission: A Planet Smiling — a planet smiling in harmony with its own living code, where every mouth becomes a messenger of peace and every smile a sign of health supported.\"</p>",
+        "quote_attr": "— William Robertson",
+        "btn_1_text": "Get the Free Book",
+        "btn_1_url": "shopify://pages/the-book",
+        "btn_2_text": "Our Story",
+        "btn_2_url": "shopify://pages/about",
         "heading_font": "heading",
+        "script_font": "accent",
+        "mono_font": "tag",
         "body_font": "heading",
         "bg_color": "#f2e8d3",
         "navy_color": "#232748",
         "coral_color": "#ef4a22",
-        "body_color": "#5a5340"
+        "body_color": "#5a5340",
+        "quote_color": "#4b4636",
+        "card_color": "#ffffff"
       }
     },
     "home_impact_WneCDa": {
@@ -739,9 +755,9 @@
         "title_after": "",
         "body": "<p>Kenya has 966 dentists for 55 million people. Oral disease is the most widespread health condition on earth — and in Kenya, it reaches nearly everyone. We are committed to changing this, one village at a time. We are small. We are honest about that. And we need your help to grow what we have started.</p>",
         "donate_text": "Donate Now",
-        "donate_url": "",
+        "donate_url": "shopify://pages/contact",
         "story_text": "Read the full story →",
-        "story_url": "",
+        "story_url": "shopify://pages/kenya",
         "pill_text": "🌿1% of profits · Product monthly",
         "credit_text": "In Partnership with Springboard Connectivity Tracy Tarlow, Director",
         "heading_font": "heading",
@@ -764,36 +780,50 @@
         "faq_item_Kc4wNM": {
           "type": "faq_item",
           "settings": {
-            "question": "What is Biome Food™?",
-            "answer": "<p>Biome Food™ is Rainbow Smile’s proprietary approach to oral care: formulations built to feed the beneficial bacteria in your mouth with the oxygen-rich conditions they need to thrive — supporting balance in the oral ecosystem, instead of sanitizing it the way conventional oral care does.</p>"
+            "question": "Where do you ship?",
+            "answer": "<p>We ship both within the U.S. and internationally.</p>"
           }
         },
         "faq_item_Kd9k9q": {
           "type": "faq_item",
           "settings": {
-            "question": "What is OG3™?",
-            "answer": "<p>OG3™ is Rainbow Smile’s oxygen-infused, certified organic coconut glycerin formulation — the science behind our Biome Food™, built on four pillars: a certified organic base, oxygen infusion, EZ water generation, and embedded bioresonance frequency. It supports the oxygen-rich conditions beneficial oral bacteria need to thrive, instead of sanitizing the mouth the way conventional oral care does.</p>"
+            "question": "How fast will my order arrive?",
+            "answer": "<p>Within the U.S., shipping typically takes 2 days. International delivery times vary by location — some destinations may take a little longer, depending on where you're located.</p>"
           }
         },
         "faq_item_m9JMPF": {
           "type": "faq_item",
           "settings": {
-            "question": "How do I use the spray vs. the pump?",
-            "answer": "<p>Use the spray for quick, on-the-go freshness, and the pump for your daily measured ritual. Both deliver the same OG3™ formula — choose whichever fits the moment.</p>"
+            "question": "Is your packaging eco-friendly?",
+            "answer": "<p><strong>Yes — every layer of it.</strong> Your order ships in a padded, 100% eco-friendly paper envelope, with the OG3™ tubes packed inside. The product itself comes in reusable, infinitely recyclable Miron violet glass. Sustainability isn't a separate initiative for us — it's consistent with a brand built around feeding ecosystems, not depleting them.</p>"
           }
         },
         "faq_item_ccdkgK": {
           "type": "faq_item",
           "settings": {
-            "question": "What does sublingual mean?",
-            "answer": "<p>Sublingual means “under the tongue.” Holding the formula there briefly lets the active compounds absorb directly through the tissue for faster delivery.</p>"
+            "question": "How do I track my order?",
+            "answer": "<p>You'll receive a shipping confirmation email with a tracking link as soon as your order ships. You can also check order status anytime by logging into your account.</p>"
           }
         },
         "faq_item_eAG9zV": {
           "type": "faq_item",
           "settings": {
-            "question": "Is it really safe to swallow?",
-            "answer": "<p>Yes. Every ingredient is food-grade and designed to be swallowed safely, carrying its benefits along your oral-gut axis.</p>"
+            "question": "Can I change or cancel my order after placing it?",
+            "answer": "<p>Reach out as soon as possible after placing your order. Because we ship fast, we can only make changes or cancellations before the order has been processed for shipment — once it's on its way, we're not able to intercept it.</p>"
+          }
+        },
+        "faq_item_TTzCCE": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you ship to PO boxes or APO/FPO addresses?",
+            "answer": "<p>Yes, we ship to PO boxes and military APO/FPO addresses. Note that 2-day delivery isn't guaranteed to these addresses, as delivery times can vary with postal and military mail services.</p>"
+          }
+        },
+        "faq_item_bRRMHy": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What if my order arrives damaged?",
+            "answer": "<p>We're sorry if that happens — contact us with a photo of the damaged item and packaging, and we'll send a replacement or issue a full refund at no cost to you.</p>"
           }
         }
       },
@@ -802,12 +832,14 @@
         "faq_item_Kd9k9q",
         "faq_item_m9JMPF",
         "faq_item_ccdkgK",
-        "faq_item_eAG9zV"
+        "faq_item_eAG9zV",
+        "faq_item_TTzCCE",
+        "faq_item_bRRMHy"
       ],
       "name": "FAQ Accordion",
       "settings": {
         "bg_color": "#ffffff",
-        "eyebrow_text": "Need Help?",
+        "eyebrow_text": "Support",
         "eyebrow_font": "--font-tag-family",
         "heading_text": "Frequently Asked",
         "heading_font": "--font-heading-family",

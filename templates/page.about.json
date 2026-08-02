@@ -350,7 +350,7 @@
           "settings": {
             "image": "shopify://shop_images/4442a63aad91351fd74519c4b39db0ef20573c23.png",
             "name": "Dr. Vanita K. Gupta, PhD, MBA",
-            "role": "Chief Founding Science Officer"
+            "role": "Advisor"
           }
         },
         "member_cEUcef": {
@@ -388,7 +388,7 @@
       ],
       "name": "Meet the Team",
       "settings": {
-        "bg_color": "#F5EFE3",
+        "bg_color": "#f5efe3",
         "bg_image": "shopify://shop_images/MICROBES_1_3.png",
         "bg_image_opacity": 100,
         "eyebrow_text": "The People",
