@@ -4,11 +4,13 @@
     --fn-navy:  {{ section.settings.navy_color }};
     --fn-coral: {{ section.settings.coral_color }};
     --fn-body:  {{ section.settings.body_color }};
+    --fn-quote: {{ section.settings.quote_color }};
+    --fn-card:  {{ section.settings.card_color }};
 
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    background: var(--fn-bg);
+    background-color: var(--fn-bg);
     padding-block: clamp(48px, 7vw, 90px);
     padding-inline: clamp(20px, 5vw, 48px);
   }
@@ -28,28 +30,68 @@
   .fnd-{{ section.id }} .fnd__inner {
     max-width: 1240px;
     margin-inline: auto;
-  }
-
-  /* ── Love Serves All ──────────────────────────────────────── */
-  .fnd-{{ section.id }} .fnd__mission-block {
     display: grid;
-    grid-template-columns: 1fr 1.05fr;
+    grid-template-columns: 1fr 1.15fr;
     gap: clamp(32px, 5vw, 72px);
-    align-items: center;
+    align-items: start;
   }
 
-  .fnd-{{ section.id }} .fnd__ls-title {
-    margin: 0 0 clamp(16px, 2.2vw, 22px);
+  /* ── Photo ───────────────────────────────────────────────── */
+  .fnd-{{ section.id }} .fnd__photo {
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    background: linear-gradient(160deg, #b9b0a0, #d8cfbe);
+  }
+  .fnd-{{ section.id }} .fnd__photo img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+
+  /* ── Content ─────────────────────────────────────────────── */
+  .fnd-{{ section.id }} .fnd__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 700;
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--fn-coral);
+    line-height: 1;
+  }
+  .fnd-{{ section.id }} .fnd__eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+
+  .fnd-{{ section.id }} .fnd__title {
+    margin: 0;
     font-family: var(--font-{{ section.settings.heading_font }}-family);
     font-weight: 800;
-    font-size: clamp(30px, 3.8vw, 46px);
+    font-size: clamp(32px, 3.8vw, 46px);
     line-height: 1.05;
     letter-spacing: -0.5px;
     color: var(--fn-navy);
   }
-  .fnd-{{ section.id }} .fnd__ls-title sup { font-size: 0.4em; vertical-align: super; }
+  .fnd-{{ section.id }} .fnd__title-script {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: clamp(30px, 3.6vw, 44px);
+    line-height: 1.1;
+    color: var(--fn-coral);
+  }
 
-  .fnd-{{ section.id }} .fnd__ls-body p {
+  .fnd-{{ section.id }} .fnd__body {
+    margin: clamp(18px, 2.4vw, 24px) 0 0;
+  }
+  .fnd-{{ section.id }} .fnd__body p {
     margin: 0;
     font-family: var(--font-{{ section.settings.body_font }}-family);
     font-weight: 400;
@@ -57,21 +99,38 @@
     line-height: 1.65;
     color: var(--fn-body);
   }
-  .fnd-{{ section.id }} .fnd__ls-body p + p { margin-top: 16px; }
-  .fnd-{{ section.id }} .fnd__ls-body strong { font-weight: 700; color: var(--fn-navy); }
-  .fnd-{{ section.id }} .fnd__ls-body sup { font-size: 0.62em; vertical-align: super; }
+  .fnd-{{ section.id }} .fnd__body p + p { margin-top: 16px; }
+  .fnd-{{ section.id }} .fnd__body strong { font-weight: 700; color: var(--fn-navy); }
 
-  .fnd-{{ section.id }} .fnd__ls-media {
-    border-radius: 24px;
-    overflow: hidden;
-    aspect-ratio: 4 / 5;
-    background: linear-gradient(160deg, #c9a97e, #e2cba6);
+  /* ── Mission card ────────────────────────────────────────── */
+  .fnd-{{ section.id }} .fnd__mission {
+    margin: clamp(24px, 3vw, 32px) 0 0;
+    background: var(--fn-card);
+    border-left: 4px solid var(--fn-coral);
+    border-radius: 14px;
+    padding: clamp(24px, 3vw, 34px);
   }
-  .fnd-{{ section.id }} .fnd__ls-media img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+  .fnd-{{ section.id }} .fnd__mission-quote p {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(14px, 1.4vw, 16px);
+    line-height: 1.65;
+    color: var(--fn-quote);
+  }
+  .fnd-{{ section.id }} .fnd__mission-quote p + p { margin-top: 12px; }
+  .fnd-{{ section.id }} .fnd__mission-attr {
+    display: block;
+    margin-top: clamp(16px, 2vw, 22px);
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-size: clamp(18px, 1.8vw, 22px);
+    line-height: 1;
+    color: var(--fn-coral);
   }
 
-  /* Buttons */
+  /* ── Buttons ─────────────────────────────────────────────── */
   .fnd-{{ section.id }} .fnd__actions {
     display: flex;
     flex-wrap: wrap;
@@ -93,20 +152,22 @@
     transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
   }
   .fnd-{{ section.id }} .fnd__btn-arrow { transition: transform 0.18s ease; }
-  .fnd-{{ section.id }} .fnd__btn--outline { background: transparent; color: var(--fn-coral); }
+  .fnd-{{ section.id }} .fnd__btn--solid   { background: var(--fn-coral); color: #fff; }
+  .fnd-{{ section.id }} .fnd__btn--outline  { background: transparent; color: var(--fn-coral); }
   @media (hover: hover) {
+    .fnd-{{ section.id }} .fnd__btn--solid:hover   { background: #dc411b; transform: translateY(-2px); }
     .fnd-{{ section.id }} .fnd__btn--outline:hover { background: var(--fn-coral); color: #fff; }
     .fnd-{{ section.id }} .fnd__btn:hover .fnd__btn-arrow { transform: translateX(3px); }
   }
   .fnd-{{ section.id }} .fnd__btn:focus-visible { outline: 3px solid rgba(239,74,34,0.4); outline-offset: 3px; }
 
-  /* ── Responsive ───────────────────────────────────────────── */
+  /* ── Responsive ──────────────────────────────────────────── */
   @media screen and (max-width: 899px) {
-    .fnd-{{ section.id }} .fnd__mission-block {
+    .fnd-{{ section.id }} .fnd__inner {
       grid-template-columns: 1fr;
       gap: clamp(28px, 6vw, 40px);
     }
-    .fnd-{{ section.id }} .fnd__ls-media { order: -1; }
+    .fnd-{{ section.id }} .fnd__photo { order: -1; max-width: 480px; }
   }
   @media screen and (max-width: 480px) {
     .fnd-{{ section.id }} .fnd__actions .fnd__btn { width: 100%; justify-content: center; }
@@ -117,42 +178,65 @@
   }
 {%- endstyle -%}
 
-<section class="fnd-{{ section.id }}" aria-label="{{ section.settings.section_aria | escape }}">
+<section class="fnd-{{ section.id }}" aria-label="{{ section.settings.eyebrow | escape }}">
   <div class="fnd__inner">
 
-    <div class="fnd__mission-block">
+    <!-- Photo -->
+    <div class="fnd__photo">
+      {%- if section.settings.image != blank -%}
+        {%- assign fn_alt = section.settings.image.alt | default: section.settings.image_alt | escape -%}
+        <img
+          src="{{ section.settings.image | image_url: width: 1000 }}"
+          srcset="{{ section.settings.image | image_url: width: 500 }} 500w, {{ section.settings.image | image_url: width: 750 }} 750w, {{ section.settings.image | image_url: width: 1000 }} 1000w"
+          width="{{ section.settings.image.width }}"
+          height="{{ section.settings.image.height }}"
+          alt="{{ fn_alt }}"
+          loading="lazy">
+      {%- endif -%}
+    </div>
 
-      <div class="fnd__ls-content">
-        {%- if section.settings.ls_title != blank -%}
-          <h2 class="fnd__ls-title">{{ section.settings.ls_title }}</h2>
+    <!-- Content -->
+    <div class="fnd__content">
+
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="fnd__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      <h2 class="fnd__title">
+        {{- section.settings.title_before | escape -}}
+        {%- if section.settings.title_script != blank -%}
+          <span class="fnd__title-script">{{ section.settings.title_script | escape }}</span>
         {%- endif -%}
+      </h2>
 
-        {%- if section.settings.ls_body != blank -%}
-          <div class="fnd__ls-body">{{ section.settings.ls_body }}</div>
-        {%- endif -%}
+      {%- if section.settings.body != blank -%}
+        <div class="fnd__body">{{ section.settings.body }}</div>
+      {%- endif -%}
 
-        {%- if section.settings.ls_btn_text != blank -%}
-          <div class="fnd__actions">
-            <a class="fnd__btn fnd__btn--outline" href="{{ section.settings.ls_btn_url | default: '#' }}">
-              {{ section.settings.ls_btn_text | escape }}
+      {%- if section.settings.quote != blank -%}
+        <div class="fnd__mission">
+          <div class="fnd__mission-quote">{{ section.settings.quote }}</div>
+          {%- if section.settings.quote_attr != blank -%}
+            <span class="fnd__mission-attr">{{ section.settings.quote_attr | escape }}</span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.btn_1_text != blank or section.settings.btn_2_text != blank -%}
+        <div class="fnd__actions">
+          {%- if section.settings.btn_1_text != blank -%}
+            <a class="fnd__btn fnd__btn--solid" href="{{ section.settings.btn_1_url | default: '#' }}">
+              {{ section.settings.btn_1_text | escape }}
               <span class="fnd__btn-arrow" aria-hidden="true">→</span>
             </a>
-          </div>
-        {%- endif -%}
-      </div>
-
-      <div class="fnd__ls-media">
-        {%- if section.settings.ls_image != blank -%}
-          {%- assign ls_img_alt = section.settings.ls_image.alt | default: section.settings.ls_image_alt | escape -%}
-          <img
-            src="{{ section.settings.ls_image | image_url: width: 1000 }}"
-            srcset="{{ section.settings.ls_image | image_url: width: 500 }} 500w, {{ section.settings.ls_image | image_url: width: 750 }} 750w, {{ section.settings.ls_image | image_url: width: 1000 }} 1000w"
-            width="{{ section.settings.ls_image.width }}"
-            height="{{ section.settings.ls_image.height }}"
-            alt="{{ ls_img_alt }}"
-            loading="lazy">
-        {%- endif -%}
-      </div>
+          {%- endif -%}
+          {%- if section.settings.btn_2_text != blank -%}
+            <a class="fnd__btn fnd__btn--outline" href="{{ section.settings.btn_2_url | default: '#' }}">
+              {{ section.settings.btn_2_text | escape }}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
 
     </div>
 
@@ -161,30 +245,24 @@
 
 {% schema %}
 {
-  "name": "Founder — Love Serves All",
+  "name": "Founder",
   "tag": "section",
   "class": "founder-section",
   "settings": [
-    {
-      "type": "text",
-      "id": "section_aria",
-      "label": "Section accessibility label",
-      "default": "Love Serves All"
-    },
     {
       "type": "header",
       "content": "Image"
     },
     {
       "type": "image_picker",
-      "id": "ls_image",
-      "label": "Image"
+      "id": "image",
+      "label": "Founder photo"
     },
     {
       "type": "text",
-      "id": "ls_image_alt",
+      "id": "image_alt",
       "label": "Image alt text",
-      "default": "Rainbow Smile team with a community in Kenya"
+      "default": "William Robertson, founder of Rainbow Smile"
     },
     {
       "type": "header",
@@ -192,27 +270,69 @@
     },
     {
       "type": "text",
-      "id": "ls_title",
-      "label": "Title",
-      "default": "Love Serves All.\u2122",
-      "info": "HTML supported: use <sup> for superscript."
-    },
-    {
-      "type": "richtext",
-      "id": "ls_body",
-      "label": "Body text",
-      "default": "<p>Every bottle of Rainbow Smile supports oral wellness access in Kenya, where 80% of rural communities have no access to dental care. Through our partnership with Springboard Connectivity, directed by Tracy Tarlow, we donate OG3\u2122 to communities who deserve the same support. Feed your ecology. Feed someone else\u2019s too.</p>"
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "About the Founder"
     },
     {
       "type": "text",
-      "id": "ls_btn_text",
-      "label": "Button text",
-      "default": "Learn more about our mission"
+      "id": "title_before",
+      "label": "Heading — plain text",
+      "default": "Hi, I'm"
+    },
+    {
+      "type": "text",
+      "id": "title_script",
+      "label": "Heading — script name (block below plain text)",
+      "default": "William"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body text",
+      "default": "<p>Founder of Rainbow Smile, a company born from a deep passion for wellness, the wisdom of nature, and the belief that true health begins within the small but mighty ecosystem living inside each of us.</p><p>Rainbow Smile is more than just a line of products, it's a movement. A movement toward reconnecting with nature, reclaiming vibrant, whole-body health, and embracing joy-filled, authentic smiles as symbols of genuine wellness.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Mission card"
+    },
+    {
+      "type": "richtext",
+      "id": "quote",
+      "label": "Quote / mission text",
+      "default": "<p>\"Our Mission: A Planet Smiling — a planet smiling in harmony with its own living code, where every mouth becomes a messenger of peace and every smile a sign of health supported.\"</p>"
+    },
+    {
+      "type": "text",
+      "id": "quote_attr",
+      "label": "Attribution",
+      "default": "— William Robertson"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "btn_1_text",
+      "label": "Button 1 text (solid)",
+      "default": "Get the Free Book"
     },
     {
       "type": "url",
-      "id": "ls_btn_url",
-      "label": "Button link"
+      "id": "btn_1_url",
+      "label": "Button 1 link"
+    },
+    {
+      "type": "text",
+      "id": "btn_2_text",
+      "label": "Button 2 text (outline)",
+      "default": "Our Story"
+    },
+    {
+      "type": "url",
+      "id": "btn_2_url",
+      "label": "Button 2 link"
     },
     {
       "type": "header",
@@ -221,7 +341,7 @@
     {
       "type": "select",
       "id": "heading_font",
-      "label": "Title & button font",
+      "label": "Heading & button font",
       "options": [
         { "value": "tag",     "label": "PP Neue Montreal Mono" },
         { "value": "heading", "label": "D-DIN" },
@@ -231,8 +351,30 @@
     },
     {
       "type": "select",
+      "id": "script_font",
+      "label": "Script name font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
       "id": "body_font",
-      "label": "Body font",
+      "label": "Body & quote font",
       "options": [
         { "value": "tag",     "label": "PP Neue Montreal Mono" },
         { "value": "heading", "label": "D-DIN" },
@@ -259,7 +401,7 @@
     {
       "type": "color",
       "id": "coral_color",
-      "label": "Button color",
+      "label": "Eyebrow, script, buttons & border",
       "default": "#ef4a22"
     },
     {
@@ -267,11 +409,23 @@
       "id": "body_color",
       "label": "Body text color",
       "default": "#5a5340"
+    },
+    {
+      "type": "color",
+      "id": "quote_color",
+      "label": "Quote text color",
+      "default": "#4b4636"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Mission card background",
+      "default": "#ffffff"
     }
   ],
   "presets": [
     {
-      "name": "Founder — Love Serves All"
+      "name": "Founder"
     }
   ]
 }

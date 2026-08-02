@@ -1,0 +1,608 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --him-bg:     {{ section.settings.bg_color }};
+    --him-navy:   {{ section.settings.navy_color }};
+    --him-coral:  {{ section.settings.coral_color }};
+    --him-gold:   {{ section.settings.gold_color }};
+    --him-body:   {{ section.settings.body_color }};
+    --him-meta:   {{ section.settings.meta_color }};
+    --him-overlay-start: {{ section.settings.overlay_start_color }};
+    --him-overlay-end:   {{ section.settings.overlay_end_color }};
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--him-bg);
+    padding-block: clamp(56px, 8vw, 100px);
+    padding-inline: clamp(20px, 5vw, 80px);
+  }
+
+  .him-{{ section.id }} * { box-sizing: border-box; }
+
+  .him-{{ section.id }} .him__inner {
+    max-width: 1200px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: center;
+  }
+
+  /* ── Left content ──────────────────────────────────────── */
+  .him-{{ section.id }} .him__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 20px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 500;
+    font-size: clamp(10px, 0.9vw, 11px);
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--him-coral);
+    line-height: 1;
+  }
+  .him-{{ section.id }} .him__eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    flex: none;
+  }
+
+  .him-{{ section.id }} .him__heading {
+    margin: 0 0 clamp(20px, 2.5vw, 28px);
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(36px, 4.8vw, 62px);
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    color: var(--him-navy);
+  }
+  .him-{{ section.id }} .him__heading-script {
+    font-family: var(--font-{{ section.settings.script_font }}-family);
+    font-weight: 400;
+    font-style: italic;
+    color: #FBBE53;
+    display: inline;
+    font-size: 1em;
+    line-height: 1.1;
+  }
+
+  .him-{{ section.id }} .him__body p {
+    margin: 0;
+    font-family: var(--font-{{ section.settings.body_font }}-family);
+    font-weight: 400;
+    font-size: clamp(14px, 1.3vw, 16px);
+    line-height: 1.75;
+    color: var(--him-body);
+  }
+  .him-{{ section.id }} .him__body p + p { margin-top: 14px; }
+  .him-{{ section.id }} .him__body strong { font-weight: 700; color: var(--him-navy); }
+
+  /* ── Stats row ─────────────────────────────────────────── */
+  .him-{{ section.id }} .him__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(24px, 3.5vw, 44px);
+    margin-top: clamp(28px, 4vw, 40px);
+    padding-top: clamp(24px, 3vw, 32px);
+    border-top: 1px solid rgba(35, 39, 72, 0.15);
+  }
+  .him-{{ section.id }} .him__stat-num {
+    display: block;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 800;
+    font-size: clamp(30px, 3.8vw, 48px);
+    line-height: 1;
+    color: var(--him-navy);
+    letter-spacing: -1px;
+  }
+  .him-{{ section.id }} .him__stat-num sup {
+    font-size: 0.5em;
+    vertical-align: super;
+    letter-spacing: 0;
+  }
+  .him-{{ section.id }} .him__stat-label {
+    display: block;
+    margin-top: 6px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(10px, 0.9vw, 11px);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--him-body);
+    line-height: 1.4;
+    max-width: 130px;
+    text-align: center;
+  }
+  .him-{{ section.id }} .him__stat-num {
+    text-align: center;
+  }
+
+  /* ── Right card ─────────────────────────────────────────── */
+  .him-{{ section.id }} .him__card-wrap {
+    position: relative;
+  }
+  .him-{{ section.id }} .him__card {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 3 / 3.4;
+    background: linear-gradient(160deg, #c9a97e, #e2cba6);
+  }
+  .him-{{ section.id }} .him__card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Golden gradient overlay — bottom ~55% */
+  .him-{{ section.id }} .him__card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 28%,
+      var(--him-overlay-start) 56%,
+      var(--him-overlay-end) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* All card content sits inside at the bottom */
+  .him-{{ section.id }} .him__card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: clamp(20px, 3vw, 32px) clamp(20px, 3vw, 32px) clamp(20px, 2.5vw, 28px);
+    text-align: center;
+  }
+
+  .him-{{ section.id }} .him__donate {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 32px;
+    border-radius: 999px;
+    background: var(--him-coral);
+    color: #fff;
+    font-family: var(--font-{{ section.settings.heading_font }}-family);
+    font-weight: 700;
+    font-size: clamp(13px, 1.2vw, 15px);
+    text-decoration: none;
+    transition: background-color 0.18s ease, transform 0.18s ease;
+    white-space: nowrap;
+  }
+  @media (hover: hover) {
+    .him-{{ section.id }} .him__donate:hover { background: #d63d1a; transform: translateY(-2px); }
+  }
+
+  .him-{{ section.id }} .him__story-link {
+    color: #fff;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(11px, 1vw, 12px);
+    letter-spacing: 0.8px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    opacity: 0.9;
+    transition: opacity 0.15s ease;
+    white-space: nowrap;
+  }
+  @media (hover: hover) {
+    .him-{{ section.id }} .him__story-link:hover { opacity: 1; }
+  }
+
+  /* Pill badge */
+  .him-{{ section.id }} .him__pill {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(6px);
+    border-radius: 999px;
+    padding: 7px 16px;
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(9px, 0.85vw, 10px);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #F44336;
+    line-height: 1;
+    white-space: nowrap;    
+  }
+
+  /* Credit text inside card */
+  .him-{{ section.id }} .him__credit {
+    font-family: var(--font-{{ section.settings.mono_font }}-family);
+    font-weight: 400;
+    font-size: clamp(11px, 0.85vw, 12px);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: rgb(255 255 255);
+    line-height: 1.6;
+    text-align: center;
+    max-width: 40%;
+    margin: 0 auto;
+  }
+
+  /* ── Responsive ─────────────────────────────────────────── */
+  @media screen and (max-width: 860px) {
+    .him-{{ section.id }} .him__inner {
+      grid-template-columns: 1fr;
+      gap: clamp(32px, 6vw, 48px);
+    }
+    .him-{{ section.id }} .him__card-wrap { order: -1; }
+    .him-{{ section.id }} .him__card { aspect-ratio: 4 / 3.2; }
+  }
+  @media screen and (max-width: 480px) {
+    .him-{{ section.id }} .him__donate { width: 100%; }
+    .him-{{ section.id }} .him__card { aspect-ratio: 3 / 3.2; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .him-{{ section.id }} .him__donate { transition: none; }
+  }
+{%- endstyle -%}
+
+<div class="him-{{ section.id }}">
+  <div class="him__inner">
+
+    <!-- Left: Content -->
+    <div class="him__content">
+
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="him__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      <h2 class="him__heading">
+        {%- if section.settings.title_before != blank -%}
+          {{- section.settings.title_before | escape -}}
+          {%- if section.settings.title_script != blank -%} {%- endif -%}
+        {%- endif -%}
+        {%- if section.settings.title_script != blank -%}
+          <span class="him__heading-script">&nbsp;{{ section.settings.title_script | escape }}</span>
+        {%- endif -%}
+        {%- if section.settings.title_after != blank -%}
+          {{- section.settings.title_after | escape -}}
+        {%- endif -%}
+      </h2>
+
+      {%- if section.settings.body != blank -%}
+        <div class="him__body">{{ section.settings.body }}</div>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="him__stats">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'stat' -%}
+              <div class="him__stat" {{ block.shopify_attributes }}>
+                <span class="him__stat-num">
+                  {{- block.settings.stat_num | escape -}}
+                  {%- if block.settings.stat_sup != blank -%}
+                    <sup>{{ block.settings.stat_sup | escape }}</sup>
+                  {%- endif -%}
+                </span>
+                {%- if block.settings.stat_label != blank -%}
+                  <span class="him__stat-label">{{ block.settings.stat_label | escape }}</span>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+
+    <!-- Right: Photo card -->
+    <div class="him__card-wrap">
+      <div class="him__card">
+
+        {%- if section.settings.image != blank -%}
+          {%- assign him_alt = section.settings.image.alt | default: section.settings.eyebrow | escape -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 900 }}"
+            srcset="{{ section.settings.image | image_url: width: 480 }} 480w, {{ section.settings.image | image_url: width: 700 }} 700w, {{ section.settings.image | image_url: width: 900 }} 900w"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+            alt="{{ him_alt }}"
+            loading="lazy">
+        {%- endif -%}
+
+        <!-- Golden overlay -->
+        <div class="him__card-overlay" aria-hidden="true"></div>
+
+        <!-- Card bottom content -->
+        <div class="him__card-content">
+
+          {%- if section.settings.donate_text != blank -%}
+            <a class="him__donate" href="{{ section.settings.donate_url | default: '#' }}" target="_blank" rel="noopener">
+              {{ section.settings.donate_text | escape }}
+            </a>
+          {%- endif -%}
+
+          {%- if section.settings.story_text != blank -%}
+            <a class="him__story-link" href="{{ section.settings.story_url | default: '#' }}">
+              {{ section.settings.story_text | escape }}
+            </a>
+          {%- endif -%}
+
+          {%- if section.settings.pill_text != blank -%}
+            <span class="him__pill">{{ section.settings.pill_text | escape }}</span>
+          {%- endif -%}
+
+          {%- if section.settings.credit_text != blank -%}
+            <p class="him__credit">{{ section.settings.credit_text | escape }}</p>
+          {%- endif -%}
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Home Impact",
+  "tag": "section",
+  "class": "home-impact-section",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Photo"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Rainbow Smile Springboard Connectivity Kenya"
+    },
+    {
+      "type": "text",
+      "id": "title_before",
+      "label": "Heading — plain text",
+      "default": "98% of adults."
+    },
+    {
+      "type": "text",
+      "id": "title_script",
+      "label": "Heading — italic script (inline after plain text)",
+      "default": "Every village. Every family."
+    },
+    {
+      "type": "text",
+      "id": "title_after",
+      "label": "Heading — additional line after script",
+      "info": "Leave blank if not needed."
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body text",
+      "default": "<p>Kenya has 966 dentists for 55 million people. Oral disease is the most widespread health condition on earth — and in Kenya, it reaches nearly everyone. We are committed to changing this, one village at a time. We are small. We are honest about that. And we need your help to grow what we have started.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Card buttons"
+    },
+    {
+      "type": "text",
+      "id": "donate_text",
+      "label": "Donate button text",
+      "default": "Donate Now"
+    },
+    {
+      "type": "url",
+      "id": "donate_url",
+      "label": "Donate button link"
+    },
+    {
+      "type": "text",
+      "id": "story_text",
+      "label": "Story link text",
+      "default": "Read the full story →"
+    },
+    {
+      "type": "url",
+      "id": "story_url",
+      "label": "Story link URL"
+    },
+    {
+      "type": "header",
+      "content": "Card badges & credit"
+    },
+    {
+      "type": "text",
+      "id": "pill_text",
+      "label": "Pill badge text",
+      "default": "1% of Profits · Product Monthly"
+    },
+    {
+      "type": "text",
+      "id": "credit_text",
+      "label": "Credit / caption (inside card)",
+      "default": "In Partnership with Springboard Connectivity Tracy Tarlow, Director"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Heading & stat font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script / accent font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "select",
+      "id": "mono_font",
+      "label": "Eyebrow, label & pill font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "tag"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Body font",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Heading & stats color",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Eyebrow & donate button color",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Script heading color",
+      "default": "#d4a030"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body & stat label color",
+      "default": "#4a4a4a"
+    },
+    {
+      "type": "color",
+      "id": "meta_color",
+      "label": "Meta / secondary color",
+      "default": "#9c9070"
+    },
+    {
+      "type": "header",
+      "content": "Card overlay colors"
+    },
+    {
+      "type": "color",
+      "id": "overlay_start_color",
+      "label": "Overlay start (mid-card)",
+      "default": "#c9963a",
+      "info": "Semi-transparent warm amber where overlay begins"
+    },
+    {
+      "type": "color",
+      "id": "overlay_end_color",
+      "label": "Overlay end (card bottom)",
+      "default": "#a87828",
+      "info": "Darker amber at the very bottom of the card"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "stat_num",
+          "label": "Number",
+          "default": "98%"
+        },
+        {
+          "type": "text",
+          "id": "stat_sup",
+          "label": "Superscript",
+          "info": "Leave blank if not needed."
+        },
+        {
+          "type": "text",
+          "id": "stat_label",
+          "label": "Label",
+          "default": "Adults with oral disease in Kenya"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Impact",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "stat_num": "98%",
+            "stat_label": "Adults with oral disease in Kenya"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "stat_num": "966",
+            "stat_label": "Dentists for 55 million people"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "stat_num": "1",
+            "stat_label": "Village supported monthly, growing"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
