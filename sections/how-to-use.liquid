@@ -104,6 +104,7 @@
     line-height: 1.5;
     color: var(--htu-sub);
   }
+  .htu-{{ section.id }} .htu__sub p { margin: 0; }
 
   /* ── Cards grid ─────────────────────────────────────────────── */
   .htu-{{ section.id }} .htu__grid {
@@ -218,7 +219,7 @@
           </h2>
         {%- endif -%}
         {%- if section.settings.subtitle_text != blank -%}
-          <p class="htu__sub">{{ section.settings.subtitle_text | escape }}</p>
+          <div class="htu__sub">{{ section.settings.subtitle_text }}</div>
         {%- endif -%}
       </header>
     {%- endif -%}

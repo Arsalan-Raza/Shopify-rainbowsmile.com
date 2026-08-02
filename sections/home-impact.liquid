@@ -35,7 +35,7 @@
     gap: 10px;
     margin: 0 0 20px;
     font-family: var(--font-{{ section.settings.mono_font }}-family);
-    font-weight: 500;
+    font-weight: 400;
     font-size: clamp(10px, 0.9vw, 11px);
     letter-spacing: 1.8px;
     text-transform: uppercase;
@@ -232,11 +232,16 @@
     color: rgb(255 255 255);
     line-height: 1.6;
     text-align: center;
-    max-width: 40%;
     margin: 0 auto;
   }
 
   /* ── Responsive ─────────────────────────────────────────── */
+  @media screen and (min-width: 1170px) {
+     .him-{{ section.id }} .him__credit {
+      max-width: 40%;
+     }
+  }
+
   @media screen and (max-width: 860px) {
     .him-{{ section.id }} .him__inner {
       grid-template-columns: 1fr;
@@ -244,6 +249,7 @@
     }
     .him-{{ section.id }} .him__card-wrap { order: -1; }
     .him-{{ section.id }} .him__card { aspect-ratio: 4 / 3.2; }
+
   }
   @media screen and (max-width: 480px) {
     .him-{{ section.id }} .him__donate { width: 100%; }

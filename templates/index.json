@@ -9,44 +9,6 @@
  */
 {
   "sections": {
-    "cta_biome_unlocked_jMNjxd": {
-      "type": "cta-biome-unlocked",
-      "disabled": true,
-      "name": "CTA — Biome Unlocked",
-      "settings": {
-        "bg_color": "#f0512a",
-        "bg_image_mode": "repeat",
-        "bg_image_opacity": 100,
-        "show_curve_top": true,
-        "curve_top_color": "#ffffff",
-        "show_curve_bottom": true,
-        "curve_bottom_color": "#262949",
-        "eyebrow_text": "Love Serves All",
-        "eyebrow_font": "--font-tag-family",
-        "heading_text": "Your Unique Biome.",
-        "heading_font": "--font-heading-family",
-        "script_text": "Unlocked",
-        "script_font": "--font-accent-family",
-        "body_text": "<p>Join biome hackers who’ve returned to their original design. Sophisticated science. Joyful results. Every smile — uniquely yours.</p>",
-        "body_font": "--font-heading-family",
-        "btn1_label": "Shop Rainbow Smile",
-        "btn1_url": "shopify://collections/all",
-        "btn2_label": "Free Biome Book",
-        "btn2_url": "/pages/the-book",
-        "btn3_label": "Join Community",
-        "btn3_url": "/pages/community",
-        "btn_font": "--font-heading-family",
-        "donate_text": "Donates to Underserved Communities",
-        "donate_link_label": "springboardconnectivity.org",
-        "donate_link_url": "",
-        "donate_font": "--font-tag-family",
-        "navy_color": "#1b2240",
-        "gold_color": "#f3bd42",
-        "script_color": "#f6c873",
-        "padding_top": 120,
-        "padding_bottom": 120
-      }
-    },
     "hero_main_NJim4f": {
       "type": "hero-main",
       "name": "Hero — Main",
@@ -181,7 +143,7 @@
         "title_before": "Healthy saliva needs",
         "title_accent": "20% oxygen.",
         "title_after": "Bad breath happens at just 2%.",
-        "subtitle": "<p>Baby's breath, pure, fresh, alive. Modern life disrupts the thought that natural harmony. Cleaning products mask. <strong>Rainbow Smile OG3™ supports oxygen-rich freshness</strong> — the way your mouth was designed to work.</p>",
+        "subtitle": " Baby's breath, pure, fresh, alive. Modern life disrupts the thought that natural harmony. Cleaning products mask. <strong>Rainbow Smile OG3™ supports oxygen-rich freshness</strong> — the way your mouth was designed to work. ",
         "stat_low": "2%",
         "label_low": "Oxygen-Poor Saliva",
         "desc_low": "Low oxygen creates the environment where bad-breath bacteria thrive and damage tissues.",
@@ -249,7 +211,7 @@
         "eyebrow": "Three Flavors. One Formula.",
         "title": "Alcohol free",
         "script_line": "daily oral wellness.",
-        "subtitle": "<p>All day spray freshness and sublingual wellness ritual in 3 flavors</p>",
+        "subtitle": "All day spray freshness and sublingual wellness ritual in 3 flavors",
         "collection": "frontpage",
         "product_limit": 3,
         "badge_text": "Subscribe & Save",
@@ -609,7 +571,7 @@
         "eyebrow_sup": "™",
         "title": "Feed Your",
         "script_line": "Ecology",
-        "subtitle": "<p>Join our community</p>",
+        "subtitle": " Join our community ",
         "feat_quote": "“The before-bed pump is the one that sold me. I used to wake up with that thick morning-mouth feeling every single day. It’s noticeably less now, and it keeps getting better the longer I stick with it.”",
         "feat_avatar": "shopify://shop_images/Overlay_Border_2.png",
         "feat_name": "Anita W.",
@@ -628,8 +590,7 @@
         "meta_color": "#b7ad9e",
         "intro_color": "#4b4f63",
         "card_color": "#ffffff",
-        "line_color": "#ece7de",
-        "feat_title": "Pump, Pure Cleanse"
+        "line_color": "#ece7de"
       }
     },
     "credentials_EtLWam": {
@@ -724,41 +685,77 @@
         "line_color": "#e3dccf"
       }
     },
-    "founder_HDKDQR": {
+    "founder_UQ8Bb6": {
       "type": "founder",
-      "name": "Founder",
+      "name": "Founder — Love Serves All",
       "settings": {
-        "section_aria": "About the founder",
-        "founder_photo": "shopify://shop_images/Component_13_1.png",
-        "founder_photo_alt": "William Robertson, founder of Rainbow Smile",
-        "eyebrow": "About the Founder",
-        "title": "Hi, I'm",
-        "title_script": "William",
-        "body_1": "<p>Founder of Rainbow Smile, a company born from a deep passion for wellness, the wisdom of nature, and the belief that true health begins within the small but mighty ecosystem living inside each of us.</p>",
-        "body_2": "<p>Rainbow Smile is more than just a line of products, it’s a movement. A movement toward reconnecting with nature, reclaiming vibrant, whole-body health, and embracing joy-filled, authentic smiles as symbols of genuine wellness.</p>",
-        "mission_quote": "“Our Mission: A Planet Smiling — A planet smiling in harmony with its own living code, where every mouth becomes a messenger of peace and every smile a sign of health restored.”",
-        "mission_attr": "— William Robertson",
-        "btn1_text": "Get the Free Book",
-        "btn1_url": "/pages/the-book",
-        "btn2_text": "Our Story",
-        "btn2_url": "/pages/about",
-        "ls_image": "shopify://shop_images/image_8.png",
-        "ls_image_alt": "Rainbow Smile team with a community in Kenya",
-        "ls_title": "Love Serves All.™",
-        "ls_body": "<p>Every bottle of Rainbow Smile supports oral wellness access in Kenya, where 80% of rural communities have no access to dental care. Through our partnership with Springboard Connectivity, directed by Tracy Tarlow, we donate OG3™ to communities who deserve the same support. Feed your ecology. Feed someone else’s too.</p>",
-        "ls_btn_text": "Learn more about our mission",
-        "ls_btn_url": "/pages/kenya",
-        "mono_font": "tag",
         "heading_font": "heading",
-        "script_font": "accent",
         "body_font": "heading",
         "bg_color": "#f2e8d3",
         "navy_color": "#232748",
         "coral_color": "#ef4a22",
-        "body_color": "#5a5340",
-        "quote_color": "#4b4636",
-        "card_color": "#ffffff",
-        "card_border_color": "#ef4a22"
+        "body_color": "#5a5340"
+      }
+    },
+    "home_impact_WneCDa": {
+      "type": "home-impact",
+      "blocks": {
+        "stat_mye49T": {
+          "type": "stat",
+          "settings": {
+            "stat_num": "98%",
+            "stat_sup": "",
+            "stat_label": "Adults with oral disease in Kenya"
+          }
+        },
+        "stat_fyppDm": {
+          "type": "stat",
+          "settings": {
+            "stat_num": "966",
+            "stat_sup": "",
+            "stat_label": "Dentists for 55 million people"
+          }
+        },
+        "stat_FrKnjB": {
+          "type": "stat",
+          "settings": {
+            "stat_num": "1",
+            "stat_sup": "",
+            "stat_label": "Village supported monthly, growing"
+          }
+        }
+      },
+      "block_order": [
+        "stat_mye49T",
+        "stat_fyppDm",
+        "stat_FrKnjB"
+      ],
+      "name": "Home Impact",
+      "settings": {
+        "image": "shopify://shop_images/image_8_1.png",
+        "eyebrow": "Rainbow Smile Springboard Connectivity Kenya",
+        "title_before": "98% of adults.",
+        "title_script": "Every village. Every family.",
+        "title_after": "",
+        "body": "<p>Kenya has 966 dentists for 55 million people. Oral disease is the most widespread health condition on earth — and in Kenya, it reaches nearly everyone. We are committed to changing this, one village at a time. We are small. We are honest about that. And we need your help to grow what we have started.</p>",
+        "donate_text": "Donate Now",
+        "donate_url": "",
+        "story_text": "Read the full story →",
+        "story_url": "",
+        "pill_text": "🌿1% of profits · Product monthly",
+        "credit_text": "In Partnership with Springboard Connectivity Tracy Tarlow, Director",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "mono_font": "tag",
+        "body_font": "heading",
+        "bg_color": "#ffffff",
+        "navy_color": "#232748",
+        "coral_color": "#ef4a22",
+        "gold_color": "#d4a030",
+        "body_color": "#4a4a4a",
+        "meta_color": "#9c9070",
+        "overlay_start_color": "#c9963a",
+        "overlay_end_color": "#a87828"
       }
     },
     "faq_accordion_9dhgHE": {
@@ -871,7 +868,6 @@
     }
   },
   "order": [
-    "cta_biome_unlocked_jMNjxd",
     "hero_main_NJim4f",
     "trust_bar_d9Nxzi",
     "signal_banner_NJ6b9z",
@@ -885,7 +881,8 @@
     "oral_gut_care_fGyjwa",
     "testimonials_gTUMYg",
     "credentials_EtLWam",
-    "founder_HDKDQR",
+    "founder_UQ8Bb6",
+    "home_impact_WneCDa",
     "faq_accordion_9dhgHE",
     "cta_biome_unlocked_MGaDrF"
   ]

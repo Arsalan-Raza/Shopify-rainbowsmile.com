@@ -9,12 +9,12 @@
     overflow: hidden;
     min-height: clamp({{ section.settings.min_height_mobile }}px, 46vw, {{ section.settings.min_height_desktop }}px);
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top:    clamp(64px, 10vw, 120px);
+    align-items: flex-end;
+    padding-top: clamp(64px, 10vw, 120px);
     padding-bottom: 0;
     padding-inline: clamp(20px, 5vw, 40px);
     text-align: center;
+    justify-content: center;
   }
 
   /* ── Background image ──────────────────────────────────────── */
@@ -45,6 +45,7 @@
     position: relative;
     z-index: 4;
     max-width: 900px;
+    bottom: clamp(48px, 6vw, 72px);
   }
 
   .hero-{{ section.id }} .hero__eyebrow {
@@ -163,7 +164,7 @@
   </div>
 
   {%- comment -%} Logo wordmark {%- endcomment -%}
-  {%- if section.settings.show_logo -%}
+  {% comment %} {%- if section.settings.show_logo -%}
     <div class="hero__logo" aria-hidden="true">
       {%- if section.settings.logo != blank -%}
         {{
@@ -184,7 +185,7 @@
         </svg>
       {%- endif -%}
     </div>
-  {%- endif -%}
+  {%- endif -%} {% endcomment %}
 
   {%- comment -%} Bottom curve {%- endcomment -%}
   {%- if section.settings.show_curve -%}
