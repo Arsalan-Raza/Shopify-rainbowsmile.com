@@ -276,7 +276,7 @@
         "heading_font": "--font-heading-family",
         "script_text": "Love Signals.",
         "script_font": "--font-accent-family",
-        "subtitle_text": "Rainbow Smile isn’t just a product. It’s a movement awakening life’s quiet intelligence in your mouth.",
+        "subtitle_text": "<p>Rainbow Smile isn’t just a product. It’s a movement awakening life’s quiet intelligence in your mouth.</p>",
         "subtitle_font": "--font-heading-family",
         "video": "shopify://files/videos/Rainbow Smile 01-27-2026.mp4",
         "video_url": "",
@@ -407,7 +407,7 @@
           "settings": {
             "number": "01",
             "title": "Pump + Spray",
-            "body": "Choose sublingual, targeted freshness, or spray throughout the day for instant freshness.",
+            "body": "<p>Choose sublingual, targeted freshness, or spray throughout the day for instant freshness.</p>",
             "meta": "0–5 Seconds"
           }
         },
@@ -416,7 +416,7 @@
           "settings": {
             "number": "02",
             "title": "The 60-Second Hold",
-            "body": "Apply 1-2 drops under the tongue or spray directly into the mouth. Hold for 30–60 seconds to allow to penetrate and activate.",
+            "body": "<p>Apply 1-2 drops under the tongue or spray directly into the mouth. Hold for 30–60 seconds to allow to penetrate and activate.</p>",
             "meta": "30 Seconds"
           }
         },
@@ -425,7 +425,7 @@
           "settings": {
             "number": "03",
             "title": "Safe to Swallow",
-            "body": "Our formula is 100% natural, made from Certified Organic Coconut Glycerin. Gentle, nourishing, and completely safe.",
+            "body": "<p>Our formula is 100% natural, made from Certified Organic Coconut Glycerin. Gentle, nourishing, and completely safe.</p>",
             "meta": "20 Seconds"
           }
         },
@@ -434,7 +434,7 @@
           "settings": {
             "number": "04",
             "title": "Feel Alive",
-            "body": "Experience the fresh vitality of a truly living, balanced oral ecosystem. Naturally sweet taste. Clean — not sterilized. Alive.",
+            "body": "<p>Experience the fresh vitality of a truly living, balanced oral ecosystem. Naturally sweet taste. Clean — not sterilized. Alive.</p>",
             "meta": "Every Morning"
           }
         }
@@ -453,7 +453,7 @@
         "heading_font": "--font-heading-family",
         "script_text": "to freshness",
         "script_font": "--font-accent-family",
-        "subtitle_text": "A simple 60-second oral reset for lasting wellness",
+        "subtitle_text": "<p>A simple 60-second oral reset for lasting wellness</p>",
         "subtitle_font": "--font-heading-family",
         "columns_desktop": "4",
         "num_font": "--font-heading-family",

@@ -239,7 +239,7 @@
         "body_text": "<p>Your mouth is the gateway to your gut — and your gut is the gateway to your mind. Every swallow of OG3™ carries oxygen-rich, microbiome-friendly compounds into your oral-gut axis.</p><p>When your oral ecosystem thrives, your digestion improves, your immunity strengthens, and your energy rises. This is whole-body wellness beginning with 60 seconds.</p>",
         "body_font": "--font-heading-family",
         "cta_label": "Start Your Ritual",
-        "cta_url": "",
+        "cta_url": "shopify://collections/all",
         "cta_font": "--font-heading-family",
         "panel_color": "#f9d285",
         "card_bg_color": "#ffffff",
@@ -265,7 +265,7 @@
             "image": "shopify://shop_images/d76ae18dfc9a8cb53073c136186c3dc1b6d2c954.png",
             "icon": "🌈",
             "card_title": "Unity in Diversity",
-            "card_body": "A rainbow is many colors, yet one arc. We celebrate individuality and believe authenticity is nature’s highest form of beauty. Every microbiome, like every person, is unique — and true balance arises from honoring that diversity."
+            "card_body": "<p>A rainbow is many colors, yet one arc. We celebrate individuality and believe authenticity is nature’s highest form of beauty. Every microbiome, like every person, is unique — and true balance arises from honoring that diversity.</p>"
           }
         },
         "row_MdRn8E": {
@@ -276,7 +276,7 @@
             "image": "shopify://shop_images/97d049e3e1a413f4f6254dc7b642c87ddf9f0a72.png",
             "icon": "😊",
             "card_title": "Joy, Always",
-            "card_body": "Wellness should feel alive, not clinical. Every bottle we make is designed to spark a small moment of joy — a ritual that reminds you to smile, breathe, and reconnect with your body’s natural brilliance."
+            "card_body": "<p>Wellness should feel alive, not clinical. Every bottle we make is designed to spark a small moment of joy — a ritual that reminds you to smile, breathe, and reconnect with your body’s natural brilliance.</p>"
           }
         },
         "row_UYTa8G": {
@@ -287,7 +287,7 @@
             "image": "shopify://shop_images/a6c9ca387fbb6f4715927cb1795009392aceb16a.png",
             "icon": "🧠",
             "card_title": "The Oral–Gut Connection",
-            "card_body": "Your mouth is the gateway to the body’s overall balance. By caring for it consciously, you help support healthy digestion, circulation, immunity, and mood. We’re redefining oral care as mindful, whole-body care."
+            "card_body": "<p>Your mouth is the gateway to the body’s overall balance. By caring for it consciously, you help support healthy digestion, circulation, immunity, and mood. We’re redefining oral care as mindful, whole-body care.</p>"
           }
         },
         "row_FcTaCz": {
@@ -298,7 +298,7 @@
             "image": "shopify://shop_images/fd23707da823b5cb26b8e23d8001cccd9d313fad.png",
             "icon": "🌍",
             "card_title": "Impact That Travels",
-            "card_body": "Your purchase helps Rainbow Smile donate oxygen-infused oral care to underserved villages in Kenya through our non-profit alliance with Springboard Connectivity. Together, we’re spreading access, balance, and hope."
+            "card_body": "<p>Your purchase helps Rainbow Smile donate oxygen-infused oral care to underserved villages in Kenya through our non-profit alliance with Springboard Connectivity. Together, we’re spreading access, balance, and hope.</p>"
           }
         }
       },
@@ -466,7 +466,7 @@
         "question_font": "--font-heading-family",
         "answer_font": "--font-heading-family",
         "cta_label": "Still have more Questions",
-        "cta_url": "",
+        "cta_url": "/pages/contact",
         "cta_font": "--font-heading-family",
         "heading_color": "#1b2240",
         "body_color": "#4a4e66",
@@ -496,14 +496,14 @@
         "heading_font": "--font-heading-family",
         "script_text": "Unlocked",
         "script_font": "--font-accent-family",
-        "body_text": "Join 50,000+ biome hackers who’ve returned to their original design. Sophisticated science. Joyful results. Every smile — uniquely yours.",
+        "body_text": "<p>Join 50,000+ biome hackers who’ve returned to their original design. Sophisticated science. Joyful results. Every smile — uniquely yours.</p>",
         "body_font": "--font-heading-family",
         "btn1_label": "Shop Rainbow Smile",
-        "btn1_url": "",
+        "btn1_url": "shopify://collections/all",
         "btn2_label": "Free Biome Book",
-        "btn2_url": "",
+        "btn2_url": "/pages/the-book",
         "btn3_label": "Join Community",
-        "btn3_url": "",
+        "btn3_url": "/pages/community",
         "btn_font": "--font-heading-family",
         "donate_text": "Donates to Underserved Communities",
         "donate_link_label": "springboardconnectivity.org",

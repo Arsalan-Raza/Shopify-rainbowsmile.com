@@ -66,7 +66,7 @@
         "show_tm": true,
         "script_after": "Drops.",
         "script_font": "--font-accent-family",
-        "subtitle_text": "3 flavors · 2 formats · 6 ways to restore your living mouth",
+        "subtitle_text": "<p>3 flavors · 2 formats · 6 ways to restore your living mouth</p>",
         "subtitle_font": "--font-heading-family",
         "badge_font": "--font-tag-family",
         "show_curve": true,
@@ -237,9 +237,9 @@
         "stat_num_font": "--font-heading-family",
         "stat_label_font": "--font-tag-family",
         "btn_label": "Add Bundle to Cart",
-        "btn_url": "",
+        "btn_url": "shopify://collections/all",
         "link_label": "Learn More",
-        "link_url": "",
+        "link_url": "shopify://collections/all",
         "btn_font": "--font-heading-family",
         "image": "shopify://shop_images/Overlay_Border.png",
         "bg_color": "#262a4d",
@@ -257,7 +257,7 @@
           "settings": {
             "icon": "save",
             "title": "Save 11% Every Order",
-            "body": "Automatic discount applied on every delivery — no codes needed, ever."
+            "body": "<p>Automatic discount applied on every delivery — no codes needed, ever.</p>"
           }
         },
         "card_kPN3wE": {
@@ -265,7 +265,7 @@
           "settings": {
             "icon": "shipping",
             "title": "Free Priority Shipping",
-            "body": "Subscribers get free shipping on every order, regardless of order size."
+            "body": "<p>Subscribers get free shipping on every order, regardless of order size.</p>"
           }
         },
         "card_UcadG6": {
@@ -273,7 +273,7 @@
           "settings": {
             "icon": "pause",
             "title": "Pause or Cancel Anytime",
-            "body": "No lock-ins. No fees. Change, pause or cancel from your account in seconds."
+            "body": "<p>No lock-ins. No fees. Change, pause or cancel from your account in seconds.</p>"
           }
         },
         "card_UVqrBg": {
@@ -281,7 +281,7 @@
           "settings": {
             "icon": "star",
             "title": "Early Access & Perks",
-            "body": "Subscribers get first access to new flavors, limited editions, and community events."
+            "body": "<p>Subscribers get first access to new flavors, limited editions, and community events.</p>"
           }
         }
       },
@@ -326,14 +326,14 @@
         "heading_font": "--font-heading-family",
         "script_text": "Start free.",
         "script_font": "--font-accent-family",
-        "body_text": "Download the Biome Hacker's Code — William Robertson's free guide to why OG3™ works and how to get the most from your ritual.",
+        "body_text": "<p>Download the Biome Hacker's Code — William Robertson's free guide to why OG3™ works and how to get the most from your ritual.</p>",
         "body_font": "--font-heading-family",
         "btn1_label": "Download Free Book",
-        "btn1_url": "",
+        "btn1_url": "/pages/the-book",
         "btn2_label": "",
-        "btn2_url": "",
+        "btn2_url": "/pages/community",
         "btn3_label": "",
-        "btn3_url": "",
+        "btn3_url": "shopify://collections/all",
         "btn_font": "--font-heading-family",
         "donate_text": "",
         "donate_link_label": "",

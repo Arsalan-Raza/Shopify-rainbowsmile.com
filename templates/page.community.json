@@ -62,7 +62,7 @@
         "eyebrow": "Rainbow Smile · The Biome Hacker Community",
         "title": "Your already sendsed it.",
         "script_line": "Welcome home.",
-        "subtitle": "The community for people who think of their body as a living ecosystem — and are done accepting the wrong answers for it.",
+        "subtitle": "<p>The community for people who think of their body as a living ecosystem — and are done accepting the wrong answers for it.</p>",
         "show_curve": true,
         "curve_color": "#ffffff",
         "mono_font": "tag",
@@ -166,7 +166,7 @@
         "script_word": "a demographic.",
         "intro": "<p>They are defined by a particular relationship with the world — a willingness to look at the familiar and find it strange, a refusal to accept the received answer, and an intuition that the body already knows things medicine hasn’t caught up with yet.</p><p>When they find the science of the oral microbiome, they don’t feel like they’ve learned something new. They feel like they’ve remembered something they always knew.</p>",
         "cta_text": "Read the full Biome Hacker guide",
-        "cta_url": "",
+        "cta_url": "/pages/the-book",
         "mono_font": "tag",
         "heading_font": "heading",
         "script_font": "accent",
@@ -187,10 +187,10 @@
           "settings": {
             "icon": "mouth",
             "name": "Mouth",
-            "description": "Oral microbiome basics, breath, gum health, the ritual itself.",
+            "description": "<p>Oral microbiome basics, breath, gum health, the ritual itself.</p>",
             "status": "today",
             "post_count": "1.2K",
-            "url": ""
+            "url": "/pages/community"
           }
         },
         "category_xeyGci": {
@@ -198,10 +198,10 @@
           "settings": {
             "icon": "gut",
             "name": "Gut",
-            "description": "The oral-gut axis, digestion, and whole-body microbiome talk.",
+            "description": "<p>The oral-gut axis, digestion, and whole-body microbiome talk.</p>",
             "status": "today",
             "post_count": "890",
-            "url": ""
+            "url": "/pages/community"
           }
         },
         "category_Rtztqz": {
@@ -209,10 +209,10 @@
           "settings": {
             "icon": "mind",
             "name": "Mind",
-            "description": "Gut-brain connection, mood, clarity, and mental energy.",
+            "description": "<p>Gut-brain connection, mood, clarity, and mental energy.</p>",
             "status": "today",
             "post_count": "640",
-            "url": ""
+            "url": "/pages/community"
           }
         },
         "category_74LdxJ": {
@@ -220,10 +220,10 @@
           "settings": {
             "icon": "performance",
             "name": "Performance",
-            "description": "Energy, athletic performance, and biome-driven vitality.",
+            "description": "<p>Energy, athletic performance, and biome-driven vitality.</p>",
             "status": "week",
             "post_count": "410",
-            "url": ""
+            "url": "/pages/community"
           }
         },
         "category_VGnpDJ": {
@@ -231,10 +231,10 @@
           "settings": {
             "icon": "intimacy",
             "name": "Intimacy",
-            "description": "Confidence, closeness, and what a living mouth means for connection.",
+            "description": "<p>Confidence, closeness, and what a living mouth means for connection.</p>",
             "status": "week",
             "post_count": "355",
-            "url": ""
+            "url": "/pages/community"
           }
         },
         "category_8zCk9z": {
@@ -242,10 +242,10 @@
           "settings": {
             "icon": "rituals",
             "name": "Rituals",
-            "description": "Morning routines, stacking habits, and making the 60 seconds stick.",
+            "description": "<p>Morning routines, stacking habits, and making the 60 seconds stick.</p>",
             "status": "today",
             "post_count": "980",
-            "url": ""
+            "url": "/pages/community"
           }
         },
         "category_rGgGQP": {
@@ -253,10 +253,10 @@
           "settings": {
             "icon": "product",
             "name": "Product Q’s",
-            "description": "Pump vs spray, subscriptions, ingredients — ask the community.",
+            "description": "<p>Pump vs spray, subscriptions, ingredients — ask the community.</p>",
             "status": "today",
             "post_count": "1.5K",
-            "url": ""
+            "url": "/pages/community"
           }
         },
         "category_VfjATq": {
@@ -264,10 +264,10 @@
           "settings": {
             "icon": "intros",
             "name": "Intros",
-            "description": "New here? Say hello and meet other biome hackers.",
+            "description": "<p>New here? Say hello and meet other biome hackers.</p>",
             "status": "today",
             "post_count": "2.1K",
-            "url": ""
+            "url": "/pages/community"
           }
         }
       },
@@ -286,7 +286,7 @@
         "eyebrow": "The Forum",
         "title": "Find your",
         "script_line": "conversation.",
-        "intro": "Eight spaces for every part of the biome hacker journey — from your first question to deep dives on performance and rituals.",
+        "intro": "<p>Eight spaces for every part of the biome hacker journey — from your first question to deep dives on performance and rituals.</p>",
         "mono_font": "tag",
         "heading_font": "heading",
         "script_font": "accent",
@@ -309,7 +309,7 @@
         "eyebrow": "Education",
         "title": "Learn something",
         "script_line": "new today.",
-        "subtitle": "The science of the oral microbiome explained for people who want to understand — not just be told. Every post is grounded in published research. Every post is free.",
+        "subtitle": "<p>The science of the oral microbiome explained for people who want to understand — not just be told. Every post is grounded in published research. Every post is free.</p>",
         "blog": "news",
         "posts_count": 9,
         "read_label": "Read the Science",
@@ -339,9 +339,9 @@
             "icon_alt": "",
             "label": "Free Download · The Biome Hacker’s Code",
             "title": "The complete science of the oral microbiome.",
-            "body": "12 chapters. The oral microbiome explained without compromise. Your mOS, the oral-gut-brain axis, and the 60-second daily reset. Free. Always.",
+            "body": "<p>12 chapters. The oral microbiome explained without compromise. Your mOS, the oral-gut-brain axis, and the 60-second daily reset. Free. Always.</p>",
             "link_text": "Download Free",
-            "link_url": "",
+            "link_url": "/pages/the-book",
             "coming_soon": ""
           }
         },
@@ -351,9 +351,9 @@
             "icon_alt": "",
             "label": "The Biome Hacker Podcast · Dr. Vanita K. Gupta",
             "title": "Your mouth is alive. Let’s talk about what that means.",
-            "body": "New episodes exploring the science of the oral microbiome and the 3.5 billion-year-old intelligence running in your mouth right now.",
+            "body": "<p>New episodes exploring the science of the oral microbiome and the 3.5 billion-year-old intelligence running in your mouth right now.</p>",
             "link_text": "Listen Free",
-            "link_url": "",
+            "link_url": "/pages/community",
             "coming_soon": "(Coming Soon)"
           }
         }
@@ -367,7 +367,7 @@
         "eyebrow": "Free · No Noise · Just the Science",
         "title": "I’m a",
         "script_word": "Biome Hacker.",
-        "body_text": "New science from the oral microbiome. New posts when they drop. The community signal, in your inbox. No noise. No selling. Just the science and the people building around it.",
+        "body_text": "<p>New science from the oral microbiome. New posts when they drop. The community signal, in your inbox. No noise. No selling. Just the science and the people building around it.</p>",
         "input_placeholder": "your@email.com",
         "btn_text": "I’m in",
         "success_text": "You’re in. Watch your inbox.",

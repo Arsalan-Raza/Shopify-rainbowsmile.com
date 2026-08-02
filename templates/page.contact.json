@@ -46,8 +46,8 @@
           "settings": {
             "icon": "faq",
             "title": "FAQs",
-            "description": "Common questions answered",
-            "url": ""
+            "description": "<p>Common questions answered</p>",
+            "url": "/pages/faqs"
           }
         },
         "quick_link_GbFMBG": {
@@ -55,8 +55,8 @@
           "settings": {
             "icon": "shop",
             "title": "Shop",
-            "description": "Browse all OG3™ products",
-            "url": ""
+            "description": "<p>Browse all OG3™ products</p>",
+            "url": "shopify://collections/all"
           }
         },
         "quick_link_nCGqFk": {
@@ -64,8 +64,8 @@
           "settings": {
             "icon": "returns",
             "title": "Returns",
-            "description": "90-day satisfaction guarantee",
-            "url": ""
+            "description": "<p>90-day satisfaction guarantee</p>",
+            "url": "/pages/contact"
           }
         },
         "quick_link_zpqHDY": {
@@ -73,8 +73,8 @@
           "settings": {
             "icon": "book",
             "title": "Free Book",
-            "description": "Download the Biome Hacker’s Code",
-            "url": ""
+            "description": "<p>Download the Biome Hacker’s Code</p>",
+            "url": "/pages/the-book"
           }
         }
       },

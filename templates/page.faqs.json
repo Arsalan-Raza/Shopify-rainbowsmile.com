@@ -48,21 +48,21 @@
           "type": "qa",
           "settings": {
             "question": "Do you ship overseas?",
-            "answer": "Yes — we ship worldwide. Delivery times and duties vary by destination; you'll see exact options and costs at checkout."
+            "answer": "<p>Yes — we ship worldwide. Delivery times and duties vary by destination; you'll see exact options and costs at checkout.</p>"
           }
         },
         "qa_rjphXX": {
           "type": "qa",
           "settings": {
             "question": "Do you ship overseas?",
-            "answer": "Yes — we ship worldwide. Delivery times and duties vary by destination; you'll see exact options and costs at checkout."
+            "answer": "<p>Yes — we ship worldwide. Delivery times and duties vary by destination; you'll see exact options and costs at checkout.</p>"
           }
         },
         "qa_NqiCdL": {
           "type": "qa",
           "settings": {
             "question": "How long will it take to get my orders?",
-            "answer": "Domestic orders typically arrive in 3–5 business days. International delivery usually takes 7–14 business days depending on the carrier."
+            "answer": "<p>Domestic orders typically arrive in 3–5 business days. International delivery usually takes 7–14 business days depending on the carrier.</p>"
           }
         },
         "category_zMYfAP": {
@@ -76,21 +76,21 @@
           "type": "qa",
           "settings": {
             "question": "Your question here?",
-            "answer": "Your answer here."
+            "answer": "<p>Your answer here.</p>"
           }
         },
         "qa_NPNYxC": {
           "type": "qa",
           "settings": {
             "question": "Your question here?",
-            "answer": "Your answer here."
+            "answer": "<p>Your answer here.</p>"
           }
         },
         "qa_Tw6UNx": {
           "type": "qa",
           "settings": {
             "question": "Your question here?",
-            "answer": "Your answer here."
+            "answer": "<p>Your answer here.</p>"
           }
         },
         "category_6UfYnh": {
@@ -104,21 +104,21 @@
           "type": "qa",
           "settings": {
             "question": "What is OG3™?",
-            "answer": "OG3™ is our oxygen-rich oral care formula, designed to support the oral-gut axis with bioavailable oxygen and plant-based compounds."
+            "answer": "<p>OG3™ is our oxygen-rich oral care formula, designed to support the oral-gut axis with bioavailable oxygen and plant-based compounds.</p>"
           }
         },
         "qa_WeDT3y": {
           "type": "qa",
           "settings": {
             "question": "What is OG3™?",
-            "answer": "OG3™ is our oxygen-rich oral care formula, designed to support the oral-gut axis with bioavailable oxygen and plant-based compounds."
+            "answer": "<p>OG3™ is our oxygen-rich oral care formula, designed to support the oral-gut axis with bioavailable oxygen and plant-based compounds.</p>"
           }
         },
         "qa_cgYTjw": {
           "type": "qa",
           "settings": {
             "question": "What is OG3™?",
-            "answer": "OG3™ is our oxygen-rich oral care formula, designed to support the oral-gut axis with bioavailable oxygen and plant-based compounds."
+            "answer": "<p>OG3™ is our oxygen-rich oral care formula, designed to support the oral-gut axis with bioavailable oxygen and plant-based compounds.</p>"
           }
         }
       },

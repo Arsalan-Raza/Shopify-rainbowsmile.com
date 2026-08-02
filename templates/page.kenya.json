@@ -18,7 +18,7 @@
         "label_main": "Rainbow Smile",
         "label_sub": "· The Kenya Project",
         "cta_text": "Donate Now",
-        "cta_url": "",
+        "cta_url": "https://springboardconnectivity.org",
         "mono_font": "tag",
         "heading_font": "heading",
         "bg_color": "#1c1109",
@@ -36,9 +36,9 @@
         "body_1": "<p>3.5 billion people live with oral disease. In Kenya, the number is not a majority. <strong>It is everyone.</strong></p>",
         "body_2": "<p>We are Rainbow Smile — a small startup with a revolutionary oral wellness product and a mission that reaches further than any product can alone. We are committed to getting OG3™ into the hands of people who need it most. One village at a time.</p>",
         "btn1_text": "Donate to the Cause",
-        "btn1_url": "",
+        "btn1_url": "https://springboardconnectivity.org",
         "btn2_text": "Read the Full Story",
-        "btn2_url": "",
+        "btn2_url": "/pages/kenya",
         "bg_image": "shopify://shop_images/Section_1.svg",
         "image": "shopify://shop_images/3f2c5ad7a4351c86f2422967227ca0a4f0ab04d4.jpg",
         "image_alt": "",
@@ -63,7 +63,7 @@
           "settings": {
             "num": "3.5B",
             "num_color": "#ef4a22",
-            "body": "People globally living with oral\ndisease — cavities, gum\ndisease, tooth loss. More than\nthe combined population of the\nentire Western hemisphere.",
+            "body": "<p>People globally living with oral\ndisease — cavities, gum\ndisease, tooth loss. More than\nthe combined population of the\nentire Western hemisphere.</p>",
             "source": "WHO Global Oral Health StatusReport, 2022"
           }
         },
@@ -72,7 +72,7 @@
           "settings": {
             "num": "98%",
             "num_color": "#fabe54",
-            "body": "Of Kenyan adults have\nperiodontal disease. This is not\na high-risk group statistic. It is\nthe baseline condition of an\nentire adult population.",
+            "body": "<p>Of Kenyan adults have\nperiodontal disease. This is not\na high-risk group statistic. It is\nthe baseline condition of an\nentire adult population.</p>",
             "source": "Kenya National Health Survey"
           }
         },
@@ -81,7 +81,7 @@
           "settings": {
             "num": "966",
             "num_color": "#fabe54",
-            "body": "Licensed dentists for 55 million\npeople. One dentist for every\n56,000 Kenyans. In rural areas,\nprofessional dental care does\nnot just fail to reach people",
+            "body": "<p>Licensed dentists for 55 million\npeople. One dentist for every\n56,000 Kenyans. In rural areas,\nprofessional dental care does\nnot just fail to reach people</p>",
             "source": "Kenya Medical Practitioners Board"
           }
         },
@@ -90,7 +90,7 @@
           "settings": {
             "num": "28",
             "num_color": "#3d8a2a",
-            "body": "Pediatric dentists in the entire\ncountry. Twenty-eight\nspecialists caring for the dental\nneeds of 28 million children. The\nmath is not difficult.",
+            "body": "<p>Pediatric dentists in the entire\ncountry. Twenty-eight\nspecialists caring for the dental\nneeds of 28 million children. The\nmath is not difficult.</p>",
             "source": "FDI World Dental Federation"
           }
         }
@@ -140,7 +140,7 @@
           "settings": {
             "num": "01",
             "title": "The disease progresses silently",
-            "body": "Periodontal disease destroys bone and tissue over years — almost entirely without pain — until the damage is severe enough to cause tooth loss. Silent diseases don't generate alarm. They accumulate in statistics."
+            "body": "<p>Periodontal disease destroys bone and tissue over years — almost entirely without pain — until the damage is severe enough to cause tooth loss. Silent diseases don't generate alarm. They accumulate in statistics.</p>"
           }
         },
         "card_F8NVTQ": {
@@ -148,7 +148,7 @@
           "settings": {
             "num": "03",
             "title": "The mouth is professionally separated fromthe body",
-            "body": "Dentistry sits in a separate system — different training, different buildings, different insurance. The documented links to cardiovascular disease, neurodegeneration, diabetes, and pregnancy outcomes are not crossing the disciplinary boundary."
+            "body": "<p>Dentistry sits in a separate system — different training, different buildings, different insurance. The documented links to cardiovascular disease, neurodegeneration, diabetes, and pregnancy outcomes are not crossing the disciplinary boundary.</p>"
           }
         },
         "card_EGeHa4": {
@@ -156,7 +156,7 @@
           "settings": {
             "num": "02",
             "title": "It is worst where voices are least heard",
-            "body": "The communities most affected have the least political voice, least media representation, and least research funding. The invisibility of the crisis mirrors the invisibility of the people it affects most."
+            "body": "<p>The communities most affected have the least political voice, least media representation, and least research funding. The invisibility of the crisis mirrors the invisibility of the people it affects most.</p>"
           }
         },
         "card_cTP7ak": {
@@ -164,7 +164,7 @@
           "settings": {
             "num": "04",
             "title": "The industry profits from the wrong solution",
-            "body": "A $50B+ oral care industry built on the antiseptic paradigm has no structural incentive to question it. The ecological understanding of oral health — which OG3™ is built on — represents a fundamental disruption to a very established business model."
+            "body": "<p>A $50B+ oral care industry built on the antiseptic paradigm has no structural incentive to question it. The ecological understanding of oral health — which OG3™ is built on — represents a fundamental disruption to a very established business model.</p>"
           }
         }
       },
@@ -178,7 +178,7 @@
         "eyebrow": "Why Nobody Is Talking About It",
         "title": "The anatomy of",
         "title_accent": "invisibility.",
-        "subtitle": "Oral disease is the most widespread health condition on earth — and one of the least discussed. Four reasons it stays out of public consciousness:",
+        "subtitle": "<p>Oral disease is the most widespread health condition on earth — and one of the least discussed. Four reasons it stays out of public consciousness:</p>",
         "display_font": "accent",
         "mono_font": "tag",
         "body_font": "heading",
@@ -222,7 +222,7 @@
             "num": "1",
             "num_color": "#ef4a22",
             "title": "Village supported monthly",
-            "body": "Our current commitment. Every month, OG3™\nreaches one Kenyan village through\nSpringboard Connectivity."
+            "body": "<p>Our current commitment. Every month, OG3™\nreaches one Kenyan village through\nSpringboard Connectivity.</p>"
           }
         },
         "stat_La9atG": {
@@ -231,7 +231,7 @@
             "num": "∞",
             "num_color": "#ef4a22",
             "title": "The goal",
-            "body": "Every village in need. Every family. The quorum is not complete until everyone is in it."
+            "body": "<p>Every village in need. Every family. The quorum is not complete until everyone is in it.</p>"
           }
         },
         "stat_Lqgtkk": {
@@ -240,7 +240,7 @@
             "num": "1%",
             "num_color": "#3d8a2a",
             "title": "Of profits to Kenya",
-            "body": "Every sale contributes. As we grow, so does what we can give. Your purchase is already part of this."
+            "body": "<p>Every sale contributes. As we grow, so does what we can give. Your purchase is already part of this.</p>"
           }
         }
       },
@@ -312,7 +312,7 @@
         "body_1": "<p>Springboard Connectivity works directly within Kenyan communities to build sustainable health access infrastructure. Tracy and her team know these villages personally — their names, their children, their challenges, and their extraordinary resilience.</p>",
         "body_2": "<p><strong>Rainbow Smile and Springboard Connectivity are partners in the truest sense</strong> — united by the same belief that health is a human right that should have no fringe.</p>",
         "link_text": "Visit Springboard Connectivity",
-        "link_url": "",
+        "link_url": "https://springboardconnectivity.org",
         "photo": "shopify://shop_images/Tracy_full_portrait_photo.png",
         "photo_alt": "Tracy Tarlow with community members in Kenya",
         "person_name": "Tracy Tarlow",
@@ -370,7 +370,7 @@
             "meta": "One Person · One Month",
             "desc": "$10 delivers OG3™ to one individual for a full\nmonth — 60 seconds every morning, all four\npillars, 100 sprays. One person whose oral\necosystem begins to supporte itself.",
             "btn_text": "Donate $10",
-            "btn_url": "",
+            "btn_url": "https://springboardconnectivity.org",
             "is_featured": false,
             "badge_text": "Most Popular"
           }
@@ -382,7 +382,7 @@
             "meta": "One full bottle · One family · Onemonth",
             "desc": "$44 sends one complete bottle of OG3™ to\na Kenyan family — the same price as a bottle\nin the US, the same product, reaching\nsomeone who could not otherwise access it.",
             "btn_text": "Donate $44",
-            "btn_url": "",
+            "btn_url": "https://springboardconnectivity.org",
             "is_featured": true,
             "badge_text": "Most Popular"
           }
@@ -394,7 +394,7 @@
             "meta": "Village builder · Five families · Onemonth",
             "desc": "$220 reaches five families simultaneously —\na cluster within a village, a school group, a\ncommunity circle. The quorum sensing\neffect: when enough people supporte, the\ncommunity shifts.",
             "btn_text": "Donate $220",
-            "btn_url": "",
+            "btn_url": "https://springboardconnectivity.org",
             "is_featured": false,
             "badge_text": "Most Popular"
           }
@@ -406,7 +406,7 @@
             "meta": "Village champion · One person · Onefull year",
             "desc": "$528 commits to one person's complete oral\necosystem supportation for twelve months —\nlong enough for the biology to genuinely\nshift. Long enough for quorum to re-\nestablish. Long enough to matter.",
             "btn_text": "Donate $528",
-            "btn_url": "",
+            "btn_url": "https://springboardconnectivity.org",
             "is_featured": false,
             "badge_text": "Most Popular"
           }
@@ -426,7 +426,7 @@
         "eyebrow": "Make a Difference Today",
         "title": "Every amount has",
         "title_accent": "a real impact.",
-        "body": "We will not tell you what to give. What we will tell you is exactly what your contribution does — because you deserve to know precisely where your generosity lands.",
+        "body": "<p>We will not tell you what to give. What we will tell you is exactly what your contribution does — because you deserve to know precisely where your generosity lands.</p>",
         "wide_amount": "$4,400",
         "wide_meta": "Village Sponsor",
         "wide_desc": "Sponsors a full village for one month — 100 people. The number that changes a community. This is the quorum threshold: when enough people in one place restore, the ecology of the whole shifts.",
@@ -460,7 +460,7 @@
             "icon_type": "share",
             "title": "Share via text or email",
             "sub": "Native share on mobile",
-            "url": "",
+            "url": "mailto:?subject=Rainbow Smile Kenya Initiative&body=Learn more at rainbowsmile.com/pages/kenya",
             "is_share": false,
             "is_muted": false
           }
@@ -471,7 +471,7 @@
             "icon_type": "shop",
             "title": "Shop OG3™",
             "sub": "Every purchase contributes 1% to Kenya",
-            "url": "",
+            "url": "shopify://collections/all",
             "is_share": false,
             "is_muted": false
           }
@@ -482,7 +482,7 @@
             "icon_type": "donate",
             "title": "Donate Now",
             "sub": "Secure · Tax receipt · 100% to cause",
-            "url": "",
+            "url": "https://springboardconnectivity.org",
             "is_share": false,
             "is_muted": false
           }
