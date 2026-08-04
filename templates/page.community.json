@@ -60,7 +60,7 @@
       "settings": {
         "bg_image": "shopify://shop_images/Section_-_HERO_3.png",
         "eyebrow": "Rainbow Smile · The Biome Hacker Community",
-        "title": "Your already Sensed it.",
+        "title": "Your already sensed it.",
         "script_line": "Welcome home.",
         "subtitle": "<p>The community for people who think of their body as a living ecosystem — and never stopped sensing it, even when no one else did.</p>",
         "show_curve": true,
@@ -281,6 +281,7 @@
         "category_rGgGQP",
         "category_VfjATq"
       ],
+      "disabled": true,
       "name": "Community Forum",
       "settings": {
         "eyebrow": "The Forum",
