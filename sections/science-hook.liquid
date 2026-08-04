@@ -176,7 +176,7 @@
         <p class="sci__eyebrow">{{ section.settings.eyebrow | escape }}</p>
       {%- endif -%}
 
-      {%- if section.settings.title != blank -%}
+      {%- if section.settings.title_before != blank or section.settings.title_accent != blank or section.settings.title_after != blank -%}
         <h2 class="sci__title">
           {%- if section.settings.title_before != blank -%}
             {{ section.settings.title_before | escape }}
