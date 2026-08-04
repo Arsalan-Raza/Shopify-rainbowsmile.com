@@ -59,7 +59,7 @@
         "eyebrow": "The Biome Hacker’s Code · Volume I · 12 Chapters",
         "title": "<p>Your operating system for <em>the living mouth</em></p>",
         "script_line": "",
-        "body": "<p>Twelve chapters. One complete transformation. The oral microbiome, your mOS, and the 60-second daily reset that changes everything.</p>",
+        "body": "",
         "meta1_label": "By",
         "meta1_value": "William Robertson",
         "meta2_label": "Scientific Strategy",
@@ -252,7 +252,7 @@
         "eyebrow": "Free Preview",
         "title": "Click the arrows.",
         "script_line": "Flip the pages.",
-        "subtitle": "<p>Preview the cover and first 5 chapters. Enter your email at the gate to unlock the complete book.</p>",
+        "subtitle": "",
         "chapters_label": "12 Chapters · Volume I",
         "book_title_main": "The Biome Hacker’s",
         "book_title_script": "Code.",
@@ -420,7 +420,7 @@
         "eyebrow": "12 Chapter Illustrations",
         "title": "Twelve chapters.One complete",
         "script_line": "transformation.",
-        "subtitle": "<p>Each chapter opens with a full-page illustration.</p>",
+        "subtitle": "Each chapter opens with a full-page illustration.",
         "mono_font": "tag",
         "heading_font": "heading",
         "script_font": "accent",
@@ -442,7 +442,7 @@
         "eyebrow": "Get the Complete Book",
         "title": "The complete book.",
         "script_line": "Free.",
-        "body": "<p>All 12 chapters. Yours instantly. Plus the Biome Dispatch — monthly oral microbiome science for the genuinely curious.</p>",
+        "body": "",
         "input_placeholder": "your@email.com",
         "btn_text": "Send me the book",
         "success_text": "Check your inbox — the book is on its way.",
@@ -469,7 +469,7 @@
           "settings": {
             "num": "01",
             "title": "They think of their body as a living ecosystem, not a machine",
-            "body": "<p>They came to this through functional medicine, biohacking, yoga, unexplained illness, or a single conversation that opened something. They are ready for the science that confirms what they already sensed.</p>"
+            "body": "They came to this through functional medicine, biohacking, yoga, unexplained illness, or a single conversation that opened something. They are ready for the science that confirms what they already sensed."
           }
         },
         "card_EiwqAP": {
@@ -477,7 +477,7 @@
           "settings": {
             "num": "02",
             "title": "They have already rejected conventional oral care",
-            "body": "<p>Not because they read a study. Because they noticed. The mouthwash felt wrong. Something in their body knew before their mind had the language for it.</p>"
+            "body": "Not because they read a study. Because they noticed. The mouthwash felt wrong. Something in their body knew before their mind had the language for it."
           }
         },
         "card_Kam4BJ": {
@@ -485,7 +485,7 @@
           "settings": {
             "num": "03",
             "title": "They hold science and spirit without needing to choose",
-            "body": "<p>They might be a nurse who meditates, a microbiologist who does reiki, a data scientist who takes adaptogenic mushrooms. They don’t experience these as contradictions.</p>"
+            "body": "They might be a nurse who meditates, a microbiologist who does reiki, a data scientist who takes adaptogenic mushrooms. They don’t experience these as contradictions."
           }
         },
         "card_HNhjXx": {
@@ -493,7 +493,7 @@
           "settings": {
             "num": "04",
             "title": "They share things that change them",
-            "body": "<p>The Biome Hacker doesn’t keep discoveries to themselves. When something works — really works — they tell their partner, their friend, their mother. Sharing is their natural response to transformation.</p>"
+            "body": "The Biome Hacker doesn’t keep discoveries to themselves. When something works — really works — they tell their partner, their friend, their mother. Sharing is their natural response to transformation."
           }
         },
         "card_c8CtCx": {
@@ -501,7 +501,7 @@
           "settings": {
             "num": "05",
             "title": "They sense needs before they’re spoken",
-            "body": "<p>This is quorum sensing at the human level. They are naturally empathic — they read rooms, they feel into relationships, they respond to what isn’t said. This is 3.5 billion years old.</p>"
+            "body": "This is quorum sensing at the human level. They are naturally empathic — they read rooms, they feel into relationships, they respond to what isn’t said. This is 3.5 billion years old."
           }
         },
         "card_JjadiB": {
@@ -509,7 +509,7 @@
           "settings": {
             "num": "06",
             "title": "They believe health is ecological, not chemical",
-            "body": "<p>You don’t fix a garden by poisoning it. You restore the conditions that let the right things grow. This is how they think about their body — and how they judge anything that claims to help it.</p>"
+            "body": "You don’t fix a garden by poisoning it. You restore the conditions that let the right things grow. This is how they think about their body — and how they judge anything that claims to help it."
           }
         }
       },
@@ -527,7 +527,7 @@
         "title": "Are you a",
         "script_line": "Biome Hacker?",
         "tagline": "You probably already are.",
-        "intro": "<p>Not a demographic. A state of mind. A way of sensing the world. You’ve sensed that fighting, sterilizing, or attempting to conquer the body has been quietly working against the very ecosystems that keep it healthy. You’ve been looking for a different answer — one that works with the body rather than against it.</p>",
+        "intro": "",
         "mono_font": "tag",
         "heading_font": "heading",
         "script_font": "accent",

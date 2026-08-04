@@ -66,7 +66,7 @@
         "show_tm": true,
         "script_after": "Drops.",
         "script_font": "--font-accent-family",
-        "subtitle_text": "<p>3 flavors · 2 formats · 6 ways to restore your living mouth</p>",
+        "subtitle_text": "",
         "subtitle_font": "--font-heading-family",
         "badge_font": "--font-tag-family",
         "show_curve": true,
@@ -257,7 +257,7 @@
           "settings": {
             "icon": "save",
             "title": "Save 11% Every Order",
-            "body": "<p>Automatic discount applied on every delivery — no codes needed, ever.</p>"
+            "body": "Automatic discount applied on every delivery — no codes needed, ever."
           }
         },
         "card_kPN3wE": {
@@ -265,7 +265,7 @@
           "settings": {
             "icon": "shipping",
             "title": "Free Priority Shipping",
-            "body": "<p>Subscribers get free shipping on every order, regardless of order size.</p>"
+            "body": "Subscribers get free shipping on every order, regardless of order size."
           }
         },
         "card_UcadG6": {
@@ -273,7 +273,7 @@
           "settings": {
             "icon": "pause",
             "title": "Pause or Cancel Anytime",
-            "body": "<p>No lock-ins. No fees. Change, pause or cancel from your account in seconds.</p>"
+            "body": "No lock-ins. No fees. Change, pause or cancel from your account in seconds."
           }
         },
         "card_UVqrBg": {
@@ -281,7 +281,7 @@
           "settings": {
             "icon": "star",
             "title": "Early Access & Perks",
-            "body": "<p>Subscribers get first access to new flavors, limited editions, and community events.</p>"
+            "body": "Subscribers get first access to new flavors, limited editions, and community events."
           }
         }
       },

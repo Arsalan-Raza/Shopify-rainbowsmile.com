@@ -46,7 +46,7 @@
           "settings": {
             "icon": "faq",
             "title": "FAQs",
-            "description": "<p>Common questions answered</p>",
+            "description": "",
             "url": "/pages/faqs"
           }
         },
@@ -55,7 +55,7 @@
           "settings": {
             "icon": "shop",
             "title": "Shop",
-            "description": "<p>Browse all OG3™ products</p>",
+            "description": "",
             "url": "shopify://collections/all"
           }
         },
@@ -64,7 +64,7 @@
           "settings": {
             "icon": "returns",
             "title": "Returns",
-            "description": "<p>90-day satisfaction guarantee</p>",
+            "description": "",
             "url": "/pages/contact"
           }
         },
@@ -73,7 +73,7 @@
           "settings": {
             "icon": "book",
             "title": "Free Book",
-            "description": "<p>Download the Biome Hacker’s Code</p>",
+            "description": "",
             "url": "/pages/the-book"
           }
         }

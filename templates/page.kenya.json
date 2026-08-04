@@ -63,7 +63,7 @@
           "settings": {
             "num": "3.5B",
             "num_color": "#ef4a22",
-            "body": "<p>People globally living with oral\ndisease — cavities, gum\ndisease, tooth loss. More than\nthe combined population of the\nentire Western hemisphere.</p>",
+            "body": "",
             "source": "WHO Global Oral Health StatusReport, 2022"
           }
         },
@@ -72,7 +72,7 @@
           "settings": {
             "num": "98%",
             "num_color": "#fabe54",
-            "body": "<p>Of Kenyan adults have\nperiodontal disease. This is not\na high-risk group statistic. It is\nthe baseline condition of an\nentire adult population.</p>",
+            "body": "",
             "source": "Kenya National Health Survey"
           }
         },
@@ -81,7 +81,7 @@
           "settings": {
             "num": "966",
             "num_color": "#fabe54",
-            "body": "<p>Licensed dentists for 55 million\npeople. One dentist for every\n56,000 Kenyans. In rural areas,\nprofessional dental care does\nnot just fail to reach people</p>",
+            "body": "",
             "source": "Kenya Medical Practitioners Board"
           }
         },
@@ -90,7 +90,7 @@
           "settings": {
             "num": "28",
             "num_color": "#3d8a2a",
-            "body": "<p>Pediatric dentists in the entire\ncountry. Twenty-eight\nspecialists caring for the dental\nneeds of 28 million children. The\nmath is not difficult.</p>",
+            "body": "",
             "source": "FDI World Dental Federation"
           }
         }
@@ -140,7 +140,7 @@
           "settings": {
             "num": "01",
             "title": "The disease progresses silently",
-            "body": "<p>Periodontal disease destroys bone and tissue over years — almost entirely without pain — until the damage is severe enough to cause tooth loss. Silent diseases don't generate alarm. They accumulate in statistics.</p>"
+            "body": "Periodontal disease destroys bone and tissue over years — almost entirely without pain — until the damage is severe enough to cause tooth loss. Silent diseases don't generate alarm. They accumulate in statistics."
           }
         },
         "card_F8NVTQ": {
@@ -148,7 +148,7 @@
           "settings": {
             "num": "03",
             "title": "The mouth is professionally separated fromthe body",
-            "body": "<p>Dentistry sits in a separate system — different training, different buildings, different insurance. The documented links to cardiovascular disease, neurodegeneration, diabetes, and pregnancy outcomes are not crossing the disciplinary boundary.</p>"
+            "body": "Dentistry sits in a separate system — different training, different buildings, different insurance. The documented links to cardiovascular disease, neurodegeneration, diabetes, and pregnancy outcomes are not crossing the disciplinary boundary."
           }
         },
         "card_EGeHa4": {
@@ -156,7 +156,7 @@
           "settings": {
             "num": "02",
             "title": "It is worst where voices are least heard",
-            "body": "<p>The communities most affected have the least political voice, least media representation, and least research funding. The invisibility of the crisis mirrors the invisibility of the people it affects most.</p>"
+            "body": "The communities most affected have the least political voice, least media representation, and least research funding. The invisibility of the crisis mirrors the invisibility of the people it affects most."
           }
         },
         "card_cTP7ak": {
@@ -164,7 +164,7 @@
           "settings": {
             "num": "04",
             "title": "The industry profits from the wrong solution",
-            "body": "<p>A $50B+ oral care industry built on the antiseptic paradigm has no structural incentive to question it. The ecological understanding of oral health — which OG3™ is built on — represents a fundamental disruption to a very established business model.</p>"
+            "body": "A $50B+ oral care industry built on the antiseptic paradigm has no structural incentive to question it. The ecological understanding of oral health — which OG3™ is built on — represents a fundamental disruption to a very established business model."
           }
         }
       },
@@ -222,7 +222,7 @@
             "num": "1",
             "num_color": "#ef4a22",
             "title": "Village supported monthly",
-            "body": "<p>Our current commitment. Every month, OG3™\nreaches one Kenyan village through\nSpringboard Connectivity.</p>"
+            "body": ""
           }
         },
         "stat_La9atG": {
@@ -231,7 +231,7 @@
             "num": "∞",
             "num_color": "#ef4a22",
             "title": "The goal",
-            "body": "<p>Every village in need. Every family. The quorum is not complete until everyone is in it.</p>"
+            "body": ""
           }
         },
         "stat_Lqgtkk": {
@@ -240,7 +240,7 @@
             "num": "1%",
             "num_color": "#3d8a2a",
             "title": "Of profits to Kenya",
-            "body": "<p>Every sale contributes. As we grow, so does what we can give. Your purchase is already part of this.</p>"
+            "body": ""
           }
         }
       },
