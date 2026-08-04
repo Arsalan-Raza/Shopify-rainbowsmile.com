@@ -64,7 +64,7 @@
     visibility: hidden;
     transition: opacity 0.28s ease, visibility 0.28s ease;
   }
-  #shopify-section-{{ section.id }} .htu-overlay.is-open { opacity: 1; visibility: visible; }
+  #shopify-section-{{ section.id }} .htu-overlay.is-open { opacity: 1; visibility: visible; display: block; }
 
   #shopify-section-{{ section.id }} .htu-drawer {
     position: fixed;
@@ -178,7 +178,7 @@
     background: linear-gradient(160deg, #c9a184, #e2c4a8);
     margin-bottom: clamp(20px, 4vw, 28px);
   }
-  #shopify-section-{{ section.id }} .htu-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  #shopify-section-{{ section.id }} .htu-hero img { width: 100%; height: 100%; object-fit: cover; display: block; object-position: top; }
   #shopify-section-{{ section.id }} .htu-hero::after {
     content: "";
     position: absolute;
