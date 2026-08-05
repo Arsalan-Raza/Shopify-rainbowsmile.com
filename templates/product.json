@@ -34,6 +34,13 @@
           "type": "price",
           "settings": {}
         },
+        "text_aRiJAB": {
+          "type": "text",
+          "settings": {
+            "text": "<em>30 day money back guarantee</em>",
+            "text_style": "body"
+          }
+        },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
@@ -65,9 +72,9 @@
         "collapsible_tab_xt8Uad": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "What's inside",
+            "heading": "Ingredients",
             "icon": "apple",
-            "content": "<p>{{ product.metafields.custom.what_s_inside | metafield_tag }}</p>",
+            "content": "{{ product.metafields.custom.what_s_inside | metafield_tag }}",
             "page": ""
           }
         },
@@ -76,7 +83,7 @@
           "settings": {
             "heading": "How to use",
             "icon": "apple",
-            "content": "<p>{{ product.metafields.custom.how_to_use | metafield_tag }}</p>",
+            "content": "{{ product.metafields.custom.how_to_use | metafield_tag }}",
             "page": ""
           }
         },
@@ -105,6 +112,7 @@
         "description",
         "kaching_subscriptions_app_block_zWBpdf",
         "price",
+        "text_aRiJAB",
         "quantity_selector",
         "buy_buttons",
         "trust_bar_EgtwAd",

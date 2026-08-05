@@ -52,7 +52,7 @@
         "heading_text": "Rainbow Smile OG3",
         "heading_sup": "™",
         "heading_font": "--font-heading-family",
-        "script_text": "From Bad Breath to Baby Freshness",
+        "script_text": "From Bad Breath to Baby Fresh",
         "script_font": "--font-accent-family",
         "stat_num_font": "--font-heading-family",
         "stat_label_font": "--font-tag-family",
@@ -333,7 +333,7 @@
           "type": "member",
           "settings": {
             "image": "shopify://shop_images/4ebe6a54145f2c37366c5a23a3514d7cf5e80fac.png",
-            "name": "Tracy Tallow",
+            "name": "Tracy Tarlow",
             "role": "Co-Founder, Chief Operations Officer"
           }
         },
@@ -466,7 +466,7 @@
         "question_font": "--font-heading-family",
         "answer_font": "--font-heading-family",
         "cta_label": "Still have more Questions",
-        "cta_url": "/pages/contact",
+        "cta_url": "shopify://pages/faqs",
         "cta_font": "--font-heading-family",
         "heading_color": "#1b2240",
         "body_color": "#4a4e66",
@@ -507,7 +507,7 @@
         "btn_font": "--font-heading-family",
         "donate_text": "Donates to Underserved Communities",
         "donate_link_label": "springboardconnectivity.org",
-        "donate_link_url": "",
+        "donate_link_url": "https://springboardconnectivity.org/",
         "donate_font": "--font-tag-family",
         "navy_color": "#1b2240",
         "gold_color": "#f3bd42",
