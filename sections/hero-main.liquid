@@ -35,6 +35,7 @@
     object-position: center right;
     z-index: 0;
   }
+  .hero-{{ section.id }} .hero__bg-mobile { display: none; }
 
   /* Scrim */
   .hero-{{ section.id }} .hero__scrim {
@@ -187,6 +188,10 @@
   @media screen and (max-width: 720px) {
     .hero-{{ section.id }} { min-height: 640px; }
     .hero-{{ section.id }} .hero__bg { object-position: 70% center; }
+    {%- if section.settings.bg_image_mobile != blank -%}
+    .hero-{{ section.id }} .hero__bg         { display: none; }
+    .hero-{{ section.id }} .hero__bg-mobile  { display: block; }
+    {%- endif -%}
     .hero-{{ section.id }} .hero__scrim {
       background: var(--hro-overlay);
     }
@@ -219,6 +224,20 @@
     }}
   {%- else -%}
     <div class="hero__bg" style="background: linear-gradient(135deg,#2a2724,#4a3d30);"></div>
+  {%- endif -%}
+
+  {%- if section.settings.bg_image_mobile != blank -%}
+    {%- assign bg_mob_alt = section.settings.bg_image_mobile.alt | default: '' | escape -%}
+    {{
+      section.settings.bg_image_mobile
+      | image_url: width: 1000
+      | image_tag:
+        class: 'hero__bg hero__bg-mobile',
+        loading: 'eager',
+        fetchpriority: 'high',
+        alt: bg_mob_alt,
+        widths: '480, 750, 1000'
+    }}
   {%- endif -%}
 
   <div class="hero__scrim" aria-hidden="true"></div>
@@ -321,7 +340,13 @@
     {
       "type": "image_picker",
       "id": "bg_image",
-      "label": "Background image"
+      "label": "Background image (desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "Background image (mobile)",
+      "info": "Shown on screens 720px and below. Falls back to desktop image if left blank."
     },
     {
       "type": "color",
