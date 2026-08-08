@@ -53,15 +53,6 @@
   }
   .mfquote-{{ section.id }} .mf__hl { color: var(--mf-gold); font-style: italic; }
 
-  /* ── Attribution ─────────────────────────────────────────── */
-  .mfquote-{{ section.id }} .mf__attr {
-    margin: clamp(24px, 3.4vw, 36px) 0 0;
-    font-family: var(--font-{{ section.settings.body_font }}-family);
-    font-weight: 400;
-    font-size: clamp(13px, 1.3vw, 15px);
-    line-height: 1.5;
-    color: var(--mf-attr);
-  }
 {%- endstyle -%}
 
 <div class="mfquote-{{ section.id }}">
@@ -82,10 +73,6 @@
         {{- section.settings.quote_after | escape -}}
       {%- endif -%}
     </blockquote>
-
-    {%- if section.settings.attribution != blank -%}
-      <p class="mf__attr">{{ section.settings.attribution | escape }}</p>
-    {%- endif -%}
 
     {%- if section.settings.show_rules -%}
       <hr class="mf__rule mf__rule--bottom" aria-hidden="true">
@@ -122,12 +109,6 @@
       "id": "quote_after",
       "label": "Quote — text after highlight",
       "default": " your mouth was born with. This is oral care for the 21st century.\""
-    },
-    {
-      "type": "text",
-      "id": "attribution",
-      "label": "Attribution",
-      "default": "— William Robertson, Founder & Microbiome Pioneer"
     },
     {
       "type": "checkbox",

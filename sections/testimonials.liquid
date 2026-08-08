@@ -63,15 +63,6 @@
     line-height: 1.1;
     color: var(--tst-coral);
   }
-  .tst-{{ section.id }} .tst__sub {
-    margin: clamp(12px, 1.8vw, 18px) auto 0;
-    max-width: 520px;
-    font-family: var(--font-{{ section.settings.body_font }}-family);
-    font-weight: 400;
-    font-size: clamp(14px, 1.35vw, 16px);
-    line-height: 1.55;
-    color: var(--tst-intro);
-  }
 
   /* ── Stars (shared) ──────────────────────────────────────── */
   .tst-{{ section.id }} .tst__stars { display: inline-flex; gap: 3px; line-height: 0; }
@@ -228,9 +219,6 @@
             <span class="tst__script">{{ section.settings.script_line | escape }}</span>
           {%- endif -%}
         </h2>
-      {%- endif -%}
-      {%- if section.settings.subtitle != blank -%}
-        <p class="tst__sub">{{ section.settings.subtitle | escape }}</p>
       {%- endif -%}
     </header>
 
@@ -434,12 +422,6 @@
       "id": "script_line",
       "label": "Script line",
       "default": "Ecology"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Subtitle",
-      "default": "And so is the community learning to feed it."
     },
     {
       "type": "header",

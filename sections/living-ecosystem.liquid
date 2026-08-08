@@ -55,17 +55,6 @@
     line-height: 1.1;
     color: var(--ec-accent);
   }
-  .eco-{{ section.id }} .eco__sub {
-    margin: clamp(14px, 2vw, 20px) auto 0;
-    max-width: 560px;
-    font-family: var(--font-{{ section.settings.body_font }}-family);
-    font-weight: 400;
-    font-size: clamp(14px, 1.35vw, 16px);
-    line-height: 1.6;
-    color: var(--ec-body);
-  }
-  .eco-{{ section.id }} .eco__sub p { margin: 0; }
-
   /* ── Mosaic ──────────────────────────────────────────────── */
   .eco-{{ section.id }} .eco__mosaic {
     display: grid;
@@ -132,9 +121,6 @@
             <span class="eco__script">{{ section.settings.script_line | escape }}</span>
           {%- endif -%}
         </h2>
-      {%- endif -%}
-      {%- if section.settings.subtitle != blank -%}
-        <div class="eco__sub">{{ section.settings.subtitle }}</div>
       {%- endif -%}
     </header>
 
@@ -230,12 +216,6 @@
       "default": "is alive"
     },
     {
-      "type": "richtext",
-      "id": "subtitle",
-      "label": "Subtitle",
-      "default": "<p>The mouth is your control panel for programming your energy, immunity, and vitality through 1,000+ swallows a day. Healthy microbes and tissues thrive on bio-available oxygen. Bottled in ultra-violet Miron glass for potency.<\/p>"
-    },
-    {
       "type": "header",
       "content": "Mosaic images"
     },
@@ -315,17 +295,6 @@
         { "value": "accent",  "label": "Alkaline Test" }
       ],
       "default": "accent"
-    },
-    {
-      "type": "select",
-      "id": "body_font",
-      "label": "Subtitle font",
-      "options": [
-        { "value": "tag",     "label": "PP Neue Montreal Mono" },
-        { "value": "heading", "label": "D-DIN" },
-        { "value": "accent",  "label": "Alkaline Test" }
-      ],
-      "default": "heading"
     },
     {
       "type": "header",

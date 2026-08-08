@@ -95,17 +95,6 @@
     line-height: 1.1;
     color: var(--htu-script);
   }
-  .htu-{{ section.id }} .htu__sub {
-    margin: clamp(14px, 2vw, 20px) auto 0;
-    max-width: 560px;
-    font-family: var({{ section.settings.subtitle_font }});
-    font-weight: 400;
-    font-size: clamp(14px, 1.3vw, 16px);
-    line-height: 1.5;
-    color: var(--htu-sub);
-  }
-  .htu-{{ section.id }} .htu__sub p { margin: 0; }
-
   /* ── Cards grid ─────────────────────────────────────────────── */
   .htu-{{ section.id }} .htu__grid {
     display: grid;
@@ -205,7 +194,7 @@
   <div class="htu__inner">
 
     {%- comment -%} ── Header ── {%- endcomment -%}
-    {%- if section.settings.eyebrow_text != blank or section.settings.heading_text != blank or section.settings.script_text != blank or section.settings.subtitle_text != blank -%}
+    {%- if section.settings.eyebrow_text != blank or section.settings.heading_text != blank or section.settings.script_text != blank -%}
       <header class="htu__head">
         {%- if section.settings.eyebrow_text != blank -%}
           <p class="htu__eyebrow">{{ section.settings.eyebrow_text | escape }}</p>
@@ -217,9 +206,6 @@
               <span class="htu__script">{{ section.settings.script_text | escape }}</span>
             {%- endif -%}
           </h2>
-        {%- endif -%}
-        {%- if section.settings.subtitle_text != blank -%}
-          <div class="htu__sub">{{ section.settings.subtitle_text }}</div>
         {%- endif -%}
       </header>
     {%- endif -%}
@@ -351,32 +337,6 @@
     {
       "type": "header",
       "content": "Subtitle"
-    },
-    {
-      "type": "text",
-      "id": "subtitle_text",
-      "label": "Subtitle",
-      "default": "A simple 60-second oral reset for lasting wellness"
-    },
-    {
-      "type": "select",
-      "id": "subtitle_font",
-      "label": "Subtitle font",
-      "options": [
-        {
-          "value": "--font-tag-family",
-          "label": "PP Neue Montreal Mono"
-        },
-        {
-          "value": "--font-heading-family",
-          "label": "D-DIN"
-        },
-        {
-          "value": "--font-accent-family",
-          "label": "Alkaline Test"
-        }
-      ],
-      "default": "--font-heading-family"
     },
     {
       "type": "header",

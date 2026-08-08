@@ -69,17 +69,6 @@
     line-height: 1.1;
   }
 
-  .him-{{ section.id }} .him__body p {
-    margin: 0;
-    font-family: var(--font-{{ section.settings.body_font }}-family);
-    font-weight: 400;
-    font-size: clamp(14px, 1.3vw, 16px);
-    line-height: 1.75;
-    color: var(--him-body);
-  }
-  .him-{{ section.id }} .him__body p + p { margin-top: 14px; }
-  .him-{{ section.id }} .him__body strong { font-weight: 700; color: var(--him-navy); }
-
   /* ── Stats row ─────────────────────────────────────────── */
   .him-{{ section.id }} .him__stats {
     display: flex;
@@ -283,10 +272,6 @@
         {%- endif -%}
       </h2>
 
-      {%- if section.settings.body != blank -%}
-        <div class="him__body">{{ section.settings.body }}</div>
-      {%- endif -%}
-
       {%- if section.blocks.size > 0 -%}
         <div class="him__stats">
           {%- for block in section.blocks -%}
@@ -402,12 +387,6 @@
       "info": "Leave blank if not needed."
     },
     {
-      "type": "richtext",
-      "id": "body",
-      "label": "Body text",
-      "default": "<p>Kenya has 966 dentists for 55 million people. Oral disease is the most widespread health condition on earth — and in Kenya, it reaches nearly everyone. We are committed to changing this, one village at a time. We are small. We are honest about that. And we need your help to grow what we have started.</p>"
-    },
-    {
       "type": "header",
       "content": "Card buttons"
     },
@@ -485,17 +464,6 @@
         { "value": "accent",  "label": "Alkaline Test" }
       ],
       "default": "tag"
-    },
-    {
-      "type": "select",
-      "id": "body_font",
-      "label": "Body font",
-      "options": [
-        { "value": "tag",     "label": "PP Neue Montreal Mono" },
-        { "value": "heading", "label": "D-DIN" },
-        { "value": "accent",  "label": "Alkaline Test" }
-      ],
-      "default": "heading"
     },
     {
       "type": "header",

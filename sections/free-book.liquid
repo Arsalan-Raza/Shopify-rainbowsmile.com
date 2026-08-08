@@ -39,7 +39,7 @@
     display: grid;
     grid-template-columns: minmax(0, 0.85fr) 1fr;
     gap: clamp(32px, 5vw, 72px);
-    align-items: start;
+    align-items: center;
   }
 
   /* ── Book cover ──────────────────────────────────────────── */
@@ -117,43 +117,6 @@
   .book-{{ section.id }} .bk__desc strong { font-weight: 700; color: var(--bk-navy); }
   .book-{{ section.id }} .bk__desc sup { font-size: 0.62em; vertical-align: super; }
 
-  /* Checklist */
-  .book-{{ section.id }} .bk__list {
-    list-style: none;
-    margin: clamp(20px, 2.6vw, 28px) 0 0;
-    padding: 0;
-  }
-  .book-{{ section.id }} .bk__list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 14px;
-    font-family: var(--font-{{ section.settings.body_font }}-family);
-    font-size: clamp(14px, 1.3vw, 15px);
-    line-height: 1.5;
-    color: var(--bk-body);
-  }
-  .book-{{ section.id }} .bk__check {
-    flex: none;
-    width: 22px;
-    height: 22px;
-    margin-top: 1px;
-    border-radius: 6px;
-    background: var(--bk-gold);
-    display: grid;
-    place-items: center;
-  }
-  .book-{{ section.id }} .bk__check svg {
-    width: 12px;
-    height: 12px;
-    stroke: #fff;
-    stroke-width: 2.6;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .book-{{ section.id }} .bk__list sup { font-size: 0.62em; vertical-align: super; }
-
   /* Email capture */
   .book-{{ section.id }} .bk__capture {
     margin-top: clamp(26px, 3.4vw, 36px);
@@ -168,13 +131,6 @@
     font-weight: 700;
     font-size: clamp(16px, 1.6vw, 18px);
     color: var(--bk-navy);
-  }
-  .book-{{ section.id }} .bk__capture-sub {
-    margin: 0 0 16px;
-    font-family: var(--font-{{ section.settings.body_font }}-family);
-    font-size: clamp(12px, 1.2vw, 13px);
-    line-height: 1.5;
-    color: var(--bk-meta);
   }
   .book-{{ section.id }} .bk__form {
     display: flex;
@@ -221,13 +177,6 @@
   .book-{{ section.id }} .bk__form button:hover { background: #dc411b; }
   .book-{{ section.id }} .bk__form button:hover .bk__arrow { transform: translateX(3px); }
   .book-{{ section.id }} .bk__form button:focus-visible { outline: 3px solid rgba(239,74,34,0.45); outline-offset: 2px; }
-  .book-{{ section.id }} .bk__note {
-    margin: 14px 0 0;
-    font-family: var(--font-{{ section.settings.body_font }}-family);
-    font-size: clamp(12px, 1.2vw, 13px);
-    color: var(--bk-meta);
-  }
-
   /* ── Responsive ──────────────────────────────────────────── */
   @media screen and (max-width: 899px) {
     .book-{{ section.id }} .bk__inner {
@@ -291,27 +240,10 @@
         <p class="bk__desc">{{ section.settings.desc_2 }}</p>
       {%- endif -%}
 
-      {%- if section.blocks.size > 0 -%}
-        <ul class="bk__list">
-          {%- for block in section.blocks -%}
-            <li {{ block.shopify_attributes }}>
-              <span class="bk__check" aria-hidden="true">
-                <svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 4.5"/></svg>
-              </span>
-              {{ block.settings.text }}
-            </li>
-          {%- endfor -%}
-        </ul>
-      {%- endif -%}
-
       <div class="bk__capture">
         {%- if section.settings.form_title != blank -%}
           <p class="bk__capture-title">{{ section.settings.form_title | escape }}</p>
         {%- endif -%}
-        {%- if section.settings.form_sub != blank -%}
-          <p class="bk__capture-sub">{{ section.settings.form_sub | escape }}</p>
-        {%- endif -%}
-
         {%- form 'customer', id: 'bk-form-{{ section.id }}', class: 'bk__form' -%}
           <input type="hidden" name="contact[tags]" value="newsletter,biome-hacker-book">
           <label for="bk-email-{{ section.id }}" hidden>{{ section.settings.email_placeholder | default: 'Email address' | escape }}</label>
@@ -329,9 +261,6 @@
           </button>
         {%- endform -%}
 
-        {%- if section.settings.form_note != blank -%}
-          <p class="bk__note">{{ section.settings.form_note | escape }}</p>
-        {%- endif -%}
       </div>
     </div>
 
@@ -401,12 +330,6 @@
     },
     {
       "type": "text",
-      "id": "form_sub",
-      "label": "Form sub-copy",
-      "default": "Instant download. No credit card. Join biome hackers community."
-    },
-    {
-      "type": "text",
       "id": "email_placeholder",
       "label": "Email input placeholder",
       "default": "Enter your email address"
@@ -416,12 +339,6 @@
       "id": "btn_text",
       "label": "Button text",
       "default": "Download Free"
-    },
-    {
-      "type": "text",
-      "id": "form_note",
-      "label": "Note below form",
-      "default": "Dr. Gupta\u2019s foreword credit displayed prominently"
     },
     {
       "type": "header",
@@ -530,31 +447,10 @@
       "default": "#dcd5cb"
     }
   ],
-  "blocks": [
-    {
-      "type": "checklist_item",
-      "name": "Checklist Item",
-      "settings": [
-        {
-          "type": "textarea",
-          "id": "text",
-          "label": "Item text",
-          "default": "Why your oral microbiome influences whole-body health \u2014 from gut to brain.",
-          "info": "HTML supported: use <sup>\u2122<\/sup> for trademark symbols."
-        }
-      ]
-    }
-  ],
+  "blocks": [],
   "presets": [
     {
-      "name": "Free Book",
-      "blocks": [
-        { "type": "checklist_item", "settings": { "text": "Why your oral microbiome influences whole-body health \u2014 from gut to brain." } },
-        { "type": "checklist_item", "settings": { "text": "What conventional oral care may be quietly doing to your bacterial allies." } },
-        { "type": "checklist_item", "settings": { "text": "How to upgrade your mOS<sup>\u2122<\/sup> \u2014 your Microbial Operating System \u2014 starting today." } },
-        { "type": "checklist_item", "settings": { "text": "The 60-second daily protocols that support oral vitality and long-term resilience." } },
-        { "type": "checklist_item", "settings": { "text": "How to join the Biome Hacker movement and the community building around it." } }
-      ]
+      "name": "Free Book"
     }
   ]
 }
