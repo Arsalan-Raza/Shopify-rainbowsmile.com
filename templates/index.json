@@ -143,14 +143,11 @@
         "title_before": "Healthy saliva needs",
         "title_accent": "20% oxygen.",
         "title_after": "Bad breath happens at just 2%.",
-        "subtitle": "Baby's breath, pure, fresh, alive. Modern life disrupts the thought that natural harmony. Cleaning products mask. <b>Rainbow Smile OG3™ supports oxygen-rich freshness</b> — the way your mouth was designed to work.",
         "stat_low": "2%",
         "label_low": "Oxygen-poor",
-        "desc_low": "Anaerobic bacteria dominate. Decay and odor follow.",
         "image": "shopify://shop_images/Family_16_9_1.jpg",
         "stat_high": "20%",
         "label_high": "Oxygen-rich",
-        "desc_high": "Aerobic bacteria thrive. Balance and freshness restored.",
         "cta_text": " FEED YOUR ORAL OXYGEN",
         "cta_url": "shopify://collections/all",
         "mono_font": "tag",
@@ -238,7 +235,6 @@
         "quote_before": "\"We're not selling toothpaste. We're not selling mouthwash. We're supporting the",
         "quote_highlight": "living ecosystem",
         "quote_after": "your mouth was born with. This is oral care for the 21st century.\"",
-        "attribution": "— William Robertson, Founder & Microbiome Pioneer",
         "show_rules": true,
         "heading_font": "heading",
         "body_font": "heading",
@@ -251,58 +247,17 @@
     },
     "free_book_Rta6da": {
       "type": "free-book",
-      "blocks": {
-        "checklist_item_rUM6VF": {
-          "type": "checklist_item",
-          "settings": {
-            "text": "Why your oral microbiome influences whole-body health — from gut to brain."
-          }
-        },
-        "checklist_item_eYQrqy": {
-          "type": "checklist_item",
-          "settings": {
-            "text": "What conventional oral care may be quietly doing to your bacterial allies."
-          }
-        },
-        "checklist_item_UF8cDQ": {
-          "type": "checklist_item",
-          "settings": {
-            "text": "How to upgrade your mOS<sup>™</sup> — your Microbial Operating System — starting today."
-          }
-        },
-        "checklist_item_xkcAxY": {
-          "type": "checklist_item",
-          "settings": {
-            "text": "The 60-second daily protocols that support oral vitality and long-term resilience."
-          }
-        },
-        "checklist_item_rDHKcm": {
-          "type": "checklist_item",
-          "settings": {
-            "text": "How to join the Biome Hacker movement and the community building around it."
-          }
-        }
-      },
-      "block_order": [
-        "checklist_item_rUM6VF",
-        "checklist_item_eYQrqy",
-        "checklist_item_UF8cDQ",
-        "checklist_item_xkcAxY",
-        "checklist_item_rDHKcm"
-      ],
       "name": "Free Book",
       "settings": {
         "cover_image": "shopify://shop_images/Background_2.png",
         "eyebrow": "Free · The Biome Hacker Community",
         "title": "The Biome Hacker's Code.",
         "script_line": "Read the book.",
-        "desc_1": "A field guide to human potential. Free for Biome Hackers. Your mouth is the command centre of your biology. This book explains why, and what to do about it.",
-        "desc_2": "Foreword by <strong>Dr. Vanita K. Gupta, PhD, MBA</strong> — Chief Founding Science Officer, Rainbow Smile",
+        "desc_1": "A field guide to human potential. Your mouth is the command centre of your biology. This book explains why, and what to do about it.",
+        "desc_2": "",
         "form_title": "Get Your Free Copy",
-        "form_sub": "Instant download. No credit card. Join biome hackers community.",
         "email_placeholder": "Enter your email address",
         "btn_text": "Download Free",
-        "form_note": "Dr. Gupta’s foreword credit displayed prominently",
         "mono_font": "tag",
         "heading_font": "heading",
         "script_font": "accent",
@@ -372,8 +327,6 @@
         "heading_font": "--font-heading-family",
         "script_text": "to freshness",
         "script_font": "--font-accent-family",
-        "subtitle_text": "<p>A simple 60-second oral reset for lasting wellness</p>",
-        "subtitle_font": "--font-heading-family",
         "columns_desktop": "4",
         "num_font": "--font-heading-family",
         "card_title_font": "--font-heading-family",
@@ -400,7 +353,6 @@
         "eyebrow": "The Living Ecosystem",
         "title": "Your mouth",
         "script_line": "is alive",
-        "subtitle": "<p>The mouth is your control panel for programming your energy, immunity, and vitality through 1,000+ swallows a day. Healthy microbes and tissues thrive on bio-available oxygen. Bottled in ultra-violet Miron glass for potency.</p>",
         "image_a": "shopify://shop_images/Background_3.png",
         "alt_a": "",
         "image_b": "shopify://shop_images/Background_4.png",
@@ -412,7 +364,6 @@
         "mono_font": "tag",
         "heading_font": "heading",
         "script_font": "accent",
-        "body_font": "heading",
         "bg_color": "#ffffff",
         "navy_color": "#232748",
         "accent_color": "#ef4a22",
@@ -571,7 +522,6 @@
         "eyebrow_sup": "™",
         "title": "Feed Your",
         "script_line": "Ecology",
-        "subtitle": "Join our community",
         "feat_quote": "“The before-bed pump is the one that sold me. I used to wake up with that thick morning-mouth feeling every single day. It’s noticeably less now, and it keeps getting better the longer I stick with it.”",
         "feat_avatar": "shopify://shop_images/Overlay_Border_2.png",
         "feat_name": "Anita W.",
@@ -652,7 +602,6 @@
         "eyebrow": "Why Trust Us",
         "title": "Premium in ways",
         "script_line": "that actually matter.",
-        "subtitle": "<p>Every decision at Rainbow Smile is made with your body, the planet, and real science in mind.</p>",
         "tile1_icon": "🧬",
         "tile1_title": "UBU Biome-Safe Formula",
         "tile1_body": "<p>Like a fingerprint, no two mouths are alike, and your formula shouldn’t pretend otherwise. UBU™ means every ingredient is biome-safe by design, working with your unique ecology instead of overwriting it.</p>",
@@ -694,7 +643,7 @@
         "eyebrow": "About the Founder",
         "title_before": "Hi, I'm",
         "title_script": "William",
-        "body": "<p>Founder of Rainbow Smile, a company born from a deep passion for wellness, the wisdom of nature, and the belief that true health begins within the small but mighty ecosystem living inside each of us.</p><p>Rainbow Smile is more than just a line of products, it's a movement. A movement toward reconnecting with nature, reclaiming vibrant, whole-body health, and embracing joy-filled, authentic smiles as symbols of genuine wellness.</p>",
+        "body": "<p>Founder of Rainbow Smile, a company born from a deep passion for wellness, the wisdom of nature, and the belief that true health begins within the small but mighty ecosystem living inside each of us.</p>",
         "quote": "<p>\"Our Mission: A Planet Smiling — a planet smiling in harmony with its own living code, where every mouth becomes a messenger of peace and every smile a sign of health supported.\"</p>",
         "quote_attr": "— William Robertson",
         "btn_1_text": "Get the Free Book",
@@ -753,7 +702,6 @@
         "title_before": "98% of adults.",
         "title_script": "Every village. Every family.",
         "title_after": "",
-        "body": "<p>Kenya has 966 dentists for 55 million people. Oral disease is the most widespread health condition on earth — and in Kenya, it reaches nearly everyone. We are committed to changing this, one village at a time. We are small. We are honest about that. And we need your help to grow what we have started.</p>",
         "donate_text": "Donate Now",
         "donate_url": "shopify://pages/contact",
         "story_text": "Read the full story →",
@@ -763,7 +711,6 @@
         "heading_font": "heading",
         "script_font": "accent",
         "mono_font": "tag",
-        "body_font": "heading",
         "bg_color": "#ffffff",
         "navy_color": "#232748",
         "coral_color": "#ef4a22",
@@ -878,7 +825,7 @@
         "heading_font": "--font-heading-family",
         "script_text": "Unlocked",
         "script_font": "--font-accent-family",
-        "body_text": "<p>Join biome hackers who’ve returned to their original design. Sophisticated science. Joyful results. Every smile — uniquely yours.</p>",
+        "body_text": "",
         "body_font": "--font-heading-family",
         "btn1_label": "Shop Rainbow Smile",
         "btn1_url": "shopify://collections/all",
