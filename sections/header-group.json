@@ -57,7 +57,7 @@
           "settings": {
             "panel": "spray",
             "title": "Spray into your mouth",
-            "body": "2–3 sprays directly into the mouth. Anytime, anywhere — after coffee, after a meal, before a meeting.",
+            "body": "2–3 sprays directly into the mouth. Anytime, anywhere — after coffee, after a meal, before a meeting, before a kiss. The same gesture as any breath spray you've ever used.",
             "tag": ""
           }
         },
@@ -66,17 +66,46 @@
           "settings": {
             "panel": "spray",
             "title": "Close your mouth and hold",
-            "body": "Close your mouth and let it saturate for 60 seconds. The oxygen-rich glycerin coats every surface.",
-            "tag": "60 Seconds · The Saturation Window"
+            "body": "This is the one thing that makes OG3™ different. Close your mouth and let it saturate for 60 seconds. The oxygen-rich glycerin coats every surface. Beneficial bacteria get what they need. Harmful anaerobes — the ones associated with bad breath — are less able to thrive in an oxygen-rich environment.",
+            "tag": "60 seconds · The saturation window"
           }
         },
         "step_KkdG9F": {
           "type": "step",
           "settings": {
             "panel": "spray",
-            "title": "Swallow or spit — your call",
-            "body": "OG3 is certified organic and completely safe to swallow. Swallowing extends the benefit into the gut.",
-            "tag": "Certified Organic · Safe to Swallow"
+            "title": "Swallow",
+            "body": "OG3 is made in a base of certified organic coconut glycerin. It tastes as great as it works. 100% safe to swallow. Enjoy!",
+            "tag": "Certified organic · Safe to swallow"
+          }
+        },
+        "step_4CgP9H": {
+          "type": "step",
+          "settings": {
+            "panel": "spray",
+            "title": "Use whenever you need it",
+            "body": "There's no wrong time for OG3™. Every spray feeds your oral microbiome. Every 60-second hold supports the oral ecosystem that conventional antiseptic care can disrupt.",
+            "tag": "Certified organic · Safe to swallow"
+          }
+        },
+        "callout_KaLhkR": {
+          "type": "callout",
+          "settings": {
+            "panel": "spray",
+            "label": "Why the 60 seconds matters",
+            "body": "OG3™ doesn't mask — it supports the oral environment where beneficial bacteria can thrive. Harmful anaerobic bacteria produce the compounds that make breath smell. They thrive in low-oxygen environments. OG3™ saturates the oral ecosystem with oxygen, creating an environment where anaerobes are less able to thrive. The longer the saturation, the more complete the effect."
+          }
+        },
+        "cross_sell_rKCFEq": {
+          "type": "cross_sell",
+          "settings": {
+            "panel": "spray",
+            "title": "Want to go deeper? Meet the Pump.",
+            "body": "The Spray is perfect for anytime use. But if you want the full oral ecosystem supportation — sublingual delivery, the morning and evening ritual, the complete 60-second practice — the Pump is the other half of the OG3™ ritual. Most Biome Hackers own both.",
+            "link_text": "See the Pump ritual",
+            "link_tab": "pump",
+            "style": "stacked",
+            "title_accent": ""
           }
         },
         "faq_bPHk3F": {
@@ -95,31 +124,68 @@
             "answer": "That’s the saturation window — it lets the oxygen-rich glycerin coat every surface and shift the environment against anaerobic bacteria."
           }
         },
+        "faq_TAfWGC": {
+          "type": "faq",
+          "settings": {
+            "panel": "spray",
+            "question": "How many sprays per bottle?",
+            "answer": "Lorem Ipsem"
+          }
+        },
         "step_4acqCn": {
           "type": "step",
           "settings": {
             "panel": "pump",
-            "title": "Pump under your tongue",
-            "body": "Dispense 1–2 pumps directly under the tongue, morning and evening, as the anchor of your daily routine.",
-            "tag": ""
+            "title": "Pump under the tongue",
+            "body": "Pump under the tongue\nFirst thing in the morning, before anything else. One pump directly under the tongue — the sublingual area allows rapid absorption — a traditional and effective delivery method for supplements.",
+            "tag": "Sublingual · Maximum absorption"
           }
         },
         "step_wX8neG": {
           "type": "step",
           "settings": {
             "panel": "pump",
-            "title": "Hold for 60 seconds",
-            "body": "Let it absorb sublingually so the compounds reach the tissue directly.",
-            "tag": "60 Seconds · The Saturation Window"
+            "title": "Close your mouth — 60 seconds of saturation",
+            "body": "Close your mouth. Move OG3™ gently around with your tongue — under, over, between teeth, into gum pockets. Let it saturate completely. This is the 60-second window where the oxygen-rich environment supports beneficial aerobic bacteria and gives them the conditions they need to re-establish quorum.",
+            "tag": "60 seconds · Full saturation · Quorum sensing"
           }
         },
         "step_zT73cV": {
           "type": "step",
           "settings": {
             "panel": "pump",
-            "title": "Swallow to finish",
-            "body": "Carry the benefit into the oral-gut axis. Certified organic and safe to swallow.",
-            "tag": "Certified Organic · Safe to Swallow"
+            "title": "Swallow",
+            "body": "OG3 is made in a base of certified organic coconut glycerin. It tastes as great as it works. 100% safe to swallow. Enjoy!",
+            "tag": "Certified organic · Tastes great · Swallow it"
+          }
+        },
+        "step_fMrcpn": {
+          "type": "step",
+          "settings": {
+            "panel": "pump",
+            "title": "Repeat before bed",
+            "body": "The evening pump is the most powerful application. Your oral ecosystem does its deepest supportation work during sleep — 6–8 uninterrupted hours with no food, no drink, no disruption. OG3™ before sleep gives beneficial bacteria the longest possible window to rebuild.",
+            "tag": "Evening ritual · The overnight window"
+          }
+        },
+        "callout_3miMae": {
+          "type": "callout",
+          "settings": {
+            "panel": "pump",
+            "label": "The science of sublingual saturation",
+            "body": "The mouth contains 700+ species of bacteria coordinating through quorum sensing — chemical signals that tell the community when to act as one. OG3™ supportes the oxygen-rich conditions where beneficial bacteria can re-establish quorum. It doesn't add bacteria. It supportes the conditions they need. The ecosystem corrects itself — exactly as it was designed to."
+          }
+        },
+        "cross_sell_UDhwGR": {
+          "type": "cross_sell",
+          "settings": {
+            "panel": "pump",
+            "title": "Keep the Spray For in between.",
+            "body": "The Pump handles your morning and evening ritual. The Spray handles everything else — after coffee, after lunch, before meetings, social moments. Together they cover every moment of your day. Most Biome Hackers keep the Pump at home and the Spray in their pocket.",
+            "link_text": "See the Spray ritual",
+            "link_tab": "spray",
+            "style": "stacked",
+            "title_accent": ""
           }
         },
         "faq_9XmM9d": {
@@ -143,46 +209,49 @@
         "step_7M8VPR",
         "step_iAW4Dq",
         "step_KkdG9F",
+        "step_4CgP9H",
+        "callout_KaLhkR",
+        "cross_sell_rKCFEq",
         "faq_bPHk3F",
         "faq_3tq96g",
+        "faq_TAfWGC",
         "step_4acqCn",
         "step_wX8neG",
         "step_zT73cV",
+        "step_fMrcpn",
+        "callout_3miMae",
+        "cross_sell_UDhwGR",
         "faq_9XmM9d",
         "faq_qLpLAj"
       ],
       "name": "How To Use Drawer",
       "settings": {
         "launcher_text": "HOW TO USE",
-        "drawer_eyebrow": "OG3 by Rainbow Smile",
+        "drawer_eyebrow": "OG3™ by Rainbow Smile",
         "spray_product": "rainbow-smile-og3™-minty-fusion",
         "spray_hero_image": "shopify://shop_images/2c9ad7886253d80a5dffbc38d23cd51d5009f446.png",
-        "spray_hero_title": "Anytime fresh breath",
-        "spray_hero_meta": "Spray Format · On-the-Go · 15 ml",
+        "spray_hero_script": "60 Seconds.",
+        "spray_hero_title": "60  Close your mouth. That's it.",
+        "spray_hero_meta": "OG3™ works exactly like the breath spray you already know — pull it out, spray, close your mouth. The difference is what happens next.",
         "spray_drawer_title": "Works like a breath spray.",
         "spray_drawer_subtitle": "Does so much more.",
-        "spray_callout_label": "Why the 60 seconds matters",
-        "spray_callout_body": "OG3 doesn’t mask bad breath — it removes the conditions that cause it. Harmful anaerobic bacteria thrive in low-oxygen environments. OG3 saturates the oral ecosystem with oxygen, making it impossible for anaerobes to maintain their competitive advantage.",
-        "spray_cross_title": "Want the full ritual?",
-        "spray_cross_body": "Meet the Pump — sublingual delivery, morning and evening, the deepest version of the OG3 practice.",
-        "spray_cross_link": "See Pump",
+        "spray_drawer_desc": "Spray anytime. Or take 60 seconds and support your whole oral ecosystem.",
         "pump_product": "100-organic-glycerin",
         "pump_hero_image": "shopify://shop_images/Background_Border_3.png",
-        "pump_hero_title": "The deep daily ritual",
-        "pump_hero_meta": "Pump Format · Sublingual · 30 ml",
-        "pump_drawer_title": "The deep daily ritual.",
+        "pump_hero_script": "60 Seconds.",
+        "pump_hero_title": "Under the tongue. Every morning.",
+        "pump_hero_meta": "The sublingual ritual — the deepest version of the OG3™ practice. Two minutes of your day, morning and evening, to support the oral ecosystem that conventional antiseptic care can disrupt.",
+        "pump_drawer_title": "Works like a breath Pump.",
         "pump_drawer_subtitle": "Sublingual, morning and evening.",
-        "pump_callout_label": "Why the pump goes deeper",
-        "pump_callout_body": "Sublingual delivery holds OG3 against the tissue for maximum absorption. Used morning and evening, it’s the most complete version of the practice — building oral-ecosystem resilience over time.",
-        "pump_cross_title": "Prefer on-the-go?",
-        "pump_cross_body": "The Spray gives you anytime fresh breath in the same OG3 formula — perfect for your bag or car.",
-        "pump_cross_link": "See Spray",
+        "pump_drawer_desc": "Pump anytime. Or take 60 seconds and support your whole oral ecosystem.",
         "tab_spray_label": "The Spray",
         "tab_pump_label": "The Pump",
         "flavours_label": "Choose your flavour",
         "atc_label": "Add to cart",
         "sub_note": "or Subscribe & Save $5/month",
         "faq_label": "Questions",
+        "gold_color": "#f0a83c",
+        "script_font": "accent",
         "mono_font": "tag",
         "heading_font": "heading",
         "body_font": "heading",
