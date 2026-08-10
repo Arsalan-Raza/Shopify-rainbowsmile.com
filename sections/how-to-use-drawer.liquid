@@ -565,16 +565,18 @@
         {%- endif -%}
       {%- endfor -%}
 
-      {%- if section.settings.spray_callout_label != blank or section.settings.spray_callout_body != blank -%}
-        <div class="htu-callout">
-          {%- if section.settings.spray_callout_label != blank -%}
-            <p class="htu-callout__label">{{ section.settings.spray_callout_label | escape }}</p>
-          {%- endif -%}
-          {%- if section.settings.spray_callout_body != blank -%}
-            <p class="htu-callout__body">{{ section.settings.spray_callout_body }}</p>
-          {%- endif -%}
-        </div>
-      {%- endif -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'callout' and block.settings.panel == 'spray' -%}
+          <div class="htu-callout" {{ block.shopify_attributes }}>
+            {%- if block.settings.label != blank -%}
+              <p class="htu-callout__label">{{ block.settings.label | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.body != blank -%}
+              <p class="htu-callout__body">{{ block.settings.body }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
 
       {%- if spray_product != blank -%}
         {%- unless spray_product.has_only_default_variant -%}
@@ -608,19 +610,21 @@
         {%- endif -%}
       {%- endif -%}
 
-      {%- if section.settings.spray_cross_title != blank -%}
-        <div class="htu-cross">
-          <div class="htu-cross__text">
-            <p class="htu-cross__title">{{ section.settings.spray_cross_title | escape }}</p>
-            {%- if section.settings.spray_cross_body != blank -%}
-              <p class="htu-cross__body">{{ section.settings.spray_cross_body | escape }}</p>
-            {%- endif -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'cross_sell' and block.settings.panel == 'spray' -%}
+          <div class="htu-cross" {{ block.shopify_attributes }}>
+            <div class="htu-cross__text">
+              <p class="htu-cross__title">{{ block.settings.title | escape }}</p>
+              {%- if block.settings.body != blank -%}
+                <p class="htu-cross__body">{{ block.settings.body | escape }}</p>
+              {%- endif -%}
+            </div>
+            <button class="htu-cross__link" type="button" data-htu-tab="{{ block.settings.link_tab }}">
+              {{ block.settings.link_text | escape }} <span aria-hidden="true">→</span>
+            </button>
           </div>
-          <button class="htu-cross__link" type="button" data-htu-tab="pump">
-            {{ section.settings.spray_cross_link | escape }} <span aria-hidden="true">→</span>
-          </button>
-        </div>
-      {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
 
       {%- assign spray_has_faq = false -%}
       {%- for block in section.blocks -%}
@@ -688,16 +692,18 @@
         {%- endif -%}
       {%- endfor -%}
 
-      {%- if section.settings.pump_callout_label != blank or section.settings.pump_callout_body != blank -%}
-        <div class="htu-callout">
-          {%- if section.settings.pump_callout_label != blank -%}
-            <p class="htu-callout__label">{{ section.settings.pump_callout_label | escape }}</p>
-          {%- endif -%}
-          {%- if section.settings.pump_callout_body != blank -%}
-            <p class="htu-callout__body">{{ section.settings.pump_callout_body }}</p>
-          {%- endif -%}
-        </div>
-      {%- endif -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'callout' and block.settings.panel == 'pump' -%}
+          <div class="htu-callout" {{ block.shopify_attributes }}>
+            {%- if block.settings.label != blank -%}
+              <p class="htu-callout__label">{{ block.settings.label | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.body != blank -%}
+              <p class="htu-callout__body">{{ block.settings.body }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
 
       {%- if pump_product != blank -%}
         {%- unless pump_product.has_only_default_variant -%}
@@ -731,19 +737,21 @@
         {%- endif -%}
       {%- endif -%}
 
-      {%- if section.settings.pump_cross_title != blank -%}
-        <div class="htu-cross">
-          <div class="htu-cross__text">
-            <p class="htu-cross__title">{{ section.settings.pump_cross_title | escape }}</p>
-            {%- if section.settings.pump_cross_body != blank -%}
-              <p class="htu-cross__body">{{ section.settings.pump_cross_body | escape }}</p>
-            {%- endif -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'cross_sell' and block.settings.panel == 'pump' -%}
+          <div class="htu-cross" {{ block.shopify_attributes }}>
+            <div class="htu-cross__text">
+              <p class="htu-cross__title">{{ block.settings.title | escape }}</p>
+              {%- if block.settings.body != blank -%}
+                <p class="htu-cross__body">{{ block.settings.body | escape }}</p>
+              {%- endif -%}
+            </div>
+            <button class="htu-cross__link" type="button" data-htu-tab="{{ block.settings.link_tab }}">
+              {{ block.settings.link_text | escape }} <span aria-hidden="true">→</span>
+            </button>
           </div>
-          <button class="htu-cross__link" type="button" data-htu-tab="spray">
-            {{ section.settings.pump_cross_link | escape }} <span aria-hidden="true">→</span>
-          </button>
-        </div>
-      {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
 
       {%- assign pump_has_faq = false -%}
       {%- for block in section.blocks -%}
@@ -979,36 +987,6 @@
       "default": "Does so much more."
     },
     {
-      "type": "text",
-      "id": "spray_callout_label",
-      "label": "Callout label",
-      "default": "Why the 60 seconds matters"
-    },
-    {
-      "type": "textarea",
-      "id": "spray_callout_body",
-      "label": "Callout body",
-      "default": "OG3 doesn\u2019t mask bad breath \u2014 it removes the conditions that cause it. Harmful anaerobic bacteria thrive in low-oxygen environments. OG3 saturates the oral ecosystem with oxygen, making it impossible for anaerobes to maintain their competitive advantage."
-    },
-    {
-      "type": "text",
-      "id": "spray_cross_title",
-      "label": "Cross-sell title",
-      "default": "Want the full ritual?"
-    },
-    {
-      "type": "textarea",
-      "id": "spray_cross_body",
-      "label": "Cross-sell body",
-      "default": "Meet the Pump \u2014 sublingual delivery, morning and evening, the deepest version of the OG3 practice."
-    },
-    {
-      "type": "text",
-      "id": "spray_cross_link",
-      "label": "Cross-sell button text",
-      "default": "See Pump"
-    },
-    {
       "type": "header",
       "content": "Pump Product"
     },
@@ -1045,36 +1023,6 @@
       "id": "pump_drawer_subtitle",
       "label": "Drawer subtitle",
       "default": "Sublingual, morning and evening."
-    },
-    {
-      "type": "text",
-      "id": "pump_callout_label",
-      "label": "Callout label",
-      "default": "Why the pump goes deeper"
-    },
-    {
-      "type": "textarea",
-      "id": "pump_callout_body",
-      "label": "Callout body",
-      "default": "Sublingual delivery holds OG3 against the tissue for maximum absorption. Used morning and evening, it\u2019s the most complete version of the practice \u2014 building oral-ecosystem resilience over time."
-    },
-    {
-      "type": "text",
-      "id": "pump_cross_title",
-      "label": "Cross-sell title",
-      "default": "Prefer on-the-go?"
-    },
-    {
-      "type": "textarea",
-      "id": "pump_cross_body",
-      "label": "Cross-sell body",
-      "default": "The Spray gives you anytime fresh breath in the same OG3 formula \u2014 perfect for your bag or car."
-    },
-    {
-      "type": "text",
-      "id": "pump_cross_link",
-      "label": "Cross-sell button text",
-      "default": "See Spray"
     },
     {
       "type": "header",
@@ -1275,22 +1223,98 @@
           "default": "Your answer here."
         }
       ]
+    },
+    {
+      "type": "callout",
+      "name": "Callout",
+      "settings": [
+        {
+          "type": "select",
+          "id": "panel",
+          "label": "Product",
+          "options": [
+            { "value": "spray", "label": "Spray" },
+            { "value": "pump",  "label": "Pump" }
+          ],
+          "default": "spray"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Why the 60 seconds matters"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body",
+          "default": "OG3 doesn\u2019t mask bad breath \u2014 it removes the conditions that cause it."
+        }
+      ]
+    },
+    {
+      "type": "cross_sell",
+      "name": "Cross-Sell",
+      "settings": [
+        {
+          "type": "select",
+          "id": "panel",
+          "label": "Product",
+          "options": [
+            { "value": "spray", "label": "Spray" },
+            { "value": "pump",  "label": "Pump" }
+          ],
+          "default": "spray"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Want the full ritual?"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body",
+          "default": "Meet the Pump \u2014 sublingual delivery, morning and evening, the deepest version of the OG3 practice."
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Button text",
+          "default": "See Pump"
+        },
+        {
+          "type": "select",
+          "id": "link_tab",
+          "label": "Button links to",
+          "options": [
+            { "value": "spray", "label": "Spray tab" },
+            { "value": "pump",  "label": "Pump tab" }
+          ],
+          "default": "pump"
+        }
+      ]
     }
   ],
   "presets": [
     {
       "name": "How To Use Drawer",
       "blocks": [
-        { "type": "step", "settings": { "panel": "spray", "title": "Spray into your mouth", "body": "2\u20133 sprays directly into the mouth. Anytime, anywhere \u2014 after coffee, after a meal, before a meeting.", "tag": "" } },
-        { "type": "step", "settings": { "panel": "spray", "title": "Close your mouth and hold", "body": "Close your mouth and let it saturate for 60 seconds. The oxygen-rich glycerin coats every surface.", "tag": "60 Seconds \u00b7 The Saturation Window" } },
-        { "type": "step", "settings": { "panel": "spray", "title": "Swallow or spit \u2014 your call", "body": "OG3 is certified organic and completely safe to swallow. Swallowing extends the benefit into the gut.", "tag": "Certified Organic \u00b7 Safe to Swallow" } },
-        { "type": "faq",  "settings": { "panel": "spray", "question": "Is this just a breath spray?", "answer": "No \u2014 it freshens breath like one, but it works by saturating your mouth with oxygen to remove the cause of bad breath, not mask it." } },
-        { "type": "faq",  "settings": { "panel": "spray", "question": "Why close my mouth for 60 seconds?", "answer": "That\u2019s the saturation window \u2014 it lets the oxygen-rich glycerin coat every surface and shift the environment against anaerobic bacteria." } },
-        { "type": "step", "settings": { "panel": "pump",  "title": "Pump under your tongue", "body": "Dispense 1\u20132 pumps directly under the tongue, morning and evening, as the anchor of your daily routine.", "tag": "" } },
-        { "type": "step", "settings": { "panel": "pump",  "title": "Hold for 60 seconds", "body": "Let it absorb sublingually so the compounds reach the tissue directly.", "tag": "60 Seconds \u00b7 The Saturation Window" } },
-        { "type": "step", "settings": { "panel": "pump",  "title": "Swallow to finish", "body": "Carry the benefit into the oral-gut axis. Certified organic and safe to swallow.", "tag": "Certified Organic \u00b7 Safe to Swallow" } },
-        { "type": "faq",  "settings": { "panel": "pump",  "question": "Can I use the pump on the go?", "answer": "You can, but the pump is designed for a measured morning/evening ritual. The spray is the on-the-go option." } },
-        { "type": "faq",  "settings": { "panel": "pump",  "question": "How long does a bottle last?", "answer": "A 30 ml pump bottle lasts about a month with twice-daily use." } }
+        { "type": "step",       "settings": { "panel": "spray", "title": "Spray into your mouth",       "body": "2\u20133 sprays directly into the mouth. Anytime, anywhere \u2014 after coffee, after a meal, before a meeting.", "tag": "" } },
+        { "type": "step",       "settings": { "panel": "spray", "title": "Close your mouth and hold",    "body": "Close your mouth and let it saturate for 60 seconds. The oxygen-rich glycerin coats every surface.", "tag": "60 Seconds \u00b7 The Saturation Window" } },
+        { "type": "step",       "settings": { "panel": "spray", "title": "Swallow or spit \u2014 your call", "body": "OG3 is certified organic and completely safe to swallow. Swallowing extends the benefit into the gut.", "tag": "Certified Organic \u00b7 Safe to Swallow" } },
+        { "type": "callout",    "settings": { "panel": "spray", "label": "Why the 60 seconds matters",   "body": "OG3 doesn\u2019t mask bad breath \u2014 it removes the conditions that cause it. Harmful anaerobic bacteria thrive in low-oxygen environments. OG3 saturates the oral ecosystem with oxygen, making it impossible for anaerobes to maintain their competitive advantage." } },
+        { "type": "cross_sell", "settings": { "panel": "spray", "title": "Want the full ritual?",         "body": "Meet the Pump \u2014 sublingual delivery, morning and evening, the deepest version of the OG3 practice.", "link_text": "See Pump", "link_tab": "pump" } },
+        { "type": "faq",        "settings": { "panel": "spray", "question": "Is this just a breath spray?", "answer": "No \u2014 it freshens breath like one, but it works by saturating your mouth with oxygen to remove the cause of bad breath, not mask it." } },
+        { "type": "faq",        "settings": { "panel": "spray", "question": "Why close my mouth for 60 seconds?", "answer": "That\u2019s the saturation window \u2014 it lets the oxygen-rich glycerin coat every surface and shift the environment against anaerobic bacteria." } },
+        { "type": "step",       "settings": { "panel": "pump",  "title": "Pump under your tongue",        "body": "Dispense 1\u20132 pumps directly under the tongue, morning and evening, as the anchor of your daily routine.", "tag": "" } },
+        { "type": "step",       "settings": { "panel": "pump",  "title": "Hold for 60 seconds",           "body": "Let it absorb sublingually so the compounds reach the tissue directly.", "tag": "60 Seconds \u00b7 The Saturation Window" } },
+        { "type": "step",       "settings": { "panel": "pump",  "title": "Swallow to finish",             "body": "Carry the benefit into the oral-gut axis. Certified organic and safe to swallow.", "tag": "Certified Organic \u00b7 Safe to Swallow" } },
+        { "type": "callout",    "settings": { "panel": "pump",  "label": "Why the pump goes deeper",       "body": "Sublingual delivery holds OG3 against the tissue for maximum absorption. Used morning and evening, it\u2019s the most complete version of the practice \u2014 building oral-ecosystem resilience over time." } },
+        { "type": "cross_sell", "settings": { "panel": "pump",  "title": "Prefer on-the-go?",             "body": "The Spray gives you anytime fresh breath in the same OG3 formula \u2014 perfect for your bag or car.", "link_text": "See Spray", "link_tab": "spray" } },
+        { "type": "faq",        "settings": { "panel": "pump",  "question": "Can I use the pump on the go?", "answer": "You can, but the pump is designed for a measured morning/evening ritual. The spray is the on-the-go option." } },
+        { "type": "faq",        "settings": { "panel": "pump",  "question": "How long does a bottle last?", "answer": "A 30 ml pump bottle lasts about a month with twice-daily use." } }
       ]
     }
   ]
