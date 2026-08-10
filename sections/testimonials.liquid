@@ -103,8 +103,7 @@
     display: block;
     background: rgba(255, 255, 255, 0.25);
   }
-  .tst-{{ section.id }} .tst__featured .tst__avatar { border: 2px solid rgba(255,255,255,0.6); }
-  .tst-{{ section.id }} .tst__name {
+.tst-{{ section.id }} .tst__name {
     margin: 0 0 3px;
     font-family: var(--font-{{ section.settings.heading_font }}-family);
     font-weight: 700;
@@ -230,21 +229,7 @@
         </span>
         <blockquote class="tst__featured-quote">{{ section.settings.feat_quote | escape }}</blockquote>
         <div class="tst__author">
-          {%- if section.settings.feat_avatar != blank -%}
-            {%- assign feat_av_alt = section.settings.feat_avatar.alt | default: section.settings.feat_name | escape -%}
-            {{
-              section.settings.feat_avatar
-              | image_url: width: 120
-              | image_tag:
-                class: 'tst__avatar',
-                loading: 'lazy',
-                alt: feat_av_alt,
-                widths: '60, 92, 120'
-            }}
-          {%- else -%}
-            <div class="tst__avatar"></div>
-          {%- endif -%}
-          <div>
+        <div>
             {%- if section.settings.feat_name != blank -%}
               <p class="tst__name">{{ section.settings.feat_name | escape }}</p>
             {%- endif -%}
