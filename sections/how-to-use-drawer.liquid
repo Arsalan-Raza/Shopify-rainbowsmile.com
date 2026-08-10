@@ -1018,9 +1018,6 @@
       fetch(window.Shopify.routes.root + 'cart.js')
         .then(function (r) { return r.json(); })
         .then(function (cart) { updateCartCount(cart.item_count); });
-      if (typeof publish !== 'undefined' && typeof PUB_SUB_EVENTS !== 'undefined') {
-        publish(PUB_SUB_EVENTS.cartUpdate, { source: 'htu-drawer', cartData: data });
-      }
       setTimeout(function () { atcBtn.textContent = originalText; }, 1800);
     })
     .catch(function (err) {
