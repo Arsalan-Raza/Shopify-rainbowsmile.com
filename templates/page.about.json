@@ -24,7 +24,7 @@
           "type": "stat",
           "settings": {
             "stat_num": "82%",
-            "stat_label": "Of us battle daily breath embarrassment"
+            "stat_label": "battle daily breath embarrassment"
           }
         },
         "stat_Xn6Akz": {
@@ -171,7 +171,7 @@
         "heading_font": "--font-heading-family",
         "script_text": "Revolution.",
         "script_font": "--font-accent-family",
-        "body_text": "<p>Most oral care fights what nature designed to flourish. We believe in harmony, not warfare — in nurturing the oral ecosystem that bridges mouth, gut, heart, and mind. Because your smile is alive, and balance is where beauty begins. When this natural harmony is supported, your whole body benefits.</p><p>Rainbow Smile is formulated to promote a balanced oral environment with plant-based ingredients, bioavailable oxygen, and gentle microbiome support. Because true wellness doesn’t begin in a lab — it begins with a smile that feels alive.</p>",
+        "body_text": "<p>Most oral care fights what nature designed to flourish. We<br/>believe in harmony, not warfare — in nurturing the oral ecosystem that bridges<br/>mouth, gut, heart, and brain.</p>",
         "body_font": "--font-heading-family",
         "heading_color": "#1b2240",
         "body_color": "#3b4063",
@@ -236,7 +236,7 @@
         "heading_font": "--font-heading-family",
         "script_text": "Oral care is gut care.",
         "script_font": "--font-accent-family",
-        "body_text": "<p>Your mouth is the gateway to your gut — and your gut is the gateway to your mind. Every swallow of OG3™ carries oxygen-rich, microbiome-friendly compounds into your oral-gut axis.</p><p>When your oral ecosystem thrives, your digestion improves, your immunity strengthens, and your energy rises. This is whole-body wellness beginning with 60 seconds.</p>",
+        "body_text": "<p>When your oral ecosystem thrives, your digestion improves, your immunity strengthens, and your energy rises. This is whole-body wellness beginning with 60 seconds.</p>",
         "body_font": "--font-heading-family",
         "cta_label": "Start Your Ritual",
         "cta_url": "shopify://collections/all",
@@ -496,7 +496,7 @@
         "heading_font": "--font-heading-family",
         "script_text": "Unlocked",
         "script_font": "--font-accent-family",
-        "body_text": "<p>Join 50,000+ biome hackers who’ve returned to their original design. Sophisticated science. Joyful results. Every smile — uniquely yours.</p>",
+        "body_text": "<p>Join biome hackers who’ve returned to their original design. Sophisticated science. Joyful results. Every smile — uniquely yours.</p>",
         "body_font": "--font-heading-family",
         "btn1_label": "Shop Rainbow Smile",
         "btn1_url": "shopify://collections/all",

@@ -62,8 +62,8 @@
         "body": "",
         "meta1_label": "By",
         "meta1_value": "William Robertson",
-        "meta2_label": "Scientific Strategy",
-        "meta2_value": "Dr. Vanita K. Gupta, PhD",
+        "meta2_label": "FREE BOOK",
+        "meta2_value": "Download",
         "meta3_label": "Format",
         "meta3_value": "PDF · 70 pages",
         "btn1_text": "Preview the book",
@@ -252,7 +252,7 @@
         "eyebrow": "Free Preview",
         "title": "Click the arrows.",
         "script_line": "Flip the pages.",
-        "subtitle": "Preview the cover and first 5 chapters. Enter your email at the gate to unlock the complete book.",
+        "subtitle": "",
         "chapters_label": "12 Chapters · Volume I",
         "book_title_main": "The Biome Hacker’s",
         "book_title_script": "Code.",
@@ -261,7 +261,7 @@
         "author_image": "shopify://shop_images/Background_Border_5.png",
         "author_name": "William Robertson",
         "author_role": "Founder · Rainbow Smile",
-        "author_bio": "<p>William formulated <strong>OG3™</strong> after realising that conventional oral care was doing the opposite of what he needed. He created the <strong>Biome Food™</strong> category and founded Rainbow Smile in Ojai, California. Scientific strategy by Dr. Vanita K. Gupta, PhD, MBA.</p>",
+        "author_bio": "<p>William formulated <strong>OG3™</strong> after realising that conventional oral care was doing the opposite of what he needed. He created the <strong>Biome Food™</strong> category and founded Rainbow Smile in Ojai, California.</p>",
         "mono_font": "tag",
         "heading_font": "heading",
         "script_font": "accent",
@@ -526,8 +526,8 @@
         "eyebrow": "The Next Question",
         "title": "Are you a",
         "script_line": "Biome Hacker?",
-        "tagline": "You probably already are.",
-        "intro": "Not a demographic. A state of mind. A way of sensing the world. You’ve sensed that fighting, sterilizing, or attempting to conquer the body has been quietly working against the very ecosystems that keep it healthy. You’ve been looking for a different answer — one that works with the body rather than against it.",
+        "tagline": "",
+        "intro": "",
         "mono_font": "tag",
         "heading_font": "heading",
         "script_font": "accent",
@@ -565,7 +565,7 @@
           "settings": {
             "num": "3.5B",
             "label": "Years Old",
-            "sub": "The Intelligence You Carry"
+            "sub": "The Intelligence Inside You"
           }
         },
         "stat_AKiURe": {
@@ -587,7 +587,7 @@
       "settings": {
         "quote_line1": "“I didn’t learn something new.",
         "quote_line2": "I remembered something I already knew.”",
-        "caption": "The Biome Hacker’s Defining Sentence",
+        "caption": "",
         "heading_font": "heading",
         "mono_font": "tag",
         "bg_color": "#ffffff",
@@ -617,7 +617,7 @@
         "heading_font": "--font-heading-family",
         "script_text": "forming.",
         "script_font": "--font-accent-family",
-        "body_text": "<p>Join 50,000+ biome hackers who’ve returned to their original design. Sophisticated science. Joyful results. Every smile — uniquely yours.</p>",
+        "body_text": "",
         "body_font": "--font-heading-family",
         "btn1_label": "Shop Rainbow Smile",
         "btn1_url": "shopify://collections/all",

@@ -169,7 +169,7 @@
           "settings": {
             "icon": "returns",
             "title": "Free Returns",
-            "sub": "Not happy? We'll sort it."
+            "sub": ""
           }
         },
         "benefit_JpJiML": {
@@ -177,7 +177,7 @@
           "settings": {
             "icon": "globe",
             "title": "Free Community",
-            "sub": "Join biome hackers"
+            "sub": ""
           }
         },
         "benefit_R8rtx8": {
@@ -185,7 +185,7 @@
           "settings": {
             "icon": "gift",
             "title": "Free Book",
-            "sub": "Download William's guide"
+            "sub": ""
           }
         },
         "benefit_Wkdefz": {
@@ -193,7 +193,7 @@
           "settings": {
             "icon": "chat",
             "title": "24/7 Support",
-            "sub": "support@rainbowsmile.com"
+            "sub": ""
           }
         }
       },
@@ -432,11 +432,11 @@
       "type": "oral-gut-care",
       "name": "Oral Gut Care",
       "settings": {
-        "eyebrow": "Oral · Gut · Brain Axis",
-        "title": "Oral Care is Self Care",
-        "title_accent": "Oral Care is Gut Care",
-        "body_1": "<p>Your mouth is the gateway to your gut, and your <strong>gut is the gateway</strong> to whole-body wellness. <strong>OG3 helps</strong> balance the oral-gut axis, supporting immunity, digestion, mood, and vitality.</p>",
-        "body_2": "<p>A living daily ritual for inner wellbeing.</p>",
+        "eyebrow": "OG3™ byRainbow Smile",
+        "title": "This is Oral BiomeFood™",
+        "title_accent": "for your mouth",
+        "body_1": "<p>The world's first oral supplement designed to <strong>feed the living community in your mouth</strong> rather than eliminate it. Safe to swallow. No alcohol. No fluoride. Nothing your biology doesn't recognise. In Miron violet glass.</p>",
+        "body_2": "",
         "cta_text": "Start Your Ritual",
         "cta_url": "shopify://collections/all",
         "image": "shopify://shop_images/Background_13.png",
