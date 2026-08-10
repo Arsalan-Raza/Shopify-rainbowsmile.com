@@ -505,6 +505,30 @@
     #shopify-section-{{ section.id }} .htu-drawer,
     #shopify-section-{{ section.id }} .htu-overlay { transition: none; }
   }
+
+  #shopify-section-{{ section.id }} .htu-toast {
+    position: fixed;
+    bottom: clamp(20px, 3vw, 32px);
+    left: 50%;
+    transform: translateX(-50%) translateY(12px);
+    z-index: 10000;
+    background: var(--hd-navy);
+    color: #fff;
+    font-family: var(--hd-font-body);
+    font-size: 15px;
+    padding: 14px 22px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+  #shopify-section-{{ section.id }} .htu-toast.is-visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
 </style>
 
 {%- if template.name == 'index' -%}
@@ -854,6 +878,8 @@
   </div>
 </aside>
 
+<div class="htu-toast" id="htu-toast-{{ section.id }}" role="status" aria-live="polite" aria-atomic="true"></div>
+
 <script>
 (function () {
   var sid     = '{{ section.id }}';
@@ -928,6 +954,32 @@
     }
   }
 
+  function updateCartCount(count) {
+    var bubble = document.getElementById('cart-icon-bubble');
+    if (!bubble) return;
+    var countEl = bubble.querySelector('.cart-count-bubble');
+    if (count > 0) {
+      if (!countEl) {
+        countEl = document.createElement('div');
+        countEl.className = 'cart-count-bubble';
+        bubble.appendChild(countEl);
+      }
+      var display = count < 100 ? count : '99+';
+      countEl.innerHTML = '<span aria-hidden="true">' + display + '</span><span class="visually-hidden">' + display + ' items in cart</span>';
+    } else if (countEl) {
+      countEl.remove();
+    }
+  }
+
+  function showToast(message) {
+    var toast = document.getElementById('htu-toast-{{ section.id }}');
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add('is-visible');
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(function () { toast.classList.remove('is-visible'); }, 2500);
+  }
+
   function addToCart(panel) {
     var flavourWrap = drawer.querySelector('[data-htu-flavours="' + panel + '"]');
     var atcBtn = document.getElementById('htu-atc-' + panel + '-' + sid);
@@ -961,6 +1013,11 @@
     .then(function (data) {
       atcBtn.textContent = 'Added \u2713';
       atcBtn.disabled = false;
+      var productName = data.items && data.items[0] ? data.items[0].product_title : '';
+      if (productName) showToast(productName + ' added to cart');
+      fetch(window.Shopify.routes.root + 'cart.js')
+        .then(function (r) { return r.json(); })
+        .then(function (cart) { updateCartCount(cart.item_count); });
       if (typeof publish !== 'undefined' && typeof PUB_SUB_EVENTS !== 'undefined') {
         publish(PUB_SUB_EVENTS.cartUpdate, { source: 'htu-drawer', cartData: data });
       }
