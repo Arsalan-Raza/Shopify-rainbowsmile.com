@@ -228,148 +228,6 @@
         "line_color": "#ece5da"
       }
     },
-    "manifesto_quote_RVRX8C": {
-      "type": "manifesto-quote",
-      "name": "Manifesto Quote",
-      "settings": {
-        "quote_before": "\"We're not selling toothpaste. We're not selling mouthwash. We're supporting the",
-        "quote_highlight": "living ecosystem",
-        "quote_after": "your mouth was born with. This is oral care for the 21st century.\"",
-        "show_rules": true,
-        "heading_font": "heading",
-        "body_font": "heading",
-        "bg_color": "#262949",
-        "quote_color": "#f4f5fb",
-        "highlight_color": "#f2b544",
-        "rule_color": "#ef4a22",
-        "attr_color": "#7e83a3"
-      }
-    },
-    "free_book_Rta6da": {
-      "type": "free-book",
-      "name": "Free Book",
-      "settings": {
-        "cover_image": "shopify://shop_images/Background_2.png",
-        "eyebrow": "Free · The Biome Hacker Community",
-        "title": "The Biome Hacker's Code.",
-        "script_line": "Read the book.",
-        "desc_1": "A field guide to human potential. Your mouth is the command centre of your biology. This book explains why, and what to do about it.",
-        "desc_2": "",
-        "form_title": "Get Your Free Copy",
-        "email_placeholder": "Enter your email address",
-        "btn_text": "Download Free",
-        "mono_font": "tag",
-        "heading_font": "heading",
-        "script_font": "accent",
-        "body_font": "heading",
-        "bg_color": "#f6edd8",
-        "blob_color": "#f0dcae",
-        "navy_color": "#232748",
-        "coral_color": "#ef4a22",
-        "gold_color": "#e8a53a",
-        "body_color": "#55586b",
-        "meta_color": "#c99a5a",
-        "card_color": "#ffffff",
-        "line_color": "#dcd5cb"
-      }
-    },
-    "how_to_use_LrjpRM": {
-      "type": "how-to-use",
-      "blocks": {
-        "step_fG7dyh": {
-          "type": "step",
-          "settings": {
-            "number": "01",
-            "title": "Pump + Spray",
-            "body": "<p>Choose sublingual, targeted freshness, or spray throughout the day for instant freshness.</p>",
-            "meta": "0–5 Seconds"
-          }
-        },
-        "step_dYbc6m": {
-          "type": "step",
-          "settings": {
-            "number": "02",
-            "title": "The 60-Second Hold",
-            "body": "<p>Apply 1-2 drops under the tongue or spray directly into the mouth. Hold for 30–60 seconds to allow to penetrate and activate.</p>",
-            "meta": "30 Seconds"
-          }
-        },
-        "step_Fqtmet": {
-          "type": "step",
-          "settings": {
-            "number": "03",
-            "title": "Safe to Swallow",
-            "body": "<p>Our formula is 100% natural, made from Certified Organic Coconut Glycerin. Gentle, nourishing, and completely safe.</p>",
-            "meta": "20 Seconds"
-          }
-        },
-        "step_VHT7Yf": {
-          "type": "step",
-          "settings": {
-            "number": "04",
-            "title": "Feel Alive",
-            "body": "<p>Experience the fresh vitality of a truly living, balanced oral ecosystem. Naturally sweet taste. Clean — not sterilized. Alive.</p>",
-            "meta": "Every Morning"
-          }
-        }
-      },
-      "block_order": [
-        "step_fG7dyh",
-        "step_dYbc6m",
-        "step_Fqtmet",
-        "step_VHT7Yf"
-      ],
-      "name": "How To Use",
-      "settings": {
-        "eyebrow_text": "The Daily Reset",
-        "eyebrow_font": "--font-tag-family",
-        "heading_text": "60 Seconds",
-        "heading_font": "--font-heading-family",
-        "script_text": "to freshness",
-        "script_font": "--font-accent-family",
-        "columns_desktop": "4",
-        "num_font": "--font-heading-family",
-        "card_title_font": "--font-heading-family",
-        "card_body_font": "--font-heading-family",
-        "card_meta_font": "--font-tag-family",
-        "bg_color": "#ef4a22",
-        "script_color": "#f7ca6a",
-        "sub_color": "#fbd9cc",
-        "num_bg_color": "#ffffff",
-        "num_text_color": "#ef4a22",
-        "card_bg_color": "#232748",
-        "card_body_color": "#c9ccdd",
-        "card_meta_color": "#8f93ab",
-        "gold_color": "#f6b944",
-        "gold_ink_color": "#26202a",
-        "gold_body_color": "#4a3d28",
-        "gold_meta_color": "#8a7343"
-      }
-    },
-    "living_ecosystem_EmzHkw": {
-      "type": "living-ecosystem",
-      "name": "Living Ecosystem",
-      "settings": {
-        "eyebrow": "The Living Ecosystem",
-        "title": "Your mouth",
-        "script_line": "is alive",
-        "image_a": "shopify://shop_images/Background_3.png",
-        "alt_a": "",
-        "image_b": "shopify://shop_images/Background_4.png",
-        "alt_b": "",
-        "image_c": "shopify://shop_images/Background_5.png",
-        "alt_c": "",
-        "image_d": "shopify://shop_images/Background_6.png",
-        "alt_d": "",
-        "mono_font": "tag",
-        "heading_font": "heading",
-        "script_font": "accent",
-        "bg_color": "#ffffff",
-        "navy_color": "#232748",
-        "accent_color": "#ef4a22",
-        "body_color": "#6c5f4e"
-      }
-    },
     "phrase_marquee_8JGLtR": {
       "type": "phrase-marquee",
       "blocks": {
@@ -448,6 +306,148 @@
         "navy_color": "#232748",
         "coral_color": "#ef4a22",
         "body_color": "#4b4f63"
+      }
+    },
+    "how_to_use_LrjpRM": {
+      "type": "how-to-use",
+      "blocks": {
+        "step_fG7dyh": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Pump + Spray",
+            "body": "<p>Choose sublingual, targeted freshness, or spray throughout the day for instant freshness.</p>",
+            "meta": "0–5 Seconds"
+          }
+        },
+        "step_dYbc6m": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "The 60-Second Hold",
+            "body": "<p>Apply 1-2 drops under the tongue or spray directly into the mouth. Hold for 30–60 seconds to allow to penetrate and activate.</p>",
+            "meta": "30 Seconds"
+          }
+        },
+        "step_Fqtmet": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Safe to Swallow",
+            "body": "<p>Our formula is 100% natural, made from Certified Organic Coconut Glycerin. Gentle, nourishing, and completely safe.</p>",
+            "meta": "20 Seconds"
+          }
+        },
+        "step_VHT7Yf": {
+          "type": "step",
+          "settings": {
+            "number": "04",
+            "title": "Feel Alive",
+            "body": "<p>Experience the fresh vitality of a truly living, balanced oral ecosystem. Naturally sweet taste. Clean — not sterilized. Alive.</p>",
+            "meta": "Every Morning"
+          }
+        }
+      },
+      "block_order": [
+        "step_fG7dyh",
+        "step_dYbc6m",
+        "step_Fqtmet",
+        "step_VHT7Yf"
+      ],
+      "name": "How To Use",
+      "settings": {
+        "eyebrow_text": "The Daily Reset",
+        "eyebrow_font": "--font-tag-family",
+        "heading_text": "60 Seconds",
+        "heading_font": "--font-heading-family",
+        "script_text": "to freshness",
+        "script_font": "--font-accent-family",
+        "columns_desktop": "4",
+        "num_font": "--font-heading-family",
+        "card_title_font": "--font-heading-family",
+        "card_body_font": "--font-heading-family",
+        "card_meta_font": "--font-tag-family",
+        "bg_color": "#ef4a22",
+        "script_color": "#f7ca6a",
+        "sub_color": "#fbd9cc",
+        "num_bg_color": "#ffffff",
+        "num_text_color": "#ef4a22",
+        "card_bg_color": "#232748",
+        "card_body_color": "#c9ccdd",
+        "card_meta_color": "#8f93ab",
+        "gold_color": "#f6b944",
+        "gold_ink_color": "#26202a",
+        "gold_body_color": "#4a3d28",
+        "gold_meta_color": "#8a7343"
+      }
+    },
+    "manifesto_quote_RVRX8C": {
+      "type": "manifesto-quote",
+      "name": "Manifesto Quote",
+      "settings": {
+        "quote_before": "\"We're not selling toothpaste. We're not selling mouthwash. We're supporting the",
+        "quote_highlight": "living ecosystem",
+        "quote_after": "your mouth was born with. This is oral care for the 21st century.\"",
+        "show_rules": true,
+        "heading_font": "heading",
+        "body_font": "heading",
+        "bg_color": "#262949",
+        "quote_color": "#f4f5fb",
+        "highlight_color": "#f2b544",
+        "rule_color": "#ef4a22",
+        "attr_color": "#7e83a3"
+      }
+    },
+    "free_book_Rta6da": {
+      "type": "free-book",
+      "name": "Free Book",
+      "settings": {
+        "cover_image": "shopify://shop_images/Background_2.png",
+        "eyebrow": "Free · The Biome Hacker Community",
+        "title": "The Biome Hacker's Code.",
+        "script_line": "Read the book.",
+        "desc_1": "A field guide to human potential. Your mouth is the command centre of your biology. This book explains why, and what to do about it.",
+        "desc_2": "",
+        "form_title": "Get Your Free Copy",
+        "email_placeholder": "Enter your email address",
+        "btn_text": "Download Free",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "body_font": "heading",
+        "bg_color": "#f6edd8",
+        "blob_color": "#f0dcae",
+        "navy_color": "#232748",
+        "coral_color": "#ef4a22",
+        "gold_color": "#e8a53a",
+        "body_color": "#55586b",
+        "meta_color": "#c99a5a",
+        "card_color": "#ffffff",
+        "line_color": "#dcd5cb"
+      }
+    },
+    "living_ecosystem_EmzHkw": {
+      "type": "living-ecosystem",
+      "name": "Living Ecosystem",
+      "settings": {
+        "eyebrow": "The Living Ecosystem",
+        "title": "Your mouth",
+        "script_line": "is alive",
+        "image_a": "shopify://shop_images/Background_3.png",
+        "alt_a": "",
+        "image_b": "shopify://shop_images/Background_4.png",
+        "alt_b": "",
+        "image_c": "shopify://shop_images/Background_5.png",
+        "alt_c": "",
+        "image_d": "shopify://shop_images/Background_6.png",
+        "alt_d": "",
+        "mono_font": "tag",
+        "heading_font": "heading",
+        "script_font": "accent",
+        "bg_color": "#ffffff",
+        "navy_color": "#232748",
+        "accent_color": "#ef4a22",
+        "body_color": "#6c5f4e"
       }
     },
     "testimonials_gTUMYg": {
@@ -852,12 +852,12 @@
     "signal_banner_NJ6b9z",
     "science_hook_Dhpmf7",
     "product_showcase_NDJmFi",
-    "manifesto_quote_RVRX8C",
-    "free_book_Rta6da",
-    "how_to_use_LrjpRM",
-    "living_ecosystem_EmzHkw",
     "phrase_marquee_8JGLtR",
     "oral_gut_care_fGyjwa",
+    "how_to_use_LrjpRM",
+    "manifesto_quote_RVRX8C",
+    "free_book_Rta6da",
+    "living_ecosystem_EmzHkw",
     "testimonials_gTUMYg",
     "credentials_EtLWam",
     "founder_UQ8Bb6",
