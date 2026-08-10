@@ -18,9 +18,11 @@
     --hd-green:    {{ section.settings.green_color }};
     --hd-line:     {{ section.settings.line_color }};
     --hd-meta:     {{ section.settings.meta_color }};
+    --hd-gold:     {{ section.settings.gold_color }};
     --hd-font-mono:    var(--font-{{ section.settings.mono_font }}-family);
     --hd-font-heading: var(--font-{{ section.settings.heading_font }}-family);
     --hd-font-body:    var(--font-{{ section.settings.body_font }}-family);
+    --hd-font-script:  var(--font-{{ section.settings.script_font }}-family);
   }
 {%- endstyle -%}
 
@@ -127,19 +129,30 @@
   #shopify-section-{{ section.id }} .htu-drawer__close:hover { background: rgba(255,255,255,0.24); }
   #shopify-section-{{ section.id }} .htu-drawer__close:focus-visible { outline: 3px solid rgba(255,255,255,0.6); outline-offset: 2px; }
   #shopify-section-{{ section.id }} .htu-drawer__title {
-    margin: 0 0 6px;
+    margin: 0 0 12px;
     font-family: var(--hd-font-heading);
     font-weight: 800;
     font-size: clamp(22px, 5vw, 28px);
-    line-height: 1.1;
+    line-height: 1.08;
     letter-spacing: -0.5px;
     color: #ffffff;
   }
-  #shopify-section-{{ section.id }} .htu-drawer__subtitle {
+  #shopify-section-{{ section.id }} .htu-drawer__script {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--hd-font-script);
+    font-weight: 400;
+    font-size: clamp(24px, 6vw, 32px);
+    line-height: 1.05;
+    letter-spacing: 0;
+    color: var(--hd-gold);
+  }
+  #shopify-section-{{ section.id }} .htu-drawer__desc {
     margin: 0 0 20px;
     font-family: var(--hd-font-body);
-    font-size: 16px;
-    color: rgba(255,255,255,0.72);
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.62);
   }
 
   #shopify-section-{{ section.id }} .htu-tabs { display: flex; gap: 4px; }
@@ -207,6 +220,25 @@
     letter-spacing: 0.8px;
     text-transform: uppercase;
     color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+  }
+  #shopify-section-{{ section.id }} .htu-hero--tall { aspect-ratio: 5 / 4; }
+  #shopify-section-{{ section.id }} .htu-hero__text--full { right: 18px; }
+  #shopify-section-{{ section.id }} .htu-hero__script {
+    display: block;
+    margin: 0 0 2px;
+    font-family: var(--hd-font-script);
+    font-weight: 400;
+    font-size: clamp(30px, 9vw, 40px);
+    line-height: 1;
+    color: var(--hd-gold);
+  }
+  #shopify-section-{{ section.id }} .htu-hero__lead {
+    margin: 0 0 8px;
+    font-family: var(--hd-font-heading);
+    font-weight: 800;
+    font-size: clamp(16px, 4.5vw, 20px);
+    color: #fff;
   }
 
   #shopify-section-{{ section.id }} .htu-step {
@@ -388,6 +420,22 @@
     white-space: nowrap;
   }
   #shopify-section-{{ section.id }} .htu-cross__link:hover { background: #dc411b; }
+  #shopify-section-{{ section.id }} .htu-cross__title-accent {
+    font-family: var(--hd-font-script);
+    font-weight: 400;
+    font-size: 1.15em;
+    color: var(--hd-gold);
+    margin-left: 6px;
+  }
+  #shopify-section-{{ section.id }} .htu-cross--stacked { flex-direction: column; align-items: stretch; }
+  #shopify-section-{{ section.id }} .htu-cross--stacked .htu-cross__link {
+    width: 100%;
+    justify-content: center;
+    background: var(--hd-gold);
+    color: #2a1c12;
+    margin-top: 4px;
+  }
+  #shopify-section-{{ section.id }} .htu-cross--stacked .htu-cross__link:hover { background: #e2992f; }
 
   #shopify-section-{{ section.id }} .htu-faq-label {
     margin: 0 0 6px;
@@ -489,16 +537,22 @@
 
     <p class="htu-drawer__eyebrow">{{ section.settings.drawer_eyebrow | escape }}</p>
 
-    <h2 class="htu-drawer__title"
-      id="htu-title-{{ section.id }}"
-      data-htu-title-spray="{{ section.settings.spray_drawer_title | escape }}"
-      data-htu-title-pump="{{ section.settings.pump_drawer_title | escape }}">
-      {{- section.settings.spray_drawer_title | escape -}}
+    <h2 class="htu-drawer__title" id="htu-title-{{ section.id }}">
+      <span data-htu-title
+        data-spray="{{ section.settings.spray_drawer_title | escape }}"
+        data-pump="{{ section.settings.pump_drawer_title | escape }}">
+        {{- section.settings.spray_drawer_title | escape -}}
+      </span>
+      <span class="htu-drawer__script" data-htu-script
+        data-spray="{{ section.settings.spray_drawer_subtitle | escape }}"
+        data-pump="{{ section.settings.pump_drawer_subtitle | escape }}">
+        {{- section.settings.spray_drawer_subtitle | escape -}}
+      </span>
     </h2>
-    <p class="htu-drawer__subtitle"
-      data-htu-sub-spray="{{ section.settings.spray_drawer_subtitle | escape }}"
-      data-htu-sub-pump="{{ section.settings.pump_drawer_subtitle | escape }}">
-      {{- section.settings.spray_drawer_subtitle | escape -}}
+    <p class="htu-drawer__desc" data-htu-desc
+      data-spray="{{ section.settings.spray_drawer_desc | escape }}"
+      data-pump="{{ section.settings.pump_drawer_desc | escape }}">
+      {{- section.settings.spray_drawer_desc | escape -}}
     </p>
 
     <div class="htu-tabs" role="tablist">
@@ -532,7 +586,7 @@
         endif
       -%}
       {%- if spray_img != blank -%}
-        <div class="htu-hero">
+        <div class="htu-hero htu-hero--tall">
           {{
             spray_img
             | image_url: width: 700
@@ -541,9 +595,16 @@
               alt: spray_img.alt | default: spray_product.title,
               widths: '400, 700'
           }}
-          <div class="htu-hero__text">
-            <h3 class="htu-hero__title">{{ section.settings.spray_hero_title | escape }}</h3>
-            <p class="htu-hero__meta">{{ section.settings.spray_hero_meta | escape }}</p>
+          <div class="htu-hero__text htu-hero__text--full">
+            {%- if section.settings.spray_hero_script != blank -%}
+              <span class="htu-hero__script">{{ section.settings.spray_hero_script | escape }}</span>
+            {%- endif -%}
+            {%- if section.settings.spray_hero_title != blank -%}
+              <p class="htu-hero__lead">{{ section.settings.spray_hero_title | escape }}</p>
+            {%- endif -%}
+            {%- if section.settings.spray_hero_meta != blank -%}
+              <p class="htu-hero__meta">{{ section.settings.spray_hero_meta | escape }}</p>
+            {%- endif -%}
           </div>
         </div>
       {%- endif -%}
@@ -612,9 +673,14 @@
 
       {%- for block in section.blocks -%}
         {%- if block.type == 'cross_sell' and block.settings.panel == 'spray' -%}
-          <div class="htu-cross" {{ block.shopify_attributes }}>
+          {%- assign cs_class = 'htu-cross' -%}
+          {%- if block.settings.style == 'stacked' -%}{%- assign cs_class = 'htu-cross htu-cross--stacked' -%}{%- endif -%}
+          <div class="{{ cs_class }}" {{ block.shopify_attributes }}>
             <div class="htu-cross__text">
-              <p class="htu-cross__title">{{ block.settings.title | escape }}</p>
+              <p class="htu-cross__title">
+                {{ block.settings.title | escape -}}
+                {%- if block.settings.title_accent != blank %} <span class="htu-cross__title-accent">{{ block.settings.title_accent | escape }}</span>{%- endif %}
+              </p>
               {%- if block.settings.body != blank -%}
                 <p class="htu-cross__body">{{ block.settings.body | escape }}</p>
               {%- endif -%}
@@ -659,7 +725,7 @@
         endif
       -%}
       {%- if pump_img != blank -%}
-        <div class="htu-hero">
+        <div class="htu-hero htu-hero--tall">
           {{
             pump_img
             | image_url: width: 700
@@ -668,9 +734,16 @@
               alt: pump_img.alt | default: pump_product.title,
               widths: '400, 700'
           }}
-          <div class="htu-hero__text">
-            <h3 class="htu-hero__title">{{ section.settings.pump_hero_title | escape }}</h3>
-            <p class="htu-hero__meta">{{ section.settings.pump_hero_meta | escape }}</p>
+          <div class="htu-hero__text htu-hero__text--full">
+            {%- if section.settings.pump_hero_script != blank -%}
+              <span class="htu-hero__script">{{ section.settings.pump_hero_script | escape }}</span>
+            {%- endif -%}
+            {%- if section.settings.pump_hero_title != blank -%}
+              <p class="htu-hero__lead">{{ section.settings.pump_hero_title | escape }}</p>
+            {%- endif -%}
+            {%- if section.settings.pump_hero_meta != blank -%}
+              <p class="htu-hero__meta">{{ section.settings.pump_hero_meta | escape }}</p>
+            {%- endif -%}
           </div>
         </div>
       {%- endif -%}
@@ -739,9 +812,14 @@
 
       {%- for block in section.blocks -%}
         {%- if block.type == 'cross_sell' and block.settings.panel == 'pump' -%}
-          <div class="htu-cross" {{ block.shopify_attributes }}>
+          {%- assign cs_class = 'htu-cross' -%}
+          {%- if block.settings.style == 'stacked' -%}{%- assign cs_class = 'htu-cross htu-cross--stacked' -%}{%- endif -%}
+          <div class="{{ cs_class }}" {{ block.shopify_attributes }}>
             <div class="htu-cross__text">
-              <p class="htu-cross__title">{{ block.settings.title | escape }}</p>
+              <p class="htu-cross__title">
+                {{ block.settings.title | escape -}}
+                {%- if block.settings.title_accent != blank %} <span class="htu-cross__title-accent">{{ block.settings.title_accent | escape }}</span>{%- endif %}
+              </p>
               {%- if block.settings.body != blank -%}
                 <p class="htu-cross__body">{{ block.settings.body | escape }}</p>
               {%- endif -%}
@@ -784,8 +862,9 @@
   var launcher= document.getElementById('htu-launcher-' + sid);
   var closeBtn= document.getElementById('htu-close-' + sid);
   var bodyEl  = document.getElementById('htu-body-' + sid);
-  var titleEl = document.getElementById('htu-title-' + sid);
-  var subEl   = titleEl && titleEl.nextElementSibling;
+  var titleSpan  = drawer.querySelector('[data-htu-title]');
+  var scriptSpan = drawer.querySelector('[data-htu-script]');
+  var descEl     = drawer.querySelector('[data-htu-desc]');
   var tabs    = drawer.querySelectorAll('[data-htu-tab]');
   var panels  = drawer.querySelectorAll('[data-htu-panel]');
   var lastFocus = null;
@@ -830,14 +909,9 @@
     panels.forEach(function (p) {
       p.classList.toggle('is-active', p.dataset.htuPanel === name);
     });
-    if (titleEl) {
-      var key = 'htuTitle' + name.charAt(0).toUpperCase() + name.slice(1);
-      if (titleEl.dataset[key]) titleEl.textContent = titleEl.dataset[key];
-    }
-    if (subEl) {
-      var subKey = 'htuSub' + name.charAt(0).toUpperCase() + name.slice(1);
-      if (subEl.dataset[subKey]) subEl.textContent = subEl.dataset[subKey];
-    }
+    if (titleSpan && titleSpan.dataset[name]) titleSpan.textContent = titleSpan.dataset[name];
+    if (scriptSpan && scriptSpan.dataset[name]) scriptSpan.textContent = scriptSpan.dataset[name];
+    if (descEl && descEl.dataset[name]) descEl.textContent = descEl.dataset[name];
     bodyEl.scrollTop = 0;
   }
 
@@ -964,9 +1038,15 @@
     },
     {
       "type": "text",
+      "id": "spray_hero_script",
+      "label": "Hero script line (gold)",
+      "default": "60 Seconds."
+    },
+    {
+      "type": "text",
       "id": "spray_hero_title",
       "label": "Hero title",
-      "default": "Anytime fresh breath"
+      "default": "Anytime fresh breath."
     },
     {
       "type": "text",
@@ -983,8 +1063,14 @@
     {
       "type": "text",
       "id": "spray_drawer_subtitle",
-      "label": "Drawer subtitle",
+      "label": "Drawer script line (gold)",
       "default": "Does so much more."
+    },
+    {
+      "type": "text",
+      "id": "spray_drawer_desc",
+      "label": "Drawer description",
+      "default": "Spray anytime. Or take 60 seconds and support your whole oral ecosystem."
     },
     {
       "type": "header",
@@ -1002,9 +1088,15 @@
     },
     {
       "type": "text",
+      "id": "pump_hero_script",
+      "label": "Hero script line (gold)",
+      "default": "60 Seconds."
+    },
+    {
+      "type": "text",
       "id": "pump_hero_title",
       "label": "Hero title",
-      "default": "The deep daily ritual"
+      "default": "Under the tongue. Every morning."
     },
     {
       "type": "text",
@@ -1016,13 +1108,19 @@
       "type": "text",
       "id": "pump_drawer_title",
       "label": "Drawer title",
-      "default": "The deep daily ritual."
+      "default": "Works like a breath Pump."
     },
     {
       "type": "text",
       "id": "pump_drawer_subtitle",
-      "label": "Drawer subtitle",
-      "default": "Sublingual, morning and evening."
+      "label": "Drawer script line (gold)",
+      "default": "Does so much more."
+    },
+    {
+      "type": "text",
+      "id": "pump_drawer_desc",
+      "label": "Drawer description",
+      "default": "Sublingual, morning and evening. The deepest version of the OG3 practice."
     },
     {
       "type": "header",
@@ -1066,8 +1164,25 @@
       "default": "Questions"
     },
     {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Gold (script accents)",
+      "default": "#f0a83c"
+    },
+    {
       "type": "header",
       "content": "Fonts"
+    },
+    {
+      "type": "select",
+      "id": "script_font",
+      "label": "Script font (gold lines)",
+      "options": [
+        { "value": "tag",     "label": "PP Neue Montreal Mono" },
+        { "value": "heading", "label": "D-DIN" },
+        { "value": "accent",  "label": "Alkaline Test" }
+      ],
+      "default": "accent"
     },
     {
       "type": "select",
@@ -1293,6 +1408,22 @@
             { "value": "pump",  "label": "Pump tab" }
           ],
           "default": "pump"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Layout",
+          "options": [
+            { "value": "side-by-side", "label": "Side by side" },
+            { "value": "stacked",      "label": "Stacked (gold button)" }
+          ],
+          "default": "side-by-side"
+        },
+        {
+          "type": "text",
+          "id": "title_accent",
+          "label": "Title script accent (optional)",
+          "info": "Rendered in gold script after the title. e.g. \"For in between.\""
         }
       ]
     }
@@ -1301,20 +1432,22 @@
     {
       "name": "How To Use Drawer",
       "blocks": [
-        { "type": "step",       "settings": { "panel": "spray", "title": "Spray into your mouth",       "body": "2\u20133 sprays directly into the mouth. Anytime, anywhere \u2014 after coffee, after a meal, before a meeting.", "tag": "" } },
-        { "type": "step",       "settings": { "panel": "spray", "title": "Close your mouth and hold",    "body": "Close your mouth and let it saturate for 60 seconds. The oxygen-rich glycerin coats every surface.", "tag": "60 Seconds \u00b7 The Saturation Window" } },
-        { "type": "step",       "settings": { "panel": "spray", "title": "Swallow or spit \u2014 your call", "body": "OG3 is certified organic and completely safe to swallow. Swallowing extends the benefit into the gut.", "tag": "Certified Organic \u00b7 Safe to Swallow" } },
-        { "type": "callout",    "settings": { "panel": "spray", "label": "Why the 60 seconds matters",   "body": "OG3 doesn\u2019t mask bad breath \u2014 it removes the conditions that cause it. Harmful anaerobic bacteria thrive in low-oxygen environments. OG3 saturates the oral ecosystem with oxygen, making it impossible for anaerobes to maintain their competitive advantage." } },
-        { "type": "cross_sell", "settings": { "panel": "spray", "title": "Want the full ritual?",         "body": "Meet the Pump \u2014 sublingual delivery, morning and evening, the deepest version of the OG3 practice.", "link_text": "See Pump", "link_tab": "pump" } },
-        { "type": "faq",        "settings": { "panel": "spray", "question": "Is this just a breath spray?", "answer": "No \u2014 it freshens breath like one, but it works by saturating your mouth with oxygen to remove the cause of bad breath, not mask it." } },
-        { "type": "faq",        "settings": { "panel": "spray", "question": "Why close my mouth for 60 seconds?", "answer": "That\u2019s the saturation window \u2014 it lets the oxygen-rich glycerin coat every surface and shift the environment against anaerobic bacteria." } },
-        { "type": "step",       "settings": { "panel": "pump",  "title": "Pump under your tongue",        "body": "Dispense 1\u20132 pumps directly under the tongue, morning and evening, as the anchor of your daily routine.", "tag": "" } },
-        { "type": "step",       "settings": { "panel": "pump",  "title": "Hold for 60 seconds",           "body": "Let it absorb sublingually so the compounds reach the tissue directly.", "tag": "60 Seconds \u00b7 The Saturation Window" } },
-        { "type": "step",       "settings": { "panel": "pump",  "title": "Swallow to finish",             "body": "Carry the benefit into the oral-gut axis. Certified organic and safe to swallow.", "tag": "Certified Organic \u00b7 Safe to Swallow" } },
-        { "type": "callout",    "settings": { "panel": "pump",  "label": "Why the pump goes deeper",       "body": "Sublingual delivery holds OG3 against the tissue for maximum absorption. Used morning and evening, it\u2019s the most complete version of the practice \u2014 building oral-ecosystem resilience over time." } },
-        { "type": "cross_sell", "settings": { "panel": "pump",  "title": "Prefer on-the-go?",             "body": "The Spray gives you anytime fresh breath in the same OG3 formula \u2014 perfect for your bag or car.", "link_text": "See Spray", "link_tab": "spray" } },
-        { "type": "faq",        "settings": { "panel": "pump",  "question": "Can I use the pump on the go?", "answer": "You can, but the pump is designed for a measured morning/evening ritual. The spray is the on-the-go option." } },
-        { "type": "faq",        "settings": { "panel": "pump",  "question": "How long does a bottle last?", "answer": "A 30 ml pump bottle lasts about a month with twice-daily use." } }
+        { "type": "step",       "settings": { "panel": "spray", "title": "Spray into your mouth",                        "body": "2\u20133 sprays directly into the mouth. Anytime, anywhere \u2014 after coffee, after a meal, before a meeting, before a kiss. Same gesture as any breath spray you\u2019ve ever used.", "tag": "" } },
+        { "type": "step",       "settings": { "panel": "spray", "title": "Close your mouth and hold",                     "body": "This is the one thing that makes OG3\u2122 different. Close your mouth and let it saturate for 60 seconds. The oxygen-rich glycerin coats every surface.", "tag": "60 Seconds \u00b7 The Saturation Window" } },
+        { "type": "step",       "settings": { "panel": "spray", "title": "Swallow or spit \u2014 your call",               "body": "OG3\u2122 is certified organic and completely safe to swallow. Swallowing extends the benefit downstream into the gut.", "tag": "Certified Organic \u00b7 Safe to Swallow" } },
+        { "type": "callout",    "settings": { "panel": "spray", "label": "Why the 60 seconds matters",                    "body": "OG3\u2122 doesn\u2019t mask bad breath \u2014 it removes the conditions that cause it. Harmful anaerobic bacteria thrive in low-oxygen environments. OG3\u2122 saturates the oral ecosystem with oxygen, making it impossible for anaerobes to maintain their competitive advantage." } },
+        { "type": "cross_sell", "settings": { "panel": "spray", "title": "Want the full ritual?",                         "body": "Meet the Pump \u2014 sublingual delivery, morning and evening, the deepest version of the OG3\u2122 practice.", "link_text": "See Pump", "link_tab": "pump", "style": "side-by-side" } },
+        { "type": "faq",        "settings": { "panel": "spray", "question": "Is this just a breath spray?",               "answer": "No \u2014 it freshens breath like one, but it works by saturating your mouth with oxygen to remove the cause of bad breath, not mask it." } },
+        { "type": "faq",        "settings": { "panel": "spray", "question": "Why close my mouth for 60 seconds?",         "answer": "That\u2019s the saturation window \u2014 it lets the oxygen-rich glycerin coat every surface and shift the environment against anaerobic bacteria." } },
+        { "type": "faq",        "settings": { "panel": "spray", "question": "How many sprays per bottle?",                "answer": "A 15 ml bottle delivers roughly 150 sprays \u2014 about a month of daily use." } },
+        { "type": "step",       "settings": { "panel": "pump",  "title": "Pump under the tongue",                         "body": "First thing in the morning, before anything else. One pump directly under the tongue \u2014 the sublingual area allows rapid absorption \u2014 a traditional and effective delivery method for supplements.", "tag": "Sublingual \u00b7 Maximum Absorption" } },
+        { "type": "step",       "settings": { "panel": "pump",  "title": "Close your mouth \u2014 60 seconds of saturation", "body": "Close your mouth. Move OG3\u2122 gently around with your tongue \u2014 under, over, between teeth, into gum pockets. Let it saturate completely. This is the 60-second window where the oxygen-rich environment supports beneficial aerobic bacteria.", "tag": "60 Seconds \u00b7 Full Saturation \u00b7 Quorum Sensing" } },
+        { "type": "step",       "settings": { "panel": "pump",  "title": "Swallow",                                       "body": "OG3 is made in a base of certified organic coconut glycerin. It tastes as great as it works. 100% safe to swallow. Enjoy!", "tag": "Certified Organic \u00b7 Tastes Great \u00b7 Swallow It" } },
+        { "type": "step",       "settings": { "panel": "pump",  "title": "Repeat before bed",                             "body": "The evening pump is the most powerful application. Your oral ecosystem does its deepest restoration work during sleep \u2014 6\u20138 uninterrupted hours with no food, no drink, no disruption. OG3\u2122 before sleep gives beneficial bacteria the longest possible window to rebuild.", "tag": "Evening Ritual \u00b7 The Overnight Window" } },
+        { "type": "callout",    "settings": { "panel": "pump",  "label": "The science of sublingual saturation",          "body": "The mouth contains 700+ species of bacteria coordinating through quorum sensing \u2014 chemical signals that tell the community when to act as one. OG3\u2122 supports the oxygen-rich conditions where beneficial bacteria can re-establish quorum. It doesn\u2019t add bacteria. It supports the conditions they need." } },
+        { "type": "cross_sell", "settings": { "panel": "pump",  "title": "Keep the Spray",                                "body": "The Pump handles your morning and evening ritual. The Spray handles everything else \u2014 after coffee, after lunch, before meetings, social moments. Together they cover every moment of your day.", "link_text": "See the Spray ritual", "link_tab": "spray", "style": "stacked", "title_accent": "For in between." } },
+        { "type": "faq",        "settings": { "panel": "pump",  "question": "Can I use the pump on the go?",              "answer": "You can, but the pump is designed for a measured morning/evening ritual. The spray is the on-the-go option." } },
+        { "type": "faq",        "settings": { "panel": "pump",  "question": "How long does a bottle last?",               "answer": "A 30 ml pump bottle lasts about a month with twice-daily use." } }
       ]
     }
   ]
