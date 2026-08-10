@@ -1004,7 +1004,11 @@
         'Content-Type': 'application/json',
         'X-Requested-With': 'XMLHttpRequest'
       },
-      body: JSON.stringify({ items: [{ id: variantId, quantity: 1 }] })
+      body: JSON.stringify({
+        items: [{ id: variantId, quantity: 1 }],
+        sections: ['cart-drawer', 'cart-icon-bubble'],
+        sections_url: window.location.pathname
+      })
     })
     .then(function (res) {
       if (!res.ok) return res.json().then(function (err) { throw err; });
@@ -1015,9 +1019,18 @@
       atcBtn.disabled = false;
       var productName = data.items && data.items[0] ? data.items[0].product_title : '';
       if (productName) showToast(productName + ' added to cart');
-      fetch(window.Shopify.routes.root + 'cart.js')
-        .then(function (r) { return r.json(); })
-        .then(function (cart) { updateCartCount(cart.item_count); });
+
+      // Use Dawn's Section Rendering API to update cart drawer + icon counter
+      var cartDrawerEl = document.querySelector('cart-drawer');
+      if (cartDrawerEl && data.sections) {
+        cartDrawerEl.renderContents({ id: variantId, sections: data.sections });
+      } else {
+        // Fallback: manually fetch cart count and update badge
+        fetch(window.Shopify.routes.root + 'cart.js')
+          .then(function (r) { return r.json(); })
+          .then(function (cart) { updateCartCount(cart.item_count); });
+      }
+
       setTimeout(function () { atcBtn.textContent = originalText; }, 1800);
     })
     .catch(function (err) {
