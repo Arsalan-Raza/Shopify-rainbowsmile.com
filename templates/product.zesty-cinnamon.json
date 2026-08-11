@@ -300,29 +300,29 @@
         "ingredient_4kQkeE": {
           "type": "ingredient",
           "settings": {
-            "name": "Certified Organic Spearmint Essential Oil",
-            "desc": "Cooling and refreshing. The primary mint note."
+            "name": "Certified Organic Orange Essential Oil",
+            "desc": "Bright and citrusy. Opens the flavour profile."
           }
         },
         "ingredient_rUbhY6": {
           "type": "ingredient",
           "settings": {
-            "name": "Certified Organic Peppermint Essential Oil",
-            "desc": "Classic freshness layered with the spearmint."
+            "name": "Certified Organic Cinnamon Essential Oil",
+            "desc": "The warming heart of the blend. Centuries of oral care tradition."
           }
         },
         "ingredient_hA74Rn": {
           "type": "ingredient",
           "settings": {
-            "name": "Certified Organic Coconut Essential Oil",
-            "desc": "Gentle and supportive. Complements the base."
+            "name": "Certified Organic Vanilla Essential Oil",
+            "desc": "Rounds and softens. The warmth that makes this blend distinctive."
           }
         },
         "ingredient_AmG3Dq": {
           "type": "ingredient",
           "settings": {
-            "name": "Certified Organic Myrrh Essential Oil",
-            "desc": "Ancient oral care tradition. Supports oral tissue health."
+            "name": "Certified Organic Clove Essential Oil",
+            "desc": "Deep and spiced. A traditional oral care ingredient."
           }
         },
         "pillar_eQpiiU": {
@@ -455,8 +455,8 @@
         "sf_serving_size": "Serving Size: 2 Sprays (approx. 0.28 ml)",
         "sf_servings": "Servings Per Container: About 53",
         "sf_calories": "2",
-        "sf_other_ingredients": "Certified Organic Coconut Glycerin, Certified Organic Spearmint Essential Oil, Certified Organic Peppermint Essential Oil, Certified Organic Coconut Essential Oil, Certified Organic Myrrh Essential Oil. Oxygen infusion and EZ Water generated during manufacturing. Biofield frequencies embedded during manufacturing.",
-        "sf_note_1": "*Percent Daily Values are based on a 2,000 calorie diet. †Daily Value not established.",
+        "sf_other_ingredients": "Certified Organic Coconut Glycerin, Certified Organic Orange Essential Oil, Certified Organic Cinnamon Essential Oil, Certified Organic Vanilla Essential Oil, Certified Organic Clove Essential Oil. Oxygen infusion and EZ Water generated during manufacturing. Biofield frequencies embedded during manufacturing.",
+        "sf_note_1": "*Percent Daily Values are based on a 2,000 calorie diet.\n†Daily Value not established.",
         "sf_note_2": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
         "bg_color": "#ffffff",
         "navy_color": "#232748",

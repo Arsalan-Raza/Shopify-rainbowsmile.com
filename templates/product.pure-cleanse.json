@@ -294,35 +294,14 @@
           "type": "ingredient",
           "settings": {
             "name": "Certified Organic Coconut Glycerin",
-            "desc": "The base carrier. Cold-extracted, food-grade."
-          }
-        },
-        "ingredient_4kQkeE": {
-          "type": "ingredient",
-          "settings": {
-            "name": "Certified Organic Spearmint Essential Oil",
-            "desc": "Cooling and refreshing. The primary mint note."
+            "desc": "The complete formulation. Cold-extracted, food-grade, certified organic. Pure and unflavoured — the four-pillar formulation in its most elemental form."
           }
         },
         "ingredient_rUbhY6": {
           "type": "ingredient",
           "settings": {
-            "name": "Certified Organic Peppermint Essential Oil",
-            "desc": "Classic freshness layered with the spearmint."
-          }
-        },
-        "ingredient_hA74Rn": {
-          "type": "ingredient",
-          "settings": {
-            "name": "Certified Organic Coconut Essential Oil",
-            "desc": "Gentle and supportive. Complements the base."
-          }
-        },
-        "ingredient_AmG3Dq": {
-          "type": "ingredient",
-          "settings": {
-            "name": "Certified Organic Myrrh Essential Oil",
-            "desc": "Ancient oral care tradition. Supports oral tissue health."
+            "name": "Why pure?",
+            "desc": "Pure Cleanse is the base formulation with no added essential oils. Ideal for those who prefer no flavour, for children, or for use alongside the flavoured sprays."
           }
         },
         "pillar_eQpiiU": {
@@ -331,7 +310,7 @@
             "roman": "I",
             "roman_color": "#ef4a22",
             "title": "Organic Coconut Glycerin",
-            "sub": "Base carrier into the oral environment"
+            "sub": "The complete base — the only ingredient"
           }
         },
         "pillar_iCAkKB": {
@@ -381,7 +360,7 @@
           "type": "sf_row",
           "settings": {
             "name": "Glycerin (as Vegetable Glycerin)",
-            "amount": "0.35 g",
+            "amount": "0.63 g",
             "pct": "†"
           }
         },
@@ -424,10 +403,7 @@
       },
       "block_order": [
         "ingredient_yQqfAh",
-        "ingredient_4kQkeE",
         "ingredient_rUbhY6",
-        "ingredient_hA74Rn",
-        "ingredient_AmG3Dq",
         "pillar_eQpiiU",
         "pillar_iCAkKB",
         "pillar_XfbpKc",
@@ -452,11 +428,11 @@
         "pillars_label": "The Four Pillars",
         "sf_label": "Supplement Facts",
         "sf_title": "Supplement Facts",
-        "sf_serving_size": "Serving Size: 2 Sprays (approx. 0.28 ml)",
-        "sf_servings": "Servings Per Container: About 53",
-        "sf_calories": "2",
-        "sf_other_ingredients": "Certified Organic Coconut Glycerin, Certified Organic Spearmint Essential Oil, Certified Organic Peppermint Essential Oil, Certified Organic Coconut Essential Oil, Certified Organic Myrrh Essential Oil. Oxygen infusion and EZ Water generated during manufacturing. Biofield frequencies embedded during manufacturing.",
-        "sf_note_1": "*Percent Daily Values are based on a 2,000 calorie diet. †Daily Value not established.",
+        "sf_serving_size": "Serving Size: 1 Pump (approx. 0.5 ml)",
+        "sf_servings": "Servings Per Container: About 30",
+        "sf_calories": "3",
+        "sf_other_ingredients": "Certified Organic Coconut Glycerin. Oxygen infusion and EZ Water generated during manufacturing. Biofield frequencies embedded during manufacturing.",
+        "sf_note_1": "*Percent Daily Values are based on a 2,000 calorie diet.\n†Daily Value not established.",
         "sf_note_2": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
         "bg_color": "#ffffff",
         "navy_color": "#232748",
