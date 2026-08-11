@@ -1,0 +1,443 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --pl-navy:  {{ section.settings.navy_color }};
+    --pl-white: {{ section.settings.white_color }};
+    --pl-gold:  {{ section.settings.gold_color }};
+    --pl-coral: {{ section.settings.coral_color }};
+    --pl-sub:   {{ section.settings.sub_color }};
+    --pl-card:  {{ section.settings.card_color }};
+    --pl-title: {{ section.settings.title_color }};
+    --pl-meta:  {{ section.settings.meta_color }};
+    --pl-body:  {{ section.settings.body_color }};
+    --pl-rule:  {{ section.settings.rule_color }};
+    --pl-tm:    {{ section.settings.tm_color }};
+
+    background-color: var(--pl-navy);
+    padding-block: clamp(44px, 6vw, 84px);
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+
+  .pil-{{ section.id }} * { box-sizing: border-box; }
+  .pil-{{ section.id }} { max-width: 1240px; margin-inline: auto; }
+
+  /* ── Header ─────────────────────────────────────────────────── */
+  .pil-{{ section.id }} .pil__head {
+    text-align: center;
+    margin-bottom: clamp(34px, 5vw, 56px);
+  }
+  .pil-{{ section.id }} .pil__eyebrow {
+    margin: 0 0 clamp(14px, 2vw, 20px);
+    font-family: var(--font-tag-family);
+    font-weight: 700;
+    font-size: clamp(16px, 1.1vw, 17px);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--pl-gold);
+    line-height: 1;
+  }
+  .pil-{{ section.id }} .pil__eyebrow sup { font-size: 0.7em; vertical-align: super; }
+  .pil-{{ section.id }} .pil__title {
+    margin: 0;
+    font-family: var(--font-heading-family);
+    font-weight: 800;
+    font-size: clamp(34px, 5.2vw, 66px);
+    line-height: 1.04;
+    letter-spacing: -1px;
+    color: var(--pl-white);
+  }
+  .pil-{{ section.id }} .pil__script {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--font-accent-family);
+    font-weight: 400;
+    font-size: clamp(30px, 4.6vw, 58px);
+    line-height: 1.1;
+    letter-spacing: 0;
+    color: var(--pl-gold);
+  }
+  .pil-{{ section.id }} .pil__script sup { font-size: 0.5em; vertical-align: super; color: var(--pl-tm); }
+  .pil-{{ section.id }} .pil__sub {
+    margin: clamp(16px, 2.4vw, 24px) auto 0;
+    max-width: 760px;
+    font-family: var(--font-heading-family);
+    font-weight: 400;
+    font-size: clamp(16px, 1.5vw, 19px);
+    line-height: 1.6;
+    color: var(--pl-sub);
+  }
+  .pil-{{ section.id }} .pil__sub sup { font-size: 0.62em; vertical-align: super; }
+
+  /* ── Cards grid ─────────────────────────────────────────────── */
+  .pil-{{ section.id }} .pil__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(18px, 2.2vw, 30px);
+  }
+  .pil-{{ section.id }} .pil__card {
+    background: var(--pl-card);
+    border-radius: 18px;
+    padding: clamp(26px, 3.2vw, 44px);
+  }
+
+  /* Label row: roman + trailing hairline */
+  .pil-{{ section.id }} .pil__label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 0 clamp(20px, 2.6vw, 28px);
+    font-family: var(--font-heading-family);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--pl-title);
+    white-space: nowrap;
+  }
+  .pil-{{ section.id }} .pil__label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--pl-rule);
+  }
+
+  /* Icon */
+  .pil-{{ section.id }} .pil__icon {
+    color: var(--pl-coral);
+    margin-bottom: clamp(16px, 2.2vw, 22px);
+  }
+  .pil-{{ section.id }} .pil__icon svg {
+    width: 44px;
+    height: 44px;
+    display: block;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Card text */
+  .pil-{{ section.id }} .pil__card-title {
+    margin: 0 0 clamp(12px, 1.6vw, 16px);
+    font-family: var(--font-heading-family);
+    font-weight: 700;
+    font-size: clamp(20px, 1.9vw, 26px);
+    line-height: 1.25;
+    color: var(--pl-title);
+  }
+  .pil-{{ section.id }} .pil__meta {
+    margin: 0 0 clamp(16px, 2.2vw, 22px);
+    font-family: var(--font-tag-family);
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    line-height: 1.4;
+    color: var(--pl-meta);
+  }
+  .pil-{{ section.id }} .pil__body {
+    margin: 0;
+    font-family: var(--font-heading-family);
+    font-weight: 400;
+    font-size: clamp(16px, 1.15vw, 18px);
+    line-height: 1.7;
+    color: var(--pl-body);
+  }
+  .pil-{{ section.id }} .pil__body sup { font-size: 0.62em; vertical-align: super; }
+
+  /* ── Responsive ──────────────────────────────────────────────── */
+  @media (max-width: 820px) {
+    .pil-{{ section.id }} .pil__grid { grid-template-columns: 1fr; }
+  }
+{%- endstyle -%}
+
+<div class="pil-{{ section.id }}">
+
+  {%- if section.settings.eyebrow != blank or section.settings.title != blank -%}
+    <header class="pil__head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="pil__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 class="pil__title">
+        {{- section.settings.title | escape -}}
+        {%- if section.settings.script != blank -%}
+          <span class="pil__script">{{ section.settings.script }}</span>
+        {%- endif -%}
+      </h2>
+      {%- if section.settings.subtitle != blank -%}
+        <p class="pil__sub">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </header>
+  {%- endif -%}
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="pil__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'pillar' -%}
+          <article class="pil__card" {{ block.shopify_attributes }}>
+
+            {%- if block.settings.label != blank -%}
+              <p class="pil__label">{{ block.settings.label | escape }}</p>
+            {%- endif -%}
+
+            <span class="pil__icon" aria-hidden="true">
+              {%- case block.settings.icon -%}
+                {%- when 'coconut' -%}
+                  <svg viewBox="0 0 32 32">
+                    <path d="M6 18a10 10 0 0 0 20 0c0-1.2-.3-2.3-.7-3.3-3 1-6 1.5-9.3 1.5s-6.3-.5-9.3-1.5c-.4 1-.7 2.1-.7 3.3Z"/>
+                    <path d="M16 12c0-2 1.4-4 3.5-4M16 12c0-2-1.4-4-3.5-4M16 12c1.6-1.2 3.8-1.2 5.4 0M16 12c-1.6-1.2-3.8-1.2-5.4 0"/>
+                    <circle cx="16" cy="12" r="1.4" fill="currentColor" stroke="none"/>
+                  </svg>
+                {%- when 'oxygen' -%}
+                  <svg viewBox="0 0 32 32">
+                    <rect x="8" y="10" width="7" height="16" rx="3.5"/>
+                    <path d="M10.5 10V8.5a1 1 0 0 1 1-1h0a1 1 0 0 1 1 1V10"/>
+                    <rect x="18" y="13" width="6.5" height="13" rx="3.25"/>
+                    <path d="M20.2 13v-1.2a1 1 0 0 1 1-1h0a1 1 0 0 1 1 1V13"/>
+                  </svg>
+                {%- when 'water' -%}
+                  <svg viewBox="0 0 32 32">
+                    <path d="M5 11c2.75-2.6 5.5-2.6 8.25 0S18.75 13.6 21.5 11 27 8.4 27 11"/>
+                    <path d="M5 17c2.75-2.6 5.5-2.6 8.25 0S18.75 19.6 21.5 17 27 14.4 27 17"/>
+                    <path d="M5 23c2.75-2.6 5.5-2.6 8.25 0S18.75 25.6 21.5 23 27 20.4 27 23"/>
+                  </svg>
+                {%- when 'shield' -%}
+                  <svg viewBox="0 0 32 32">
+                    <path d="M9 11h14l4 5-11 12L5 16l4-5Z"/>
+                    <path d="M5 16h22M13 11l3 17M19 11l-3 17M12.5 11 16 16l3.5-5"/>
+                    <path d="M25 7l.6 1.6L27 9l-1.4.6L25 11l-.6-1.4L23 9l1.4-.4L25 7Z" fill="currentColor" stroke="none"/>
+                  </svg>
+                {%- when 'leaf' -%}
+                  <svg viewBox="0 0 32 32">
+                    <path d="M8 26C14 26 22 22 24 10"/>
+                    <path d="M24 10c-3.4.3-5.6 1.6-6.6 3.8M24 10c-.3 3.4-1.6 5.6-3.8 6.6M18.5 17c-3 .3-5 1.5-6 3.6M18.5 17c-.3 3-1.5 5-3.6 6"/>
+                  </svg>
+                {%- when 'drop' -%}
+                  <svg viewBox="0 0 32 32">
+                    <path d="M16 6c0 0-8 7.5-8 13a8 8 0 0 0 16 0C24 13.5 16 6 16 6Z"/>
+                    <path d="M11 21a5 5 0 0 0 3.5 4"/>
+                  </svg>
+                {%- else -%}
+                  <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="9"/></svg>
+              {%- endcase -%}
+            </span>
+
+            {%- if block.settings.card_title != blank -%}
+              <h3 class="pil__card-title">{{ block.settings.card_title | escape }}</h3>
+            {%- endif -%}
+            {%- if block.settings.meta != blank -%}
+              <p class="pil__meta">{{ block.settings.meta | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.body != blank -%}
+              <p class="pil__body">{{ block.settings.body }}</p>
+            {%- endif -%}
+
+          </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "Four Pillars",
+  "tag": "section",
+  "class": "four-pillars-section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "textarea",
+      "id": "eyebrow",
+      "label": "Eyebrow (HTML allowed: <sup>)",
+      "default": "How OG3<sup>\u2122<\/sup> Works"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "The Four Pillars"
+    },
+    {
+      "type": "textarea",
+      "id": "script",
+      "label": "Script line (HTML allowed: <sup>)",
+      "default": "of every OG3<sup>\u2122<\/sup> product."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle (HTML allowed: <sup>)",
+      "default": "Every OG3<sup>\u2122<\/sup> product \u2014 regardless of flavour \u2014 is built on the same four-pillar formulation. The pillars work together to restore the oxygen-rich conditions where your oral microbiome thrives."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "navy_color",
+      "label": "Section background",
+      "default": "#232a4d"
+    },
+    {
+      "type": "color",
+      "id": "white_color",
+      "label": "Title text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Eyebrow & script",
+      "default": "#f0b649"
+    },
+    {
+      "type": "color",
+      "id": "coral_color",
+      "label": "Card icons",
+      "default": "#ef4a22"
+    },
+    {
+      "type": "color",
+      "id": "sub_color",
+      "label": "Subtitle text",
+      "default": "#b0b4c8"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card background",
+      "default": "#fbf7ef"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Card title & label",
+      "default": "#232748"
+    },
+    {
+      "type": "color",
+      "id": "meta_color",
+      "label": "Card meta line",
+      "default": "#b3aea3"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Card body text",
+      "default": "#55586b"
+    },
+    {
+      "type": "color",
+      "id": "rule_color",
+      "label": "Label hairline",
+      "default": "#f5c4b6"
+    },
+    {
+      "type": "color",
+      "id": "tm_color",
+      "label": "Script \u2122 mark color",
+      "default": "#6b6f82"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Pillar",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label (roman + category)",
+          "default": "I \u2014 The Base"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "coconut", "label": "Coconut / base" },
+            { "value": "oxygen",  "label": "Test tubes / oxygen" },
+            { "value": "water",   "label": "Waves / water" },
+            { "value": "shield",  "label": "Shield / gem" },
+            { "value": "leaf",    "label": "Leaf / botanical" },
+            { "value": "drop",    "label": "Water drop" }
+          ],
+          "default": "coconut"
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Card title",
+          "default": "Pillar Title"
+        },
+        {
+          "type": "text",
+          "id": "meta",
+          "label": "Meta line",
+          "default": "Subtitle · Sub-label"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body (HTML allowed: <sup>)",
+          "default": "Description of this pillar and how it works within the OG3\u2122 formulation."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Four Pillars",
+      "blocks": [
+        {
+          "type": "pillar",
+          "settings": {
+            "label": "I \u2014 The Base",
+            "icon": "coconut",
+            "card_title": "Certified Organic Coconut Glycerin",
+            "meta": "The Carrier \u00b7 Cold-Extracted \u00b7 Food-Grade",
+            "body": "Cold-extracted, food-grade, certified organic coconut glycerin is the carrier of the entire formulation. It interacts with the moisture channels in oral tissue to deliver the formulation deep into the oral environment. Safe to swallow. The foundation everything else is built on."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "label": "II \u2014 The Ecology",
+            "icon": "oxygen",
+            "card_title": "Oxygen Infusion",
+            "meta": "Aerobic Conditions for Beneficial Bacteria",
+            "body": "OG3\u2122 is infused with oxygen during manufacturing, creating the oxygen-rich environment where beneficial aerobic bacteria naturally thrive. Harmful anaerobic bacteria \u2014 responsible for bad breath and gum issues \u2014 cannot compete in oxygen-rich conditions. The ecology does the work."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "label": "III \u2014 The Fourth Phase",
+            "icon": "water",
+            "card_title": "EZ Water \u00b7 Structured Water",
+            "meta": "Generated During Manufacturing",
+            "body": "During manufacturing, OG3\u2122 generates EZ water \u2014 structured, gel-like water in the same form found inside every living cell. Not added as an ingredient \u2014 created by how OG3\u2122 is made. EZ water supports the biological activity of the formulation and the oral tissue it contacts."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "label": "IV \u2014 The Protection",
+            "icon": "shield",
+            "card_title": "Biofield Frequencies + Miron Glass",
+            "meta": "Embedded During Manufacturing \u00b7 Biophotonic Protection",
+            "body": "Specific biofield frequencies are embedded into OG3\u2122 during manufacturing, encoded in the EZ water matrix, extending the longevity of the oxygen released into the oral environment. The Miron violet glass bottle protects the formulation\u2019s integrity from manufacture to use."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
