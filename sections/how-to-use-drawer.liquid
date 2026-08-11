@@ -45,7 +45,7 @@
     color: #fff;
     font-family: var(--hd-font-mono);
     font-weight: 700;
-    font-size: clamp(1.3rem, 0.625vw + 0.8rem, 2rem);
+    font-size: clamp(1.5rem, 0.625vw + 0.8rem, 2rem);
     letter-spacing: 1.4px;
     text-transform: uppercase;
     writing-mode: vertical-rl;
@@ -184,14 +184,17 @@
   #shopify-section-{{ section.id }} .htu-panel { display: none; }
   #shopify-section-{{ section.id }} .htu-panel.is-active { display: block; }
 
+  #shopify-section-{{ section.id }} .htu-hero-wrap { margin-bottom: clamp(20px, 4vw, 28px); }
+
   #shopify-section-{{ section.id }} .htu-hero {
     position: relative;
-    border-radius: 12px;
+    border-radius: 12px 12px 0 0;
     overflow: hidden;
     aspect-ratio: 16 / 10;
     background: linear-gradient(160deg, #c9a184, #e2c4a8);
-    margin-bottom: clamp(20px, 4vw, 28px);
   }
+  /* when no meta bar follows, restore full rounding */
+  #shopify-section-{{ section.id }} .htu-hero-wrap .htu-hero:last-child { border-radius: 12px; }
   #shopify-section-{{ section.id }} .htu-hero img { width: 100%; height: 100%; object-fit: cover; display: block; object-position: top; }
   #shopify-section-{{ section.id }} .htu-hero::after {
     content: "";
@@ -219,8 +222,11 @@
     font-size: 14px;
     letter-spacing: 0.8px;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.85);
+    color: rgba(255,255,255,0.75);
     line-height: 1.5;
+    background: var(--hd-navy);
+    border-radius: 0 0 12px 12px;
+    padding: 10px 18px;
   }
   #shopify-section-{{ section.id }} .htu-hero--tall { aspect-ratio: 5 / 4; }
   #shopify-section-{{ section.id }} .htu-hero__text--full { right: 18px; }
@@ -610,26 +616,28 @@
         endif
       -%}
       {%- if spray_img != blank -%}
-        <div class="htu-hero htu-hero--tall">
-          {{
-            spray_img
-            | image_url: width: 700
-            | image_tag:
-              loading: 'lazy',
-              alt: spray_img.alt | default: spray_product.title,
-              widths: '400, 700'
-          }}
-          <div class="htu-hero__text htu-hero__text--full">
-            {%- if section.settings.spray_hero_script != blank -%}
-              <span class="htu-hero__script">{{ section.settings.spray_hero_script | escape }}</span>
-            {%- endif -%}
-            {%- if section.settings.spray_hero_title != blank -%}
-              <p class="htu-hero__lead">{{ section.settings.spray_hero_title | escape }}</p>
-            {%- endif -%}
-            {%- if section.settings.spray_hero_meta != blank -%}
-              <p class="htu-hero__meta">{{ section.settings.spray_hero_meta | escape }}</p>
-            {%- endif -%}
+        <div class="htu-hero-wrap">
+          <div class="htu-hero htu-hero--tall">
+            {{
+              spray_img
+              | image_url: width: 700
+              | image_tag:
+                loading: 'lazy',
+                alt: spray_img.alt | default: spray_product.title,
+                widths: '400, 700'
+            }}
+            <div class="htu-hero__text htu-hero__text--full">
+              {%- if section.settings.spray_hero_script != blank -%}
+                <span class="htu-hero__script">{{ section.settings.spray_hero_script | escape }}</span>
+              {%- endif -%}
+              {%- if section.settings.spray_hero_title != blank -%}
+                <p class="htu-hero__lead">{{ section.settings.spray_hero_title | escape }}</p>
+              {%- endif -%}
+            </div>
           </div>
+          {%- if section.settings.spray_hero_meta != blank -%}
+            <p class="htu-hero__meta">{{ section.settings.spray_hero_meta | escape }}</p>
+          {%- endif -%}
         </div>
       {%- endif -%}
 
@@ -749,26 +757,28 @@
         endif
       -%}
       {%- if pump_img != blank -%}
-        <div class="htu-hero htu-hero--tall">
-          {{
-            pump_img
-            | image_url: width: 700
-            | image_tag:
-              loading: 'lazy',
-              alt: pump_img.alt | default: pump_product.title,
-              widths: '400, 700'
-          }}
-          <div class="htu-hero__text htu-hero__text--full">
-            {%- if section.settings.pump_hero_script != blank -%}
-              <span class="htu-hero__script">{{ section.settings.pump_hero_script | escape }}</span>
-            {%- endif -%}
-            {%- if section.settings.pump_hero_title != blank -%}
-              <p class="htu-hero__lead">{{ section.settings.pump_hero_title | escape }}</p>
-            {%- endif -%}
-            {%- if section.settings.pump_hero_meta != blank -%}
-              <p class="htu-hero__meta">{{ section.settings.pump_hero_meta | escape }}</p>
-            {%- endif -%}
+        <div class="htu-hero-wrap">
+          <div class="htu-hero htu-hero--tall">
+            {{
+              pump_img
+              | image_url: width: 700
+              | image_tag:
+                loading: 'lazy',
+                alt: pump_img.alt | default: pump_product.title,
+                widths: '400, 700'
+            }}
+            <div class="htu-hero__text htu-hero__text--full">
+              {%- if section.settings.pump_hero_script != blank -%}
+                <span class="htu-hero__script">{{ section.settings.pump_hero_script | escape }}</span>
+              {%- endif -%}
+              {%- if section.settings.pump_hero_title != blank -%}
+                <p class="htu-hero__lead">{{ section.settings.pump_hero_title | escape }}</p>
+              {%- endif -%}
+            </div>
           </div>
+          {%- if section.settings.pump_hero_meta != blank -%}
+            <p class="htu-hero__meta">{{ section.settings.pump_hero_meta | escape }}</p>
+          {%- endif -%}
         </div>
       {%- endif -%}
 
