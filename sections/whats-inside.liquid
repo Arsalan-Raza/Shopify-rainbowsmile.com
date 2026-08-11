@@ -99,6 +99,14 @@
     border-radius: 50%;
     background: var(--wi-coral);
   }
+  .wi-{{ section.id }} .wi__ing li.has-icon::before { display: none; }
+  .wi-{{ section.id }} .wi__ing-icon {
+    width: 36px;
+    height: 36px;
+    flex: none;
+    object-fit: contain;
+    margin-top: 3px;
+  }
   .wi-{{ section.id }} .wi__ing-title {
     margin: 0 0 5px;
     font-family: var(--font-heading-family);
@@ -309,7 +317,11 @@
         <ul class="wi__ing">
           {%- for block in section.blocks -%}
             {%- if block.type == 'ingredient' -%}
-              <li {{ block.shopify_attributes }}>
+              <li{% if block.settings.icon_image != blank %} class="has-icon"{% endif %} {{ block.shopify_attributes }}>
+                {%- if block.settings.icon_image != blank -%}
+                  {%- assign wi_icon_alt = block.settings.icon_image.alt | escape -%}
+                  {{- block.settings.icon_image | image_url: width: 72 | image_tag: loading: 'lazy', alt: wi_icon_alt, class: 'wi__ing-icon' -}}
+                {%- endif -%}
                 <div>
                   {%- if block.settings.name != blank -%}
                     <p class="wi__ing-title">{{ block.settings.name | escape }}</p>
@@ -614,6 +626,11 @@
       "type": "ingredient",
       "name": "Ingredient",
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon image (replaces dot bullet)"
+        },
         {
           "type": "text",
           "id": "name",
