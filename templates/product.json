@@ -214,6 +214,420 @@
         "line_color": "#e7e7e7"
       }
     },
+    "four_pillars_NP4BtD": {
+      "type": "four-pillars",
+      "blocks": {
+        "pillar_yXrYhB": {
+          "type": "pillar",
+          "settings": {
+            "label": "I — The Base",
+            "icon_image": "shopify://shop_images/Coconut.svg",
+            "icon": "leaf",
+            "card_title": "Certified Organic Coconut Glycerin",
+            "meta": "The base",
+            "body": "Cold-extracted, food-grade, certified organic coconut glycerin is the carrier of the entire formulation. It interacts with the moisture channels in oral tissue to deliver the formulation deep into the oral environment. Safe to swallow. The foundation everything else is built on."
+          }
+        },
+        "pillar_dhWbBN": {
+          "type": "pillar",
+          "settings": {
+            "label": "II — The Ecology",
+            "icon_image": "shopify://shop_images/Diving.svg",
+            "icon": "oxygen",
+            "card_title": "Oxygen Infusion",
+            "meta": "The ecology",
+            "body": "OG3™ is infused with oxygen during manufacturing, creating the oxygen-rich environment where beneficial aerobic bacteria naturally thrive. Harmful anaerobic bacteria — responsible for bad breath and gum issues — cannot compete in oxygen-rich conditions. The ecology does the work."
+          }
+        },
+        "pillar_9kmn7m": {
+          "type": "pillar",
+          "settings": {
+            "label": "III — The Fourth Phase",
+            "icon_image": "shopify://shop_images/water.svg",
+            "icon": "water",
+            "card_title": "EZ Water · Structured Water",
+            "meta": "The fourth phase",
+            "body": "During manufacturing, OG3™ generates EZ water — structured, gel-like water in the same form found inside every living cell. Not added as an ingredient — created by how OG3™ is made. EZ water supports the biological activity of the formulation and the oral tissue it contacts."
+          }
+        },
+        "pillar_YkpJUw": {
+          "type": "pillar",
+          "settings": {
+            "label": "IV — The Protection",
+            "icon_image": "shopify://shop_images/Luxury.svg",
+            "icon": "shield",
+            "card_title": "Biofield Frequencies + Miron Glass",
+            "meta": "The protection",
+            "body": "Specific biofield frequencies are embedded into OG3™ during manufacturing, encoded in the EZ water matrix, extending the longevity of the oxygen released into the oral environment. The Miron violet glass bottle protects the formulation's integrity from manufacture to use."
+          }
+        }
+      },
+      "block_order": [
+        "pillar_yXrYhB",
+        "pillar_dhWbBN",
+        "pillar_9kmn7m",
+        "pillar_YkpJUw"
+      ],
+      "name": "Four Pillars",
+      "settings": {
+        "eyebrow": "How OG3<sup>™</sup> Works",
+        "title": "The Four Pillars",
+        "script": "of every OG3<sup>™</sup> product.",
+        "subtitle": "Every OG3<sup>™</sup> product — regardless of flavour — is built on the same four-pillar formulation. The pillars work together to restore the oxygen-rich conditions where your oral microbiome thrives.",
+        "navy_color": "#232a4d",
+        "white_color": "#ffffff",
+        "gold_color": "#f0b649",
+        "coral_color": "#ef4a22",
+        "sub_color": "#b0b4c8",
+        "card_color": "#fbf7ef",
+        "title_color": "#232748",
+        "meta_color": "#b3aea3",
+        "body_color": "#55586b",
+        "rule_color": "#f5c4b6",
+        "tm_color": "#6b6f82"
+      }
+    },
+    "whats_inside_GAtf8L": {
+      "type": "whats-inside",
+      "blocks": {
+        "ingredient_yQqfAh": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Certified Organic Coconut Glycerin",
+            "desc": "The base carrier. Cold-extracted, food-grade."
+          }
+        },
+        "ingredient_4kQkeE": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Certified Organic Spearmint Essential Oil",
+            "desc": "Cooling and refreshing. The primary mint note."
+          }
+        },
+        "ingredient_rUbhY6": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Certified Organic Peppermint Essential Oil",
+            "desc": "Classic freshness layered with the spearmint."
+          }
+        },
+        "ingredient_hA74Rn": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Certified Organic Coconut Essential Oil",
+            "desc": "Gentle and supportive. Complements the base."
+          }
+        },
+        "ingredient_AmG3Dq": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Certified Organic Myrrh Essential Oil",
+            "desc": "Ancient oral care tradition. Supports oral tissue health."
+          }
+        },
+        "pillar_eQpiiU": {
+          "type": "pillar",
+          "settings": {
+            "roman": "I",
+            "roman_color": "#ef4a22",
+            "title": "Organic Coconut Glycerin",
+            "sub": "Base carrier into the oral environment"
+          }
+        },
+        "pillar_iCAkKB": {
+          "type": "pillar",
+          "settings": {
+            "roman": "II",
+            "roman_color": "#232748",
+            "title": "Oxygen Infusion",
+            "sub": "Aerobic conditions for beneficial bacteria"
+          }
+        },
+        "pillar_XfbpKc": {
+          "type": "pillar",
+          "settings": {
+            "roman": "III",
+            "roman_color": "#7b5cc4",
+            "title": "EZ Water",
+            "sub": "Generated during manufacturing"
+          }
+        },
+        "pillar_icU6rp": {
+          "type": "pillar",
+          "settings": {
+            "roman": "IV",
+            "roman_color": "#b8862f",
+            "title": "Biofield Frequencies + Miron Glass",
+            "sub": "Embedded during manufacturing"
+          }
+        },
+        "sf_row_8hB7We": {
+          "type": "sf_row",
+          "settings": {
+            "name": "Total Fat",
+            "amount": "0 g",
+            "pct": "0%"
+          }
+        },
+        "sf_row_qK9hKd": {
+          "type": "sf_row",
+          "settings": {
+            "name": "Total Carbohydrate",
+            "amount": "0 g",
+            "pct": "0%"
+          }
+        },
+        "sf_row_iprbhb": {
+          "type": "sf_row",
+          "settings": {
+            "name": "Glycerin (as Vegetable Glycerin)",
+            "amount": "0.35 g",
+            "pct": "†"
+          }
+        },
+        "badge_Gxj3gY": {
+          "type": "badge",
+          "settings": {
+            "text": "All ingredients certified organic"
+          }
+        },
+        "badge_rbVcq8": {
+          "type": "badge",
+          "settings": {
+            "text": "No alcohol"
+          }
+        },
+        "badge_Qqfw7C": {
+          "type": "badge",
+          "settings": {
+            "text": "No fluoride"
+          }
+        },
+        "badge_qdpDQF": {
+          "type": "badge",
+          "settings": {
+            "text": "No synthetic agents"
+          }
+        },
+        "badge_TBYbbk": {
+          "type": "badge",
+          "settings": {
+            "text": "Safe to swallow"
+          }
+        },
+        "badge_RcbzkT": {
+          "type": "badge",
+          "settings": {
+            "text": "Miron violet glass"
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_yQqfAh",
+        "ingredient_4kQkeE",
+        "ingredient_rUbhY6",
+        "ingredient_hA74Rn",
+        "ingredient_AmG3Dq",
+        "pillar_eQpiiU",
+        "pillar_iCAkKB",
+        "pillar_XfbpKc",
+        "pillar_icU6rp",
+        "sf_row_8hB7We",
+        "sf_row_qK9hKd",
+        "sf_row_iprbhb",
+        "badge_Gxj3gY",
+        "badge_rbVcq8",
+        "badge_Qqfw7C",
+        "badge_qdpDQF",
+        "badge_TBYbbk",
+        "badge_RcbzkT"
+      ],
+      "name": "What's Inside",
+      "settings": {
+        "eyebrow": "Per-Product Ingredients",
+        "title": "What's inside",
+        "script": "this bottle.",
+        "subtitle": "All ingredients certified organic. Nothing synthetic. Nothing your biology doesn't recognise.",
+        "ing_label": "Ingredients",
+        "pillars_label": "The Four Pillars",
+        "sf_label": "Supplement Facts",
+        "sf_title": "Supplement Facts",
+        "sf_serving_size": "Serving Size: 2 Sprays (approx. 0.28 ml)",
+        "sf_servings": "Servings Per Container: About 53",
+        "sf_calories": "2",
+        "sf_other_ingredients": "Certified Organic Coconut Glycerin, Certified Organic Spearmint Essential Oil, Certified Organic Peppermint Essential Oil, Certified Organic Coconut Essential Oil, Certified Organic Myrrh Essential Oil. Oxygen infusion and EZ Water generated during manufacturing. Biofield frequencies embedded during manufacturing.",
+        "sf_note_1": "*Percent Daily Values are based on a 2,000 calorie diet. †Daily Value not established.",
+        "sf_note_2": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+        "bg_color": "#ffffff",
+        "navy_color": "#232748",
+        "coral_color": "#ef4a22",
+        "purple_color": "#7b5cc4",
+        "gold_color": "#b8862f",
+        "sub_color": "#4b4f63",
+        "body_color": "#6b6f82",
+        "label_color": "#8a8f9e",
+        "line_color": "#ece7de",
+        "cardbg_color": "#fcfaf6",
+        "green_color": "#3fae54",
+        "ink_color": "#1b1b1b",
+        "card_color": "#ffffff"
+      }
+    },
+    "how_to_use_33aggh": {
+      "type": "how-to-use",
+      "blocks": {
+        "step_cW6E6T": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Spray or pump",
+            "body": "<p>1–2 sprays directly onto the tongue, or 1–2 pumps. No water needed.</p>",
+            "meta": "0–5 Seconds"
+          }
+        },
+        "step_fVUhLf": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Hold 60 seconds",
+            "body": "<p>Allow the formulation to move through the oral environment. Swirl gently if you like.</p>",
+            "meta": "30 Seconds"
+          }
+        },
+        "step_YcRdtT": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Swallow",
+            "body": "<p>OG3™ is completely safe to swallow. All ingredients are certified organic and food-grade. No rinsing needed.</p>",
+            "meta": "20 Seconds"
+          }
+        },
+        "step_LbC4Rm": {
+          "type": "step",
+          "settings": {
+            "number": "04",
+            "title": "Anytime",
+            "body": "<p>Morning, after meals, before a kiss, or before bed. Before bed is especially beneficial — it supports the oral environment through the overnight hours when anaerobic bacteria are most active.</p>",
+            "meta": "Every Morning"
+          }
+        }
+      },
+      "block_order": [
+        "step_cW6E6T",
+        "step_fVUhLf",
+        "step_YcRdtT",
+        "step_LbC4Rm"
+      ],
+      "name": "How To Use",
+      "settings": {
+        "eyebrow_text": "How to use",
+        "eyebrow_font": "--font-tag-family",
+        "heading_text": "The daily",
+        "heading_font": "--font-heading-family",
+        "script_text": "ritual.",
+        "script_font": "--font-accent-family",
+        "columns_desktop": "4",
+        "num_font": "--font-heading-family",
+        "card_title_font": "--font-heading-family",
+        "card_body_font": "--font-heading-family",
+        "card_meta_font": "--font-tag-family",
+        "bg_color": "#ef4a22",
+        "script_color": "#f7ca6a",
+        "sub_color": "#fbd9cc",
+        "num_bg_color": "#ffffff",
+        "num_text_color": "#ef4a22",
+        "card_bg_color": "#232748",
+        "card_body_color": "#c9ccdd",
+        "card_meta_color": "#8f93ab",
+        "gold_color": "#f6b944",
+        "gold_ink_color": "#26202a",
+        "gold_body_color": "#4a3d28",
+        "gold_meta_color": "#8a7343"
+      }
+    },
+    "what_to_expect_6f7XNJ": {
+      "type": "what-to-expect",
+      "blocks": {
+        "stage_qPVQfQ": {
+          "type": "stage",
+          "settings": {
+            "icon": "plant",
+            "day": "Days 1–3",
+            "title": "",
+            "body": "A noticeably cleaner feeling after use. The formulation is working immediately — restoring oxygen to the oral environment with each application."
+          }
+        },
+        "stage_nhPJgm": {
+          "type": "stage",
+          "settings": {
+            "icon": "leaf",
+            "day": "Days 4–14",
+            "title": "",
+            "body": "As the aerobic community re-establishes itself, many people notice a sustained freshness that persists between uses. Morning breath begins to change"
+          }
+        },
+        "stage_WhihEW": {
+          "type": "stage",
+          "settings": {
+            "icon": "flower",
+            "day": "Weeks 3–4 and Beyond",
+            "title": "",
+            "body": "The oral ecology is restoring. The freshness becomes the baseline rather than the exception. Individual results vary — the ecology works at its own pace."
+          }
+        }
+      },
+      "block_order": [
+        "stage_qPVQfQ",
+        "stage_nhPJgm",
+        "stage_WhihEW"
+      ],
+      "name": "What to Expect",
+      "settings": {
+        "eyebrow": "Results Timeline",
+        "title": "What to",
+        "script": "expect.",
+        "image": "shopify://shop_images/Container.png",
+        "bg_color": "#ffffff",
+        "navy_color": "#232748",
+        "coral_color": "#ef4a22",
+        "green_color": "#3fae54",
+        "body_color": "#55586b",
+        "line_color": "#ece7de",
+        "circle_color": "#f3ecd4",
+        "imgbg_color": "#f2efe6"
+      }
+    },
+    "miron_formulation_note_yyUmEq": {
+      "type": "miron-formulation-note",
+      "name": "Miron & Formulation Note",
+      "settings": {
+        "bg_color": "#ffffff",
+        "rust_eyebrow": "Caring for your Miron glass bottle",
+        "rust_title": "",
+        "rust_body": "Store away from prolonged direct sunlight. The Miron violet glass is actively protecting the formulation — it transmits the beneficial infrared and UV-A spectrum while blocking the visible light that degrades bioactive ingredients. Keep the cap closed when not in use. The bottle is reusable and recyclable.",
+        "rust_bg": "#b0512e",
+        "rust_eyebrow_color": "#ffe8d9",
+        "rust_title_color": "#fdeee4",
+        "rust_body_color": "#fdeee4",
+        "gold_eyebrow": "A note on our formulation",
+        "gold_title": "",
+        "gold_body_1": "OG3™ is designed to work <strong>with</strong> your oral microbiome, not against it. Every ingredient is certified organic and selected because the body recognises it. The oxygen infusion, EZ water, and biofield frequencies are properties of the formulation process — not additives. <strong>Nothing in any OG3™ product will harm your oral microbiome.</strong>",
+        "gold_body_2": "Safe to swallow. If you are pregnant, nursing, or under medical supervision for an oral condition, consult your healthcare provider before use.",
+        "gold_bg": "#f7e7bf",
+        "gold_eyebrow_color": "#b79445",
+        "gold_title_color": "#2a2410",
+        "gold_body_color": "#4a4636",
+        "fda_label": "FDA Disclosure",
+        "fda_body_1": "These statements have not been evaluated by the Food and Drug Administration. OG3™ is not intended to diagnose, treat, cure, or prevent any disease. OG3™ is a dietary supplement. Results may vary between individuals. The information provided on this page is for educational purposes and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified healthcare provider with any questions you may have regarding a medical condition. Do not disregard professional medical advice or delay seeking it because of information you have read here.",
+        "fda_body_2": "If you are pregnant, nursing, taking prescription medication, or have a diagnosed health condition, consult your healthcare provider before use. Keep out of reach of children under 2 years of age. Store in a cool, dry place away from direct sunlight.",
+        "fda_bg": "#fbf4ee",
+        "fda_label_color": "#6b5f52",
+        "fda_body_color": "#333333",
+        "purple_color": "#7b2fd6",
+        "green_color": "#3fae54"
+      }
+    },
     "how_it_works_6PzQUH": {
       "type": "how-it-works",
       "blocks": {
@@ -407,81 +821,6 @@
         "ink_color": "#1f1f1f"
       }
     },
-    "how_to_use_33aggh": {
-      "type": "how-to-use",
-      "blocks": {
-        "step_cW6E6T": {
-          "type": "step",
-          "settings": {
-            "number": "01",
-            "title": "Pump + Spray",
-            "body": "<p>Choose sublingual, targeted freshness, or spray throughout the day for instant freshness.</p>",
-            "meta": "0–5 Seconds"
-          }
-        },
-        "step_fVUhLf": {
-          "type": "step",
-          "settings": {
-            "number": "02",
-            "title": "The 60-Second Hold",
-            "body": "<p>Apply 1-2 drops under the tongue or spray directly into the mouth. Hold for 30–60 seconds to allow to penetrate and activate.</p>",
-            "meta": "30 Seconds"
-          }
-        },
-        "step_YcRdtT": {
-          "type": "step",
-          "settings": {
-            "number": "03",
-            "title": "Safe to Swallow",
-            "body": "<p>Our formula is 100% natural, made from Certified Organic Coconut Glycerin. Gentle, nourishing, and completely safe.</p>",
-            "meta": "20 Seconds"
-          }
-        },
-        "step_LbC4Rm": {
-          "type": "step",
-          "settings": {
-            "number": "04",
-            "title": "Feel Alive",
-            "body": "<p>Experience the fresh vitality of a truly living, balanced oral ecosystem. Naturally sweet taste. Clean — not sterilized. Alive.</p>",
-            "meta": "Every Morning"
-          }
-        }
-      },
-      "block_order": [
-        "step_cW6E6T",
-        "step_fVUhLf",
-        "step_YcRdtT",
-        "step_LbC4Rm"
-      ],
-      "name": "How To Use",
-      "settings": {
-        "eyebrow_text": "The Daily Reset",
-        "eyebrow_font": "--font-tag-family",
-        "heading_text": "60 Seconds",
-        "heading_font": "--font-heading-family",
-        "script_text": "to freshness",
-        "script_font": "--font-accent-family",
-        "subtitle_text": "<p>A simple 60-second oral reset for lasting wellness</p>",
-        "subtitle_font": "--font-heading-family",
-        "columns_desktop": "4",
-        "num_font": "--font-heading-family",
-        "card_title_font": "--font-heading-family",
-        "card_body_font": "--font-heading-family",
-        "card_meta_font": "--font-tag-family",
-        "bg_color": "#ef4a22",
-        "script_color": "#f7ca6a",
-        "sub_color": "#fbd9cc",
-        "num_bg_color": "#ffffff",
-        "num_text_color": "#ef4a22",
-        "card_bg_color": "#232748",
-        "card_body_color": "#c9ccdd",
-        "card_meta_color": "#8f93ab",
-        "gold_color": "#f6b944",
-        "gold_ink_color": "#26202a",
-        "gold_body_color": "#4a3d28",
-        "gold_meta_color": "#8a7343"
-      }
-    },
     "comparison_table_g4YXzi": {
       "type": "comparison-table",
       "blocks": {
@@ -661,9 +1000,13 @@
   "order": [
     "main",
     "ingredients_band_GRpGd9",
+    "four_pillars_NP4BtD",
+    "whats_inside_GAtf8L",
+    "how_to_use_33aggh",
+    "what_to_expect_6f7XNJ",
+    "miron_formulation_note_yyUmEq",
     "how_it_works_6PzQUH",
     "on_the_go_3Wa7qR",
-    "how_to_use_33aggh",
     "comparison_table_g4YXzi",
     "reviews_slider_PKVNUe",
     "related-products",
