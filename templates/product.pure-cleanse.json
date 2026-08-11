@@ -92,7 +92,7 @@
           "settings": {
             "heading": "Shipping & returns",
             "icon": "apple",
-            "content": "<p>{{ product.metafields.custom.what_s_inside | metafield_tag }}</p>",
+            "content": "",
             "page": ""
           }
         },
