@@ -350,13 +350,10 @@
       font-weight: 300;
       line-height: 32px;
     }
-    /* Smooth height transition on content */
-    .section-{{ section.id }}-padding .product__accordion .accordion__content {
-      overflow: hidden;
-    }
     /* Content area */
     .section-{{ section.id }}-padding .product__accordion .accordion__content {
-      padding: 4px 0 24px;
+      padding: 4px 0 20px;
+      margin-bottom: 0;
       font-size: 15px;
       line-height: 1.7;
       color: #4b4f63;
@@ -1099,40 +1096,51 @@
   <script>
     (function () {
       /* ── Smooth accordion animation ── */
-      document.querySelectorAll('#ProductInfo-{{ section.id }} .product__accordion details summary').forEach(function (summary) {
-        summary.addEventListener('click', function (e) {
-          e.preventDefault();
-          var details = summary.parentElement;
-          var content = details.querySelector('.accordion__content');
-          if (!content) { details.open = !details.open; return; }
+      function initProductAccordions() {
+        document.querySelectorAll('#ProductInfo-{{ section.id }} .product__accordion details summary').forEach(function (summary) {
+          if (summary._accordionBound) return;
+          summary._accordionBound = true;
+          summary.addEventListener('click', function (e) {
+            e.preventDefault();
+            var details = summary.parentElement;
+            var content = details.querySelector('.accordion__content');
+            if (!content) { details.open = !details.open; return; }
 
-          if (!details.open) {
-            details.open = true;
-            content.style.height = '0px';
-            content.style.overflow = 'hidden';
-            requestAnimationFrame(function () {
-              content.style.transition = 'height 0.28s ease';
-              content.style.height = content.scrollHeight + 'px';
-              content.addEventListener('transitionend', function done() {
-                content.style.cssText = '';
-                content.removeEventListener('transitionend', done);
-              });
-            });
-          } else {
-            content.style.height = content.offsetHeight + 'px';
-            content.style.overflow = 'hidden';
-            requestAnimationFrame(function () {
-              content.style.transition = 'height 0.28s ease';
+            if (!details.open) {
+              details.open = true;
               content.style.height = '0px';
-              content.addEventListener('transitionend', function done() {
-                details.open = false;
-                content.style.cssText = '';
-                content.removeEventListener('transitionend', done);
+              content.style.overflow = 'hidden';
+              requestAnimationFrame(function () {
+                content.style.transition = 'height 0.28s ease';
+                content.style.height = content.scrollHeight + 'px';
+                content.addEventListener('transitionend', function done() {
+                  content.style.cssText = '';
+                  content.removeEventListener('transitionend', done);
+                }, { once: true });
               });
-            });
-          }
+            } else {
+              content.style.height = content.offsetHeight + 'px';
+              content.style.overflow = 'hidden';
+              requestAnimationFrame(function () {
+                content.style.transition = 'height 0.28s ease';
+                content.style.height = '0px';
+                content.addEventListener('transitionend', function done() {
+                  details.open = false;
+                  content.style.cssText = '';
+                  content.removeEventListener('transitionend', done);
+                }, { once: true });
+              });
+            }
+          });
         });
-      });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initProductAccordions);
+      } else {
+        initProductAccordions();
+      }
+      document.addEventListener('shopify:section:load', initProductAccordions);
     })();
 
     (function () {
