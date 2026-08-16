@@ -130,12 +130,26 @@
   /* ── Responsive ─────────────────────────────────────────────── */
   @media screen and (max-width: 780px) {
     .scihook-{{ section.id }} .sci__compare {
-      grid-template-columns: 1fr;
-      gap: clamp(30px, 6vw, 44px);
-      justify-items: center;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "img  img"
+        "high low";
+      gap: clamp(20px, 5vw, 32px) clamp(12px, 4vw, 24px);
+      justify-items: start;
+      align-items: start;
     }
-    .scihook-{{ section.id }} .sci__stat { letter-spacing: -2px; }
-    .scihook-{{ section.id }} .sci__media { width: min(200px, 60vw); }
+    /* image spans full width, on top */
+    .scihook-{{ section.id }} .sci__media {
+      grid-area: img;
+      justify-self: center;
+      width: min(280px, 72vw);
+    }
+    /* low col (first in DOM) moves to right */
+    .scihook-{{ section.id }} .sci__col:first-child { grid-area: low; width: 100%; }
+    /* high col (last in DOM) moves to left */
+    .scihook-{{ section.id }} .sci__col:last-child  { grid-area: high; width: 100%; }
+    .scihook-{{ section.id }} .sci__col { text-align: center; }
+    .scihook-{{ section.id }} .sci__stat { letter-spacing: -2px; font-size: clamp(44px, 12vw, 80px); }
   }
   @media screen and (max-width: 480px) {
     .scihook-{{ section.id }} .sci__cta { width: 100%; }
