@@ -535,9 +535,9 @@
         "bg_color": "#ffffff",
         "navy_color": "#2b3054",
         "coral_color": "#ef4a22",
-        "olive_color": "#ac9e64",
+        "olive_color": "#000000",
         "intro_color": "#3f4256",
-        "body_color": "#ac9e64",
+        "body_color": "#000000",
         "line_color": "#ece7de"
       }
     },
@@ -593,8 +593,8 @@
         "bg_color": "#ffffff",
         "navy_color": "#2b3054",
         "coral_color": "#ef4a22",
-        "olive_color": "#9a8a3f",
-        "meta_color": "#b9a97e",
+        "olive_color": "#333333",
+        "meta_color": "#000000",
         "line_color": "#ededf1",
         "border_color": "#f0eeea"
       }

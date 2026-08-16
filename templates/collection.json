@@ -32,7 +32,7 @@
           "type": "badge",
           "settings": {
             "icon": "🚀",
-            "label": "Free Shipping $49+"
+            "label": "Free Shipping $99+"
           }
         },
         "badge_DNFAgQ": {
@@ -46,7 +46,7 @@
           "type": "badge",
           "settings": {
             "icon": "🔄",
-            "label": "90-Day Guarantee"
+            "label": "30-Day Guarantee"
           }
         }
       },
@@ -66,7 +66,7 @@
         "show_tm": true,
         "script_after": "Drops.",
         "script_font": "--font-accent-family",
-        "subtitle_text": "3 flavors · 2 formats · 6 ways to supporte your living mouth",
+        "subtitle_text": "3 flavors · 2 formats · 3 ways to support your living mouth",
         "subtitle_font": "--font-heading-family",
         "badge_font": "--font-tag-family",
         "show_curve": true,
