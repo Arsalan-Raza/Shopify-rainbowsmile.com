@@ -370,7 +370,12 @@
       {%- render 'cart-drawer' -%}
     {%- endif -%}
 
-    {%- comment -%} Default site header intentionally omitted for Kenya campaign page {%- endcomment -%}
+    {% sections 'header-group' %}
+
+    <style>
+      /* Kenya layout: hide the legacy custom header — default header is used instead */
+      .kenya-header-section { display: none !important; }
+    </style>
 
     <main
       id="MainContent"

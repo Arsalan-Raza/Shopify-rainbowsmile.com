@@ -194,25 +194,35 @@
       endif
     -%}
 
+    {%- liquid
+      if request.path contains '/pages/kenya' and section.settings.kenya_logo != blank
+        assign _logo = section.settings.kenya_logo
+        assign _logo_width = section.settings.kenya_logo_width
+      else
+        assign _logo = settings.logo
+        assign _logo_width = settings.logo_width
+      endif
+    -%}
+
     {%- if section.settings.logo_position != 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">
       {%- endif -%}
       <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-        {%- if settings.logo != blank -%}
+        {%- if _logo != blank -%}
           <div class="header__heading-logo-wrapper">
-            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-            {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-            {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
-            {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+            {%- assign logo_alt = _logo.alt | default: shop.name | escape -%}
+            {%- assign logo_height = _logo_width | divided_by: _logo.aspect_ratio -%}
+            {% capture sizes %}(max-width: {{ _logo_width | times: 2 }}px) 50vw, {{ _logo_width }}px{% endcapture %}
+            {% capture widths %}{{ _logo_width }}, {{ _logo_width | times: 1.5 | round }}, {{ _logo_width | times: 2 }}{% endcapture %}
             {{
-              settings.logo
+              _logo
               | image_url: width: 600
               | image_tag:
                 class: 'header__heading-logo motion-reduce',
                 widths: widths,
                 height: logo_height,
-                width: settings.logo_width,
+                width: _logo_width,
                 alt: logo_alt,
                 sizes: sizes,
                 preload: true
@@ -242,20 +252,20 @@
         <h1 class="header__heading">
       {%- endif -%}
       <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-        {%- if settings.logo != blank -%}
+        {%- if _logo != blank -%}
           <div class="header__heading-logo-wrapper">
-            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-            {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-            {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
-            {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+            {%- assign logo_alt = _logo.alt | default: shop.name | escape -%}
+            {%- assign logo_height = _logo_width | divided_by: _logo.aspect_ratio -%}
+            {% capture sizes %}(min-width: 750px) {{ _logo_width }}px, 50vw{% endcapture %}
+            {% capture widths %}{{ _logo_width }}, {{ _logo_width | times: 1.5 | round }}, {{ _logo_width | times: 2 }}{% endcapture %}
             {{
-              settings.logo
+              _logo
               | image_url: width: 600
               | image_tag:
                 class: 'header__heading-logo',
                 widths: widths,
                 height: logo_height,
-                width: settings.logo_width,
+                width: _logo_width,
                 alt: logo_alt,
                 sizes: sizes,
                 preload: true
@@ -728,6 +738,25 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Kenya Page Logo"
+    },
+    {
+      "type": "paragraph",
+      "content": "Shown instead of the default logo on /pages/kenya only."
+    },
+    {
+      "type": "image_picker",
+      "id": "kenya_logo",
+      "label": "Kenya logo"
+    },
+    {
+      "type": "number",
+      "id": "kenya_logo_width",
+      "label": "Kenya logo width (px)",
+      "default": 120
     }
   ],
   "blocks": [
