@@ -77,13 +77,13 @@
         "eyebrow_text": "OUR MISSION",
         "eyebrow_font": "--font-tag-family",
         "eyebrow_color": "#ef4f28",
-        "heading_main": "UBU —",
+        "heading_main": "UBU",
         "heading_main_font": "--font-heading-family",
         "heading_main_color": "#262949",
-        "heading_script": "You Be You.",
+        "heading_script": "You Be You",
         "heading_script_font": "--font-accent-family",
         "heading_script_color": "#ef4f28",
-        "quote_text": "<p>“We started Rainbow Smile with a simple belief: when you care for the tiny world inside your mouth, your whole self feels the difference. Your smile isn’t just about teeth — it’s a living connection to your gut, your immune balance, and your daily well-being. Our mission is to create oral care that treats your body with kindness, from the inside out.”</p>",
+        "quote_text": "<p>“We started Rainbow Smile with a simple belief: when you care for the tiny world inside your mouth, your whole self feels the difference. Your smile isn’t just about teeth, it’s a living connection to your gut, your immune balance, and your daily well-being. Our mission is to create oral care that treats your body with kindness, from the inside out.”</p>",
         "quote_font": "--font-heading-family",
         "quote_color": "#262949",
         "padding_top": 80,
@@ -96,19 +96,19 @@
         "slide_6iBqMJ": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/a84e8d1c5ba2da1c6ce218c1d732b1824c306fab.png"
+            "image": "shopify://shop_images/o.jpg"
           }
         },
         "slide_KE8V7f": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/3a0ec7a26c6a9604068d68a50cf94cf9ebb42dfd.png"
+            "image": "shopify://shop_images/10.png"
           }
         },
         "slide_mQrAE9": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/3e0dd58a0d7649a9939fbb5a1f425dc750ecbeac.png"
+            "image": "shopify://shop_images/v.jpg"
           }
         },
         "slide_jQWzhL": {
@@ -120,13 +120,13 @@
         "slide_yJUTQn": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/caf8eda9bb8003ea2b507939320128039db5c08d.png"
+            "image": "shopify://shop_images/u_copy.jpg"
           }
         },
         "slide_H7DG3d": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/3e0dd58a0d7649a9939fbb5a1f425dc750ecbeac.png"
+            "image": "shopify://shop_images/19.png"
           }
         }
       },
@@ -171,7 +171,7 @@
         "heading_font": "--font-heading-family",
         "script_text": "Revolution.",
         "script_font": "--font-accent-family",
-        "body_text": "<p>Most oral care fights what nature designed to flourish. We<br/>believe in harmony, not warfare — in nurturing the oral ecosystem that bridges<br/>mouth, gut, heart, and brain.</p>",
+        "body_text": "<p>Most oral care fights what nature designed to flourish. We<br/>believe in harmony, not warfare, in nurturing the oral ecosystem that bridges<br/>mouth, gut, heart, and brain.</p>",
         "body_font": "--font-heading-family",
         "heading_color": "#1b2240",
         "body_color": "#3b4063",

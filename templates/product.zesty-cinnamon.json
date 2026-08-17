@@ -78,6 +78,15 @@
             "page": ""
           }
         },
+        "collapsible_tab_UrzNdw": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "The Process",
+            "icon": "apple",
+            "content": "{{ product.metafields.custom.the_process | metafield_tag }}",
+            "page": ""
+          }
+        },
         "collapsible_tab_tURayk": {
           "type": "collapsible_tab",
           "settings": {
@@ -92,16 +101,7 @@
           "settings": {
             "heading": "Shipping & returns",
             "icon": "apple",
-            "content": "<p>{{ product.metafields.custom.what_s_inside | metafield_tag }}</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_UrzNdw": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "FDA disclosure",
-            "icon": "apple",
-            "content": "<p>These statements have not been evaluated by the Food and Drug Administration. OG3™ is not intended to diagnose, treat, cure, or prevent any disease. OG3™ is a dietary supplement. Results may vary between individuals. The information provided on this page is for educational purposes and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified healthcare provider with any questions you may have regarding a medical condition. Do not disregard professional medical advice or delay seeking it because of information you have read here.<br/><br/>If you are pregnant, nursing, taking prescription medication, or have a diagnosed health condition, consult your healthcare provider before use. Keep out of reach of children under 2 years of age. Store in a cool, dry place away from direct sunlight.<br/></p>",
+            "content": "<p><strong>Shipping: </strong>Free shipping on orders $99 and over. Standard shipping calculated at checkout on orders under $99. All orders ship in eco-friendly packaging.<br/><br/><strong>Returns: </strong>30-day money back guarantee. If you are not satisfied with your purchase for any reason, contact us within 30 days of delivery for a full refund. No questions asked.<br/><br/><a href=\"/pages/contact\" title=\"Contact\">rainbowsmile.com/pages/contact</a></p>",
             "page": ""
           }
         }
@@ -117,9 +117,9 @@
         "buy_buttons",
         "trust_bar_EgtwAd",
         "collapsible_tab_xt8Uad",
+        "collapsible_tab_UrzNdw",
         "collapsible_tab_tURayk",
-        "collapsible_tab_jfmUtK",
-        "collapsible_tab_UrzNdw"
+        "collapsible_tab_jfmUtK"
       ],
       "settings": {
         "gallery_badge": "",
