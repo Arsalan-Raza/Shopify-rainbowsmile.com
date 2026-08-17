@@ -82,7 +82,7 @@
     margin: clamp(20px, 3vw, 34px) 0 0;
     font-family: var(--font-{{ section.settings.heading_font }}-family);
     font-weight: 800;
-    font-size: clamp(36px, 4.5vw, 56px);
+    font-size: clamp(38px, 4.5vw, 56px);
     line-height: 0.98;
     letter-spacing: -2px;
     color: #ffffff;
@@ -96,7 +96,7 @@
     max-width: 560px;
     font-family: var(--font-{{ section.settings.body_font }}-family);
     font-weight: 700;
-    font-size: clamp(16px, 1.4vw, 18px);
+    font-size: clamp(18px, 1.4vw, 18px);
     line-height: 1.45;
     color: #ffffff;
     text-shadow: 0 2px 18px rgba(0, 0, 0, 0.3);
@@ -207,7 +207,13 @@
       padding: 15px 20px;
       line-height: normal; 
   }
-    .hero-{{ section.id }} .hero__btn--outline { background: transparent; color: #ffffff; border-color: #ffffff; }
+    .hero-{{ section.id }} .hero__btn--outline {
+      background: transparent;
+      color: #ffffff;
+      border-color: #ffffff;
+      position: absolute;
+      bottom: -20rem;
+    }
     .hero-{{ section.id }} .hero__btn--outline:hover { background: rgba(255,255,255,0.12); }
     .hero-{{ section.id }} .hero__proof { display: none; }
   }
