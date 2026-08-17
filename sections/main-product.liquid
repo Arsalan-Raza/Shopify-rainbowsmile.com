@@ -1107,29 +1107,32 @@
             if (!content) { details.open = !details.open; return; }
 
             if (!details.open) {
+              /* — Expand — */
               details.open = true;
+              var targetH = content.scrollHeight; // measure before zeroing height
+              content.style.overflow = 'hidden';
+              content.style.transition = 'none';
               content.style.height = '0px';
-              content.style.overflow = 'hidden';
-              requestAnimationFrame(function () {
-                content.style.transition = 'height 0.28s ease';
-                content.style.height = content.scrollHeight + 'px';
-                content.addEventListener('transitionend', function done() {
-                  content.style.cssText = '';
-                  content.removeEventListener('transitionend', done);
-                }, { once: true });
-              });
+              void content.offsetHeight; // force reflow so browser registers 0px
+              content.style.transition = 'height 0.3s ease';
+              content.style.height = targetH + 'px';
+              content.addEventListener('transitionend', function done(ev) {
+                if (ev.propertyName !== 'height') return;
+                content.style.cssText = '';
+              }, { once: true });
             } else {
-              content.style.height = content.offsetHeight + 'px';
+              /* — Collapse — */
               content.style.overflow = 'hidden';
-              requestAnimationFrame(function () {
-                content.style.transition = 'height 0.28s ease';
-                content.style.height = '0px';
-                content.addEventListener('transitionend', function done() {
-                  details.open = false;
-                  content.style.cssText = '';
-                  content.removeEventListener('transitionend', done);
-                }, { once: true });
-              });
+              content.style.transition = 'none';
+              content.style.height = content.scrollHeight + 'px';
+              void content.offsetHeight; // force reflow so browser registers full height
+              content.style.transition = 'height 0.3s ease';
+              content.style.height = '0px';
+              content.addEventListener('transitionend', function done(ev) {
+                if (ev.propertyName !== 'height') return;
+                details.open = false;
+                content.style.cssText = '';
+              }, { once: true });
             }
           });
         });
