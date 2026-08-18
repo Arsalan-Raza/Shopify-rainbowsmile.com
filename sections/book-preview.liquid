@@ -205,18 +205,20 @@
   }
   #shopify-section-{{ section.id }} .bpv__arrow:focus-visible { outline: 3px solid rgba(245,184,66,0.6); outline-offset: 3px; }
 
-  #shopify-section-{{ section.id }} .bpv__dots { display: flex; gap: 8px; flex-wrap: wrap; }
-  #shopify-section-{{ section.id }} .bpv__dot {
-    width: 7px; height: 7px;
-    padding: 0;
-    border: none;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.22);
-    cursor: pointer;
-    transition: background-color 0.16s ease, transform 0.16s ease;
+  #shopify-section-{{ section.id }} .bpv__progress-wrap {
+    flex: 1;
+    height: 4px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 2px;
+    overflow: hidden;
   }
-  #shopify-section-{{ section.id }} .bpv__dot[aria-current="true"] { background: var(--bp-gold); transform: scale(1.25); }
-  #shopify-section-{{ section.id }} .bpv__dot:focus-visible { outline: 2px solid var(--bp-gold); outline-offset: 3px; }
+  #shopify-section-{{ section.id }} .bpv__progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--bp-gold);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
 
   /* ---------- Right panels ---------- */
   #shopify-section-{{ section.id }} .bpv__panel-label {
@@ -448,7 +450,9 @@
 
         <div class="bpv__controls">
           <button class="bpv__arrow" type="button" data-prev aria-label="Previous page">←</button>
-          <div class="bpv__dots" data-dots role="tablist" aria-label="Pages"></div>
+          <div class="bpv__progress-wrap" aria-hidden="true">
+            <div class="bpv__progress-bar" data-progress></div>
+          </div>
           <button class="bpv__arrow" type="button" data-next aria-label="Next page">→</button>
         </div>
       </div>
@@ -568,40 +572,28 @@
 
 <script>
 (function () {
-  var root     = document.querySelector('[data-bpv="{{ section.id }}"]');
+  var root        = document.querySelector('[data-bpv="{{ section.id }}"]');
   if (!root) return;
-  var cfg      = JSON.parse(document.getElementById('bpv-config-{{ section.id }}').textContent);
-  var LABELS   = cfg.labels;
-  var total    = cfg.total;
+  var cfg         = JSON.parse(document.getElementById('bpv-config-{{ section.id }}').textContent);
+  var LABELS      = cfg.labels;
+  var total       = cfg.total;
   if (total === 0) return;
 
-  var pages    = Array.prototype.slice.call(root.querySelectorAll('[data-page]'));
-  var stage    = root.querySelector('[data-stage]');
-  var prevBtn  = root.querySelector('[data-prev]');
-  var nextBtn  = root.querySelector('[data-next]');
-  var dotsWrap = root.querySelector('[data-dots]');
-  var counter  = root.querySelector('[data-counter]');
-  var chapBtns = Array.prototype.slice.call(root.querySelectorAll('[data-goto]'));
-  var fsBtn    = root.querySelector('[data-fullscreen]');
-  var index    = 0;
-
-  var dots = pages.map(function (_, i) {
-    var d = document.createElement('button');
-    d.className = 'bpv__dot';
-    d.type = 'button';
-    d.setAttribute('role', 'tab');
-    d.setAttribute('aria-label', 'Go to page ' + (i + 1));
-    d.setAttribute('aria-current', i === 0 ? 'true' : 'false');
-    d.addEventListener('click', function () { go(i); });
-    dotsWrap.appendChild(d);
-    return d;
-  });
+  var pages       = Array.prototype.slice.call(root.querySelectorAll('[data-page]'));
+  var stage       = root.querySelector('[data-stage]');
+  var prevBtn     = root.querySelector('[data-prev]');
+  var nextBtn     = root.querySelector('[data-next]');
+  var progressBar = root.querySelector('.bpv__progress-bar');
+  var counter     = root.querySelector('[data-counter]');
+  var chapBtns    = Array.prototype.slice.call(root.querySelectorAll('[data-goto]'));
+  var fsBtn       = root.querySelector('[data-fullscreen]');
+  var index       = 0;
 
   function go(i) {
     index = Math.min(total - 1, Math.max(0, i));
 
     pages.forEach(function (p, n) { p.classList.toggle('is-active', n === index); });
-    dots.forEach(function (d, n) { d.setAttribute('aria-current', String(n === index)); });
+    if (progressBar) progressBar.style.width = ((index + 1) / total * 100).toFixed(2) + '%';
     chapBtns.forEach(function (b) {
       b.setAttribute('aria-current', String(parseInt(b.dataset.goto, 10) === index));
     });
@@ -633,6 +625,20 @@
     });
   }
 
+  // Touch / swipe support
+  var _tx = 0, _ty = 0;
+  stage.addEventListener('touchstart', function (e) {
+    _tx = e.changedTouches[0].clientX;
+    _ty = e.changedTouches[0].clientY;
+  }, { passive: true });
+  stage.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - _tx;
+    var dy = e.changedTouches[0].clientY - _ty;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      dx < 0 ? go(index + 1) : go(index - 1);
+    }
+  }, { passive: true });
+
   go(0);
 })();
 </script>
@@ -642,6 +648,7 @@
   "name": "Book Preview",
   "tag": "section",
   "class": "book-preview-section",
+  "max_blocks": 100,
   "blocks": [
     {
       "type": "page",
