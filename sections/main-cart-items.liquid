@@ -17,6 +17,129 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  /* ── Subscribe & Save cart upsell ── */
+  .cart-item__sub-wrap { margin-top: 10px; }
+
+  .cart-item__subscribed-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #ef4f28;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .cart-item__unsub-link {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    color: rgb(239 79 40);
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: left;
+    font-weight: 600;
+  }
+  .cart-item__unsub-link:hover { color: rgba(var(rgb(239 79 40)), 0.7); }
+
+  .cart-item__sub-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 8px;
+    padding: 7px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #ef4f28;
+    background: transparent;
+    border: 1.5px solid #ef4f28;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+  }
+  .cart-item__sub-btn:hover { background: #ef4f28; color: #fff; }
+  .cart-item__sub-btn[aria-busy="true"] { opacity: 0.6; pointer-events: none; }
+
+  .cart-item__plan-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+    padding: 10px 12px;
+    background: #fdf6f0;
+    border: 1px solid #f0ddd4;
+    border-radius: 8px;
+  }
+
+  .cart-item__plan-picker-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 2px;
+  }
+
+  .cart-item__plan-opt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #232748;
+    background: #fff;
+    border: 1.5px solid #e8ddd5;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .cart-item__plan-opt:hover { border-color: #ef4f28; background: #fff8f5; }
+  .cart-item__plan-opt[aria-busy="true"] { opacity: 0.6; pointer-events: none; }
+
+  .cart-item__plan-opt-discount {
+    font-size: 11px;
+    font-weight: 700;
+    color: #ef4f28;
+    white-space: nowrap;
+    margin-left: 8px;
+  }
+
+  .cart-item__plan-cancel {
+    font-size: 12px;
+    color: rgba(var(--color-foreground), 0.4);
+    background: none;
+    border: none;
+    padding: 2px 0 0;
+    cursor: pointer;
+    text-decoration: underline;
+    text-align: left;
+  }
+
+  @media screen and (max-width: 749px) {
+    .cart-item__sub-btn {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+    .cart-item__plan-picker {
+      width: 100%;
+    }
+    .cart-item__plan-opt {
+      width: 100%;
+    }
+  }
 {%- endstyle -%}
 
 {%- unless settings.cart_type == 'drawer' -%}
@@ -175,6 +298,54 @@
                         </dl>
 
                         <p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                      {%- endif -%}
+
+                      {%- comment -%} Subscribe & Save upsell {%- endcomment -%}
+                      {%- if item.product.selling_plan_groups.size > 0 -%}
+                        <div class="cart-item__sub-wrap">
+                          {%- if item.selling_plan_allocation != null -%}
+                            <span class="cart-item__subscribed-tag">&#10003; Subscribed</span>
+                            <button
+                              class="cart-item__unsub-link"
+                              type="button"
+                              data-unsub
+                              data-item-key="{{ item.key }}"
+                              data-item-qty="{{ item.quantity }}"
+                            >Switch to one-time purchase</button>
+                          {%- else -%}
+                            <button
+                              class="cart-item__sub-btn"
+                              type="button"
+                              data-sub-toggle
+                              aria-expanded="false"
+                            >&#8635; Subscribe &amp; Save</button>
+                            <div class="cart-item__plan-picker" hidden data-plan-picker>
+                              <p class="cart-item__plan-picker-label">Choose a delivery plan</p>
+                              {%- for group in item.product.selling_plan_groups -%}
+                                {%- for plan in group.selling_plans -%}
+                                  {%- assign adj = plan.price_adjustments | first -%}
+                                  <button
+                                    class="cart-item__plan-opt"
+                                    type="button"
+                                    data-plan-id="{{ plan.id }}"
+                                    data-item-key="{{ item.key }}"
+                                    data-item-qty="{{ item.quantity }}"
+                                  >
+                                    <span>{{ plan.name }}</span>
+                                    {%- if adj != null -%}
+                                      {%- if adj.value_type == 'percentage' -%}
+                                        <span class="cart-item__plan-opt-discount">{{ adj.value }}% off</span>
+                                      {%- elsif adj.value_type == 'fixed_amount' -%}
+                                        <span class="cart-item__plan-opt-discount">Save {{ adj.value | money }}</span>
+                                      {%- endif -%}
+                                    {%- endif -%}
+                                  </button>
+                                {%- endfor -%}
+                              {%- endfor -%}
+                              <button class="cart-item__plan-cancel" type="button" data-plan-cancel>Cancel</button>
+                            </div>
+                          {%- endif -%}
+                        </div>
                       {%- endif -%}
 
                       <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
@@ -467,6 +638,84 @@
     </form>
   </div>
 </cart-items>
+
+<script>
+(function () {
+  /* ── Subscribe & Save — cart page ── */
+
+  function updateSellingPlan(itemKey, qty, planId) {
+    var body = { id: itemKey, quantity: qty };
+    body.selling_plan = planId !== null ? planId : '';
+
+    // Disable all sub buttons during request
+    document.querySelectorAll('[data-sub-toggle],[data-plan-id],[data-unsub]').forEach(function (el) {
+      el.setAttribute('aria-busy', 'true');
+    });
+
+    fetch('/cart/change.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(body)
+    })
+    .then(function (r) { return r.json(); })
+    .then(function () {
+      window.location.reload();
+    })
+    .catch(function (err) {
+      console.error('[Subscribe & Save] cart update failed:', err);
+      document.querySelectorAll('[data-sub-toggle],[data-plan-id],[data-unsub]').forEach(function (el) {
+        el.removeAttribute('aria-busy');
+      });
+    });
+  }
+
+  function init() {
+    /* Toggle plan picker open/close */
+    document.querySelectorAll('[data-sub-toggle]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var picker = btn.nextElementSibling;
+        if (!picker) return;
+        var isOpen = !picker.hidden;
+        picker.hidden = isOpen;
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+
+    /* Select a plan */
+    document.querySelectorAll('[data-plan-id]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        updateSellingPlan(btn.dataset.itemKey, parseInt(btn.dataset.itemQty, 10), parseInt(btn.dataset.planId, 10));
+      });
+    });
+
+    /* Cancel plan picker */
+    document.querySelectorAll('[data-plan-cancel]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var picker = btn.closest('[data-plan-picker]');
+        if (!picker) return;
+        picker.hidden = true;
+        var toggle = picker.previousElementSibling;
+        if (toggle && toggle.dataset.subToggle !== undefined) {
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    /* Switch to one-time (remove selling plan) */
+    document.querySelectorAll('[data-unsub]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        updateSellingPlan(btn.dataset.itemKey, parseInt(btn.dataset.itemQty, 10), null);
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
 
 {% schema %}
 {

@@ -375,6 +375,19 @@
     <style>
       /* Kenya layout: hide the legacy custom header — default header is used instead */
       .kenya-header-section { display: none !important; }
+
+      /* Kenya layout: center the logo in the header */
+      @media screen and (min-width: 990px) {
+        .header--middle-left:not(.drawer-menu) {
+          grid-template-areas: 'navigation heading icons';
+          grid-template-columns: 1fr auto 1fr;
+        }
+      }
+      .header--middle-left .header__heading,
+      .header--middle-left .header__heading-link {
+        justify-self: center;
+        text-align: center;
+      }
     </style>
 
     <main
