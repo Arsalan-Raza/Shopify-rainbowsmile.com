@@ -200,7 +200,14 @@
     }
     .hero-{{ section.id }} .hero__badge { display: none; }
     .hero-{{ section.id }} .hero__title { letter-spacing: -1px; }
-    .hero-{{ section.id }} .hero__actions { flex-direction: row; flex-wrap: nowrap; align-items: center; gap: 12px; }
+    .hero-{{ section.id }} .hero__actions { 
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 12px;
+      position: absolute;
+      bottom: -25rem;
+     }
     .hero-{{ section.id }} .hero__btn {     
       min-height: auto;
       min-width: 0;
@@ -211,8 +218,6 @@
       background: transparent;
       color: #ffffff;
       border-color: #ffffff;
-      position: absolute;
-      bottom: -20rem;
     }
     .hero-{{ section.id }} .hero__btn--outline:hover { background: rgba(255,255,255,0.12); }
     .hero-{{ section.id }} .hero__proof { display: none; }
