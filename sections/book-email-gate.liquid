@@ -225,37 +225,103 @@
       <p class="gate__body">{{ section.settings.body | escape }}</p>
     {%- endif -%}
 
-    {%- form 'customer', id: 'gate-form-{{ section.id }}', class: 'gate__form' -%}
-      <input type="hidden" name="contact[tags]" value="newsletter,book-download">
+    <form id="gate-form-{{ section.id }}" class="gate__form" novalidate>
+      <label for="gate-email-{{ section.id }}" hidden>Email address</label>
+      <input
+        class="gate__input"
+        id="gate-email-{{ section.id }}"
+        type="email"
+        name="email"
+        placeholder="{{ section.settings.input_placeholder | default: 'your@email.com' | escape }}"
+        required
+        autocomplete="email"
+      >
+      <p class="gate__error" role="alert" hidden></p>
+      <button class="gate__submit" type="submit">
+        <span class="gate__btn-label">{{ section.settings.btn_text | default: 'Send me the book' | escape }}</span>
+        <span class="gate__btn-arrow" aria-hidden="true">→</span>
+      </button>
+    </form>
 
-      {%- if form.posted_successfully? -%}
-        <p class="gate__success">
-          <span class="gate__success-icon" aria-hidden="true">✓</span>
-          {{ section.settings.success_text | default: 'Check your inbox — the book is on its way.' | escape }}
-        </p>
-      {%- else -%}
-        <label for="gate-email-{{ section.id }}" hidden>{{ 'general.newsletter_form.email_placeholder' | t }}</label>
-        <input
-          class="gate__input"
-          id="gate-email-{{ section.id }}"
-          type="email"
-          name="contact[email]"
-          value="{{ form.email }}"
-          placeholder="{{ section.settings.input_placeholder | default: 'your@email.com' | escape }}"
-          required
-          autocomplete="email"
-        >
+    <p class="gate__success" id="gate-success-{{ section.id }}" hidden>
+      <span class="gate__success-icon" aria-hidden="true">✓</span>
+      {{ section.settings.success_text | default: 'Check your inbox — the book is on its way.' | escape }}
+    </p>
 
-        {%- if form.errors -%}
-          <p class="gate__error" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
-        {%- endif -%}
+    <script>
+    (function () {
+      var form    = document.getElementById('gate-form-{{ section.id }}');
+      var success = document.getElementById('gate-success-{{ section.id }}');
+      if (!form) return;
 
-        <button class="gate__submit" type="submit">
-          {{ section.settings.btn_text | default: 'Send me the book' | escape }}
-          <span aria-hidden="true">→</span>
-        </button>
-      {%- endif -%}
-    {%- endform -%}
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var emailInput  = form.querySelector('[type="email"]');
+        var errorEl     = form.querySelector('.gate__error');
+        var submitBtn   = form.querySelector('.gate__submit');
+        var email       = emailInput.value.trim();
+
+        /* — basic validation — */
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          errorEl.textContent = 'Please enter a valid email address.';
+          errorEl.hidden = false;
+          emailInput.focus();
+          return;
+        }
+        errorEl.hidden = true;
+
+        /* — loading state — */
+        submitBtn.disabled = true;
+        submitBtn.querySelector('.gate__btn-label').textContent = 'Sending…';
+
+        /* — POST to Klaviyo client subscriptions API — */
+        fetch('https://a.klaviyo.com/client/subscriptions/?company_id=XPACnz', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'revision': '2024-02-15'
+          },
+          body: JSON.stringify({
+            data: {
+              type: 'subscription',
+              attributes: {
+                custom_source: 'Book Download Page',
+                profile: {
+                  data: {
+                    type: 'profile',
+                    attributes: { email: email }
+                  }
+                }
+              },
+              relationships: {
+                list: {
+                  data: { type: 'list', id: 'R9iaTf' }
+                }
+              }
+            }
+          })
+        })
+        .then(function (res) {
+          /* Klaviyo returns 202 Accepted on success */
+          if (res.status === 202 || res.ok) {
+            form.hidden = true;
+            success.hidden = false;
+          } else {
+            return res.json().then(function (body) {
+              throw new Error((body.errors && body.errors[0] && body.errors[0].detail) || 'Something went wrong.');
+            });
+          }
+        })
+        .catch(function (err) {
+          errorEl.textContent = err.message || 'Something went wrong. Please try again.';
+          errorEl.hidden = false;
+          submitBtn.disabled = false;
+          submitBtn.querySelector('.gate__btn-label').textContent = '{{ section.settings.btn_text | default: "Send me the book" | escape }}';
+        });
+      });
+    })();
+    </script>
 
     {%- if section.settings.bypass_text != blank and section.settings.bypass_url != blank -%}
       <a class="gate__bypass" href="{{ section.settings.bypass_url }}">

@@ -155,7 +155,8 @@
     border-color: var(--bk-coral);
     box-shadow: 0 0 0 3px rgba(239, 74, 34, 0.15);
   }
-  .book-{{ section.id }} .bk__form button {
+  .book-{{ section.id }} .bk__form button,
+  .book-{{ section.id }} .bk__cta-btn {
     flex: none;
     display: inline-flex;
     align-items: center;
@@ -174,9 +175,12 @@
     transition: background-color 0.18s ease;
   }
   .book-{{ section.id }} .bk__arrow { transition: transform 0.18s ease; }
-  .book-{{ section.id }} .bk__form button:hover { background: #dc411b; }
-  .book-{{ section.id }} .bk__form button:hover .bk__arrow { transform: translateX(3px); }
-  .book-{{ section.id }} .bk__form button:focus-visible { outline: 3px solid rgba(239,74,34,0.45); outline-offset: 2px; }
+  .book-{{ section.id }} .bk__form button:hover,
+  .book-{{ section.id }} .bk__cta-btn:hover { background: #dc411b; }
+  .book-{{ section.id }} .bk__form button:hover .bk__arrow,
+  .book-{{ section.id }} .bk__cta-btn:hover .bk__arrow { transform: translateX(3px); }
+  .book-{{ section.id }} .bk__form button:focus-visible,
+  .book-{{ section.id }} .bk__cta-btn:focus-visible { outline: 3px solid rgba(239,74,34,0.45); outline-offset: 2px; }
   /* ── Responsive ──────────────────────────────────────────── */
   @media screen and (max-width: 899px) {
     .book-{{ section.id }} .bk__inner {
@@ -189,7 +193,8 @@
   }
   @media screen and (max-width: 520px) {
     .book-{{ section.id }} .bk__form { flex-direction: column; }
-    .book-{{ section.id }} .bk__form button { width: 100%; justify-content: center; }
+    .book-{{ section.id }} .bk__form button,
+    .book-{{ section.id }} .bk__cta-btn { width: 100%; justify-content: center; }
   }
   @media (prefers-reduced-motion: reduce) {
     .book-{{ section.id }} .bk__arrow { transition: none; }
@@ -244,23 +249,12 @@
         {%- if section.settings.form_title != blank -%}
           <p class="bk__capture-title">{{ section.settings.form_title | escape }}</p>
         {%- endif -%}
-        {%- form 'customer', id: 'bk-form-{{ section.id }}', class: 'bk__form' -%}
-          <input type="hidden" name="contact[tags]" value="newsletter,biome-hacker-book">
-          <label for="bk-email-{{ section.id }}" hidden>{{ section.settings.email_placeholder | default: 'Email address' | escape }}</label>
-          <input
-            id="bk-email-{{ section.id }}"
-            type="email"
-            name="contact[email]"
-            placeholder="{{ section.settings.email_placeholder | escape }}"
-            required
-            autocomplete="email"
-          >
-          <button type="submit">
+        <div class="bk__form">
+          <button type="button" class="bk__cta-btn" data-book-gate>
             {{ section.settings.btn_text | escape }}
-            <span class="bk__arrow" aria-hidden="true">→</span>
+            <span class="bk__arrow" aria-hidden="true">&#8594;</span>
           </button>
-        {%- endform -%}
-
+        </div>
       </div>
     </div>
 
