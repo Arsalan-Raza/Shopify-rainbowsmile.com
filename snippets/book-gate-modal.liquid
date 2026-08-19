@@ -361,6 +361,10 @@
           href === 'shopify://pages/the-book' ||
           fullHref.indexOf('/pages/the-book') !== -1
         ) {
+          /* Skip links inside the site header / nav — let those navigate normally */
+          if (node.closest('header, nav, [role="navigation"], .header__inline-menu, .header-drawer')) {
+            return;
+          }
           e.preventDefault();
           openModal();
           return;
