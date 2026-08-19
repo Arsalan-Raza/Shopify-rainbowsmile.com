@@ -540,9 +540,39 @@
   if (shareBtn) {
     shareBtn.addEventListener('click', function () {
       if (navigator.share) {
+        /* Mobile + Windows Chrome — native share sheet */
         navigator.share({ title: document.title, url: location.href }).catch(function () {});
-      } else if (navigator.clipboard) {
-        navigator.clipboard.writeText(location.href);
+      } else {
+        /* Desktop fallback — copy to clipboard + visual confirmation */
+        var titleEl = shareBtn.querySelector('.aud__action-title');
+        var subEl   = shareBtn.querySelector('.aud__action-sub');
+        var origTitle = titleEl ? titleEl.textContent : '';
+        var origSub   = subEl   ? subEl.textContent   : '';
+
+        function showConfirm() {
+          if (titleEl) titleEl.textContent = 'Link copied!';
+          if (subEl)   subEl.textContent   = 'Paste to share';
+          shareBtn.style.borderColor = '#4caf50';
+          setTimeout(function () {
+            if (titleEl) titleEl.textContent = origTitle;
+            if (subEl)   subEl.textContent   = origSub;
+            shareBtn.style.borderColor = '';
+          }, 2200);
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(location.href).then(showConfirm).catch(function () {
+            window.prompt('Copy this link to share:', location.href);
+          });
+        } else {
+          var inp = document.createElement('input');
+          inp.value = location.href;
+          inp.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
+          document.body.appendChild(inp);
+          inp.select();
+          try { document.execCommand('copy'); showConfirm(); } catch (e) { window.prompt('Copy this link to share:', location.href); }
+          document.body.removeChild(inp);
+        }
       }
     });
   }
