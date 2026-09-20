@@ -18,12 +18,12 @@
         "overlay_opacity": 15,
         "badge_text": "OG3™ Oxygen + Hydration Therapy",
         "heading_accent": "Your Mouth",
-        "heading_rest": "Was Born Alive. Let's Keep It That Way.",
+        "heading_rest": "IS ALIVE. Let's keep it that way.",
         "subtitle": "<p>Rainbow Smile is Biome Food™ — a certified organic daily ritual that supports your mouth's living ecology.</p>",
         "btn1_text": "Shop OG3™",
         "btn1_url": "shopify://collections/all",
         "btn2_text": "Download the Free Guide",
-        "btn2_url": "/pages/the-book",
+        "btn2_url": "/pages/the-biome-hackers-code",
         "show_proof": true,
         "avatar_1": "shopify://shop_images/f1b10586e03058fe4c28a9c6229aeaca8cf0d981.png",
         "avatar_2": "shopify://shop_images/2c9f12a4028f7f7f6702de6c23eb198642b15be4.png",
@@ -325,7 +325,7 @@
           "settings": {
             "number": "02",
             "title": "The 60-Second Hold",
-            "body": "<p>Apply 1-2 drops under the tongue or spray directly into the mouth. Hold for 30–60 seconds to allow to penetrate and activate.</p>",
+            "body": "<p>Apply 1-2 sprays (or pumps for Pure Cleanse) under the tongue or directly into the mouth. Hold for 30–60 seconds to allow to penetrate and activate.</p>",
             "meta": "30 Seconds"
           }
         },
@@ -333,8 +333,8 @@
           "type": "step",
           "settings": {
             "number": "03",
-            "title": "Safe to Swallow",
-            "body": "<p>Our formula is 100% natural, made from Certified Organic Coconut Glycerin. Gentle, nourishing, and completely safe.</p>",
+            "title": "Made to be swallowed",
+            "body": "<p>Every ingredient is food. Certified organic coconut glycerin. Nothing your body doesn't recognise.</p>",
             "meta": "20 Seconds"
           }
         },
@@ -830,7 +830,7 @@
         "btn1_label": "Shop Rainbow Smile",
         "btn1_url": "shopify://collections/all",
         "btn2_label": "Free Biome Book",
-        "btn2_url": "/pages/the-book",
+        "btn2_url": "/pages/the-biome-hackers-code",
         "btn3_label": "Join Community",
         "btn3_url": "/pages/community",
         "btn_font": "--font-heading-family",

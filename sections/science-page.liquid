@@ -1,0 +1,468 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --nv: #1E2240;
+    --bone: #F0E8D8;
+    --mid: #555;
+    --bg: #F0EDE8;
+    --gr: #8FCC5F;
+    --or: #EF4F27;
+    --pod: #C896FF;
+    font-family: var(--font-heading-family, 'DM Sans', sans-serif);
+    background: var(--bg);
+    color: var(--mid);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .sci-{{ section.id }} * {
+    box-sizing: border-box;
+  }
+
+  /* HEADER */
+  .sci-hdr-{{ section.id }} {
+    background: var(--nv);
+    padding: 56px 52px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .sci-hdr-{{ section.id }}::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 80% 30%, rgba(200,150,255,.08) 0%, transparent 55%),
+      radial-gradient(ellipse at 20% 70%, rgba(143,204,95,.06) 0%, transparent 45%);
+  }
+  .sci-hdr-inner-{{ section.id }} {
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .sci-pre-{{ section.id }} {
+    font-size: 10px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: rgba(235,218,188,.3);
+    margin-bottom: 12px;
+  }
+  .sci-h1-{{ section.id }} {
+    font-family: var(--font-heading-family, serif);
+    font-size: clamp(28px, 4vw, 40px);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--bone);
+    margin: 0 0 12px;
+    line-height: 1.1;
+  }
+  .sci-h1-{{ section.id }} em {
+    color: var(--gr);
+    font-style: italic;
+  }
+  .sci-intro-{{ section.id }} {
+    font-size: 14px;
+    color: rgba(235,218,188,.55);
+    line-height: 1.78;
+    max-width: 700px;
+    margin: 0;
+  }
+
+  /* BODY */
+  .sci-body-{{ section.id }} {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 52px 64px;
+  }
+
+  /* INTRO PARA */
+  .sci-lead-{{ section.id }} {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.82;
+    margin-bottom: 32px;
+    padding-bottom: 28px;
+    border-bottom: 2px solid rgba(0,0,0,.07);
+  }
+  .sci-lead-{{ section.id }} strong {
+    color: var(--nv);
+  }
+
+  /* SECTION HEADING */
+  .sci-h2-{{ section.id }} {
+    font-family: var(--font-heading-family, serif);
+    font-size: clamp(20px, 2.5vw, 26px);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--nv);
+    margin: 36px 0 10px;
+    line-height: 1.15;
+  }
+  .sci-h2-{{ section.id }}:first-of-type {
+    margin-top: 0;
+  }
+
+  /* BODY PARAGRAPH */
+  .sci-p-{{ section.id }} {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.85;
+    margin-bottom: 14px;
+  }
+  .sci-p-{{ section.id }} strong {
+    color: var(--nv);
+  }
+  .sci-p-{{ section.id }} a {
+    color: var(--nv);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color .15s;
+  }
+  .sci-p-{{ section.id }} a:hover {
+    color: var(--gr);
+  }
+
+  /* STAT ROW */
+  .sci-stat-row-{{ section.id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0 28px;
+  }
+  .sci-stat-{{ section.id }} {
+    background: linear-gradient(135deg, #F8F6FF, #F0EDF8);
+    border-radius: 10px;
+    padding: 16px 18px;
+    border: 1px solid rgba(100,80,180,.1);
+  }
+  .sci-stat-n-{{ section.id }} {
+    font-family: var(--font-heading-family, serif);
+    font-size: clamp(26px, 3vw, 32px);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--pod);
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+  .sci-stat-label-{{ section.id }} {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+  .sci-stat-cite-{{ section.id }} {
+    font-size: 11px;
+    color: #aaa;
+    font-style: italic;
+  }
+
+  /* FDA DISCLAIMER (inline after Four Pillars) */
+  .sci-disclaimer-inline-{{ section.id }} {
+    font-size: 11px;
+    color: #999;
+    font-style: italic;
+    padding: 12px 16px;
+    background: rgba(0,0,0,.03);
+    border-radius: 8px;
+    margin: 4px 0 20px;
+    line-height: 1.65;
+  }
+
+  /* FAQ */
+  .sci-faq-heading-{{ section.id }} {
+    font-family: var(--font-heading-family, serif);
+    font-size: clamp(20px, 2.5vw, 26px);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--nv);
+    margin: 40px 0 20px;
+    line-height: 1.15;
+  }
+  .sci-faq-q-{{ section.id }} {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--nv);
+    margin: 20px 0 8px;
+    padding-left: 16px;
+    border-left: 3px solid var(--gr);
+    line-height: 1.4;
+  }
+  .sci-faq-a-{{ section.id }} {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.78;
+    padding-left: 16px;
+    margin-bottom: 4px;
+  }
+
+  /* FDA DISCLAIMER (bottom) */
+  .sci-disclaimer-{{ section.id }} {
+    font-size: 11px;
+    color: #999;
+    font-style: italic;
+    padding: 14px 18px;
+    background: rgba(0,0,0,.03);
+    border-radius: 8px;
+    margin-top: 28px;
+    line-height: 1.65;
+    border-top: 2px solid rgba(0,0,0,.06);
+  }
+
+  /* DIVIDER */
+  .sci-divider-{{ section.id }} {
+    border: none;
+    border-top: 1px solid rgba(0,0,0,.08);
+    margin: 32px 0;
+  }
+
+  @media (max-width: 768px) {
+    .sci-hdr-{{ section.id }} {
+      padding: 36px 24px 32px;
+    }
+    .sci-body-{{ section.id }} {
+      padding: 32px 24px 48px;
+    }
+    .sci-stat-row-{{ section.id }} {
+      grid-template-columns: 1fr;
+    }
+  }
+{%- endstyle -%}
+
+<div class="sci-{{ section.id }}">
+
+  <!-- Header -->
+  <div class="sci-hdr-{{ section.id }}">
+    <div class="sci-hdr-inner-{{ section.id }}">
+      <p class="sci-pre-{{ section.id }}">Rainbow Smile · OG3™ · Biome Food™</p>
+      <h1 class="sci-h1-{{ section.id }}">The Science of the <em>Oral Microbiome</em></h1>
+      <p class="sci-intro-{{ section.id }}">The oral microbiome connects your mouth to your gut, your brain, and your immune system. The complete science behind OG3™ — quorum sensing, EZ water, the oral gut brain axis, and Biome Food™.</p>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="sci-body-{{ section.id }}">
+
+    <!-- Intro -->
+    <p class="sci-lead-{{ section.id }}">Your mouth is not a problem to be solved. It is a living ecosystem — home to more than <strong>700 species of bacteria</strong> that coordinate, communicate, and maintain the conditions for lasting oral health. OG3™ by Rainbow Smile is built on one principle: <strong>feed the ecology, and the ecology takes care of everything else.</strong> This page explains the science behind that idea — and why it changes everything about how we think about oral care.</p>
+
+    <!-- Section 1 -->
+    <h2 class="sci-h2-{{ section.id }}">Your Mouth Is a Living Ecosystem</h2>
+    <p class="sci-p-{{ section.id }}">The human oral cavity is the second most diverse microbial community in the body after the gut. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8491219/" target="_blank" rel="noopener">According to the Human Oral Microbiome Database</a>, more than 700 bacterial species have been identified in the healthy adult mouth — each one playing a specific role in maintaining ecological balance. This community is not harmful. It is essential.</p>
+    <p class="sci-p-{{ section.id }}">When we use alcohol-based mouthwashes or aggressive antiseptic products, we destroy this community indiscriminately — killing beneficial bacteria alongside harmful ones. The result is not a cleaner mouth. It is a disrupted ecosystem that takes hours to begin restoring itself, during which harmful anaerobic bacteria — the species most associated with bad breath and gum disease — repopulate fastest. Conventional oral care is making the problem worse, not better.</p>
+    <p class="sci-p-{{ section.id }}"><strong>OG3™ takes a different approach entirely.</strong> Rather than destroying the oral ecosystem, it creates the oxygen-rich, nutrient-rich conditions in which beneficial bacteria thrive naturally. This is Biome Food™ — the first oral supplement category designed to feed rather than deplete the living ecology of the mouth.</p>
+
+    <!-- Stat Row -->
+    <div class="sci-stat-row-{{ section.id }}">
+      <div class="sci-stat-{{ section.id }}">
+        <div class="sci-stat-n-{{ section.id }}">700+</div>
+        <div class="sci-stat-label-{{ section.id }}">bacterial species in the healthy adult oral microbiome</div>
+        <div class="sci-stat-cite-{{ section.id }}">Source: Human Oral Microbiome Database (HOMD)</div>
+      </div>
+      <div class="sci-stat-{{ section.id }}">
+        <div class="sci-stat-n-{{ section.id }}">3.5B</div>
+        <div class="sci-stat-label-{{ section.id }}">years of microbial intelligence governing the oral ecosystem</div>
+        <div class="sci-stat-cite-{{ section.id }}">Source: evolutionary microbiology literature</div>
+      </div>
+      <div class="sci-stat-{{ section.id }}">
+        <div class="sci-stat-n-{{ section.id }}">1,000s</div>
+        <div class="sci-stat-label-{{ section.id }}">of swallows per day — each one seeding the gut with oral bacteria</div>
+        <div class="sci-stat-cite-{{ section.id }}">Source: oral-gut microbiome connection research</div>
+      </div>
+    </div>
+
+    <!-- Section 2 -->
+    <h2 class="sci-h2-{{ section.id }}">The Oral Gut Brain Axis</h2>
+    <p class="sci-p-{{ section.id }}">Every swallow seeds your gut microbiome with bacteria from your mouth. This means the state of your oral ecosystem directly and continuously shapes the health of your entire digestive system. The connection runs further — researchers now document associations between oral microbiome health and cardiovascular disease, neurodegenerative conditions, respiratory health, type 2 diabetes, and immune function. <strong>Your mouth is not separate from your body. It is the gateway to it.</strong></p>
+    <p class="sci-p-{{ section.id }}">The oral-gut-brain axis describes the bidirectional communication between the oral microbiome, the gut microbiome, and the central nervous system via the vagus nerve. When the oral ecosystem is disrupted — through aggressive antiseptic products, poor nutrition, or antibiotic use — the signals travelling this axis are disrupted too. Restoring oral ecology supports the entire connected system.</p>
+    <p class="sci-p-{{ section.id }}">OG3™'s certified organic botanical blend — spearmint, peppermint, myrrh, cinnamon, clove, orange, vanilla, and coconut — supports the oral environment with ingredients that have been used in traditional medicine for centuries. Safe to swallow. Every ingredient is food.</p>
+
+    <!-- Section 3 -->
+    <h2 class="sci-h2-{{ section.id }}">Quorum Sensing: The 3.5-Billion-Year Intelligence in Your Mouth</h2>
+    <p class="sci-p-{{ section.id }}">Bacteria are not passive organisms. They communicate. Inside your mouth, the 700+ bacterial species coordinate their behaviour through a process called quorum sensing — a sophisticated chemical signalling system that allows bacteria to detect population density and switch on or off specific behaviours collectively.</p>
+    <p class="sci-p-{{ section.id }}">This system was first characterised in landmark research by <strong>Dr. Bonnie Bassler, Professor of Molecular Biology at Princeton University</strong>, who demonstrated that bacteria use quorum sensing signals — called autoinducers — to coordinate everything from biofilm formation to metabolic activity. <a href="https://www.frontiersin.org/journals/oral-health/articles/10.3389/froh.2025.1573863/full" target="_blank" rel="noopener">A 2025 scoping review published in Frontiers in Oral Health</a> confirmed that quorum sensing governs the key interactions between beneficial and harmful bacteria in the oral microbiome.</p>
+    <p class="sci-p-{{ section.id }}">A groundbreaking 2025 study from the University of Minnesota made mainstream scientific news with a finding that directly validates OG3™'s mechanism: <strong>in oxygen-rich conditions, health-associated bacteria are favoured by the quorum sensing system. In anaerobic conditions, disease-associated bacteria dominate.</strong> Oxygen availability changes everything in the oral microbiome — and OG3™ delivers oxygen directly into the oral environment as its first and primary pillar.</p>
+
+    <!-- Section 4 -->
+    <h2 class="sci-h2-{{ section.id }}">The Four Pillars of OG3™</h2>
+    <p class="sci-p-{{ section.id }}">OG3™ is built on four pillars — each one addressing a specific dimension of oral ecology that conventional oral care ignores entirely.</p>
+    <p class="sci-p-{{ section.id }}"><strong>Pillar I — Oxygen Infusion.</strong> Beneficial aerobic bacteria require oxygen to dominate the oral ecosystem. Harmful anaerobic bacteria thrive in low-oxygen environments and are the primary producers of the volatile sulphur compounds associated with bad breath. OG3™ delivers life-force oxygen directly into the oral environment — shifting conditions in favour of beneficial species naturally, without synthetic antiseptics.</p>
+    <p class="sci-p-{{ section.id }}"><strong>Pillar II — Certified Organic Coconut Glycerin.</strong> Glycerin (glycerol) is a naturally occurring compound found in all plant fats. As a food-grade humectant it draws moisture into oral tissues, maintaining the hydrated environment beneficial bacteria need. Certified organic coconut glycerin is the most biocompatible oral carrier available — the body recognises it completely, because it is food. It carries the oxygen, the EZ water, and the botanical blend deep into the oral environment.</p>
+    <p class="sci-p-{{ section.id }}"><strong>Pillar III — EZ Water.</strong> Exclusion Zone (EZ) water — also called structured water or the fourth phase of water — was first documented in detail by <strong>Dr. Gerald Pollack, Professor of Bioengineering at the University of Washington</strong>. <a href="https://www.pollacklab.org/research" target="_blank" rel="noopener">Pollack's laboratory research</a> demonstrated that water adjacent to hydrophilic surfaces forms a fourth phase beyond solid, liquid, and gas — with the molecular formula H₃O₂ and a negative charge. Biological cells are surrounded by EZ water. OG3™ generates EZ water conditions in the oral environment during use, supporting the natural hydration matrix of the oral tissues.</p>
+    <p class="sci-p-{{ section.id }}"><strong>Pillar IV — Bioresonance Frequencies.</strong> Cymatics — the documented science of sound creating geometric patterns in physical matter — demonstrates that specific frequencies organise matter at the molecular level. OG3™ has specific frequencies embedded in its hydrogen bonding network during manufacturing, extending the oxygen delivery and supporting the coherence of the formulation. These frequencies are visible in the cymatics patterns formed in the OG3™ spray mist.</p>
+    <div class="sci-disclaimer-inline-{{ section.id }}">*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. The four pillars describe the compositional and process characteristics of OG3™ and their proposed mechanisms of action in supporting the oral environment.</div>
+
+    <!-- Section 5 -->
+    <h2 class="sci-h2-{{ section.id }}">EZ Water — The Fourth Phase</h2>
+    <p class="sci-p-{{ section.id }}">Water exists in three states familiar to most people — solid (ice), liquid, and gas (steam). Dr. Gerald Pollack's research at the University of Washington identified and characterised a fourth phase — Exclusion Zone water — that forms adjacent to hydrophilic surfaces under specific conditions. This gel-like phase has the molecular formula H₃O₂ rather than H₂O, carries a negative electrical charge, and excludes solutes and particles from its structure.</p>
+    <p class="sci-p-{{ section.id }}">EZ water is found throughout biological systems — in cells, in blood plasma, in the extracellular matrix. Research suggests it plays roles in cellular hydration, energy transfer, and the maintenance of the electrochemical gradients essential for nerve function and metabolic activity. <strong>Living systems are EZ water systems.</strong> When EZ water decreases — as happens with dehydration, poor nutrition, or environmental stress — cellular function declines.</p>
+    <p class="sci-p-{{ section.id }}">OG3™ supports the conditions in which EZ water can form naturally in the oral environment — through the combination of certified organic coconut glycerin (a deeply hydrophilic carrier), oxygen infusion, and the specific frequency characteristics embedded during manufacturing. The EZ water claim is made in the context of supporting the oral environment, not as a therapeutic claim.</p>
+
+    <!-- Section 6 -->
+    <h2 class="sci-h2-{{ section.id }}">Why Conventional Oral Care Disrupts the Ecosystem</h2>
+    <p class="sci-p-{{ section.id }}">The most widely used oral care products — alcohol-based mouthwashes, fluoride rinses, and antibacterial toothpastes — were designed in an era before the oral microbiome was understood. They operate on a simple but flawed premise: kill the bacteria.</p>
+    <p class="sci-p-{{ section.id }}">The problem is that <strong>not all bacteria are the problem</strong>. The 700+ species in a healthy oral microbiome are mostly beneficial — they produce nitric oxide essential for cardiovascular health, they seed the gut with healthy organisms, they maintain the pH balance that protects tooth enamel, and they communicate through quorum sensing to maintain ecological balance. When alcohol-based products kill 99.9% of oral bacteria, they destroy this community. The bacteria that repopulate fastest after the chemical kill are anaerobic species — precisely the organisms associated with bad breath, gum disease, and dysbiosis.</p>
+    <p class="sci-p-{{ section.id }}">The ecological model — feeding beneficial conditions rather than killing all organisms — is supported by the same peer-reviewed science that documents how healthy ecosystems work everywhere from coral reefs to rainforests. Life flourishes when conditions are right. OG3™ creates those conditions.</p>
+
+    <!-- Section 7 -->
+    <h2 class="sci-h2-{{ section.id }}">The Certified Organic Botanicals</h2>
+    <p class="sci-p-{{ section.id }}">Every botanical in OG3™ is certified organic — grown without synthetic pesticides, sourced with full chain-of-custody documentation, and tested by certificate of analysis at the point of supply. The botanicals are not flavouring agents. They are functional ingredients with documented roles in supporting the oral environment, used in traditional medicine for centuries.</p>
+    <p class="sci-p-{{ section.id }}"><strong>Spearmint (Mentha spicata)</strong> — gentle antimicrobial activity that works with the oral ecosystem rather than against it. Cooling and fresh. <strong>Peppermint (Mentha piperita)</strong> — bright and invigorating, with documented support for freshening the oral environment. <strong>Myrrh (Commiphora myrrha)</strong> — one of the oldest recorded oral care botanicals, used in traditional medicine for over 3,000 years for its documented support of gum tissue health. <strong>Cinnamon bark (Cinnamomum)</strong> — warming spice with documented research into oral microbiome balance. <strong>Clove (Syzygium aromaticum)</strong> — the most potent botanical in traditional oral care, rich in eugenol, naturally soothing for oral tissues. <strong>Orange peel (Citrus sinensis)</strong> — brightening, naturally rich in d-Limonene, refreshing. <strong>Vanilla (Vanilla planifolia)</strong> — naturally antimicrobial, warming, rounding. <strong>Coconut (Cocos nucifera)</strong> — the base carrier, universally biocompatible, naturally antimicrobial at concentration.</p>
+    <p class="sci-p-{{ section.id }}">All ingredients are on the FDA GRAS list or have pre-1994 documented dietary supplement use. OG3™ is registered as a dietary supplement with the FDA through a GMP-certified facility. Supplement Facts panels are available on all product pages.</p>
+
+    <hr class="sci-divider-{{ section.id }}">
+
+    <!-- FAQ -->
+    <h2 class="sci-faq-heading-{{ section.id }}">Frequently Asked Questions About the Oral Microbiome and OG3™</h2>
+
+    <p class="sci-faq-q-{{ section.id }}">Is OG3™ an alcohol free breath freshener?</p>
+    <p class="sci-faq-a-{{ section.id }}">Yes — OG3™ contains no alcohol. Unlike conventional breath fresheners and mouthwashes that use alcohol as their primary active ingredient, OG3™ freshens breath by supporting the oxygen-rich conditions where beneficial aerobic bacteria flourish naturally. Alcohol-based products create a short-term freshness followed by faster repopulation of odour-causing anaerobic bacteria. OG3™ addresses the ecology, not the symptom.</p>
+
+    <p class="sci-faq-q-{{ section.id }}">What is Biome Food™?</p>
+    <p class="sci-faq-a-{{ section.id }}">Biome Food™ is Rainbow Smile's category name for OG3™ — describing a supplement designed to feed the beneficial bacterial community in your oral microbiome rather than destroy it. Just as a coral reef flourishes when water conditions are right, and a rainforest grows when the soil ecology is in balance — your oral microbiome thrives when it is fed the conditions it needs. Biome Food™ is that feeding.</p>
+
+    <p class="sci-faq-q-{{ section.id }}">How does OG3™ support fresh breath?</p>
+    <p class="sci-faq-a-{{ section.id }}">Bad breath is primarily caused by volatile sulphur compounds (VSCs) produced by anaerobic bacteria — organisms that thrive in low-oxygen oral environments. OG3™ delivers oxygen directly into the oral environment, creating aerobic conditions that favour beneficial bacteria over VSC-producing anaerobes. Fresh breath is the result of a healthy oral ecosystem in balance — not a chemical masking agent.</p>
+
+    <p class="sci-faq-q-{{ section.id }}">Is OG3™ safe to swallow?</p>
+    <p class="sci-faq-a-{{ section.id }}">OG3™ is made to be swallowed. Every ingredient — certified organic coconut glycerin, certified organic botanical essential oils — is a food-grade substance with a long history of safe ingestion. OG3™ is classified and registered as a dietary supplement, not a cosmetic or drug. Unlike conventional mouthwash, which contains ingredients that should not be swallowed, OG3™ is designed for ingestion. The Supplement Facts panel on each product page confirms the nutritional information.</p>
+
+    <p class="sci-faq-q-{{ section.id }}">What is quorum sensing and why does it matter for oral health?</p>
+    <p class="sci-faq-a-{{ section.id }}">Quorum sensing is the chemical communication system bacteria use to coordinate behaviour based on population density. In the oral microbiome, quorum sensing governs whether the ecosystem maintains health-associated or disease-associated microbial communities. Research published in 2025 confirms that oxygen availability directly influences quorum sensing outcomes — in aerobic conditions, health-associated bacteria are favoured. OG3™'s oxygen infusion pillar directly supports these aerobic conditions.</p>
+
+    <p class="sci-faq-q-{{ section.id }}">What is EZ water and how does OG3™ relate to it?</p>
+    <p class="sci-faq-a-{{ section.id }}">EZ water — also called exclusion zone water or the fourth phase of water — is a documented scientific phenomenon first characterised by Dr. Gerald Pollack at the University of Washington. It is water that forms a more ordered, gel-like phase adjacent to hydrophilic surfaces, with the molecular formula H₃O₂. Biological cells are surrounded by EZ water. OG3™ supports the conditions in which EZ water can form naturally in the oral environment through its certified organic coconut glycerin carrier — one of the most hydrophilic substances used in oral care.</p>
+
+    <!-- Bottom disclaimer -->
+    <div class="sci-disclaimer-{{ section.id }}">All structure/function statements on this page have not been evaluated by the Food and Drug Administration. OG3™ is not intended to diagnose, treat, cure, or prevent any disease. Consult your healthcare provider if you have specific oral health concerns.</div>
+
+  </div>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is OG3™ an alcohol free breath freshener?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — OG3™ contains no alcohol. Unlike conventional breath fresheners that use alcohol as their primary active ingredient, OG3™ freshens breath by supporting the oxygen-rich conditions where beneficial aerobic bacteria flourish naturally. Alcohol-based products create a short-term freshness followed by faster repopulation of odour-causing anaerobic bacteria. OG3™ addresses the ecology, not the symptom."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Biome Food™?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Biome Food™ is Rainbow Smile's category name for OG3™ — an oral supplement designed to feed the beneficial bacterial community in your oral microbiome rather than destroy it. Just as a coral reef flourishes when water conditions are right, your oral microbiome thrives when it is fed the oxygen-rich conditions it needs. These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does OG3™ support fresh breath?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bad breath is primarily caused by volatile sulphur compounds produced by anaerobic bacteria — organisms that thrive in low-oxygen oral environments. OG3™ delivers oxygen directly into the oral environment, creating aerobic conditions that support beneficial bacteria. These statements have not been evaluated by the FDA."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is OG3™ safe to swallow?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "OG3™ is made to be swallowed. Every ingredient — certified organic coconut glycerin, certified organic botanical essential oils — is a food-grade substance. OG3™ is classified as a dietary supplement, not a cosmetic or drug. Unlike conventional mouthwash, OG3™ is designed for ingestion."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is quorum sensing and why does it matter for oral health?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Quorum sensing is the chemical communication system bacteria use to coordinate behaviour. In the oral microbiome, research published in 2025 confirms that oxygen availability directly influences quorum sensing outcomes — in aerobic conditions, health-associated bacteria are favoured. OG3™'s oxygen infusion pillar directly supports these aerobic conditions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is EZ water and how does OG3™ relate to it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "EZ water — exclusion zone water or the fourth phase of water — is a documented scientific phenomenon first characterised by Dr. Gerald Pollack at the University of Washington. It is water that forms a more ordered, gel-like phase adjacent to hydrophilic surfaces with the molecular formula H₃O₂. OG3™ supports conditions in which EZ water can form naturally in the oral environment through its certified organic coconut glycerin carrier."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "The Science of the Oral Microbiome",
+  "url": "https://rainbowsmile.com/pages/science",
+  "description": "The oral microbiome connects your mouth to your gut, your brain, and your immune system. The complete science of OG3™ — quorum sensing, EZ water, the oral gut brain axis, and Biome Food™.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Rainbow Smile"
+  },
+  "mentions": [
+    {
+      "@type": "Person",
+      "name": "Bonnie Bassler",
+      "jobTitle": "Professor of Molecular Biology",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Princeton University"
+      },
+      "description": "Pioneer in quorum sensing research"
+    },
+    {
+      "@type": "Person",
+      "name": "Gerald Pollack",
+      "jobTitle": "Professor of Bioengineering",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "University of Washington"
+      },
+      "description": "Discoverer of EZ water — the fourth phase of water"
+    }
+  ],
+  "about": [
+    { "@type": "Thing", "name": "Oral microbiome" },
+    { "@type": "Thing", "name": "Quorum sensing" },
+    { "@type": "Thing", "name": "EZ water" },
+    { "@type": "Thing", "name": "Oral gut brain axis" },
+    { "@type": "Thing", "name": "Biome Food" },
+    { "@type": "Thing", "name": "Alcohol free breath freshener" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://rainbowsmile.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Science",
+      "item": "https://rainbowsmile.com/pages/science"
+    }
+  ]
+}
+</script>
+
+{% schema %}
+{
+  "name": "Science Page",
+  "tag": "section",
+  "class": "section",
+  "settings": []
+}
+{% endschema %}

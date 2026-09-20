@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "science_page": {
+      "type": "science-page",
+      "settings": {}
+    }
+  },
+  "order": ["science_page"]
+}

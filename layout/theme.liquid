@@ -347,17 +347,30 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Rainbow Smile",
+      "alternateName": "Rainbow Smile LLC",
       "url": "https://rainbowsmile.com",
       {%- if settings.logo -%}
       "logo": "{{ settings.logo | image_url: width: 512 }}",
       {%- endif -%}
-      "description": "Rainbow Smile is the creator of Biome Food™ — the world's first ecological oral care supplement for the oral microbiome. OG3™ is certified organic, oxygen-infused, and alcohol free.",
-      "foundingLocation": "Ojai, California",
+      "description": "Rainbow Smile is the creator of Biome Food™ — the world's first certified organic oral microbiome supplement. OG3™ is alcohol free, fluoride free, and made to be swallowed. Founded in Ojai, California.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2606 Johnson Drive Suite C",
+        "addressLocality": "Ventura",
+        "addressRegion": "CA",
+        "postalCode": "93003",
+        "addressCountry": "US"
+      },
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Ojai, California, USA"
+      },
       "sameAs": [
         "https://www.instagram.com/oralbiomehacker/",
         "https://www.tiktok.com/@rainbowsmile_ubu",
         "https://www.youtube.com/@RainbowSmile-ubu",
-        "https://www.facebook.com/rainbowsmileubu"
+        "https://www.facebook.com/rainbowsmileubu",
+        "https://www.amazon.com/stores/RainbowSmile"
       ]
     }
     </script>
