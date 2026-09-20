@@ -67,6 +67,7 @@
     font-size: clamp(16px, 1.4vw, 18px);
     line-height: 1.3;
     color: var(--gf-navy);
+    margin: 0;
   }
   .gfaq-{{ section.id }} .gfaq__q sup { font-size: 0.62em; vertical-align: super; }
 
@@ -169,7 +170,7 @@
         {%- endunless -%}
         <details class="gfaq__item" {{ block.shopify_attributes }}>
           <summary class="gfaq__summary">
-            <span class="gfaq__q">{{ block.settings.question }}</span>
+            <h3 class="gfaq__q">{{ block.settings.question }}</h3>
             <span class="gfaq__icon" aria-hidden="true"></span>
           </summary>
           <div class="gfaq__answer">
@@ -193,6 +194,37 @@
 
   </div>
 </div>
+
+{%- assign faq_sep = '' -%}
+{%- for block in section.blocks -%}
+  {%- if block.settings.question != blank -%}
+    {%- assign faq_sep = ',' -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if faq_sep != '' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- assign faq_sep = '' -%}
+    {%- for block in section.blocks -%}
+      {%- if block.settings.question != blank -%}
+        {{ faq_sep }}{
+          "@type": "Question",
+          "name": {{ block.settings.question | json }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ block.settings.answer | strip_html | json }}
+          }
+        }
+        {%- assign faq_sep = ',' -%}
+      {%- endif -%}
+    {%- endfor -%}
+  ]
+}
+</script>
+{%- endif -%}
 
 {% schema %}
 {

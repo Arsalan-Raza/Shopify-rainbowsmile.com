@@ -1,0 +1,11 @@
+# Local dev
+.DS_Store
+Thumbs.db
+
+# Shopify CLI
+.shopify/
+shopify.theme.toml
+
+# Internal docs — never push to repo or theme
+docs/
+email-templates/

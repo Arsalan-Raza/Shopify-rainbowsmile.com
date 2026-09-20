@@ -345,7 +345,7 @@
   });
 
   /* ── Global click intercept ────────────────────────── */
-  /* Catches: [data-book-gate] elements + <a> links to /pages/the-book */
+  /* Catches: [data-book-gate] elements + <a> links to /pages/the-biome-hackers-code or /pages/the-book */
   document.addEventListener('click', function (e) {
     var node = e.target;
     while (node && node !== document.body) {
@@ -359,7 +359,9 @@
         var fullHref = node.href || '';
         if (
           href === 'shopify://pages/the-book' ||
-          fullHref.indexOf('/pages/the-book') !== -1
+          href === 'shopify://pages/the-biome-hackers-code' ||
+          fullHref.indexOf('/pages/the-book') !== -1 ||
+          fullHref.indexOf('/pages/the-biome-hackers-code') !== -1
         ) {
           /* Skip links inside the site header / nav — let those navigate normally */
           if (node.closest('header, nav, [role="navigation"], .header__inline-menu, .header-drawer')) {
